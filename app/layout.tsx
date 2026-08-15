@@ -113,11 +113,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </div>
           {/* Persistent, unavoidable affiliate + preview disclosure. */}
           <div className="disclosure-bar rail">
-            <span className="disclosure-tag">Preview</span>
+            <span className="disclosure-tag">Early access</span>
             <span>
-              Live eBay listings, scored against a <b>sample</b> price book — depth figures are
-              illustrative until lectr&apos;s valuations go live. Some eBay links are affiliate links;
-              Starling may earn a commission at no additional cost to you. Values are not offers.
+              Live eBay Buy It Now listings scored against lectr&apos;s certified price book —
+              coverage is still growing. Some eBay links are affiliate links; Starling may earn a
+              commission at no additional cost to you. Values are informational, not offers.
             </span>
           </div>
         </header>
