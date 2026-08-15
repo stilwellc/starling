@@ -137,13 +137,24 @@ function extractSignerFromTitle(title: string): string | null {
   return name.join(' ').replace(/[.,]+$/, '').trim();
 }
 
+/** Strip generational suffixes so the key matches lectr's book canon — the book
+ *  canonicalizes "Martin Luther King, Jr." → martin-luther-king; we must too,
+ *  or Jr./Sr. signers silently never join. */
+function stripSuffix(name: string): string {
+  return name
+    .replace(/,?\s+(jr|sr|ii|iii|iv)\.?\s*$/i, '')
+    .replace(/[.,]+\s*$/, '')
+    .trim();
+}
+
 /** Resolve the signer: the "Signed By" item-specific first, else the title. */
 function resolveSigner(l: EbayListing): string | null {
   const fromAspect = aspect(l, 'Signed By') ?? aspect(l, 'Signed by') ?? aspect(l, 'Autographed By');
   if (fromAspect && fromAspect.trim() && !CUT_WORDS.has(fromAspect.trim().toLowerCase())) {
-    return fromAspect.trim();
+    return stripSuffix(fromAspect.trim());
   }
-  return extractSignerFromTitle(l.title);
+  const t = extractSignerFromTitle(l.title);
+  return t ? stripSuffix(t) : null;
 }
 
 /** Everything the guards read: title + condition + item-specific VALUES.

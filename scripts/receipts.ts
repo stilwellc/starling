@@ -73,11 +73,14 @@ export async function resolveReceipts(
   opts: { mode: 'fixture' | 'live'; client?: EbayClient; now: number; nowIso: string; cap?: number },
 ): Promise<Receipt[]> {
   if (opts.mode === 'fixture' || !opts.client) return receipts;
-  const cap = opts.cap ?? receipts.length;
-  let used = 0;
-  for (const r of receipts) {
-    if (r.outcome !== 'live' || used >= cap) continue;
-    used++;
+  const live = receipts.filter((r) => r.outcome === 'live');
+  const cap = Math.min(opts.cap ?? live.length, live.length);
+  // Rotate a cap-sized window through the live set each tick (same trick as the
+  // poll scheduler) — a fixed "first N" would recheck the same stuck listings
+  // forever while newer ones never get resolved.
+  const start = live.length > 0 ? Math.floor(opts.now / (3 * 60 * 60 * 1000)) % live.length : 0;
+  for (let i = 0; i < cap; i++) {
+    const r = live[(start + i) % live.length];
     try {
       const status = await opts.client.recheck(r.itemId, opts.now);
       if (status === null) {

@@ -185,7 +185,10 @@ async function main() {
   // 9 — receipts: record newly surfaced, resolve the ones that left BIN
   let receipts = loadReceipts();
   receipts = recordSurfaced(receipts, board.deals, nowIso);
-  receipts = await resolveReceipts(receipts, { mode, client, now, nowIso });
+  // Cap re-checks per run: the live-receipt set grows every tick, and each
+  // recheck is a real API call — uncapped, this line alone would eventually
+  // eat the daily quota. 60/run × 8 runs/day resolves plenty.
+  receipts = await resolveReceipts(receipts, { mode, client, now, nowIso, cap: 60 });
   commitReceipts(receipts);
 
   // summary
