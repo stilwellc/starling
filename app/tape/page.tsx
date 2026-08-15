@@ -109,20 +109,20 @@ export default function TapePage() {
               <tbody>
                 {receipts.map((r) => (
                   <tr key={r.id}>
-                    <td>{shortDate(r.surfacedAt)}</td>
-                    <td>{verticalLabel(r.vertical)}</td>
-                    <td>
+                    <td data-label="Surfaced">{shortDate(r.surfacedAt)}</td>
+                    <td data-label="Vertical">{verticalLabel(r.vertical)}</td>
+                    <td data-label="Identity">
                       <code>{prettyKey(r.key)}</code>
                     </td>
-                    <td className="tape-num">{depthPct(r.depthAtSurface)}</td>
-                    <td className="tape-num">{money(r.med)}</td>
-                    <td>{r.riskGrade}</td>
-                    <td>
+                    <td className="tape-num" data-label="Depth at surface">{depthPct(r.depthAtSurface)}</td>
+                    <td className="tape-num" data-label="Book">{money(r.med)}</td>
+                    <td data-label="Risk">{r.riskGrade}</td>
+                    <td data-label="Outcome">
                       <span className={`outcome outcome-${r.outcome}`}>
                         {outcomeLabel(r.outcome)}
                       </span>
                     </td>
-                    <td className="tape-num">{r.finalPrice != null ? money(r.finalPrice) : '—'}</td>
+                    <td className="tape-num" data-label="Final">{r.finalPrice != null ? money(r.finalPrice) : '—'}</td>
                   </tr>
                 ))}
               </tbody>

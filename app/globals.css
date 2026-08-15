@@ -1089,20 +1089,141 @@ code {
     grid-template-columns: 1fr;
   }
 }
-@media (max-width: 560px) {
-  .grid {
-    grid-template-columns: 1fr;
+
+/* ── Mobile view (≤640px) — a tailored layout, not the desktop squeezed ──── */
+@media (max-width: 640px) {
+  .main {
+    padding-block: 24px 72px;
   }
+
+  /* Masthead: one clean row — logotype left, nav right. "powered by lectr"
+     lives in the footer on phones, so drop it here to keep the top tight. */
   .masthead-inner {
-    flex-wrap: wrap;
-    gap: 10px;
+    gap: 12px;
+  }
+  .brand .poweredby {
+    display: none;
+  }
+  .wordmark {
+    font-size: 17px;
   }
   .nav {
-    width: 100%;
-    justify-content: flex-start;
+    gap: 2px;
   }
-  .brand {
-    flex-wrap: wrap;
+  .nav-link {
+    padding: 6px 10px;
+    font-size: 13px;
+  }
+  .disclosure-bar {
+    font-size: 11px;
+    align-items: flex-start;
+  }
+
+  /* Board masthead: stack the kicker over the serial; keep both legible. */
+  .page-head-top {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+  .page-head .kicker {
+    font-size: 10px;
+    letter-spacing: 0.16em;
+  }
+  .lede {
+    font-size: 15px;
+  }
+
+  /* Controls: label sits above its chip row, chips scroll-free wrap. */
+  .controls {
+    padding: 14px;
+  }
+  .control-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 9px;
+  }
+  .control-label {
+    min-width: 0;
+  }
+
+  /* One column of cards; tame the empty image wells so they don't dominate. */
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 26px;
+  }
+  .card-media {
+    aspect-ratio: 16 / 10;
+  }
+  .card-depth-num {
+    font-size: 40px;
+  }
+
+  /* Deal detail: image first, capped so it isn't a full screen of nothing. */
+  .deal-detail .card-media {
+    aspect-ratio: 4 / 3;
+    max-height: 60vh;
+  }
+
+  /* Stat tiles: two up. */
+  .stat-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  /* THE TAPE — its own mobile view: each receipt becomes a stacked card with
+     label→value rows, instead of an 8-column table scrolling sideways. */
+  .tape-wrap {
+    border: none;
+    border-radius: 0;
+    overflow: visible;
+  }
+  .tape-table {
+    min-width: 0;
+    display: block;
+  }
+  .tape-table thead {
+    display: none;
+  }
+  .tape-table tbody,
+  .tape-table tr {
+    display: block;
+  }
+  .tape-table tr {
+    border: 1px solid var(--hairline);
+    border-radius: 12px;
+    padding: 6px 14px;
+    margin-bottom: 12px;
+    background: var(--glass-bg);
+  }
+  .tape-table td {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 8px 0;
+    border-bottom: 1px dotted var(--hairline);
+    text-align: right;
+  }
+  .tape-table tr td:last-child {
+    border-bottom: none;
+  }
+  .tape-table td::before {
+    content: attr(data-label);
+    flex: none;
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-text-faint);
+    text-align: left;
+  }
+  .tape-table td code {
+    text-align: right;
+    word-break: break-word;
+  }
+
+  /* Footer: stack the map. */
+  .footer-inner {
+    padding-block: 36px 44px;
   }
 }
 
