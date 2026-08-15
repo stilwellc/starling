@@ -57,7 +57,13 @@ jobs:
             exit 1
           fi
           # Self-provision the Pages project on first deploy (no-op if it already
-          # exists) so a missing/disconnected project can't fail the deploy.
-          npx wrangler@4.120.1 pages project create starling --production-branch main 2>/dev/null \
-            || echo "Pages project 'starling' already exists — continuing."
+          # exists). Surface the real create error rather than swallowing it.
+          set +e
+          CREATE_OUT=$(npx wrangler@4.120.1 pages project create starling --production-branch main 2>&1)
+          CREATE_RC=$?
+          echo "$CREATE_OUT"
+          if [ $CREATE_RC -ne 0 ] && ! echo "$CREATE_OUT" | grep -qi "already"; then
+            echo "::warning::pages project create exited $CREATE_RC (see output above)"
+          fi
+          set -e
           npx wrangler@4.120.1 pages deploy out --project-name starling --branch main --commit-dirty=true
