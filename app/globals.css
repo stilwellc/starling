@@ -184,6 +184,9 @@ code {
   min-width: 0;
 }
 .wordmark {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   font-family: var(--font-sans);
   font-weight: 800;
   font-size: 19px;
@@ -192,6 +195,12 @@ code {
 }
 .wordmark.small {
   font-size: 16px;
+  gap: 7px;
+}
+/* the banking-starling mark — optical nudge so the bird sits on the baseline */
+.wordmark .mark {
+  flex: none;
+  transform: translateY(0.5px);
 }
 .wordmark-dot {
   color: var(--butter);

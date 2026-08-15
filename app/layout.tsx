@@ -33,7 +33,24 @@ export const metadata: Metadata = {
     type: 'website',
   },
   robots: { index: true, follow: true },
+  icons: { icon: [{ url: '/favicon.svg', type: 'image/svg+xml' }] },
 };
+
+/** The Starling — a banking starling drawn as one blade (bird first, star
+ *  second), rising up-and-right: under book → upside. Inline so it inherits
+ *  crispness at any size; butter is the brand ink. */
+function StarlingMark({ size = 20, color = '#e8dab6' }: { size?: number; color?: string }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" aria-hidden="true" className="mark">
+      <g transform="rotate(-18 12 12)">
+        <path
+          fill={color}
+          d="M22.4 12.8 C18.9 11.7 15.8 11.2 13.9 11.0 C12.8 8.2 11.5 4.6 9.7 2.0 C10.3 5.5 10.7 8.7 11.1 11.2 C8.1 11.0 5.0 10.9 2.4 10.3 L5.8 12.6 L2.7 14.9 C6.4 15.3 12.0 15.2 16.4 14.2 C18.9 13.7 21.2 13.2 22.4 12.8 Z"
+        />
+      </g>
+    </svg>
+  );
+}
 
 const NAV = [
   { href: '/', label: 'Board' },
@@ -55,7 +72,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <div className="masthead-inner rail">
             <div className="brand">
               <Link href="/" className="wordmark">
-                starling<span className="wordmark-dot">.</span>
+                <StarlingMark size={21} />
+                <span>starling<span className="wordmark-dot">.</span></span>
               </Link>
               <a
                 className="poweredby"
@@ -93,7 +111,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <div className="footer-inner rail">
             <div className="footer-brand">
               <span className="wordmark small">
-                starling<span className="wordmark-dot">.</span>
+                <StarlingMark size={17} />
+                <span>starling<span className="wordmark-dot">.</span></span>
               </span>
               <a
                 href="https://lectr.bid"
