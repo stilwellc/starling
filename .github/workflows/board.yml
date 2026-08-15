@@ -27,6 +27,7 @@ on:
 # (lectr learned this the hard way via 403s — commit 43e4005.)
 permissions:
   contents: write
+  actions: write   # to dispatch deploy.yml after committing a fresh board
 
 # Never two board runs racing the same R2 state / the same push to main. Queue,
 # don't cancel: a mid-flight run must finish its state push before the next.
@@ -113,13 +114,24 @@ jobs:
       # fresh data. No-op cleanly when nothing changed (a tick that surfaced no
       # new/updated deals must not create empty commits).
       - name: Commit regenerated board
+        id: commit
         run: |
           git config user.name  "starling-bot"
           git config user.email "starling-bot@users.noreply.github.com"
           git add public/data/starling
           if git diff --cached --quiet; then
             echo "board unchanged this tick — nothing to commit"
+            echo "changed=false" >> "$GITHUB_OUTPUT"
           else
             git commit -m "board: refresh deals ($(date -u +%Y-%m-%dT%H:%MZ))"
             git push
+            echo "changed=true" >> "$GITHUB_OUTPUT"
           fi
+
+      # A commit made with GITHUB_TOKEN does NOT trigger deploy.yml (GitHub's
+      # recursion guard), so dispatch it explicitly when the board changed.
+      - name: Deploy the fresh board
+        if: steps.commit.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh workflow run deploy.yml
