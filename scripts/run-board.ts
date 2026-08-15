@@ -44,7 +44,14 @@ async function main() {
   const now = Date.now();
   const nowIso = new Date(now).toISOString();
   const mode: 'fixture' | 'live' = isLive() ? 'live' : 'fixture';
-  console.log(`[run-board] mode=${mode} at ${nowIso}`);
+  // The book source is DECOUPLED from the eBay source: lectr's private value
+  // book isn't emitted yet, so STARLING_BOOK=fixture lets us poll REAL eBay
+  // against the sample keys (real card/autograph identities) to prove the
+  // Browse API path before the lectr book exists. In fixture mode the book is
+  // always the fixture; in live mode it defaults live unless overridden.
+  const bookMode: 'fixture' | 'live' =
+    mode === 'live' && process.env.STARLING_BOOK !== 'fixture' ? 'live' : 'fixture';
+  console.log(`[run-board] ebay=${mode} · book=${bookMode} at ${nowIso}`);
 
   const client =
     mode === 'live'
@@ -57,8 +64,8 @@ async function main() {
         })
       : undefined;
 
-  // 1 — sync the value book (the only lectr dependency)
-  const synced = await syncBook(mode, now);
+  // 1 — sync the value book (the only lectr dependency; source per bookMode)
+  const synced = await syncBook(bookMode, now);
   console.log(
     `[run-board] book: ${synced.book.rows.length} rows (${synced.source}${synced.stale ? ', STALE' : ''})`,
   );

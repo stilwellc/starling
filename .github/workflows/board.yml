@@ -72,12 +72,21 @@ jobs:
           # is never published publicly; live mode fetches it from R2 in-build.
           LECTR_R2_TOKEN: ${{ secrets.LECTR_R2_TOKEN }}
         run: |
+          # Three-way auto-select (secrets aren't available to step-level `if:`):
+          #   no eBay keys                    → full FIXTURE (offline harness)
+          #   eBay keys, no lectr book token  → LIVE eBay against the sample book
+          #                                     (proves the Browse path before the
+          #                                      lectr value book is emitted)
+          #   eBay keys + lectr book token    → fully LIVE (real eBay + real book)
           if [ -z "$EBAY_CLIENT_ID" ]; then
-            echo "EBAY_CLIENT_ID is empty — no production keyset yet. Running FIXTURE mode end-to-end."
+            echo "No eBay keyset — running FIXTURE mode end-to-end."
             npm run board:fixture
+          elif [ -z "$LECTR_R2_TOKEN" ]; then
+            echo "eBay keyset present, no lectr book token yet — LIVE eBay against the SAMPLE book."
+            STARLING_MODE=live STARLING_BOOK=fixture npm run board
           else
-            echo "eBay keyset present — running LIVE board pipeline."
-            npm run board
+            echo "eBay keyset + lectr book token present — FULLY LIVE."
+            STARLING_MODE=live npm run board
           fi
 
       # Persist the updated state back to R2 (write-once version + pointer +
