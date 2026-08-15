@@ -1,6 +1,6 @@
 /* ============================================================================
-   Starling — reskinned to lectr's "Hearth Terminal" design system.
-   Warm near-black ground, ivory text, ONE butter accent, green/red for
+   Starling — matches lectr's "Terminal" design system (Linear cool chrome).
+   Cool Linear near-black ground, near-white text, ONE butter accent, mint/coral
    direction only. Fraunces (display serif) · Inter (UI + tabular numerals) ·
    IBM Plex Mono (data/eyebrows). Certificate surfaces: double rules, dotted
    leaders, edition serials. Values mirror lectr (Ray) globals.css verbatim.
@@ -12,47 +12,47 @@
   --font-serif: var(--font-serif-display), Georgia, serif;
   --font-mono: var(--font-mono-data), ui-monospace, 'SF Mono', monospace;
 
-  /* Surfaces — warm near-black ladder */
-  --color-bg: #0f0e0a;
-  --color-bg-deep: #0b0a07;
-  --panel: #17150f;
-  --color-bg-elevated: #1c1a14;
-  --glass-bg: #1c1a14;
-  --glass-bg-hover: #232017;
-  --color-nav-bg: rgba(15, 14, 10, 0.88);
-  --color-hover-item: rgba(242, 238, 227, 0.045);
+  /* Surfaces — Linear "Terminal" cool near-black ladder (matches lectr) */
+  --color-bg: #08090a;
+  --color-bg-deep: #060708;
+  --panel: #17171a;
+  --color-bg-elevated: #1c1c1f;
+  --glass-bg: rgba(255, 255, 255, 0.03);
+  --glass-bg-hover: rgba(255, 255, 255, 0.045);
+  --color-nav-bg: rgba(12, 13, 15, 0.9);
+  --color-hover-item: rgba(255, 255, 255, 0.03);
 
-  /* Text — warm ivory ramp */
-  --color-fg: #f2eee3;
-  --color-text-secondary: #ccc6b8;
-  --color-text-muted: #a19b8d;
-  --color-text-faint: #8a8477;
+  /* Text — cool ramp */
+  --color-fg: #f7f8f8;
+  --color-text-secondary: #d0d6e0;
+  --color-text-muted: #8a8f98;
+  --color-text-faint: #62666d;
 
-  /* Hairlines & borders — ivory-alpha, never pure white */
-  --hairline: rgba(242, 238, 227, 0.09);
-  --hairline-soft: rgba(242, 238, 227, 0.065);
-  --color-border: rgba(242, 238, 227, 0.08);
-  --color-border-mid: rgba(242, 238, 227, 0.16);
+  /* Hairlines & borders — white-alpha (Linear) */
+  --hairline: rgba(255, 255, 255, 0.06);
+  --hairline-soft: rgba(255, 255, 255, 0.045);
+  --color-border: rgba(255, 255, 255, 0.08);
+  --color-border-mid: rgba(255, 255, 255, 0.14);
 
-  /* Butter — the one accent, four jobs */
+  /* Butter — the one accent, four jobs (unchanged — shared with lectr) */
   --butter: #e8dab6;
   --butter-text: #decc9e;
   --butter-deep: #c9ae6f;
   --butter-subtle: rgba(232, 218, 182, 0.09);
-  --butter-ink: #0f0e0a;
+  --butter-ink: #08090a;
   --glow-lit: 0 0 2px rgba(232, 218, 182, 0.45), 0 0 16px rgba(232, 218, 182, 0.14);
 
-  /* Direction — up/down only */
-  --up: #2fbf71;
-  --up-soft: rgba(47, 191, 113, 0.12);
+  /* Direction — up/down only (Terminal mint / coral) */
+  --up: #57be87;
+  --up-soft: rgba(87, 190, 135, 0.12);
   --up-text: #57be87;
-  --down: #e5544b;
-  --down-text: #ec7266;
-  --down-soft: rgba(229, 84, 75, 0.12);
+  --down: #cc6a5c;
+  --down-text: #d98a7f;
+  --down-soft: rgba(204, 106, 92, 0.12);
 
   /* Shadows / focus */
-  --shadow-pop: 0 12px 32px rgba(8, 6, 3, 0.45);
-  --shadow-modal: 0 24px 64px rgba(8, 6, 3, 0.6), 0 4px 16px rgba(8, 6, 3, 0.4);
+  --shadow-pop: 0 12px 32px rgba(0, 0, 0, 0.45);
+  --shadow-modal: 0 24px 64px rgba(0, 0, 0, 0.6), 0 4px 16px rgba(0, 0, 0, 0.4);
   --focus-ring: 2px solid rgba(232, 218, 182, 0.9);
   --selection-bg: rgba(232, 218, 182, 0.22);
 
@@ -87,7 +87,7 @@ body {
   letter-spacing: -0.011em;
   color: var(--color-fg);
   background:
-    radial-gradient(1200px 500px at 50% -100px, rgba(242, 238, 227, 0.03), transparent 70%),
+    radial-gradient(1200px 500px at 50% -100px, rgba(232, 218, 182, 0.05), transparent 70%),
     var(--color-bg);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -166,7 +166,7 @@ code {
   position: sticky;
   top: 0;
   z-index: 50;
-  background: linear-gradient(180deg, rgba(23, 21, 15, 0.92), rgba(15, 14, 10, 0.88));
+  background: linear-gradient(180deg, rgba(20, 21, 24, 0.92), rgba(12, 13, 15, 0.88));
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--hairline);
 }
@@ -412,8 +412,8 @@ code {
   overflow: hidden;
   background: var(--color-bg-elevated);
   box-shadow:
-    inset 0 1px 0 rgba(242, 238, 227, 0.04),
-    0 10px 30px rgba(8, 6, 3, 0.35);
+    inset 0 1px 0 rgba(255, 255, 255, 0.04),
+    0 10px 30px rgba(0, 0, 0, 0.35);
 }
 .card-media img {
   width: 100%;
@@ -427,8 +427,8 @@ code {
   inset: 0;
   border-radius: 16px;
   box-shadow:
-    inset 0 0 0 1px rgba(242, 238, 227, 0.05),
-    inset 0 -40px 60px -30px rgba(8, 6, 3, 0.55);
+    inset 0 0 0 1px rgba(255, 255, 255, 0.05),
+    inset 0 -40px 60px -30px rgba(0, 0, 0, 0.55);
   pointer-events: none;
 }
 .card:hover .card-media img {
@@ -455,7 +455,7 @@ code {
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--color-fg);
-  background: rgba(15, 14, 10, 0.72);
+  background: rgba(8, 9, 10, 0.72);
   backdrop-filter: blur(6px);
   padding: 4px 9px;
   border-radius: 6px;
@@ -468,7 +468,7 @@ code {
   inset: 0;
   z-index: 1;
   border-radius: 16px;
-  box-shadow: inset 0 0 0 2px rgba(47, 191, 113, 0.55);
+  box-shadow: inset 0 0 0 2px rgba(87, 190, 135, 0.55);
   pointer-events: none;
 }
 
@@ -596,7 +596,7 @@ code {
   position: absolute;
   top: 14px;
   height: 3px;
-  background: linear-gradient(90deg, var(--up), rgba(47, 191, 113, 0.2));
+  background: linear-gradient(90deg, var(--up), rgba(87, 190, 135, 0.2));
   border-radius: 2px;
 }
 .depthbar-ask {
@@ -611,7 +611,7 @@ code {
   border: 2px solid var(--color-bg);
   border-radius: 2px;
   transform: translate(-50%, -50%) rotate(45deg);
-  box-shadow: 0 0 10px rgba(47, 191, 113, 0.5);
+  box-shadow: 0 0 10px rgba(87, 190, 135, 0.5);
 }
 .depthbar-scale {
   display: flex;
@@ -1028,7 +1028,7 @@ code {
 .footer {
   border-top: 1px solid var(--hairline);
   background:
-    radial-gradient(ellipse 640px 300px at 50% 120px, rgba(242, 238, 227, 0.045), transparent 70%),
+    radial-gradient(ellipse 640px 300px at 50% 120px, rgba(232, 218, 182, 0.04), transparent 70%),
     var(--color-bg-deep);
 }
 .footer-inner {
