@@ -56,4 +56,8 @@ jobs:
             echo "::error::CLOUDFLARE_API_TOKEN secret is not set — create a token at dash.cloudflare.com/profile/api-tokens (Custom: Account → Cloudflare Pages → Edit) and add it with: gh secret set CLOUDFLARE_API_TOKEN"
             exit 1
           fi
+          # Self-provision the Pages project on first deploy (no-op if it already
+          # exists) so a missing/disconnected project can't fail the deploy.
+          npx wrangler@4.120.1 pages project create starling --production-branch main 2>/dev/null \
+            || echo "Pages project 'starling' already exists — continuing."
           npx wrangler@4.120.1 pages deploy out --project-name starling --branch main --commit-dirty=true
