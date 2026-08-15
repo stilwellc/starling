@@ -89,13 +89,24 @@ jobs:
             STARLING_MODE=live npm run board
           fi
 
+      # Ensure the state bucket exists (self-heals a first run before the bucket
+      # was created). Non-fatal: if it already exists or can't be created, the
+      # push step below just degrades gracefully.
+      - name: Ensure R2 bucket
+        run: npx --yes wrangler@4.120.1 r2 bucket create starling-data 2>/dev/null || echo "bucket exists or unavailable — continuing"
+        continue-on-error: true
+
       # Persist the updated state back to R2 (write-once version + pointer +
-      # dated snapshot), then trim the versions/ ladder. Prune is non-fatal — a
-      # failed cleanup just retries next tick.
+      # dated snapshot), then trim the versions/ ladder. BEST-EFFORT: state
+      # (seen-ledger, receipts, quota) is valuable but must never block the board
+      # from publishing + deploying. A failed push just means this tick is
+      # stateless; the next tick retries.
       - name: Push R2 state
-        run: bash scripts/lib/data-store.sh push
+        run: bash scripts/lib/data-store.sh push || echo "R2 state push failed (non-fatal) — board still publishes"
+        continue-on-error: true
       - name: Prune old R2 versions (keep 14)
         run: bash scripts/lib/data-store.sh prune 14 || echo "prune failed (non-fatal, retries next tick)"
+        continue-on-error: true
 
       # Commit the regenerated board JSON. This push to main is what triggers
       # deploy.yml (public/** is in its path filter) — the board redeploys with
