@@ -199,20 +199,27 @@ code {
 .poweredby {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 7px;
   font-size: 12.5px;
   color: var(--color-text-muted);
-  transition: color 200ms var(--ease-signature);
+  transition: opacity 200ms var(--ease-signature);
 }
 .poweredby:hover {
-  color: var(--butter-text);
+  opacity: 0.68;
 }
-.poweredby-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--butter);
-  box-shadow: var(--glow-lit);
+.poweredby-label {
+  letter-spacing: -0.005em;
+}
+/* the real lectr wordmark (ivory cursive mark, transparent PNG) */
+.lectr-mark {
+  height: 15px;
+  width: auto;
+  display: block;
+  /* nudge the handwritten baseline to sit with the "powered by" text */
+  transform: translateY(1px);
+}
+.footer .lectr-mark {
+  height: 17px;
 }
 .nav {
   display: flex;

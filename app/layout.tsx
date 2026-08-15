@@ -62,8 +62,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 href="https://lectr.bid"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="powered by lectr"
               >
-                <span className="poweredby-dot" aria-hidden="true" /> powered by lectr
+                <span className="poweredby-label">powered by</span>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img className="lectr-mark" src="/brand/lectr-nav.png" alt="lectr" />
               </a>
             </div>
             <nav className="nav" aria-label="Primary">
@@ -97,8 +100,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 target="_blank"
                 rel="noopener noreferrer"
                 className="poweredby"
+                aria-label="powered by lectr"
               >
-                powered by lectr
+                <span className="poweredby-label">powered by</span>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img className="lectr-mark" src="/brand/lectr-nav.png" alt="lectr" />
               </a>
             </div>
             <nav className="footer-nav" aria-label="Footer">
