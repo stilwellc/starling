@@ -80,21 +80,36 @@ async function loadLiveBook(now: number): Promise<{ book: ValueBook; stale: bool
       'No R2 account id — set LECTR_R2_ACCOUNT_ID or CLOUDFLARE_ACCOUNT_ID (kept out of source on purpose).',
     );
   }
-  // Private R2 read via the Cloudflare API (same account/endpoint family as
-  // data-store.sh). The book is never exposed publicly; this token is read-only,
-  // scoped to the single object, and used only inside the build.
-  const url =
-    `https://api.cloudflare.com/client/v4/accounts/${R2_ACCOUNT_ID}` +
-    `/r2/buckets/${R2_BUCKET}/objects/${encodeURIComponent(R2_BOOK_KEY)}`;
-  const res = await fetch(url, { headers: { Authorization: `Bearer ${R2_TOKEN}` } });
+  // Private R2 read via the Cloudflare API. The book is never exposed publicly;
+  // the token is read-only and used only inside the build.
+  //
+  // POINTER SCHEME (lectr's write-once pattern): payloads live at write-once
+  // versioned keys — a fresh key is never stale-cached — and only a tiny pointer
+  // (value-book/latest.txt) is overwritten. Overwritten PAYLOADS were measured
+  // serving 79-minute-stale reads; the few-byte pointer flips fast. We read the
+  // pointer, then the versioned object; legacy overwrite key is the fallback.
+  const get = async (key: string) => {
+    const url =
+      `https://api.cloudflare.com/client/v4/accounts/${R2_ACCOUNT_ID}` +
+      `/r2/buckets/${R2_BUCKET}/objects/${encodeURIComponent(key)}`;
+    return fetch(url, { headers: { Authorization: `Bearer ${R2_TOKEN}` } });
+  };
+
+  let bookKey = R2_BOOK_KEY; // legacy default (latest/value-book.json.gz)
+  const ptrRes = await get('value-book/latest.txt');
+  if (ptrRes.ok) {
+    const ptr = (await ptrRes.text()).trim();
+    if (ptr && !ptr.startsWith('{')) bookKey = ptr; // guard against error-JSON bodies
+  }
+  const res = await get(bookKey);
   if (!res.ok) {
     throw new Error(
-      `value book R2 GET ${res.status} (${R2_BUCKET}/${R2_BOOK_KEY}) — ` +
+      `value book R2 GET ${res.status} (${R2_BUCKET}/${bookKey}) — ` +
         `has lectr emitted it to private R2 yet, and is the token scoped to read it?`,
     );
   }
   const buf = Buffer.from(await res.arrayBuffer());
-  const json = R2_BOOK_KEY.endsWith('.gz') ? gunzipSync(buf).toString('utf8') : buf.toString('utf8');
+  const json = bookKey.endsWith('.gz') ? gunzipSync(buf).toString('utf8') : buf.toString('utf8');
   const book = JSON.parse(json) as ValueBook;
 
   // Freshness from the book's own build stamp (no public meta dependency).
