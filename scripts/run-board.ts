@@ -64,8 +64,23 @@ async function main() {
         })
       : undefined;
 
-  // 1 — sync the value book (the only lectr dependency; source per bookMode)
-  const synced = await syncBook(bookMode, now);
+  // 1 — sync the value book. Graceful: in live mode try lectr's real book from
+  // private R2; if it's unreadable (no token/permission, 404, stale-fail), fall
+  // back to the sample book rather than failing the run. So Starling auto-upgrades
+  // to real valuations the moment the book + a readable token exist — no config flip.
+  let synced;
+  if (bookMode === 'live') {
+    try {
+      synced = await syncBook('live', now);
+    } catch (e) {
+      console.warn(
+        `[run-board] real book unavailable (${(e as Error).message.split('—')[0].trim()}) — using sample book`,
+      );
+      synced = await syncBook('fixture', now);
+    }
+  } else {
+    synced = await syncBook('fixture', now);
+  }
   console.log(
     `[run-board] book: ${synced.book.rows.length} rows (${synced.source}${synced.stale ? ', STALE' : ''})`,
   );

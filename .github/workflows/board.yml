@@ -73,20 +73,16 @@ jobs:
           # is never published publicly; live mode fetches it from R2 in-build.
           LECTR_R2_TOKEN: ${{ secrets.LECTR_R2_TOKEN }}
         run: |
-          # Three-way auto-select (secrets aren't available to step-level `if:`):
-          #   no eBay keys                    → full FIXTURE (offline harness)
-          #   eBay keys, no lectr book token  → LIVE eBay against the sample book
-          #                                     (proves the Browse path before the
-          #                                      lectr value book is emitted)
-          #   eBay keys + lectr book token    → fully LIVE (real eBay + real book)
+          # No eBay keys → full fixture harness. eBay keys present → LIVE: real
+          # eBay listings, scored against lectr's real book if it's readable from
+          # private R2 (via LECTR_R2_TOKEN or the CLOUDFLARE token), else the run
+          # falls back to the sample book automatically (sync-book.ts). So this
+          # auto-upgrades to real valuations with zero config change.
           if [ -z "$EBAY_CLIENT_ID" ]; then
             echo "No eBay keyset — running FIXTURE mode end-to-end."
             npm run board:fixture
-          elif [ -z "$LECTR_R2_TOKEN" ]; then
-            echo "eBay keyset present, no lectr book token yet — LIVE eBay against the SAMPLE book."
-            STARLING_MODE=live STARLING_BOOK=fixture npm run board
           else
-            echo "eBay keyset + lectr book token present — FULLY LIVE."
+            echo "eBay keyset present — LIVE (real book if readable, else sample)."
             STARLING_MODE=live npm run board
           fi
 
