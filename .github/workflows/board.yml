@@ -1,0 +1,105 @@
+name: Board (deal pipeline)
+
+# The 3-hourly deal-board pipeline. One job: pull persistent state from R2 →
+# run the board pipeline (sync book → poll eBay → identify → gate → score →
+# publish → receipts) → push state back to R2 → commit the regenerated
+# public/data/starling/*.json to main. That commit lands under paths deploy.yml
+# watches, so the fresh board redeploys to Cloudflare Pages automatically — the
+# data is baked into the static export, so a data commit must redeploy to go
+# live.
+#
+# Fixture gate: until the eBay production keyset exists, EBAY_CLIENT_ID is an
+# empty secret. The run step detects that and executes the pipeline in FIXTURE
+# mode (npm run board:fixture) instead of live — so the whole system (identify →
+# gate → score → publish → receipts → the committed board.json) still exercises
+# end-to-end against recorded fixtures every cron tick. The day the keyset is
+# added, the same workflow flips to live with no edit.
+
+on:
+  schedule:
+    # 15 */3 * * * — every 3 hours at :15 past. Off the hour so it never contends
+    # with other :00 crons; the 3h cadence keeps live prices current (COMPACT
+    # re-checks) and satisfies the ALA's delete-when-gone obligation comfortably.
+    - cron: '15 */3 * * *'
+  workflow_dispatch:
+
+# contents: write — the job commits the regenerated board JSON back to main.
+# (lectr learned this the hard way via 403s — commit 43e4005.)
+permissions:
+  contents: write
+
+# Never two board runs racing the same R2 state / the same push to main. Queue,
+# don't cancel: a mid-flight run must finish its state push before the next.
+concurrency:
+  group: board
+  cancel-in-progress: false
+
+env:
+  STARLING_MODE: live
+  CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+  CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+
+jobs:
+  board:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      - run: npm ci
+
+      # State lives in R2 (bucket starling-data), not git — pull the seen-ledger,
+      # receipts, quota ledger, scheduler wheel and cert cache so this tick picks
+      # up exactly where the last left off. Bootstraps empty on the first run.
+      - name: Pull R2 state
+        run: bash scripts/lib/data-store.sh pull
+
+      # Live if the eBay keyset exists; fixtures otherwise. The gate reads the
+      # secret via env (secrets aren't available to step-level `if:`), so an
+      # empty EBAY_CLIENT_ID transparently routes to board:fixture.
+      - name: Run board pipeline
+        env:
+          EBAY_CLIENT_ID: ${{ secrets.EBAY_CLIENT_ID }}
+          EBAY_CLIENT_SECRET: ${{ secrets.EBAY_CLIENT_SECRET }}
+          EPN_CAMPAIGN_ID: ${{ secrets.EPN_CAMPAIGN_ID }}
+          PSA_API_TOKEN: ${{ secrets.PSA_API_TOKEN }}
+          # Read-only token scoped to lectr's PRIVATE value-book object. The book
+          # is never published publicly; live mode fetches it from R2 in-build.
+          LECTR_R2_TOKEN: ${{ secrets.LECTR_R2_TOKEN }}
+        run: |
+          if [ -z "$EBAY_CLIENT_ID" ]; then
+            echo "EBAY_CLIENT_ID is empty — no production keyset yet. Running FIXTURE mode end-to-end."
+            npm run board:fixture
+          else
+            echo "eBay keyset present — running LIVE board pipeline."
+            npm run board
+          fi
+
+      # Persist the updated state back to R2 (write-once version + pointer +
+      # dated snapshot), then trim the versions/ ladder. Prune is non-fatal — a
+      # failed cleanup just retries next tick.
+      - name: Push R2 state
+        run: bash scripts/lib/data-store.sh push
+      - name: Prune old R2 versions (keep 14)
+        run: bash scripts/lib/data-store.sh prune 14 || echo "prune failed (non-fatal, retries next tick)"
+
+      # Commit the regenerated board JSON. This push to main is what triggers
+      # deploy.yml (public/** is in its path filter) — the board redeploys with
+      # fresh data. No-op cleanly when nothing changed (a tick that surfaced no
+      # new/updated deals must not create empty commits).
+      - name: Commit regenerated board
+        run: |
+          git config user.name  "starling-bot"
+          git config user.email "starling-bot@users.noreply.github.com"
+          git add public/data/starling
+          if git diff --cached --quiet; then
+            echo "board unchanged this tick — nothing to commit"
+          else
+            git commit -m "board: refresh deals ($(date -u +%Y-%m-%dT%H:%MZ))"
+            git push
+          fi
