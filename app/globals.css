@@ -185,8 +185,7 @@ code {
 }
 .wordmark {
   display: inline-flex;
-  align-items: center;
-  gap: 8px;
+  align-items: baseline;
   font-family: var(--font-sans);
   font-weight: 800;
   font-size: 19px;
@@ -195,12 +194,26 @@ code {
 }
 .wordmark.small {
   font-size: 16px;
-  gap: 7px;
 }
-/* the banking-starling mark — optical nudge so the bird sits on the baseline */
-.wordmark .mark {
-  flex: none;
-  transform: translateY(0.5px);
+/* ── The integrated logotype: the banking starling IS the tittle of the i.
+   The word is set with a dotless ı; the bird hovers in the dot's place,
+   nudged right so its tail clears the l. Scales purely with font-size. ── */
+.logotype {
+  display: inline-block;
+  line-height: 1;
+  white-space: nowrap;
+}
+.logotype .islot {
+  position: relative;
+  display: inline-block;
+}
+.logotype .islot svg {
+  position: absolute;
+  left: 50%;
+  top: -0.26em;
+  width: 0.62em;
+  height: 0.62em;
+  transform: translateX(-42%);
 }
 .wordmark-dot {
   color: var(--butter);

@@ -36,12 +36,11 @@ export const metadata: Metadata = {
   icons: { icon: [{ url: '/favicon.svg', type: 'image/svg+xml' }] },
 };
 
-/** The Starling — a banking starling drawn as one blade (bird first, star
- *  second), rising up-and-right: under book → upside. Inline so it inherits
- *  crispness at any size; butter is the brand ink. */
-function StarlingMark({ size = 20, color = '#e8dab6' }: { size?: number; color?: string }) {
+/** The bird — a banking starling drawn as one blade (bird first, star second),
+ *  rising up-and-right: under book → upside. Butter is the brand ink. */
+function StarlingBird({ color = '#e8dab6' }: { color?: string }) {
   return (
-    <svg width={size} height={size} viewBox="0 0 24 24" aria-hidden="true" className="mark">
+    <svg viewBox="0 0 24 24" aria-hidden="true">
       <g transform="rotate(-18 12 12)">
         <path
           fill={color}
@@ -49,6 +48,24 @@ function StarlingMark({ size = 20, color = '#e8dab6' }: { size?: number; color?:
         />
       </g>
     </svg>
+  );
+}
+
+/** The logotype — mark and word as ONE: the bird IS the tittle of the i.
+ *  Set with a dotless ı (U+0131); the banking starling takes the dot's place.
+ *  Scales with font-size, so callers just set the size on the wrapper. */
+function StarlingLogotype() {
+  return (
+    <span className="logotype" aria-label="starling">
+      <span aria-hidden="true">
+        starl
+        <span className="islot">
+          ı
+          <StarlingBird />
+        </span>
+        ng
+      </span>
+    </span>
   );
 }
 
@@ -72,8 +89,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <div className="masthead-inner rail">
             <div className="brand">
               <Link href="/" className="wordmark">
-                <StarlingMark size={21} />
-                <span>starling<span className="wordmark-dot">.</span></span>
+                <StarlingLogotype />
               </Link>
               <a
                 className="poweredby"
@@ -111,8 +127,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <div className="footer-inner rail">
             <div className="footer-brand">
               <span className="wordmark small">
-                <StarlingMark size={17} />
-                <span>starling<span className="wordmark-dot">.</span></span>
+                <StarlingLogotype />
               </span>
               <a
                 href="https://lectr.bid"
