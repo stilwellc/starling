@@ -13,10 +13,18 @@ export default function HomePage() {
   const deals = [...board.deals].sort((a, b) => b.rank - a.rank);
   const stale = isBoardStale(board);
 
+  const serial = board.builtAt ? board.builtAt.slice(0, 10).replace(/-/g, '') : '';
+
   return (
     <>
       <div className="page-head">
-        <h1>Deep-value deals, priced against the corpus.</h1>
+        <div className="page-head-top">
+          <span className="kicker">The board · ranked by depth × confidence</span>
+          {serial && <span className="serial">No. {serial}</span>}
+        </div>
+        <h1>
+          Priced <span className="accent">under</span> where the corpus clears.
+        </h1>
         <p className="lede">
           Live eBay Buy It Now listings sitting deep under what lectr&apos;s certified price corpus
           says they&apos;re worth — every one shown with its evidence and an A–D risk grade. Nothing

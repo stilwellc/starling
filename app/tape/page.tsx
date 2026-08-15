@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { loadReceipts } from '@/scripts/lib/load-board';
+import { loadBoard, loadReceipts } from '@/scripts/lib/load-board';
 import { EmptyBoard } from '@/app/components/Banners';
 import {
   verticalLabel,
@@ -7,72 +7,103 @@ import {
   depthPct,
   outcomeLabel,
   shortDate,
+  prettyKey,
 } from '@/app/lib/display';
-import { prettyKey } from '@/app/lib/display';
 
+// Static export: receipts are read once at build time and baked into HTML.
 export const dynamic = 'force-static';
 
 export const metadata: Metadata = {
   title: 'The Tape — every call Starling made · powered by lectr',
   description:
-    'Starling\'s receipts: every deal we surfaced and what happened to it — sold, ended, or delisted, with the final price where visible. The call is frozen; the outcome is graded against it.',
+    "Starling's receipts: every deal we surfaced and what happened to it — sold, ended, or delisted, with the final price where visible. The call is frozen; the outcome is graded against it.",
 };
 
 export default function TapePage() {
+  const board = loadBoard();
   const receipts = [...loadReceipts()].sort(
     (a, b) => Date.parse(b.surfacedAt) - Date.parse(a.surfacedAt),
   );
 
+  const serial = board.builtAt ? board.builtAt.slice(0, 10).replace(/-/g, '') : '';
+
+  // Summary metrics — computed from the receipts array, never manufactured.
   const sold = receipts.filter((r) => r.outcome === 'sold');
+  const live = receipts.filter((r) => r.outcome === 'live');
+  const soldPct = receipts.length > 0 ? Math.round((sold.length / receipts.length) * 100) : 0;
+
+  const soldVsBookRatios = sold
+    .filter((r) => r.finalPrice != null && r.med > 0)
+    .map((r) => r.finalPrice! / r.med)
+    .sort((a, b) => a - b);
   const medianSoldVsBook =
-    sold.length > 0
-      ? (() => {
-          const ratios = sold
-            .filter((r) => r.finalPrice != null && r.med > 0)
-            .map((r) => r.finalPrice! / r.med)
-            .sort((a, b) => a - b);
-          if (ratios.length === 0) return null;
-          const mid = Math.floor(ratios.length / 2);
-          return ratios.length % 2 ? ratios[mid] : (ratios[mid - 1] + ratios[mid]) / 2;
-        })()
+    soldVsBookRatios.length > 0
+      ? soldVsBookRatios.length % 2
+        ? soldVsBookRatios[(soldVsBookRatios.length - 1) / 2]
+        : (soldVsBookRatios[soldVsBookRatios.length / 2 - 1] +
+            soldVsBookRatios[soldVsBookRatios.length / 2]) /
+          2
       : null;
 
   return (
     <>
       <div className="page-head">
-        <h1>The Tape</h1>
+        <div className="page-head-top">
+          <span className="kicker">The tape · deals we surfaced, and what happened</span>
+          {serial && <span className="serial">No. {serial}</span>}
+        </div>
+        <h1>
+          Every call, <span className="accent">settled</span>.
+        </h1>
         <p className="lede">
-          Every deal Starling surfaced, and what happened to it. The call — book value, depth, risk
-          — is frozen the moment we surface it and never rewritten. When a listing leaves Buy It Now
-          we record the outcome and grade our call against it. This is Starling&apos;s backtest, in
-          public. (The dead listing&apos;s photo and price come off the board immediately; only our
-          own record remains here.)
+          The call — book value, depth, risk — is frozen the moment Starling surfaces a deal and
+          never rewritten. When a listing leaves Buy It Now we record the outcome and grade the call
+          against it. This is the backtest, in public: the dead listing&apos;s photo and price come
+          off the board immediately, but our own record stays here.
         </p>
-        {receipts.length > 0 && (
-          <p className="build-stamp">
-            <b>{receipts.length}</b> calls logged · {sold.length} sold
-            {medianSoldVsBook != null
-              ? ` · median sold at ${Math.round(medianSoldVsBook * 100)}% of book`
-              : ''}
-          </p>
-        )}
       </div>
 
       {receipts.length > 0 ? (
         <>
-          <div className="tape-scroll">
+          <div className="stat-grid" style={{ marginBottom: 28 }}>
+            <div className="stat-tile">
+              <div className="stat-label">Calls logged</div>
+              <div className="stat-num">{receipts.length}</div>
+              <div className="stat-cap">frozen the moment surfaced</div>
+            </div>
+            <div className="stat-tile">
+              <div className="stat-label">Resolved sold</div>
+              <div className="stat-num">{sold.length}</div>
+              <div className="stat-cap">{soldPct}% of calls to date</div>
+            </div>
+            <div className="stat-tile">
+              <div className="stat-label">Still live</div>
+              <div className="stat-num">{live.length}</div>
+              <div className="stat-cap">open on Buy It Now now</div>
+            </div>
+            <div className="stat-tile">
+              <div className="stat-label">Median sold vs book</div>
+              <div className="stat-num">
+                {medianSoldVsBook != null ? `${Math.round(medianSoldVsBook * 100)}%` : '—'}
+              </div>
+              <div className="stat-cap">
+                {medianSoldVsBook != null ? 'of the lectr median' : 'awaiting first sale'}
+              </div>
+            </div>
+          </div>
+
+          <div className="tape-wrap">
             <table className="tape-table">
               <thead>
                 <tr>
                   <th>Surfaced</th>
                   <th>Vertical</th>
                   <th>Identity</th>
-                  <th>Depth</th>
-                  <th>All-in</th>
-                  <th>Book</th>
+                  <th className="tape-num">Depth at surface</th>
+                  <th className="tape-num">Book</th>
                   <th>Risk</th>
                   <th>Outcome</th>
-                  <th>Final</th>
+                  <th className="tape-num">Final</th>
                 </tr>
               </thead>
               <tbody>
@@ -80,33 +111,34 @@ export default function TapePage() {
                   <tr key={r.id}>
                     <td>{shortDate(r.surfacedAt)}</td>
                     <td>{verticalLabel(r.vertical)}</td>
-                    <td className="tape-key">{prettyKey(r.key)}</td>
-                    <td className="tape-depth">{depthPct(r.depthAtSurface)}</td>
-                    <td>{money(r.allInAtSurface)}</td>
-                    <td>{money(r.med)}</td>
+                    <td>
+                      <code>{prettyKey(r.key)}</code>
+                    </td>
+                    <td className="tape-num">{depthPct(r.depthAtSurface)}</td>
+                    <td className="tape-num">{money(r.med)}</td>
                     <td>{r.riskGrade}</td>
                     <td>
                       <span className={`outcome outcome-${r.outcome}`}>
                         {outcomeLabel(r.outcome)}
                       </span>
                     </td>
-                    <td>{r.finalPrice != null ? money(r.finalPrice) : '—'}</td>
+                    <td className="tape-num">{r.finalPrice != null ? money(r.finalPrice) : '—'}</td>
                   </tr>
                 ))}
               </tbody>
             </table>
           </div>
-          <p className="tape-legend">
-            Depth and all-in are the call as first surfaced. &ldquo;Sold&rdquo; means the market
-            agreed the deal was real; &ldquo;final&rdquo; is the eBay sale price where visible.
-            Median sold-vs-book is the honest measure of whether our calls hold up.
+
+          <p className="build-stamp">
+            Depth at surface and the book median are the call as first surfaced. &ldquo;Sold&rdquo;
+            means the market agreed the deal was real; &ldquo;final&rdquo; is the eBay sale price
+            where visible. Median sold-vs-book is the honest measure of whether the calls hold up.
           </p>
         </>
       ) : (
-        <EmptyBoard title="No calls resolved yet.">
-          The tape fills as Starling surfaces deals and their listings resolve — sold, ended, or
-          delisted. Every entry is a frozen call graded against what actually happened. Check back
-          once the board has run.
+        <EmptyBoard title="No settled calls yet.">
+          The tape fills as surfaced deals resolve — sold, ended, or delisted. Every entry is a
+          frozen call graded against what actually happened. Check back once the board has run.
         </EmptyBoard>
       )}
     </>

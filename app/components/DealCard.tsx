@@ -18,7 +18,12 @@ import { OutLink } from './OutLink';
 export function DealCard({ deal }: { deal: Deal }) {
   return (
     <article className="card">
-      <Link href={`/deal/${deal.id}/`} className="card-media" aria-label={deal.title}>
+      <Link
+        href={`/deal/${deal.id}/`}
+        className="card-media"
+        data-deep={deal.depth >= 0.4}
+        aria-label={deal.title}
+      >
         {deal.imageUrl ? (
           // Static export → next/image unoptimized; a plain img keeps it simple
           // and offline-safe. eslint-disable to allow the raw tag by intent.

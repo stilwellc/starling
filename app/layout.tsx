@@ -1,6 +1,24 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { Inter, Fraunces, IBM_Plex_Mono } from 'next/font/google';
 import './globals.css';
+
+// lectr's three faces: Inter (UI + tabular numerals), Fraunces (the museum-voice
+// display serif — one italic butter accent word), IBM Plex Mono (terminal data).
+const inter = Inter({ subsets: ['latin'], variable: '--font-inter', display: 'swap' });
+const fraunces = Fraunces({
+  subsets: ['latin'],
+  variable: '--font-serif-display',
+  display: 'swap',
+  style: ['normal', 'italic'],
+  axes: ['opsz', 'SOFT', 'WONK'],
+});
+const plexMono = IBM_Plex_Mono({
+  subsets: ['latin'],
+  weight: ['400', '500', '600'],
+  variable: '--font-mono-data',
+  display: 'swap',
+});
 
 export const metadata: Metadata = {
   title: 'Starling — deep-value deals, powered by lectr',
@@ -25,10 +43,16 @@ const NAV = [
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html
+      lang="en"
+      data-theme="dark"
+      className={`${inter.variable} ${fraunces.variable} ${plexMono.variable}`}
+    >
       <body>
+        <div className="bg-field" aria-hidden="true" />
+
         <header className="masthead">
-          <div className="masthead-inner">
+          <div className="masthead-inner rail">
             <div className="brand">
               <Link href="/" className="wordmark">
                 starling<span className="wordmark-dot">.</span>
@@ -39,7 +63,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                powered by lectr
+                <span className="poweredby-dot" aria-hidden="true" /> powered by lectr
               </a>
             </div>
             <nav className="nav" aria-label="Primary">
@@ -50,20 +74,30 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               ))}
             </nav>
           </div>
-          {/* Persistent, unavoidable affiliate disclosure (PROPOSAL §5.6.3). */}
-          <p className="disclosure-bar">
-            Some links to eBay are affiliate links: Starling may earn a commission if you buy,
-            at no additional cost to you. Prices and value estimates are informational, not offers.
-          </p>
+          {/* Persistent, unavoidable affiliate + preview disclosure. */}
+          <div className="disclosure-bar rail">
+            <span className="disclosure-tag">Preview</span>
+            <span>
+              Sample data — not live eBay deals yet. Some eBay links are affiliate links; Starling may
+              earn a commission at no additional cost to you. Values are informational, not offers.
+            </span>
+          </div>
         </header>
 
-        <main className="main">{children}</main>
+        <main className="main rail">{children}</main>
 
         <footer className="footer">
-          <div className="footer-inner">
+          <div className="footer-inner rail">
             <div className="footer-brand">
-              <span className="wordmark small">starling<span className="wordmark-dot">.</span></span>
-              <a href="https://lectr.bid" target="_blank" rel="noopener noreferrer" className="poweredby">
+              <span className="wordmark small">
+                starling<span className="wordmark-dot">.</span>
+              </span>
+              <a
+                href="https://lectr.bid"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="poweredby"
+              >
                 powered by lectr
               </a>
             </div>
@@ -72,7 +106,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <Link href="/tape/">The Tape</Link>
               <Link href="/about/">About</Link>
               <a href="https://lectr.bid" target="_blank" rel="noopener noreferrer">
-                lectr.bid
+                lectr.bid ↗
               </a>
             </nav>
             <p className="footer-fine">

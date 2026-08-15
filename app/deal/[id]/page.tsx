@@ -14,6 +14,7 @@ import {
   shortDate,
 } from '@/app/lib/display';
 
+// Static export: the board is read once at build time and baked into HTML.
 export const dynamic = 'force-static';
 
 // Prebuild one permalink per live deal. Empty board (before the first pipeline
@@ -37,90 +38,91 @@ export default function DealPage({ params }: { params: { id: string } }) {
   const deal = board.deals.find((d) => d.id === params.id);
   if (!deal) notFound();
 
-  // The receipt is Starling's frozen record of the call — shown once resolved.
+  // The receipt is Starling's frozen record of the call — shown once it exists.
   const receipt = loadReceipts().find((r) => r.id === deal.id || r.itemId === deal.itemId);
 
   return (
     <>
-      <Link href="/" className="backlink">
-        ← Back to the board
+      <Link href="/" className="back-link">
+        ← Board
       </Link>
 
-      <div className="deal">
-        <div className="deal-media">
+      <div className="deal-detail">
+        {/* Left — the image well, same treatment as the board card. */}
+        <div className="card-media" data-deep={deal.depth >= 0.4}>
           {deal.imageUrl ? (
+            // Static export → a plain img keeps it offline-safe; matches DealCard.
             // eslint-disable-next-line @next/next/no-img-element
             <img src={deal.imageUrl} alt={deal.title} />
           ) : (
-            <div className="deal-media-empty">no image available</div>
+            <div className="card-media-empty" aria-hidden="true">
+              <span>no image</span>
+            </div>
           )}
+          <Link href={`/v/${deal.vertical}/`} className="card-vertical">
+            {verticalLabel(deal.vertical)}
+          </Link>
         </div>
 
-        <div className="deal-main">
-          <div>
-            <span className="deal-vertical">
-              <Link href={`/v/${deal.vertical}/`}>{verticalLabel(deal.vertical)}</Link>
+        {/* Right — the full certificate. */}
+        <div className="card-body">
+          <div className="card-depth">
+            <span className="card-depth-num">{depthPct(deal.depth)}</span>
+            <span className="card-depth-word">under the book</span>
+          </div>
+
+          <h1 className="card-title" style={{ fontSize: 'clamp(24px, 3vw, 34px)' }}>
+            {deal.title}
+          </h1>
+
+          <div className="card-price">
+            <span className="card-price-allin">{money(deal.allIn)}</span>
+            <span className="card-price-sub">
+              all-in
+              {deal.shipping != null
+                ? deal.shipping > 0
+                  ? ` · item ${money(deal.itemPrice)} + ${money(deal.shipping)} ship`
+                  : ' · free shipping'
+                : ''}
             </span>
-            <h1>{deal.title}</h1>
           </div>
 
-          <div className="deal-hero">
-            <span className="h-depth">{depthPct(deal.depth)}</span>
-            <div className="h-meta">
-              <span className="h-price">{money(deal.allIn)} all-in</span>
-              <span className="h-sub">
-                under the book median of {money(deal.med)}
-                {deal.shipping != null
-                  ? deal.shipping > 0
-                    ? ` · item ${money(deal.itemPrice)} + ${money(deal.shipping)} ship`
-                    : ' · free shipping'
-                  : ''}
-              </span>
-            </div>
-          </div>
+          <DepthBar allIn={deal.allIn} lo={deal.lo} med={deal.med} hi={deal.hi} depth={deal.depth} />
 
-          <div className="deal-section">
-            <h3>Where the ask sits against the corpus band</h3>
-            <DepthBar
-              allIn={deal.allIn}
-              lo={deal.lo}
-              med={deal.med}
-              hi={deal.hi}
-              depth={deal.depth}
-            />
-          </div>
+          <EvidencePanel deal={deal} expanded />
 
-          <div className="deal-section">
-            <h3>The evidence</h3>
-            <EvidencePanel deal={deal} expanded />
-          </div>
-
-          <div className="deal-section">
-            <h3>Risk breakdown — every signal, shown</h3>
-            <RiskChip risk={deal.risk} showReasons />
-          </div>
+          <RiskChip risk={deal.risk} showReasons />
 
           {receipt && (
-            <div className="deal-section">
-              <h3>Receipt</h3>
-              <div className="receipt-status">
-                <span className={`outcome outcome-${receipt.outcome}`}>
-                  {outcomeLabel(receipt.outcome)}
+            <div className="ledger" style={{ marginBottom: 14 }}>
+              <div className="ledger-row">
+                <span className="ledger-k">Receipt</span>
+                <span className="ledger-lead" aria-hidden="true" />
+                <span className="ledger-v">
+                  <span className={`outcome outcome-${receipt.outcome}`}>
+                    {outcomeLabel(receipt.outcome)}
+                  </span>
                 </span>
-                <span>
+              </div>
+              <div className="ledger-row">
+                <span className="ledger-k">
                   {receipt.outcome === 'sold' && receipt.finalPrice != null
-                    ? `Sold for ${money(receipt.finalPrice)} — surfaced ${shortDate(receipt.surfacedAt)} at ${depthPct(receipt.depthAtSurface)} under book.`
+                    ? 'Sold for'
                     : receipt.outcome === 'live'
-                      ? `Still live — first surfaced ${shortDate(receipt.surfacedAt)}.`
-                      : `${outcomeLabel(receipt.outcome)}${receipt.resolvedAt ? ` ${shortDate(receipt.resolvedAt)}` : ''} — surfaced ${shortDate(receipt.surfacedAt)}.`}
+                      ? 'Surfaced'
+                      : `${outcomeLabel(receipt.outcome)}${receipt.resolvedAt ? ` ${shortDate(receipt.resolvedAt)}` : ''}`}
+                </span>
+                <span className="ledger-lead" aria-hidden="true" />
+                <span className="ledger-v">
+                  {receipt.outcome === 'sold' && receipt.finalPrice != null
+                    ? `${money(receipt.finalPrice)} · surfaced ${shortDate(receipt.surfacedAt)}`
+                    : `${shortDate(receipt.surfacedAt)} · ${depthPct(receipt.depthAtSurface)} under book`}
                 </span>
               </div>
             </div>
           )}
 
-          <div className="deal-section">
-            <OutLink deal={deal} size="lg" />
-          </div>
+          <OutLink deal={deal} size="lg" />
         </div>
       </div>
     </>

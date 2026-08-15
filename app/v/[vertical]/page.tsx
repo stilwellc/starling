@@ -6,9 +6,10 @@ import { DealCard } from '@/app/components/DealCard';
 import { StaleBanner, EmptyBoard } from '@/app/components/Banners';
 import { ALL_VERTICALS, verticalLabel, isVertical, shortDate } from '@/app/lib/display';
 
+// Static export: the board is read once at build time and baked into HTML.
 export const dynamic = 'force-static';
 
-// Every launch + roadmap vertical gets a permalink page, prebuilt at export.
+// Every launch vertical gets a permalink page, prebuilt at export.
 export function generateStaticParams() {
   return ALL_VERTICALS.map((vertical) => ({ vertical }));
 }
@@ -33,17 +34,22 @@ export default function VerticalPage({ params }: { params: { vertical: string } 
   const stat = board.perVertical[vertical];
   const stale = isBoardStale(board);
 
+  const serial = board.builtAt ? board.builtAt.slice(0, 10).replace(/-/g, '') : '';
+
   return (
     <>
       <div className="page-head">
-        <Link href="/" className="backlink">
-          ← All verticals
-        </Link>
-        <h1>{verticalLabel(vertical)}</h1>
+        <div className="page-head-top">
+          <span className="kicker">{verticalLabel(vertical)} · one slice of the mixed board</span>
+          {serial && <span className="serial">No. {serial}</span>}
+        </div>
+        <h1>
+          {verticalLabel(vertical)}, <span className="accent">under book</span>.
+        </h1>
         <p className="lede">
           {verticalLabel(vertical)} listings on eBay Buy It Now sitting deep under lectr&apos;s
-          certified corpus value. The board defaults to the mixed view — this is the same ranking,
-          filtered to one vertical.
+          certified corpus value. This is the same honest ranking as the mixed board — depth ×
+          confidence × risk — filtered to one vertical.
         </p>
         {stat && (
           <p className="build-stamp">
@@ -53,7 +59,7 @@ export default function VerticalPage({ params }: { params: { vertical: string } 
         )}
       </div>
 
-      <div className="controls" style={{ marginBottom: 22 }}>
+      <div className="controls">
         <div className="control-row">
           <span className="control-label">Vertical</span>
           <div className="chips">
@@ -89,6 +95,12 @@ export default function VerticalPage({ params }: { params: { vertical: string } 
           {`The corpus is live for ${verticalLabel(vertical)}, but no eBay listing currently pins to a key and sits deep enough under book value. This gap is a visible roadmap item, not a hidden fact — coverage per vertical is tracked on the About page.`}
         </EmptyBoard>
       )}
+
+      <p className="build-stamp" style={{ marginTop: 28 }}>
+        <Link href="/" className="back-link" style={{ margin: 0 }}>
+          ← Back to the mixed board
+        </Link>
+      </p>
     </>
   );
 }

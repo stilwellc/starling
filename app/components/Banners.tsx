@@ -7,7 +7,7 @@ import { shortDate } from '@/app/lib/display';
 
 export function StaleBanner({ builtAt }: { builtAt: string }) {
   return (
-    <div className="stale-banner" role="status">
+    <div className="banner" role="status">
       This board hasn&apos;t refreshed on schedule — last built {shortDate(builtAt)}. Prices and
       depths below may be behind the market.
     </div>
