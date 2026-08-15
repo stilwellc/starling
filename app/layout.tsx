@@ -115,8 +115,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <div className="disclosure-bar rail">
             <span className="disclosure-tag">Preview</span>
             <span>
-              Sample data — not live eBay deals yet. Some eBay links are affiliate links; Starling may
-              earn a commission at no additional cost to you. Values are informational, not offers.
+              Live eBay listings, scored against a <b>sample</b> price book — depth figures are
+              illustrative until lectr&apos;s valuations go live. Some eBay links are affiliate links;
+              Starling may earn a commission at no additional cost to you. Values are not offers.
             </span>
           </div>
         </header>
