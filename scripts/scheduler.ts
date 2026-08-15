@@ -66,22 +66,41 @@ export function allocateBudget(
   return out;
 }
 
-/** Compile the full poll plan: budget split + each matcher's queries, trimmed to
- *  its slice (hot keys — highest med × trailing depth potential — go first). */
+/** Tier-1 queries a single vertical may fire in ONE run. The daily budget is a
+ *  ceiling across ALL runs (~8/day at the 3h cadence); a single run must poll a
+ *  small BATCH, not the whole book — the real book has thousands of keys, and
+ *  firing them all at once blows the job timeout and the daily quota. */
+export const PER_RUN_QUERIES = 45;
+const ROTATE_PERIOD_MS = 3 * 60 * 60 * 1000; // one cron tick
+
+/** Compile the poll plan: budget split, then a per-run WINDOW of each vertical's
+ *  queries that rotates each tick, so over time every key gets polled while any
+ *  single run stays fast and quota-safe. `now` drives the rotation offset. */
 export function planRun(
   matchers: VerticalMatcher[],
   byVertical: Map<Vertical, ValueBookRow[]>,
   yields: YieldMap,
+  now: number,
   callsPerQuery = 1,
   total = DAILY_CALL_BUDGET,
 ): VerticalPlan[] {
   const present = matchers.map((m) => m.vertical).filter((v) => LAUNCH_VERTICALS.includes(v));
   const budget = allocateBudget(present, yields, total);
+  const windowIdx = Math.floor(now / ROTATE_PERIOD_MS);
   return matchers.map((m) => {
     const rows = (byVertical.get(m.vertical) ?? []).slice().sort((a, b) => b.med - a.med);
     const allQueries = m.queriesFor(rows);
     const callBudget = budget[m.vertical] ?? 0;
-    const maxQueries = Math.max(0, Math.floor(callBudget / callsPerQuery));
-    return { vertical: m.vertical, queries: allQueries.slice(0, maxQueries), callBudget };
+    const cap = Math.max(0, Math.min(PER_RUN_QUERIES, Math.floor(callBudget / callsPerQuery), allQueries.length));
+    let queries: EbayQuery[];
+    if (allQueries.length <= cap) {
+      queries = allQueries;
+    } else {
+      // rotate a cap-sized window through the full key list, tick by tick
+      const start = (windowIdx * cap) % allQueries.length;
+      queries = [];
+      for (let i = 0; i < cap; i++) queries.push(allQueries[(start + i) % allQueries.length]);
+    }
+    return { vertical: m.vertical, queries, callBudget };
   });
 }

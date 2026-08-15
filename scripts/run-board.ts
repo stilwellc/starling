@@ -87,7 +87,7 @@ async function main() {
 
   // 2 — plan: budget allocation (cards capped 40%, others floored 15%)
   const yields: YieldMap = {}; // first run: no trailing yield; even elastic split
-  const plans = planRun(MATCHERS, synced.byVertical, yields);
+  const plans = planRun(MATCHERS, synced.byVertical, yields, now);
   for (const p of plans) {
     console.log(`[run-board] plan ${p.vertical}: ${p.queries.length} queries / ${p.callBudget} calls`);
   }
@@ -113,10 +113,11 @@ async function main() {
       if (k) pinned.push({ listing: l, key: k });
     }
 
-    // enrich the shortlist (live only), then re-identify on real aspects
+    // enrich the shortlist (live only), then re-identify on real aspects.
+    // Cap Tier-2 getItem calls per vertical so a big pin set can't blow quota.
     const enriched = await enrich(
       pinned.map((p) => p.listing),
-      { mode, client, now },
+      { mode, client, now, cap: 40 },
     );
     const enrichedById = new Map(enriched.map((l) => [l.itemId, l]));
 
