@@ -29,13 +29,15 @@ import type { ValueBook, ValueBookRow, Vertical } from './types';
 // nothing account-identifying is hardcoded). LECTR_R2_ACCOUNT_ID falls back to
 // the CLOUDFLARE_ACCOUNT_ID secret; LECTR_R2_TOKEN is a read-only token scoped
 // to the value-book object. Live mode fails closed if account/token are unset.
-const R2_ACCOUNT_ID = process.env.LECTR_R2_ACCOUNT_ID ?? process.env.CLOUDFLARE_ACCOUNT_ID ?? '';
-const R2_BUCKET = process.env.LECTR_R2_BUCKET ?? 'lectr-data';
-const R2_BOOK_KEY = process.env.LECTR_R2_BOOK_KEY ?? 'latest/value-book.json.gz';
+// NB: use || not ?? — an unset GitHub secret is an empty STRING, not undefined,
+// and ?? wouldn't fall through it.
+const R2_ACCOUNT_ID = process.env.LECTR_R2_ACCOUNT_ID || process.env.CLOUDFLARE_ACCOUNT_ID || '';
+const R2_BUCKET = process.env.LECTR_R2_BUCKET || 'lectr-data';
+const R2_BOOK_KEY = process.env.LECTR_R2_BOOK_KEY || 'latest/value-book.json.gz';
 // Prefer a dedicated read-only token; fall back to the Cloudflare token Starling
 // already holds (same account owns lectr-data), so the real book can be read
 // with no new secret when that token has R2 read.
-const R2_TOKEN = process.env.LECTR_R2_TOKEN ?? process.env.CLOUDFLARE_API_TOKEN;
+const R2_TOKEN = process.env.LECTR_R2_TOKEN || process.env.CLOUDFLARE_API_TOKEN;
 
 const FIXTURE_PATH = join(process.cwd(), 'fixtures', 'value-book.sample.json');
 
