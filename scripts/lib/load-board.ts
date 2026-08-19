@@ -44,6 +44,11 @@ export function loadBoard(): Board {
       bookBuiltAt: parsed.bookBuiltAt ?? '',
       deals: parsed.deals,
       perVertical: parsed.perVertical ?? {},
+      // hunt section (§4.4) — optional: boards built before the feature (or by
+      // a run with no hunt file) simply have no hunt lane to render.
+      ...(parsed.hunt && Array.isArray(parsed.hunt.targets) && Array.isArray(parsed.hunt.deals)
+        ? { hunt: parsed.hunt }
+        : {}),
     };
   } catch (err) {
     // ENOENT before the first pipeline run is expected — quiet on that, loud otherwise.

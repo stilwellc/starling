@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
+import type { Board, Deal, HuntPricedDeal } from '@/scripts/types';
 import { loadBoard, loadReceipts } from '@/scripts/lib/load-board';
 import { EvidencePanel } from '@/app/components/EvidencePanel';
 import { RiskChip } from '@/app/components/RiskChip';
@@ -17,15 +18,25 @@ import {
 // Static export: the board is read once at build time and baked into HTML.
 export const dynamic = 'force-static';
 
+// Priced hunt hits are full deals living in the board's hunt section (§4.4) —
+// they earn the same permalink. noBook hits carry no evidence to certify, so
+// they get no /deal page (the hunt card out-links straight to eBay).
+function allPermalinkDeals(board: Board): Deal[] {
+  const pricedHunt = (board.hunt?.deals ?? []).filter(
+    (d): d is HuntPricedDeal => !d.noBook,
+  );
+  return [...board.deals, ...pricedHunt];
+}
+
 // Prebuild one permalink per live deal. Empty board (before the first pipeline
 // run) → zero params, and the build still passes.
 export function generateStaticParams() {
   const board = loadBoard();
-  return board.deals.map((d) => ({ id: d.id }));
+  return allPermalinkDeals(board).map((d) => ({ id: d.id }));
 }
 
 export function generateMetadata({ params }: { params: { id: string } }): Metadata {
-  const deal = loadBoard().deals.find((d) => d.id === params.id);
+  const deal = allPermalinkDeals(loadBoard()).find((d) => d.id === params.id);
   if (!deal) return { title: 'Deal — Starling' };
   return {
     title: `${deal.title} — ${depthPct(deal.depth)} under book · Starling`,
@@ -35,8 +46,11 @@ export function generateMetadata({ params }: { params: { id: string } }): Metada
 
 export default function DealPage({ params }: { params: { id: string } }) {
   const board = loadBoard();
-  const deal = board.deals.find((d) => d.id === params.id);
+  const deal = allPermalinkDeals(board).find((d) => d.id === params.id);
   if (!deal) notFound();
+
+  // Present only when this deal arrived via the hunt lane (§4.4).
+  const huntLabel = (deal as Partial<HuntPricedDeal>).huntLabel;
 
   // The receipt is Starling's frozen record of the call — shown once it exists.
   const receipt = loadReceipts().find((r) => r.id === deal.id || r.itemId === deal.itemId);
@@ -66,6 +80,11 @@ export default function DealPage({ params }: { params: { id: string } }) {
 
         {/* Right — the full certificate. */}
         <div className="card-body">
+          {huntLabel && (
+            <span className="hunt-tag" title={`On the hunt list: ${huntLabel}`}>
+              hunted · {huntLabel}
+            </span>
+          )}
           <div className="card-depth">
             <span className="card-depth-num">{depthPct(deal.depth)}</span>
             <span className="card-depth-word">under the book</span>

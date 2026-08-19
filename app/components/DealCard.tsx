@@ -15,7 +15,15 @@ import { EvidencePanel } from './EvidencePanel';
 import { RiskChip } from './RiskChip';
 import { OutLink } from './OutLink';
 
-export function DealCard({ deal }: { deal: Deal }) {
+export function DealCard({
+  deal,
+  huntLabel,
+}: {
+  deal: Deal;
+  /** present when this deal was surfaced by the hunt list (§4.4) — renders the
+   *  "hunted" stamp above the depth hero; everything else is the same card */
+  huntLabel?: string;
+}) {
   return (
     <article className="card">
       <Link
@@ -38,6 +46,11 @@ export function DealCard({ deal }: { deal: Deal }) {
       </Link>
 
       <div className="card-body">
+        {huntLabel && (
+          <span className="hunt-tag" title={`On the hunt list: ${huntLabel}`}>
+            hunted · {huntLabel}
+          </span>
+        )}
         <div className="card-depth">
           <span className="card-depth-num">{depthPct(deal.depth)}</span>
           <span className="card-depth-word">under the book</span>

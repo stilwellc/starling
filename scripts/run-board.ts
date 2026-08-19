@@ -1,8 +1,9 @@
 /**
  * run-board.ts — the pipeline orchestrator (PROPOSAL §6.1).
  *
- *   sync book → plan (budget: cards capped, others floored) → poll → identify
- *   → enrich → cert-verify → gate → score → rank → publish → receipts
+ *   sync book + hunt list → plan (hunt paid first, then cards-cap/floors)
+ *   → poll (hunt first, every run) → identify → enrich → cert-verify → gate
+ *   → score → rank → publish (deals + hunt section) → receipts
  *
  * STARLING_MODE=fixture (default when no eBay keys) runs the whole thing offline
  * against fixtures/. Live mode adds the eBay client and PSA verification.
@@ -16,14 +17,17 @@ import type {
   Vertical,
   PerVerticalStat,
   EbayListing,
+  HuntDeal,
+  HuntPricedDeal,
 } from './types';
 import { LAUNCH_VERTICALS } from './types';
 import { MATCHERS, matcherFor } from './match/registry';
 import { syncBook } from './sync-book';
-import { planRun, type YieldMap } from './scheduler';
-import { poll } from './poll';
+import { planRun, planHunt, reserveHuntBudget, type YieldMap } from './scheduler';
+import { loadHuntList, compileHuntQueries, toHuntTarget } from './hunt';
+import { poll, pollHunt } from './poll';
 import { enrich, verifyPsaCert, applyCertVerdict, type CertVerdict } from './enrich';
-import { gate } from './gate';
+import { gate, huntGate } from './gate';
 import { scoreRisk } from './score/risk';
 import { rankOf } from './score/rank';
 import { publishBoard } from './publish';
@@ -85,20 +89,141 @@ async function main() {
     `[run-board] book: ${synced.book.rows.length} rows (${synced.source}${synced.stale ? ', STALE' : ''})`,
   );
 
-  // 2 — plan: budget allocation (cards capped 40%, others floored 15%)
+  // 1b — the hunt list (§4.4), loaded with the book every run. A malformed
+  // file THROWS out of loadHuntList and fails the run loudly — a silently-
+  // dropped grail is the worst bug this system can have.
+  const huntEntries = loadHuntList();
+  const huntCompiled = compileHuntQueries(
+    huntEntries,
+    { byKey: synced.byKey, rows: synced.book.rows },
+    matcherFor,
+  );
+
+  // 2 — plan: the hunt is PAID FIRST (10% reserved off the top), THEN the book
+  // split (cards capped 40%, others floored 15%) runs on what remains.
+  const { huntBudget, bookBudget } = reserveHuntBudget();
+  const huntPlan = planHunt(huntCompiled);
+  console.log(
+    `[run-board] hunt: ${huntEntries.length} targets → ${huntPlan.queries.length} queries ` +
+      `(${huntBudget}/day reserved, paid first)`,
+  );
   const yields: YieldMap = {}; // first run: no trailing yield; even elastic split
-  const plans = planRun(MATCHERS, synced.byVertical, yields, now);
+  const plans = planRun(MATCHERS, synced.byVertical, yields, now, 1, bookBudget);
   for (const p of plans) {
     console.log(`[run-board] plan ${p.vertical}: ${p.queries.length} queries / ${p.callBudget} calls`);
   }
 
-  // 3 — poll (Tier-1)
+  // 3 — poll (Tier-1): hunt queries FIRST, every run — never the rotating wheel
+  const huntPolled = await pollHunt(huntPlan, { mode, client, now });
   const polled = await poll(plans, { mode, client, now });
 
   // 4..7 — identify → enrich → cert-verify → gate → score, per vertical
   const certCache = new Map<string, CertVerdict>();
   const deals: Deal[] = [];
   const perVertical: Partial<Record<Vertical, PerVerticalStat>> = {};
+
+  // 4a — the hunt lane first, through the SAME identify → enrich → gate → score
+  // path. A hit that pins to a book row is a full priced deal (per-entry
+  // maxAllIn/minDepth applied; the 0.90 scam cap never moves). A hit with no
+  // book row still surfaces — a human explicitly asked — as "hunted — no book
+  // value": facts only, no med/depth/rank ever manufactured.
+  const huntDeals: HuntDeal[] = [];
+  const huntClaimed = new Set<string>(); // itemIds the hunt surfaced — a grail is never double-listed
+  for (const hp of huntPolled) {
+    const entry = hp.entry;
+    const enrichedHunt = await enrich(hp.listings, { mode, client, now, cap: 10 });
+    for (const l of enrichedHunt) {
+      if (huntClaimed.has(l.itemId)) continue; // overlapping targets: first entry (yaml order) wins
+
+      // identify via the entry's matcher(s); abstention is still correct here —
+      // an unpinned hit just has no identity, it is not fuzzy-matched.
+      let key: string | null = null;
+      let identifiedVertical: Vertical | null = null;
+      for (const v of hp.identifyVerticals) {
+        const m = matcherFor[v];
+        if (!m) continue;
+        const k = m.identify(l);
+        if (k) {
+          key = k;
+          identifiedVertical = v;
+          break;
+        }
+      }
+      const row = key ? synced.byKey.get(key) : undefined;
+
+      const g = huntGate(l, entry, row);
+      if (!g.pass) continue;
+
+      if (row && key && identifiedVertical) {
+        // priced hunt hit — the book still prices; the list only prioritized.
+        let risk = matcherFor[identifiedVertical]!.riskInputs(l);
+        if (risk.certNumber && (identifiedVertical === 'sports-cards' || identifiedVertical === 'pokemon')) {
+          const verdict = await verifyPsaCert(risk.certNumber, process.env.PSA_API_TOKEN, certCache);
+          risk = applyCertVerdict(risk, verdict);
+        }
+        const riskResult = scoreRisk(l, risk, identifiedVertical);
+        const rank = rankOf(g.depth!, row.conf, riskResult.grade, l.itemCreationDate, new Date(now));
+        huntDeals.push({
+          huntId: entry.id,
+          huntLabel: entry.label,
+          id: dealId(l.itemId),
+          itemId: l.itemId,
+          legacyItemId: l.legacyItemId,
+          vertical: identifiedVertical,
+          key,
+          title: l.title,
+          imageUrl: l.imageUrl,
+          allIn: g.allIn,
+          itemPrice: l.price,
+          shipping: l.shippingCost,
+          med: row.med,
+          lo: row.lo,
+          hi: row.hi,
+          n: row.n,
+          lastSale: row.lastSale,
+          trend: row.trend,
+          conf: row.conf,
+          depth: g.depth!,
+          risk: riskResult,
+          rank,
+          listedAt: l.itemCreationDate,
+          affiliateUrl: l.itemAffiliateWebUrl,
+          webUrl: l.itemWebUrl,
+          marketplace: l.marketplaceId,
+          evidenceUrl: evidenceUrl(identifiedVertical, key),
+          surfacedAt: nowIso,
+        });
+      } else {
+        // "hunted — no book value": listing facts only.
+        huntDeals.push({
+          huntId: entry.id,
+          huntLabel: entry.label,
+          noBook: true,
+          id: dealId(l.itemId),
+          itemId: l.itemId,
+          legacyItemId: l.legacyItemId,
+          vertical: entry.vertical,
+          key: key ?? undefined,
+          title: l.title,
+          imageUrl: l.imageUrl,
+          allIn: g.allIn,
+          itemPrice: l.price,
+          shipping: l.shippingCost,
+          seller: {
+            username: l.seller.username,
+            feedbackPercentage: l.seller.feedbackPercentage,
+            feedbackScore: l.seller.feedbackScore,
+          },
+          listedAt: l.itemCreationDate,
+          affiliateUrl: l.itemAffiliateWebUrl,
+          webUrl: l.itemWebUrl,
+          marketplace: l.marketplaceId,
+          surfacedAt: nowIso,
+        });
+      }
+      huntClaimed.add(l.itemId);
+    }
+  }
 
   for (const pv of polled) {
     const matcher = matcherFor[pv.vertical];
@@ -122,6 +247,7 @@ async function main() {
     const enrichedById = new Map(enriched.map((l) => [l.itemId, l]));
 
     for (const { listing } of pinned) {
+      if (huntClaimed.has(listing.itemId)) continue; // already surfaced in the hunt section
       const l = enrichedById.get(listing.itemId) ?? listing;
       const key = matcher.identify(l);
       if (!key) continue;
@@ -176,15 +302,21 @@ async function main() {
     }
   }
 
-  // 8 — publish the board
-  const board = publishBoard(deals, perVertical, {
-    builtAt: nowIso,
-    bookBuiltAt: synced.book.builtAt,
-  });
+  // 8 — publish the board (hunt section always present so /hunt can render
+  // every target's watching/live state, even when nothing hit this run)
+  const board = publishBoard(
+    deals,
+    perVertical,
+    { builtAt: nowIso, bookBuiltAt: synced.book.builtAt },
+    { targets: huntEntries.map(toHuntTarget), deals: huntDeals },
+  );
 
-  // 9 — receipts: record newly surfaced, resolve the ones that left BIN
+  // 9 — receipts: record newly surfaced, resolve the ones that left BIN.
+  // Priced hunt hits are full deals — their calls go on the tape like any
+  // other. noBook hits carry no call (no med/depth), so nothing to grade.
+  const pricedHuntDeals = huntDeals.filter((d): d is HuntPricedDeal => !d.noBook);
   let receipts = loadReceipts();
-  receipts = recordSurfaced(receipts, board.deals, nowIso);
+  receipts = recordSurfaced(receipts, [...board.deals, ...pricedHuntDeals], nowIso);
   // Cap re-checks per run: the live-receipt set grows every tick, and each
   // recheck is a real API call — uncapped, this line alone would eventually
   // eat the daily quota. 60/run × 8 runs/day resolves plenty.
@@ -193,7 +325,12 @@ async function main() {
 
   // summary
   const byV = LAUNCH_VERTICALS.map((v) => `${v}:${perVertical[v]?.surfaced ?? 0}`).join('  ');
+  const noBookCount = huntDeals.length - pricedHuntDeals.length;
   console.log(`[run-board] published ${board.deals.length} deals  [${byV}]`);
+  console.log(
+    `[run-board] hunt: ${huntDeals.length} hits ` +
+      `(${pricedHuntDeals.length} priced, ${noBookCount} no-book) across ${huntEntries.length} targets`,
+  );
   console.log(`[run-board] receipts: ${receipts.length} tracked`);
 }
 

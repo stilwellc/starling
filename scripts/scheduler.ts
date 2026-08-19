@@ -7,18 +7,41 @@
  * starve — data abundance becoming attention monopoly. The guard is here, in
  * budget allocation, NOT in ranking (ranking stays honest: cards get no penalty).
  *
- *   - sports-cards is CAPPED at 40% of the daily call budget.
+ *   - the HUNT LIST is paid FIRST: 10% reserved off the top (§4.4), before the
+ *     split below — curated priorities are never rationed against key count.
+ *   - of the remainder: sports-cards is CAPPED at 40% of the daily call budget.
  *   - every other launch vertical gets a FLOOR of 15%.
- *   - the remainder is elastic, spent where trailing yield is highest.
+ *   - the rest is elastic, spent where trailing yield is highest.
  *
  * Cards remain first-class and fully polled — they just can't eat the budget.
  */
 import type { Vertical, EbayQuery, ValueBookRow, VerticalMatcher } from './types';
 import { LAUNCH_VERTICALS } from './types';
+import type { CompiledHuntQuery } from './hunt';
 
 export const DAILY_CALL_BUDGET = 5000; // confirmed default Browse quota (PROPOSAL §5.4)
 const CARDS_CAP = 0.4;
 const OTHER_FLOOR = 0.15;
+
+// ─────────────────────────────────────────────────────────────────────────────
+// The hunt reserve — curated priorities are paid FIRST (PROPOSAL §4.4 / §5.4)
+// ─────────────────────────────────────────────────────────────────────────────
+
+/** 10% of the daily budget comes off the top for hunt/priority.yaml BEFORE the
+ *  cards-cap/vertical-floor split. The hunt list is small by design (tens of
+ *  entries, not thousands), so this is ample — and it means a curated grail is
+ *  never rationed against the book's key count. */
+export const HUNT_RESERVE = 0.1;
+
+/** Split the daily budget: the hunt's reserve off the top, the rest to the
+ *  book-driven split (allocateBudget). Pure function — no clock, no state. */
+export function reserveHuntBudget(total = DAILY_CALL_BUDGET): {
+  huntBudget: number;
+  bookBudget: number;
+} {
+  const huntBudget = Math.floor(total * HUNT_RESERVE);
+  return { huntBudget, bookBudget: total - huntBudget };
+}
 
 export interface VerticalPlan {
   vertical: Vertical;
@@ -72,6 +95,40 @@ export function allocateBudget(
  *  firing them all at once blows the job timeout and the daily quota. */
 export const PER_RUN_QUERIES = 45;
 const ROTATE_PERIOD_MS = 3 * 60 * 60 * 1000; // one cron tick
+const RUNS_PER_DAY = Math.floor((24 * 60 * 60 * 1000) / ROTATE_PERIOD_MS); // 8 at the 3h cadence
+
+export interface HuntPlan {
+  queries: CompiledHuntQuery[];
+  /** Tier-1 calls the hunt lane may spend THIS run */
+  callBudget: number;
+}
+
+/**
+ * Plan the hunt lane: EVERY compiled query, EVERY run — hunt targets never ride
+ * the rotating wheel (§4.4). The daily reserve is spread across the day's runs;
+ * if the list ever outgrows its per-run slice we truncate the TAIL (yaml order
+ * = the operator's priority order) and say so loudly — a squeezed hunt list is
+ * an operator decision to make, never a silent drop.
+ */
+export function planHunt(
+  compiled: CompiledHuntQuery[],
+  callsPerQuery = 1,
+  total = DAILY_CALL_BUDGET,
+): HuntPlan {
+  const { huntBudget } = reserveHuntBudget(total);
+  const perRunCalls = Math.floor(huntBudget / RUNS_PER_DAY);
+  const cap = Math.max(0, Math.floor(perRunCalls / callsPerQuery));
+  if (compiled.length > cap) {
+    const cut = compiled.slice(cap);
+    console.warn(
+      `[scheduler] HUNT LIST OVER BUDGET: ${compiled.length} queries vs ${cap} per-run calls ` +
+        `(${huntBudget}/day reserved). Truncating the tail — NOT polled this run: ` +
+        cut.map((c) => c.entry.id).filter((v, i, a) => a.indexOf(v) === i).join(', ') +
+        `. Trim hunt/priority.yaml or raise the reserve.`,
+    );
+  }
+  return { queries: compiled.slice(0, cap), callBudget: perRunCalls };
+}
 
 /** Compile the poll plan: budget split, then a per-run WINDOW of each vertical's
  *  queries that rotates each tick, so over time every key gets polled while any

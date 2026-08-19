@@ -233,6 +233,70 @@ export interface PerVerticalStat {
   surfaced: number;
 }
 
+// ─────────────────────────────────────────────────────────────────────────────
+// The hunt list — curated priorities above the book (PROPOSAL §4.4)
+// Config schema (HuntEntry) lives in scripts/hunt.ts with its loader/validator;
+// these are the BOARD-facing shapes the UI consumes from board.json.
+// ─────────────────────────────────────────────────────────────────────────────
+
+/** One hunt target as configured — the /hunt page renders every target, hit or
+ *  not ("nothing live — watching"). `vertical` is the operator's lens, a free
+ *  string that may name pockets beyond the launch Vertical set (culture,
+ *  science, …) — hunting is taste-driven, not schema-driven. */
+export interface HuntTarget {
+  id: string;
+  label: string;
+  vertical: string;
+  note?: string;
+  added: string;
+}
+
+/** A priced hunt hit: identity pinned to a real book row, so it IS a Deal —
+ *  same gate (per-entry minDepth may loosen the 0.25 floor; the 0.90 scam cap
+ *  never moves), same risk/rank — plus the hunt stamp. */
+export type HuntPricedDeal = Deal & {
+  huntId: string;
+  huntLabel: string;
+  noBook?: false;
+};
+
+/** "hunted — no book value": a hit whose identity has NO book row. Still
+ *  surfaced — a human explicitly asked for it — but FACTS ONLY: no med, no
+ *  depth, no rank. The no-manufactured-numbers rule survives the priority lane. */
+export interface HuntNoBookDeal {
+  huntId: string;
+  huntLabel: string;
+  noBook: true;
+  id: string; // stable: hash of itemId (see lib/id.ts)
+  itemId: string;
+  legacyItemId?: string;
+  /** the hunt entry's vertical lens (free string — see HuntTarget) */
+  vertical: string;
+  /** identity key when identify() pinned one that has no book row yet */
+  key?: string;
+  title: string;
+  imageUrl?: string;
+  /** all-in = item + cheapest shipping, USD — a listing fact, not a valuation */
+  allIn: number;
+  itemPrice: number;
+  shipping: number | null;
+  /** seller facts, carried for the card (no risk grade without a comp context) */
+  seller?: { username?: string; feedbackPercentage?: number; feedbackScore?: number };
+  listedAt?: string;
+  affiliateUrl?: string;
+  webUrl?: string;
+  marketplace: string;
+  surfacedAt: string;
+}
+
+export type HuntDeal = HuntPricedDeal | HuntNoBookDeal;
+
+export interface HuntSection {
+  targets: HuntTarget[];
+  /** priced hits rank-desc first, then noBook hits recency-desc (publish.ts) */
+  deals: HuntDeal[];
+}
+
 export interface Board {
   schema: 1;
   builtAt: string;
@@ -240,6 +304,9 @@ export interface Board {
   bookBuiltAt: string;
   deals: Deal[];
   perVertical: Partial<Record<Vertical, PerVerticalStat>>;
+  /** the hunt lane (§4.4) — absent on boards built before the feature landed,
+   *  so existing consumers of `deals`/`perVertical` are untouched */
+  hunt?: HuntSection;
 }
 
 // ─────────────────────────────────────────────────────────────────────────────

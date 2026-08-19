@@ -14,6 +14,7 @@
     "typecheck": "tsc --noEmit",
     "board": "tsx scripts/run-board.ts",
     "board:fixture": "STARLING_MODE=fixture tsx scripts/run-board.ts",
+    "pipeline:fixtures": "STARLING_MODE=fixture tsx scripts/run-board.ts",
     "test:matchers": "tsx scripts/match/test-matchers.ts"
   },
   "dependencies": {
@@ -26,6 +27,7 @@
     "@types/react": "18.3.5",
     "@types/react-dom": "18.3.0",
     "tsx": "4.19.1",
-    "typescript": "5.5.4"
+    "typescript": "5.5.4",
+    "yaml": "^2.5.0"
   }
 }

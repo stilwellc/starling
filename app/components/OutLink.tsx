@@ -9,7 +9,15 @@
  */
 import type { Deal } from '@/scripts/types';
 
-export function OutLink({ deal, size = 'md' }: { deal: Deal; size?: 'md' | 'lg' }) {
+// Accepts anything carrying the two link fields (Deal, HuntNoBookDeal) — the
+// button only ever reads the URLs.
+export function OutLink({
+  deal,
+  size = 'md',
+}: {
+  deal: Pick<Deal, 'affiliateUrl' | 'webUrl'>;
+  size?: 'md' | 'lg';
+}) {
   const href = deal.affiliateUrl || deal.webUrl;
   const isAffiliate = Boolean(deal.affiliateUrl);
   if (!href) {

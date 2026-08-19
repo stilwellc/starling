@@ -16,6 +16,16 @@ runs against these recorded fixtures until it lands, driven by
   is a JSON array of **`EbayRawItem`** objects (the `getItem` shape, i.e. WITH
   `localizedAspects`). Shape defined in `scripts/lib/ebay-types.ts`.
 
+- **`ebay/hunt.json`** — the hunt lane's recordings (PROPOSAL §4.4): a JSON
+  object mapping **hunt entry id** (from `hunt/priority.yaml`) → an array of
+  `EbayRawItem`, the listings that entry's compiled queries "returned". Keyed by
+  entry id, not vertical, because a hunt target IS the query. An id absent here
+  is a target with nothing live (the `/hunt` page's "watching" state). Keep at
+  least: one entry whose hits pin to a book row (priced + depth), one raw-terms
+  entry whose hits have no book row (the "hunted — no book value" path), one
+  scam-cap case and one condition-flag case — so `npm run pipeline:fixtures`
+  exercises the whole hunt path.
+
 ## The fixture contract (each matcher owns its vertical's file)
 
 In fixture mode the pipeline treats each `EbayRawItem` as both the search result

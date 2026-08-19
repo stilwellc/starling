@@ -39,3 +39,22 @@ export function fixtureListings(vertical: Vertical): EbayListing[] {
   if (!Array.isArray(raw)) return [];
   return raw.map((it) => normalizeItem(it, it.categories ? 'EBAY_US' : 'EBAY_US'));
 }
+
+/** The hunt lane's fixture: fixtures/ebay/hunt.json maps hunt entry id → the
+ *  recorded listings "returned" by that entry's queries (PROPOSAL §4.4). Keyed
+ *  by entry id — not vertical — because a hunt target is the query. A missing
+ *  file or absent id is a target with nothing live ("watching"), not an error. */
+export function huntFixtureListings(huntId: string): EbayListing[] {
+  const path = join(FIXTURE_DIR, 'hunt.json');
+  if (!existsSync(path)) return [];
+  let raw: Record<string, EbayRawItem[]>;
+  try {
+    raw = JSON.parse(readFileSync(path, 'utf8'));
+  } catch (e) {
+    console.warn(`[fixture-source] failed to parse ${path}: ${(e as Error).message}`);
+    return [];
+  }
+  const items = raw?.[huntId];
+  if (!Array.isArray(items)) return [];
+  return items.map((it) => normalizeItem(it, 'EBAY_US'));
+}

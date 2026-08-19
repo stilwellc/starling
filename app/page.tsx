@@ -1,6 +1,7 @@
 import { loadBoard, isBoardStale } from '@/scripts/lib/load-board';
 import { BoardControls } from '@/app/components/BoardControls';
 import { StaleBanner, EmptyBoard } from '@/app/components/Banners';
+import { HuntModule } from '@/app/components/HuntModule';
 import { shortDate } from '@/app/lib/display';
 
 // Static export: the board is read once at build time and baked into HTML.
@@ -39,6 +40,11 @@ export default function HomePage() {
       </div>
 
       {stale && <StaleBanner builtAt={board.builtAt} />}
+
+      {/* The hunt — curated targets sit PINNED above book-driven discovery
+          (PROPOSAL §4.4). Rendered whenever a hunt lane exists, even hitless,
+          so the watched targets are always one glance away. */}
+      {board.hunt && <HuntModule hunt={board.hunt} />}
 
       {deals.length > 0 ? (
         <BoardControls deals={deals} />

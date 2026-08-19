@@ -34,6 +34,19 @@ export function isVertical(v: string): v is Vertical {
   return (ALL_VERTICALS as string[]).includes(v);
 }
 
+/** A hunt target's vertical is the OPERATOR'S lens — a free string that may
+ *  name pockets beyond the launch set (culture, science, sports…). Use the
+ *  proper label when it is a real vertical; otherwise render the slug readably
+ *  ("science-tech" → "Science Tech"). Display only — never a mapping back into
+ *  the Vertical union. */
+export function huntLensLabel(v: string): string {
+  if (v in VERTICAL_LABELS) return VERTICAL_LABELS[v as Vertical];
+  return v
+    .split('-')
+    .map((w) => (w ? w[0].toUpperCase() + w.slice(1) : w))
+    .join(' ');
+}
+
 const usd0 = new Intl.NumberFormat('en-US', {
   style: 'currency',
   currency: 'USD',
