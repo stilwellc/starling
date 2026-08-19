@@ -134,9 +134,35 @@ States to build deliberately: **empty vertical** ("book is live, no qualifying d
 
 ### 4.3 Views
 
-Mixed (default) · per-vertical · "fresh" (recently listed, deepest first) · the tape. **Alerts are post-launch** (P4): saved identity-key searches → email digest, reusing lectr's existing Resend plumbing (`scripts/send-digest.ts:21-22`, `RESEND_API_KEY`/`RESEND_FROM`, posts to `api.resend.com/emails`).
+Mixed (default) · per-vertical · "fresh" (recently listed, deepest first) · the hunt (§4.4) · the tape. **Alerts are post-launch** (P4): saved identity-key searches → email digest, reusing lectr's existing Resend plumbing (`scripts/send-digest.ts:21-22`, `RESEND_API_KEY`/`RESEND_FROM`, posts to `api.resend.com/emails`).
 
----
+### 4.4 The hunt list — curated priorities above the book
+
+The book is the floor, not the strategy. A live corpus feed alone makes Starling purely reactive — it polls whatever the data is deepest in, which is not the same as what Collin actually wants found. The **hunt list** is a human-curated set of priority targets that sits ABOVE book-driven discovery:
+
+**The file**: `hunt/priority.yaml` in the Starling repo — hand-edited or PR'd, versioned, reviewable. One entry per target:
+
+```yaml
+- id: sea-dweller-1665            # stable slug
+  label: "Rolex Sea-Dweller 1665, matte dial"
+  vertical: watches
+  match: { key: "rolex|1665" }     # exact identity key…
+  # match: { keyPrefix: "kaws|" }  # …or a key family…
+  # match: { q: "steve jobs signed", categoryHint: "science-tech" }  # …or raw terms when no key exists yet
+  maxAllIn: 30000                  # optional ceiling — ignore listings above it
+  minDepth: 0.15                   # optional: hunted items may use a LOOSER depth bar than the board's 0.25
+  note: "personal grail — alert on anything credible"
+  added: 2026-08-19
+```
+
+**Semantics** (each is a deliberate rule):
+
+- **Hunted targets poll every cron run** — never on the rotating wheel, never starved by the scheduler. A reserved **10% of the daily call budget comes off the top** for the hunt before the vertical split (§5.4); the hunt list is small by design (tens of entries, not thousands), so this is ample.
+- **Hunt hits get the pinned board section** (`/` top module + `/hunt` view) with a "hunted" badge, and they are the **first alert wire**: a hunt hit fires the email digest immediately at P2, before general alerts exist — this is the feature that makes Starling useful to Collin personally on week one.
+- **The book still prices; the list only prioritizes.** When a book row exists, a hunted listing gets the normal depth call — hunting never inflates a value. When **no book row exists** (key below the confidence bar, or a raw-terms target), the hit is still surfaced — a human explicitly asked for it — but labeled **"hunted — no book value"** with the corpus's nearest honest context (the n<3 sales listed as facts, no median, no depth %). The no-manufactured-numbers rule survives the priority lane.
+- **Looser depth is allowed per-entry** (`minDepth`) because for a hunted grail, "fairly priced and rare" is itself a find — but the default stays the board's 0.25, and the 0.90 scam cap is not overridable.
+
+**Feeding the list**: seeded by Collin (§14) and then grown by a weekly **candidates report** the pipeline generates automatically — the top book keys by `med × trend × recency` with thin live eBay supply ("high value, certified trend, nothing listed — worth hunting"). The report only *proposes*; a human merges entries. The list is Collin's taste made machine-readable, and it deliberately leans into the differentiated verticals (§2) where a curated eye beats key-count.
 
 ## 5 · eBay integration (official APIs only)
 
@@ -164,7 +190,8 @@ Send header `X-EBAY-C-ENDUSERCTX: affiliateCampaignId=<10-digit EPN campaign id>
 
 The value book generates the queries: for each book row, the vertical's matcher compiles an eBay query (§6). The scheduler then allocates the **daily call budget** (confirmed default: 5,000 calls/day per production keyset; raisable later via eBay's Application Growth Check):
 
-- **Cards ≤ 40% of daily calls (hard cap). Watches, Pokémon, art editions ≥ 15% each (floors).** Remainder is elastic, spent where yield (deals found per call, §10) has been highest trailing-7-day. Cards would otherwise dominate purely by key count — the cap is a resource-allocation guard, **not** a statement that card deals are unwelcome (§2).
+- **The hunt list is paid first**: a reserved **10%** of daily calls covers every `hunt/priority.yaml` target on every run (§4.4) — curated priorities are never rationed against the book's key count.
+- Of the remainder: **cards ≤ 40% of daily calls (hard cap). Watches, Pokémon, art editions ≥ 15% each (floors).** The rest is elastic, spent where yield (deals found per call, §10) has been highest trailing-7-day. Cards would otherwise dominate purely by key count — the cap is a resource-allocation guard, **not** a statement that card deals are unwelcome (§2).
 - Within a vertical: keys ranked by `med × trailing yield` — hot keys polled every cron tick, the long tail on a rotating daily wheel. The wheel position persists in R2 state so restarts don't re-poll the same head.
 - A **quota ledger** (counter in R2 state, reset daily) hard-stops calls before the eBay limit; the run degrades gracefully (skips tail, never drops receipts/publish steps).
 - Once real usage exists, file eBay's rate-increase / application-growth request (P4).
@@ -204,8 +231,8 @@ interface RiskSignals { authenticityAnchor: 'cert-verified'|'slab-claimed'|'pape
 
 ### 6.1 Pipeline (GitHub Actions cron, every 3h)
 
-1. **Sync** — fetch value book + meta from lectr.bid; staleness check (§3.1).
-2. **Poll** — Tier-1 sweeps per the scheduler's allocation → normalized listings; diff against the seen-ledger (skip already-processed itemIds at unchanged prices).
+1. **Sync** — fetch value book + meta from lectr.bid; staleness check (§3.1). Load `hunt/priority.yaml`; a malformed hunt file fails the run loudly (a silently-dropped grail is the worst bug this system can have).
+2. **Poll** — hunt-list queries FIRST, every run (§4.4), then Tier-1 sweeps per the scheduler's allocation → normalized listings; diff against the seen-ledger (skip already-processed itemIds at unchanged prices).
 3. **Identify** — per-vertical `identify()`. Parse `localizedAspects` first, title as fallback. **Abstention is correct**: unparseable → dropped, never fuzzy-matched. lectr's parsers port directly — grade regexes (`sub-markets.ts`), ref extraction (`identity.ts:34`), edition normalization (`identity.ts:58`), format canon (`identity.ts:78`).
 4. **Value** — key → book row. No row / `conf` missing → no deal.
 5. **Gate** — `hasConditionFlag` (ported, §3.4) · all-in price incl. cheapest shipping option · **depth ∈ [0.25, 0.90]** — the exact gate proven in lectr's own deep-value board (`scripts/close-board.ts:128`): under 25% isn't a deal after fees/risk; **over 90% reads as fake/scam and is suppressed with a stated rule**, the one hard suppression in the system.
@@ -334,6 +361,7 @@ eBay keyset + EPN approval is the external long pole. The entire system builds a
 2. **Marketplaces**: `EBAY_US` only in v1; GB/DE in P4 (watches + editions upside — supports the coverage goal).
 3. **lectr cross-sell** ("or buy it at auction for less" when a live lectr lot beats the eBay price): yes, but P4, behind a flag — and as a **visually separate module**, never inside an eBay deal card (the ALA's no-co-mingling clause, §5.6.2).
 4. **Receipts cadence**: live `/tape` page from P2; weekly digest post is a P4 marketing add-on.
+5. **Hunt list format**: `hunt/priority.yaml` in-repo (§4.4), PR-reviewed, schema-validated at run start. Hunt-hit email alerts land at P2 (before general alerts) via the Resend plumbing; the weekly candidates report writes to `hunt/candidates.md` as a proposal, never auto-merges.
 
 ## 14 · Collin's action items (the only external dependencies)
 
@@ -342,6 +370,7 @@ eBay keyset + EPN approval is the external long pole. The entire system builds a
 3. PSA public API token (free account at psacard.com/publicapi, minutes).
 4. Register the domain (default starling.bid).
 5. Create R2 bucket `starling-data` + scope the API token (or hand Opus a token that can).
+6. **Seed the hunt list** (§4.4): an initial ~20–50 targets across verticals — the grails, the references you actually watch, the signers/editions you'd buy tomorrow. This is the highest-leverage hour Collin can spend on Starling; everything else the pipeline can bootstrap itself.
 
 ## 15 · External facts: what's verified vs still open (checked against official docs, Aug 2026)
 
