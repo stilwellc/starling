@@ -57,6 +57,12 @@ export interface HuntEntry {
   /** optional LOOSER depth floor than the board's 0.25; must sit under the
    *  0.90 scam cap, which is never overridable */
   minDepth?: number;
+  /** optional title regexes for raw-terms targets (case-insensitive): a hit
+   *  must match titleMust and must NOT match titleNot. The scalpel for q's
+   *  bluntness — "game used jersey" pulled a Yastrzemski (baseball) into the
+   *  football target on the first live run. */
+  titleMust?: string;
+  titleNot?: string;
   note?: string;
   added: string;
 }
@@ -138,6 +144,13 @@ function validateEntry(raw: unknown, index: number, seenIds: Set<string>): HuntE
     }
     entry.minDepth = raw.minDepth;
   }
+  for (const f of ['titleMust', 'titleNot'] as const) {
+    if (raw[f] != null) {
+      if (typeof raw[f] !== 'string') bad(ctx, `"${f}" must be a string (regex)`);
+      try { new RegExp(raw[f] as string, 'i'); } catch { bad(ctx, `"${f}" is not a valid regex`); }
+      entry[f] = raw[f] as string;
+    }
+  }
   if (raw.note != null) {
     if (typeof raw.note !== 'string') bad(ctx, '"note" must be a string');
     entry.note = raw.note.trim();
@@ -206,6 +219,8 @@ export const HUNT_CATEGORY_SCOPE: Record<string, string[]> = {
 
 /** Relevance guard for un-pinned (noBook) hunt hits from raw-terms targets. */
 export function huntRelevant(entry: HuntEntry, title: string): boolean {
+  if (entry.titleMust && !new RegExp(entry.titleMust, 'i').test(title)) return false;
+  if (entry.titleNot && new RegExp(entry.titleNot, 'i').test(title)) return false;
   if (!('q' in entry.match)) return true;   // key/keyPrefix targets are pinned by construction
   const t = title.toLowerCase();
   const tokens = entry.match.q.toLowerCase().split(/\s+/).filter(w => w && !Q_STOP.has(w));

@@ -10,6 +10,7 @@
   label: "Game-used football jerseys"
   vertical: sports
   match: { q: "game used jersey", categoryHint: "game-used" }
+  titleNot: "baseball|basketball|hockey|soccer|mlb|nba|nhl|wnba"
   note: >
     Football scope — matcher should require game-used/game-worn language
     (lectr's guUseClass: never used↔issued) and treat photo-matched as the

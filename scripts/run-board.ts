@@ -306,18 +306,6 @@ async function main() {
     }
   }
 
-  // 8 — publish the board (hunt section always present so /hunt can render
-  // every target's watching/live state, even when nothing hit this run)
-  const board = publishBoard(
-    deals,
-    perVertical,
-    { builtAt: nowIso, bookBuiltAt: synced.book.builtAt },
-    { targets: huntEntries.map(toHuntTarget), deals: huntDeals },
-  );
-
-  // 9 — receipts: record newly surfaced, resolve the ones that left BIN.
-  // Priced hunt hits are full deals — their calls go on the tape like any
-  // other. noBook hits carry no call (no med/depth), so nothing to grade.
   // Per-target noBook cap (newest first): the lane is a watch list, not a
   // firehose — the uncapped first live run published 375 rows of payload.
   {
@@ -338,6 +326,19 @@ async function main() {
     huntDeals.length = 0;
     huntDeals.push(...kept);
   }
+
+  // 8 — publish the board (hunt section always present so /hunt can render
+  // every target's watching/live state, even when nothing hit this run)
+  const board = publishBoard(
+    deals,
+    perVertical,
+    { builtAt: nowIso, bookBuiltAt: synced.book.builtAt },
+    { targets: huntEntries.map(toHuntTarget), deals: huntDeals },
+  );
+
+  // 9 — receipts: record newly surfaced, resolve the ones that left BIN.
+  // Priced hunt hits are full deals — their calls go on the tape like any
+  // other. noBook hits carry no call (no med/depth), so nothing to grade.
   const pricedHuntDeals = huntDeals.filter((d): d is HuntPricedDeal => !d.noBook);
   let receipts = loadReceipts();
   receipts = recordSurfaced(receipts, [...board.deals, ...pricedHuntDeals], nowIso);
