@@ -10,6 +10,9 @@
   label: "Game-used football jerseys"
   vertical: sports
   match: { q: "game used jersey", categoryHint: "game-used" }
+  # positive scope: sport words rarely appear in titles — team names carry the
+  # sport ("Phillies Game Used Jersey" says baseball without saying it)
+  titleMust: "football|nfl|ncaa|cfb|xfl|usfl|cardinals|falcons|ravens|bills|panthers|bears|bengals|browns|cowboys|broncos|lions|packers|texans|colts|jaguars|chiefs|raiders|chargers|rams|dolphins|vikings|patriots|saints|giants|jets|eagles|steelers|49ers|seahawks|buccaneers|titans|commanders|redskins"
   titleNot: "baseball|basketball|hockey|soccer|mlb|nba|nhl|wnba"
   note: >
     Football scope — matcher should require game-used/game-worn language
