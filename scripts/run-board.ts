@@ -24,7 +24,7 @@ import { LAUNCH_VERTICALS } from './types';
 import { MATCHERS, matcherFor } from './match/registry';
 import { syncBook } from './sync-book';
 import { planRun, planHunt, reserveHuntBudget, type YieldMap } from './scheduler';
-import { loadHuntList, compileHuntQueries, toHuntTarget } from './hunt';
+import { loadHuntList, compileHuntQueries, toHuntTarget, huntRelevant, NOBOOK_CAP_PER_TARGET } from './hunt';
 import { poll, pollHunt } from './poll';
 import { enrich, verifyPsaCert, applyCertVerdict, type CertVerdict } from './enrich';
 import { gate, huntGate } from './gate';
@@ -151,6 +151,10 @@ async function main() {
       }
       const row = key ? synced.byKey.get(key) : undefined;
 
+      // un-pinned hits from raw-terms targets must clear the relevance guard
+      // (q-token presence + vertical hint) — the zip-jacket lesson from the
+      // first live run. Pinned (priced) hits skip it: identity IS relevance.
+      if (!row && !huntRelevant(entry, l.title || '')) { huntClaimed.add(l.itemId); continue; }
       const g = huntGate(l, entry, row);
       if (!g.pass) continue;
 
@@ -314,6 +318,26 @@ async function main() {
   // 9 — receipts: record newly surfaced, resolve the ones that left BIN.
   // Priced hunt hits are full deals — their calls go on the tape like any
   // other. noBook hits carry no call (no med/depth), so nothing to grade.
+  // Per-target noBook cap (newest first): the lane is a watch list, not a
+  // firehose — the uncapped first live run published 375 rows of payload.
+  {
+    const kept: typeof huntDeals = [];
+    const perTarget = new Map<string, number>();
+    const noBookSorted = huntDeals
+      .filter((d) => d.noBook)
+      .sort((a, b) => String(b.listedAt || '').localeCompare(String(a.listedAt || '')));
+    for (const d of huntDeals.filter((x) => !x.noBook)) kept.push(d);
+    let dropped = 0;
+    for (const d of noBookSorted) {
+      const c = perTarget.get(d.huntId) || 0;
+      if (c >= NOBOOK_CAP_PER_TARGET) { dropped++; continue; }
+      perTarget.set(d.huntId, c + 1);
+      kept.push(d);
+    }
+    if (dropped) console.log(`[run-board] hunt: capped noBook to ${NOBOOK_CAP_PER_TARGET}/target (${dropped} dropped, newest kept)`);
+    huntDeals.length = 0;
+    huntDeals.push(...kept);
+  }
   const pricedHuntDeals = huntDeals.filter((d): d is HuntPricedDeal => !d.noBook);
   let receipts = loadReceipts();
   receipts = recordSurfaced(receipts, [...board.deals, ...pricedHuntDeals], nowIso);

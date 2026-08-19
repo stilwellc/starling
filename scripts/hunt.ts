@@ -182,6 +182,43 @@ export function toHuntTarget(e: HuntEntry): HuntTarget {
  *  the reserved budget. Deterministic — no clock, no randomness. */
 const MAX_QUERIES_PER_ENTRY = 8;
 
+// ── raw-terms relevance (the first live run's lesson) ────────────────────────
+// eBay's q search is keyword-ish and spans accessories/apparel; a "philadelphia
+// eagles" cards target matched a Full Zip jacket. Two cheap, honest guards for
+// hits that arrive WITHOUT a pinned identity (the noBook lane):
+//   1. every non-stopword q token must appear in the title
+//   2. the entry's vertical must show a weak object signal in the title
+// Priced hits never pass through this — their identity IS the relevance proof.
+const Q_STOP = new Set(['the', 'a', 'an', 'and', 'of', 'for', 'with']);
+const VERTICAL_HINT: Record<string, RegExp> = {
+  'sports-cards': /\b(card|cards|psa|bgs|sgc|cgc|rookie|rc|refractor|prizm|topps|bowman|#\s?[a-z0-9]+)\b/i,
+  pokemon: /\b(pokemon|pok[eé]mon|psa|cgc|bgs|charizard|holo)\b/i,
+  'art-editions': /\b(print|lithograph|screenprint|etching|edition|poster|multiple)\b/i,
+  autographs: /\b(signed|autograph(?:ed)?|als|tls|psa\/dna|jsa|beckett)\b/i,
+  sports: /\b(game[- ](?:used|worn)|jersey|photo[- ]?match)/i,
+  science: /\b(fossil|meteorite|apple|computer|prototype|nasa|flown|patent|manual)\b/i,
+};
+/** Category scoping for raw-q hunt queries — only trees where narrowing is safe. */
+export const HUNT_CATEGORY_SCOPE: Record<string, string[]> = {
+  'sports-cards': ['212'],   // Sports Mem, Cards & Fan Shop > Sports Trading Cards
+  sports: ['64482'],         // Sports Mem, Cards & Fan Shop
+};
+
+/** Relevance guard for un-pinned (noBook) hunt hits from raw-terms targets. */
+export function huntRelevant(entry: HuntEntry, title: string): boolean {
+  if (!('q' in entry.match)) return true;   // key/keyPrefix targets are pinned by construction
+  const t = title.toLowerCase();
+  const tokens = entry.match.q.toLowerCase().split(/\s+/).filter(w => w && !Q_STOP.has(w));
+  if (!tokens.every(w => t.includes(w))) return false;
+  const hint = VERTICAL_HINT[entry.vertical];
+  return hint ? hint.test(title) : true;
+}
+
+/** noBook hits kept per target on the published board — newest first. The lane
+ *  is a watch list, not a firehose; 375 rows on the first live run was payload
+ *  bloat, not signal. Priced hits are never capped (they earned admission). */
+export const NOBOOK_CAP_PER_TARGET = 8;
+
 export interface CompiledHuntQuery {
   entry: HuntEntry;
   query: EbayQuery;
@@ -267,7 +304,12 @@ export function compileHuntQueries(
         query: {
           key: `hunt:${entry.id}`,
           q: entry.match.q,
-          categoryIds: [], // categoryHint → leaf ids at the P0 taxonomy pass
+          // Category scoping where it's safe. A bare q search spans ALL of
+          // eBay — the first live run matched a zip-up jacket to a cards
+          // target. Only verticals whose category tree is unambiguous get
+          // scoped (over-narrowing kills recall on culture/science targets);
+          // everything else relies on the relevance guard below.
+          categoryIds: HUNT_CATEGORY_SCOPE[entry.vertical] ?? [],
           // the ceiling is also a search bound — never pay eBay calls for
           // listings the gate would discard anyway
           priceMax: entry.maxAllIn,
