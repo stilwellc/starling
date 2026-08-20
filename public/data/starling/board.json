@@ -1,71 +1,32 @@
 {
   "schema": 1,
-  "builtAt": "2026-08-20T01:48:24.748Z",
+  "builtAt": "2026-08-20T02:06:20.217Z",
   "bookBuiltAt": "2026-08-20T01:30:50.261Z",
-  "deals": [
-    {
-      "id": "1pakwup",
-      "itemId": "v1|168626883607|0",
-      "legacyItemId": "168626883607",
-      "vertical": "sports-cards",
-      "key": "frank-robinson|1959|topps|435|raw",
-      "title": "1959 Topps - Frank Robinson #435",
-      "imageUrl": "https://i.ebayimg.com/images/g/VUwAAeSwVf1qhls7/s-l225.jpg",
-      "allIn": 43.480000000000004,
-      "itemPrice": 30,
-      "shipping": 13.48,
-      "med": 117,
-      "lo": 64,
-      "hi": 236,
-      "n": 4,
-      "lastSale": "2024-06-07",
-      "trend": null,
-      "conf": "medium",
-      "depth": 0.6283760683760684,
-      "risk": {
-        "grade": "C",
-        "score": 46,
-        "reasons": [
-          "raw, no authenticity anchor",
-          "seller 99.8% feedback",
-          "established seller (2287 ratings)",
-          "sparse listing, no item specifics",
-          "not yet enriched (aspects provisional)",
-          "sports-cards: low fake-rate prior"
-        ]
-      },
-      "rank": 0.26014769230769225,
-      "listedAt": "2026-08-20T01:42:01.000Z",
-      "webUrl": "https://www.ebay.com/itm/168626883607?hash=item2742f20c17:g:VUwAAeSwVf1qhls7",
-      "marketplace": "EBAY_US",
-      "evidenceUrl": "https://lectr.bid/key/sports-cards/frank-robinson%7C1959%7Ctopps%7C435%7Craw",
-      "surfacedAt": "2026-08-20T01:48:24.748Z"
-    }
-  ],
+  "deals": [],
   "perVertical": {
     "sports-cards": {
-      "polled": 1385,
-      "matched": 14,
-      "surfaced": 1
+      "polled": 341,
+      "matched": 1,
+      "surfaced": 0
     },
     "autographs": {
-      "polled": 260,
-      "matched": 3,
+      "polled": 102,
+      "matched": 0,
       "surfaced": 0
     },
     "pokemon": {
-      "polled": 3151,
-      "matched": 3,
+      "polled": 346,
+      "matched": 1,
       "surfaced": 0
     },
     "art-editions": {
-      "polled": 180,
+      "polled": 0,
       "matched": 0,
       "surfaced": 0
     },
     "watches": {
-      "polled": 728,
-      "matched": 2,
+      "polled": 174,
+      "matched": 3,
       "surfaced": 0
     }
   },
@@ -130,6 +91,84 @@
     ],
     "deals": [
       {
+        "huntId": "vintage-apple",
+        "huntLabel": "Vintage Apple / early computing",
+        "noBook": true,
+        "id": "1alvco9",
+        "itemId": "v1|336751790381|0",
+        "legacyItemId": "336751790381",
+        "vertical": "science",
+        "title": "Apple 2 Plus Vintage Computer And Disk Drive & Foot Pedal",
+        "imageUrl": "https://i.ebayimg.com/images/g/SsQAAeSwNoNqhlsi/s-l225.jpg",
+        "allIn": 427.7,
+        "itemPrice": 275,
+        "shipping": 152.7,
+        "seller": {
+          "username": "thriftfixxrustbeltvintage",
+          "feedbackPercentage": 99.6,
+          "feedbackScore": 2412
+        },
+        "listedAt": "2026-08-20T01:58:31.000Z",
+        "webUrl": "https://www.ebay.com/itm/336751790381?_skw=vintage+apple+computer&hash=item4e67f8892d:g:SsQAAeSwNoNqhlsi",
+        "marketplace": "EBAY_US",
+        "surfacedAt": "2026-08-20T02:06:20.217Z",
+        "context": {
+          "k": "apple-ii",
+          "kind": "class",
+          "med": 1466,
+          "lo": 337,
+          "hi": 8501,
+          "n": 75,
+          "lastSale": "2026-01-29"
+        }
+      },
+      {
+        "huntId": "fossils",
+        "huntLabel": "Fossils — corpus-comparable classes",
+        "noBook": true,
+        "id": "1v19oui",
+        "itemId": "v1|398305945215|0",
+        "legacyItemId": "398305945215",
+        "vertical": "science",
+        "title": "Opalescent Baculite Fossil – Rainbow Iridescent Shell – Pierre Shale Colorado",
+        "imageUrl": "https://i.ebayimg.com/images/g/XyMAAeSwvk9qhl0P/s-l225.jpg",
+        "allIn": 44.93,
+        "itemPrice": 34.99,
+        "shipping": 9.94,
+        "seller": {
+          "username": "thefossilguy",
+          "feedbackPercentage": 100,
+          "feedbackScore": 317
+        },
+        "listedAt": "2026-08-20T01:52:33.000Z",
+        "webUrl": "https://www.ebay.com/itm/398305945215?_skw=fossil&hash=item5cbce2667f:g:XyMAAeSwvk9qhl0P",
+        "marketplace": "EBAY_US",
+        "surfacedAt": "2026-08-20T02:06:20.217Z"
+      },
+      {
+        "huntId": "fossils",
+        "huntLabel": "Fossils — corpus-comparable classes",
+        "noBook": true,
+        "id": "l77p70",
+        "itemId": "v1|398305920827|0",
+        "legacyItemId": "398305920827",
+        "vertical": "science",
+        "title": "Opalescent Baculite Fossil – Rainbow Iridescent Shell – Pierre Shale Colorado",
+        "imageUrl": "https://i.ebayimg.com/images/g/ercAAeSwFJZqhlpM/s-l225.jpg",
+        "allIn": 54.93,
+        "itemPrice": 44.99,
+        "shipping": 9.94,
+        "seller": {
+          "username": "thefossilguy",
+          "feedbackPercentage": 100,
+          "feedbackScore": 317
+        },
+        "listedAt": "2026-08-20T01:46:50.000Z",
+        "webUrl": "https://www.ebay.com/itm/398305920827?_skw=fossil&hash=item5cbce2073b:g:ercAAeSwFJZqhlpM",
+        "marketplace": "EBAY_US",
+        "surfacedAt": "2026-08-20T02:06:20.217Z"
+      },
+      {
         "huntId": "sendak-signed",
         "huntLabel": "Maurice Sendak — signed material",
         "noBook": true,
@@ -139,8 +178,8 @@
         "vertical": "culture",
         "title": "1966 Zlateh The Goat by Isaac Bashevis Singer Maurice Sendak *SIGNED* NEAR FINE",
         "imageUrl": "https://i.ebayimg.com/images/g/2~kAAOSw0zVnDX6A/s-l225.jpg",
-        "allIn": 755.13,
-        "itemPrice": 750,
+        "allIn": 530.13,
+        "itemPrice": 525,
         "shipping": 5.13,
         "seller": {
           "username": "sunriserarebooks",
@@ -150,7 +189,7 @@
         "listedAt": "2026-08-20T01:39:40.000Z",
         "webUrl": "https://www.ebay.com/itm/257691717845?_skw=maurice+sendak+signed&hash=item3bff9f90d5:g:2~kAAOSw0zVnDX6A",
         "marketplace": "EBAY_US",
-        "surfacedAt": "2026-08-20T01:48:24.748Z"
+        "surfacedAt": "2026-08-20T02:06:20.217Z"
       },
       {
         "huntId": "sendak-signed",
@@ -162,8 +201,8 @@
         "vertical": "culture",
         "title": "Maurice Sendak Jan Wahl *SIGNED* Soren Skovmus 1968 Hardcover Illustrated 1st Ed",
         "imageUrl": "https://i.ebayimg.com/images/g/K48AAOSwnk1nDXBO/s-l225.jpg",
-        "allIn": 204.39,
-        "itemPrice": 200,
+        "allIn": 144.39,
+        "itemPrice": 140,
         "shipping": 4.39,
         "seller": {
           "username": "sunriserarebooks",
@@ -173,30 +212,7 @@
         "listedAt": "2026-08-20T01:39:40.000Z",
         "webUrl": "https://www.ebay.com/itm/257691717907?_skw=maurice+sendak+signed&hash=item3bff9f9113:g:K48AAOSwnk1nDXBO",
         "marketplace": "EBAY_US",
-        "surfacedAt": "2026-08-20T01:48:24.748Z"
-      },
-      {
-        "huntId": "fossils",
-        "huntLabel": "Fossils — corpus-comparable classes",
-        "noBook": true,
-        "id": "1lz7ls6",
-        "itemId": "v1|287535310556|0",
-        "legacyItemId": "287535310556",
-        "vertical": "science",
-        "title": "FETCHING* 5# Fossil Wood FullRound/FreeStanding/Rough Faced/Great Color & Detail",
-        "imageUrl": "https://i.ebayimg.com/images/g/bdYAAeSw4C1qhljR/s-l225.jpg",
-        "allIn": 57.75,
-        "itemPrice": 48,
-        "shipping": 9.75,
-        "seller": {
-          "username": "rockingtx",
-          "feedbackPercentage": 99.7,
-          "feedbackScore": 1188
-        },
-        "listedAt": "2026-08-20T01:34:17.000Z",
-        "webUrl": "https://www.ebay.com/itm/287535310556?_skw=fossil&hash=item42f270a6dc:g:bdYAAeSw4C1qhljR",
-        "marketplace": "EBAY_US",
-        "surfacedAt": "2026-08-20T01:48:24.748Z"
+        "surfacedAt": "2026-08-20T02:06:20.217Z"
       },
       {
         "huntId": "fossils",
@@ -219,7 +235,7 @@
         "listedAt": "2026-08-20T01:17:43.000Z",
         "webUrl": "https://www.ebay.com/itm/398305855777?_skw=fossil&hash=item5cbce10921:g:8KMAAeSwzVlqhlVX",
         "marketplace": "EBAY_US",
-        "surfacedAt": "2026-08-20T01:48:24.748Z"
+        "surfacedAt": "2026-08-20T02:06:20.217Z"
       },
       {
         "huntId": "fossils",
@@ -240,9 +256,9 @@
           "feedbackScore": 424
         },
         "listedAt": "2026-08-20T01:16:01.000Z",
-        "webUrl": "https://www.ebay.com/itm/147514795085?_skw=fossil&hash=item225891244d:g:Un0AAeSw0zlqhYGa&amdata=enc%3AAQALAAAA4ACCtXRWQnOEpyOqnQQ8KGaewgv3RoLvu01oYtRPS%2BFHc2v8iQ7jBhH7wmBF7m7%2B5LXCSd%2FiNDbTtVnOhAmtaUee2ZrAM%2BfQMZM7eqED8rBLJF3X3xZWo6Ex0RDnjGismOBPXkBrQkmdIUROUyVNtC2qNg4%2BFnTB96Neos6hUm2k3hX4MEMExVp9x2WwmB8%2B6cykNaRaauoQ8WlVCy6Vm5ZrtI5P7%2FMn0jDQRgaTHgwf4bTfIEmijSHS9wyS68j0l23EECXhL%2Fz6%2BtCOuygT%2BI9iZdC2%2BPm1Xsf%2Ft8bUXJBY",
+        "webUrl": "https://www.ebay.com/itm/147514795085?_skw=fossil&hash=item225891244d:g:Un0AAeSw0zlqhYGa&amdata=enc%3AAQALAAAA4ACCtXRWQnOEpyOqnQQ8KGaewgv3RoLvu01oYtRPS%2BFHc2v8iQ7jBhH7wmBF7m7%2B5LXCSd%2FiNDbTtVnOhAmtaUee2ZrAM%2BfQMZM7eqED8rBLJF3X3xZWo6Ex0RDnjGismOBPXkBrQkmdIUROUyVNtC2hNQ7lFHN0501EJOTm3En8XUxlAlvHJyPpBamyEkyySLAtiu3kgRFQwTv2Vc1m%2B0AWHy%2FXSI0kSw8AqyTqjVh4pFXQdBloGG5zTbvLp%2FPqRDlvDPOx%2F6pjFW%2BPFroJ%2FVpgpoHvw6m7Om4uhuDWslKj",
         "marketplace": "EBAY_US",
-        "surfacedAt": "2026-08-20T01:48:24.748Z",
+        "surfacedAt": "2026-08-20T02:06:20.217Z",
         "context": {
           "k": "ammonite",
           "kind": "class",
@@ -274,7 +290,7 @@
         "listedAt": "2026-08-20T01:15:57.000Z",
         "webUrl": "https://www.ebay.com/itm/287535283863?_skw=game+used+jersey&hash=item42f2703e97:g:miwAAeSwVsxqhlTN",
         "marketplace": "EBAY_US",
-        "surfacedAt": "2026-08-20T01:48:24.748Z"
+        "surfacedAt": "2026-08-20T02:06:20.217Z"
       },
       {
         "huntId": "eagles-cards",
@@ -297,7 +313,7 @@
         "listedAt": "2026-08-20T01:00:36.000Z",
         "webUrl": "https://www.ebay.com/itm/227483257554?_skw=philadelphia+eagles&hash=item34f70f0ad2:g:BQIAAeSwTgpqhlED",
         "marketplace": "EBAY_US",
-        "surfacedAt": "2026-08-20T01:48:24.748Z"
+        "surfacedAt": "2026-08-20T02:06:20.217Z"
       },
       {
         "huntId": "vintage-apple",
@@ -320,7 +336,7 @@
         "listedAt": "2026-08-20T01:00:01.000Z",
         "webUrl": "https://www.ebay.com/itm/237017388858?_skw=vintage+apple+computer&hash=item372f56573a:g:I2oAAeSwLrNqhgo0",
         "marketplace": "EBAY_US",
-        "surfacedAt": "2026-08-20T01:48:24.748Z",
+        "surfacedAt": "2026-08-20T02:06:20.217Z",
         "context": {
           "k": "macintosh-vintage",
           "kind": "class",
@@ -352,7 +368,7 @@
         "listedAt": "2026-08-20T00:45:01.000Z",
         "webUrl": "https://www.ebay.com/itm/237017407843?_skw=vintage+apple+computer&hash=item372f56a163:g:JlsAAeSwNoNqhg6Y",
         "marketplace": "EBAY_US",
-        "surfacedAt": "2026-08-20T01:48:24.748Z",
+        "surfacedAt": "2026-08-20T02:06:20.217Z",
         "context": {
           "k": "macintosh-vintage",
           "kind": "class",
@@ -384,7 +400,7 @@
         "listedAt": "2026-08-20T00:30:24.000Z",
         "webUrl": "https://www.ebay.com/itm/147516366403?_skw=fossil&hash=item2258a91e43:g:40QAAeSwHUpqhklq",
         "marketplace": "EBAY_US",
-        "surfacedAt": "2026-08-20T01:48:24.748Z"
+        "surfacedAt": "2026-08-20T02:06:20.217Z"
       },
       {
         "huntId": "eagles-cards",
@@ -408,31 +424,7 @@
         "listedAt": "2026-08-20T00:03:27.000Z",
         "webUrl": "https://www.ebay.com/itm/287535195409?_skw=philadelphia+eagles&hash=item42f26ee511:g:rEAAAeSwPXdqhkKy",
         "marketplace": "EBAY_US",
-        "surfacedAt": "2026-08-20T01:48:24.748Z"
-      },
-      {
-        "huntId": "eagles-cards",
-        "huntLabel": "Philadelphia Eagles sports cards",
-        "noBook": true,
-        "id": "akcwpb",
-        "itemId": "v1|287535188714|0",
-        "legacyItemId": "287535188714",
-        "vertical": "sports-cards",
-        "key": "score-a-j-brown-stars|2024|panini|228|PSA9",
-        "title": "Panini 2024 Score A.J. Brown Stars #228 /399 PSA 9 Philadelphia Eagles",
-        "imageUrl": "https://i.ebayimg.com/images/g/tAEAAeSw-MtqhkMC/s-l225.jpg",
-        "allIn": 50.62,
-        "itemPrice": 45,
-        "shipping": 5.62,
-        "seller": {
-          "username": "manny_08",
-          "feedbackPercentage": 100,
-          "feedbackScore": 121
-        },
-        "listedAt": "2026-08-19T23:59:35.000Z",
-        "webUrl": "https://www.ebay.com/itm/287535188714?_skw=philadelphia+eagles&hash=item42f26ecaea:g:tAEAAeSw-MtqhkMC&amdata=enc%3AAQALAAAA8ACCtXRWQnOEpyOqnQQ8KGYjypGAGVPbIYqXJENmq3QLi62OFW7QZ%2BvVH1NknwbE%2BYilyTapH%2BOMin9xEc3Lq9%2Bm%2FYMKDkwUz33uO9d2OBDA%2BPgy4Rn34%2FVUOXkgLfZz9ds04KspscHAnTgCgyIcC4TFldYlq4abwlaSFJhDwaaOOsvP4hcUTD1fQCcHNiA%2FA0GoSa9EYXHwzucZhO399tZWwi2zSD8BEciz3LiB7wv15v6r2D5rtmkSc%2FU%2BnticX%2FX1k6onZ0naNE7UgzgeBHWejhRi9RhMrmmlFw999f2NOKO1%2B9xnnaVIcsaWT88RQg%3D%3D",
-        "marketplace": "EBAY_US",
-        "surfacedAt": "2026-08-20T01:48:24.748Z"
+        "surfacedAt": "2026-08-20T02:06:20.217Z"
       },
       {
         "huntId": "eagles-cards",
@@ -456,7 +448,7 @@
         "listedAt": "2026-08-19T23:53:07.000Z",
         "webUrl": "https://www.ebay.com/itm/377433757405?_skw=philadelphia+eagles&hash=item57e0ce16dd:g:oKAAAeSwiIVqhkE~",
         "marketplace": "EBAY_US",
-        "surfacedAt": "2026-08-20T01:48:24.748Z"
+        "surfacedAt": "2026-08-20T02:06:20.217Z"
       },
       {
         "huntId": "eagles-cards",
@@ -479,7 +471,7 @@
         "listedAt": "2026-08-19T22:59:13.000Z",
         "webUrl": "https://www.ebay.com/itm/128035262467?_skw=philadelphia+eagles&hash=item1dcf7f1003:g:WCsAAeSwV-hpC6tI",
         "marketplace": "EBAY_US",
-        "surfacedAt": "2026-08-20T01:48:24.748Z"
+        "surfacedAt": "2026-08-20T02:06:20.217Z"
       },
       {
         "huntId": "vintage-apple",
@@ -502,7 +494,7 @@
         "listedAt": "2026-08-19T20:36:43.000Z",
         "webUrl": "https://www.ebay.com/itm/298602273483?_skw=vintage+apple+computer&hash=item4586151acb:g:BooAAeSwEphqhhEq",
         "marketplace": "EBAY_US",
-        "surfacedAt": "2026-08-20T01:48:24.748Z",
+        "surfacedAt": "2026-08-20T02:06:20.217Z",
         "context": {
           "k": "macintosh-vintage",
           "kind": "class",
@@ -512,29 +504,6 @@
           "n": 109,
           "lastSale": "2026-01-29"
         }
-      },
-      {
-        "huntId": "eagles-cards",
-        "huntLabel": "Philadelphia Eagles sports cards",
-        "noBook": true,
-        "id": "1btofs1",
-        "itemId": "v1|407156709114|0",
-        "legacyItemId": "407156709114",
-        "vertical": "sports-cards",
-        "title": "Jalen Hurts Serial #55/99 2025 Topps Resurgence Football Philadelphia Eagles NFL",
-        "imageUrl": "https://i.ebayimg.com/images/g/qk8AAeSwbr9qhfwy/s-l225.jpg",
-        "allIn": 25,
-        "itemPrice": 25,
-        "shipping": 0,
-        "seller": {
-          "username": "goodkittykardz",
-          "feedbackPercentage": 100,
-          "feedbackScore": 94
-        },
-        "listedAt": "2026-08-19T19:09:24.000Z",
-        "webUrl": "https://www.ebay.com/itm/407156709114?_skw=philadelphia+eagles&hash=item5ecc6e56fa:g:qk8AAeSwbr9qhfwy",
-        "marketplace": "EBAY_US",
-        "surfacedAt": "2026-08-20T01:48:24.748Z"
       },
       {
         "huntId": "sendak-signed",
@@ -555,9 +524,9 @@
           "feedbackScore": 210
         },
         "listedAt": "2026-08-19T14:25:24.000Z",
-        "webUrl": "https://www.ebay.com/itm/407156214927?_skw=maurice+sendak+signed&hash=item5ecc66cc8f:g:YroAAeSwh3Nqhbl4&amdata=enc%3AAQALAAAA8ACCtXRWQnOEpyOqnQQ8KGbuBPEKyMPsFsX5rH%2Bw3SCScMJiUHTP3CSz%2Byfloz0eNC%2B3u7anRjJBFEKZ2oJuOgdN0Kc1ZxciDScCqnh1k%2B19BFhWfVUbN%2BXnwJ%2BKO8udttV2uT0YABeyLn32%2FVtbOyCtSpqSC38haxEMrWYGjWJhnllPekATjKz%2FtSTj8GRIwbjILJio6rYMAdnZ86P0UyBk8UUn3bBRgaW%2Fc%2BNY695wk1hkAVIobvCiuhOUG95iMgZiB1VmiOA4ci2OpA%2BkqTkcZpVYDw3nQCNZGq2jvhVUBRwAiRp1t7h5jluRhT2Tpw%3D%3D",
+        "webUrl": "https://www.ebay.com/itm/407156214927?_skw=maurice+sendak+signed&hash=item5ecc66cc8f:g:YroAAeSwh3Nqhbl4&amdata=enc%3AAQALAAAA8ACCtXRWQnOEpyOqnQQ8KGbuBPEKyMPsFsX5rH%2Bw3SCScMJiUHTP3CSz%2Byfloz0eNC%2B3u7anRjJBFEKZ2oJuOgdN0Kc1ZxciDScCqnh1k%2B19BFhWfVUbN%2BXnwJ%2BKO8udttV2uT0YABeyLn32%2FVtbOyCSSGh19UqzDmRYj8gFz90HkCKR7AH1DhCMmrMqmFyhLRCAWVvJ4SCE0jyuaUl7MJQIFr%2FYcyeS4w3zT0MvPt7vXa%2BYwBSL7omeQL8iDQ2WhIiqbcBv1Ipkykz%2BfD4wgo3LEo7j%2FRxi79ZoERpFVu4FITIyoE3NobLIhz5P3AAuXQ%3D%3D",
         "marketplace": "EBAY_US",
-        "surfacedAt": "2026-08-20T01:48:24.748Z"
+        "surfacedAt": "2026-08-20T02:06:20.217Z"
       },
       {
         "huntId": "sendak-signed",
@@ -578,9 +547,9 @@
           "feedbackScore": 210
         },
         "listedAt": "2026-08-19T14:25:10.000Z",
-        "webUrl": "https://www.ebay.com/itm/407156214712?_skw=maurice+sendak+signed&hash=item5ecc66cbb8:g:esgAAeSwMcdqhbj9&amdata=enc%3AAQALAAAA8ACCtXRWQnOEpyOqnQQ8KGaTI3VfLpQubH9SUVDTsugs5H8uU%2F9ewfzF%2FTE%2FNhjYNQAG8KgntMTozoxPLUVEfO18LFnaqA3J%2BC9HqLtCpUE2U36bSbOUql7H2%2BXHfnxL2bavac%2B%2Fnt1N3YxziNFzXUJvJDvMV3kJ6friAs51sU9JB5vgPx5AjDwpt7HhvfckeHlpxXdG2T69pelKKVUa%2FzzejLZb%2BRpES%2BU6B1JcpLpvx0Ne7yH%2BorczsrFQxREg%2BK8mo%2FEz3lpdYXAEhQzAzvSiKlqTaQ9Rm%2FZoRc5bMNgt%2FOqkIwzNLX7jBjTHmbWomA%3D%3D",
+        "webUrl": "https://www.ebay.com/itm/407156214712?_skw=maurice+sendak+signed&hash=item5ecc66cbb8:g:esgAAeSwMcdqhbj9&amdata=enc%3AAQALAAAA8ACCtXRWQnOEpyOqnQQ8KGaTI3VfLpQubH9SUVDTsugs5H8uU%2F9ewfzF%2FTE%2FNhjYNQAG8KgntMTozoxPLUVEfO18LFnaqA3J%2BC9HqLtCpUE2U36bSbOUql7H2%2BXHfnxL2bavac%2B%2Fnt1N3YxziNFzXUJzIwdW7J7tHZfM%2F1Nd6WMliGu%2BpkRwxys%2BvlrMSHSHxxy%2Bw3u7NuoP2j1J8Tyitibp1wbP%2B6F%2FbaBITUSX%2FyOev0owalsO%2BAc65bwB2WEHkYg5bX%2F%2Bin2loro3f%2Bbv1Gex50dbH%2FvMMauW7tmPqaZhHmk0bJn4nakW6yIXGioJ%2FQ%3D%3D",
         "marketplace": "EBAY_US",
-        "surfacedAt": "2026-08-20T01:48:24.748Z"
+        "surfacedAt": "2026-08-20T02:06:20.217Z"
       },
       {
         "huntId": "sendak-signed",
@@ -601,9 +570,9 @@
           "feedbackScore": 210
         },
         "listedAt": "2026-08-19T14:24:53.000Z",
-        "webUrl": "https://www.ebay.com/itm/407156214280?_skw=maurice+sendak+signed&hash=item5ecc66ca08:g:4ekAAeSw3h9qhbjg&amdata=enc%3AAQALAAAA8ACCtXRWQnOEpyOqnQQ8KGbJGE0vZ1EhZJc5pX4Vats6TWrZkR7RGUcm%2FkSfZbiCXY%2BOA9ffOEDaXcNHiSM3DXKxK7pS3b9gBf5HPOD1mwGR6Ve4EWS5jitq%2BXkWByTQI6ziEDJst2zgRAWla8fgRDBtxu6WZcjLLIre63Sf%2B702MlZlzYa%2Frfxt56eYlCr9QSuP8PaLqIt%2FsnKfgmw%2B6h4Q6RuOYGmZy2DfquDqDQAj00Wl5%2FjMG4OmI%2FlcUIXXBqW3d6mwG%2FrZCmoSR0lytsoi0OqNixxeeZtZUd3J80XOztULgT1wwtRZQ5MqHD7UUg%3D%3D",
+        "webUrl": "https://www.ebay.com/itm/407156214280?_skw=maurice+sendak+signed&hash=item5ecc66ca08:g:4ekAAeSw3h9qhbjg&amdata=enc%3AAQALAAAA8ACCtXRWQnOEpyOqnQQ8KGbJGE0vZ1EhZJc5pX4Vats6TWrZkR7RGUcm%2FkSfZbiCXY%2BOA9ffOEDaXcNHiSM3DXKxK7pS3b9gBf5HPOD1mwGR6Ve4EWS5jitq%2BXkWByTQI6ziEDJst2zgRAWla8fgRDCK4lU6qTw8VQR14t6AkTOjI5xCkQtKi4k9jS5QXxqY4064qDAhd7OVKLj%2BZCTmzSMHa1sb7ShAYejh83UNFrwNLl69fjQ7fqM0UPJteftfFkxuaUXS8BzrjAphz%2BdIIUWPKcqzvDmfRSkmD3NyvZg2aNIlcUbmR0Vbshrd7LcrSA%3D%3D",
         "marketplace": "EBAY_US",
-        "surfacedAt": "2026-08-20T01:48:24.748Z"
+        "surfacedAt": "2026-08-20T02:06:20.217Z"
       },
       {
         "huntId": "sendak-signed",
@@ -626,7 +595,7 @@
         "listedAt": "2026-08-19T14:09:50.000Z",
         "webUrl": "https://www.ebay.com/itm/800534691417?_skw=maurice+sendak+signed&hash=itemba6395fe59:g:jLEAAeSwqP5pzcoY",
         "marketplace": "EBAY_US",
-        "surfacedAt": "2026-08-20T01:48:24.748Z"
+        "surfacedAt": "2026-08-20T02:06:20.217Z"
       },
       {
         "huntId": "vintage-apple",
@@ -649,7 +618,7 @@
         "listedAt": "2026-08-18T22:54:53.000Z",
         "webUrl": "https://www.ebay.com/itm/206501553836?_skw=vintage+apple+computer&hash=item301473a6ac:g:OQMAAeSwTgpqhOJ0",
         "marketplace": "EBAY_US",
-        "surfacedAt": "2026-08-20T01:48:24.748Z",
+        "surfacedAt": "2026-08-20T02:06:20.217Z",
         "context": {
           "k": "macintosh-vintage",
           "kind": "class",
@@ -681,7 +650,7 @@
         "listedAt": "2026-08-18T21:32:00.000Z",
         "webUrl": "https://www.ebay.com/itm/327315674938?_skw=charles+schulz+signed&hash=item4c3588d73a:g:3~wAAOSwNGZkOD4g",
         "marketplace": "EBAY_US",
-        "surfacedAt": "2026-08-20T01:48:24.748Z",
+        "surfacedAt": "2026-08-20T02:06:20.217Z",
         "context": {
           "k": "charles-schulz",
           "kind": "signer",
@@ -713,7 +682,7 @@
         "listedAt": "2026-08-18T21:16:00.000Z",
         "webUrl": "https://www.ebay.com/itm/137636726134?_skw=vintage+apple+computer&hash=item200bc9c576:g:JscAAeSw9fpqFLqN",
         "marketplace": "EBAY_US",
-        "surfacedAt": "2026-08-20T01:48:24.748Z",
+        "surfacedAt": "2026-08-20T02:06:20.217Z",
         "context": {
           "k": "macintosh-vintage",
           "kind": "class",
@@ -744,7 +713,7 @@
         "listedAt": "2026-08-18T21:11:26.000Z",
         "webUrl": "https://www.ebay.com/itm/147513612925?_skw=maurice+sendak+signed&hash=item22587f1a7d:i:147513612925",
         "marketplace": "EBAY_US",
-        "surfacedAt": "2026-08-20T01:48:24.748Z"
+        "surfacedAt": "2026-08-20T02:06:20.217Z"
       },
       {
         "huntId": "sendak-signed",
@@ -767,7 +736,7 @@
         "listedAt": "2026-08-18T18:56:28.000Z",
         "webUrl": "https://www.ebay.com/itm/298599164120?_skw=maurice+sendak+signed&hash=item4585e5a8d8:g:9BEAAeSwOa9qhKmX",
         "marketplace": "EBAY_US",
-        "surfacedAt": "2026-08-20T01:48:24.748Z"
+        "surfacedAt": "2026-08-20T02:06:20.217Z"
       },
       {
         "huntId": "schulz-signed",
@@ -790,7 +759,7 @@
         "listedAt": "2026-08-18T17:04:00.000Z",
         "webUrl": "https://www.ebay.com/itm/327315674904?_skw=charles+schulz+signed&hash=item4c3588d718:g:Me0AAOSwk8Bj3Zea",
         "marketplace": "EBAY_US",
-        "surfacedAt": "2026-08-20T01:48:24.748Z"
+        "surfacedAt": "2026-08-20T02:06:20.217Z"
       },
       {
         "huntId": "vintage-apple",
@@ -813,7 +782,7 @@
         "listedAt": "2026-08-18T14:26:25.000Z",
         "webUrl": "https://www.ebay.com/itm/336748988169?_skw=vintage+apple+computer&hash=item4e67cdc709:g:jJoAAeSw92lqhGdu",
         "marketplace": "EBAY_US",
-        "surfacedAt": "2026-08-20T01:48:24.748Z",
+        "surfacedAt": "2026-08-20T02:06:20.217Z",
         "context": {
           "k": "macintosh-vintage",
           "kind": "class",
@@ -845,7 +814,7 @@
         "listedAt": "2026-08-18T12:48:14.000Z",
         "webUrl": "https://www.ebay.com/itm/327316101882?_skw=vintage+apple+computer&hash=item4c358f5afa:g:rp8AAeSwwtVqhFGr",
         "marketplace": "EBAY_US",
-        "surfacedAt": "2026-08-20T01:48:24.748Z",
+        "surfacedAt": "2026-08-20T02:06:20.217Z",
         "context": {
           "k": "macintosh-vintage",
           "kind": "class",
@@ -877,7 +846,7 @@
         "listedAt": "2026-08-18T12:16:52.000Z",
         "webUrl": "https://www.ebay.com/itm/117366106691?_skw=charles+schulz+original+drawing&hash=item1b5390aa43:g:VvcAAOSwVAtnTehT",
         "marketplace": "EBAY_US",
-        "surfacedAt": "2026-08-20T01:48:24.748Z"
+        "surfacedAt": "2026-08-20T02:06:20.217Z"
       },
       {
         "huntId": "schulz-sketch",
@@ -900,71 +869,7 @@
         "listedAt": "2026-08-18T12:16:52.000Z",
         "webUrl": "https://www.ebay.com/itm/117366106712?_skw=charles+schulz+original+drawing&hash=item1b5390aa58:g:JgIAAOSwvD5n0Kzl",
         "marketplace": "EBAY_US",
-        "surfacedAt": "2026-08-20T01:48:24.748Z"
-      },
-      {
-        "huntId": "fossils",
-        "huntLabel": "Fossils — corpus-comparable classes",
-        "noBook": true,
-        "id": "656whm",
-        "itemId": "v1|298597885333|0",
-        "legacyItemId": "298597885333",
-        "vertical": "science",
-        "title": "7.4 lb  Polished Ammonite Fossil Specimen Reiki Healing Meditation Decor",
-        "imageUrl": "https://i.ebayimg.com/images/g/gu4AAeSwEe9qeZPG/s-l225.jpg",
-        "allIn": 390,
-        "itemPrice": 390,
-        "shipping": 0,
-        "seller": {
-          "username": "yingling-crystal",
-          "feedbackPercentage": 100,
-          "feedbackScore": 167
-        },
-        "listedAt": "2026-08-18T09:28:13.000Z",
-        "webUrl": "https://www.ebay.com/itm/298597885333?_skw=fossil&hash=item4585d22595:g:gu4AAeSwEe9qeZPG&amdata=enc%3AAQALAAAA4ACCtXRWQnOEpyOqnQQ8KGaccM5PAIuKJY10eZ5AyVxEhFYzxH7fpy1CumP8m8LYhxHVmLavOqODVEDH3gfAWwL%2FNMonW4BnoLxfzXXUzDp%2F0nwtNef5QQJaRYCP%2BHGvv%2FV90EzKxhR9UBYCGQG%2F4Lknpy8UA3ERz98t%2FfRDzb%2Bj79mdx07j97TwSeupsxPAdTQp6bwPk3TGRgxKsygNo2AnqTm3TMynftKw7tAfPNMbeL7VqNQtGqVx2HhreYn%2BWB%2FAKhcKlWABK%2BDXcvHDn7w4yHi%2FccdU4zHN1w3azpaf",
-        "marketplace": "EBAY_US",
-        "surfacedAt": "2026-08-20T01:48:24.748Z",
-        "context": {
-          "k": "ammonite",
-          "kind": "class",
-          "med": 9378,
-          "lo": 1914,
-          "hi": 11122,
-          "n": 106,
-          "lastSale": "2026-07-14"
-        }
-      },
-      {
-        "huntId": "vintage-apple",
-        "huntLabel": "Vintage Apple / early computing",
-        "noBook": true,
-        "id": "1gzw6u9",
-        "itemId": "v1|307132509762|0",
-        "legacyItemId": "307132509762",
-        "vertical": "science",
-        "title": "Apple Macintosh SE 1MB RAM 800K Floppy 9-inch Monochrome Vintage Computer",
-        "imageUrl": "https://i.ebayimg.com/images/g/TtgAAeSw2rZqg7c6/s-l225.jpg",
-        "allIn": 161.55,
-        "itemPrice": 150,
-        "shipping": 11.55,
-        "seller": {
-          "username": "cellmeyourphone",
-          "feedbackPercentage": 99.9,
-          "feedbackScore": 1411
-        },
-        "listedAt": "2026-08-18T01:41:45.000Z",
-        "webUrl": "https://www.ebay.com/itm/307132509762?_skw=vintage+apple+computer&hash=item4782862e42:g:TtgAAeSw2rZqg7c6",
-        "marketplace": "EBAY_US",
-        "surfacedAt": "2026-08-20T01:48:24.748Z",
-        "context": {
-          "k": "macintosh-vintage",
-          "kind": "class",
-          "med": 1144,
-          "lo": 334,
-          "hi": 6097,
-          "n": 109,
-          "lastSale": "2026-01-29"
-        }
+        "surfacedAt": "2026-08-20T02:06:20.217Z"
       },
       {
         "huntId": "schulz-sketch",
@@ -985,9 +890,33 @@
           "feedbackScore": 874
         },
         "listedAt": "2026-08-17T13:36:36.000Z",
-        "webUrl": "https://www.ebay.com/itm/117364388152?_skw=charles+schulz+original+drawing&hash=item1b53767138:g:n4cAAOSwf9poNMeq&amdata=enc%3AAQALAAABAACCtXRWQnOEpyOqnQQ8KGbY9UWw3gbogn9XDkSgAYkyKljDqeHTYRy3pXxDuYfYjDKHrWoMS4Ms19Lt8uEM3QinY1Nd2K7Zpmcps69BUSw0Y%2BR8x3kxuYni9M3FwEPI7e3JV%2BJWamCjr87vzMgCVypY3PdXEMcppl98QWNFaHy5U69VbDEaWx1FzM%2BK4pgmQ75vxX0apd1kNMCsZ3%2BYp%2Faxtq%2BxJBnRmXb%2B%2Fp6GWWsGOJvhneAtS24q9BYBPpJ9ymxP2nITG7x2cJPjEoW%2BY0ImfOPD4SBTM2RddK7tBAfwodEDbgManBXGd%2BQUST5pelXptemkCGZoUqiC6IUPlhk%3D",
+        "webUrl": "https://www.ebay.com/itm/117364388152?_skw=charles+schulz+original+drawing&hash=item1b53767138:g:n4cAAOSwf9poNMeq&amdata=enc%3AAQALAAABAACCtXRWQnOEpyOqnQQ8KGbY9UWw3gbogn9XDkSgAYkyKljDqeHTYRy3pXxDuYfYjDKHrWoMS4Ms19Lt8uEM3QinY1Nd2K7Zpmcps69BUSw0Y%2BR8x3kxuYni9M3FwEPI7e3JV%2BJWamCjr87vzMgCVyprsqJhns5ECbOxdzgg7edhqw92lk%2FTa3hW2i%2BvQFzcWb8cbGs6BveozX3i993XVd%2FEBzjA4MjGNPdsKPbT%2B2fDHWbkaEDtKbT4X1diTHzE4hLsMtDOwOf2YEbgqQ1iDpzU2bP3mZTkncyZflm5jW4zPBQJQjRpMQYt%2BizY4BqqZdIje4sRIMNyjrJzOTb0Bro%3D",
         "marketplace": "EBAY_US",
-        "surfacedAt": "2026-08-20T01:48:24.748Z"
+        "surfacedAt": "2026-08-20T02:06:20.217Z"
+      },
+      {
+        "huntId": "eagles-cards",
+        "huntLabel": "Philadelphia Eagles sports cards",
+        "noBook": true,
+        "id": "sjwrv7",
+        "itemId": "v1|158196487077|0",
+        "legacyItemId": "158196487077",
+        "vertical": "sports-cards",
+        "key": "rated-saquon-barkley|2018|donruss|306|raw",
+        "title": "2018 Panini Donruss - Rated Rookie Saquon Barkley #306 (RC) Philadelphia Eagles",
+        "imageUrl": "https://i.ebayimg.com/images/g/A8cAAeSwgvRqgnaz/s-l225.jpg",
+        "allIn": 8.5,
+        "itemPrice": 8.5,
+        "shipping": 0,
+        "seller": {
+          "username": "buckst5",
+          "feedbackPercentage": 98.8,
+          "feedbackScore": 204
+        },
+        "listedAt": "2026-08-17T02:50:21.000Z",
+        "webUrl": "https://www.ebay.com/itm/158196487077?_skw=philadelphia+eagles&hash=item24d53ed3a5:g:A8cAAeSwgvRqgnaz",
+        "marketplace": "EBAY_US",
+        "surfacedAt": "2026-08-20T02:06:20.217Z"
       },
       {
         "huntId": "schulz-signed",
@@ -1008,9 +937,9 @@
           "feedbackScore": 2384
         },
         "listedAt": "2026-08-16T22:30:00.000Z",
-        "webUrl": "https://www.ebay.com/itm/168618446210?_skw=charles+schulz+signed&hash=item2742714d82:g:6qoAAOSw6jdje7Xy&amdata=enc%3AAQALAAAA8ACCtXRWQnOEpyOqnQQ8KGYzc4qmZYRp8qhsxM3bUEivkbuptkOm5E9z%2BUyw7%2BfoiaDNlz1afjI7VN2cNgEgqoaFqRs9BfFfV8utM5mBJQ1TtY2ggEqW3WUV5YgZsLozyOg84S0MGwRt2oBBqWWZQRKch2sWuO%2BtvxQ41V5bzIyq2hgbK7ZbCGOP2YRVDO7zOMZMWtpQiuNiDF5lJspI3aaTyaa0RQpz5Hh9%2Br8FckpdlDdxABOTvWD%2FPNlPoqsB%2ForiFptU8yVkaIHLcqh06vDofJc1Gq6uU34GS1kCrJwBAuloQEehXzPJaLrhsLE%2F1Q%3D%3D",
+        "webUrl": "https://www.ebay.com/itm/168618446210?_skw=charles+schulz+signed&hash=item2742714d82:g:6qoAAOSw6jdje7Xy&amdata=enc%3AAQALAAAA8ACCtXRWQnOEpyOqnQQ8KGYzc4qmZYRp8qhsxM3bUEivkbuptkOm5E9z%2BUyw7%2BfoiaDNlz1afjI7VN2cNgEgqoaFqRs9BfFfV8utM5mBJQ1TtY2ggEqW3WUV5YgZsLozyOg84S0MGwRt2oBBqWWZQRIZfb%2BnFuaY1lz41NBMhpWXR8uBo6CWO83wFhLo%2Fvdkt7Sb9ohWwzrGET5JVIfM1I3VR%2F2%2BiXkYVUYsZP%2BbOQfy41dCaM2JeceIVf9Be6uuV5oT4QrqJS1vK9Udf8LWDsislIbAbIytmXXcy3c1KOM%2FwfEDv0L3nXBLy5o3iFuFtw%3D%3D",
         "marketplace": "EBAY_US",
-        "surfacedAt": "2026-08-20T01:48:24.748Z",
+        "surfacedAt": "2026-08-20T02:06:20.217Z",
         "context": {
           "k": "charles-schulz",
           "kind": "signer",
@@ -1037,12 +966,12 @@
         "seller": {
           "username": "sunshine-collectibles",
           "feedbackPercentage": 99.7,
-          "feedbackScore": 1818
+          "feedbackScore": 1819
         },
         "listedAt": "2026-08-16T22:24:44.000Z",
         "webUrl": "https://www.ebay.com/itm/800520073652?_skw=charles+schulz+signed&hash=itemba62b6f1b4:g:GysAAeSwWKNqgjXR",
         "marketplace": "EBAY_US",
-        "surfacedAt": "2026-08-20T01:48:24.748Z",
+        "surfacedAt": "2026-08-20T02:06:20.217Z",
         "context": {
           "k": "charles-schulz",
           "kind": "signer",
@@ -1072,9 +1001,9 @@
           "feedbackScore": 2384
         },
         "listedAt": "2026-08-16T19:00:00.000Z",
-        "webUrl": "https://www.ebay.com/itm/168618446235?_skw=charles+schulz+signed&hash=item2742714d9b:g:bjMAAOSwOnVj7xrG&amdata=enc%3AAQALAAAA8ACCtXRWQnOEpyOqnQQ8KGZYHh4KgjWPV3HOGz8bz8MW9GCUrm6S7vY3rt1Uicx11USIObnYU8cg1MRJSnveW0%2BykKFj7ctyuP%2FFS7f2U7b6jd7X5gSszBO964S8S4Ze8BjON4EhyfWQGjIz3RAacmRq7TfI4Be9nnROseosNnYvhQjD43xi%2B9nXzAYy8GUjlEM207S61XcsIpqwyUGtKO%2BzkkFHzWYm7b7F4d2W%2FCU3Fumdz1wszijtFQw2WIKrv6TJJHz%2BhrYuQeUBeBKqwAuAfGupilgzrkoyFSE2ZlF%2Fxg0W%2BvP87dS0MdANgtCFEA%3D%3D",
+        "webUrl": "https://www.ebay.com/itm/168618446235?_skw=charles+schulz+signed&hash=item2742714d9b:g:bjMAAOSwOnVj7xrG&amdata=enc%3AAQALAAAA8ACCtXRWQnOEpyOqnQQ8KGZYHh4KgjWPV3HOGz8bz8MW9GCUrm6S7vY3rt1Uicx11USIObnYU8cg1MRJSnveW0%2BykKFj7ctyuP%2FFS7f2U7b6jd7X5gSszBO964S8S4Ze8BjON4EhyfWQGjIz3RAacmQEi4HVsYgb%2FwbC32dnJW02cd0l4jQmlKcDTb3mEMQAcke1ewd1yU%2FovmYIjOH36FX4srl2dZfHXOkE7GIUyT8evXVbJe8qz20mY7DSLh31QXr3uidMhMRQ9BGy9vJ7MKoGmHDh0SNE7LvHAJRDsPE%2B5NnyiUDzZuyTB%2BG92mVayQ%3D%3D",
         "marketplace": "EBAY_US",
-        "surfacedAt": "2026-08-20T01:48:24.748Z",
+        "surfacedAt": "2026-08-20T02:06:20.217Z",
         "context": {
           "k": "charles-schulz",
           "kind": "signer",
@@ -1106,7 +1035,7 @@
         "listedAt": "2026-08-16T14:00:00.000Z",
         "webUrl": "https://www.ebay.com/itm/168617078707?_skw=charles+schulz+signed&hash=item27425c6fb3:g:bjMAAOSwOnVj7xrG",
         "marketplace": "EBAY_US",
-        "surfacedAt": "2026-08-20T01:48:24.748Z",
+        "surfacedAt": "2026-08-20T02:06:20.217Z",
         "context": {
           "k": "charles-schulz",
           "kind": "signer",
@@ -1138,7 +1067,7 @@
         "listedAt": "2026-08-16T11:30:40.000Z",
         "webUrl": "https://www.ebay.com/itm/117362495109?_skw=charles+schulz+original+drawing&hash=item1b53598e85:g:Ka8AAOSw1JxoOKy9",
         "marketplace": "EBAY_US",
-        "surfacedAt": "2026-08-20T01:48:24.748Z"
+        "surfacedAt": "2026-08-20T02:06:20.217Z"
       },
       {
         "huntId": "schulz-sketch",
@@ -1161,7 +1090,7 @@
         "listedAt": "2026-08-16T11:30:40.000Z",
         "webUrl": "https://www.ebay.com/itm/117362495156?_skw=charles+schulz+original+drawing&hash=item1b53598eb4:g:iTsAAOSwM-5oBS-r",
         "marketplace": "EBAY_US",
-        "surfacedAt": "2026-08-20T01:48:24.748Z"
+        "surfacedAt": "2026-08-20T02:06:20.217Z"
       },
       {
         "huntId": "schulz-signed",
@@ -1182,9 +1111,9 @@
           "feedbackScore": 3
         },
         "listedAt": "2026-08-15T03:55:37.000Z",
-        "webUrl": "https://www.ebay.com/itm/237006911411?_skw=charles+schulz+signed&hash=item372eb677b3:g:J5EAAeSwWcdqf-LS&amdata=enc%3AAQALAAAA8ACCtXRWQnOEpyOqnQQ8KGbpIDdG4CV8kaGt8rbClx5hjj3RecuFsjI04Sw%2BNFyelF1RRfpumhyHsquBot9Avbya7u7NjY9u2H5RsGQYkaTVDrFd%2BVVWL1MlYFd%2BHP2I4Xj5F31uqzvT0tO8QRzr9s3RmTLcz%2B%2BLF7JgSpeTLPVT6HLsQJRGv3moqfyh14wf7C7Wh1419rt%2BZ%2FQ0wFaga2NZ3%2Bw6ZNJd%2FkNiwEuitxualoQbohNOTrmzVSE1NwpinrpzDsJX38ow5dW3SDDtctOU8gdWfnrJwidA3PwnS%2F9%2FJhstqGjV2NkMvN%2BnRpeLWQ%3D%3D",
+        "webUrl": "https://www.ebay.com/itm/237006911411?_skw=charles+schulz+signed&hash=item372eb677b3:g:J5EAAeSwWcdqf-LS&amdata=enc%3AAQALAAAA8ACCtXRWQnOEpyOqnQQ8KGbpIDdG4CV8kaGt8rbClx5hjj3RecuFsjI04Sw%2BNFyelF1RRfpumhyHsquBot9Avbya7u7NjY9u2H5RsGQYkaTVDrFd%2BVVWL1MlYFd%2BHP2I4Xj5F31uqzvT0tO8QRzr9s3AkiKiQy%2F8nB%2FfZYmkmf8DY24ZN8CCwD4soB7nklCOQH%2BZQSZ%2BvtYCfcnBn4LYblUE7CzHIJ98sTXxrVaDx5zS3tfPltF9BlmSGY7iwa9an9%2F8J%2FWaxMSPB%2BUYQE6AOOJQcOrBgkC3SL9b5xHsMGNBJS0wPPicuRXINJdClZbhgg%3D%3D",
         "marketplace": "EBAY_US",
-        "surfacedAt": "2026-08-20T01:48:24.748Z",
+        "surfacedAt": "2026-08-20T02:06:20.217Z",
         "context": {
           "k": "charles-schulz",
           "kind": "signer",
@@ -1216,7 +1145,7 @@
         "listedAt": "2026-08-14T20:18:00.000Z",
         "webUrl": "https://www.ebay.com/itm/327309156916?_skw=charles+schulz+signed&hash=item4c35256234:g:3bAAAOSwZHpj5zbY",
         "marketplace": "EBAY_US",
-        "surfacedAt": "2026-08-20T01:48:24.748Z"
+        "surfacedAt": "2026-08-20T02:06:20.217Z"
       },
       {
         "huntId": "schulz-sketch",
@@ -1239,7 +1168,7 @@
         "listedAt": "2026-08-08T23:57:38.000Z",
         "webUrl": "https://www.ebay.com/itm/117348037338?_skw=charles+schulz+original+drawing&hash=item1b527cf2da:g:xZsAAOSwgWBn00VJ",
         "marketplace": "EBAY_US",
-        "surfacedAt": "2026-08-20T01:48:24.748Z"
+        "surfacedAt": "2026-08-20T02:06:20.217Z"
       },
       {
         "huntId": "schulz-sketch",
@@ -1262,7 +1191,30 @@
         "listedAt": "2026-08-08T23:57:38.000Z",
         "webUrl": "https://www.ebay.com/itm/117348037351?_skw=charles+schulz+original+drawing&hash=item1b527cf2e7:g:i4MAAOSwLp9nRhr1",
         "marketplace": "EBAY_US",
-        "surfacedAt": "2026-08-20T01:48:24.748Z"
+        "surfacedAt": "2026-08-20T02:06:20.217Z"
+      },
+      {
+        "huntId": "game-used-football-jerseys",
+        "huntLabel": "Game-used football jerseys",
+        "noBook": true,
+        "id": "o29psi",
+        "itemId": "v1|158165295947|0",
+        "legacyItemId": "158165295947",
+        "vertical": "sports",
+        "title": "2021 Joey Bosa Chargers Powder Blue Authentic Game Issued Un Worn Used Jersey",
+        "imageUrl": "https://i.ebayimg.com/images/g/auoAAeSwCMRqJmUy/s-l225.jpg",
+        "allIn": 313.51,
+        "itemPrice": 299,
+        "shipping": 14.51,
+        "seller": {
+          "username": "ralob4",
+          "feedbackPercentage": 100,
+          "feedbackScore": 810
+        },
+        "listedAt": "2026-08-08T00:39:48.000Z",
+        "webUrl": "https://www.ebay.com/itm/158165295947?_skw=game+used+jersey&hash=item24d362e34b:g:auoAAeSwCMRqJmUy",
+        "marketplace": "EBAY_US",
+        "surfacedAt": "2026-08-20T02:06:20.217Z"
       },
       {
         "huntId": "fossils",
@@ -1283,9 +1235,9 @@
           "feedbackScore": 8382
         },
         "listedAt": "2026-08-07T20:23:37.000Z",
-        "webUrl": "https://www.ebay.com/itm/358897900680?_skw=fossil&hash=item538ffb5c88:g:INUAAeSwBmRqMYld&amdata=enc%3AAQALAAAA4ACCtXRWQnOEpyOqnQQ8KGZvT2cbQTJxAPzEBPtGjlipFWCXEgvOSlso9xmULNYhJjRxX1cBqWNagaO7cYGTW8aBXzy5Fg%2BsTlem2eEt0GJ76GGe0U2PQaEsQg2E3tRngaPw8rbS%2BB6iFGtjFxeYkZHdYok8K1qi3BIQrJWYOP0qgOpdt0apsAh6jBwblDFTV3lbsxQT8JvzD6IP1SFLPnfsT0cB82fMRTFs0YMKrECZoSJdaIo06%2FFdl9bvTW3Z0S8Qhu4Dgabb77AkpTg1K5Z4GIdfCxeKs4BctUpDhFPn",
+        "webUrl": "https://www.ebay.com/itm/358897900680?_skw=fossil&hash=item538ffb5c88:g:INUAAeSwBmRqMYld&amdata=enc%3AAQALAAAA4ACCtXRWQnOEpyOqnQQ8KGZvT2cbQTJxAPzEBPtGjlipFWCXEgvOSlso9xmULNYhJjRxX1cBqWNagaO7cYGTW8aBXzy5Fg%2BsTlem2eEt0GJ76GGe0U2PQaEsQg2E3tRngaPw8rbS%2BB6iFGtjFxeYkZH4M6am6XA7RliQRvakxzQzvD5Ow%2BJKgjTSLwRzqpsuhiTysSooLr%2BW3nxAg5K1yHebyPm0jQ9opvoYBd%2BOOE7WR5USTUSP5dcOQGR1NxdvhOU4uRTU%2FXFxMIq09XW1KDB1Hk17bjwXgg773qwKXAK5",
         "marketplace": "EBAY_US",
-        "surfacedAt": "2026-08-20T01:48:24.748Z"
+        "surfacedAt": "2026-08-20T02:06:20.217Z"
       },
       {
         "huntId": "eagles-cards",
@@ -1304,12 +1256,12 @@
         "seller": {
           "username": "sprite8",
           "feedbackPercentage": 100,
-          "feedbackScore": 4394
+          "feedbackScore": 4395
         },
         "listedAt": "2026-08-06T14:47:17.000Z",
         "webUrl": "https://www.ebay.com/itm/278253282742?_skw=philadelphia+eagles&hash=item40c93025b6:g:MTgAAeSwahlqbhwr",
         "marketplace": "EBAY_US",
-        "surfacedAt": "2026-08-20T01:48:24.748Z"
+        "surfacedAt": "2026-08-20T02:06:20.217Z"
       },
       {
         "huntId": "eagles-cards",
@@ -1332,7 +1284,31 @@
         "listedAt": "2026-08-02T22:57:11.000Z",
         "webUrl": "https://www.ebay.com/itm/168583967622?_skw=philadelphia+eagles&hash=item2740633386:g:vTsAAeSwLQFqb8l1",
         "marketplace": "EBAY_US",
-        "surfacedAt": "2026-08-20T01:48:24.748Z"
+        "surfacedAt": "2026-08-20T02:06:20.217Z"
+      },
+      {
+        "huntId": "eagles-cards",
+        "huntLabel": "Philadelphia Eagles sports cards",
+        "noBook": true,
+        "id": "u1kvj5",
+        "itemId": "v1|307099911240|0",
+        "legacyItemId": "307099911240",
+        "vertical": "sports-cards",
+        "key": "reggie-white|1986|topps|275|raw",
+        "title": "1986 Topps Reggie White #275 Rookie Philadelphia Eagles NFL NM/NM-",
+        "imageUrl": "https://i.ebayimg.com/images/g/lisAAeSw2L1qffTl/s-l225.jpg",
+        "allIn": 7.98,
+        "itemPrice": 6.99,
+        "shipping": 0.99,
+        "seller": {
+          "username": "gameofcards",
+          "feedbackPercentage": 99.9,
+          "feedbackScore": 40873
+        },
+        "listedAt": "2026-08-01T14:05:56.000Z",
+        "webUrl": "https://www.ebay.com/itm/307099911240?_skw=philadelphia+eagles&hash=item478094c448:g:lisAAeSw2L1qffTl",
+        "marketplace": "EBAY_US",
+        "surfacedAt": "2026-08-20T02:06:20.217Z"
       },
       {
         "huntId": "fossils",
@@ -1355,7 +1331,7 @@
         "listedAt": "2026-07-19T18:14:58.000Z",
         "webUrl": "https://www.ebay.com/itm/198509368777?_skw=fossil&hash=item2e381495c9:g:28AAAeSw6wpqXRNV",
         "marketplace": "EBAY_US",
-        "surfacedAt": "2026-08-20T01:48:24.748Z"
+        "surfacedAt": "2026-08-20T02:06:20.217Z"
       },
       {
         "huntId": "fossils",
@@ -1378,7 +1354,7 @@
         "listedAt": "2026-07-01T04:42:46.000Z",
         "webUrl": "https://www.ebay.com/itm/407039436347?_skw=fossil&hash=item5ec570e63b:g:YIEAAeSwt-ZqRJq~",
         "marketplace": "EBAY_US",
-        "surfacedAt": "2026-08-20T01:48:24.748Z",
+        "surfacedAt": "2026-08-20T02:06:20.217Z",
         "context": {
           "k": "trilobite",
           "kind": "class",
@@ -1408,9 +1384,9 @@
           "feedbackScore": 789
         },
         "listedAt": "2026-06-26T23:15:05.000Z",
-        "webUrl": "https://www.ebay.com/itm/318509139368?_skw=maurice+sendak+original+drawing&hash=item4a289fc5a8:g:tCcAAeSw0-1qPwez&amdata=enc%3AAQALAAABAACCtXRWQnOEpyOqnQQ8KGb1IMwa0svu19oqQGi9rmZ1tErtv2IG84SktYluBu2NHOwOta9%2BEMmBf8jr4%2BsOp1J%2FFCBVPdBLve2Xb6iqL8yNHiJHWdo1sLHTkymhQ3OUYv9A7qk5YcmY3zu2nR7so5Pv8miyKBUsHz3%2BH5OmN%2FVUDbdh4DBAPIC3n5b%2BOHXhvP4x9nu5aHFQbjPtB4cDA9MN6HUyjAVSsQf%2Bfa3HJ0nm%2BNuPI%2FxHsLipG%2BKN5thkcP4Rpy73%2BcY4euALonYgXBomEWeYISszMOZyYX2nRkHWLwQuhnezAXm4sWaWh9dvWA%2F7hNfTKXFZtzuZCTnGxD4%3D",
+        "webUrl": "https://www.ebay.com/itm/318509139368?_skw=maurice+sendak+original+drawing&hash=item4a289fc5a8:g:tCcAAeSw0-1qPwez",
         "marketplace": "EBAY_US",
-        "surfacedAt": "2026-08-20T01:48:24.748Z"
+        "surfacedAt": "2026-08-20T02:06:20.217Z"
       },
       {
         "huntId": "schulz-sketch",
@@ -1433,7 +1409,7 @@
         "listedAt": "2026-04-26T23:05:28.000Z",
         "webUrl": "https://www.ebay.com/itm/257469952480?_skw=charles+schulz+original+drawing&hash=item3bf267b1e0:g:4QIAAeSwHUxp6VHI",
         "marketplace": "EBAY_US",
-        "surfacedAt": "2026-08-20T01:48:24.748Z",
+        "surfacedAt": "2026-08-20T02:06:20.217Z",
         "context": {
           "k": "charles-schulz",
           "kind": "signer",
@@ -1465,7 +1441,7 @@
         "listedAt": "2026-01-01T18:49:01.000Z",
         "webUrl": "https://www.ebay.com/itm/205964656095?_skw=maurice+sendak+original+drawing&hash=item2ff4733ddf:g:if8AAeSwkwVpVsE2",
         "marketplace": "EBAY_US",
-        "surfacedAt": "2026-08-20T01:48:24.748Z"
+        "surfacedAt": "2026-08-20T02:06:20.217Z"
       },
       {
         "huntId": "sendak-sketch",
@@ -1488,7 +1464,7 @@
         "listedAt": "2025-07-21T07:00:01.000Z",
         "webUrl": "https://www.ebay.com/itm/257011581916?_skw=maurice+sendak+original+drawing&hash=item3bd71583dc:g:-YoAAeSwhgtocIIk",
         "marketplace": "EBAY_US",
-        "surfacedAt": "2026-08-20T01:48:24.748Z",
+        "surfacedAt": "2026-08-20T02:06:20.217Z",
         "context": {
           "k": "maurice-sendak",
           "kind": "signer",
@@ -1520,7 +1496,7 @@
         "listedAt": "2024-07-29T07:00:01.000Z",
         "webUrl": "https://www.ebay.com/itm/256585561410?_skw=maurice+sendak+original+drawing&hash=item3bbdb0f542:g:qIMAAOSwjnhmpl9k",
         "marketplace": "EBAY_US",
-        "surfacedAt": "2026-08-20T01:48:24.748Z"
+        "surfacedAt": "2026-08-20T02:06:20.217Z"
       }
     ]
   },
@@ -1529,24 +1505,24 @@
       "huntId": "sweep:fossils",
       "huntLabel": "context lead — not a priced call",
       "noBook": true,
-      "id": "1ll3grm",
-      "itemId": "v1|820024857208|0",
-      "legacyItemId": "820024857208",
+      "id": "1j1i693",
+      "itemId": "v1|377434009752|0",
+      "legacyItemId": "377434009752",
       "vertical": "science",
-      "title": "Iridescent Ammonite Shell Fossil Rare Madagascar Natural 38g",
-      "imageUrl": "https://i.ebayimg.com/images/g/DfsAAeSwNRJqhlL6/s-l225.jpg",
-      "allIn": 31.65,
-      "itemPrice": 14.18,
-      "shipping": 17.47,
+      "title": "6.51LB Top Natural Horn Screw Fossil Ammonite Conch Crystal Specimen Healing",
+      "imageUrl": "https://i.ebayimg.com/images/g/ziMAAeSwQ61qOeGb/s-l225.jpg",
+      "allIn": 220,
+      "itemPrice": 220,
+      "shipping": 0,
       "seller": {
-        "username": "lumierecrystalsandminerals",
+        "username": "xinrancrystal",
         "feedbackPercentage": 100,
-        "feedbackScore": 97
+        "feedbackScore": 82
       },
-      "listedAt": "2026-08-20T01:08:45.000Z",
-      "webUrl": "https://www.ebay.com/itm/820024857208?hash=itembeed4a5278:g:DfsAAeSwNRJqhlL6",
+      "listedAt": "2026-08-20T01:57:20.000Z",
+      "webUrl": "https://www.ebay.com/itm/377434009752?hash=item57e0d1f098:g:ziMAAeSwQ61qOeGb",
       "marketplace": "EBAY_US",
-      "surfacedAt": "2026-08-20T01:48:24.748Z",
+      "surfacedAt": "2026-08-20T02:06:20.217Z",
       "context": {
         "k": "ammonite",
         "kind": "class",
@@ -1561,690 +1537,228 @@
       "huntId": "sweep:vintage-computing",
       "huntLabel": "context lead — not a priced call",
       "noBook": true,
-      "id": "hxhjqe",
-      "itemId": "v1|278297381201|0",
-      "legacyItemId": "278297381201",
+      "id": "1w2yb01",
+      "itemId": "v1|206504597959|0",
+      "legacyItemId": "206504597959",
       "vertical": "science",
-      "title": "1992 THE SOFTWARE TOOLWORKS U.S. ATLAS USER'S GUIDE V. 2.1 For MacIntosh~Vintage",
-      "imageUrl": "https://i.ebayimg.com/images/g/PIgAAeSwc8FqhlSm/s-l225.jpg",
-      "allIn": 14.129999999999999,
-      "itemPrice": 9,
-      "shipping": 5.13,
-      "seller": {
-        "username": "ebazemom",
-        "feedbackPercentage": 100,
-        "feedbackScore": 1793
-      },
-      "listedAt": "2026-08-20T01:19:43.000Z",
-      "webUrl": "https://www.ebay.com/itm/278297381201?hash=item40cbd10951:g:PIgAAeSwc8FqhlSm",
-      "marketplace": "EBAY_US",
-      "surfacedAt": "2026-08-20T01:48:24.748Z",
-      "context": {
-        "k": "macintosh-vintage",
-        "kind": "class",
-        "med": 1144,
-        "lo": 334,
-        "hi": 6097,
-        "n": 109,
-        "lastSale": "2026-01-29"
-      }
-    },
-    {
-      "huntId": "sweep:fossils",
-      "huntLabel": "context lead — not a priced call",
-      "noBook": true,
-      "id": "1ddl3b9",
-      "itemId": "v1|237017864920|0",
-      "legacyItemId": "237017864920",
-      "vertical": "science",
-      "title": "4.62LB Natural Whole Ammonite Fossilized Crystal Mineral Specimen Reiki Healing",
-      "imageUrl": "https://i.ebayimg.com/images/g/9DAAAeSwWptqNz10/s-l225.jpg",
-      "allIn": 180,
-      "itemPrice": 180,
+      "title": "Genuine Apple Macintosh PowerBook 12x CD-ROM Module M3628. Parts Or Not Working.",
+      "imageUrl": "https://i.ebayimg.com/images/g/6LcAAeSw0HxqhkqY/s-l225.jpg",
+      "allIn": 40,
+      "itemPrice": 40,
       "shipping": 0,
       "seller": {
-        "username": "xuanyuan-crystal",
-        "feedbackPercentage": 100,
-        "feedbackScore": 184
-      },
-      "listedAt": "2026-08-20T01:11:59.000Z",
-      "webUrl": "https://www.ebay.com/itm/237017864920?hash=item372f5d9ad8:g:9DAAAeSwWptqNz10",
-      "marketplace": "EBAY_US",
-      "surfacedAt": "2026-08-20T01:48:24.748Z",
-      "context": {
-        "k": "ammonite",
-        "kind": "class",
-        "med": 9378,
-        "lo": 1914,
-        "hi": 11122,
-        "n": 106,
-        "lastSale": "2026-07-14"
-      }
-    },
-    {
-      "huntId": "sweep:fossils",
-      "huntLabel": "context lead — not a priced call",
-      "noBook": true,
-      "id": "l9t4cy",
-      "itemId": "v1|287535290786|0",
-      "legacyItemId": "287535290786",
-      "vertical": "science",
-      "title": "4.62LB Large Natural Beautiful Ammonite Fossil Conch Crystal Specimen Healing",
-      "imageUrl": "https://i.ebayimg.com/images/g/UkoAAeSwLgRqKTvi/s-l225.jpg",
-      "allIn": 180,
-      "itemPrice": 180,
-      "shipping": 0,
-      "seller": {
-        "username": "lingshiyuan",
-        "feedbackPercentage": 100,
-        "feedbackScore": 142
-      },
-      "listedAt": "2026-08-20T01:25:06.000Z",
-      "webUrl": "https://www.ebay.com/itm/287535290786?hash=item42f27059a2:g:UkoAAeSwLgRqKTvi",
-      "marketplace": "EBAY_US",
-      "surfacedAt": "2026-08-20T01:48:24.748Z",
-      "context": {
-        "k": "ammonite",
-        "kind": "class",
-        "med": 9378,
-        "lo": 1914,
-        "hi": 11122,
-        "n": 106,
-        "lastSale": "2026-07-14"
-      }
-    },
-    {
-      "huntId": "sweep:fossils",
-      "huntLabel": "context lead — not a priced call",
-      "noBook": true,
-      "id": "tt1g3r",
-      "itemId": "v1|237017857173|0",
-      "legacyItemId": "237017857173",
-      "vertical": "science",
-      "title": "4.11LB Natural Whole Ammonite Fossilized Crystal Mineral Specimen Reiki Healing",
-      "imageUrl": "https://i.ebayimg.com/images/g/31gAAeSwURVqNzyS/s-l225.jpg",
-      "allIn": 180,
-      "itemPrice": 180,
-      "shipping": 0,
-      "seller": {
-        "username": "xuanyuan-crystal",
-        "feedbackPercentage": 100,
-        "feedbackScore": 184
-      },
-      "listedAt": "2026-08-20T01:07:11.000Z",
-      "webUrl": "https://www.ebay.com/itm/237017857173?hash=item372f5d7c95:g:31gAAeSwURVqNzyS",
-      "marketplace": "EBAY_US",
-      "surfacedAt": "2026-08-20T01:48:24.748Z",
-      "context": {
-        "k": "ammonite",
-        "kind": "class",
-        "med": 9378,
-        "lo": 1914,
-        "hi": 11122,
-        "n": 106,
-        "lastSale": "2026-07-14"
-      }
-    },
-    {
-      "huntId": "sweep:fossils",
-      "huntLabel": "context lead — not a priced call",
-      "noBook": true,
-      "id": "j3myle",
-      "itemId": "v1|237017881801|0",
-      "legacyItemId": "237017881801",
-      "vertical": "science",
-      "title": "Rough Dark Gray/Brown Stone Specimen - Possible Meteorite or Tektite",
-      "imageUrl": "https://i.ebayimg.com/images/g/K7MAAeSwNXNqhlU~/s-l225.jpg",
-      "allIn": 80.48,
-      "itemPrice": 75,
-      "shipping": 5.48,
-      "seller": {
-        "username": "hug-4082",
-        "feedbackPercentage": 100,
-        "feedbackScore": 19
-      },
-      "listedAt": "2026-08-20T01:19:39.000Z",
-      "webUrl": "https://www.ebay.com/itm/237017881801?hash=item372f5ddcc9:g:K7MAAeSwNXNqhlU~",
-      "marketplace": "EBAY_US",
-      "surfacedAt": "2026-08-20T01:48:24.748Z",
-      "context": {
-        "k": "meteorite",
-        "kind": "class",
-        "med": 3575,
-        "lo": 550,
-        "hi": 15380,
-        "n": 359,
-        "lastSale": "2026-07-14"
-      }
-    },
-    {
-      "huntId": "sweep:sports-autos",
-      "huntLabel": "context lead — not a priced call",
-      "noBook": true,
-      "id": "mp3ar3",
-      "itemId": "v1|178424853854|0",
-      "legacyItemId": "178424853854",
-      "vertical": "autographs",
-      "title": "Chicago Bears Autographed Wilson Football Keith Traylor Marty Booker",
-      "imageUrl": "https://i.ebayimg.com/images/g/qN8AAeSw2ZtqhlN2/s-l225.jpg",
-      "allIn": 49.980000000000004,
-      "itemPrice": 39.99,
-      "shipping": 9.99,
-      "seller": {
-        "username": "haystackantiques",
-        "feedbackPercentage": 99.8,
-        "feedbackScore": 14550
-      },
-      "listedAt": "2026-08-20T01:09:32.000Z",
-      "webUrl": "https://www.ebay.com/itm/178424853854?hash=item298af3355e:g:qN8AAeSw2ZtqhlN2",
-      "marketplace": "EBAY_US",
-      "surfacedAt": "2026-08-20T01:48:24.748Z",
-      "context": {
-        "k": "chicago-bears",
-        "kind": "signer",
-        "med": 1599,
-        "lo": 218,
-        "hi": 1599,
-        "n": 12,
-        "lastSale": "2025-10-15"
-      }
-    },
-    {
-      "huntId": "sweep:fossils",
-      "huntLabel": "context lead — not a priced call",
-      "noBook": true,
-      "id": "1yyriua",
-      "itemId": "v1|800537165407|0",
-      "legacyItemId": "800537165407",
-      "vertical": "science",
-      "title": "12.23LB Rare! Natural Tentacle Ammonite Fossil Specimen Shell Healing Madagasc",
-      "imageUrl": "https://i.ebayimg.com/images/g/EWQAAeSw18BqSPEN/s-l225.jpg",
-      "allIn": 300,
-      "itemPrice": 300,
-      "shipping": 0,
-      "seller": {
-        "username": "hongxuan-crystal",
-        "feedbackPercentage": 100,
-        "feedbackScore": 290
-      },
-      "listedAt": "2026-08-20T01:12:02.000Z",
-      "webUrl": "https://www.ebay.com/itm/800537165407?hash=itemba63bbbe5f:g:EWQAAeSw18BqSPEN",
-      "marketplace": "EBAY_US",
-      "surfacedAt": "2026-08-20T01:48:24.748Z",
-      "context": {
-        "k": "ammonite",
-        "kind": "class",
-        "med": 9378,
-        "lo": 1914,
-        "hi": 11122,
-        "n": 106,
-        "lastSale": "2026-07-14"
-      }
-    },
-    {
-      "huntId": "sweep:fossils",
-      "huntLabel": "context lead — not a priced call",
-      "noBook": true,
-      "id": "2t1pfw",
-      "itemId": "v1|237017879273|0",
-      "legacyItemId": "237017879273",
-      "vertical": "science",
-      "title": "8.93LB Natural Whole Ammonite Fossilized Crystal Mineral Specimen Reiki Healing",
-      "imageUrl": "https://i.ebayimg.com/images/g/y~4AAeSwhnRqSljg/s-l225.jpg",
-      "allIn": 340,
-      "itemPrice": 340,
-      "shipping": 0,
-      "seller": {
-        "username": "xuanyuan-crystal",
-        "feedbackPercentage": 100,
-        "feedbackScore": 184
-      },
-      "listedAt": "2026-08-20T01:18:05.000Z",
-      "webUrl": "https://www.ebay.com/itm/237017879273?hash=item372f5dd2e9:g:y~4AAeSwhnRqSljg",
-      "marketplace": "EBAY_US",
-      "surfacedAt": "2026-08-20T01:48:24.748Z",
-      "context": {
-        "k": "ammonite",
-        "kind": "class",
-        "med": 9378,
-        "lo": 1914,
-        "hi": 11122,
-        "n": 106,
-        "lastSale": "2026-07-14"
-      }
-    },
-    {
-      "huntId": "sweep:fossils",
-      "huntLabel": "context lead — not a priced call",
-      "noBook": true,
-      "id": "1iln19w",
-      "itemId": "v1|800537122301|0",
-      "legacyItemId": "800537122301",
-      "vertical": "science",
-      "title": "18.15LB Rare! Natural Tentacle Ammonite Fossil Specimen Shell Healing Madagasc",
-      "imageUrl": "https://i.ebayimg.com/images/g/wuEAAeSwtqBqSPCA/s-l225.jpg",
-      "allIn": 400,
-      "itemPrice": 400,
-      "shipping": 0,
-      "seller": {
-        "username": "hongxuan-crystal",
-        "feedbackPercentage": 100,
-        "feedbackScore": 290
-      },
-      "listedAt": "2026-08-20T01:07:15.000Z",
-      "webUrl": "https://www.ebay.com/itm/800537122301?hash=itemba63bb15fd:g:wuEAAeSwtqBqSPCA",
-      "marketplace": "EBAY_US",
-      "surfacedAt": "2026-08-20T01:48:24.748Z",
-      "context": {
-        "k": "ammonite",
-        "kind": "class",
-        "med": 9378,
-        "lo": 1914,
-        "hi": 11122,
-        "n": 106,
-        "lastSale": "2026-07-14"
-      }
-    },
-    {
-      "huntId": "sweep:fossils",
-      "huntLabel": "context lead — not a priced call",
-      "noBook": true,
-      "id": "1jfho2b",
-      "itemId": "v1|287535279870|0",
-      "legacyItemId": "287535279870",
-      "vertical": "science",
-      "title": "17.75LB Large Natural Beautiful Ammonite Fossil Conch Crystal Specimen Healing",
-      "imageUrl": "https://i.ebayimg.com/images/g/HKYAAeSwBCFqRNVx/s-l225.jpg",
-      "allIn": 400,
-      "itemPrice": 400,
-      "shipping": 0,
-      "seller": {
-        "username": "lingshiyuan",
-        "feedbackPercentage": 100,
-        "feedbackScore": 142
-      },
-      "listedAt": "2026-08-20T01:12:09.000Z",
-      "webUrl": "https://www.ebay.com/itm/287535279870?hash=item42f2702efe:g:HKYAAeSwBCFqRNVx",
-      "marketplace": "EBAY_US",
-      "surfacedAt": "2026-08-20T01:48:24.748Z",
-      "context": {
-        "k": "ammonite",
-        "kind": "class",
-        "med": 9378,
-        "lo": 1914,
-        "hi": 11122,
-        "n": 106,
-        "lastSale": "2026-07-14"
-      }
-    },
-    {
-      "huntId": "sweep:vintage-computing",
-      "huntLabel": "context lead — not a priced call",
-      "noBook": true,
-      "id": "c3j06k",
-      "itemId": "v1|407157361976|0",
-      "legacyItemId": "407157361976",
-      "vertical": "science",
-      "title": "WordPerfect Apple Macintosh 3.5” Floppy Beta Test Not For Resale 1987",
-      "imageUrl": "https://i.ebayimg.com/images/g/qlkAAOSwL2BnYudb/s-l225.jpg",
-      "allIn": 96.64,
-      "itemPrice": 89.99,
-      "shipping": 6.65,
-      "seller": {
-        "username": "rapidrapidresale",
-        "feedbackPercentage": 100,
-        "feedbackScore": 1848
-      },
-      "listedAt": "2026-08-20T01:31:14.000Z",
-      "webUrl": "https://www.ebay.com/itm/407157361976?hash=item5ecc784d38:g:qlkAAOSwL2BnYudb",
-      "marketplace": "EBAY_US",
-      "surfacedAt": "2026-08-20T01:48:24.748Z",
-      "context": {
-        "k": "macintosh-vintage",
-        "kind": "class",
-        "med": 1144,
-        "lo": 334,
-        "hi": 6097,
-        "n": 109,
-        "lastSale": "2026-01-29"
-      }
-    },
-    {
-      "huntId": "sweep:sports-autos",
-      "huntLabel": "context lead — not a priced call",
-      "noBook": true,
-      "id": "18q3rrk",
-      "itemId": "v1|318756589503|0",
-      "legacyItemId": "318756589503",
-      "vertical": "autographs",
-      "title": "Jerry Rice Signed Auto NFL The Duke Leather Football Spalding ",
-      "imageUrl": "https://i.ebayimg.com/images/g/SKUAAeSw92lqhlaa/s-l225.jpg",
-      "allIn": 216.45,
-      "itemPrice": 200,
-      "shipping": 16.45,
-      "seller": {
-        "username": "mouelka-23",
-        "feedbackPercentage": 100,
-        "feedbackScore": 2695
-      },
-      "listedAt": "2026-08-20T01:23:13.000Z",
-      "webUrl": "https://www.ebay.com/itm/318756589503?hash=item4a375f8fbf:g:SKUAAeSw92lqhlaa",
-      "marketplace": "EBAY_US",
-      "surfacedAt": "2026-08-20T01:48:24.748Z",
-      "context": {
-        "k": "jerry-rice",
-        "kind": "signer",
-        "med": 2048,
-        "lo": 329,
-        "hi": 2048,
-        "n": 5,
-        "lastSale": "2025-10-15"
-      }
-    },
-    {
-      "huntId": "sweep:sports-autos",
-      "huntLabel": "context lead — not a priced call",
-      "noBook": true,
-      "id": "1a2hj3i",
-      "itemId": "v1|366617176429|0",
-      "legacyItemId": "366617176429",
-      "vertical": "autographs",
-      "title": "Joe Montana Autographed Mini Helmet No COA",
-      "imageUrl": "https://i.ebayimg.com/images/g/uKIAAeSwieZqhlil/s-l225.jpg",
-      "allIn": 85.2,
-      "itemPrice": 75,
-      "shipping": 10.2,
-      "seller": {
-        "username": "philar6377",
-        "feedbackPercentage": 100,
-        "feedbackScore": 104
-      },
-      "listedAt": "2026-08-20T01:31:31.000Z",
-      "webUrl": "https://www.ebay.com/itm/366617176429?hash=item555c16296d:g:uKIAAeSwieZqhlil",
-      "marketplace": "EBAY_US",
-      "surfacedAt": "2026-08-20T01:48:24.748Z",
-      "context": {
-        "k": "joe-montana",
-        "kind": "signer",
-        "med": 541,
-        "lo": 123,
-        "hi": 541,
-        "n": 38,
-        "lastSale": "2026-06-06"
-      }
-    },
-    {
-      "huntId": "sweep:sports-autos",
-      "huntLabel": "context lead — not a priced call",
-      "noBook": true,
-      "id": "7jrpq5",
-      "itemId": "v1|206504532059|0",
-      "legacyItemId": "206504532059",
-      "vertical": "autographs",
-      "title": "Minnesota Twins 2009 Team Signed Black Promotional Baseball Bat",
-      "imageUrl": "https://i.ebayimg.com/images/g/EYUAAeSwHrZqhlKE/s-l225.jpg",
-      "allIn": 120,
-      "itemPrice": 120,
-      "shipping": 0,
-      "seller": {
-        "username": "sweetprice110",
-        "feedbackPercentage": 100,
-        "feedbackScore": 84
-      },
-      "listedAt": "2026-08-20T01:05:46.000Z",
-      "webUrl": "https://www.ebay.com/itm/206504532059?hash=item3014a1185b:g:EYUAAeSwHrZqhlKE",
-      "marketplace": "EBAY_US",
-      "surfacedAt": "2026-08-20T01:48:24.748Z",
-      "context": {
-        "k": "minnesota-twins",
-        "kind": "signer",
-        "med": 540,
-        "lo": 185,
-        "hi": 540,
-        "n": 6,
-        "lastSale": "2024-11-15"
-      }
-    },
-    {
-      "huntId": "sweep:ent-autos",
-      "huntLabel": "context lead — not a priced call",
-      "noBook": true,
-      "id": "19b9evc",
-      "itemId": "v1|198583153090|0",
-      "legacyItemId": "198583153090",
-      "vertical": "autographs",
-      "title": "Olivia De Havilland - Signed Autograph 8x10 Lobby Card - Gone with the Wind",
-      "imageUrl": "https://i.ebayimg.com/images/g/8cEAAeSw5NJqhlS2/s-l225.jpg",
-      "allIn": 55.980000000000004,
-      "itemPrice": 49.99,
-      "shipping": 5.99,
-      "seller": {
-        "username": "autograffiti",
-        "feedbackPercentage": 100,
-        "feedbackScore": 36017
-      },
-      "listedAt": "2026-08-20T01:08:21.000Z",
-      "webUrl": "https://www.ebay.com/itm/198583153090?hash=item2e3c7a71c2:g:8cEAAeSw5NJqhlS2",
-      "marketplace": "EBAY_US",
-      "surfacedAt": "2026-08-20T01:48:24.748Z",
-      "context": {
-        "k": "olivia-de-havilland",
-        "kind": "signer",
-        "med": 250,
-        "lo": 125,
-        "hi": 324,
-        "n": 44,
-        "lastSale": "2026-06-10"
-      }
-    },
-    {
-      "huntId": "sweep:fossils",
-      "huntLabel": "context lead — not a priced call",
-      "noBook": true,
-      "id": "16wlgg9",
-      "itemId": "v1|398305863224|0",
-      "legacyItemId": "398305863224",
-      "vertical": "science",
-      "title": "Kaalijärv IAB-mg crater-forming iron meteorite 350.5 gram individual fr. Estonia",
-      "imageUrl": "https://i.ebayimg.com/images/g/JD4AAeSwmmZqhlQ5/s-l225.jpg",
-      "allIn": 1426.95,
-      "itemPrice": 1410,
-      "shipping": 16.95,
-      "seller": {
-        "username": "rocksfromspace",
-        "feedbackPercentage": 100,
-        "feedbackScore": 45
-      },
-      "listedAt": "2026-08-20T01:22:02.000Z",
-      "webUrl": "https://www.ebay.com/itm/398305863224?hash=item5cbce12638:g:JD4AAeSwmmZqhlQ5",
-      "marketplace": "EBAY_US",
-      "surfacedAt": "2026-08-20T01:48:24.748Z",
-      "context": {
-        "k": "meteorite",
-        "kind": "class",
-        "med": 3575,
-        "lo": 550,
-        "hi": 15380,
-        "n": 359,
-        "lastSale": "2026-07-14"
-      }
-    },
-    {
-      "huntId": "sweep:ent-autos",
-      "huntLabel": "context lead — not a priced call",
-      "noBook": true,
-      "id": "101o5hs",
-      "itemId": "v1|318756517881|0",
-      "legacyItemId": "318756517881",
-      "vertical": "autographs",
-      "title": "Taylor Swift - The Tortured Poets Department SIGNED CD FRAMED TTPD W/ HEART",
-      "imageUrl": "https://i.ebayimg.com/images/g/mTwAAeSwcJ1qhlPS/s-l225.jpg",
-      "allIn": 124.99,
-      "itemPrice": 124.99,
-      "shipping": 0,
-      "seller": {
-        "username": "unconventional.anomalies",
-        "feedbackPercentage": 100,
-        "feedbackScore": 591
-      },
-      "listedAt": "2026-08-20T01:10:21.000Z",
-      "webUrl": "https://www.ebay.com/itm/318756517881?hash=item4a375e77f9:g:mTwAAeSwcJ1qhlPS",
-      "marketplace": "EBAY_US",
-      "surfacedAt": "2026-08-20T01:48:24.748Z",
-      "context": {
-        "k": "taylor-swift",
-        "kind": "signer",
-        "med": 305,
-        "lo": 183,
-        "hi": 734,
-        "n": 227,
-        "lastSale": "2026-07-15"
-      }
-    },
-    {
-      "huntId": "sweep:ent-autos",
-      "huntLabel": "context lead — not a priced call",
-      "noBook": true,
-      "id": "18u57jc",
-      "itemId": "v1|198583152910|0",
-      "legacyItemId": "198583152910",
-      "vertical": "autographs",
-      "title": "Sophia Loren - Signed Autograph 8x10 Color Photo - Marriage Italian Style",
-      "imageUrl": "https://i.ebayimg.com/images/g/3WgAAeSw0BpqhlS7/s-l225.jpg",
-      "allIn": 105.97999999999999,
-      "itemPrice": 99.99,
-      "shipping": 5.99,
-      "seller": {
-        "username": "autograffiti",
-        "feedbackPercentage": 100,
-        "feedbackScore": 36017
-      },
-      "listedAt": "2026-08-20T01:08:18.000Z",
-      "webUrl": "https://www.ebay.com/itm/198583152910?hash=item2e3c7a710e:g:3WgAAeSw0BpqhlS7",
-      "marketplace": "EBAY_US",
-      "surfacedAt": "2026-08-20T01:48:24.748Z",
-      "context": {
-        "k": "sophia-loren",
-        "kind": "signer",
-        "med": 250,
-        "lo": 123,
-        "hi": 307,
-        "n": 133,
-        "lastSale": "2026-06-19"
-      }
-    },
-    {
-      "huntId": "sweep:fossils",
-      "huntLabel": "context lead — not a priced call",
-      "noBook": true,
-      "id": "goxd6q",
-      "itemId": "v1|128035410967|0",
-      "legacyItemId": "128035410967",
-      "vertical": "science",
-      "title": "Sikhote-Alin iron Meteorite thumbprints  all around BURN HOLE 160 gm RUSSIA",
-      "imageUrl": "https://i.ebayimg.com/images/g/oDsAAeSwS3BqhlQH/s-l225.jpg",
-      "allIn": 1709.05,
-      "itemPrice": 1709.05,
-      "shipping": 0,
-      "seller": {
-        "username": "jlacroix1",
+        "username": "retroapes",
         "feedbackPercentage": 99.9,
-        "feedbackScore": 23304
+        "feedbackScore": 4139
       },
-      "listedAt": "2026-08-20T01:14:07.000Z",
-      "webUrl": "https://www.ebay.com/itm/128035410967?hash=item1dcf815417:g:oDsAAeSwS3BqhlQH",
+      "listedAt": "2026-08-20T01:47:40.000Z",
+      "webUrl": "https://www.ebay.com/itm/206504597959?hash=item3014a219c7:g:6LcAAeSw0HxqhkqY",
       "marketplace": "EBAY_US",
-      "surfacedAt": "2026-08-20T01:48:24.748Z",
+      "surfacedAt": "2026-08-20T02:06:20.217Z",
       "context": {
-        "k": "meteorite",
+        "k": "macintosh-vintage",
         "kind": "class",
-        "med": 3575,
-        "lo": 550,
-        "hi": 15380,
-        "n": 359,
+        "med": 1144,
+        "lo": 334,
+        "hi": 6097,
+        "n": 109,
+        "lastSale": "2026-01-29"
+      }
+    },
+    {
+      "huntId": "sweep:fossils",
+      "huntLabel": "context lead — not a priced call",
+      "noBook": true,
+      "id": "9juo17",
+      "itemId": "v1|407157398308|0",
+      "legacyItemId": "407157398308",
+      "vertical": "science",
+      "title": "20 Pcs 11cm Natural Ammonite Dish Fossil Olecranon Conch Crystal Mineral Specime",
+      "imageUrl": "https://i.ebayimg.com/images/g/nroAAeSwbS9qhlpi/s-l225.jpg",
+      "allIn": 499.99,
+      "itemPrice": 499.99,
+      "shipping": 0,
+      "seller": {
+        "username": "jingqucrystal",
+        "feedbackPercentage": 100,
+        "feedbackScore": 978
+      },
+      "listedAt": "2026-08-20T01:50:21.000Z",
+      "webUrl": "https://www.ebay.com/itm/407157398308?hash=item5ecc78db24:g:nroAAeSwbS9qhlpi",
+      "marketplace": "EBAY_US",
+      "surfacedAt": "2026-08-20T02:06:20.217Z",
+      "context": {
+        "k": "ammonite",
+        "kind": "class",
+        "med": 9378,
+        "lo": 1914,
+        "hi": 11122,
+        "n": 106,
         "lastSale": "2026-07-14"
+      }
+    },
+    {
+      "huntId": "sweep:fossils",
+      "huntLabel": "context lead — not a priced call",
+      "noBook": true,
+      "id": "9kkt57",
+      "itemId": "v1|407157398416|0",
+      "legacyItemId": "407157398416",
+      "vertical": "science",
+      "title": "21 Pcs Wholesale Price ! Rainbow Ammonite Fossil Crystal Specimen",
+      "imageUrl": "https://i.ebayimg.com/images/g/LYYAAeSwIR1qhltF/s-l225.jpg",
+      "allIn": 499.99,
+      "itemPrice": 499.99,
+      "shipping": 0,
+      "seller": {
+        "username": "jingqucrystal",
+        "feedbackPercentage": 100,
+        "feedbackScore": 978
+      },
+      "listedAt": "2026-08-20T01:50:25.000Z",
+      "webUrl": "https://www.ebay.com/itm/407157398416?hash=item5ecc78db90:g:LYYAAeSwIR1qhltF",
+      "marketplace": "EBAY_US",
+      "surfacedAt": "2026-08-20T02:06:20.217Z",
+      "context": {
+        "k": "ammonite",
+        "kind": "class",
+        "med": 9378,
+        "lo": 1914,
+        "hi": 11122,
+        "n": 106,
+        "lastSale": "2026-07-14"
+      }
+    },
+    {
+      "huntId": "sweep:vintage-computing",
+      "huntLabel": "context lead — not a priced call",
+      "noBook": true,
+      "id": "dhendb",
+      "itemId": "v1|287535328556|0",
+      "legacyItemId": "287535328556",
+      "vertical": "science",
+      "title": "Apple M4896 Macintosh PowerBook 45W AC Adapter For 1400 3400 G3 Tested TB00",
+      "imageUrl": "https://i.ebayimg.com/images/g/8w0AAeSwpN5qhlzk/s-l225.jpg",
+      "allIn": 123.49,
+      "itemPrice": 89.99,
+      "shipping": 33.5,
+      "seller": {
+        "username": "dannysjapancollectable",
+        "feedbackPercentage": 100,
+        "feedbackScore": 255
+      },
+      "listedAt": "2026-08-20T01:46:18.000Z",
+      "webUrl": "https://www.ebay.com/itm/287535328556?hash=item42f270ed2c:g:8w0AAeSwpN5qhlzk",
+      "marketplace": "EBAY_US",
+      "surfacedAt": "2026-08-20T02:06:20.217Z",
+      "context": {
+        "k": "macintosh-vintage",
+        "kind": "class",
+        "med": 1144,
+        "lo": 334,
+        "hi": 6097,
+        "n": 109,
+        "lastSale": "2026-01-29"
+      }
+    },
+    {
+      "huntId": "sweep:sports-autos",
+      "huntLabel": "context lead — not a priced call",
+      "noBook": true,
+      "id": "bm8k9n",
+      "itemId": "v1|206504606091|0",
+      "legacyItemId": "206504606091",
+      "vertical": "autographs",
+      "title": "Michael Schumacher Signed Ferrari Hat/Cap Red - Formula 1 Racing Original",
+      "imageUrl": "https://i.ebayimg.com/images/g/XgsAAeSwSGdqhlwU/s-l225.jpg",
+      "allIn": 356.94,
+      "itemPrice": 349.99,
+      "shipping": 6.95,
+      "seller": {
+        "username": "rbgerrish",
+        "feedbackPercentage": 100,
+        "feedbackScore": 549
+      },
+      "listedAt": "2026-08-20T01:50:20.000Z",
+      "webUrl": "https://www.ebay.com/itm/206504606091?hash=item3014a2398b:g:XgsAAeSwSGdqhlwU",
+      "marketplace": "EBAY_US",
+      "surfacedAt": "2026-08-20T02:06:20.217Z",
+      "context": {
+        "k": "michael-schumacher",
+        "kind": "signer",
+        "med": 2293,
+        "lo": 228,
+        "hi": 2293,
+        "n": 6,
+        "lastSale": "2023-05-10"
+      }
+    },
+    {
+      "huntId": "sweep:sports-autos",
+      "huntLabel": "context lead — not a priced call",
+      "noBook": true,
+      "id": "1hxoyrv",
+      "itemId": "v1|366617215873|0",
+      "legacyItemId": "366617215873",
+      "vertical": "autographs",
+      "title": "Phil Niekro Signed Official Hall of Fame Presentation Card - Baseball",
+      "imageUrl": "https://i.ebayimg.com/images/g/Z0kAAeSwddFqhl5R/s-l225.jpg",
+      "allIn": 37.589999999999996,
+      "itemPrice": 29.99,
+      "shipping": 7.6,
+      "seller": {
+        "username": "antman123456",
+        "feedbackPercentage": 100,
+        "feedbackScore": 91
+      },
+      "listedAt": "2026-08-20T01:57:07.000Z",
+      "webUrl": "https://www.ebay.com/itm/366617215873?hash=item555c16c381:g:Z0kAAeSwddFqhl5R",
+      "marketplace": "EBAY_US",
+      "surfacedAt": "2026-08-20T02:06:20.217Z",
+      "context": {
+        "k": "phil-niekro",
+        "kind": "signer",
+        "med": 125,
+        "lo": 38,
+        "hi": 411,
+        "n": 10,
+        "lastSale": "2025-05-15"
+      }
+    },
+    {
+      "huntId": "sweep:sports-autos",
+      "huntLabel": "context lead — not a priced call",
+      "noBook": true,
+      "id": "1dw0dva",
+      "itemId": "v1|257691723996|0",
+      "legacyItemId": "257691723996",
+      "vertical": "autographs",
+      "title": "DON MATTINGLY & DWIGHT GOODEN DUAL AUTOGRAPHED 8 X 10 PHOTO. PROOF.",
+      "imageUrl": "https://i.ebayimg.com/images/g/EREAAeSw0ttqWbXx/s-l225.jpg",
+      "allIn": 67.89,
+      "itemPrice": 59.99,
+      "shipping": 7.9,
+      "seller": {
+        "username": "fanyji",
+        "feedbackPercentage": 100,
+        "feedbackScore": 3569
+      },
+      "listedAt": "2026-08-20T01:47:46.000Z",
+      "webUrl": "https://www.ebay.com/itm/257691723996?hash=item3bff9fa8dc:g:EREAAeSw0ttqWbXx",
+      "marketplace": "EBAY_US",
+      "surfacedAt": "2026-08-20T02:06:20.217Z",
+      "context": {
+        "k": "don-mattingly",
+        "kind": "signer",
+        "med": 148,
+        "lo": 79,
+        "hi": 267,
+        "n": 10,
+        "lastSale": "2026-08-08"
       }
     }
   ],
   "closing": [
-    {
-      "id": "26vb2m",
-      "itemId": "v1|168609504469|0",
-      "legacyItemId": "168609504469",
-      "vertical": "sports-cards",
-      "key": "ken-griffey-jr|1989|bowman|220|raw",
-      "title": "Rookie Bowman 1989 Ken Griffey Jr  #220 Seattle Mariners Golden Grading Graded",
-      "imageUrl": "https://i.ebayimg.com/images/g/4acAAeSwfZRqc-mu/s-l225.jpg",
-      "currentBid": 22,
-      "bidCount": 0,
-      "endsAt": "2026-08-20T01:57:38.000Z",
-      "shipping": 5.48,
-      "allInBid": 27.48,
-      "med": 246,
-      "lo": 123,
-      "hi": 269,
-      "n": 11,
-      "lastSale": "2026-01-15",
-      "trend": -0.453,
-      "conf": "high",
-      "bidVsBook": 0.8882926829268293,
-      "risk": {
-        "grade": "C",
-        "score": 44,
-        "reasons": [
-          "raw, no authenticity anchor",
-          "seller 100% feedback",
-          "established seller (388 ratings)",
-          "sparse listing, no item specifics",
-          "not yet enriched (aspects provisional)",
-          "sports-cards: low fake-rate prior"
-        ]
-      },
-      "listedAt": "2026-08-13T01:57:38.000Z",
-      "webUrl": "https://www.ebay.com/itm/168609504469?hash=item2741e8dcd5:g:4acAAeSwfZRqc-mu",
-      "marketplace": "EBAY_US",
-      "evidenceUrl": "https://lectr.bid/key/sports-cards/ken-griffey-jr%7C1989%7Cbowman%7C220%7Craw",
-      "surfacedAt": "2026-08-20T01:48:24.748Z"
-    },
-    {
-      "id": "1msu5o2",
-      "itemId": "v1|336739571756|0",
-      "legacyItemId": "336739571756",
-      "vertical": "autographs",
-      "key": "brooklyn-dodgers|sp",
-      "title": "Brooklyn Dodgers 20 Signed Photo Lot Duke Snider Branca Miksis Sukeforth Sharman",
-      "imageUrl": "https://i.ebayimg.com/images/g/qM8AAeSw1rlqE4kc/s-l225.jpg",
-      "currentBid": 81.55,
-      "bidCount": 0,
-      "endsAt": "2026-08-20T01:59:31.000Z",
-      "shipping": 8.95,
-      "allInBid": 90.5,
-      "med": 151,
-      "lo": 123,
-      "hi": 288,
-      "n": 23,
-      "lastSale": "2024-10-15",
-      "trend": null,
-      "conf": "medium",
-      "bidVsBook": 0.4006622516556292,
-      "risk": {
-        "grade": "C",
-        "score": 40,
-        "reasons": [
-          "raw, no authenticity anchor",
-          "seller 100% feedback",
-          "established seller (9757 ratings)",
-          "sparse listing, no item specifics",
-          "not yet enriched (aspects provisional)",
-          "autographs: elevated fake-rate prior"
-        ]
-      },
-      "listedAt": "2026-08-13T01:59:31.000Z",
-      "webUrl": "https://www.ebay.com/itm/336739571756?hash=item4e673e182c:g:qM8AAeSw1rlqE4kc",
-      "marketplace": "EBAY_US",
-      "evidenceUrl": "https://lectr.bid/key/autographs/brooklyn-dodgers%7Csp",
-      "surfacedAt": "2026-08-20T01:48:24.748Z"
-    },
     {
       "id": "z5n1f3",
       "itemId": "v1|257677214990|0",
@@ -2253,11 +1767,11 @@
       "key": "ken-griffey-jr|1989|bowman|220|raw",
       "title": "1989 Bowman - Ken Griffey Jr #220 (RC) PSA Graded",
       "imageUrl": "https://i.ebayimg.com/images/g/-OwAAeSwtBlqfSph/s-l225.jpg",
-      "currentBid": 8.5,
-      "bidCount": 8,
+      "currentBid": 10.52,
+      "bidCount": 9,
       "endsAt": "2026-08-20T02:23:11.000Z",
       "shipping": 5.99,
-      "allInBid": 14.49,
+      "allInBid": 16.509999999999998,
       "med": 246,
       "lo": 123,
       "hi": 269,
@@ -2265,13 +1779,13 @@
       "lastSale": "2026-01-15",
       "trend": -0.453,
       "conf": "high",
-      "bidVsBook": 0.9410975609756097,
+      "bidVsBook": 0.9328861788617886,
       "risk": {
         "grade": "D",
         "score": 39,
         "reasons": [
           "raw, no authenticity anchor",
-          "established seller (1728 ratings)",
+          "established seller (1729 ratings)",
           "sparse listing, no item specifics",
           "not yet enriched (aspects provisional)",
           "sports-cards: low fake-rate prior"
@@ -2281,7 +1795,7 @@
       "webUrl": "https://www.ebay.com/itm/257677214990?hash=item3bfec2450e:g:-OwAAeSwtBlqfSph",
       "marketplace": "EBAY_US",
       "evidenceUrl": "https://lectr.bid/key/sports-cards/ken-griffey-jr%7C1989%7Cbowman%7C220%7Craw",
-      "surfacedAt": "2026-08-20T01:48:24.748Z"
+      "surfacedAt": "2026-08-20T02:06:20.217Z"
     },
     {
       "id": "cvy11z",
@@ -2320,75 +1834,75 @@
       "webUrl": "https://www.ebay.com/itm/206486999185?hash=item3013959091:g:IY0AAeSwlNtpuhDp",
       "marketplace": "EBAY_US",
       "evidenceUrl": "https://lectr.bid/key/watches/rolex%7C16013",
-      "surfacedAt": "2026-08-20T01:48:24.748Z"
+      "surfacedAt": "2026-08-20T02:06:20.217Z"
     }
   ],
   "stats": {
     "calls": {
-      "search": 77,
-      "getItems": 21
+      "search": 35,
+      "getItems": 18
     },
-    "listingsEvaluated": 11586,
+    "listingsEvaluated": 3532,
     "bySlice": {
       "cards-slabs": {
-        "calls": 8,
-        "listings": 1385
+        "calls": 2,
+        "listings": 341
       },
       "cards-raw": {
         "calls": 1,
         "listings": 0
       },
       "pokemon": {
-        "calls": 18,
-        "listings": 3151
+        "calls": 2,
+        "listings": 346
       },
       "watches": {
-        "calls": 4,
-        "listings": 728
+        "calls": 1,
+        "listings": 174
       },
       "sports-autos": {
         "calls": 1,
-        "listings": 149
+        "listings": 59
       },
       "ent-autos": {
         "calls": 1,
-        "listings": 109
+        "listings": 43
       },
       "historical-autos": {
         "calls": 1,
-        "listings": 2
+        "listings": 0
       },
       "art-prints": {
         "calls": 1,
-        "listings": 180
+        "listings": 0
       },
       "fossils": {
-        "calls": 2,
-        "listings": 254
+        "calls": 1,
+        "listings": 106
       },
       "vintage-computing": {
         "calls": 1,
-        "listings": 26
+        "listings": 8
       },
       "cards-slabs-closing": {
-        "calls": 22,
-        "listings": 4400
+        "calls": 7,
+        "listings": 1398
       },
       "watches-closing": {
         "calls": 2,
-        "listings": 277
+        "listings": 248
       },
       "sports-autos-closing": {
         "calls": 4,
-        "listings": 714
+        "listings": 618
       },
       "ent-autos-closing": {
-        "calls": 2,
-        "listings": 206
+        "calls": 1,
+        "listings": 187
       },
       "historical-autos-closing": {
         "calls": 1,
-        "listings": 8
+        "listings": 6
       }
     },
     "gateReasons": {
@@ -2396,37 +1910,30 @@
         "condition": 2
       },
       "science": {
-        "condition": 5
+        "condition": 6
       },
       "sports-cards": {
-        "noBookRow": 2525,
-        "tooShallow": 30,
-        "thinBook": 5,
-        "sellerFloor": 1
+        "noBookRow": 675,
+        "tooShallow": 7
       },
       "pokemon": {
-        "noBookRow": 139,
-        "tooShallow": 3
+        "noBookRow": 26,
+        "tooShallow": 1
       },
       "watches": {
-        "noBookRow": 16,
-        "tooShallow": 2,
+        "noBookRow": 6,
+        "tooShallow": 3,
         "sellerFloor": 1
       },
       "autographs": {
-        "noBookRow": 39,
-        "tooShallow": 3
-      },
-      "art-editions": {
-        "noBookRow": 7
+        "noBookRow": 10
       }
     },
     "identified": {
-      "sports-cards": 2564,
-      "pokemon": 142,
-      "watches": 20,
-      "autographs": 43,
-      "art-editions": 7
+      "sports-cards": 683,
+      "pokemon": 27,
+      "watches": 11,
+      "autographs": 10
     }
   }
 }
