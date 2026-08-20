@@ -38,9 +38,16 @@ export function generateStaticParams() {
 export function generateMetadata({ params }: { params: { id: string } }): Metadata {
   const deal = allPermalinkDeals(loadBoard()).find((d) => d.id === params.id);
   if (!deal) return { title: 'Deal — Starling' };
+  const description = `${money(deal.allIn)} all-in against a lectr book median of ${money(deal.med)} (${deal.n} settled sales). Risk grade ${deal.risk.grade}.`;
   return {
     title: `${deal.title} — ${depthPct(deal.depth)} under book · Starling`,
-    description: `${money(deal.allIn)} all-in against a lectr book median of ${money(deal.med)} (${deal.n} settled sales). Risk grade ${deal.risk.grade}.`,
+    description,
+    openGraph: {
+      title: `${deal.title} — ${depthPct(deal.depth)} under the book`,
+      description,
+      type: 'website',
+      ...(deal.imageUrl ? { images: [{ url: deal.imageUrl }] } : {}),
+    },
   };
 }
 

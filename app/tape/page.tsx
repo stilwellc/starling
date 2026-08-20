@@ -17,6 +17,12 @@ export const metadata: Metadata = {
   title: 'The Tape — every call Starling made · powered by lectr',
   description:
     "Starling's receipts: every deal we surfaced and what happened to it — sold, ended, or delisted, with the final price where visible. The call is frozen; the outcome is graded against it.",
+  openGraph: {
+    title: 'The Tape · Starling',
+    description:
+      'Every call Starling made, frozen at surface and graded against the outcome — the backtest, in public.',
+    type: 'website',
+  },
 };
 
 export default function TapePage() {

@@ -20,6 +20,11 @@ export function generateMetadata({ params }: { params: { vertical: string } }): 
   return {
     title: `${label} deals — Starling, powered by lectr`,
     description: `Live eBay Buy It Now ${label} listings priced deep under lectr's corpus value, risk-graded and evidence-backed.`,
+    openGraph: {
+      title: `${label} deals · Starling`,
+      description: `${label} on eBay Buy It Now, priced deep under lectr's corpus value.`,
+      type: 'website',
+    },
   };
 }
 
@@ -85,11 +90,29 @@ export default function VerticalPage({ params }: { params: { vertical: string } 
       {stale && <StaleBanner builtAt={board.builtAt} />}
 
       {deals.length > 0 ? (
-        <div className="grid">
-          {deals.map((d) => (
-            <DealCard key={d.id} deal={d} />
-          ))}
-        </div>
+        <>
+          <DealCard deal={deals[0]} density="hero" />
+          {deals.length > 1 && (
+            <div className="grid grid-after-hero">
+              {deals.slice(1, 7).map((d) => (
+                <DealCard key={d.id} deal={d} />
+              ))}
+            </div>
+          )}
+          {deals.length > 7 && (
+            <section className="board-tape" aria-label="The rest of this vertical">
+              <div className="rule-head">
+                <span className="kicker">The rest of the tape</span>
+                <span className="rule-head-count">{deals.length - 7} more</span>
+              </div>
+              <div className="deal-rows">
+                {deals.slice(7).map((d) => (
+                  <DealCard key={d.id} deal={d} density="row" />
+                ))}
+              </div>
+            </section>
+          )}
+        </>
       ) : (
         <EmptyBoard title={`No ${verticalLabel(vertical)} deals qualify right now.`}>
           {`The corpus is live for ${verticalLabel(vertical)}, but no eBay listing currently pins to a key and sits deep enough under book value. This gap is a visible roadmap item, not a hidden fact — coverage per vertical is tracked on the About page.`}

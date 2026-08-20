@@ -1,15 +1,16 @@
 'use client';
 
 /**
- * BoardControls — the mixed board's filter island.
+ * BoardControls — the board's opinionated layout, filterable.
  *
- * The board defaults to the MIXED view (PROPOSAL §2). Vertical chips are FILTERS,
- * not silos: toggling one narrows the already-ranked, already-interleaved list in
- * place — cards get no special slot or ordering. A risk floor lets a buyer hide
- * the D-grade tail without it ever being silently removed from the corpus.
+ * "What the net caught today": the top-ranked deal renders at HERO density,
+ * the next few as grid cards, and the remainder as the tape — compact rows.
+ * Vertical chips are FILTERS with live counts, not silos: toggling one narrows
+ * the already-ranked list in place, and the hero is simply the top of whatever
+ * is shown. A risk floor hides the D-tail without ever removing it.
  *
- * Filtering only ever hides rows the server already rendered — no data is fetched
- * or invented client-side, keeping the static-export contract intact.
+ * Filtering only ever hides rows the server already rendered — no data is
+ * fetched or invented client-side; the static-export contract stays intact.
  */
 import { useMemo, useState } from 'react';
 import type { Deal, Vertical, RiskGrade } from '@/scripts/types';
@@ -17,6 +18,7 @@ import { verticalLabel } from '@/app/lib/display';
 import { DealCard } from './DealCard';
 
 const RISK_ORDER: RiskGrade[] = ['A', 'B', 'C', 'D'];
+const GRID_COUNT = 6; // hero + 6 cards, then the tape
 
 export function BoardControls({ deals }: { deals: Deal[] }) {
   const [vertical, setVertical] = useState<Vertical | 'all'>('all');
@@ -47,6 +49,10 @@ export function BoardControls({ deals }: { deals: Deal[] }) {
     return c;
   }, [deals]);
 
+  const hero = shown[0];
+  const gridDeals = shown.slice(1, 1 + GRID_COUNT);
+  const tapeDeals = shown.slice(1 + GRID_COUNT);
+
   return (
     <>
       <div className="controls" role="region" aria-label="Board filters">
@@ -71,15 +77,12 @@ export function BoardControls({ deals }: { deals: Deal[] }) {
               </button>
             ))}
           </div>
-        </div>
-
-        <div className="control-row">
-          <span className="control-label">Max risk</span>
+          <span className="control-label control-label-right">Max risk</span>
           <div className="chips chips-risk">
             {RISK_ORDER.map((g) => (
               <button
                 key={g}
-                className={`chip chip-risk${maxRisk === g ? ' chip-on' : ''} risk-${g.toLowerCase()}-tint`}
+                className={`chip chip-risk${maxRisk === g ? ' chip-on' : ''}`}
                 onClick={() => setMaxRisk(g)}
                 aria-pressed={maxRisk === g}
                 title={`Show grades up to and including ${g}`}
@@ -93,15 +96,36 @@ export function BoardControls({ deals }: { deals: Deal[] }) {
 
       <p className="showing-count">
         Showing {shown.length} of {deals.length} deals
-        {vertical !== 'all' ? ` in ${verticalLabel(vertical as Vertical)}` : ''}
+        {vertical !== 'all' ? ` in ${verticalLabel(vertical as Vertical)}` : ''} · ranked by depth ×
+        confidence × risk
       </p>
 
       {shown.length > 0 ? (
-        <div className="grid">
-          {shown.map((d) => (
-            <DealCard key={d.id} deal={d} />
-          ))}
-        </div>
+        <>
+          {hero && <DealCard deal={hero} density="hero" />}
+
+          {gridDeals.length > 0 && (
+            <div className="grid grid-after-hero">
+              {gridDeals.map((d) => (
+                <DealCard key={d.id} deal={d} />
+              ))}
+            </div>
+          )}
+
+          {tapeDeals.length > 0 && (
+            <section className="board-tape" aria-label="The rest of the board">
+              <div className="rule-head">
+                <span className="kicker">The rest of the tape</span>
+                <span className="rule-head-count">{tapeDeals.length} more</span>
+              </div>
+              <div className="deal-rows">
+                {tapeDeals.map((d) => (
+                  <DealCard key={d.id} deal={d} density="row" />
+                ))}
+              </div>
+            </section>
+          )}
+        </>
       ) : (
         <div className="empty-inline">
           No deals match this filter right now. Loosen the risk floor or pick another vertical.

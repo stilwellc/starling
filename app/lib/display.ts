@@ -59,6 +59,64 @@ export function money(n: number | null | undefined): string {
   return usd0.format(n);
 }
 
+/** Compact money for dense context lines: $150 · $2.4K · $1.1M. */
+export function moneyCompact(n: number | null | undefined): string {
+  if (n == null || Number.isNaN(n)) return '—';
+  const abs = Math.abs(n);
+  if (abs >= 1_000_000) return `$${trimZero((n / 1_000_000).toFixed(1))}M`;
+  if (abs >= 10_000) return `$${Math.round(n / 1000)}K`;
+  if (abs >= 1_000) return `$${trimZero((n / 1000).toFixed(1))}K`;
+  return usd0.format(n);
+}
+
+function trimZero(s: string): string {
+  return s.endsWith('.0') ? s.slice(0, -2) : s;
+}
+
+/** ISO date → "Jul 2026" — the context-line register. */
+export function monthYear(iso: string | null | undefined): string {
+  if (!iso) return '—';
+  const t = Date.parse(iso);
+  if (Number.isNaN(t)) return '—';
+  return new Date(t).toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+}
+
+/** Freshness for the build stamp: "2 h ago", "35 min ago", "just now". */
+export function relativeTime(iso: string | null | undefined, now = Date.now()): string {
+  if (!iso) return '—';
+  const t = Date.parse(iso);
+  if (Number.isNaN(t)) return '—';
+  const mins = Math.round((now - t) / 60_000);
+  if (mins < 2) return 'just now';
+  if (mins < 90) return `${mins} min ago`;
+  const hours = Math.round(mins / 60);
+  if (hours < 48) return `${hours} h ago`;
+  return `${Math.round(hours / 24)} d ago`;
+}
+
+/** Kind-aware caption for a lectr context block ("Charles Schulz signed
+ *  material", "Mickey Mantle player material", …). The key's first segment is
+ *  the subject; the kind decides the noun phrase. Unknown kinds render the
+ *  prettified key alone — display only, never invented. */
+export function contextCaption(kind: string, k: string): string {
+  const subject = (k.split('|')[0] ?? k)
+    .split('-')
+    .map((w) => (w ? w[0].toUpperCase() + w.slice(1) : w))
+    .join(' ');
+  switch (kind) {
+    case 'signer':
+      return `${subject} signed material`;
+    case 'player-object':
+      return `${subject} player material`;
+    case 'artist':
+      return `${subject} — artist market`;
+    case 'class':
+      return `${subject} — class comps`;
+    default:
+      return prettyKey(k);
+  }
+}
+
 /** depth is a 0..1 fraction (1 − allIn/med). "38% under the book". */
 export function depthPct(depth: number): string {
   return `${Math.round(depth * 100)}%`;

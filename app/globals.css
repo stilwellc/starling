@@ -308,7 +308,8 @@ code {
   font-size: clamp(34px, 5.2vw, 60px);
   line-height: 1.08;
   letter-spacing: -0.02em;
-  max-width: 16ch;
+  max-width: 21ch;
+  text-wrap: balance;
 }
 .lede {
   margin-top: 18px;
@@ -580,14 +581,41 @@ code {
   color: var(--color-text-faint);
 }
 
-/* ── Depth bar (caliper) ───────────────────────────────────────────────── */
+/* ── Depth bar — the money visualization ──────────────────────────────────
+   The corpus band (lo—med—hi) drawn as a physical strip, the ask planted ON
+   it as the brand diamond, the mint gap running ask → median. Three sizes,
+   one geometry: hero / grid (default) / mini. */
 .depthbar {
   margin-bottom: 16px;
+}
+.depthbar-askrow {
+  position: relative;
+  height: 18px;
+}
+.depthbar-asklabel {
+  position: absolute;
+  top: 0;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--up-text);
+  white-space: nowrap;
+}
+.depthbar-asklabel.align-center {
+  transform: translateX(-50%);
+}
+.depthbar-asklabel.align-left {
+  transform: translateX(-6px);
+}
+.depthbar-asklabel.align-right {
+  transform: translateX(calc(-100% + 6px));
 }
 .depthbar-track {
   position: relative;
   height: 30px;
 }
+/* the full rail */
 .depthbar-track::before {
   content: '';
   position: absolute;
@@ -597,30 +625,55 @@ code {
   height: 1px;
   background: var(--hairline);
 }
+/* the corpus band — a soft butter plate with crisp end ticks */
 .depthbar-band {
   position: absolute;
-  top: 11px;
-  height: 8px;
-  background: var(--butter-subtle);
-  border-left: 1px solid var(--color-border-mid);
-  border-right: 1px solid var(--color-border-mid);
-  border-radius: 2px;
+  top: 10px;
+  height: 10px;
+  background: linear-gradient(
+    90deg,
+    rgba(232, 218, 182, 0.07),
+    rgba(232, 218, 182, 0.16) 50%,
+    rgba(232, 218, 182, 0.07)
+  );
+  border-radius: 3px;
+  box-shadow: inset 0 0 0 1px rgba(232, 218, 182, 0.14);
 }
+.depthbar-band::before,
+.depthbar-band::after {
+  content: '';
+  position: absolute;
+  top: -3px;
+  bottom: -3px;
+  width: 1px;
+  background: rgba(232, 218, 182, 0.38);
+}
+.depthbar-band::before {
+  left: 0;
+}
+.depthbar-band::after {
+  right: 0;
+}
+/* the median — the book's spine */
 .depthbar-med {
   position: absolute;
-  top: 8px;
-  height: 14px;
-  width: 1px;
-  background: var(--color-text-muted);
-  transform: translateX(-0.5px);
+  top: 6px;
+  height: 18px;
+  width: 2px;
+  border-radius: 1px;
+  background: var(--butter-deep);
+  transform: translateX(-1px);
+  box-shadow: 0 0 6px rgba(232, 218, 182, 0.25);
 }
+/* the depth gap: ask → median, mint */
 .depthbar-gap {
   position: absolute;
   top: 14px;
   height: 3px;
-  background: linear-gradient(90deg, var(--up), rgba(87, 190, 135, 0.2));
+  background: linear-gradient(90deg, var(--up), rgba(87, 190, 135, 0.16));
   border-radius: 2px;
 }
+/* the ask — the brand diamond */
 .depthbar-ask {
   position: absolute;
   top: 15px;
@@ -633,18 +686,112 @@ code {
   border: 2px solid var(--color-bg);
   border-radius: 2px;
   transform: translate(-50%, -50%) rotate(45deg);
-  box-shadow: 0 0 10px rgba(87, 190, 135, 0.5);
+  box-shadow: 0 0 12px rgba(87, 190, 135, 0.55);
 }
+/* scale labels ride at their TRUE positions on the rail */
 .depthbar-scale {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 8px;
+  position: relative;
+  height: 16px;
+  margin-top: 7px;
   font-family: var(--font-mono);
   font-size: 10.5px;
   color: var(--color-text-faint);
 }
+.depthbar-scale span {
+  position: absolute;
+  top: 0;
+  white-space: nowrap;
+}
+.depthbar-scale .align-center {
+  transform: translateX(-50%);
+}
+.depthbar-scale .align-left {
+  transform: translateX(-2px);
+}
+.depthbar-scale .align-right {
+  transform: translateX(calc(-100% + 2px));
+}
 .depthbar-medlabel {
-  color: var(--color-text-muted);
+  color: var(--butter-text);
+}
+
+/* hero size — the instrument at full presence */
+.depthbar-hero {
+  margin-block: 6px 20px;
+}
+.depthbar-hero .depthbar-askrow {
+  height: 22px;
+}
+.depthbar-hero .depthbar-asklabel {
+  font-size: 12px;
+}
+.depthbar-hero .depthbar-track {
+  height: 38px;
+}
+.depthbar-hero .depthbar-track::before {
+  top: 19px;
+}
+.depthbar-hero .depthbar-band {
+  top: 12px;
+  height: 14px;
+}
+.depthbar-hero .depthbar-med {
+  top: 7px;
+  height: 24px;
+}
+.depthbar-hero .depthbar-gap {
+  top: 17.5px;
+  height: 4px;
+}
+.depthbar-hero .depthbar-ask {
+  top: 19px;
+}
+.depthbar-hero .depthbar-ask-dot {
+  width: 13px;
+  height: 13px;
+}
+.depthbar-hero .depthbar-scale {
+  font-size: 11.5px;
+}
+
+/* mini size — the row strip; the row's numbers carry the labels */
+.depthbar-mini {
+  margin: 0;
+}
+.depthbar-mini .depthbar-track {
+  height: 14px;
+}
+.depthbar-mini .depthbar-track::before {
+  top: 7px;
+}
+.depthbar-mini .depthbar-band {
+  top: 4px;
+  height: 6px;
+  border-radius: 2px;
+}
+.depthbar-mini .depthbar-band::before,
+.depthbar-mini .depthbar-band::after {
+  top: -2px;
+  bottom: -2px;
+}
+.depthbar-mini .depthbar-med {
+  top: 2px;
+  height: 10px;
+  width: 1px;
+  box-shadow: none;
+}
+.depthbar-mini .depthbar-gap {
+  top: 6px;
+  height: 2px;
+}
+.depthbar-mini .depthbar-ask {
+  top: 7px;
+}
+.depthbar-mini .depthbar-ask-dot {
+  width: 8px;
+  height: 8px;
+  border-width: 1.5px;
+  box-shadow: 0 0 6px rgba(87, 190, 135, 0.45);
 }
 
 /* ── Evidence ledger (dotted-leader rows) ──────────────────────────────── */
@@ -861,6 +1008,608 @@ code {
 .outlink-missing {
   font-size: 12px;
   color: var(--color-text-faint);
+}
+
+/* ── The hero card — the top of the board at full width ─────────────────── */
+.card-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+  gap: clamp(22px, 3.5vw, 44px);
+  align-items: start;
+  padding: clamp(18px, 2.6vw, 30px);
+  border: 1px solid var(--hairline);
+  border-radius: 20px;
+  background:
+    radial-gradient(80% 50% at 18% 0%, rgba(232, 218, 182, 0.05), transparent 65%),
+    linear-gradient(180deg, var(--glass-bg), transparent 60%);
+  margin-bottom: clamp(24px, 3vw, 36px);
+}
+.card-hero .card-media {
+  aspect-ratio: 1 / 1;
+}
+.card-hero .card-body {
+  padding-top: 0;
+}
+.card-hero .card-body::before,
+.card-hero .card-body::after {
+  content: none;
+}
+.card-hero .card-depth-num {
+  font-size: clamp(48px, 6vw, 72px);
+}
+.card-title-hero {
+  font-size: clamp(22px, 2.6vw, 30px);
+  line-height: 1.22;
+  margin-bottom: 16px;
+}
+.card-depth-vs {
+  display: block;
+  margin-top: 3px;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  color: var(--color-text-faint);
+}
+.kicker-lit {
+  color: var(--butter-text);
+}
+.grid-after-hero {
+  margin-top: 0;
+}
+
+/* clamp long marketplace titles on the tiled cards (never the hero/detail) */
+.grid .card:not(.card-hero) .card-title {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ── Evidence line — the one-line register on grid cards ────────────────── */
+.card-evidence-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+  padding-block: 8px;
+  border-top: 1px dotted var(--hairline);
+  border-bottom: 1px dotted var(--hairline);
+}
+.card-evidence-row .evidence-link {
+  margin-top: 0;
+  font-size: 12px;
+  white-space: nowrap;
+}
+.evline {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 7px;
+  flex-wrap: wrap;
+  font-size: 12.5px;
+  color: var(--color-text-muted);
+  font-variant-numeric: tabular-nums;
+}
+.evline-dot {
+  color: var(--color-text-faint);
+}
+.evline-trend.up {
+  color: var(--up-text);
+}
+.evline-trend.down {
+  color: var(--down-text);
+}
+.conf-badge {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 1px 6px;
+  border-radius: 4px;
+  border: 1px solid var(--hairline);
+  color: var(--color-text-muted);
+}
+.conf-badge.conf-high {
+  color: var(--butter-text);
+  border-color: rgba(232, 218, 182, 0.28);
+  background: var(--butter-subtle);
+}
+
+/* ── Risk as <details> — the reasons one tap away, zero JS ───────────────── */
+summary {
+  cursor: pointer;
+}
+summary::-webkit-details-marker {
+  display: none;
+}
+.risk-details summary {
+  list-style: none;
+}
+.risk-why {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-faint);
+  margin-left: 2px;
+}
+.risk-caret {
+  display: inline-block;
+  transition: transform 200ms var(--ease-signature);
+}
+.risk-details[open] .risk-caret {
+  transform: rotate(180deg);
+}
+.risk-details summary:hover {
+  border-color: var(--color-border-mid);
+}
+.risk-coin {
+  display: inline-flex;
+}
+.risk-coin .risk-grade {
+  width: 26px;
+  height: 26px;
+  font-size: 12.5px;
+}
+.risk-coin.risk-a .risk-grade {
+  background: var(--up);
+  color: #04180d;
+}
+.risk-coin.risk-b .risk-grade {
+  background: var(--butter);
+}
+.risk-coin.risk-c .risk-grade {
+  background: var(--color-text-muted);
+  color: var(--butter-ink);
+}
+.risk-coin.risk-d .risk-grade {
+  background: var(--down);
+  color: #1a0605;
+}
+
+/* ── Rule heads — quiet section rules with a count ───────────────────────── */
+.rule-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 14px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--hairline);
+}
+.rule-head-count {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: var(--color-text-faint);
+  white-space: nowrap;
+}
+.rule-head-quiet {
+  border-bottom-style: dotted;
+}
+.board-tape {
+  margin-top: clamp(28px, 3.5vw, 40px);
+}
+
+/* ── Deal rows — the tape density ────────────────────────────────────────── */
+.deal-rows {
+  display: flex;
+  flex-direction: column;
+}
+.deal-row {
+  display: grid;
+  grid-template-columns: 56px minmax(0, 1fr) auto auto;
+  gap: 14px 16px;
+  align-items: center;
+  padding-block: 13px;
+  border-bottom: 1px dotted var(--hairline);
+  transition: background 160ms var(--ease-signature);
+}
+.deal-row:hover {
+  background: var(--color-hover-item);
+}
+.deal-row-thumb {
+  width: 56px;
+  height: 56px;
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--color-bg-elevated);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+.deal-row-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.deal-row-noimg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.deal-row-main {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.deal-row-title {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: 15.5px;
+  line-height: 1.3;
+  letter-spacing: -0.005em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.deal-row-title a:hover {
+  color: var(--butter-text);
+}
+.deal-row-meta {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  flex-wrap: wrap;
+  font-size: 11.5px;
+  color: var(--color-text-faint);
+}
+.deal-row-vertical,
+.deal-row-hunted {
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.deal-row-hunted {
+  color: var(--butter-text);
+}
+.deal-row-fact {
+  font-variant-numeric: tabular-nums;
+}
+.deal-row-nums {
+  display: grid;
+  grid-template-columns: auto auto;
+  column-gap: 7px;
+  align-items: baseline;
+  justify-items: end;
+  text-align: right;
+}
+.deal-row-depth {
+  font-family: var(--font-sans);
+  font-weight: 800;
+  font-size: 19px;
+  letter-spacing: -0.02em;
+  color: var(--up);
+  font-variant-numeric: tabular-nums;
+}
+.deal-row-under {
+  font-size: 10.5px;
+  color: var(--color-text-faint);
+}
+.deal-row-price {
+  grid-column: 1 / -1;
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  color: var(--color-text-secondary);
+}
+.deal-row-end {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.deal-row-open {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--hairline);
+  border-radius: 50%;
+  color: var(--color-text-muted);
+  transition: all 180ms var(--ease-signature);
+}
+.deal-row-open:hover {
+  color: var(--butter-ink);
+  background: var(--butter);
+  border-color: var(--butter);
+}
+
+/* ── Fact rows — the noBook register (hunt hits, wide-net leads) ─────────── */
+.fact-rows {
+  display: flex;
+  flex-direction: column;
+}
+.fact-row {
+  border-bottom: 1px dotted var(--hairline);
+}
+.fact-row-line {
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr) auto auto;
+  gap: 6px 14px;
+  align-items: center;
+  padding-block: 11px 9px;
+}
+.fact-row-thumb {
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--color-bg-elevated);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+.fact-row-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.fact-row-main {
+  min-width: 0;
+}
+.fact-row-title {
+  font-size: 13.5px;
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  line-height: 1.35;
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.fact-row-title a:hover {
+  color: var(--color-fg);
+}
+.fact-row-meta {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 2px;
+  font-size: 11.5px;
+  color: var(--color-text-faint);
+  font-variant-numeric: tabular-nums;
+}
+.fact-row-lens {
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.fact-row-nums {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 1px;
+  text-align: right;
+}
+.fact-row-price {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 13.5px;
+  color: var(--color-fg);
+}
+.fact-row-sub {
+  font-size: 10.5px;
+  color: var(--color-text-faint);
+}
+.fact-row-out {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  color: var(--color-text-muted);
+  border: 1px solid var(--hairline);
+  border-radius: 100px;
+  padding: 5px 11px;
+  white-space: nowrap;
+  transition: all 180ms var(--ease-signature);
+}
+.fact-row-out:hover {
+  color: var(--butter-text);
+  border-color: rgba(232, 218, 182, 0.3);
+}
+
+/* "show N more" — native details, styled as a quiet certificate action */
+.rows-more > summary {
+  list-style: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-block: 12px 4px;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  letter-spacing: 0.06em;
+  color: var(--color-text-muted);
+  border: 1px solid var(--hairline);
+  border-radius: 100px;
+  padding: 6px 14px;
+  transition: all 180ms var(--ease-signature);
+}
+.rows-more > summary:hover {
+  color: var(--butter-text);
+  border-color: rgba(232, 218, 182, 0.3);
+}
+.rows-more > summary::after {
+  content: '▾';
+  font-size: 9px;
+}
+.rows-more[open] > summary {
+  display: none;
+}
+
+/* ── lectr context — the nearby-class corpus read (v2) ───────────────────── */
+.ctx-panel {
+  display: flex;
+  align-items: baseline;
+  gap: 8px 14px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+  padding: 11px 16px;
+  border: 1px solid rgba(232, 218, 182, 0.16);
+  border-left: 2px solid var(--butter-deep);
+  border-radius: 10px;
+  background: linear-gradient(90deg, rgba(232, 218, 182, 0.05), transparent 70%);
+}
+.ctx-brand {
+  flex: none;
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--butter-text);
+}
+.ctx-caption {
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--color-fg);
+  letter-spacing: -0.005em;
+}
+.ctx-facts {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 7px;
+  flex-wrap: wrap;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  color: var(--color-text-muted);
+  font-variant-numeric: tabular-nums;
+}
+.ctx-facts b {
+  color: var(--butter-text);
+  font-weight: 600;
+}
+.ctx-dot {
+  color: var(--color-text-faint);
+}
+.ctx-disclaim {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-faint);
+  border: 1px solid var(--hairline);
+  border-radius: 4px;
+  padding: 1px 6px;
+}
+/* the row-level register: quieter, indented under its listing line */
+.ctx-line {
+  display: flex;
+  align-items: baseline;
+  gap: 7px 12px;
+  flex-wrap: wrap;
+  padding: 0 0 10px 58px;
+  font-size: 12px;
+}
+.ctx-line .ctx-caption {
+  font-size: 12px;
+  color: var(--color-text-secondary);
+}
+.ctx-line .ctx-facts {
+  font-size: 10.5px;
+}
+
+/* ── The wide net (leads, v2) ────────────────────────────────────────────── */
+.leads {
+  margin-top: clamp(36px, 5vw, 56px);
+}
+.leads-sub {
+  margin-block: 10px 6px;
+  max-width: 70ch;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--color-text-muted);
+}
+.leads-sub b {
+  color: var(--color-text-secondary);
+}
+
+/* ── The funnel (about, v2 stats) ────────────────────────────────────────── */
+.funnel {
+  margin-bottom: clamp(32px, 4vw, 48px);
+}
+.stat-num-neutral {
+  color: var(--color-fg) !important;
+}
+.slice-table td code {
+  font-size: 12px;
+  color: var(--color-text-secondary);
+}
+.gates {
+  margin-top: 22px;
+}
+.gates-head {
+  margin-bottom: 12px;
+}
+.gate-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+.gate-row {
+  display: grid;
+  grid-template-columns: minmax(120px, 220px) minmax(0, 1fr) auto;
+  gap: 12px;
+  align-items: center;
+}
+.gate-label {
+  font-size: 12px;
+  color: var(--color-text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.gate-track {
+  position: relative;
+  height: 10px;
+  border-radius: 3px;
+  background: var(--glass-bg);
+  box-shadow: inset 0 0 0 1px var(--hairline-soft);
+  overflow: hidden;
+}
+.gate-fill {
+  position: absolute;
+  inset: 0 auto 0 0;
+  border-radius: 3px;
+  background: linear-gradient(90deg, rgba(232, 218, 182, 0.55), rgba(232, 218, 182, 0.22));
+}
+.gate-count {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  color: var(--color-text-secondary);
+  font-variant-numeric: tabular-nums;
+  min-width: 4ch;
+  text-align: right;
+}
+.gates-note {
+  margin-top: 12px;
+  font-size: 12px;
+  color: var(--color-text-faint);
+}
+
+/* freshness dot on the build stamp */
+.stamp-live {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--up);
+  margin-right: 8px;
+  box-shadow: 0 0 8px rgba(87, 190, 135, 0.5);
+  vertical-align: 1px;
+}
+
+/* the hunt page's target index numeral */
+.hunt-index {
+  font-size: 12px;
+  color: var(--butter-deep);
+}
+.hunt-facts {
+  margin-top: 14px;
+}
+.hunt-priced-grid {
+  margin-top: 16px;
+}
+.control-label-right {
+  margin-left: auto;
+  min-width: 0;
 }
 
 /* ── The hunt (§4.4) — the curated lane, pinned above the ranked grid ──── */
@@ -1272,6 +2021,13 @@ code {
   .deal-detail {
     grid-template-columns: 1fr;
   }
+  .card-hero {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  .card-hero .card-media {
+    aspect-ratio: 4 / 3;
+  }
 }
 
 /* ── Mobile view (≤640px) — a tailored layout, not the desktop squeezed ──── */
@@ -1416,6 +2172,80 @@ code {
   .tape-table td code {
     text-align: right;
     word-break: break-word;
+  }
+
+  /* The hero card: tighter frame, humbler numeral. */
+  .card-hero {
+    padding: 14px 14px 18px;
+    border-radius: 16px;
+  }
+  .card-hero .card-depth-num {
+    font-size: 44px;
+  }
+
+  /* Controls collapse to stacked rows — the risk label loses its auto-push. */
+  .control-label-right {
+    margin-left: 0;
+  }
+
+  /* Deal rows: title block on top, numbers + actions as a second line with
+     real thumb targets. */
+  .deal-row {
+    grid-template-columns: 48px minmax(0, 1fr);
+    row-gap: 10px;
+    padding-block: 14px;
+  }
+  .deal-row-nums {
+    grid-column: 1 / 2;
+    grid-row: 2;
+    justify-items: start;
+    text-align: left;
+    grid-template-columns: auto auto auto;
+    column-gap: 8px;
+  }
+  .deal-row-nums .deal-row-price {
+    grid-column: auto;
+  }
+  .deal-row-end {
+    grid-column: 2 / -1;
+    grid-row: 2;
+    justify-content: flex-end;
+  }
+  .deal-row-open {
+    width: 40px;
+    height: 40px;
+  }
+
+  /* Fact rows: let titles wrap to two lines; the out-link gets its own line. */
+  .fact-row-line {
+    grid-template-columns: 44px minmax(0, 1fr) auto;
+  }
+  .fact-row-title {
+    white-space: normal;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .fact-row-out {
+    grid-column: 2 / -1;
+    justify-self: start;
+    padding: 7px 16px;
+  }
+  .ctx-line {
+    padding-left: 0;
+  }
+  .ctx-panel {
+    padding: 10px 12px;
+  }
+
+  /* Gate histogram: label above its bar. */
+  .gate-row {
+    grid-template-columns: minmax(0, 1fr) auto;
+    row-gap: 3px;
+  }
+  .gate-label {
+    grid-column: 1 / -1;
   }
 
   /* Footer: stack the map. */

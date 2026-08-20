@@ -1,14 +1,29 @@
-import { loadBoard, isBoardStale } from '@/scripts/lib/load-board';
+import type { Metadata } from 'next';
+import { isBoardStale } from '@/scripts/lib/load-board';
+import { loadBoardExt } from '@/app/lib/board-data';
 import { BoardControls } from '@/app/components/BoardControls';
 import { StaleBanner, EmptyBoard } from '@/app/components/Banners';
 import { HuntModule } from '@/app/components/HuntModule';
-import { shortDate } from '@/app/lib/display';
+import { LeadsSection } from '@/app/components/LeadsSection';
+import { shortDate, relativeTime } from '@/app/lib/display';
 
 // Static export: the board is read once at build time and baked into HTML.
 export const dynamic = 'force-static';
 
+export const metadata: Metadata = {
+  title: 'Starling — what the net caught today, powered by lectr',
+  description:
+    "Live eBay Buy It Now listings priced deep under lectr's certified corpus value — every deal shown with its evidence band and an A–D risk grade. Nothing manufactured.",
+  openGraph: {
+    title: 'Starling — what the net caught today',
+    description:
+      "Live Buy It Now listings priced deep under lectr's corpus value, risk-graded and evidence-backed.",
+    type: 'website',
+  },
+};
+
 export default function HomePage() {
-  const board = loadBoard();
+  const board = loadBoardExt();
   // Board rank is depth × confidence × risk (PROPOSAL §8) — sort desc, no vertical
   // term, so a great card deal and a great watch deal compete on equal footing.
   const deals = [...board.deals].sort((a, b) => b.rank - a.rank);
@@ -20,11 +35,11 @@ export default function HomePage() {
     <>
       <div className="page-head">
         <div className="page-head-top">
-          <span className="kicker">The board · ranked by depth × confidence</span>
+          <span className="kicker">The board · ranked by depth × confidence × risk</span>
           {serial && <span className="serial">No. {serial}</span>}
         </div>
         <h1>
-          Priced <span className="accent">under</span> where the corpus clears.
+          What the net <span className="accent">caught</span> today.
         </h1>
         <p className="lede">
           Live eBay Buy It Now listings sitting deep under what lectr&apos;s certified price corpus
@@ -33,7 +48,9 @@ export default function HomePage() {
         </p>
         {board.builtAt && (
           <p className="build-stamp">
-            <b>{deals.length}</b> live deals · board built {shortDate(board.builtAt)} · corpus{' '}
+            <span className="stamp-live" aria-hidden="true" />
+            <b>{deals.length}</b> live deals · board built{' '}
+            <span title={shortDate(board.builtAt)}>{relativeTime(board.builtAt)}</span> · corpus{' '}
             {shortDate(board.bookBuiltAt)}
           </p>
         )}
@@ -41,16 +58,15 @@ export default function HomePage() {
 
       {stale && <StaleBanner builtAt={board.builtAt} />}
 
-      {/* The hunt — curated targets sit PINNED above book-driven discovery
-          (PROPOSAL §4.4). Rendered whenever a hunt lane exists, even hitless,
-          so the watched targets are always one glance away. */}
+      {/* The hunt — curated targets stay PINNED above book-driven discovery
+          (PROPOSAL §4.4): a strip carrying the watch state and any PRICED hits;
+          the facts-only hits live on /hunt. */}
       {board.hunt && <HuntModule hunt={board.hunt} />}
 
-      {deals.length > 0 ? (
-        <BoardControls deals={deals} />
-      ) : (
-        <EmptyBoard />
-      )}
+      {deals.length > 0 ? <BoardControls deals={deals} /> : <EmptyBoard />}
+
+      {/* The wide net (v2, optional) — context leads, clearly not priced calls. */}
+      {board.leads && <LeadsSection leads={board.leads} />}
     </>
   );
 }
