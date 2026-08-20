@@ -43,6 +43,19 @@ runs against these recorded fixtures until it lands, driven by
     (`fixture-source.ts` resolves it) — because a pinned ISO end would age out
     of the hard 4h window a day after being recorded.
 
+- **`ebay/carry.json`** — the CARRY-FORWARD lane's recordings (`scripts/
+  carry.ts`): a SECOND RUN in a can. `prior` is the previous tick's published
+  board — `Deal` / `HuntNoBookDeal` shapes verbatim, itemIds disjoint from
+  `sweep.json`/`hunt.json` so every entry is a true not-re-swept candidate —
+  and `items` is the getItems re-verification "response": itemId → the
+  `EbayRawItem` as it reads NOW (current price), or `null`/missing for a
+  listing eBay no longer serves. Keep every carry path alive: alive-unchanged
+  (carried), repriced-down (refreshed), ended (dropped → receipts resolution),
+  repriced-up past the depth floor (re-gate FAIL), repriced-up still clearing
+  (re-gate PASS), plus one noBook hunt hit alive and one ended. In fixture
+  mode this file replaces `.starling-state/board-state.json` entirely — the
+  state dir stays untouched (the determinism contract, same as sweep-state).
+
 - **`ebay/hunt.json`** — the hunt lane's recordings (PROPOSAL §4.4): a JSON
   object mapping **hunt entry id** (from `hunt/priority.yaml`) → an array of
   `EbayRawItem`, the listings that entry's compiled queries "returned". Keyed by

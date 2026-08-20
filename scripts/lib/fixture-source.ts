@@ -8,7 +8,7 @@
  */
 import { readFileSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
-import type { EbayListing, Vertical } from '../types';
+import type { Deal, EbayListing, HuntNoBookDeal, Vertical } from '../types';
 import type { EbayRawItem } from './ebay-types';
 import { normalizeItem } from './normalize';
 
@@ -72,6 +72,46 @@ export function sweepFixtureListings(sliceId: string, now: number): EbayListing[
   const items = raw?.[sliceId];
   if (!Array.isArray(items)) return [];
   return items.map((it) => resolveEndDate(normalizeItem(it, 'EBAY_US'), now));
+}
+
+/** The carry-forward fixture: fixtures/ebay/carry.json is a SECOND RUN in a
+ *  can (scripts/carry.ts). `prior` is the "previous tick's board" (published
+ *  Deal / HuntNoBookDeal shapes, verbatim); `items` is the "getItems response"
+ *  the re-verification pass reads — itemId → EbayRawItem for a listing still
+ *  live (at its CURRENT price), or null/missing for one that ended. Together
+ *  they replay every carry path (keep / refresh / re-gate / drop)
+ *  deterministically, with .starling-state untouched. Missing file → an empty
+ *  previous board (a first tick), not an error. */
+export interface CarryFixtureData {
+  prior: { deals: Deal[]; huntNoBook: HuntNoBookDeal[] };
+  items: Map<string, EbayListing | null>;
+}
+
+export function carryFixture(): CarryFixtureData {
+  const empty: CarryFixtureData = { prior: { deals: [], huntNoBook: [] }, items: new Map() };
+  const path = join(FIXTURE_DIR, 'carry.json');
+  if (!existsSync(path)) return empty;
+  let raw: {
+    prior?: { deals?: Deal[]; huntNoBook?: HuntNoBookDeal[] };
+    items?: Record<string, EbayRawItem | null>;
+  };
+  try {
+    raw = JSON.parse(readFileSync(path, 'utf8'));
+  } catch (e) {
+    console.warn(`[fixture-source] failed to parse ${path}: ${(e as Error).message}`);
+    return empty;
+  }
+  const items = new Map<string, EbayListing | null>();
+  for (const [id, it] of Object.entries(raw?.items ?? {})) {
+    items.set(id, it ? normalizeItem(it, 'EBAY_US') : null);
+  }
+  return {
+    prior: {
+      deals: Array.isArray(raw?.prior?.deals) ? raw.prior.deals : [],
+      huntNoBook: Array.isArray(raw?.prior?.huntNoBook) ? raw.prior.huntNoBook : [],
+    },
+    items,
+  };
 }
 
 /** The hunt lane's fixture: fixtures/ebay/hunt.json maps hunt entry id → the

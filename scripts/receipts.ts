@@ -93,6 +93,22 @@ export function recordClosingSurfaced(
   return [...byId.values()];
 }
 
+/** Resolve receipts for itemIds the carry-forward pass just PROVED absent
+ *  (carry.ts): its re-verification batch is the same getItems-absence signal
+ *  resolveReceipts reads, so when a carried deal drops off the board because
+ *  eBay no longer serves it, the tape says 'ended' the same tick — no waiting
+ *  for the rotating window to come around. */
+export function resolveEndedNow(receipts: Receipt[], itemIds: Set<string>, nowIso: string): Receipt[] {
+  if (itemIds.size === 0) return receipts;
+  for (const r of receipts) {
+    if (r.outcome === 'live' && itemIds.has(r.itemId)) {
+      r.outcome = 'ended';
+      r.resolvedAt = nowIso;
+    }
+  }
+  return receipts;
+}
+
 /**
  * Re-check live receipts and resolve the ones that left Buy It Now — in
  * getItems BATCHES (≤20 ids/call, on getItems' own daily quota bucket, so the

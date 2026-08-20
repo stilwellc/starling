@@ -8,6 +8,9 @@
  *     an in-memory map of the WHOLE book — zero API calls
  *   → Tier-2 getItems batches (own quota bucket) for candidates needing aspects
  *   → gate (reasons KEPT — the funnel is on the record) → score → context leads
+ *   → CARRY-FORWARD (carry.ts): last tick's board deals not re-swept this run,
+ *     re-verified alive in getItems batches, merged + re-ranked — the board is
+ *     a LIVE SET, not a per-tick snapshot
  *   → publish (deals + hunt + leads + stats) → receipts (getItems batches)
  *
  * Why the rebuild (the funnel audit, from real run logs): 9,358 book keys → 15
@@ -48,10 +51,12 @@ import { indexContext, contextFor, toDealContext } from './context';
 import { scoreRisk } from './score/risk';
 import { rankOf } from './score/rank';
 import { publishBoard } from './publish';
+import { loadBoardState, commitBoardState, carryForward } from './carry';
 import {
   loadReceipts,
   recordSurfaced,
   recordClosingSurfaced,
+  resolveEndedNow,
   resolveReceipts,
   commitReceipts,
 } from './receipts';
@@ -516,6 +521,24 @@ async function main() {
     }
   }
 
+  // 6c — BOARD CARRY-FORWARD (carry.ts): the fix for the tick-snapshot gap
+  // (bootstrap published 77 deals, the next incremental tick published 1).
+  // Last tick's board deals that this tick's sweep did NOT re-catch get
+  // re-verified alive in getItems batches: price unchanged-or-lower keeps
+  // (refreshed), a raise re-gates against the frozen book call, absence drops
+  // to receipts resolution. Survivors merge into `deals` (fresh wins on
+  // itemId); publish.ts re-ranks the union and caps it at BOARD_CAP. The hunt
+  // lane's noBook hits carry the same way (fact checks only) and still face
+  // the per-target cap below. Closing calls are NOT carried — they expire
+  // with the hammer, per-tick by design.
+  const carried = await carryForward(
+    loadBoardState(mode),
+    { deals, huntDeals, huntClaimed },
+    { mode, client, now },
+  );
+  deals.push(...carried.deals);
+  huntDeals.push(...carried.huntNoBook);
+
   // 7 — CONTEXT LEADS: swept listings with NO book key but a covering context
   // rollup, at all-in ≤ 0.5× the rollup med. Facts + context, capped, labeled —
   // never a priced call (no depth, no rank, no gate override).
@@ -591,6 +614,19 @@ async function main() {
     { leads, stats, closing },
   );
 
+  // 8b — persist the published live set for the next tick's carry-forward
+  // (live only — fixture carry state is canned in fixtures/ebay/carry.json,
+  // same determinism posture as sweep-state). What publish capped/sorted is
+  // exactly what next run must re-verify, so the board artifact is the source.
+  if (mode === 'live') {
+    commitBoardState({
+      deals: board.deals,
+      huntNoBook: (board.hunt?.deals ?? []).filter(
+        (d): d is HuntNoBookDeal => d.noBook === true,
+      ),
+    });
+  }
+
   // 9 — receipts: record newly surfaced, resolve the ones that left BIN in
   // getItems batches (the getItems bucket, never the search quota). Priced
   // hunt hits are full deals — their calls go on the tape like any other.
@@ -601,6 +637,9 @@ async function main() {
   let receipts = loadReceipts();
   receipts = recordSurfaced(receipts, [...board.deals, ...pricedHuntDeals], nowIso);
   receipts = recordClosingSurfaced(receipts, board.closing ?? [], nowIso);
+  // carried deals the re-verification batch proved GONE resolve immediately —
+  // same getItems-absence signal as the loop below, already in hand this tick
+  receipts = resolveEndedNow(receipts, carried.endedItemIds, nowIso);
   receipts = await resolveReceipts(receipts, { mode, client, now, nowIso, cap: 60 });
   commitReceipts(receipts);
 

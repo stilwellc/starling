@@ -67,12 +67,16 @@ export interface SweepSlice {
 
 export const SWEEP_SLICES: SweepSlice[] = [
   // 261328 = Sports Trading Card Singles. Two postures: slabs (condition 2750 =
-  // Graded) at any price, and raw with a $20 floor to skip the bulk-common tide.
+  // Graded) at any price, and raw with a $30 floor (raised from $20, Aug 2026:
+  // the $20–30 band is the bulk-common tide — budget spent, nothing gated in).
   { id: 'cards-slabs', categoryId: '261328', lens: 'sports-cards', identifyVerticals: ['sports-cards'], sliceFilters: ['conditionIds:{2750}'], lane: 'cards' },
-  { id: 'cards-raw', categoryId: '261328', lens: 'sports-cards', identifyVerticals: ['sports-cards'], sliceFilters: ['price:[20..]', 'priceCurrency:USD'], lane: 'cards' },
+  { id: 'cards-raw', categoryId: '261328', lens: 'sports-cards', identifyVerticals: ['sports-cards'], sliceFilters: ['price:[30..]', 'priceCurrency:USD'], lane: 'cards' },
   // 183454 = CCG Individual Cards — pokémon identity is title-first, so the
-  // whole singles firehose (with a $10 floor) is identifiable at zero cost.
-  { id: 'pokemon', categoryId: '183454', lens: 'pokemon', identifyVerticals: ['pokemon'], sliceFilters: ['price:[10..]', 'priceCurrency:USD'], lane: 'other' },
+  // singles firehose is identifiable at zero cost. Floor raised $10 → $50
+  // (Aug 2026, measured): junk-tier holo BIN asks run 1.5–6× above the
+  // auction-clearing medians, so the sub-$50 band never gates in — it only
+  // burned the slice's page budget before the real book keys scrolled past.
+  { id: 'pokemon', categoryId: '183454', lens: 'pokemon', identifyVerticals: ['pokemon'], sliceFilters: ['price:[50..]', 'priceCurrency:USD'], lane: 'other' },
   // 31387 = Wristwatches — the audit's 1,278 never-polled keys, now swept.
   { id: 'watches', categoryId: '31387', lens: 'watches', identifyVerticals: ['watches'], sliceFilters: ['price:[100..]', 'priceCurrency:USD'], lane: 'other' },
   // The three autograph pools (sports 51 / entertainment 57 / historical 14428).

@@ -23,6 +23,13 @@ import type {
 const OUT_DIR = join(process.cwd(), 'public', 'data', 'starling');
 const BOARD_PATH = join(OUT_DIR, 'board.json');
 
+/** board.deals cap. With carry-forward (carry.ts) the board is a LIVE SET that
+ *  accumulates across ticks, so it needs a ceiling: rank orders the merged set
+ *  and the tail past 200 is depth the page would never show anyway. What falls
+ *  off the cap also falls out of board-state — a capped-out deal re-earns its
+ *  slot only by being re-swept. */
+export const BOARD_CAP = 200;
+
 /** board.closing cap — the lane is an urgency strip, not a second board. */
 export const CLOSING_CAP = 30;
 
@@ -66,7 +73,7 @@ export function publishBoard(
     schema: 1,
     builtAt: meta.builtAt,
     bookBuiltAt: meta.bookBuiltAt,
-    deals: deals.slice().sort((a, b) => b.rank - a.rank),
+    deals: deals.slice().sort((a, b) => b.rank - a.rank).slice(0, BOARD_CAP),
     perVertical,
     ...(hunt ? { hunt: { targets: hunt.targets, deals: sortHuntDeals(hunt.deals) } } : {}),
     // schema v2 additions — all optional, all absent on pre-sweep boards.
