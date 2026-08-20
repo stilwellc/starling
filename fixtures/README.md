@@ -14,7 +14,21 @@ runs against these recorded fixtures until it lands, driven by
 
 - **`ebay/<vertical>.json`** — recorded eBay listings for one vertical. Each file
   is a JSON array of **`EbayRawItem`** objects (the `getItem` shape, i.e. WITH
-  `localizedAspects`). Shape defined in `scripts/lib/ebay-types.ts`.
+  `localizedAspects`). Shape defined in `scripts/lib/ebay-types.ts`. Consumed by
+  `npm run test:matchers` (the per-matcher assertion harness).
+
+- **`ebay/sweep.json`** — the SWEEP ENGINE's recordings (the Aug 2026 rebuild):
+  a JSON object mapping **sweep slice id** (see `SWEEP_SLICES` in
+  `scripts/sweep.ts`) → an array of `EbayRawItem`, the listings that slice's
+  category pages "returned". This file is what drives `npm run
+  pipeline:fixtures` through sweep → bulk identify → gate(stats) → context →
+  publish. Keep at least: a watches slice with a reference hit that prices
+  against the book, a pokemon slice with a deal that PASSES the gate (plus a
+  gated near-miss so the reason histogram is non-empty), and a context-only
+  slice (fossils) with a lead priced ≤ 0.5× its context rollup's med. The
+  sample book's `context` array must carry the rollups those leads hit
+  (a `charles-schulz` signer row, a `megalodon-tooth` class row, a
+  player-object row).
 
 - **`ebay/hunt.json`** — the hunt lane's recordings (PROPOSAL §4.4): a JSON
   object mapping **hunt entry id** (from `hunt/priority.yaml`) → an array of
