@@ -15,7 +15,7 @@
  */
 import Link from 'next/link';
 import type { Deal } from '@/scripts/types';
-import { verticalLabel, money, depthPct } from '@/app/lib/display';
+import { verticalLabel, money, depthPct, keyGrade } from '@/app/lib/display';
 import { DepthBar } from './DepthBar';
 import { EvidencePanel } from './EvidencePanel';
 import { EvidenceLine } from './EvidenceLine';
@@ -51,6 +51,26 @@ function DealFlags({ deal }: { deal: Deal }) {
           ladder-priced
         </span>
       )}
+    </span>
+  );
+}
+
+/** Grade transparency on card/pokemon deals: the BOOK row's grade and the
+ *  LISTING's pinned grade, both parsed from the identity keys — identical
+ *  unless the deal is ladder-priced (basisKey names the source row). "raw"
+ *  renders too, on purpose: an ungraded book row is exactly the caveat a
+ *  reader should see spelled out. Display only — nothing is re-derived. */
+function GradeNote({ deal }: { deal: Deal }) {
+  if (deal.vertical !== 'sports-cards' && deal.vertical !== 'pokemon') return null;
+  const listing = keyGrade(deal.key);
+  const book = keyGrade(deal.basisKey ?? deal.key);
+  if (!listing || !book) return null;
+  return (
+    <span
+      className="grade-note"
+      title="The grade behind the corpus row vs the grade this listing's identity pinned — read from the keys, never inferred"
+    >
+      book: {book} · this listing: {listing}
     </span>
   );
 }
@@ -116,6 +136,7 @@ function DealRow({ deal, huntLabel }: { deal: Deal; huntLabel?: string }) {
           <span className="deal-row-fact">
             {deal.n} {deal.n === 1 ? 'sale' : 'sales'} · book {money(deal.med)}
           </span>
+          <GradeNote deal={deal} />
         </div>
         <DepthBar
           allIn={deal.allIn}
@@ -176,6 +197,7 @@ function DealHero({ deal, huntLabel }: { deal: Deal; huntLabel?: string }) {
           depth={deal.depth}
           size="hero"
         />
+        <GradeNote deal={deal} />
         <EvidencePanel deal={deal} />
         <RiskChip risk={deal.risk} expandable />
         <OutLink deal={deal} size="lg" />
@@ -218,6 +240,7 @@ export function DealCard({
         </h2>
 
         <PriceLine deal={deal} />
+        <GradeNote deal={deal} />
 
         <DepthBar allIn={deal.allIn} lo={deal.lo} med={deal.med} hi={deal.hi} depth={deal.depth} />
 

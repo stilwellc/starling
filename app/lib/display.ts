@@ -195,3 +195,14 @@ export function isAgingBook(lastSale: string, now = Date.now()): boolean {
 export function prettyKey(key: string): string {
   return key.split('|').join(' · ');
 }
+
+/** A card/pokemon key's grade segment, rendered readably: "…|PSA6" → "PSA 6",
+ *  "…|raw" → "raw". Null when the last segment isn't a grade token — display
+ *  only, never a mapping back into pricing. */
+export function keyGrade(key: string | null | undefined): string | null {
+  if (!key) return null;
+  const tok = key.split('|').pop() ?? '';
+  if (tok === 'raw') return 'raw';
+  const m = tok.match(/^([A-Za-z]+)(10|[1-9](?:\.5)?)$/);
+  return m ? `${m[1].toUpperCase()} ${m[2]}` : null;
+}

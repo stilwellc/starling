@@ -228,6 +228,13 @@ export interface VerticalMatcher {
 
 export type RiskGrade = 'A' | 'B' | 'C' | 'D';
 
+/** Front-page tier (the editorial bar, Aug 2026 — lib/tier.ts): 'featured' =
+ *  defensible evidence (high conf with n≥6, or a verified cert at grade A,
+ *  depth 0.25–0.60 unless certed); 'worth-a-look' = passed the gates on
+ *  thinner evidence (thin/ladder/n<6/suspect depth) — shown as tape rows with
+ *  the caveat explicit, never hidden. Placement only; rank is untouched. */
+export type DealTier = 'featured' | 'worth-a-look';
+
 export interface RiskResult {
   grade: RiskGrade;
   score: number; // 0..100
@@ -291,6 +298,10 @@ export interface Deal {
   /** the SOURCE book key the ladder priced from (present iff basis==='ladder');
    *  evidenceUrl points here too — the comps live behind the source row */
   basisKey?: string;
+  /** front-page tier — stamped by publish.ts via tierOf (lib/tier.ts).
+   *  Optional-additive: boards built before the tier simply don't carry it and
+   *  the UI recomputes with the same rule. */
+  tier?: DealTier;
 }
 
 // ─────────────────────────────────────────────────────────────────────────────

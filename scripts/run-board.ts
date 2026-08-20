@@ -651,7 +651,12 @@ async function main() {
       `identified ${JSON.stringify(stats.identified)} · calls ${JSON.stringify(stats.calls)}`,
   );
   console.log(`[run-board] gate reasons: ${JSON.stringify(stats.gateReasons)}`);
-  console.log(`[run-board] published ${board.deals.length} deals  [${byV}]  + ${leads.length} context leads`);
+  const featuredCount = board.deals.filter((d) => d.tier === 'featured').length;
+  console.log(
+    `[run-board] published ${board.deals.length} deals ` +
+      `(${featuredCount} featured · ${board.deals.length - featuredCount} worth a look)  ` +
+      `[${byV}]  + ${leads.length} context leads`,
+  );
   console.log(
     `[run-board] closing: ${auctionListings.length} ending-soon auctions evaluated → ` +
       `${board.closing?.length ?? 0} closing calls published (watch signals, not price calls)`,

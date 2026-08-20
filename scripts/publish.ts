@@ -8,6 +8,7 @@
  */
 import { writeFileSync, existsSync, mkdirSync } from 'node:fs';
 import { join } from 'node:path';
+import { tierOf } from './lib/tier';
 import type {
   AuctionCall,
   Board,
@@ -73,7 +74,14 @@ export function publishBoard(
     schema: 1,
     builtAt: meta.builtAt,
     bookBuiltAt: meta.bookBuiltAt,
-    deals: deals.slice().sort((a, b) => b.rank - a.rank).slice(0, BOARD_CAP),
+    // rank-desc as ever, then each deal stamped with its front-page tier
+    // (lib/tier.ts): 'featured' = the defensible calls, 'worth-a-look' = the
+    // rest. Placement only — the sort is untouched, and nothing is dropped.
+    deals: deals
+      .slice()
+      .sort((a, b) => b.rank - a.rank)
+      .slice(0, BOARD_CAP)
+      .map((d) => ({ ...d, tier: tierOf(d) })),
     perVertical,
     ...(hunt ? { hunt: { targets: hunt.targets, deals: sortHuntDeals(hunt.deals) } } : {}),
     // schema v2 additions — all optional, all absent on pre-sweep boards.

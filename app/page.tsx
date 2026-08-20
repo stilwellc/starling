@@ -59,21 +59,19 @@ export default function HomePage() {
 
       {stale && <StaleBanner builtAt={board.builtAt} />}
 
+      {/* Closing soon LEADS the page (the value audit's verdict: the closing
+          lane is where the edge showed up) — soonest hammer at hero weight,
+          before any BIN call. It leads a deal-less board too. */}
+      {board.closing && board.closing.length > 0 && <ClosingSection calls={board.closing} />}
+
       {/* The hunt — curated targets stay PINNED above book-driven discovery
           (PROPOSAL §4.4): a strip carrying the watch state and any PRICED hits;
           the facts-only hits live on /hunt. */}
       {board.hunt && <HuntModule hunt={board.hunt} />}
 
-      {deals.length > 0 ? (
-        <BoardControls deals={deals} closing={board.closing} />
-      ) : (
-        <>
-          {/* closing calls can exist on a deal-less board — auctions ending
-              soon are exactly what an empty BIN net should still show */}
-          {board.closing && board.closing.length > 0 && <ClosingSection calls={board.closing} />}
-          <EmptyBoard />
-        </>
-      )}
+      {/* The BIN board, in two tiers: "Featured — the defensible calls"
+          (hero + grid), then "Worth a look" as caveated tape rows. */}
+      {deals.length > 0 ? <BoardControls deals={deals} /> : <EmptyBoard />}
 
       {/* The wide net (v2, optional) — context leads, clearly not priced calls. */}
       {board.leads && <LeadsSection leads={board.leads} />}

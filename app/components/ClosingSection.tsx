@@ -5,9 +5,12 @@
  *
  * Live AUCTIONS ending within hours whose bidding sits ≥40% under the book —
  * WATCH SIGNALS, never price calls: a current bid is a moment, not a
- * settlement, and it moves (the section head and every row say so). Compact
- * urgent rows: thumb · title · current bid on the band · % under · bid count ·
- * countdown · out-link.
+ * settlement, and it moves (the section head and every row say so). This lane
+ * LEADS the page (the value audit's verdict: the closing calls are where the
+ * edge actually showed up), so the soonest hammer renders at HERO weight and
+ * the rest as compact urgent rows: thumb · title · current bid on the band ·
+ * % under vs current bid · bid count · countdown · out-link. Zero or one bids
+ * gets a "no action yet" chip — thin action is part of the signal, said aloud.
  *
  * The countdown runs off the CLIENT clock (a board built 2h ago must still
  * count true), hydration-safe: the server (and the client's first paint)
@@ -31,6 +34,29 @@ function countdown(endsAt: string, nowMs: number | null): string {
   const h = Math.floor(mins / 60);
   const m = mins % 60;
   return h > 0 ? `ends in ${h}h ${m}m` : `ends in ${Math.max(m, 1)}m`;
+}
+
+/** Bid count, said plainly. 0 or 1 bids is a real state worth a chip — an
+ *  auction nobody has moved on yet — never hidden behind an absent field.
+ *  Unknown count renders nothing: we don't claim "no action" without data. */
+function BidCount({ call, chip = false }: { call: AuctionCall; chip?: boolean }) {
+  if (typeof call.bidCount !== 'number') return null;
+  const quiet = call.bidCount <= 1;
+  return (
+    <>
+      <span className={`closing-bidcount${chip ? ' closing-bidcount-chip' : ''}`}>
+        {call.bidCount} {call.bidCount === 1 ? 'bid' : 'bids'}
+      </span>
+      {quiet && (
+        <span
+          className="closing-noaction"
+          title="Zero or one bids so far — nobody has moved on this yet; the current bid is barely a signal"
+        >
+          no action yet
+        </span>
+      )}
+    </>
+  );
 }
 
 function ClosingRow({ call, nowMs }: { call: AuctionCall; nowMs: number | null }) {
@@ -62,12 +88,9 @@ function ClosingRow({ call, nowMs }: { call: AuctionCall; nowMs: number | null }
             bid {money(call.currentBid)}
             {call.shipping != null && call.shipping > 0 ? ` + ${money(call.shipping)} ship` : ''}
           </span>
-          {typeof call.bidCount === 'number' && (
-            <span>
-              {call.bidCount} {call.bidCount === 1 ? 'bid' : 'bids'}
-            </span>
-          )}
+          <BidCount call={call} />
           <span>book {money(call.med)}</span>
+          <span className="closing-caveat">bid will move — watch signal, not a price</span>
         </div>
         <DepthBar
           allIn={call.allInBid}
@@ -81,7 +104,7 @@ function ClosingRow({ call, nowMs }: { call: AuctionCall; nowMs: number | null }
 
       <div className="closing-nums">
         <span className="closing-depth">{depthPct(call.bidVsBook)}</span>
-        <span className="closing-under">under · bids move</span>
+        <span className="closing-under">under · vs current bid</span>
         <span
           className={`closing-countdown${ended ? ' is-ended' : ''}`}
           title={`Auction ends ${new Date(call.endsAt).toLocaleString()}`}
@@ -95,6 +118,86 @@ function ClosingRow({ call, nowMs }: { call: AuctionCall; nowMs: number | null }
           View on eBay ↗
         </a>
       )}
+    </article>
+  );
+}
+
+/** The soonest hammer at HERO weight — the lane leads the page, so its top
+ *  call gets the top-of-board treatment: big depth number labeled against the
+ *  CURRENT bid, the countdown lit, bid count front and center. Same honesty
+ *  grammar as the rows, at full volume. */
+function ClosingHero({ call, nowMs }: { call: AuctionCall; nowMs: number | null }) {
+  const href = call.affiliateUrl || call.webUrl;
+  const linkProps = href
+    ? { href, target: '_blank', rel: 'sponsored noopener noreferrer' as const }
+    : undefined;
+  const remaining = countdown(call.endsAt, nowMs);
+  const ended = remaining === 'ended';
+
+  return (
+    <article className={`closing-hero${ended ? ' closing-row-ended' : ''}`}>
+      <span className="closing-hero-media" aria-hidden="true">
+        {call.imageUrl ? (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img src={call.imageUrl} alt="" loading="lazy" />
+        ) : (
+          <span className="deal-row-noimg" />
+        )}
+        <span className="card-vertical">{verticalLabel(call.vertical)}</span>
+      </span>
+
+      <div className="closing-hero-body">
+        <div className="closing-hero-eyebrow">
+          <span className="kicker kicker-lit">Next hammer</span>
+          <span
+            className={`closing-countdown closing-hero-countdown${ended ? ' is-ended' : ''}`}
+            title={`Auction ends ${new Date(call.endsAt).toLocaleString()}`}
+          >
+            {remaining}
+          </span>
+        </div>
+
+        <div className="card-depth">
+          <span className="card-depth-num">{depthPct(call.bidVsBook)}</span>
+          <span className="card-depth-word">
+            under · vs current bid
+            <span className="card-depth-vs">
+              bidding sits at {money(call.allInBid)} all-in against a {money(call.med)} median —
+              bid will move; watch signal, not a price
+            </span>
+          </span>
+        </div>
+
+        <h3 className="closing-hero-title">
+          {linkProps ? <a {...linkProps}>{call.title}</a> : call.title}
+        </h3>
+
+        <div className="closing-meta closing-hero-meta">
+          <span>
+            bid {money(call.currentBid)}
+            {call.shipping != null && call.shipping > 0 ? ` + ${money(call.shipping)} ship` : ''}
+          </span>
+          <BidCount call={call} chip />
+          <span>
+            book {money(call.med)} · {call.n} {call.n === 1 ? 'sale' : 'sales'}
+          </span>
+        </div>
+
+        <DepthBar
+          allIn={call.allInBid}
+          lo={call.lo}
+          med={call.med}
+          hi={call.hi}
+          depth={call.bidVsBook}
+          size="hero"
+        />
+
+        {linkProps && (
+          <a {...linkProps} className="closing-out closing-hero-out">
+            Watch it on eBay ↗
+          </a>
+        )}
+      </div>
     </article>
   );
 }
@@ -113,22 +216,28 @@ export function ClosingSection({ calls }: { calls: AuctionCall[] }) {
   const rows = calls.filter((c) => c && typeof c.endsAt === 'string');
   if (rows.length === 0) return null;
 
+  // soonest hammer leads at hero weight; the rest stay compact rows
+  const [lead, ...rest] = rows;
+
   return (
     <section className="closing" aria-label="Closing soon — live auctions under the book">
       <div className="rule-head">
-        <span className="kicker">Closing soon · live auctions under the book</span>
+        <span className="kicker kicker-lit">Closing soon · live auctions under the book</span>
         <span className="rule-head-count">{rows.length} ending</span>
       </div>
       <p className="closing-sub">
         Auctions ending within hours whose <b>current bidding</b> sits 40%+ under lectr&apos;s book —
-        a <b>watch signal, not a price call</b>: bids move until the hammer. Depth shown is the bid
-        we saw at build time.
+        every depth here is measured <b>against the current bid</b>, and a bid is a moment, not a
+        settlement: <b>watch signals, never price calls</b>. Bids move until the hammer.
       </p>
-      <div className="closing-rows">
-        {rows.map((c) => (
-          <ClosingRow key={c.id} call={c} nowMs={nowMs} />
-        ))}
-      </div>
+      <ClosingHero call={lead} nowMs={nowMs} />
+      {rest.length > 0 && (
+        <div className="closing-rows">
+          {rest.map((c) => (
+            <ClosingRow key={c.id} call={c} nowMs={nowMs} />
+          ))}
+        </div>
+      )}
     </section>
   );
 }
