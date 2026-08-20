@@ -49,6 +49,10 @@ export function loadBoard(): Board {
       ...(parsed.hunt && Array.isArray(parsed.hunt.targets) && Array.isArray(parsed.hunt.deals)
         ? { hunt: parsed.hunt }
         : {}),
+      // schema v2 (sweep rebuild): context leads + run stats — optional, and
+      // passed through verbatim so the UI sees exactly what the pipeline wrote.
+      ...(Array.isArray(parsed.leads) ? { leads: parsed.leads } : {}),
+      ...(parsed.stats && typeof parsed.stats === 'object' ? { stats: parsed.stats } : {}),
     };
   } catch (err) {
     // ENOENT before the first pipeline run is expected — quiet on that, loud otherwise.

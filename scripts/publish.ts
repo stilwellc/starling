@@ -8,7 +8,16 @@
  */
 import { writeFileSync, existsSync, mkdirSync } from 'node:fs';
 import { join } from 'node:path';
-import type { Board, Deal, HuntDeal, HuntSection, PerVerticalStat, Vertical } from './types';
+import type {
+  Board,
+  BoardStats,
+  Deal,
+  HuntDeal,
+  HuntNoBookDeal,
+  HuntSection,
+  PerVerticalStat,
+  Vertical,
+} from './types';
 
 const OUT_DIR = join(process.cwd(), 'public', 'data', 'starling');
 const BOARD_PATH = join(OUT_DIR, 'board.json');
@@ -35,6 +44,7 @@ export function publishBoard(
   perVertical: Partial<Record<Vertical, PerVerticalStat>>,
   meta: { builtAt: string; bookBuiltAt: string },
   hunt?: HuntSection,
+  extras?: { leads?: HuntNoBookDeal[]; stats?: BoardStats },
 ): Board {
   const board: Board = {
     schema: 1,
@@ -43,6 +53,10 @@ export function publishBoard(
     deals: deals.slice().sort((a, b) => b.rank - a.rank),
     perVertical,
     ...(hunt ? { hunt: { targets: hunt.targets, deals: sortHuntDeals(hunt.deals) } } : {}),
+    // schema v2 additions — both optional, both absent on pre-sweep boards.
+    // Leads arrive pre-capped/pre-sorted from run-board (ratio-to-context-med).
+    ...(extras?.leads?.length ? { leads: extras.leads } : {}),
+    ...(extras?.stats ? { stats: extras.stats } : {}),
   };
   if (!existsSync(OUT_DIR)) mkdirSync(OUT_DIR, { recursive: true });
   writeFileSync(BOARD_PATH, JSON.stringify(board, null, 2));

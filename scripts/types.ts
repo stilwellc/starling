@@ -15,26 +15,29 @@
 // ─────────────────────────────────────────────────────────────────────────────
 
 /** The vertical slugs — the pockets of the market lectr has the MOST settled
- *  data on. Launch four = where the corpus is deepest: sports cards, autographs
- *  (RR Auction's 252K-lot 30-year archive — the largest non-card corpus),
- *  Pokémon, and art editions. Watches stay in the corpus but out of the launch
- *  set (condition/authenticity noise makes a price-vs-book call unreliable —
- *  "they can be broken"); design is P4. Cards are first-class; the
- *  anti-cards-trap guard lives in the scheduler's budget allocation
- *  (scheduler.ts), never in ranking. */
+ *  data on. The sweep rebuild (Aug 2026 funnel audit) promoted WATCHES into the
+ *  launch set: the book carried 1,278 watch keys with NO matcher — never polled
+ *  — and a numeric-reference identity (rolex|16610) is as exact as a card key.
+ *  The "they can be broken" condition risk is priced in riskInputs (material +
+ *  papers axes), not used to suppress the vertical. Design stays out of the
+ *  launch set (matcher registered, abstain-heavy, no sweep slice yet — it only
+ *  identifies hunt-lane hits until book rows deepen). Cards are first-class;
+ *  the anti-cards-trap guard lives in the sweep budget allocation
+ *  (scheduler.ts allocateSweepBudget), never in ranking. */
 export type Vertical =
   | 'sports-cards'
   | 'autographs'
   | 'pokemon'
   | 'art-editions'
-  | 'watches' // in the corpus, deprioritized at launch
-  | 'design'; // P4
+  | 'watches'
+  | 'design'; // matcher registered; launch pending book rows + a sweep slice
 
 export const LAUNCH_VERTICALS: Vertical[] = [
   'sports-cards',
   'autographs',
   'pokemon',
   'art-editions',
+  'watches',
 ];
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -60,11 +63,50 @@ export interface ValueBookRow {
   conf: Confidence;
 }
 
+// ── the context tier (schema-ADDITIVE, Aug 2026) ────────────────────────────
+// Honest rollups one level up the identity ladder — signer across formats,
+// player × object slug, curated natural-history/early-tech classes, artist
+// edition rollups. lectr emits them in the same book (emit-value-book.ts,
+// looser bar: n≥3, no dispersion gate — the lo–hi band carries the spread).
+// A context row is NEVER a priced call: it annotates noBook hits and feeds
+// board.leads, always labeled by kind so the caption stays honest
+// ("Charles Schulz signed material — 41 sales, $150–$2.4K").
+
+export type ContextKind = 'signer' | 'player-object' | 'class' | 'artist';
+
+/** A context row as the book carries it (lectr's ContextRow — cross-repo). */
+export interface ContextRow {
+  k: string;
+  /** lectr's market lens for the rollup — wider than Vertical (sports/science) */
+  v: Vertical | 'sports' | 'science';
+  kind: ContextKind;
+  med: number;
+  lo: number;
+  hi: number;
+  n: number;
+  lastSale: string;
+}
+
+/** The board-facing context stamp on a noBook hit / lead (contract v2: no `v` —
+ *  the deal already carries its own vertical lens). */
+export interface DealContext {
+  k: string;
+  kind: ContextKind;
+  med: number;
+  lo: number;
+  hi: number;
+  n: number;
+  lastSale: string;
+}
+
 export interface ValueBook {
   schema: 1;
   /** must match meta.json's build stamp; sync-book.ts enforces freshness */
   builtAt: string;
   rows: ValueBookRow[];
+  /** the context tier — ADDITIVE; books built before Aug 2026 don't carry it,
+   *  and every consumer must tolerate its absence (schema stays 1) */
+  context?: ContextRow[];
 }
 
 /** lectr's build stamp sidecar — https://lectr.bid/data/ray/meta.json */
@@ -287,6 +329,10 @@ export interface HuntNoBookDeal {
   webUrl?: string;
   marketplace: string;
   surfacedAt: string;
+  /** lectr context when a rollup row covers this hit — nearby evidence, never a
+   *  valuation ("no book value" stops reading like "no data"). Optional: most
+   *  noBook hits have no covering rollup. */
+  context?: DealContext;
 }
 
 export type HuntDeal = HuntPricedDeal | HuntNoBookDeal;
@@ -295,6 +341,26 @@ export interface HuntSection {
   targets: HuntTarget[];
   /** priced hits rank-desc first, then noBook hits recency-desc (publish.ts) */
   deals: HuntDeal[];
+}
+
+/** Run observability (board schema v2) — the funnel, on the record. Born from
+ *  the audit's blindness: pokemon matched 58 listings and published 0 across 3
+ *  runs, and nobody could say why because gate reasons were discarded. Every
+ *  field optional-backward-compatible; boards built before the sweep rebuild
+ *  simply don't carry it. */
+export interface BoardStats {
+  /** API calls actually spent this run. search and getItems are SEPARATE eBay
+   *  quota buckets (5,000/day each) — ledger them apart. */
+  calls: { search: number; getItems: number };
+  /** swept listings evaluated after dedupe (the top of the funnel) */
+  listingsEvaluated: number;
+  /** per-sweep-slice ledger: calls spent, listings taken */
+  bySlice: Record<string, { calls: number; listings: number }>;
+  /** vertical → gate-reason histogram (tooShallow/scamCap/condition/maxAllIn/
+   *  noPrice/noBookRow…) — the funnel's leak map */
+  gateReasons: Record<string, Record<string, number>>;
+  /** vertical → listings identify() pinned to a key (book row or not) */
+  identified: Record<string, number>;
 }
 
 export interface Board {
@@ -307,6 +373,12 @@ export interface Board {
   /** the hunt lane (§4.4) — absent on boards built before the feature landed,
    *  so existing consumers of `deals`/`perVertical` are untouched */
   hunt?: HuntSection;
+  /** context leads from sweeps: no book key, but a context rollup covers the
+   *  listing and all-in sits ≤ 0.5× its med. Same shape as noBook hunt hits +
+   *  a context stamp; capped at 20; labeled "context lead — not a priced call". */
+  leads?: HuntNoBookDeal[];
+  /** the run's funnel numbers — see BoardStats */
+  stats?: BoardStats;
 }
 
 // ─────────────────────────────────────────────────────────────────────────────

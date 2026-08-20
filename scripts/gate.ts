@@ -25,6 +25,19 @@ export interface GateResult {
   conditionFlags: string[];
 }
 
+/** Gate reason → the board.stats.gateReasons histogram key (schema v2). The
+ *  audit's lesson: reasons were computed and then DISCARDED (`g.reason`), so
+ *  "pokemon matched 58, published 0" was undiagnosable from logs. Every gated
+ *  listing now increments one of these; 'noBookRow' (identity pinned, no row)
+ *  is counted by the pipeline itself since no gate ever runs for it. */
+export const REASON_KEY: Record<string, string> = {
+  'too-shallow': 'tooShallow',
+  'scam-cap': 'scamCap',
+  'condition-flag': 'condition',
+  'no-price': 'noPrice',
+  'over-ceiling': 'maxAllIn',
+};
+
 /** all-in = item + cheapest shipping. Unknown/calculated shipping → item only,
  *  with a note; we never invent a shipping number. */
 export function allInOf(listing: EbayListing): number {
