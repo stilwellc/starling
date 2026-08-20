@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { isBoardStale } from '@/scripts/lib/load-board';
 import { loadBoardExt } from '@/app/lib/board-data';
 import { BoardControls } from '@/app/components/BoardControls';
+import { ClosingSection } from '@/app/components/ClosingSection';
 import { StaleBanner, EmptyBoard } from '@/app/components/Banners';
 import { HuntModule } from '@/app/components/HuntModule';
 import { LeadsSection } from '@/app/components/LeadsSection';
@@ -63,7 +64,16 @@ export default function HomePage() {
           the facts-only hits live on /hunt. */}
       {board.hunt && <HuntModule hunt={board.hunt} />}
 
-      {deals.length > 0 ? <BoardControls deals={deals} /> : <EmptyBoard />}
+      {deals.length > 0 ? (
+        <BoardControls deals={deals} closing={board.closing} />
+      ) : (
+        <>
+          {/* closing calls can exist on a deal-less board — auctions ending
+              soon are exactly what an empty BIN net should still show */}
+          {board.closing && board.closing.length > 0 && <ClosingSection calls={board.closing} />}
+          <EmptyBoard />
+        </>
+      )}
 
       {/* The wide net (v2, optional) — context leads, clearly not priced calls. */}
       {board.leads && <LeadsSection leads={board.leads} />}

@@ -30,6 +30,19 @@ runs against these recorded fixtures until it lands, driven by
   (a `charles-schulz` signer row, a `megalodon-tooth` class row, a
   player-object row).
 
+  The Aug 2026 additions keep three more cases alive here:
+  - a **cards-slabs** listing that pins to the book's `conf:"thin"` row at
+    depth ≥ 0.40 (the "thin book" badge path), and one that pins to a key the
+    book only covers at a NEIGHBORING grade, priced via `gradeLadder`
+    (`basis:"ladder"` at depth ≥ 0.35);
+  - a `*-closing` AUCTION slice (`watches-closing`) with one call that clears
+    `closingGate` (bidVsBook ≥ 0.40, ends in-window) and one too-shallow bid
+    that lands in the reason histogram. Auction fixtures use
+    `currentBidPrice`/`bidCount` (no `price`) and a **relative end date** —
+    `"itemEndDate": "+102m"` = 102 minutes after the injected run `now`
+    (`fixture-source.ts` resolves it) — because a pinned ISO end would age out
+    of the hard 4h window a day after being recorded.
+
 - **`ebay/hunt.json`** — the hunt lane's recordings (PROPOSAL §4.4): a JSON
   object mapping **hunt entry id** (from `hunt/priority.yaml`) → an array of
   `EbayRawItem`, the listings that entry's compiled queries "returned". Keyed by

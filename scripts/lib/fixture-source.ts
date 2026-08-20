@@ -40,11 +40,26 @@ export function fixtureListings(vertical: Vertical): EbayListing[] {
   return raw.map((it) => normalizeItem(it, it.categories ? 'EBAY_US' : 'EBAY_US'));
 }
 
+/** Fixture auction end dates are RELATIVE ("+102m" = 102 minutes after the
+ *  injected run `now`) so the closing lane's hard 4h window can be exercised
+ *  deterministically forever — a pinned ISO end date would silently age out of
+ *  the window the day after it was recorded. Absolute ISO strings pass through
+ *  untouched. */
+const REL_END_RE = /^\+(\d+)m$/i;
+
+function resolveEndDate(l: EbayListing, now: number): EbayListing {
+  const m = l.itemEndDate?.match(REL_END_RE);
+  if (!m) return l;
+  return { ...l, itemEndDate: new Date(now + Number(m[1]) * 60_000).toISOString() };
+}
+
 /** The sweep engine's fixture: fixtures/ebay/sweep.json maps SLICE id (see
  *  scripts/sweep.ts SWEEP_SLICES) → the recorded listings that slice's category
  *  pages "returned". A missing file or absent slice id is a quiet slice this
- *  run, not an error — same posture as the vertical files. */
-export function sweepFixtureListings(sliceId: string): EbayListing[] {
+ *  run, not an error — same posture as the vertical files. `now` is the run
+ *  timestamp (injected, never the wall clock here) — it anchors the relative
+ *  auction end dates above. */
+export function sweepFixtureListings(sliceId: string, now: number): EbayListing[] {
   const path = join(FIXTURE_DIR, 'sweep.json');
   if (!existsSync(path)) return [];
   let raw: Record<string, EbayRawItem[]>;
@@ -56,7 +71,7 @@ export function sweepFixtureListings(sliceId: string): EbayListing[] {
   }
   const items = raw?.[sliceId];
   if (!Array.isArray(items)) return [];
-  return items.map((it) => normalizeItem(it, 'EBAY_US'));
+  return items.map((it) => resolveEndDate(normalizeItem(it, 'EBAY_US'), now));
 }
 
 /** The hunt lane's fixture: fixtures/ebay/hunt.json maps hunt entry id → the

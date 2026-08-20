@@ -44,7 +44,11 @@ export const LAUNCH_VERTICALS: Vertical[] = [
 // The lectr data contract — value-book.json.gz  (see PROPOSAL §3.2)
 // ─────────────────────────────────────────────────────────────────────────────
 
-export type Confidence = 'high' | 'medium'; // 'low' never ships in the book
+/** 'low' never ships in the book. 'thin' (Aug 2026, lectr-side): n=3 pools —
+ *  real corpus reads, but shallow; Starling prices them only at depth ≥ 0.40
+ *  (gate.ts THIN_MIN_DEPTH) and NEVER for closing calls. Books built before the
+ *  tier simply never carry it — every consumer tolerates its absence. */
+export type Confidence = 'high' | 'medium' | 'thin';
 
 export interface ValueBookRow {
   /** exact-class identity key, e.g. "mickey-mantle|1952|topps|311|PSA6" */
@@ -107,6 +111,12 @@ export interface ValueBook {
   /** the context tier — ADDITIVE; books built before Aug 2026 don't carry it,
    *  and every consumer must tolerate its absence (schema stays 1) */
   context?: ContextRow[];
+  /** the grade ladder (ADDITIVE, Aug 2026, lectr-side): card grade multipliers,
+   *  base grade 8 = 1.0. Lets a pinned card key that differs from a book key
+   *  ONLY by grade be priced via med × (rungs[listingGrade]/rungs[bookGrade]) —
+   *  see ladder.ts. Optional and shape-checked before use: a book without it
+   *  (or with a malformed one) simply never ladder-prices. */
+  gradeLadder?: { base: number; rungs: Record<string, number> };
 }
 
 /** lectr's build stamp sidecar — https://lectr.bid/data/ray/meta.json */
@@ -150,6 +160,10 @@ export interface EbayListing {
   };
   /** ISO creation date — drives the freshBoost in ranking */
   itemCreationDate?: string;
+  /** ISO end date — auction listings only; the closing-calls lane keys off it */
+  itemEndDate?: string;
+  /** bids placed so far — auction listings only (summary `bidCount`) */
+  bidCount?: number;
   /** full item specifics from getItem localizedAspects; empty until enriched */
   aspects: EbayAspect[];
   /** true once enrich.ts has run getItem and populated `aspects` */
@@ -267,6 +281,62 @@ export interface Deal {
   /** deep link into lectr's evidence page for this key */
   evidenceUrl: string;
   surfacedAt: string; // ISO — when Starling first surfaced this deal
+  /** priced off a 'thin' book row (n=3 pool) — only published at depth ≥ 0.40;
+   *  the card renders a "thin book" badge so the shallow pool is never hidden */
+  thin?: true;
+  /** 'ladder' = no exact book row for this grade; med/lo/hi were derived from a
+   *  neighboring-grade row via the book's gradeLadder (ladder.ts). Absent =
+   *  priced off the exact row. */
+  basis?: 'ladder';
+  /** the SOURCE book key the ladder priced from (present iff basis==='ladder');
+   *  evidenceUrl points here too — the comps live behind the source row */
+  basisKey?: string;
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Closing calls — the auction lane (Aug 2026). BIN mispricings get sniped fast;
+// auctions ending with low bids are where the real edge lives.
+// ─────────────────────────────────────────────────────────────────────────────
+
+/** A live AUCTION ending soon with bidding deep under the book — a WATCH
+ *  SIGNAL, never a price call: the current bid is a moment, not a settlement,
+ *  and it moves. Honesty rules (gate.ts closingGate): endsAt within 4h,
+ *  bidVsBook ≥ 0.40, conf high|medium only (never thin), seller feedbackScore
+ *  ≥ 50. The 0.90 scam cap does NOT apply — a $1 opening bid is normal auction
+ *  mechanics, not a fake-listing tell. */
+export interface AuctionCall {
+  id: string; // stable: hash of itemId (see lib/id.ts)
+  itemId: string;
+  legacyItemId?: string;
+  vertical: Vertical;
+  key: string;
+  title: string;
+  imageUrl?: string;
+  /** the bid on the tape when we looked — already stale by publish time */
+  currentBid: number;
+  bidCount?: number;
+  /** ISO — the auction's end (eBay itemEndDate); the lane's sort key */
+  endsAt: string;
+  shipping: number | null;
+  /** currentBid + cheapest shipping — the all-in a snipe would pay right now */
+  allInBid: number;
+  // the book row behind the signal
+  med: number;
+  lo: number;
+  hi: number;
+  n: number;
+  lastSale: string;
+  trend: number | null;
+  conf: Confidence;
+  /** 1 − allInBid/med — depth of the CURRENT bid, not of any final price */
+  bidVsBook: number;
+  risk: RiskResult;
+  listedAt?: string;
+  affiliateUrl?: string;
+  webUrl?: string;
+  marketplace: string;
+  evidenceUrl: string;
+  surfacedAt: string;
 }
 
 export interface PerVerticalStat {
@@ -377,6 +447,10 @@ export interface Board {
    *  listing and all-in sits ≤ 0.5× its med. Same shape as noBook hunt hits +
    *  a context stamp; capped at 20; labeled "context lead — not a priced call". */
   leads?: HuntNoBookDeal[];
+  /** closing calls — live auctions ending within 4h with bidding ≥ 40% under
+   *  the book (see AuctionCall). Sorted endsAt asc, capped at 30. Optional:
+   *  boards built before the lane (or runs that caught nothing) don't carry it. */
+  closing?: AuctionCall[];
   /** the run's funnel numbers — see BoardStats */
   stats?: BoardStats;
 }
@@ -393,6 +467,10 @@ export interface Receipt {
   itemId: string;
   vertical: Vertical;
   key: string;
+  /** 'closing' = this receipt tracks an AuctionCall (watch signal): depth/allIn
+   *  at surface are bidVsBook/allInBid — the bid we saw, not a BIN ask. Absent
+   *  = a BIN deal, as ever. */
+  lane?: 'closing';
   /** the call as first surfaced — frozen, never rewritten */
   surfacedAt: string;
   depthAtSurface: number;

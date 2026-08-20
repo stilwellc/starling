@@ -9,6 +9,7 @@
 import { writeFileSync, existsSync, mkdirSync } from 'node:fs';
 import { join } from 'node:path';
 import type {
+  AuctionCall,
   Board,
   BoardStats,
   Deal,
@@ -21,6 +22,21 @@ import type {
 
 const OUT_DIR = join(process.cwd(), 'public', 'data', 'starling');
 const BOARD_PATH = join(OUT_DIR, 'board.json');
+
+/** board.closing cap — the lane is an urgency strip, not a second board. */
+export const CLOSING_CAP = 30;
+
+/** Closing calls publish soonest-ending FIRST — urgency is the lane's whole
+ *  point — with id as the deterministic tie. */
+export function sortClosing(calls: AuctionCall[]): AuctionCall[] {
+  return calls
+    .slice()
+    .sort(
+      (a, b) =>
+        (Date.parse(a.endsAt) || 0) - (Date.parse(b.endsAt) || 0) ||
+        (a.id < b.id ? -1 : a.id > b.id ? 1 : 0),
+    );
+}
 
 /** Hunt-section order: priced above noBook; rank desc within priced; recency
  *  desc (listedAt, else surfacedAt) within noBook; id as the deterministic tie. */
@@ -44,7 +60,7 @@ export function publishBoard(
   perVertical: Partial<Record<Vertical, PerVerticalStat>>,
   meta: { builtAt: string; bookBuiltAt: string },
   hunt?: HuntSection,
-  extras?: { leads?: HuntNoBookDeal[]; stats?: BoardStats },
+  extras?: { leads?: HuntNoBookDeal[]; stats?: BoardStats; closing?: AuctionCall[] },
 ): Board {
   const board: Board = {
     schema: 1,
@@ -53,9 +69,11 @@ export function publishBoard(
     deals: deals.slice().sort((a, b) => b.rank - a.rank),
     perVertical,
     ...(hunt ? { hunt: { targets: hunt.targets, deals: sortHuntDeals(hunt.deals) } } : {}),
-    // schema v2 additions — both optional, both absent on pre-sweep boards.
-    // Leads arrive pre-capped/pre-sorted from run-board (ratio-to-context-med).
+    // schema v2 additions — all optional, all absent on pre-sweep boards.
+    // Leads arrive pre-capped/pre-sorted from run-board (ratio-to-context-med);
+    // closing calls sort endsAt asc here (soonest hammer first) and cap at 30.
     ...(extras?.leads?.length ? { leads: extras.leads } : {}),
+    ...(extras?.closing?.length ? { closing: sortClosing(extras.closing).slice(0, CLOSING_CAP) } : {}),
     ...(extras?.stats ? { stats: extras.stats } : {}),
   };
   if (!existsSync(OUT_DIR)) mkdirSync(OUT_DIR, { recursive: true });

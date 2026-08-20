@@ -45,7 +45,9 @@ export function normalizeSummary(
     itemId: raw.itemId,
     legacyItemId: raw.legacyItemId,
     title: raw.title ?? '',
-    price: num(raw.price?.value) ?? 0,
+    // Pure auctions carry no `price` — the standing bid IS the listing's price
+    // on this surface (the closing lane reads it as currentBid).
+    price: num(raw.price?.value) ?? num(raw.currentBidPrice?.value) ?? 0,
     currency: raw.price?.currency ?? 'USD',
     shippingCost: shippingOf(raw),
     condition: raw.condition,
@@ -60,6 +62,8 @@ export function normalizeSummary(
       accountType: raw.seller?.sellerAccountType,
     },
     itemCreationDate: raw.itemCreationDate,
+    itemEndDate: raw.itemEndDate,
+    bidCount: raw.bidCount,
     aspects: [],
     enriched: false,
     marketplaceId,

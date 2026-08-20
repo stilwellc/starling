@@ -130,7 +130,9 @@ export function trendPct(trend: number | null): string | null {
 }
 
 export function confLabel(conf: Confidence): string {
-  return conf === 'high' ? 'High confidence' : 'Medium confidence';
+  if (conf === 'high') return 'High confidence';
+  if (conf === 'medium') return 'Medium confidence';
+  return 'Thin book'; // n=3 pool — surfaced only at 40%+ depth, badged on the card
 }
 
 const RISK_LABELS: Record<RiskGrade, string> = {

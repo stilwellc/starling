@@ -22,10 +22,14 @@ import type { Confidence, RiskGrade, Candidate, RiskResult } from '../types';
 // Ranking weight constants (PROPOSAL §8)
 // ─────────────────────────────────────────────────────────────────────────────
 
-/** Confidence multiplier — a medium-conf book row is worth 0.6 of a high one. */
+/** Confidence multiplier — a medium-conf book row is worth 0.6 of a high one.
+ *  'thin' (n=3 pools, Aug 2026) ranks at 0.35: it only reaches the board at
+ *  depth ≥ 0.40 (gate.ts THIN_MIN_DEPTH) and should still sit below an equal-
+ *  depth medium row — a shallow pool is a weaker claim, priced in openly. */
 const CONF_W: Record<Confidence, number> = {
   high: 1.0,
   medium: 0.6,
+  thin: 0.35,
 };
 
 /** Risk multiplier — a riskier grade discounts the deal, never hides it. */

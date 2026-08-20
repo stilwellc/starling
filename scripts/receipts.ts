@@ -13,7 +13,7 @@
  */
 import { readFileSync, writeFileSync, existsSync, mkdirSync } from 'node:fs';
 import { join, dirname } from 'node:path';
-import type { Deal, Receipt } from './types';
+import type { AuctionCall, Deal, Receipt } from './types';
 import { GET_ITEMS_BATCH, type EbayClient } from './lib/ebay-client';
 
 const LEDGER_PATH = join(process.cwd(), '.starling-state', 'receipts.json');
@@ -57,6 +57,36 @@ export function recordSurfaced(prior: Receipt[], deals: Deal[], now: string): Re
       med: d.med,
       conf: d.conf,
       riskGrade: d.risk.grade,
+      outcome: 'live',
+    });
+  }
+  return [...byId.values()];
+}
+
+/** Append newly surfaced CLOSING CALLS — same first-call-wins ledger, stamped
+ *  lane:'closing' so the tape can say what the frozen numbers were: the bid we
+ *  saw (allInBid) and its depth (bidVsBook), a watch signal, never a BIN ask.
+ *  Resolution rides the same getItems-absence loop as every other receipt. */
+export function recordClosingSurfaced(
+  prior: Receipt[],
+  calls: AuctionCall[],
+  now: string,
+): Receipt[] {
+  const byId = new Map(prior.map((r) => [r.id, r]));
+  for (const c of calls) {
+    if (byId.has(c.id)) continue;
+    byId.set(c.id, {
+      id: c.id,
+      itemId: c.itemId,
+      vertical: c.vertical,
+      key: c.key,
+      lane: 'closing',
+      surfacedAt: now,
+      depthAtSurface: c.bidVsBook,
+      allInAtSurface: c.allInBid,
+      med: c.med,
+      conf: c.conf,
+      riskGrade: c.risk.grade,
       outcome: 'live',
     });
   }

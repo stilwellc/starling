@@ -13,14 +13,24 @@
  * fetched or invented client-side; the static-export contract stays intact.
  */
 import { useMemo, useState } from 'react';
-import type { Deal, Vertical, RiskGrade } from '@/scripts/types';
+import type { AuctionCall, Deal, Vertical, RiskGrade } from '@/scripts/types';
 import { verticalLabel } from '@/app/lib/display';
 import { DealCard } from './DealCard';
+import { ClosingSection } from './ClosingSection';
 
 const RISK_ORDER: RiskGrade[] = ['A', 'B', 'C', 'D'];
 const GRID_COUNT = 6; // hero + 6 cards, then the tape
 
-export function BoardControls({ deals }: { deals: Deal[] }) {
+export function BoardControls({
+  deals,
+  closing,
+}: {
+  deals: Deal[];
+  /** closing calls (v2, optional) — its own urgency lane pinned above the
+   *  tape; deliberately NOT run through the vertical/risk filters (a watch
+   *  signal isn't a deal, and 30 rows max don't need narrowing) */
+  closing?: AuctionCall[];
+}) {
   const [vertical, setVertical] = useState<Vertical | 'all'>('all');
   const [maxRisk, setMaxRisk] = useState<RiskGrade>('D');
 
@@ -112,6 +122,10 @@ export function BoardControls({ deals }: { deals: Deal[] }) {
             </div>
           )}
 
+          {/* Closing soon — the auction lane, pinned ABOVE the tape: urgency
+              reads before the long tail. */}
+          {closing && closing.length > 0 && <ClosingSection calls={closing} />}
+
           {tapeDeals.length > 0 && (
             <section className="board-tape" aria-label="The rest of the board">
               <div className="rule-head">
@@ -127,9 +141,13 @@ export function BoardControls({ deals }: { deals: Deal[] }) {
           )}
         </>
       ) : (
-        <div className="empty-inline">
-          No deals match this filter right now. Loosen the risk floor or pick another vertical.
-        </div>
+        <>
+          <div className="empty-inline">
+            No deals match this filter right now. Loosen the risk floor or pick another vertical.
+          </div>
+          {/* the auction lane is filter-independent — it stays visible */}
+          {closing && closing.length > 0 && <ClosingSection calls={closing} />}
+        </>
       )}
     </>
   );

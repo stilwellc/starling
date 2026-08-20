@@ -89,18 +89,26 @@ export function planHunt(
  *  abundance becoming attention monopoly. */
 export const CARDS_SWEEP_CAP = 0.4;
 
+/** The AUCTION lane (closing calls) gets its own carve-out FIRST — ~20% of the
+ *  per-run sweep calls, split evenly across auction slices. Ending-soon
+ *  windows are small (the 4h itemEndDate filter IS the pagination bound), so
+ *  this is ample — and the BIN net can never starve the closing lane, nor the
+ *  reverse. */
+export const AUCTION_SWEEP_CAP = 0.2;
+
 /** What allocateSweepBudget needs to know about a slice — kept structural so
  *  scheduler.ts never imports sweep.ts (budget must not depend on the net). */
 export interface SweepLaneInfo {
   id: string;
-  lane: 'cards' | 'other';
+  lane: 'cards' | 'other' | 'auction';
 }
 
 /**
  * Per-run, per-slice search-call budgets. Deterministic, pure:
- *   perRun    = floor(bookBudget / RUNS_PER_DAY)          (562 at defaults)
- *   cardsPool = floor(perRun × 0.4) split evenly across cards-lane slices
- *   the rest  split evenly across the other slices
+ *   perRun      = floor(bookBudget / RUNS_PER_DAY)        (562 at defaults)
+ *   auctionPool = floor(perRun × 0.2) split evenly across auction slices
+ *   cardsPool   = floor(remainder × 0.4) split evenly across cards-lane slices
+ *   the rest    split evenly across the other slices
  * Every slice gets a HARD page cap — one hot slice can't starve the rest, and
  * the cards lane can't eat the run no matter how deep 261328 flows.
  */
@@ -110,12 +118,16 @@ export function allocateSweepBudget(
 ): Record<string, number> {
   const { bookBudget } = reserveHuntBudget(total);
   const perRun = Math.floor(bookBudget / RUNS_PER_DAY);
+  const auctions = slices.filter((s) => s.lane === 'auction');
   const cards = slices.filter((s) => s.lane === 'cards');
-  const others = slices.filter((s) => s.lane !== 'cards');
+  const others = slices.filter((s) => s.lane === 'other');
   const out: Record<string, number> = {};
-  const cardsPool = cards.length ? Math.floor(perRun * CARDS_SWEEP_CAP) : 0;
+  const auctionPool = auctions.length ? Math.floor(perRun * AUCTION_SWEEP_CAP) : 0;
+  for (const s of auctions) out[s.id] = Math.floor(auctionPool / auctions.length);
+  const binRun = perRun - auctionPool;
+  const cardsPool = cards.length ? Math.floor(binRun * CARDS_SWEEP_CAP) : 0;
   for (const s of cards) out[s.id] = Math.floor(cardsPool / cards.length);
-  const otherPool = perRun - cardsPool;
+  const otherPool = binRun - cardsPool;
   for (const s of others) out[s.id] = others.length ? Math.floor(otherPool / others.length) : 0;
   return out;
 }

@@ -24,6 +24,7 @@
  * other module reads the wall clock (keeps the pipeline deterministic per run).
  */
 import type {
+  AuctionCall,
   Deal,
   Vertical,
   PerVerticalStat,
@@ -41,7 +42,8 @@ import { loadHuntList, compileHuntQueries, toHuntTarget, huntRelevant, NOBOOK_CA
 import { pollHunt } from './poll';
 import { SWEEP_SLICES, sweep, loadSweepState, commitSweepState, type SweepSlice } from './sweep';
 import { enrich, verifyPsaCert, applyCertVerdict, type CertVerdict } from './enrich';
-import { gate, huntGate, REASON_KEY } from './gate';
+import { gate, huntGate, closingGate, REASON_KEY, LADDER_MIN_DEPTH } from './gate';
+import { buildLadderIndex, ladderRow } from './ladder';
 import { indexContext, contextFor, toDealContext } from './context';
 import { scoreRisk } from './score/risk';
 import { rankOf } from './score/rank';
@@ -49,6 +51,7 @@ import { publishBoard } from './publish';
 import {
   loadReceipts,
   recordSurfaced,
+  recordClosingSurfaced,
   resolveReceipts,
   commitReceipts,
 } from './receipts';
@@ -66,6 +69,9 @@ function isLive(): boolean {
 const SWEEP_ENRICH_CALLS = 50;
 /** getItems calls per hunt entry's enrichment (2 calls = 40 listings). */
 const HUNT_ENRICH_CALLS = 2;
+/** getItems calls the CLOSING lane may spend firming up pinned auctions
+ *  (12 × 20 = 240 listings/run) — same separate bucket as the sweep's. */
+const AUCTION_ENRICH_CALLS = 12;
 /** board.leads cap — a taste list, not a firehose. */
 const LEADS_CAP = 20;
 
@@ -112,9 +118,13 @@ async function main() {
   }
   // The context tier is ADDITIVE — books without it just yield an empty index.
   const contextIndex = indexContext(synced.book.context);
+  // The grade ladder is ADDITIVE too: null until lectr's book carries it, and
+  // then card keys missing only their grade can price via ladderRow().
+  const ladderIndex = buildLadderIndex(synced.book);
   console.log(
     `[run-board] book: ${synced.book.rows.length} rows + ${contextIndex.size} context rollups ` +
-      `(${synced.source}${synced.stale ? ', STALE' : ''})`,
+      `(${synced.source}${synced.stale ? ', STALE' : ''}` +
+      `${ladderIndex ? ', grade ladder' : ''})`,
   );
 
   // 1b — the hunt list (§4.4), loaded with the book every run. A malformed
@@ -231,6 +241,7 @@ async function main() {
           marketplace: l.marketplaceId,
           evidenceUrl: evidenceUrl(identifiedVertical, key),
           surfacedAt: nowIso,
+          ...(row.conf === 'thin' ? { thin: true as const } : {}),
         });
       } else {
         // "hunted — no book value": listing facts only — plus the context
@@ -285,19 +296,23 @@ async function main() {
 
   // 5 — BULK IDENTIFY: every swept listing through its slice's matchers,
   // against the in-memory book map — zero API calls. Cross-slice + hunt dedupe
-  // by itemId (cards-slabs and cards-raw overlap by construction).
+  // by itemId (cards-slabs and cards-raw overlap by construction). The auction
+  // lane splits off here: same identify→book-row path, its own gate (closing
+  // calls are watch signals, not price calls) — and BIN dedupe must never
+  // swallow it (an item is only ever in one lane; the postures don't overlap).
   const sweptListings: { l: EbayListing; slice: SweepSlice }[] = [];
+  const auctionListings: { l: EbayListing; slice: SweepSlice }[] = [];
   {
     const claimed = new Set<string>(huntClaimed);
     for (const s of swept) {
       for (const l of s.listings) {
         if (claimed.has(l.itemId)) continue;
         claimed.add(l.itemId);
-        sweptListings.push({ l, slice: s.slice });
+        (s.slice.lane === 'auction' ? auctionListings : sweptListings).push({ l, slice: s.slice });
       }
     }
   }
-  stats.listingsEvaluated = sweptListings.length;
+  stats.listingsEvaluated = sweptListings.length + auctionListings.length;
 
   const identifyOf = (l: EbayListing, slice: SweepSlice): { key: string; vertical: Vertical } | null => {
     for (const v of slice.identifyVerticals) {
@@ -343,7 +358,18 @@ async function main() {
       continue;
     }
     stats.identified[hit.vertical] = (stats.identified[hit.vertical] ?? 0) + 1;
-    const row = synced.byKey.get(hit.key);
+    let row = synced.byKey.get(hit.key);
+    // No exact row? A card key missing ONLY its grade can still price via the
+    // book's grade ladder (ladder.ts) — derived numbers, raised floor, and the
+    // deal says so (basis:'ladder' + the source key).
+    let ladderSourceKey: string | undefined;
+    if (!row) {
+      const lh = ladderRow(hit.key, hit.vertical, synced.book, ladderIndex);
+      if (lh) {
+        row = lh.row;
+        ladderSourceKey = lh.sourceKey;
+      }
+    }
     if (!row) {
       // identity pinned, no book row — counted (the audit's "noBookRow" leak),
       // then handed to the context tier: it may still be a lead.
@@ -361,7 +387,9 @@ async function main() {
       risk = applyCertVerdict(risk, verdict);
     }
 
-    const g = gate(l, row);
+    // Ladder-derived rows clear a raised floor (0.35; gate lifts thin rows to
+    // 0.40 on its own) — a derived median is a weaker claim than a settled one.
+    const g = gate(l, row, ladderSourceKey ? { minDepth: LADDER_MIN_DEPTH } : undefined);
     if (!g.pass) {
       if (g.reason) bumpReason(hit.vertical, REASON_KEY[g.reason] ?? g.reason);
       if (hit.vertical === 'pokemon') {
@@ -397,8 +425,11 @@ async function main() {
       affiliateUrl: l.itemAffiliateWebUrl,
       webUrl: l.itemWebUrl,
       marketplace: l.marketplaceId,
-      evidenceUrl: evidenceUrl(hit.vertical, hit.key),
+      // ladder deals deep-link to the SOURCE key — that's where the comps live
+      evidenceUrl: evidenceUrl(hit.vertical, ladderSourceKey ?? hit.key),
       surfacedAt: nowIso,
+      ...(row.conf === 'thin' ? { thin: true as const } : {}),
+      ...(ladderSourceKey ? { basis: 'ladder' as const, basisKey: ladderSourceKey } : {}),
     });
     stat.surfaced++;
   }
@@ -412,6 +443,76 @@ async function main() {
       console.warn(
         `  · "${nm.title}" allIn=$${nm.allIn} med=$${nm.med} depth=${(nm.depth * 100).toFixed(1)}%`,
       );
+    }
+  }
+
+  // 6b — CLOSING CALLS: the auction lane. Same identify→book-row path as the
+  // board, then the closing gate (gate.ts): ends within 4h, bidVsBook ≥ 0.40,
+  // conf high|medium only, seller floor ≥ 50 — and NO scam cap, because a $1
+  // opening bid is auction mechanics, not a fake-listing tell. The output is a
+  // WATCH SIGNAL, published as its own board section, never mixed into deals.
+  const closing: AuctionCall[] = [];
+  {
+    // pass 1 (title-only in live mode): only auctions already pinned to a book
+    // row earn a getItems slot — aspects firm up cert #/ref before the call.
+    const shortlist: EbayListing[] = [];
+    for (const { l, slice } of auctionListings) {
+      const id1 = identifyOf(l, slice);
+      if (id1 && synced.byKey.has(id1.key)) shortlist.push(l);
+    }
+    const enrichedAuctions = await enrich(shortlist, { mode, client, now, maxCalls: AUCTION_ENRICH_CALLS });
+    const auctionById = new Map(enrichedAuctions.map((l) => [l.itemId, l]));
+
+    for (const { l: raw, slice } of auctionListings) {
+      const l = auctionById.get(raw.itemId) ?? raw;
+      const hit = identifyOf(l, slice);
+      if (!hit) continue; // no identity, no signal — the closing lane has no context tier
+      stats.identified[hit.vertical] = (stats.identified[hit.vertical] ?? 0) + 1;
+      const row = synced.byKey.get(hit.key);
+      if (!row) {
+        bumpReason(hit.vertical, 'noBookRow');
+        continue;
+      }
+      const cg = closingGate(l, row, now);
+      if (!cg.pass) {
+        if (cg.reason) bumpReason(hit.vertical, REASON_KEY[cg.reason] ?? cg.reason);
+        continue;
+      }
+
+      let risk = matcherFor[hit.vertical]!.riskInputs(l);
+      if (risk.certNumber && (hit.vertical === 'sports-cards' || hit.vertical === 'pokemon')) {
+        const verdict = await verifyPsaCert(risk.certNumber, process.env.PSA_API_TOKEN, certCache);
+        risk = applyCertVerdict(risk, verdict);
+      }
+      closing.push({
+        id: dealId(l.itemId),
+        itemId: l.itemId,
+        legacyItemId: l.legacyItemId,
+        vertical: hit.vertical,
+        key: hit.key,
+        title: l.title,
+        imageUrl: l.imageUrl,
+        currentBid: l.price,
+        bidCount: l.bidCount,
+        endsAt: l.itemEndDate!, // closingGate proved it parses and sits in-window
+        shipping: l.shippingCost,
+        allInBid: cg.allInBid,
+        med: row.med,
+        lo: row.lo,
+        hi: row.hi,
+        n: row.n,
+        lastSale: row.lastSale,
+        trend: row.trend,
+        conf: row.conf,
+        bidVsBook: cg.bidVsBook,
+        risk: scoreRisk(l, risk, hit.vertical),
+        listedAt: l.itemCreationDate,
+        affiliateUrl: l.itemAffiliateWebUrl,
+        webUrl: l.itemWebUrl,
+        marketplace: l.marketplaceId,
+        evidenceUrl: evidenceUrl(hit.vertical, hit.key),
+        surfacedAt: nowIso,
+      });
     }
   }
 
@@ -487,16 +588,19 @@ async function main() {
     perVertical,
     { builtAt: nowIso, bookBuiltAt: synced.book.builtAt },
     { targets: huntEntries.map(toHuntTarget), deals: huntDeals },
-    { leads, stats },
+    { leads, stats, closing },
   );
 
   // 9 — receipts: record newly surfaced, resolve the ones that left BIN in
   // getItems batches (the getItems bucket, never the search quota). Priced
   // hunt hits are full deals — their calls go on the tape like any other.
+  // Closing calls are tracked too (lane:'closing', frozen at the bid we saw);
+  // the same absence-from-getItems loop resolves them when the hammer falls.
   // noBook hits and leads carry no call (no med/depth), so nothing to grade.
   const pricedHuntDeals = huntDeals.filter((d): d is HuntPricedDeal => !d.noBook);
   let receipts = loadReceipts();
   receipts = recordSurfaced(receipts, [...board.deals, ...pricedHuntDeals], nowIso);
+  receipts = recordClosingSurfaced(receipts, board.closing ?? [], nowIso);
   receipts = await resolveReceipts(receipts, { mode, client, now, nowIso, cap: 60 });
   commitReceipts(receipts);
 
@@ -509,6 +613,10 @@ async function main() {
   );
   console.log(`[run-board] gate reasons: ${JSON.stringify(stats.gateReasons)}`);
   console.log(`[run-board] published ${board.deals.length} deals  [${byV}]  + ${leads.length} context leads`);
+  console.log(
+    `[run-board] closing: ${auctionListings.length} ending-soon auctions evaluated → ` +
+      `${board.closing?.length ?? 0} closing calls published (watch signals, not price calls)`,
+  );
   console.log(
     `[run-board] hunt: ${huntDeals.length} hits ` +
       `(${pricedHuntDeals.length} priced, ${noBookCount} no-book) across ${huntEntries.length} targets`,

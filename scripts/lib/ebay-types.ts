@@ -46,6 +46,13 @@ export interface EbayRawSummary {
   seller?: EbayRawSeller;
   shippingOptions?: EbayRawShippingOption[];
   itemCreationDate?: string;
+  /** auctions: when the listing ends — the closing-calls lane's whole premise */
+  itemEndDate?: string;
+  /** auctions: the standing bid (the `price` field is the BIN ask, absent on
+   *  pure auctions) */
+  currentBidPrice?: EbayRawPrice;
+  /** auctions: bids placed so far */
+  bidCount?: number;
   itemGroupType?: string;
   buyingOptions?: string[];
   categories?: { categoryId: string; categoryName?: string }[];

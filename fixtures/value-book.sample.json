@@ -24,6 +24,7 @@
     { "k": "kobe-bryant|1996|topps chrome|138|PSA10", "v": "sports-cards", "med": 4700, "lo": 3900, "hi": 5800, "n": 12, "lastSale": "2026-07-30", "trend": 0.18, "conf": "high" },
     { "k": "shohei-ohtani|2018|topps chrome|150|PSA10", "v": "sports-cards", "med": 1400, "lo": 1120, "hi": 1750, "n": 26, "lastSale": "2026-08-07", "trend": 0.31, "conf": "high" },
     { "k": "jalen-hurts|2020|prizm|343|PSA10", "v": "sports-cards", "med": 1250, "lo": 980, "hi": 1600, "n": 13, "lastSale": "2026-08-06", "trend": 0.27, "conf": "high" },
+    { "k": "victor-wembanyama|2023|prizm|136|PSA10", "v": "sports-cards", "med": 1900, "lo": 1450, "hi": 2450, "n": 3, "lastSale": "2026-07-27", "trend": null, "conf": "thin" },
 
     { "k": "1999|base-set|4|1st|PSA10", "v": "pokemon", "med": 38000, "lo": 29000, "hi": 49000, "n": 8, "lastSale": "2026-07-18", "trend": 0.44, "conf": "high" },
     { "k": "1999|base-set|4|unl|PSA10", "v": "pokemon", "med": 9200, "lo": 7400, "hi": 11500, "n": 15, "lastSale": "2026-08-03", "trend": 0.19, "conf": "high" },
@@ -47,6 +48,10 @@
     { "k": "patek-philippe|3940", "v": "watches", "med": 62000, "lo": 48000, "hi": 81000, "n": 9, "lastSale": "2026-07-16", "trend": 0.11, "conf": "high" },
     { "k": "audemars-piguet|15202st", "v": "watches", "med": 88000, "lo": 71000, "hi": 112000, "n": 6, "lastSale": "2026-06-19", "trend": 0.04, "conf": "medium" }
   ],
+  "gradeLadder": {
+    "base": 8,
+    "rungs": { "10": 2.6, "9.5": 2.0, "9": 1.6, "8.5": 1.25, "8": 1.0, "7": 0.7, "6": 0.5, "5": 0.35 }
+  },
   "context": [
     { "k": "charles-schulz", "v": "autographs", "kind": "signer", "med": 950, "lo": 150, "hi": 2400, "n": 41, "lastSale": "2026-07-28" },
     { "k": "maurice-sendak", "v": "autographs", "kind": "signer", "med": 780, "lo": 120, "hi": 1900, "n": 17, "lastSale": "2026-06-30" },

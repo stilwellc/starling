@@ -21,6 +21,13 @@
  *     the slice filters (keep FIXED_PRICE + the date cursor), mark the ledger
  *     line degraded, keep sweeping. A degraded slice still nets listings.
  *
+ * THE AUCTION LANE (Aug 2026, closing calls): 'auction' slices invert the
+ * posture — buyingOptions:{AUCTION}, sort=endingSoonest, itemEndDate:[..now+4h]
+ * — and carry NO cursor: the 4h window is the filter, paged fully every run so
+ * a lot re-checks each 3h tick as its bid moves. Their seen-ledger keys are
+ * itemId+captureHour, so within-run page overlap dedupes without suppressing
+ * the next run's re-check. Budget: their own ~20% carve (scheduler.ts).
+ *
  * State (cursors + seen-ledger) persists in .starling-state/sweep-state.json —
  * the same mechanism as receipts: local file, R2 round-trip via data-store.sh.
  * FIXTURE MODE touches none of it: fixtures replay the same recorded listings
@@ -31,6 +38,7 @@ import { readFileSync, writeFileSync, existsSync, mkdirSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import type { EbayListing, Vertical } from './types';
 import type { EbayClient } from './lib/ebay-client';
+import { CLOSING_WINDOW_MS } from './gate';
 import { sweepFixtureListings } from './lib/fixture-source';
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -47,11 +55,14 @@ export interface SweepSlice {
   /** matcher verticals bulk-identify tries, in order; [] = context-only class
    *  slices (fossils, vintage computing) — no exact identity exists there yet */
   identifyVerticals: Vertical[];
-  /** slice filters BEYOND buyingOptions:{FIXED_PRICE} (price pairs carry their
-   *  required priceCurrency:USD) — droppable on an error-1697 probe */
+  /** slice filters BEYOND the buyingOptions posture (price pairs carry their
+   *  required priceCurrency:USD) — droppable on an error/probe fallback */
   sliceFilters: string[];
-  /** cards-lane slices share the 40% sweep cap (scheduler.allocateSweepBudget) */
-  lane: 'cards' | 'other';
+  /** budget lane (scheduler.allocateSweepBudget): cards-lane slices share the
+   *  40% cap; 'auction' slices share their own ~20% carve-out AND sweep the
+   *  closing-calls posture (AUCTION + endingSoonest + the 4h itemEndDate
+   *  window) instead of the newly-listed cursor walk. */
+  lane: 'cards' | 'other' | 'auction';
 }
 
 export const SWEEP_SLICES: SweepSlice[] = [
@@ -74,6 +85,19 @@ export const SWEEP_SLICES: SweepSlice[] = [
   // tier turn these into leads (megalodon tooth at half the rollup med, etc.).
   { id: 'fossils', categoryId: '3213', lens: 'science', identifyVerticals: [], sliceFilters: [], lane: 'other' },
   { id: 'vintage-computing', categoryId: '11189', lens: 'science', identifyVerticals: [], sliceFilters: [], lane: 'other' },
+  // ── The AUCTION lane (closing calls). BIN mispricings get sniped fast;
+  // auctions ending with low bids are where the real edge lives. Same
+  // categories as the BIN net where the book is deepest: slabs, watches, the
+  // three autograph pools. Each slice sweeps buyingOptions:{AUCTION} +
+  // itemEndDate:[..now+4h] sorted endingSoonest — the window IS the filter, so
+  // there is no cursor: every ending-soon auction is re-seen every 3h run (a
+  // lot re-checks as its bid moves; the seen-ledger keys on itemId+captureHour
+  // so it can't double-count within one run's overlapping pages).
+  { id: 'cards-slabs-closing', categoryId: '261328', lens: 'sports-cards', identifyVerticals: ['sports-cards'], sliceFilters: ['conditionIds:{2750}'], lane: 'auction' },
+  { id: 'watches-closing', categoryId: '31387', lens: 'watches', identifyVerticals: ['watches'], sliceFilters: ['price:[100..]', 'priceCurrency:USD'], lane: 'auction' },
+  { id: 'sports-autos-closing', categoryId: '51', lens: 'autographs', identifyVerticals: ['autographs'], sliceFilters: ['price:[25..]', 'priceCurrency:USD'], lane: 'auction' },
+  { id: 'ent-autos-closing', categoryId: '57', lens: 'autographs', identifyVerticals: ['autographs'], sliceFilters: ['price:[25..]', 'priceCurrency:USD'], lane: 'auction' },
+  { id: 'historical-autos-closing', categoryId: '14428', lens: 'autographs', identifyVerticals: ['autographs'], sliceFilters: ['price:[25..]', 'priceCurrency:USD'], lane: 'auction' },
 ];
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -216,8 +240,88 @@ async function sweepSliceLive(
   return out;
 }
 
-function sweepSliceFixture(slice: SweepSlice): SweptSlice {
-  const listings = sweepFixtureListings(slice.id);
+/**
+ * One AUCTION slice — the closing-calls net. No cursor: the 4h itemEndDate
+ * window is the filter AND the pagination bound (sort=endingSoonest means the
+ * first out-of-window end date ends the walk). Paged fully each run so every
+ * ending-soon auction is seen every 3h tick; the seen-ledger keys on
+ * itemId+captureHour, so the SAME lot re-checks next run as its bid moves but
+ * never double-counts across one run's overlapping pages.
+ *
+ * `itemEndDate` is the Buy field-filter for end time (the itemStartDate
+ * pattern). If eBay rejects the filter (invalid-filter error on the probe
+ * page), we fall back to sort=endingSoonest alone + a client-side end-date cut
+ * from the summaries, and mark the ledger line DEGRADED.
+ */
+async function sweepSliceAuctionLive(
+  slice: SweepSlice,
+  opts: { client: EbayClient; now: number; budget: number; state: SweepState },
+): Promise<SweptSlice> {
+  const { client, now, budget, state } = opts;
+  const out: SweptSlice = { slice, listings: [], calls: 0, degraded: false };
+  const windowEnd = now + CLOSING_WINDOW_MS;
+  const endIso = new Date(windowEnd).toISOString().replace(/\.\d{3}Z$/, 'Z');
+  const captureHour = new Date(now).toISOString().slice(0, 13); // e.g. "2026-08-19T15"
+
+  let offset = 0;
+  while (out.calls < budget && offset <= MAX_OFFSET) {
+    const filters = [
+      'buyingOptions:{AUCTION}',
+      ...(out.degraded ? [] : [`itemEndDate:[..${endIso}]`]),
+      ...slice.sliceFilters,
+    ];
+    let page: EbayListing[];
+    try {
+      page = await client.sweepPage(
+        { categoryId: slice.categoryId, filters, offset, limit: PAGE_LIMIT, sort: 'endingSoonest' },
+        now,
+      );
+      out.calls++;
+    } catch (e) {
+      const msg = (e as Error).message;
+      if (!out.degraded) {
+        // probe rejected (invalid filter / unsupported combo) — drop the
+        // itemEndDate filter, keep AUCTION + endingSoonest, cut client-side
+        out.calls++; // the rejected call still spent quota
+        out.degraded = true;
+        console.warn(
+          `[sweep] ${slice.id}: itemEndDate filter rejected (${msg.slice(0, 120)}) — ` +
+            `DEGRADED: sort=endingSoonest + client-side end cut carries the window.`,
+        );
+        continue;
+      }
+      console.warn(`[sweep] ${slice.id} page@${offset} failed: ${msg}`);
+      break;
+    }
+
+    let pastWindow = false;
+    for (const l of page) {
+      const endMs = l.itemEndDate ? Date.parse(l.itemEndDate) : NaN;
+      // the client-side cut is ALWAYS applied — belt for the filter, whole
+      // outfit for the degraded fallback. No end date → not a closing call.
+      if (!Number.isFinite(endMs)) continue;
+      if (endMs > windowEnd) {
+        pastWindow = true; // endingSoonest: everything after this ends later still
+        continue;
+      }
+      if (endMs <= now) continue; // already hammered between page and read
+      out.newest = isoMax(out.newest, l.itemEndDate);
+      out.oldest = isoMin(out.oldest, l.itemEndDate);
+      const seenKey = `${l.itemId}@${captureHour}`;
+      if (state.seen[seenKey]) continue; // same run/page overlap — one look per capture hour
+      state.seen[seenKey] = new Date(now).toISOString();
+      out.listings.push(l);
+    }
+
+    if (page.length < PAGE_LIMIT) break; // the window is drained
+    if (pastWindow) break;
+    offset += PAGE_LIMIT;
+  }
+  return out;
+}
+
+function sweepSliceFixture(slice: SweepSlice, now: number): SweptSlice {
+  const listings = sweepFixtureListings(slice.id, now);
   let newest: string | undefined;
   let oldest: string | undefined;
   for (const l of listings) {
@@ -245,17 +349,20 @@ export async function sweep(
   const out: SweptSlice[] = [];
   for (const slice of slices) {
     if (opts.mode === 'fixture') {
-      out.push(sweepSliceFixture(slice));
+      out.push(sweepSliceFixture(slice, opts.now));
       continue;
     }
     if (!opts.client) throw new Error('live sweep requires an EbayClient');
+    const liveOpts = {
+      client: opts.client,
+      now: opts.now,
+      budget: opts.budgets[slice.id] ?? 0,
+      state: opts.state,
+    };
     out.push(
-      await sweepSliceLive(slice, {
-        client: opts.client,
-        now: opts.now,
-        budget: opts.budgets[slice.id] ?? 0,
-        state: opts.state,
-      }),
+      slice.lane === 'auction'
+        ? await sweepSliceAuctionLive(slice, liveOpts)
+        : await sweepSliceLive(slice, liveOpts),
     );
   }
   return out;

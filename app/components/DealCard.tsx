@@ -24,6 +24,37 @@ import { OutLink } from './OutLink';
 
 export type DealDensity = 'hero' | 'grid' | 'row';
 
+/** Pricing-basis flags (v2, optional-defensive): 'thin book' = the corpus row
+ *  behind this call is an n=3 pool (published only at 40%+ depth); 'ladder-
+ *  priced' = no exact row for this grade, med/lo/hi derived from a neighboring
+ *  grade via the book's grade ladder. Both explain themselves via title attrs —
+ *  the no-black-box rule. Renders nothing on ordinary deals. */
+function DealFlags({ deal }: { deal: Deal }) {
+  if (!deal.thin && deal.basis !== 'ladder') return null;
+  return (
+    <span className="deal-flags">
+      {deal.thin && (
+        <span
+          className="deal-flag deal-flag-thin"
+          title="Thin book: only 3 settled sales behind this corpus row — surfaced only at 40%+ depth, ranked below equal-depth deals"
+        >
+          thin book
+        </span>
+      )}
+      {deal.basis === 'ladder' && (
+        <span
+          className="deal-flag deal-flag-ladder"
+          title={`Ladder-priced: no exact corpus row for this grade — value derived from ${
+            deal.basisKey ? `"${deal.basisKey}"` : 'a neighboring grade'
+          } via the book's grade ladder (raised 35% depth floor)`}
+        >
+          ladder-priced
+        </span>
+      )}
+    </span>
+  );
+}
+
 function PriceLine({ deal }: { deal: Deal }) {
   return (
     <div className="card-price">
@@ -81,6 +112,7 @@ function DealRow({ deal, huntLabel }: { deal: Deal; huntLabel?: string }) {
         <div className="deal-row-meta">
           <span className="deal-row-vertical">{verticalLabel(deal.vertical)}</span>
           {huntLabel && <span className="deal-row-hunted">hunted</span>}
+          <DealFlags deal={deal} />
           <span className="deal-row-fact">
             {deal.n} {deal.n === 1 ? 'sale' : 'sales'} · book {money(deal.med)}
           </span>
@@ -122,6 +154,7 @@ function DealHero({ deal, huntLabel }: { deal: Deal; huntLabel?: string }) {
               hunted · {huntLabel}
             </span>
           )}
+          <DealFlags deal={deal} />
         </div>
         <div className="card-depth">
           <span className="card-depth-num">{depthPct(deal.depth)}</span>
@@ -177,6 +210,7 @@ export function DealCard({
         <div className="card-depth">
           <span className="card-depth-num">{depthPct(deal.depth)}</span>
           <span className="card-depth-word">under the book</span>
+          <DealFlags deal={deal} />
         </div>
 
         <h2 className="card-title">

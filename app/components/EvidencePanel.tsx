@@ -8,9 +8,9 @@
 import type { Deal } from '@/scripts/types';
 import { money, shortDate, relativeDate, trendPct, isAgingBook, depthPct, prettyKey } from '@/app/lib/display';
 
-/** Book ships only high|medium; render as a 4-dot meter (high = 4, medium = 2). */
+/** 4-dot meter: high = 4, medium = 2, thin (n=3 pool, Aug 2026) = 1. */
 function ConfMeter({ conf }: { conf: Deal['conf'] }) {
-  const on = conf === 'high' ? 4 : 2;
+  const on = conf === 'high' ? 4 : conf === 'medium' ? 2 : 1;
   return (
     <span className="dotmeter" aria-label={`${conf} confidence`}>
       {[0, 1, 2, 3].map((i) => (

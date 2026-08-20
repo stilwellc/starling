@@ -16,12 +16,24 @@ import { hasConditionFlag, conditionFlags } from './lib/condition';
 
 export const MIN_DEPTH = 0.25;
 export const MAX_DEPTH = 0.9;
+/** conf:'thin' rows (n=3 pools) price BIN deals only this deep or deeper — a
+ *  shallow read off a shallow pool isn't a call worth making. */
+export const THIN_MIN_DEPTH = 0.4;
+/** ladder-priced deals (basis:'ladder', ladder.ts) carry derivation error on
+ *  top of band error, so they clear a raised floor too. */
+export const LADDER_MIN_DEPTH = 0.35;
 
 export interface GateResult {
   pass: boolean;
   allIn: number;
   depth: number;
-  reason?: 'too-shallow' | 'scam-cap' | 'condition-flag' | 'no-price';
+  reason?:
+    | 'too-shallow'
+    | 'thin-shallow'
+    | 'ladder-shallow'
+    | 'scam-cap'
+    | 'condition-flag'
+    | 'no-price';
   conditionFlags: string[];
 }
 
@@ -32,10 +44,17 @@ export interface GateResult {
  *  is counted by the pipeline itself since no gate ever runs for it. */
 export const REASON_KEY: Record<string, string> = {
   'too-shallow': 'tooShallow',
+  'thin-shallow': 'thinTooShallow',
+  'ladder-shallow': 'ladderTooShallow',
   'scam-cap': 'scamCap',
   'condition-flag': 'condition',
   'no-price': 'noPrice',
   'over-ceiling': 'maxAllIn',
+  // closing-lane reasons (closingGate)
+  'no-bid': 'noBid',
+  'end-window': 'endWindow',
+  'thin-book': 'thinBook',
+  'seller-floor': 'sellerFloor',
 };
 
 /** all-in = item + cheapest shipping. Unknown/calculated shipping → item only,
@@ -45,7 +64,14 @@ export function allInOf(listing: EbayListing): number {
   return listing.price + ship;
 }
 
-export function gate(listing: EbayListing, row: ValueBookRow): GateResult {
+/** `opts.minDepth` raises the floor for derived pricing (LADDER_MIN_DEPTH from
+ *  run-board on ladder rows); a 'thin' row raises it to THIN_MIN_DEPTH on its
+ *  own. Floors only ever go UP from 0.25 — the scam cap never moves. */
+export function gate(
+  listing: EbayListing,
+  row: ValueBookRow,
+  opts?: { minDepth?: number },
+): GateResult {
   const flags = conditionFlags(listing.title);
   const allIn = allInOf(listing);
   if (!(allIn > 0) || !(row.med > 0)) {
@@ -58,8 +84,19 @@ export function gate(listing: EbayListing, row: ValueBookRow): GateResult {
   if (depth > MAX_DEPTH) {
     return { pass: false, allIn, depth, reason: 'scam-cap', conditionFlags: flags };
   }
-  if (depth < MIN_DEPTH) {
-    return { pass: false, allIn, depth, reason: 'too-shallow', conditionFlags: flags };
+  const floor = Math.max(
+    opts?.minDepth ?? MIN_DEPTH,
+    row.conf === 'thin' ? THIN_MIN_DEPTH : 0,
+  );
+  if (depth < floor) {
+    // keep the histogram diagnosable: which raised floor actually cut it?
+    const reason: GateResult['reason'] =
+      depth >= MIN_DEPTH
+        ? row.conf === 'thin'
+          ? 'thin-shallow'
+          : 'ladder-shallow'
+        : 'too-shallow';
+    return { pass: false, allIn, depth, reason, conditionFlags: flags };
   }
   return { pass: true, allIn, depth, conditionFlags: flags };
 }
@@ -114,8 +151,84 @@ export function huntGate(
   if (depth > MAX_DEPTH) {
     return { pass: false, allIn, depth, reason: 'scam-cap', conditionFlags: flags };
   }
-  if (depth < (overrides.minDepth ?? MIN_DEPTH)) {
+  // A thin row's raised floor holds even against a per-entry minDepth — the
+  // operator may loosen the 0.25, never the shallow-pool guard.
+  const floor = Math.max(overrides.minDepth ?? MIN_DEPTH, row.conf === 'thin' ? THIN_MIN_DEPTH : 0);
+  if (depth < floor) {
     return { pass: false, allIn, depth, reason: 'too-shallow', conditionFlags: flags };
   }
   return { pass: true, allIn, depth, conditionFlags: flags };
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// The closing gate — auctions ending soon (the closing-calls lane, Aug 2026)
+// ─────────────────────────────────────────────────────────────────────────────
+
+/** Only auctions ending inside this window are closing calls — beyond it, bids
+ *  have too much time to move for "deep right now" to mean anything. The sweep
+ *  uses the same window as its itemEndDate filter (sweep.ts). */
+export const CLOSING_WINDOW_MS = 4 * 60 * 60 * 1000;
+/** bidVsBook floor: bidding this deep this late is genuinely interesting;
+ *  anything shallower is just an auction doing auction things. */
+export const CLOSING_MIN_BID_VS_BOOK = 0.4;
+/** Seller floor. The scam cap does NOT apply here (a $1 opening bid is normal
+ *  auction mechanics), so seller history is the lane's only fraud screen. */
+export const CLOSING_SELLER_FLOOR = 50;
+
+export interface ClosingGateResult {
+  pass: boolean;
+  /** currentBid + cheapest shipping (allInOf — same doctrine, bid-side) */
+  allInBid: number;
+  /** 1 − allInBid/med — depth of the CURRENT bid, present when med prices */
+  bidVsBook: number;
+  reason?:
+    | 'no-bid'
+    | 'no-price'
+    | 'end-window'
+    | 'thin-book'
+    | 'seller-floor'
+    | 'condition-flag'
+    | 'too-shallow';
+  conditionFlags: string[];
+}
+
+/**
+ * Gate an auction listing pinned to a book row into a CLOSING CALL — a watch
+ * signal, never a price call (bids move; the label says so). Keeps: a real
+ * standing bid, an end inside the 4h window, a high|medium row (never thin —
+ * a shallow pool can't back an urgency signal), a seller with history, no
+ * condition flag, and bidVsBook ≥ 0.40. Deliberately NO scam cap.
+ */
+export function closingGate(
+  listing: EbayListing,
+  row: ValueBookRow,
+  now: number,
+): ClosingGateResult {
+  const flags = conditionFlags(listing.title);
+  const allInBid = allInOf(listing);
+  if (!(allInBid > 0)) {
+    return { pass: false, allInBid, bidVsBook: 0, reason: 'no-bid', conditionFlags: flags };
+  }
+  if (!(row.med > 0)) {
+    return { pass: false, allInBid, bidVsBook: 0, reason: 'no-price', conditionFlags: flags };
+  }
+  const bidVsBook = 1 - allInBid / row.med;
+  const endMs = listing.itemEndDate ? Date.parse(listing.itemEndDate) : NaN;
+  if (!Number.isFinite(endMs) || endMs <= now || endMs > now + CLOSING_WINDOW_MS) {
+    return { pass: false, allInBid, bidVsBook, reason: 'end-window', conditionFlags: flags };
+  }
+  if (row.conf === 'thin') {
+    return { pass: false, allInBid, bidVsBook, reason: 'thin-book', conditionFlags: flags };
+  }
+  const score = listing.seller.feedbackScore;
+  if (!(typeof score === 'number' && score >= CLOSING_SELLER_FLOOR)) {
+    return { pass: false, allInBid, bidVsBook, reason: 'seller-floor', conditionFlags: flags };
+  }
+  if (hasConditionFlag(listing.title)) {
+    return { pass: false, allInBid, bidVsBook, reason: 'condition-flag', conditionFlags: flags };
+  }
+  if (bidVsBook < CLOSING_MIN_BID_VS_BOOK) {
+    return { pass: false, allInBid, bidVsBook, reason: 'too-shallow', conditionFlags: flags };
+  }
+  return { pass: true, allInBid, bidVsBook, conditionFlags: flags };
 }

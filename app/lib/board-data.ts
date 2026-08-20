@@ -14,7 +14,7 @@
  */
 import fs from 'node:fs';
 import path from 'node:path';
-import type { Board, BoardStats, HuntNoBookDeal, HuntSection } from '@/scripts/types';
+import type { AuctionCall, Board, BoardStats, HuntNoBookDeal, HuntSection } from '@/scripts/types';
 
 // ─────────────────────────────────────────────────────────────────────────────
 // UI-side shapes — deliberately LOOSER than scripts/types so the render layer
@@ -36,6 +36,26 @@ export interface LectrContext {
 
 /** Wide-net leads are noBook-shaped (scripts/types Board.leads). */
 export type Lead = HuntNoBookDeal;
+
+/** A closing call renders only when its load-bearing numbers are real: a bid,
+ *  a band, a depth, and an end date the countdown can parse. Anything else in
+ *  the row is optional-defensive on the render side. */
+export function validClosing(c: unknown): c is AuctionCall {
+  if (!c || typeof c !== 'object') return false;
+  const x = c as Record<string, unknown>;
+  return (
+    typeof x.id === 'string' &&
+    typeof x.title === 'string' &&
+    typeof x.endsAt === 'string' &&
+    Number.isFinite(Date.parse(x.endsAt as string)) &&
+    isFiniteNum(x.currentBid) &&
+    isFiniteNum(x.allInBid) &&
+    isFiniteNum(x.bidVsBook) &&
+    isFiniteNum(x.med) &&
+    isFiniteNum(x.lo) &&
+    isFiniteNum(x.hi)
+  );
+}
 
 function isFiniteNum(x: unknown): x is number {
   return typeof x === 'number' && Number.isFinite(x);
@@ -155,6 +175,7 @@ export function loadBoardExt(): Board {
             Boolean(l && typeof l === 'object' && typeof (l as HuntNoBookDeal).title === 'string'),
         )
       : undefined;
+    const closing = Array.isArray(parsed.closing) ? parsed.closing.filter(validClosing) : undefined;
     const stats =
       parsed.stats && typeof parsed.stats === 'object' ? (parsed.stats as BoardStats) : undefined;
     return {
@@ -165,6 +186,7 @@ export function loadBoardExt(): Board {
       perVertical: parsed.perVertical ?? {},
       ...(hunt ? { hunt } : {}),
       ...(leads && leads.length > 0 ? { leads } : {}),
+      ...(closing && closing.length > 0 ? { closing } : {}),
       ...(stats ? { stats } : {}),
     };
   } catch (err) {
