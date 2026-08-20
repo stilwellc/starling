@@ -28,11 +28,15 @@ function allPermalinkDeals(board: Board): Deal[] {
   return [...board.deals, ...pricedHunt];
 }
 
-// Prebuild one permalink per live deal. Empty board (before the first pipeline
-// run) → zero params, and the build still passes.
+// Prebuild one permalink per live deal. An EMPTY param list breaks the export
+// build ("missing generateStaticParams" — Next treats [] under output:'export'
+// as unbuildable), so a deal-less board emits one unlinked sentinel page
+// instead of bricking every deploy until deals return.
+const EMPTY_SENTINEL = '_no-live-deals';
 export function generateStaticParams() {
   const board = loadBoard();
-  return allPermalinkDeals(board).map((d) => ({ id: d.id }));
+  const params = allPermalinkDeals(board).map((d) => ({ id: d.id }));
+  return params.length > 0 ? params : [{ id: EMPTY_SENTINEL }];
 }
 
 export function generateMetadata({ params }: { params: { id: string } }): Metadata {
@@ -54,6 +58,20 @@ export function generateMetadata({ params }: { params: { id: string } }): Metada
 export default function DealPage({ params }: { params: { id: string } }) {
   const board = loadBoard();
   const deal = allPermalinkDeals(board).find((d) => d.id === params.id);
+  // The sentinel page exists only so an empty board can still export — nothing
+  // links here; render a quiet pointer home rather than a build-time notFound.
+  if (!deal && params.id === EMPTY_SENTINEL) {
+    return (
+      <>
+        <Link href="/" className="back-link">
+          ← Board
+        </Link>
+        <p className="lede" style={{ marginTop: 24 }}>
+          No live deals on the board right now — the net recasts every three hours.
+        </p>
+      </>
+    );
+  }
   if (!deal) notFound();
 
   // Present only when this deal arrived via the hunt lane (§4.4).

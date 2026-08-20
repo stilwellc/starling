@@ -120,6 +120,10 @@ jobs:
             echo "changed=false" >> "$GITHUB_OUTPUT"
           else
             git commit -m "board: refresh deals ($(date -u +%Y-%m-%dT%H:%MZ))"
+            # a human push landing mid-tick makes the bot commit non-FF and the
+            # whole run red (happened Aug 20 01:48Z) — rebase our one data
+            # commit onto whatever arrived, then push
+            git pull --rebase origin main || true
             git push
             echo "changed=true" >> "$GITHUB_OUTPUT"
           fi

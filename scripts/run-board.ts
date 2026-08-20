@@ -131,6 +131,19 @@ async function main() {
       `(${synced.source}${synced.stale ? ', STALE' : ''}` +
       `${ladderIndex ? ', grade ladder' : ''})`,
   );
+  // Per-vertical row counts in every run log — the auditable trail that the
+  // book actually carries what lectr says it emitted (e.g. the deep-archive
+  // autograph unlock is verifiable here, not just on the emit side).
+  {
+    const byVertical = new Map<string, number>();
+    for (const r of synced.book.rows) byVertical.set(r.v, (byVertical.get(r.v) ?? 0) + 1);
+    console.log(
+      `[run-board] book verticals: ${[...byVertical.entries()]
+        .sort((a, b) => b[1] - a[1])
+        .map(([v, n]) => `${v}=${n}`)
+        .join(' · ')}`,
+    );
+  }
 
   // 1b — the hunt list (§4.4), loaded with the book every run. A malformed
   // file THROWS out of loadHuntList and fails the run loudly — a silently-
