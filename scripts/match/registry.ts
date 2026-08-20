@@ -9,12 +9,16 @@ import { sportsCardsMatcher } from './sports-cards';
 import { pokemonMatcher } from './pokemon';
 import { artEditionsMatcher } from './art-editions';
 import { autographsMatcher } from './autographs';
+import { watchesMatcher } from './watches';
+import { designMatcher } from './design';
 
 export const MATCHERS: VerticalMatcher[] = [
   sportsCardsMatcher,
   autographsMatcher,
   pokemonMatcher,
   artEditionsMatcher,
+  watchesMatcher, // sweep-fed (queriesFor → []) — the audit's 1,278 never-polled keys
+  designMatcher, // sweep/hunt-fed, abstain-heavy; not in LAUNCH_VERTICALS yet
 ];
 
 export const matcherFor: Partial<Record<Vertical, VerticalMatcher>> =

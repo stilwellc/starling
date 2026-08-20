@@ -148,7 +148,7 @@ function stripSuffix(name: string): string {
 }
 
 /** Resolve the signer: the "Signed By" item-specific first, else the title. */
-function resolveSigner(l: EbayListing): string | null {
+export function resolveSigner(l: EbayListing): string | null {
   const fromAspect = aspect(l, 'Signed By') ?? aspect(l, 'Signed by') ?? aspect(l, 'Autographed By');
   if (fromAspect && fromAspect.trim() && !CUT_WORDS.has(fromAspect.trim().toLowerCase())) {
     return stripSuffix(fromAspect.trim());
