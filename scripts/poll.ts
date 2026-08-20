@@ -1,55 +1,19 @@
 /**
- * poll.ts — Tier-1 discovery. Turns a run plan into normalized listings.
- *   fixture: load every recorded listing for the vertical (already enriched).
- *   live:    run each compiled query via the Browse API, dedup by itemId.
- * Downstream (identify → enrich → gate → score) is identical for both.
- * The hunt lane (pollHunt) is the same two modes, grouped per hunt entry so
- * every hit carries its target's stamp (PROPOSAL §4.4).
+ * poll.ts — the HUNT lane's Tier-1 poll (PROPOSAL §4.4).
+ *
+ * The book-driven per-key poll that used to live here is GONE — replaced by
+ * the sweep engine (sweep.ts) in the Aug 2026 funnel-audit rebuild. The hunt
+ * lane keeps its compiled per-query poll because a hunt target IS a query:
+ * curated raw terms, polled every run off the reserved budget, grouped per
+ * entry so every hit carries its target's stamp.
+ *   fixture: recorded listings per entry id (fixtures/ebay/hunt.json).
+ *   live:    each compiled query via the Browse API, dedup by itemId.
  */
 import type { EbayListing, Vertical } from './types';
-import type { VerticalPlan, HuntPlan } from './scheduler';
+import type { HuntPlan } from './scheduler';
 import type { HuntEntry } from './hunt';
 import type { EbayClient } from './lib/ebay-client';
-import { fixtureListings, huntFixtureListings } from './lib/fixture-source';
-
-export interface PolledVertical {
-  vertical: Vertical;
-  listings: EbayListing[];
-  calls: number; // Tier-1 calls actually spent (quota accounting)
-}
-
-export async function poll(
-  plans: VerticalPlan[],
-  opts: { mode: 'fixture' | 'live'; client?: EbayClient; now: number },
-): Promise<PolledVertical[]> {
-  const out: PolledVertical[] = [];
-  for (const plan of plans) {
-    if (opts.mode === 'fixture') {
-      out.push({ vertical: plan.vertical, listings: fixtureListings(plan.vertical), calls: 0 });
-      continue;
-    }
-    if (!opts.client) throw new Error('live poll requires an EbayClient');
-    const seen = new Map<string, EbayListing>();
-    let calls = 0;
-    for (const q of plan.queries) {
-      let page: EbayListing[] = [];
-      try {
-        page = await opts.client.search(q, opts.now);
-        calls++;
-      } catch (e) {
-        console.warn(`[poll] ${plan.vertical} query "${q.q}" failed: ${(e as Error).message}`);
-        continue;
-      }
-      for (const l of page) if (!seen.has(l.itemId)) seen.set(l.itemId, l);
-    }
-    out.push({ vertical: plan.vertical, listings: [...seen.values()], calls });
-  }
-  return out;
-}
-
-// ─────────────────────────────────────────────────────────────────────────────
-// The hunt lane — polled FIRST, every run (PROPOSAL §4.4)
-// ─────────────────────────────────────────────────────────────────────────────
+import { huntFixtureListings } from './lib/fixture-source';
 
 export interface PolledHunt {
   entry: HuntEntry;

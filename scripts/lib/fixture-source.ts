@@ -40,6 +40,25 @@ export function fixtureListings(vertical: Vertical): EbayListing[] {
   return raw.map((it) => normalizeItem(it, it.categories ? 'EBAY_US' : 'EBAY_US'));
 }
 
+/** The sweep engine's fixture: fixtures/ebay/sweep.json maps SLICE id (see
+ *  scripts/sweep.ts SWEEP_SLICES) → the recorded listings that slice's category
+ *  pages "returned". A missing file or absent slice id is a quiet slice this
+ *  run, not an error — same posture as the vertical files. */
+export function sweepFixtureListings(sliceId: string): EbayListing[] {
+  const path = join(FIXTURE_DIR, 'sweep.json');
+  if (!existsSync(path)) return [];
+  let raw: Record<string, EbayRawItem[]>;
+  try {
+    raw = JSON.parse(readFileSync(path, 'utf8'));
+  } catch (e) {
+    console.warn(`[fixture-source] failed to parse ${path}: ${(e as Error).message}`);
+    return [];
+  }
+  const items = raw?.[sliceId];
+  if (!Array.isArray(items)) return [];
+  return items.map((it) => normalizeItem(it, 'EBAY_US'));
+}
+
 /** The hunt lane's fixture: fixtures/ebay/hunt.json maps hunt entry id → the
  *  recorded listings "returned" by that entry's queries (PROPOSAL §4.4). Keyed
  *  by entry id — not vertical — because a hunt target is the query. A missing

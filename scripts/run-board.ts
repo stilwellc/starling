@@ -1,9 +1,21 @@
 /**
- * run-board.ts — the pipeline orchestrator (PROPOSAL §6.1).
+ * run-board.ts — the pipeline orchestrator (PROPOSAL §6.1, rebuilt Aug 2026).
  *
- *   sync book + hunt list → plan (hunt paid first, then cards-cap/floors)
- *   → poll (hunt first, every run) → identify → enrich → cert-verify → gate
- *   → score → rank → publish (deals + hunt section) → receipts
+ *   sync book (+context tier) + hunt list
+ *   → hunt lane (paid first, every run): poll → identify → enrich → gate → score
+ *   → SWEEP (the wide net): category slices, cursored newly-listed pages
+ *   → BULK IDENTIFY: every swept listing through its slice's matchers against
+ *     an in-memory map of the WHOLE book — zero API calls
+ *   → Tier-2 getItems batches (own quota bucket) for candidates needing aspects
+ *   → gate (reasons KEPT — the funnel is on the record) → score → context leads
+ *   → publish (deals + hunt + leads + stats) → receipts (getItems batches)
+ *
+ * Why the rebuild (the funnel audit, from real run logs): 9,358 book keys → 15
+ * published deals. Per-key queries at 45/run left 98% of the book idle and
+ * ~60% of quota unspent; watches (1,278 keys) and design (144) had no matcher
+ * and were never polled; pokemon matched 58 and published 0 with the reasons
+ * discarded. The sweep inverts the funnel: discovery is category-wide, identity
+ * is free, and every drop is counted in board.stats.
  *
  * STARLING_MODE=fixture (default when no eBay keys) runs the whole thing offline
  * against fixtures/. Live mode adds the eBay client and PSA verification.
@@ -13,21 +25,24 @@
  */
 import type {
   Deal,
-  Candidate,
   Vertical,
   PerVerticalStat,
   EbayListing,
   HuntDeal,
+  HuntNoBookDeal,
   HuntPricedDeal,
+  BoardStats,
 } from './types';
 import { LAUNCH_VERTICALS } from './types';
-import { MATCHERS, matcherFor } from './match/registry';
+import { matcherFor } from './match/registry';
 import { syncBook } from './sync-book';
-import { planRun, planHunt, reserveHuntBudget, type YieldMap } from './scheduler';
+import { reserveHuntBudget, planHunt, allocateSweepBudget } from './scheduler';
 import { loadHuntList, compileHuntQueries, toHuntTarget, huntRelevant, NOBOOK_CAP_PER_TARGET } from './hunt';
-import { poll, pollHunt } from './poll';
+import { pollHunt } from './poll';
+import { SWEEP_SLICES, sweep, loadSweepState, commitSweepState, type SweepSlice } from './sweep';
 import { enrich, verifyPsaCert, applyCertVerdict, type CertVerdict } from './enrich';
-import { gate, huntGate } from './gate';
+import { gate, huntGate, REASON_KEY } from './gate';
+import { indexContext, contextFor, toDealContext } from './context';
 import { scoreRisk } from './score/risk';
 import { rankOf } from './score/rank';
 import { publishBoard } from './publish';
@@ -37,12 +52,22 @@ import {
   resolveReceipts,
   commitReceipts,
 } from './receipts';
+import { watchBrandOf } from './match/watches';
 import { dealId, evidenceUrl } from './lib/id';
 import { EbayClient } from './lib/ebay-client';
 
 function isLive(): boolean {
   return process.env.STARLING_MODE === 'live' && !!process.env.EBAY_CLIENT_ID;
 }
+
+/** getItems calls (≤20 listings each) the sweep's enrichment pass may spend per
+ *  run. 50 × 8 runs = 400/day + the receipts loop — comfortably inside the
+ *  getItems bucket's own 5,000/day. */
+const SWEEP_ENRICH_CALLS = 50;
+/** getItems calls per hunt entry's enrichment (2 calls = 40 listings). */
+const HUNT_ENRICH_CALLS = 2;
+/** board.leads cap — a taste list, not a firehose. */
+const LEADS_CAP = 20;
 
 async function main() {
   const now = Date.now();
@@ -85,8 +110,11 @@ async function main() {
   } else {
     synced = await syncBook('fixture', now);
   }
+  // The context tier is ADDITIVE — books without it just yield an empty index.
+  const contextIndex = indexContext(synced.book.context);
   console.log(
-    `[run-board] book: ${synced.book.rows.length} rows (${synced.source}${synced.stale ? ', STALE' : ''})`,
+    `[run-board] book: ${synced.book.rows.length} rows + ${contextIndex.size} context rollups ` +
+      `(${synced.source}${synced.stale ? ', STALE' : ''})`,
   );
 
   // 1b — the hunt list (§4.4), loaded with the book every run. A malformed
@@ -99,39 +127,43 @@ async function main() {
     matcherFor,
   );
 
-  // 2 — plan: the hunt is PAID FIRST (10% reserved off the top), THEN the book
-  // split (cards capped 40%, others floored 15%) runs on what remains.
-  const { huntBudget, bookBudget } = reserveHuntBudget();
+  // 2 — plan: the hunt is PAID FIRST (10% reserved off the top), THEN the sweep
+  // split (cards-lane slices capped at 40% combined) runs on what remains.
+  const { huntBudget } = reserveHuntBudget();
   const huntPlan = planHunt(huntCompiled);
   console.log(
     `[run-board] hunt: ${huntEntries.length} targets → ${huntPlan.queries.length} queries ` +
       `(${huntBudget}/day reserved, paid first)`,
   );
-  const yields: YieldMap = {}; // first run: no trailing yield; even elastic split
-  const plans = planRun(MATCHERS, synced.byVertical, yields, now, 1, bookBudget);
-  for (const p of plans) {
-    console.log(`[run-board] plan ${p.vertical}: ${p.queries.length} queries / ${p.callBudget} calls`);
-  }
+  const sweepBudgets = allocateSweepBudget(SWEEP_SLICES);
 
-  // 3 — poll (Tier-1): hunt queries FIRST, every run — never the rotating wheel
-  const huntPolled = await pollHunt(huntPlan, { mode, client, now });
-  const polled = await poll(plans, { mode, client, now });
+  // The run's funnel numbers — published in board.stats (schema v2). Gate
+  // reasons are AGGREGATED, never discarded: the audit's core observability fix.
+  const stats: BoardStats = {
+    calls: { search: 0, getItems: 0 },
+    listingsEvaluated: 0,
+    bySlice: {},
+    gateReasons: {},
+    identified: {},
+  };
+  const bumpReason = (lens: string, key: string) => {
+    const h = (stats.gateReasons[lens] ??= {});
+    h[key] = (h[key] ?? 0) + 1;
+  };
 
-  // 4..7 — identify → enrich → cert-verify → gate → score, per vertical
-  const certCache = new Map<string, CertVerdict>();
-  const deals: Deal[] = [];
-  const perVertical: Partial<Record<Vertical, PerVerticalStat>> = {};
-
-  // 4a — the hunt lane first, through the SAME identify → enrich → gate → score
-  // path. A hit that pins to a book row is a full priced deal (per-entry
+  // 3 — the hunt lane FIRST, every run, through identify → enrich → gate →
+  // score. A hit that pins to a book row is a full priced deal (per-entry
   // maxAllIn/minDepth applied; the 0.90 scam cap never moves). A hit with no
   // book row still surfaces — a human explicitly asked — as "hunted — no book
-  // value": facts only, no med/depth/rank ever manufactured.
+  // value": facts only, now with the context tier's nearby evidence attached
+  // when lectr carries a covering rollup.
+  const huntPolled = await pollHunt(huntPlan, { mode, client, now });
+  const certCache = new Map<string, CertVerdict>();
   const huntDeals: HuntDeal[] = [];
   const huntClaimed = new Set<string>(); // itemIds the hunt surfaced — a grail is never double-listed
   for (const hp of huntPolled) {
     const entry = hp.entry;
-    const enrichedHunt = await enrich(hp.listings, { mode, client, now, cap: 10 });
+    const enrichedHunt = await enrich(hp.listings, { mode, client, now, maxCalls: HUNT_ENRICH_CALLS });
     for (const l of enrichedHunt) {
       if (huntClaimed.has(l.itemId)) continue; // overlapping targets: first entry (yaml order) wins
 
@@ -156,7 +188,10 @@ async function main() {
       // first live run. Pinned (priced) hits skip it: identity IS relevance.
       if (!row && !huntRelevant(entry, l.title || '')) { huntClaimed.add(l.itemId); continue; }
       const g = huntGate(l, entry, row);
-      if (!g.pass) continue;
+      if (!g.pass) {
+        if (g.reason) bumpReason(entry.vertical, REASON_KEY[g.reason] ?? g.reason);
+        continue;
+      }
 
       if (row && key && identifiedVertical) {
         // priced hunt hit — the book still prices; the list only prioritized.
@@ -198,7 +233,9 @@ async function main() {
           surfacedAt: nowIso,
         });
       } else {
-        // "hunted — no book value": listing facts only.
+        // "hunted — no book value": listing facts only — plus the context
+        // tier's honest rollup when one covers the hit (never a valuation).
+        const ctx = contextFor(l, contextIndex, entry);
         huntDeals.push({
           huntId: entry.id,
           huntLabel: entry.label,
@@ -223,88 +260,203 @@ async function main() {
           webUrl: l.itemWebUrl,
           marketplace: l.marketplaceId,
           surfacedAt: nowIso,
+          ...(ctx ? { context: toDealContext(ctx) } : {}),
         });
       }
       huntClaimed.add(l.itemId);
     }
   }
 
-  for (const pv of polled) {
-    const matcher = matcherFor[pv.vertical];
-    const stat: PerVerticalStat = { polled: pv.listings.length, matched: 0, surfaced: 0 };
-    perVertical[pv.vertical] = stat;
-    if (!matcher) continue;
+  // 4 — SWEEP: the wide net. Cursored newly-listed pages per slice; the
+  // seen-ledger and cursors persist in .starling-state (live mode only —
+  // fixtures replay deterministically).
+  const sweepState = loadSweepState();
+  const swept = await sweep(SWEEP_SLICES, { mode, client, now, budgets: sweepBudgets, state: sweepState });
+  if (mode === 'live') commitSweepState(sweepState, now);
+  for (const s of swept) {
+    stats.bySlice[s.slice.id] = { calls: s.calls, listings: s.listings.length };
+    console.log(
+      `[sweep] ${s.slice.id}: ${s.calls} calls · ${s.listings.length} listings` +
+        (s.newest ? ` · newest ${s.newest}` : '') +
+        (s.oldest ? ` · oldest ${s.oldest}` : '') +
+        (s.degraded ? ' · DEGRADED (1697 fallback, slice filters dropped)' : ''),
+    );
+  }
 
-    // provisional identify → shortlist listings that pin a key
-    const pinned: { listing: EbayListing; key: string }[] = [];
-    for (const l of pv.listings) {
-      const k = matcher.identify(l);
-      if (k) pinned.push({ listing: l, key: k });
+  // 5 — BULK IDENTIFY: every swept listing through its slice's matchers,
+  // against the in-memory book map — zero API calls. Cross-slice + hunt dedupe
+  // by itemId (cards-slabs and cards-raw overlap by construction).
+  const sweptListings: { l: EbayListing; slice: SweepSlice }[] = [];
+  {
+    const claimed = new Set<string>(huntClaimed);
+    for (const s of swept) {
+      for (const l of s.listings) {
+        if (claimed.has(l.itemId)) continue;
+        claimed.add(l.itemId);
+        sweptListings.push({ l, slice: s.slice });
+      }
+    }
+  }
+  stats.listingsEvaluated = sweptListings.length;
+
+  const identifyOf = (l: EbayListing, slice: SweepSlice): { key: string; vertical: Vertical } | null => {
+    for (const v of slice.identifyVerticals) {
+      const m = matcherFor[v];
+      if (!m) continue;
+      const k = m.identify(l);
+      if (k) return { key: k, vertical: v };
+    }
+    return null;
+  };
+
+  // pass 1 (title-only in live mode) chooses the Tier-2 shortlist: listings
+  // already pinned to a BOOK ROW (aspects firm up cert #/ref before the deal
+  // ships) plus watch-slice listings where a brand hit but no reference — the
+  // "Reference Number" item-specific often pins what the title can't.
+  const shortlist: EbayListing[] = [];
+  for (const { l, slice } of sweptListings) {
+    const id1 = identifyOf(l, slice);
+    if (id1 && synced.byKey.has(id1.key)) shortlist.push(l);
+    else if (!id1 && slice.identifyVerticals.includes('watches') && watchBrandOf(l)) shortlist.push(l);
+  }
+  const enrichedSweep = await enrich(shortlist, { mode, client, now, maxCalls: SWEEP_ENRICH_CALLS });
+  const enrichedById = new Map(enrichedSweep.map((l) => [l.itemId, l]));
+
+  // 6 — final identify → gate (reasons kept) → score, per swept listing
+  const deals: Deal[] = [];
+  const perVertical: Partial<Record<Vertical, PerVerticalStat>> = {};
+  const statFor = (v: Vertical): PerVerticalStat => (perVertical[v] ??= { polled: 0, matched: 0, surfaced: 0 });
+  for (const v of LAUNCH_VERTICALS) statFor(v);
+  /** un-priced swept listings (no key, or key with no row) — the context pool */
+  const contextPool: { l: EbayListing; slice: SweepSlice }[] = [];
+  /** pokemon near-misses, so a zero-publish run is diagnosable from the log */
+  const pokemonNearMisses: { title: string; allIn: number; med: number; depth: number }[] = [];
+
+  for (const { l: raw, slice } of sweptListings) {
+    const primary = slice.identifyVerticals[0];
+    if (primary) statFor(primary).polled++;
+
+    const l = enrichedById.get(raw.itemId) ?? raw;
+    const hit = identifyOf(l, slice);
+    if (!hit) {
+      contextPool.push({ l, slice });
+      continue;
+    }
+    stats.identified[hit.vertical] = (stats.identified[hit.vertical] ?? 0) + 1;
+    const row = synced.byKey.get(hit.key);
+    if (!row) {
+      // identity pinned, no book row — counted (the audit's "noBookRow" leak),
+      // then handed to the context tier: it may still be a lead.
+      bumpReason(hit.vertical, 'noBookRow');
+      contextPool.push({ l, slice });
+      continue;
+    }
+    const stat = statFor(hit.vertical);
+    stat.matched++;
+
+    let risk = matcherFor[hit.vertical]!.riskInputs(l);
+    // opportunistic PSA cert verification (cards/pokemon)
+    if (risk.certNumber && (hit.vertical === 'sports-cards' || hit.vertical === 'pokemon')) {
+      const verdict = await verifyPsaCert(risk.certNumber, process.env.PSA_API_TOKEN, certCache);
+      risk = applyCertVerdict(risk, verdict);
     }
 
-    // enrich the shortlist (live only), then re-identify on real aspects.
-    // Cap Tier-2 getItem calls per vertical so a big pin set can't blow quota.
-    const enriched = await enrich(
-      pinned.map((p) => p.listing),
-      { mode, client, now, cap: 40 },
-    );
-    const enrichedById = new Map(enriched.map((l) => [l.itemId, l]));
-
-    for (const { listing } of pinned) {
-      if (huntClaimed.has(listing.itemId)) continue; // already surfaced in the hunt section
-      const l = enrichedById.get(listing.itemId) ?? listing;
-      const key = matcher.identify(l);
-      if (!key) continue;
-      const row = synced.byKey.get(key);
-      if (!row) continue; // no book row → no number → no deal
-      stat.matched++;
-
-      let risk = matcher.riskInputs(l);
-      // opportunistic PSA cert verification (cards/pokemon)
-      if (risk.certNumber && (pv.vertical === 'sports-cards' || pv.vertical === 'pokemon')) {
-        const verdict = await verifyPsaCert(risk.certNumber, process.env.PSA_API_TOKEN, certCache);
-        risk = applyCertVerdict(risk, verdict);
+    const g = gate(l, row);
+    if (!g.pass) {
+      if (g.reason) bumpReason(hit.vertical, REASON_KEY[g.reason] ?? g.reason);
+      if (hit.vertical === 'pokemon') {
+        pokemonNearMisses.push({ title: l.title, allIn: g.allIn, med: row.med, depth: g.depth });
       }
+      continue;
+    }
 
-      const g = gate(l, row);
-      if (!g.pass) continue;
+    const riskResult = scoreRisk(l, risk, hit.vertical);
+    const rank = rankOf(g.depth, row.conf, riskResult.grade, l.itemCreationDate, new Date(now));
+    deals.push({
+      id: dealId(l.itemId),
+      itemId: l.itemId,
+      legacyItemId: l.legacyItemId,
+      vertical: hit.vertical,
+      key: hit.key,
+      title: l.title,
+      imageUrl: l.imageUrl,
+      allIn: g.allIn,
+      itemPrice: l.price,
+      shipping: l.shippingCost,
+      med: row.med,
+      lo: row.lo,
+      hi: row.hi,
+      n: row.n,
+      lastSale: row.lastSale,
+      trend: row.trend,
+      conf: row.conf,
+      depth: g.depth,
+      risk: riskResult,
+      rank,
+      listedAt: l.itemCreationDate,
+      affiliateUrl: l.itemAffiliateWebUrl,
+      webUrl: l.itemWebUrl,
+      marketplace: l.marketplaceId,
+      evidenceUrl: evidenceUrl(hit.vertical, hit.key),
+      surfacedAt: nowIso,
+    });
+    stat.surfaced++;
+  }
 
-      const candidate: Candidate = { listing: l, key, vertical: pv.vertical, row, risk };
-      const riskResult = scoreRisk(l, risk, pv.vertical);
-      const rank = rankOf(g.depth, row.conf, riskResult.grade, l.itemCreationDate, new Date(now));
+  // The pokemon diagnosis, on the record: with sweeps, the old query price-band
+  // shallow-flood is gone (gate does the filtering). If pokemon STILL zeroes
+  // out, the basis question must be answerable from this log line alone.
+  if ((perVertical.pokemon?.surfaced ?? 0) === 0 && pokemonNearMisses.length > 0) {
+    console.warn(`[run-board] pokemon matched ${perVertical.pokemon?.matched ?? 0}, published 0 — near-misses:`);
+    for (const nm of pokemonNearMisses.slice(0, 5)) {
+      console.warn(
+        `  · "${nm.title}" allIn=$${nm.allIn} med=$${nm.med} depth=${(nm.depth * 100).toFixed(1)}%`,
+      );
+    }
+  }
 
-      deals.push({
+  // 7 — CONTEXT LEADS: swept listings with NO book key but a covering context
+  // rollup, at all-in ≤ 0.5× the rollup med. Facts + context, capped, labeled —
+  // never a priced call (no depth, no rank, no gate override).
+  const leadPool: { deal: HuntNoBookDeal; ratio: number }[] = [];
+  for (const { l, slice } of contextPool) {
+    const ctx = contextFor(l, contextIndex);
+    if (!ctx) continue;
+    const g = huntGate(l, {}); // fact checks only: a real price, no condition flag
+    if (!g.pass) continue;
+    if (!(g.allIn <= 0.5 * ctx.med)) continue;
+    leadPool.push({
+      ratio: g.allIn / ctx.med,
+      deal: {
+        huntId: `sweep:${slice.id}`,
+        huntLabel: 'context lead — not a priced call',
+        noBook: true,
         id: dealId(l.itemId),
         itemId: l.itemId,
         legacyItemId: l.legacyItemId,
-        vertical: pv.vertical,
-        key,
+        vertical: slice.lens,
         title: l.title,
         imageUrl: l.imageUrl,
         allIn: g.allIn,
         itemPrice: l.price,
         shipping: l.shippingCost,
-        med: row.med,
-        lo: row.lo,
-        hi: row.hi,
-        n: row.n,
-        lastSale: row.lastSale,
-        trend: row.trend,
-        conf: row.conf,
-        depth: g.depth,
-        risk: riskResult,
-        rank,
+        seller: {
+          username: l.seller.username,
+          feedbackPercentage: l.seller.feedbackPercentage,
+          feedbackScore: l.seller.feedbackScore,
+        },
         listedAt: l.itemCreationDate,
         affiliateUrl: l.itemAffiliateWebUrl,
         webUrl: l.itemWebUrl,
         marketplace: l.marketplaceId,
-        evidenceUrl: evidenceUrl(pv.vertical, key),
         surfacedAt: nowIso,
-      });
-      candidate; // (kept for parity with the documented Candidate stage)
-      stat.surfaced++;
-    }
+        context: toDealContext(ctx),
+      },
+    });
   }
+  // deepest-vs-rollup first; id as the deterministic tie
+  leadPool.sort((a, b) => a.ratio - b.ratio || (a.deal.id < b.deal.id ? -1 : a.deal.id > b.deal.id ? 1 : 0));
+  const leads = leadPool.slice(0, LEADS_CAP).map((x) => x.deal);
 
   // Per-target noBook cap (newest first): the lane is a watch list, not a
   // firehose — the uncapped first live run published 375 rows of payload.
@@ -328,30 +480,35 @@ async function main() {
   }
 
   // 8 — publish the board (hunt section always present so /hunt can render
-  // every target's watching/live state, even when nothing hit this run)
+  // every target's watching/live state; leads + stats are schema-v2 additive)
+  if (client) stats.calls = { search: client.calls.search, getItems: client.calls.getItems };
   const board = publishBoard(
     deals,
     perVertical,
     { builtAt: nowIso, bookBuiltAt: synced.book.builtAt },
     { targets: huntEntries.map(toHuntTarget), deals: huntDeals },
+    { leads, stats },
   );
 
-  // 9 — receipts: record newly surfaced, resolve the ones that left BIN.
-  // Priced hunt hits are full deals — their calls go on the tape like any
-  // other. noBook hits carry no call (no med/depth), so nothing to grade.
+  // 9 — receipts: record newly surfaced, resolve the ones that left BIN in
+  // getItems batches (the getItems bucket, never the search quota). Priced
+  // hunt hits are full deals — their calls go on the tape like any other.
+  // noBook hits and leads carry no call (no med/depth), so nothing to grade.
   const pricedHuntDeals = huntDeals.filter((d): d is HuntPricedDeal => !d.noBook);
   let receipts = loadReceipts();
   receipts = recordSurfaced(receipts, [...board.deals, ...pricedHuntDeals], nowIso);
-  // Cap re-checks per run: the live-receipt set grows every tick, and each
-  // recheck is a real API call — uncapped, this line alone would eventually
-  // eat the daily quota. 60/run × 8 runs/day resolves plenty.
   receipts = await resolveReceipts(receipts, { mode, client, now, nowIso, cap: 60 });
   commitReceipts(receipts);
 
-  // summary
+  // summary — the funnel, one screen
   const byV = LAUNCH_VERTICALS.map((v) => `${v}:${perVertical[v]?.surfaced ?? 0}`).join('  ');
   const noBookCount = huntDeals.length - pricedHuntDeals.length;
-  console.log(`[run-board] published ${board.deals.length} deals  [${byV}]`);
+  console.log(
+    `[run-board] sweep: ${stats.listingsEvaluated} listings evaluated · ` +
+      `identified ${JSON.stringify(stats.identified)} · calls ${JSON.stringify(stats.calls)}`,
+  );
+  console.log(`[run-board] gate reasons: ${JSON.stringify(stats.gateReasons)}`);
+  console.log(`[run-board] published ${board.deals.length} deals  [${byV}]  + ${leads.length} context leads`);
   console.log(
     `[run-board] hunt: ${huntDeals.length} hits ` +
       `(${pricedHuntDeals.length} priced, ${noBookCount} no-book) across ${huntEntries.length} targets`,

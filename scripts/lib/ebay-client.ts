@@ -1,11 +1,18 @@
 /**
  * ebay-client.ts — the live eBay Browse client (STARLING_MODE=live).
  *
- * Verified against the official Browse API (Aug 2026). Two tiers:
- *   Tier 1  GET /buy/browse/v1/item_summary/search   (cheap sweep, no aspects)
- *   Tier 2  GET /buy/browse/v1/item/{itemId}         (full localizedAspects)
+ * Verified against the official Browse API (Aug 2026). Two tiers, TWO QUOTAS:
+ *   Tier 1  GET /buy/browse/v1/item_summary/search   (search bucket, 5,000/day)
+ *           - search():    compiled per-query poll (the hunt lane)
+ *           - sweepPage(): one page of a category sweep (sweep.ts's primitive)
+ *   Tier 2  GET /buy/browse/v1/item?item_ids=…       (getItems BATCH, ≤20 ids
+ *           per call — its OWN separate 5,000/day bucket; enrichment and the
+ *           receipts re-check loop both ride it, never the search quota)
  * Auth is the client-credentials grant (application token, ~2h). EPN affiliate
  * links come back as itemAffiliateWebUrl when the campaign header is sent.
+ *
+ * `calls` ledgers every HTTP call per bucket — run-board publishes it in
+ * board.stats so quota spend is on the record, not vibes.
  *
  * This file is NOT exercised in fixture mode. It exists so the switch to live is
  * a config change, not a rewrite — the long pole is eBay's keyset approval
@@ -14,6 +21,9 @@
 import type { EbayListing, EbayQuery } from '../types';
 import type { EbaySearchResponse, EbayRawItem } from './ebay-types';
 import { normalizeSummary, normalizeItem } from './normalize';
+
+/** getItems hard batch limit (API rule). */
+export const GET_ITEMS_BATCH = 20;
 
 const OAUTH_URL = 'https://api.ebay.com/identity/v1/oauth2/token';
 const BASE = 'https://api.ebay.com/buy/browse/v1';
@@ -33,6 +43,8 @@ export interface EbayClientOpts {
 export class EbayClient {
   private token: string | null = null;
   private tokenExpiry = 0; // epoch ms; injected via response, never Date.now at import
+  /** per-bucket call ledger — search and getItems are separate daily quotas */
+  readonly calls = { search: 0, getItems: 0 };
   constructor(private opts: EbayClientOpts) {}
 
   private headers(extra: Record<string, string> = {}): Record<string, string> {
@@ -83,6 +95,7 @@ export class EbayClient {
     if (query.categoryIds?.length) params.set('category_ids', query.categoryIds.join(','));
     if (query.aspectFilter) params.set('aspect_filter', query.aspectFilter);
     this.opts.onCall?.();
+    this.calls.search++;
     const res = await fetch(`${BASE}/item_summary/search?${params}`, { headers: this.headers() });
     if (res.status === 204) return [];
     if (!res.ok) throw new Error(`Browse search ${res.status}: ${await res.text()}`);
@@ -90,29 +103,67 @@ export class EbayClient {
     return (j.itemSummaries ?? []).map((s) => normalizeSummary(s, this.opts.marketplaceId));
   }
 
-  /** Tier 2 — full item detail incl. localizedAspects. */
+  /**
+   * Tier 1 — one page of a CATEGORY SWEEP (sweep.ts's only primitive).
+   * ONE category id per call (API rule: mixed-id filtering silently degrades),
+   * sort=newlyListed, limit up to 200, raw filter strings from the slice
+   * (`price:[…]` REQUIRES `priceCurrency:USD` alongside — the slice tables in
+   * sweep.ts carry them paired). Throws on non-OK so the caller can probe the
+   * error-1697 sort+filter incompatibility and fall back gracefully.
+   */
+  async sweepPage(
+    opts: { categoryId: string; filters: string[]; offset?: number; limit?: number; sort?: string },
+    now: number,
+  ): Promise<EbayListing[]> {
+    await this.ensureToken(now);
+    const params = new URLSearchParams({
+      category_ids: opts.categoryId, // exactly one — never joined
+      sort: opts.sort ?? 'newlyListed',
+      limit: String(opts.limit ?? 200),
+      offset: String(opts.offset ?? 0),
+      filter: opts.filters.join(','),
+    });
+    this.opts.onCall?.();
+    this.calls.search++;
+    const res = await fetch(`${BASE}/item_summary/search?${params}`, { headers: this.headers() });
+    if (res.status === 204) return [];
+    if (!res.ok) throw new Error(`Browse sweep ${res.status}: ${await res.text()}`);
+    const j = (await res.json()) as EbaySearchResponse;
+    return (j.itemSummaries ?? []).map((s) => normalizeSummary(s, this.opts.marketplaceId));
+  }
+
+  /** Tier 2 — full item detail incl. localizedAspects (single). Prefer
+   *  getItems() batches; this survives for one-off needs. */
   async getItem(itemId: string, now: number): Promise<EbayListing> {
     await this.ensureToken(now);
     this.opts.onCall?.();
+    this.calls.getItems++;
     const res = await fetch(`${BASE}/item/${encodeURIComponent(itemId)}`, { headers: this.headers() });
     if (!res.ok) throw new Error(`getItem ${res.status}: ${await res.text()}`);
     const j = (await res.json()) as EbayRawItem;
     return normalizeItem(j, this.opts.marketplaceId);
   }
 
-  /** COMPACT re-check — price/availability only, for the receipts loop. Returns
-   *  null when the listing is gone (no longer publicly available → ALA says
-   *  delete it from the board). */
-  async recheck(itemId: string, now: number): Promise<{ price?: number; available: boolean } | null> {
+  /**
+   * Tier 2 BATCH — up to 20 full items in ONE call, on getItems' OWN 5,000/day
+   * quota bucket (separate from search). This is how enrichment and the
+   * receipts re-check loop scale: 20× the coverage per quota unit. Items no
+   * longer publicly available are simply ABSENT from the response (the ALA
+   * take-down signal) — callers read absence, not errors.
+   */
+  async getItems(itemIds: string[], now: number): Promise<EbayListing[]> {
+    if (itemIds.length === 0) return [];
+    if (itemIds.length > GET_ITEMS_BATCH) {
+      throw new Error(`getItems batch is ${itemIds.length} ids — the API caps at ${GET_ITEMS_BATCH}; chunk upstream`);
+    }
     await this.ensureToken(now);
+    const ids = itemIds.map(encodeURIComponent).join(',');
     this.opts.onCall?.();
-    const res = await fetch(
-      `${BASE}/item/${encodeURIComponent(itemId)}?fieldgroups=COMPACT`,
-      { headers: this.headers() },
-    );
-    if (res.status === 404) return null;
-    if (!res.ok) throw new Error(`recheck ${res.status}: ${await res.text()}`);
-    const j = (await res.json()) as EbayRawItem & { estimatedAvailabilities?: unknown[] };
-    return { price: j.price ? Number(j.price.value) : undefined, available: true };
+    this.calls.getItems++;
+    const res = await fetch(`${BASE}/item?item_ids=${ids}`, { headers: this.headers() });
+    if (res.status === 204) return [];
+    if (!res.ok) throw new Error(`getItems ${res.status}: ${await res.text()}`);
+    const j = (await res.json()) as { items?: EbayRawItem[] };
+    return (j.items ?? []).map((it) => normalizeItem(it, this.opts.marketplaceId));
   }
 }

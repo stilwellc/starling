@@ -14,7 +14,7 @@
 import { readFileSync, writeFileSync, existsSync, mkdirSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import type { Deal, Receipt } from './types';
-import type { EbayClient } from './lib/ebay-client';
+import { GET_ITEMS_BATCH, type EbayClient } from './lib/ebay-client';
 
 const LEDGER_PATH = join(process.cwd(), '.starling-state', 'receipts.json');
 const PUBLISHED_PATH = join(process.cwd(), 'public', 'data', 'starling', 'receipts.json');
@@ -64,9 +64,12 @@ export function recordSurfaced(prior: Receipt[], deals: Deal[], now: string): Re
 }
 
 /**
- * Re-check live receipts and resolve the ones that left Buy It Now. Uses the
- * cheap COMPACT re-check. In fixture mode there's no client, so live receipts
- * stay 'live' (nothing to resolve offline).
+ * Re-check live receipts and resolve the ones that left Buy It Now — in
+ * getItems BATCHES (≤20 ids/call, on getItems' own daily quota bucket, so the
+ * receipts loop no longer rations against sweep/hunt search calls at all). An
+ * itemId ABSENT from a batch response is the take-down signal: the listing is
+ * no longer publicly available → 'ended'. In fixture mode there's no client,
+ * so live receipts stay 'live' (nothing to resolve offline).
  */
 export async function resolveReceipts(
   receipts: Receipt[],
@@ -76,21 +79,26 @@ export async function resolveReceipts(
   const live = receipts.filter((r) => r.outcome === 'live');
   const cap = Math.min(opts.cap ?? live.length, live.length);
   // Rotate a cap-sized window through the live set each tick (same trick as the
-  // poll scheduler) — a fixed "first N" would recheck the same stuck listings
-  // forever while newer ones never get resolved.
+  // sweep cursor overlap) — a fixed "first N" would recheck the same stuck
+  // listings forever while newer ones never get resolved.
   const start = live.length > 0 ? Math.floor(opts.now / (3 * 60 * 60 * 1000)) % live.length : 0;
-  for (let i = 0; i < cap; i++) {
-    const r = live[(start + i) % live.length];
+  const window: Receipt[] = [];
+  for (let i = 0; i < cap; i++) window.push(live[(start + i) % live.length]);
+  for (let i = 0; i < window.length; i += GET_ITEMS_BATCH) {
+    const chunk = window.slice(i, i + GET_ITEMS_BATCH);
     try {
-      const status = await opts.client.recheck(r.itemId, opts.now);
-      if (status === null) {
-        r.outcome = 'ended'; // no longer publicly available
-        r.resolvedAt = opts.nowIso;
+      const items = await opts.client.getItems(chunk.map((r) => r.itemId), opts.now);
+      const present = new Set(items.map((it) => it.itemId));
+      for (const r of chunk) {
+        if (!present.has(r.itemId)) {
+          r.outcome = 'ended'; // no longer publicly available
+          r.resolvedAt = opts.nowIso;
+        }
+        // still present → remains 'live'. (Sold-price capture needs the
+        // marketplace-deletion signal; 'ended' is the honest default.)
       }
-      // still available → remains 'live'. (Sold-price capture needs the
-      // marketplace-deletion signal; 'ended' is the honest default.)
     } catch {
-      /* transient — try again next run */
+      /* transient — the whole chunk retries next run */
     }
   }
   return receipts;

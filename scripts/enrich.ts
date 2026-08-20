@@ -2,43 +2,44 @@
  * enrich.ts — Tier-2 detail + authenticity upgrade.
  *
  * A Tier-1 summary has no item specifics (localizedAspects), so identify() runs
- * on the title only. For listings that pin (or plausibly pin) a key, we fetch
- * the full item (getItem) to get the aspects — grader, cert #, reference,
- * signer — and re-run identify/risk on the real data. In fixture mode listings
- * arrive pre-enriched, so this is a passthrough.
+ * on the title only — the audit measured cards pinning at 1.4% title-only,
+ * which is exactly why enrichment matters. For listings that pin (or plausibly
+ * pin: a watch brand with no title ref) we fetch full items via getItems
+ * BATCHES — up to 20 ids per call, on getItems' OWN 5,000/day quota bucket,
+ * separate from search — and re-run identify/risk on the real aspects. In
+ * fixture mode listings arrive pre-enriched, so this is a passthrough.
  *
  * Cert verification (PSA) is an OPPORTUNISTIC upgrade, never a dependency: the
  * free tier's quota is uncertain in 2026 (PROPOSAL §5.5), so we back off on 429
  * and simply leave the anchor at 'slab-claimed' when we can't verify.
  */
 import type { EbayListing, RiskSignals, AuthenticityAnchor } from './types';
-import type { EbayClient } from './lib/ebay-client';
+import { GET_ITEMS_BATCH, type EbayClient } from './lib/ebay-client';
 
-/** Enrich the listings that need it (live mode, not yet enriched). Bounded by a
- *  cap so a runaway shortlist can't blow the Tier-2 budget. */
+/** Enrich the listings that need it (live mode, not yet enriched), in getItems
+ *  batches. `maxCalls` caps the getItems CALLS (each covers up to 20 listings)
+ *  so a runaway shortlist can't blow the Tier-2 bucket. A listing whose batch
+ *  fails — or that the response omits (no longer available) — keeps its
+ *  summary: identify may still pin from the title. */
 export async function enrich(
   listings: EbayListing[],
-  opts: { mode: 'fixture' | 'live'; client?: EbayClient; now: number; cap?: number },
+  opts: { mode: 'fixture' | 'live'; client?: EbayClient; now: number; maxCalls?: number },
 ): Promise<EbayListing[]> {
   if (opts.mode === 'fixture') return listings; // fixtures carry aspects already
   if (!opts.client) throw new Error('live enrich requires an EbayClient');
-  const cap = opts.cap ?? listings.length;
-  const out: EbayListing[] = [];
-  let used = 0;
-  for (const l of listings) {
-    if (l.enriched || used >= cap) {
-      out.push(l);
-      continue;
-    }
+  const need = listings.filter((l) => !l.enriched);
+  const maxCalls = opts.maxCalls ?? Math.ceil(need.length / GET_ITEMS_BATCH);
+  const enrichedById = new Map<string, EbayListing>();
+  for (let i = 0, calls = 0; i < need.length && calls < maxCalls; i += GET_ITEMS_BATCH, calls++) {
+    const chunk = need.slice(i, i + GET_ITEMS_BATCH);
     try {
-      out.push(await opts.client.getItem(l.itemId, opts.now));
-      used++;
+      const items = await opts.client.getItems(chunk.map((l) => l.itemId), opts.now);
+      for (const it of items) enrichedById.set(it.itemId, it);
     } catch (e) {
-      console.warn(`[enrich] getItem ${l.itemId} failed: ${(e as Error).message}`);
-      out.push(l); // keep the summary; identify may still pin from title
+      console.warn(`[enrich] getItems batch failed: ${(e as Error).message}`);
     }
   }
-  return out;
+  return listings.map((l) => enrichedById.get(l.itemId) ?? l);
 }
 
 // ── PSA cert verification ────────────────────────────────────────────────────
