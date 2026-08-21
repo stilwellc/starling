@@ -78,20 +78,31 @@ export class EbayClient {
     this.tokenExpiry = now + j.expires_in * 1000;
   }
 
-  /** Tier 1 — one page of a compiled query. now is injected by the caller. */
-  async search(query: EbayQuery, now: number, limit = 50): Promise<EbayListing[]> {
+  /** Tier 1 — one page of a compiled query. now is injected by the caller.
+   *  posture 'bin' (default) keeps the classic FIXED_PRICE filter; 'all' drops
+   *  it so ONE call returns BIN and auction listings together (the goldmine
+   *  lane's trick — Collin, Aug 21 2026: "most of the value items seem to be
+   *  auction lots"). 'all' also drops priceMin: the price filter reads an
+   *  auction's CURRENT BID, and a low early bid is mechanics, not junk. */
+  async search(
+    query: EbayQuery,
+    now: number,
+    limit = 50,
+    posture: 'bin' | 'all' = 'bin',
+  ): Promise<EbayListing[]> {
     await this.ensureToken(now);
-    const filters = ['buyingOptions:{FIXED_PRICE}'];
-    if (query.priceMin != null || query.priceMax != null) {
-      const lo = query.priceMin != null ? Math.floor(query.priceMin) : '';
+    const filters = posture === 'bin' ? ['buyingOptions:{FIXED_PRICE}'] : [];
+    const priceMin = posture === 'all' ? null : query.priceMin;
+    if (priceMin != null || query.priceMax != null) {
+      const lo = priceMin != null ? Math.floor(priceMin) : '';
       const hi = query.priceMax != null ? Math.ceil(query.priceMax) : '';
       filters.push(`price:[${lo}..${hi}]`, 'priceCurrency:USD');
     }
     const params = new URLSearchParams({
       q: query.q,
       limit: String(limit),
-      filter: filters.join(','),
     });
+    if (filters.length) params.set('filter', filters.join(','));
     if (query.categoryIds?.length) params.set('category_ids', query.categoryIds.join(','));
     if (query.aspectFilter) params.set('aspect_filter', query.aspectFilter);
     this.opts.onCall?.();

@@ -64,6 +64,7 @@ export function normalizeSummary(
     itemCreationDate: raw.itemCreationDate,
     itemEndDate: raw.itemEndDate,
     bidCount: raw.bidCount,
+    buyingOptions: raw.buyingOptions,
     aspects: [],
     enriched: false,
     marketplaceId,

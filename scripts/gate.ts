@@ -198,6 +198,11 @@ export function huntGate(
  *  have too much time to move for "deep right now" to mean anything. The sweep
  *  uses the same window as its itemEndDate filter (sweep.ts). */
 export const CLOSING_WINDOW_MS = 4 * 60 * 60 * 1000;
+
+/** The GOLDMINE closing window: an auction pinned to a top book row is worth
+ *  watching days out, not just in the final hours — identity is book-certain
+ *  and the section is honest that a bid will move (Aug 21 2026). */
+export const GOLDMINE_CLOSING_WINDOW_MS = 72 * 60 * 60 * 1000;
 /** bidVsBook floor: bidding this deep this late is genuinely interesting;
  *  anything shallower is just an auction doing auction things. */
 export const CLOSING_MIN_BID_VS_BOOK = 0.4;
@@ -235,6 +240,7 @@ export function closingGate(
   listing: EbayListing,
   row: ValueBookRow,
   now: number,
+  opts?: { windowMs?: number },
 ): ClosingGateResult {
   const flags = conditionFlags(listing.title);
   const allInBid = allInOf(listing);
@@ -246,7 +252,7 @@ export function closingGate(
   }
   const bidVsBook = 1 - allInBid / row.med;
   const endMs = listing.itemEndDate ? Date.parse(listing.itemEndDate) : NaN;
-  if (!Number.isFinite(endMs) || endMs <= now || endMs > now + CLOSING_WINDOW_MS) {
+  if (!Number.isFinite(endMs) || endMs <= now || endMs > now + (opts?.windowMs ?? CLOSING_WINDOW_MS)) {
     return { pass: false, allInBid, bidVsBook, reason: 'end-window', conditionFlags: flags };
   }
   if (row.conf === 'thin') {

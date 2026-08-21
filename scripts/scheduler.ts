@@ -94,7 +94,7 @@ export const CARDS_SWEEP_CAP = 0.4;
  *  windows are small (the 4h itemEndDate filter IS the pagination bound), so
  *  this is ample — and the BIN net can never starve the closing lane, nor the
  *  reverse. */
-export const AUCTION_SWEEP_CAP = 0.2;
+export const AUCTION_SWEEP_CAP = 0.35; // 0.2→0.35 Aug 21 2026: the measured edge lives in the auction lanes
 
 /** What allocateSweepBudget needs to know about a slice — kept structural so
  *  scheduler.ts never imports sweep.ts (budget must not depend on the net). */

@@ -46,7 +46,7 @@ import { pollHunt } from './poll';
 import { SWEEP_SLICES, sweep, loadSweepState, commitSweepState, type SweepSlice } from './sweep';
 import { compileGoldmine, goldmineWindow } from './goldmine';
 import { enrich, verifyPsaCert, applyCertVerdict, type CertVerdict } from './enrich';
-import { gate, huntGate, closingGate, REASON_KEY, LADDER_MIN_DEPTH } from './gate';
+import { gate, huntGate, closingGate, REASON_KEY, LADDER_MIN_DEPTH, GOLDMINE_CLOSING_WINDOW_MS } from './gate';
 import { buildLadderIndex, ladderRow } from './ladder';
 import { indexContext, contextFor, toDealContext } from './context';
 import { scoreRisk } from './score/risk';
@@ -479,13 +479,19 @@ async function main() {
   const gmQueries = compileGoldmine(synced.book.rows, matcherFor, now);
   const gmBudget = mode === 'live' ? goldmineBudget(SWEEP_SLICES) : 0;
   const gmWindow = goldmineWindow(gmQueries, now, gmBudget);
-  const gmStats = { keys: gmWindow.length, listings: 0, surfaced: 0 };
+  const gmStats = { keys: gmWindow.length, listings: 0, surfaced: 0, closing: 0 };
+  /** goldmine AUCTION finds — merged into the closing lane in 6b (Collin,
+   *  Aug 21 2026: "most of the value items seem to be auction lots"; the
+   *  category ending-soon sweep almost never pins a book row — 1,344→0 —
+   *  but a by-key search arrives with identity pre-solved). */
+  const goldmineClosing: AuctionCall[] = [];
   if (mode === 'live' && client && gmWindow.length > 0) {
     const dealItemIds = new Set<string>([...deals.map((d) => d.itemId), ...Array.from(huntClaimed)]);
     for (const { row, query } of gmWindow) {
       let page: EbayListing[] = [];
       try {
-        page = await client.search(query, now);
+        // posture 'all': ONE call returns BIN + auction listings for the key
+        page = await client.search(query, now, 50, 'all');
       } catch (e) {
         console.warn(`[goldmine] search failed for "${query.key}": ${(e as Error).message.slice(0, 120)}`);
         continue;
@@ -502,6 +508,55 @@ async function main() {
         const prow = k === row.k ? row : synced.byKey.get(k);
         if (!prow) {
           bumpReason(row.v, 'noBookRow');
+          continue;
+        }
+        // AUCTION hits route to the closing lane — wider 72h window because
+        // the identity is book-certain; the section already says "bid will
+        // move; watch signal, not a price".
+        if (l.buyingOptions?.includes('AUCTION') && l.itemEndDate) {
+          const cg = closingGate(l, prow, now, { windowMs: GOLDMINE_CLOSING_WINDOW_MS });
+          if (!cg.pass) {
+            if (cg.reason) bumpReason(row.v, REASON_KEY[cg.reason] ?? cg.reason);
+            continue;
+          }
+          let arisk = m.riskInputs(l);
+          if (arisk.certNumber && (row.v === 'sports-cards' || row.v === 'pokemon')) {
+            const verdict = await verifyPsaCert(arisk.certNumber, process.env.PSA_API_TOKEN, certCache);
+            arisk = applyCertVerdict(arisk, verdict);
+          }
+          dealItemIds.add(l.itemId);
+          goldmineClosing.push({
+            id: dealId(l.itemId),
+            itemId: l.itemId,
+            legacyItemId: l.legacyItemId,
+            vertical: row.v,
+            key: k,
+            title: l.title,
+            imageUrl: l.imageUrl,
+            currentBid: l.price,
+            bidCount: l.bidCount,
+            endsAt: l.itemEndDate,
+            shipping: l.shippingCost,
+            allInBid: cg.allInBid,
+            edgeUsd: prow.med - cg.allInBid,
+            med: prow.med,
+            lo: prow.lo,
+            hi: prow.hi,
+            n: prow.n,
+            ...(prow.n12 !== undefined ? { n12: prow.n12 } : {}),
+            lastSale: prow.lastSale,
+            trend: prow.trend,
+            conf: prow.conf,
+            bidVsBook: cg.bidVsBook,
+            risk: scoreRisk(l, arisk, row.v),
+            listedAt: l.itemCreationDate,
+            affiliateUrl: l.itemAffiliateWebUrl,
+            webUrl: l.itemWebUrl,
+            marketplace: l.marketplaceId,
+            evidenceUrl: evidenceUrl(row.v, k),
+            surfacedAt: nowIso,
+          });
+          gmStats.closing++;
           continue;
         }
         const g = gate(l, prow, { now });
@@ -556,7 +611,7 @@ async function main() {
   stats.goldmine = gmStats;
   console.log(
     `[run-board] goldmine: ${gmWindow.length}/${gmQueries.length} keys queried · ` +
-      `${gmStats.listings} listings · ${gmStats.surfaced} surfaced` +
+      `${gmStats.listings} listings · ${gmStats.surfaced} BIN surfaced · ${gmStats.closing} auction watches` +
       (mode === 'live' ? '' : ' (fixture: lane idle)'),
   );
 
@@ -567,6 +622,9 @@ async function main() {
   // WATCH SIGNAL, published as its own board section, never mixed into deals.
   const closing: AuctionCall[] = [];
   {
+    // goldmine auction finds lead the lane — dedupe by itemId as the category
+    // sweep's own calls land below
+    for (const c of goldmineClosing) closing.push(c);
     // pass 1 (title-only in live mode): only auctions already pinned to a book
     // row earn a getItems slot — aspects firm up cert #/ref before the call.
     const shortlist: EbayListing[] = [];
@@ -598,6 +656,7 @@ async function main() {
         const verdict = await verifyPsaCert(risk.certNumber, process.env.PSA_API_TOKEN, certCache);
         risk = applyCertVerdict(risk, verdict);
       }
+      if (closing.some((x) => x.itemId === l.itemId)) continue;
       closing.push({
         id: dealId(l.itemId),
         itemId: l.itemId,

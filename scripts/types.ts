@@ -165,6 +165,9 @@ export interface EbayListing {
   itemCreationDate?: string;
   /** ISO end date — auction listings only; the closing-calls lane keys off it */
   itemEndDate?: string;
+  /** raw eBay buyingOptions (AUCTION/FIXED_PRICE/BEST_OFFER) — the goldmine
+   *  lane routes auction hits to the closing gate off this */
+  buyingOptions?: string[];
   /** bids placed so far — auction listings only (summary `bidCount`) */
   bidCount?: number;
   /** full item specifics from getItem localizedAspects; empty until enriched */
@@ -454,8 +457,9 @@ export interface BoardStats {
   /** vertical → listings identify() pinned to a key (book row or not) */
   identified: Record<string, number>;
   /** the goldmine lane's funnel (goldmine.ts): keys queried this rotation
-   *  window, listings returned, deals surfaced. Additive, absent pre-lane. */
-  goldmine?: { keys: number; listings: number; surfaced: number };
+   *  window, listings returned, BIN deals surfaced, auction watches pushed to
+   *  the closing lane. Additive, absent pre-lane. */
+  goldmine?: { keys: number; listings: number; surfaced: number; closing?: number };
 }
 
 export interface Board {
