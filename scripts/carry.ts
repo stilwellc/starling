@@ -178,12 +178,25 @@ export interface CarryResult {
  */
 export async function carryForward(
   prev: BoardCarryState,
-  fresh: { deals: Deal[]; huntDeals: HuntDeal[]; huntClaimed: Set<string> },
+  fresh: { deals: Deal[]; huntDeals: HuntDeal[]; huntClaimed: Set<string>; liveHuntIds?: Set<string> },
   opts: { mode: 'fixture' | 'live'; client?: EbayClient; now: number },
 ): Promise<CarryResult> {
   const out: CarryResult = { deals: [], huntNoBook: [], endedItemIds: new Set() };
   const prevDealByItem = new Map(prev.deals.map((d) => [d.itemId, d]));
-  const prevHuntByItem = new Map(prev.huntNoBook.map((h) => [h.itemId, h]));
+  // A hit whose hunt TARGET was removed from priority.yaml dies with the
+  // target (Aug 21 2026: Collin cleared the broad seeds — their carried hits
+  // must not linger on the board until the listings end).
+  const orphaned = prev.huntNoBook.filter(
+    (h) => fresh.liveHuntIds && !fresh.liveHuntIds.has(h.huntId),
+  );
+  if (orphaned.length > 0) {
+    console.log(`[carry] hunt noBook: ${orphaned.length} dropped — their targets left the hunt list`);
+  }
+  const prevHuntByItem = new Map(
+    prev.huntNoBook
+      .filter((h) => !fresh.liveHuntIds || fresh.liveHuntIds.has(h.huntId))
+      .map((h) => [h.itemId, h]),
+  );
 
   // fresh wins the dedupe — but first-surfaced survives the re-catch
   for (const d of fresh.deals) {

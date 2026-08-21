@@ -703,7 +703,7 @@ async function main() {
   // with the hammer, per-tick by design.
   const carried = await carryForward(
     loadBoardState(mode),
-    { deals, huntDeals, huntClaimed },
+    { deals, huntDeals, huntClaimed, liveHuntIds: new Set(huntEntries.map((e) => e.id)) },
     { mode, client, now },
   );
   deals.push(...carried.deals);
