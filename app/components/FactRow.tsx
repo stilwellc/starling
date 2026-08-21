@@ -15,6 +15,8 @@ export interface FactRowItem {
   imageUrl?: string;
   vertical?: string;
   allIn?: number;
+  /** the listing is an auction — allIn is the CURRENT BID, not an ask */
+  auction?: boolean;
   itemPrice?: number;
   shipping?: number | null;
   seller?: { username?: string; feedbackPercentage?: number; feedbackScore?: number };
@@ -83,11 +85,13 @@ export function FactRow({
             <>
               <span className="fact-row-price">{money(item.allIn)}</span>
               <span className="fact-row-sub">
-                {item.shipping != null && item.shipping > 0
-                  ? `incl. ${money(item.shipping)} ship`
-                  : item.shipping === 0
-                    ? 'free ship'
-                    : 'all-in'}
+                {item.auction
+                  ? 'current bid — auction'
+                  : item.shipping != null && item.shipping > 0
+                    ? `incl. ${money(item.shipping)} ship`
+                    : item.shipping === 0
+                      ? 'free ship'
+                      : 'all-in'}
               </span>
             </>
           )}

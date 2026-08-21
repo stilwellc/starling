@@ -57,7 +57,9 @@ export async function pollHunt(
     const g = groups.get(c.entry.id)!;
     let page: EbayListing[] = [];
     try {
-      page = await opts.client.search(c.query, opts.now);
+      // posture 'all': a hunted grail is wanted however it sells — BIN or
+      // auction (BSTJ originals in particular trade at auction)
+      page = await opts.client.search(c.query, opts.now, 50, 'all');
       g.calls++;
     } catch (e) {
       console.warn(`[poll] hunt ${c.entry.id} query "${c.query.q}" failed: ${(e as Error).message}`);

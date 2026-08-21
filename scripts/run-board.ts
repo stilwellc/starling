@@ -193,6 +193,9 @@ async function main() {
   for (const hp of huntPolled) {
     const entry = hp.entry;
     const enrichedHunt = await enrich(hp.listings, { mode, client, now, maxCalls: HUNT_ENRICH_CALLS });
+    // Per-entry funnel counters — the funnel-audit rule: a zero-hit hunt must
+    // be diagnosable from the log alone (returned → guard → gate → kept).
+    const hFun = { returned: enrichedHunt.length, guardCut: 0, gateCut: 0, kept: 0 };
     for (const l of enrichedHunt) {
       if (huntClaimed.has(l.itemId)) continue; // overlapping targets: first entry (yaml order) wins
 
@@ -215,12 +218,14 @@ async function main() {
       // un-pinned hits from raw-terms targets must clear the relevance guard
       // (q-token presence + vertical hint) — the zip-jacket lesson from the
       // first live run. Pinned (priced) hits skip it: identity IS relevance.
-      if (!row && !huntRelevant(entry, l.title || '')) { huntClaimed.add(l.itemId); continue; }
+      if (!row && !huntRelevant(entry, l.title || '')) { hFun.guardCut++; huntClaimed.add(l.itemId); continue; }
       const g = huntGate(l, entry, row);
       if (!g.pass) {
+        hFun.gateCut++;
         if (g.reason) bumpReason(entry.vertical, REASON_KEY[g.reason] ?? g.reason);
         continue;
       }
+      hFun.kept++;
 
       if (row && key && identifiedVertical) {
         // priced hunt hit — the book still prices; the list only prioritized.
@@ -272,6 +277,7 @@ async function main() {
           huntId: entry.id,
           huntLabel: entry.label,
           noBook: true,
+          ...(l.buyingOptions?.includes('AUCTION') ? { auction: true as const } : {}),
           id: dealId(l.itemId),
           itemId: l.itemId,
           legacyItemId: l.legacyItemId,
@@ -296,6 +302,11 @@ async function main() {
         });
       }
       huntClaimed.add(l.itemId);
+    }
+    if (hFun.returned > 0 || huntPolled.length <= 20) {
+      console.log(
+        `[hunt] ${entry.id}: ${hFun.returned} returned · ${hFun.guardCut} guard-cut · ${hFun.gateCut} gate-cut · ${hFun.kept} kept`,
+      );
     }
   }
 

@@ -404,6 +404,8 @@ export interface HuntNoBookDeal {
   huntId: string;
   huntLabel: string;
   noBook: true;
+  /** the listing is an AUCTION — `allIn` is the CURRENT BID, not an ask */
+  auction?: boolean;
   id: string; // stable: hash of itemId (see lib/id.ts)
   itemId: string;
   legacyItemId?: string;
