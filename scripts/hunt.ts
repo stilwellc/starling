@@ -225,6 +225,10 @@ export function huntRelevant(entry: HuntEntry, title: string): boolean {
   const t = title.toLowerCase();
   const tokens = entry.match.q.toLowerCase().split(/\s+/).filter(w => w && !Q_STOP.has(w));
   if (!tokens.every(w => t.includes(w))) return false;
+  // An entry-level titleMust IS the relevance definition — the generic
+  // vertical hint must not second-guess it (Aug 21 2026: the science hint's
+  // fossil/apple/nasa terms guard-cut every genuine BSTJ journal listing).
+  if (entry.titleMust) return true;
   const hint = VERTICAL_HINT[entry.vertical];
   return hint ? hint.test(title) : true;
 }
