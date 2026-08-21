@@ -1,98 +1,29 @@
 # Starling hunt list — curated priority targets (§4.4 of PROPOSAL.md)
-# Seeded by Collin, 2026-08-19. Rules of the lane:
+#
+# CLEARED 2026-08-21 (Collin): the seeded targets (Eagles cards, Schulz, game-
+# used football, vintage Apple, Sendak, fossils…) were way too broad — wide
+# lenses are the sweep/goldmine lanes' job now. This list is reserved for
+# HYPER-SPECIFIC wants; the 10% reserved call budget sits idle until entries
+# return, and the lane reactivates the moment one is added (next cron tick).
+#
+# Rules of the lane:
 #   · polled EVERY cron run, paid from the reserved 10% call budget
 #   · the book still prices — hunting never inflates a value; targets with no
 #     book row surface as "hunted — no book value" (facts only, no depth %)
-#   · minDepth may loosen the 0.25 board bar per entry; the 0.90 scam cap never
-# Match forms: {key} exact identity · {keyPrefix} key family · {q, categoryHint} raw terms
-
-- id: game-used-football-jerseys
-  label: "Game-used football jerseys"
-  vertical: sports
-  match: { q: "game used jersey", categoryHint: "game-used" }
-  # positive scope: sport words rarely appear in titles — team names carry the
-  # sport ("Phillies Game Used Jersey" says baseball without saying it)
-  titleMust: "football|nfl|ncaa|cfb|xfl|usfl|cardinals|falcons|ravens|bills|panthers|bears|bengals|browns|cowboys|broncos|lions|packers|texans|colts|jaguars|chiefs|raiders|chargers|rams|dolphins|vikings|patriots|saints|giants|jets|eagles|steelers|49ers|seahawks|buccaneers|titans|commanders|redskins"
-  titleNot: "baseball|basketball|hockey|soccer|mlb|nba|nhl|wnba"
-  note: >
-    Football scope — matcher should require game-used/game-worn language
-    (lectr's guUseClass: never used↔issued) and treat photo-matched as the
-    A-grade anchor. Corpus depth here is real: 38K+ game-used sold lots.
-  added: 2026-08-19
-
-- id: eagles-cards
-  label: "Philadelphia Eagles sports cards"
-  vertical: sports-cards
-  match: { q: "philadelphia eagles", categoryHint: "sports-cards" }
-  note: >
-    Team-scoped hunt over a player-keyed book: identify() still resolves each
-    listing to its cardKey (player|year|set|#|grade) for pricing — the Eagles
-    filter is the discovery lens (Hurts/Barkley/McNabb/Reggie White/Chuck
-    Bednarik era all qualify). Card-vertical entry rides the hunt budget, not
-    the cards cap.
-  added: 2026-08-19
-
-- id: schulz-signed
-  label: "Charles Schulz — signed material"
-  vertical: culture
-  match: { q: "charles schulz signed", categoryHint: "entertainment-memorabilia" }
-  note: >
-    Format-aware (autographFormatOf): a Schulz ALS/TLS vs signed book vs
-    signed print are different markets — never cross-comp. PSA/DNA-certified
-    pieces anchor risk grade A.
-  added: 2026-08-19
-
-- id: schulz-sketch
-  label: "Charles Schulz — original sketch / drawing"
-  vertical: culture
-  match: { q: "charles schulz original drawing", categoryHint: "entertainment-memorabilia" }
-  minDepth: 0.15
-  note: >
-    Original Peanuts art (Snoopy/Charlie Brown sketches, strip art). Separate
-    entry from signed-material on purpose — originals are the art market,
-    signatures are the autograph market. Fairly-priced originals are rare
-    enough that the looser 0.15 bar applies.
-  added: 2026-08-19
-
-- id: vintage-apple
-  label: "Vintage Apple / early computing"
-  vertical: science
-  match: { q: "vintage apple computer", categoryHint: "science-tech" }
-  note: >
-    Rides the culture→science reroute (science-tech): Apple-1/II era hardware,
-    Jobs-signed material, early manuals/business cards. lectr's TECH regexes
-    (rr-auction.ts) transfer to identify(). Beware modern-refurb noise —
-    require pre-1998 signals or signed provenance.
-  added: 2026-08-19
-
-- id: sendak-signed
-  label: "Maurice Sendak — signed material"
-  vertical: culture
-  match: { q: "maurice sendak signed", categoryHint: "entertainment-memorabilia" }
-  note: >
-    Signed Wild Things firsts and later editions dominate; format gate applies
-    (signed book ≠ signed print ≠ ALS).
-  added: 2026-08-19
-
-- id: sendak-sketch
-  label: "Maurice Sendak — original sketch / drawing"
-  vertical: culture
-  match: { q: "maurice sendak original drawing", categoryHint: "entertainment-memorabilia" }
-  minDepth: 0.15
-  note: >
-    Original ink/watercolor pieces — same originals-vs-signatures split as
-    Schulz. Wild Things character sketches are the grail class.
-  added: 2026-08-19
-
-- id: fossils
-  label: "Fossils — corpus-comparable classes"
-  vertical: science
-  match: { q: "fossil", categoryHint: "fossils" }
-  note: >
-    Scope to the classes the corpus actually prices (885 sold fossil lots,
-    gates just fixed for naturals): dinosaur teeth (T-rex/raptor), ammonites,
-    trilobites, megalodon. eBay's raw "fossil" firehose is mostly $10
-    decorative — matcher should require genus/species or slab-style language
-    and lean on size context. Expect "hunted — no book value" labels until the
-    fossil book rows deepen.
-  added: 2026-08-19
+#   · minDepth may loosen the 0.25 board bar per entry; the scam cap never moves
+#
+# Match forms (one per entry):
+#   match: { key: "player-slug|1986|fleer|57|PSA 9" }     exact book identity
+#   match: { keyPrefix: "michael-jordan|1986|fleer" }     key family (med-desc)
+#   match: { q: "raw search terms", categoryHint: "sports-cards" }
+# Optional per entry: titleMust / titleNot (regex, case-insensitive),
+#                     minDepth (loosen 0.25), label, note, added.
+#
+# Template:
+# - id: kebab-case-id
+#   label: "Human label"
+#   vertical: sports-cards | pokemon | autographs | art-editions | watches | sports | science
+#   match: { q: "…", categoryHint: "…" }
+#   titleMust: "…"
+#   titleNot: "…"
+#   added: 2026-08-21
