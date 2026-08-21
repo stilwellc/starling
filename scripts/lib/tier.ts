@@ -26,6 +26,10 @@ import type { Deal, DealTier } from '../types';
 
 /** Sales floor for a featured call — n=4 medium was the audit's cautionary tale. */
 export const FEATURED_MIN_N = 6;
+/** Living-evidence floor (Aug 20 2026): a featured call needs at least this
+ *  many sales in the trailing 12 months — six sales that all happened years
+ *  ago is history, not a market. Unknown (pre-n12 book) is not penalized. */
+export const FEATURED_MIN_N12 = 2;
 /** The board gate's own floor; restated here so the tier rule stands alone. */
 export const FEATURED_MIN_DEPTH = 0.25;
 /** Beyond this depth without a verified cert = suspect, not a bargain. */
@@ -44,8 +48,10 @@ export function tierOf(deal: Deal): DealTier {
   // derived pricing never features, even off a deep high-conf source row
   if (deal.basis === 'ladder') return 'worth-a-look';
   const cert = certVerified(deal);
+  const living = deal.n12 === undefined || deal.n12 >= FEATURED_MIN_N12;
   const evidence =
-    (deal.conf === 'high' && deal.n >= FEATURED_MIN_N) || (deal.risk.grade === 'A' && cert);
+    (deal.conf === 'high' && deal.n >= FEATURED_MIN_N && living) ||
+    (deal.risk.grade === 'A' && cert);
   if (!evidence) return 'worth-a-look';
   if (deal.depth < FEATURED_MIN_DEPTH) return 'worth-a-look';
   if (deal.depth > FEATURED_MAX_UNCERT_DEPTH && !cert) return 'worth-a-look';

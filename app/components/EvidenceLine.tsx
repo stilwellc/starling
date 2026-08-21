@@ -7,13 +7,14 @@
 import type { Deal } from '@/scripts/types';
 import { shortDate, trendPct, isAgingBook } from '@/app/lib/display';
 
-export function EvidenceLine({ deal }: { deal: Pick<Deal, 'n' | 'lastSale' | 'trend' | 'conf'> }) {
+export function EvidenceLine({ deal }: { deal: Pick<Deal, 'n' | 'n12' | 'lastSale' | 'trend' | 'conf'> }) {
   const trend = trendPct(deal.trend);
   const aging = isAgingBook(deal.lastSale);
   return (
     <div className="evline">
       <span className="evline-fact">
         {deal.n} {deal.n === 1 ? 'sale' : 'sales'}
+        {deal.n12 !== undefined && <> · {deal.n12} past year</>}
       </span>
       <span className="evline-dot" aria-hidden="true">
         ·
@@ -33,7 +34,7 @@ export function EvidenceLine({ deal }: { deal: Pick<Deal, 'n' | 'lastSale' | 'tr
         {deal.conf} conf
       </span>
       {aging && (
-        <span className="aging-flag" title="Most recent settled sale is over 24 months old">
+        <span className="aging-flag" title="Most recent settled sale is over 12 months old">
           aging book
         </span>
       )}

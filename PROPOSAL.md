@@ -273,7 +273,8 @@ edgeUsd    = med − allIn                         // the dollars on the table
 confW      = { high: 1.0, medium: 0.6 }
 riskW      = { A: 1.0, B: 0.85, C: 0.6, D: 0.3 }
 freshBoost = 1.15 if listed < 24h else 1.0        // fresh deals get sniped; surface fast
-rank       = edgeUsd × depth × confW × riskW × freshBoost
+evW        = ageW(lastSale) × velW(n12)     // living-evidence weight
+rank       = edgeUsd × depth × confW × riskW × evW × freshBoost
 ```
 
 No vertical term — §2. Constants live in one file with the rationale in comments.
@@ -284,6 +285,16 @@ leads; depth survives as the margin-of-safety multiplier. Paired with a
 `MIN_EDGE_USD = $50` gate floor (gate.ts, reason `edgeFloor` in the stats
 histogram) and sweep slice price floors raised so quota chases tickets that can
 actually clear $50 of edge.
+
+**Living-evidence amendment (Aug 20 2026, the dud diagnosis):** rows whose
+whole sale history is years old priced dead markets — the "edge" was fiction.
+The lectr book now emits `n12` (trailing-12-month sale count) per row; Starling
+(1) hard-cuts any row whose latest sale is >24 months old (`STALE_BOOK_MS`,
+reason `staleBook`), (2) multiplies rank by `evW = ageW × velW` so four-sales-
+this-year evidence buries one-sale-in-2024 evidence at equal edge, and (3)
+requires `n12 ≥ 2` for the featured tier (unknown — pre-n12 books — is not
+penalized). The evidence line tells the story: "9 sales · 4 past year · last
+Jun 2026".
 
 ---
 

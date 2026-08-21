@@ -37,7 +37,7 @@ import { join, dirname } from 'node:path';
 import type { Deal, EbayListing, HuntDeal, HuntNoBookDeal, ValueBookRow } from './types';
 import { GET_ITEMS_BATCH, type EbayClient } from './lib/ebay-client';
 import { gate, huntGate, allInOf, LADDER_MIN_DEPTH } from './gate';
-import { rankOf } from './score/rank';
+import { rankOf, evidenceWeightOf } from './score/rank';
 import { carryFixture } from './lib/fixture-source';
 
 const STATE_PATH = join(process.cwd(), '.starling-state', 'board-state.json');
@@ -140,7 +140,7 @@ async function reverify(
  *  against so a raised price re-gates without a book lookup (the book may have
  *  moved since; the receipt froze THIS call, so the re-gate honors it). */
 function rowOf(d: Deal): ValueBookRow {
-  return { k: d.key, v: d.vertical, med: d.med, lo: d.lo, hi: d.hi, n: d.n, lastSale: d.lastSale, trend: d.trend, conf: d.conf };
+  return { k: d.key, v: d.vertical, med: d.med, lo: d.lo, hi: d.hi, n: d.n, ...(d.n12 !== undefined ? { n12: d.n12 } : {}), lastSale: d.lastSale, trend: d.trend, conf: d.conf };
 }
 
 /** A kept deal with the live read folded in: price/allIn/depth refreshed, rank
@@ -154,7 +154,7 @@ function refreshDeal(d: Deal, l: EbayListing, allIn: number, depth: number, now:
     allIn,
     depth,
     edgeUsd: d.med - allIn,
-    rank: rankOf(d.med - allIn, depth, d.conf, d.risk.grade, d.listedAt, new Date(now)),
+    rank: rankOf(d.med - allIn, depth, d.conf, d.risk.grade, evidenceWeightOf(d.lastSale, d.n12, new Date(now)), d.listedAt, new Date(now)),
   };
 }
 
@@ -234,7 +234,7 @@ export async function carryForward(
       continue;
     }
     // repriced UP — the call must re-earn its slot against the frozen book row
-    const g = gate(l, rowOf(d), d.basis === 'ladder' ? { minDepth: LADDER_MIN_DEPTH } : undefined);
+    const g = gate(l, rowOf(d), { now: opts.now, ...(d.basis === 'ladder' ? { minDepth: LADDER_MIN_DEPTH } : {}) });
     if (!g.pass) {
       regateFail++; // still live on eBay, just no longer a deal — NOT ended
       continue;

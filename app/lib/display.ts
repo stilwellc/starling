@@ -188,7 +188,9 @@ export function isAgingBook(lastSale: string, now = Date.now()): boolean {
   const t = Date.parse(lastSale);
   if (Number.isNaN(t)) return false;
   const months = (now - t) / (86_400_000 * 30.44);
-  return months > 24;
+  // >24mo can't publish at all since the stale-book gate (Aug 20 2026) — the
+  // badge now marks the 12–24mo band that still ships, rank-discounted.
+  return months > 12;
 }
 
 /** The identity key rendered readably: "rolex | 1665" → "rolex · 1665". */

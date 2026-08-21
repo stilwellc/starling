@@ -49,7 +49,7 @@ import { gate, huntGate, closingGate, REASON_KEY, LADDER_MIN_DEPTH } from './gat
 import { buildLadderIndex, ladderRow } from './ladder';
 import { indexContext, contextFor, toDealContext } from './context';
 import { scoreRisk } from './score/risk';
-import { rankOf } from './score/rank';
+import { rankOf, evidenceWeightOf } from './score/rank';
 import { publishBoard } from './publish';
 import { loadBoardState, commitBoardState, carryForward } from './carry';
 import {
@@ -229,7 +229,7 @@ async function main() {
           risk = applyCertVerdict(risk, verdict);
         }
         const riskResult = scoreRisk(l, risk, identifiedVertical);
-        const rank = rankOf(row.med - g.allIn, g.depth!, row.conf, riskResult.grade, l.itemCreationDate, new Date(now));
+        const rank = rankOf(row.med - g.allIn, g.depth!, row.conf, riskResult.grade, evidenceWeightOf(row.lastSale, row.n12, new Date(now)), l.itemCreationDate, new Date(now));
         huntDeals.push({
           huntId: entry.id,
           huntLabel: entry.label,
@@ -247,6 +247,7 @@ async function main() {
           lo: row.lo,
           hi: row.hi,
           n: row.n,
+          ...(row.n12 !== undefined ? { n12: row.n12 } : {}),
           lastSale: row.lastSale,
           trend: row.trend,
           conf: row.conf,
@@ -408,7 +409,7 @@ async function main() {
 
     // Ladder-derived rows clear a raised floor (0.35; gate lifts thin rows to
     // 0.40 on its own) — a derived median is a weaker claim than a settled one.
-    const g = gate(l, row, ladderSourceKey ? { minDepth: LADDER_MIN_DEPTH } : undefined);
+    const g = gate(l, row, { now, ...(ladderSourceKey ? { minDepth: LADDER_MIN_DEPTH } : {}) });
     if (!g.pass) {
       if (g.reason) bumpReason(hit.vertical, REASON_KEY[g.reason] ?? g.reason);
       if (hit.vertical === 'pokemon') {
@@ -418,7 +419,7 @@ async function main() {
     }
 
     const riskResult = scoreRisk(l, risk, hit.vertical);
-    const rank = rankOf(row.med - g.allIn, g.depth, row.conf, riskResult.grade, l.itemCreationDate, new Date(now));
+    const rank = rankOf(row.med - g.allIn, g.depth, row.conf, riskResult.grade, evidenceWeightOf(row.lastSale, row.n12, new Date(now)), l.itemCreationDate, new Date(now));
     deals.push({
       id: dealId(l.itemId),
       itemId: l.itemId,
@@ -434,6 +435,7 @@ async function main() {
       lo: row.lo,
       hi: row.hi,
       n: row.n,
+      ...(row.n12 !== undefined ? { n12: row.n12 } : {}),
       lastSale: row.lastSale,
       trend: row.trend,
       conf: row.conf,
@@ -522,6 +524,7 @@ async function main() {
         lo: row.lo,
         hi: row.hi,
         n: row.n,
+        ...(row.n12 !== undefined ? { n12: row.n12 } : {}),
         lastSale: row.lastSale,
         trend: row.trend,
         conf: row.conf,

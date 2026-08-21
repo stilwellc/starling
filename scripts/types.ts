@@ -60,6 +60,9 @@ export interface ValueBookRow {
   hi: number;
   /** settled sales behind the row */
   n: number;
+  /** sales in the trailing 12 months — the LIVING-evidence count (absent on
+   *  books emitted before Aug 20 2026; treat missing as unknown, not zero) */
+  n12?: number;
   /** ISO date of most recent settled sale */
   lastSale: string;
   /** 1Y sub-index read where certified, else null */
@@ -273,6 +276,8 @@ export interface Deal {
   lo: number;
   hi: number;
   n: number;
+  /** sales in the trailing 12 months (from the book row; absent on old books) */
+  n12?: number;
   lastSale: string;
   trend: number | null;
   conf: Confidence;
@@ -338,6 +343,8 @@ export interface AuctionCall {
   lo: number;
   hi: number;
   n: number;
+  /** sales in the trailing 12 months (from the book row; absent on old books) */
+  n12?: number;
   lastSale: string;
   trend: number | null;
   conf: Confidence;

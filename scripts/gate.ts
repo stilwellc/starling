@@ -23,6 +23,13 @@ export const MIN_DEPTH = 0.25;
  *  gate is exempt on purpose (a curated want-list is allowed to want small
  *  things). */
 export const MIN_EDGE_USD = 50;
+
+/** The stale-book cut (Aug 20 2026, the dud diagnosis): a row whose LATEST
+ *  sale is older than this prices a market that may no longer exist — the
+ *  emitter ships rows up to 4y for context surfaces, but a BUY call needs
+ *  living evidence. Applies to the BIN gate and the closing lane; hunt exempt
+ *  (curated want-list; its hits are labeled, not certified calls). */
+export const STALE_BOOK_MS = 24 * 30.44 * 86_400_000; // 24 months
 export const MAX_DEPTH = 0.9;
 /** conf:'thin' rows (n=3 pools) price BIN deals only this deep or deeper — a
  *  shallow read off a shallow pool isn't a call worth making. */
@@ -38,6 +45,7 @@ export interface GateResult {
   reason?:
     | 'too-shallow'
     | 'edge-floor'
+    | 'stale-book'
     | 'thin-shallow'
     | 'ladder-shallow'
     | 'scam-cap'
@@ -54,6 +62,7 @@ export interface GateResult {
 export const REASON_KEY: Record<string, string> = {
   'too-shallow': 'tooShallow',
   'edge-floor': 'edgeFloor',
+  'stale-book': 'staleBook',
   'thin-shallow': 'thinTooShallow',
   'ladder-shallow': 'ladderTooShallow',
   'scam-cap': 'scamCap',
@@ -80,7 +89,7 @@ export function allInOf(listing: EbayListing): number {
 export function gate(
   listing: EbayListing,
   row: ValueBookRow,
-  opts?: { minDepth?: number },
+  opts?: { minDepth?: number; now?: number },
 ): GateResult {
   const flags = conditionFlags(listing.title);
   const allIn = allInOf(listing);
@@ -88,6 +97,12 @@ export function gate(
     return { pass: false, allIn, depth: 0, reason: 'no-price', conditionFlags: flags };
   }
   const depth = 1 - allIn / row.med;
+  // Living evidence first: a med whose newest sale is 2+ years old prices a
+  // market that may have moved out from under it — not a certifiable call.
+  const lastMs = Date.parse(row.lastSale);
+  if (Number.isFinite(lastMs) && (opts?.now ?? Date.now()) - lastMs > STALE_BOOK_MS) {
+    return { pass: false, allIn, depth, reason: 'stale-book', conditionFlags: flags };
+  }
   if (hasConditionFlag(listing.title)) {
     return { pass: false, allIn, depth, reason: 'condition-flag', conditionFlags: flags };
   }
@@ -203,6 +218,7 @@ export interface ClosingGateResult {
     | 'thin-book'
     | 'seller-floor'
     | 'edge-floor'
+    | 'stale-book'
     | 'condition-flag'
     | 'too-shallow';
   conditionFlags: string[];
@@ -235,6 +251,10 @@ export function closingGate(
   }
   if (row.conf === 'thin') {
     return { pass: false, allInBid, bidVsBook, reason: 'thin-book', conditionFlags: flags };
+  }
+  const lastMs = Date.parse(row.lastSale);
+  if (Number.isFinite(lastMs) && now - lastMs > STALE_BOOK_MS) {
+    return { pass: false, allInBid, bidVsBook, reason: 'stale-book', conditionFlags: flags };
   }
   const score = listing.seller.feedbackScore;
   if (!(typeof score === 'number' && score >= CLOSING_SELLER_FLOOR)) {

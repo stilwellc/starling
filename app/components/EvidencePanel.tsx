@@ -60,7 +60,7 @@ export function EvidencePanel({ deal, expanded = false }: { deal: Deal; expanded
       </div>
 
       <div className="ledger">
-        <Row k="Book median" sub={`${deal.n} sales`}>
+        <Row k="Book median" sub={deal.n12 !== undefined ? `${deal.n} sales · ${deal.n12} past year` : `${deal.n} sales`}>
           {money(deal.med)}
         </Row>
         <Row k="The gap" sub="under book" tone="up">
@@ -72,7 +72,7 @@ export function EvidencePanel({ deal, expanded = false }: { deal: Deal; expanded
         <Row k="Last sale">
           <span title={shortDate(deal.lastSale)}>{relativeDate(deal.lastSale)}</span>
           {aging && (
-            <span className="aging-flag" title="Most recent settled sale is over 24 months old">
+            <span className="aging-flag" title="Most recent settled sale is over 12 months old">
               aging
             </span>
           )}

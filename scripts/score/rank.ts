@@ -6,7 +6,8 @@
  *   confW      = { high: 1.0, medium: 0.6 }
  *   riskW      = { A: 1.0, B: 0.85, C: 0.6, D: 0.3 }
  *   freshBoost = 1.15 if listed < 24h else 1.0     // fresh deals get sniped; surface fast
- *   rank       = edgeUsd × depth × confW × riskW × freshBoost
+ *   evW        = ageW(lastSale) × velW(n12)   // living-evidence weight, see below
+ *   rank       = edgeUsd × depth × confW × riskW × evW × freshBoost
  *
  * WHY THE DOLLAR TERM LEADS (Collin, Aug 20 2026): "90% return on a $10 item
  * is 9 bucks — that's not deep value." Percent-only ranking let $15-edge
@@ -54,6 +55,34 @@ const FRESH_BOOST = 1.15;
 const FRESH_WINDOW_MS = 24 * 60 * 60 * 1000; // 24h
 
 // ─────────────────────────────────────────────────────────────────────────────
+// evidenceWeightOf — how ALIVE is the book row behind the call (Aug 20 2026)
+// ─────────────────────────────────────────────────────────────────────────────
+
+const MONTH_MS = 86_400_000 * 30.44;
+
+/**
+ * The dud diagnosis (Collin): deals were surfacing on rows whose whole sale
+ * history is years old — the med prices a dead market and the "edge" is
+ * fiction. Two orthogonal reads, multiplied:
+ *
+ *   ageW — recency of the LATEST sale:  ≤6mo 1.0 · ≤12mo 0.85 · ≤24mo 0.55
+ *          (>24mo never reaches ranking — gate.ts STALE_BOOK_MS cuts it)
+ *   velW — sales VELOCITY, n12 = trailing-12mo count: 0→0.7 rising 0.075/sale
+ *          to 1.0 at n12 ≥ 4. n12 absent (book emitted pre-Aug-20) → neutral
+ *          1.0 — unknown is not zero.
+ *
+ * A $600-edge call on a market with four sales this year should bury the same
+ * edge resting on one sale from 2024 — that's the whole point.
+ */
+export function evidenceWeightOf(lastSale: string, n12: number | undefined, now: Date): number {
+  const t = Date.parse(lastSale);
+  const months = Number.isNaN(t) ? Infinity : (now.getTime() - t) / MONTH_MS;
+  const ageW = months <= 6 ? 1.0 : months <= 12 ? 0.85 : 0.55;
+  const velW = n12 === undefined ? 1.0 : Math.min(1, 0.7 + 0.075 * n12);
+  return ageW * velW;
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
 // depthOf — buy-side depth (PROPOSAL §8)
 // ─────────────────────────────────────────────────────────────────────────────
 
@@ -93,10 +122,11 @@ export function rankOf(
   depth: number,
   conf: Confidence,
   grade: RiskGrade,
+  evidenceW: number,
   listedAt?: string,
   now: Date = new Date()
 ): number {
-  return edgeUsd * depth * CONF_W[conf] * RISK_W[grade] * freshBoostOf(listedAt, now);
+  return edgeUsd * depth * CONF_W[conf] * RISK_W[grade] * evidenceW * freshBoostOf(listedAt, now);
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -119,6 +149,7 @@ export function computeRank(
     depth,
     candidate.row.conf,
     risk.grade,
+    evidenceWeightOf(candidate.row.lastSale, candidate.row.n12, now),
     candidate.listing.itemCreationDate,
     now
   );
