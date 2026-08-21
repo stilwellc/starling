@@ -133,7 +133,8 @@ export async function resolveReceipts(
   for (let i = 0; i < window.length; i += GET_ITEMS_BATCH) {
     const chunk = window.slice(i, i + GET_ITEMS_BATCH);
     try {
-      const items = await opts.client.getItems(chunk.map((r) => r.itemId), opts.now);
+      // singularFallback: receipt resolution is absence-critical too
+      const items = await opts.client.getItems(chunk.map((r) => r.itemId), opts.now, { singularFallback: true });
       const present = new Set(items.map((it) => it.itemId));
       for (const r of chunk) {
         if (!present.has(r.itemId)) {

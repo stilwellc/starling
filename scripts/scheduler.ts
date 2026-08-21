@@ -112,6 +112,23 @@ export interface SweepLaneInfo {
  * Every slice gets a HARD page cap — one hot slice can't starve the rest, and
  * the cards lane can't eat the run no matter how deep 261328 flows.
  */
+/** The goldmine lane's share of the BIN run (post-auction): targeted per-key
+ *  searches for the book's highest-stakes living rows (goldmine.ts, Aug 21
+ *  2026 — "the goldmine IS the lectr DB"). Carved BEFORE the category sweeps
+ *  so discovery spends a fixed quarter of its budget where the book can
+ *  already price. */
+export const GOLDMINE_CAP = 0.25;
+
+/** Per-run search calls reserved for the goldmine lane. */
+export function goldmineBudget(slices: SweepLaneInfo[], total = DAILY_CALL_BUDGET): number {
+  const { bookBudget } = reserveHuntBudget(total);
+  const perRun = Math.floor(bookBudget / RUNS_PER_DAY);
+  const auctionPool = slices.some((s) => s.lane === 'auction')
+    ? Math.floor(perRun * AUCTION_SWEEP_CAP)
+    : 0;
+  return Math.floor((perRun - auctionPool) * GOLDMINE_CAP);
+}
+
 export function allocateSweepBudget(
   slices: SweepLaneInfo[],
   total = DAILY_CALL_BUDGET,
@@ -124,7 +141,8 @@ export function allocateSweepBudget(
   const out: Record<string, number> = {};
   const auctionPool = auctions.length ? Math.floor(perRun * AUCTION_SWEEP_CAP) : 0;
   for (const s of auctions) out[s.id] = Math.floor(auctionPool / auctions.length);
-  const binRun = perRun - auctionPool;
+  // goldmine comes off the BIN run first — the sweeps split what remains
+  const binRun = perRun - auctionPool - goldmineBudget(slices, total);
   const cardsPool = cards.length ? Math.floor(binRun * CARDS_SWEEP_CAP) : 0;
   for (const s of cards) out[s.id] = Math.floor(cardsPool / cards.length);
   const otherPool = binRun - cardsPool;

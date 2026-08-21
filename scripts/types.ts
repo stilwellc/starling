@@ -453,6 +453,9 @@ export interface BoardStats {
   gateReasons: Record<string, Record<string, number>>;
   /** vertical → listings identify() pinned to a key (book row or not) */
   identified: Record<string, number>;
+  /** the goldmine lane's funnel (goldmine.ts): keys queried this rotation
+   *  window, listings returned, deals surfaced. Additive, absent pre-lane. */
+  goldmine?: { keys: number; listings: number; surfaced: number };
 }
 
 export interface Board {

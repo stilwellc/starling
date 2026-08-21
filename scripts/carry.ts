@@ -115,7 +115,9 @@ async function reverify(
   for (let i = 0; i < checkable.length; i += GET_ITEMS_BATCH) {
     const chunk = checkable.slice(i, i + GET_ITEMS_BATCH);
     try {
-      const items = await opts.client.getItems(chunk, opts.now);
+      // singularFallback: carry re-verification is ABSENCE-CRITICAL (ALA + board
+      // truth) — it gets the budgeted getItem fallback when batch is denied
+      const items = await opts.client.getItems(chunk, opts.now, { singularFallback: true });
       const byId = new Map(items.map((it) => [it.itemId, it]));
       for (const id of chunk) {
         const l = byId.get(id);

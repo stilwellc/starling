@@ -40,10 +40,11 @@ import type {
 import { LAUNCH_VERTICALS } from './types';
 import { matcherFor } from './match/registry';
 import { syncBook } from './sync-book';
-import { reserveHuntBudget, planHunt, allocateSweepBudget } from './scheduler';
+import { reserveHuntBudget, planHunt, allocateSweepBudget, goldmineBudget } from './scheduler';
 import { loadHuntList, compileHuntQueries, toHuntTarget, huntRelevant, NOBOOK_CAP_PER_TARGET } from './hunt';
 import { pollHunt } from './poll';
 import { SWEEP_SLICES, sweep, loadSweepState, commitSweepState, type SweepSlice } from './sweep';
+import { compileGoldmine, goldmineWindow } from './goldmine';
 import { enrich, verifyPsaCert, applyCertVerdict, type CertVerdict } from './enrich';
 import { gate, huntGate, closingGate, REASON_KEY, LADDER_MIN_DEPTH } from './gate';
 import { buildLadderIndex, ladderRow } from './ladder';
@@ -467,6 +468,97 @@ async function main() {
       );
     }
   }
+
+  // 6a½ — THE GOLDMINE LANE (goldmine.ts, Aug 21 2026): targeted searches for
+  // the book's highest-stakes LIVING rows — med × evidence-weight ordered,
+  // deterministic rotation, budget carved off the BIN sweep in the scheduler.
+  // "The goldmine IS the lectr DB": instead of hoping the category firehose
+  // stumbles into a priceable identity, spend a quarter of discovery asking
+  // eBay for the identities the book prices best. Hits ride the exact same
+  // gate → risk → rank path as sweep hits.
+  const gmQueries = compileGoldmine(synced.book.rows, matcherFor, now);
+  const gmBudget = mode === 'live' ? goldmineBudget(SWEEP_SLICES) : 0;
+  const gmWindow = goldmineWindow(gmQueries, now, gmBudget);
+  const gmStats = { keys: gmWindow.length, listings: 0, surfaced: 0 };
+  if (mode === 'live' && client && gmWindow.length > 0) {
+    const dealItemIds = new Set<string>([...deals.map((d) => d.itemId), ...Array.from(huntClaimed)]);
+    for (const { row, query } of gmWindow) {
+      let page: EbayListing[] = [];
+      try {
+        page = await client.search(query, now);
+      } catch (e) {
+        console.warn(`[goldmine] search failed for "${query.key}": ${(e as Error).message.slice(0, 120)}`);
+        continue;
+      }
+      gmStats.listings += page.length;
+      for (const l of page) {
+        if (dealItemIds.has(l.itemId)) continue;
+        const m = matcherFor[row.v];
+        if (!m) continue;
+        const k = m.identify(l);
+        if (!k) continue; // identity IS relevance — unpinnable hits don't price
+        // price against the PINNED key's row: usually the hunted key itself,
+        // but any same-vertical book row counts (the query did the sweep's job)
+        const prow = k === row.k ? row : synced.byKey.get(k);
+        if (!prow) {
+          bumpReason(row.v, 'noBookRow');
+          continue;
+        }
+        const g = gate(l, prow, { now });
+        if (!g.pass) {
+          if (g.reason) bumpReason(row.v, REASON_KEY[g.reason] ?? g.reason);
+          continue;
+        }
+        let risk = m.riskInputs(l);
+        if (risk.certNumber && (row.v === 'sports-cards' || row.v === 'pokemon')) {
+          const verdict = await verifyPsaCert(risk.certNumber, process.env.PSA_API_TOKEN, certCache);
+          risk = applyCertVerdict(risk, verdict);
+        }
+        const riskResult = scoreRisk(l, risk, row.v);
+        const rank = rankOf(prow.med - g.allIn, g.depth, prow.conf, riskResult.grade, evidenceWeightOf(prow.lastSale, prow.n12, new Date(now)), l.itemCreationDate, new Date(now));
+        dealItemIds.add(l.itemId);
+        deals.push({
+          id: dealId(l.itemId),
+          itemId: l.itemId,
+          legacyItemId: l.legacyItemId,
+          vertical: row.v,
+          key: k,
+          title: l.title,
+          imageUrl: l.imageUrl,
+          allIn: g.allIn,
+          itemPrice: l.price,
+          shipping: l.shippingCost,
+          med: prow.med,
+          lo: prow.lo,
+          hi: prow.hi,
+          n: prow.n,
+          ...(prow.n12 !== undefined ? { n12: prow.n12 } : {}),
+          lastSale: prow.lastSale,
+          trend: prow.trend,
+          conf: prow.conf,
+          depth: g.depth,
+          edgeUsd: prow.med - g.allIn,
+          risk: riskResult,
+          rank,
+          listedAt: l.itemCreationDate,
+          affiliateUrl: l.itemAffiliateWebUrl,
+          webUrl: l.itemWebUrl,
+          marketplace: l.marketplaceId,
+          evidenceUrl: evidenceUrl(row.v, k),
+          surfacedAt: nowIso,
+          ...(prow.conf === 'thin' ? { thin: true as const } : {}),
+        });
+        gmStats.surfaced++;
+        statFor(row.v).surfaced++;
+      }
+    }
+  }
+  stats.goldmine = gmStats;
+  console.log(
+    `[run-board] goldmine: ${gmWindow.length}/${gmQueries.length} keys queried · ` +
+      `${gmStats.listings} listings · ${gmStats.surfaced} surfaced` +
+      (mode === 'live' ? '' : ' (fixture: lane idle)'),
+  );
 
   // 6b — CLOSING CALLS: the auction lane. Same identify→book-row path as the
   // board, then the closing gate (gate.ts): ends within 4h, bidVsBook ≥ 0.40,

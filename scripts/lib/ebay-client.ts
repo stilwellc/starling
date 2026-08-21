@@ -151,19 +151,65 @@ export class EbayClient {
    * longer publicly available are simply ABSENT from the response (the ALA
    * take-down signal) — callers read absence, not errors.
    */
-  async getItems(itemIds: string[], now: number): Promise<EbayListing[]> {
+  async getItems(
+    itemIds: string[],
+    now: number,
+    o?: { singularFallback?: boolean },
+  ): Promise<EbayListing[]> {
     if (itemIds.length === 0) return [];
     if (itemIds.length > GET_ITEMS_BATCH) {
       throw new Error(`getItems batch is ${itemIds.length} ids — the API caps at ${GET_ITEMS_BATCH}; chunk upstream`);
     }
     await this.ensureToken(now);
-    const ids = itemIds.map(encodeURIComponent).join(',');
-    this.opts.onCall?.();
-    this.calls.getItems++;
-    const res = await fetch(`${BASE}/item?item_ids=${ids}`, { headers: this.headers() });
-    if (res.status === 204) return [];
-    if (!res.ok) throw new Error(`getItems ${res.status}: ${await res.text()}`);
-    const j = (await res.json()) as { items?: EbayRawItem[] };
-    return (j.items ?? []).map((it) => normalizeItem(it, this.opts.marketplaceId));
+    // The batch endpoint is LIMITED RELEASE — unapproved keysets get a blanket
+    // 403 (discovered live Aug 20 2026: every carry/receipts re-check silently
+    // failed for days). Once denied, don't burn a call re-proving it.
+    if (!this.batchDenied) {
+      const ids = itemIds.map(encodeURIComponent).join(',');
+      this.opts.onCall?.();
+      this.calls.getItems++;
+      const res = await fetch(`${BASE}/item?item_ids=${ids}`, { headers: this.headers() });
+      if (res.status === 204) return [];
+      if (res.ok) {
+        const j = (await res.json()) as { items?: EbayRawItem[] };
+        return (j.items ?? []).map((it) => normalizeItem(it, this.opts.marketplaceId));
+      }
+      const body = await res.text();
+      if (res.status === 403 && o?.singularFallback) {
+        this.batchDenied = true;
+        console.warn(
+          '[ebay] batch getItems denied (limited-release endpoint; apply for access) — singular getItem fallback active',
+        );
+      } else {
+        throw new Error(`getItems ${res.status}: ${body}`);
+      }
+    } else if (!o?.singularFallback) {
+      throw new Error('getItems 403: batch endpoint denied (limited release) and caller opted out of singular fallback');
+    }
+    // Singular fallback — SAME absence semantics: a 404/410 means the listing
+    // is no longer publicly available (the ALA take-down signal); any OTHER
+    // error throws so callers keep the batch unverified rather than falsely
+    // reading a flaky 5xx as a take-down. Budgeted per run so the absence-
+    // critical paths (carry, receipts) can never eat the whole quota.
+    const out: EbayListing[] = [];
+    for (const id of itemIds) {
+      if (this.singularBudget <= 0) {
+        throw new Error('getItems fallback: singular budget exhausted this run — remainder retried next tick');
+      }
+      this.singularBudget--;
+      try {
+        out.push(await this.getItem(id, now));
+      } catch (e) {
+        const msg = (e as Error).message;
+        if (/^getItem (404|410)/.test(msg)) continue; // genuinely gone → absent
+        throw e;
+      }
+    }
+    return out;
   }
+
+  /** memo: the batch endpoint 403'd this run — go straight to singular. */
+  private batchDenied = false;
+  /** singular-fallback calls left this run (client is constructed per run). */
+  private singularBudget = 400;
 }
