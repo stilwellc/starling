@@ -34,9 +34,9 @@
  */
 import { readFileSync, writeFileSync, existsSync, mkdirSync } from 'node:fs';
 import { join, dirname } from 'node:path';
-import type { Deal, EbayListing, HuntDeal, HuntNoBookDeal, ValueBookRow } from './types';
+import type { AuctionCall, Deal, EbayListing, HuntDeal, HuntNoBookDeal, ValueBookRow } from './types';
 import { GET_ITEMS_BATCH, type EbayClient } from './lib/ebay-client';
-import { gate, huntGate, allInOf, LADDER_MIN_DEPTH } from './gate';
+import { gate, huntGate, closingGate, allInOf, LADDER_MIN_DEPTH, GOLDMINE_CLOSING_WINDOW_MS } from './gate';
 import { rankOf, evidenceWeightOf } from './score/rank';
 import { huntRelevant, type HuntEntry } from './hunt';
 import { carryFixture } from './lib/fixture-source';
@@ -47,6 +47,11 @@ const STATE_PATH = join(process.cwd(), '.starling-state', 'board-state.json');
 export interface BoardCarryState {
   deals: Deal[];
   huntNoBook: HuntNoBookDeal[];
+  /** auction watches (Aug 21 2026, Collin: "save old, not wipe every 3 hours,
+   *  for both areas") — a live auction watch persists across ticks until the
+   *  hammer falls, the listing vanishes, or the bid stops clearing the gate.
+   *  Absent in pre-carry state files → []. */
+  closing?: AuctionCall[];
 }
 
 /** getItems calls the carry pass may spend re-verifying per run. 15 × 20 =
@@ -54,7 +59,7 @@ export interface BoardCarryState {
  *  and 15 × 8 runs = 120/day, small change inside the getItems bucket. */
 export const CARRY_VERIFY_CALLS = 15;
 
-const EMPTY: BoardCarryState = { deals: [], huntNoBook: [] };
+const EMPTY: BoardCarryState = { deals: [], huntNoBook: [], closing: [] };
 
 /** Load last tick's live set. Live mode reads R2 state (absent/corrupt → empty:
  *  a first run legitimately has no previous board). Fixture mode reads the
@@ -67,6 +72,7 @@ export function loadBoardState(mode: 'fixture' | 'live'): BoardCarryState {
     return {
       deals: Array.isArray(raw.deals) ? raw.deals : [],
       huntNoBook: Array.isArray(raw.huntNoBook) ? raw.huntNoBook : [],
+      closing: Array.isArray(raw.closing) ? raw.closing : [],
     };
   } catch {
     return { ...EMPTY };
@@ -142,6 +148,10 @@ async function reverify(
 /** The stored deal carries its whole book call — rebuild the row it was priced
  *  against so a raised price re-gates without a book lookup (the book may have
  *  moved since; the receipt froze THIS call, so the re-gate honors it). */
+function rowOfCall(c: AuctionCall): ValueBookRow {
+  return { k: c.key, v: c.vertical, med: c.med, lo: c.lo, hi: c.hi, n: c.n, ...(c.n12 !== undefined ? { n12: c.n12 } : {}), lastSale: c.lastSale, trend: c.trend, conf: c.conf };
+}
+
 function rowOf(d: Deal): ValueBookRow {
   return { k: d.key, v: d.vertical, med: d.med, lo: d.lo, hi: d.hi, n: d.n, ...(d.n12 !== undefined ? { n12: d.n12 } : {}), lastSale: d.lastSale, trend: d.trend, conf: d.conf };
 }
@@ -166,6 +176,8 @@ export interface CarryResult {
   deals: Deal[];
   /** previous noBook hunt hits still alive and still passing fact checks */
   huntNoBook: HuntNoBookDeal[];
+  /** previous auction watches still live, bid-refreshed, still clearing the gate */
+  closing: AuctionCall[];
   /** itemIds a successful batch proved gone — feeds receipts resolution */
   endedItemIds: Set<string>;
 }
@@ -179,10 +191,10 @@ export interface CarryResult {
  */
 export async function carryForward(
   prev: BoardCarryState,
-  fresh: { deals: Deal[]; huntDeals: HuntDeal[]; huntClaimed: Set<string>; liveHuntIds?: Set<string>; huntEntryById?: Map<string, HuntEntry> },
+  fresh: { deals: Deal[]; huntDeals: HuntDeal[]; huntClaimed: Set<string>; liveHuntIds?: Set<string>; huntEntryById?: Map<string, HuntEntry>; closing?: AuctionCall[] },
   opts: { mode: 'fixture' | 'live'; client?: EbayClient; now: number },
 ): Promise<CarryResult> {
-  const out: CarryResult = { deals: [], huntNoBook: [], endedItemIds: new Set() };
+  const out: CarryResult = { deals: [], huntNoBook: [], closing: [], endedItemIds: new Set() };
   const prevDealByItem = new Map(prev.deals.map((d) => [d.itemId, d]));
   // A hit whose hunt TARGET was removed from priority.yaml dies with the
   // target (Aug 21 2026: Collin cleared the broad seeds — their carried hits
@@ -224,10 +236,24 @@ export async function carryForward(
     // orphaned targets die here too — this is the list that actually carries
     .filter((h) => !fresh.liveHuntIds || fresh.liveHuntIds.has(h.huntId))
     .sort((a, b) => String(b.listedAt || '').localeCompare(String(a.listedAt || '')));
-  if (dealCands.length === 0 && huntCands.length === 0) return out;
+  const freshClosingIds = new Set((fresh.closing ?? []).map((c) => c.itemId));
+  // auction watches: ended hammers drop silently here (their receipt resolves
+  // in the receipts loop); the still-running ones re-verify, soonest first
+  const closingCands = (prev.closing ?? [])
+    .filter((c) => !freshClosingIds.has(c.itemId) && !freshIds.has(c.itemId))
+    .filter((c) => {
+      const end = Date.parse(c.endsAt);
+      return Number.isFinite(end) && end > opts.now;
+    })
+    .sort((a, b) => a.endsAt.localeCompare(b.endsAt));
+  if (dealCands.length === 0 && huntCands.length === 0 && closingCands.length === 0) return out;
 
   const v = await reverify(
-    [...dealCands.map((d) => d.itemId), ...huntCands.map((h) => h.itemId)],
+    [
+      ...dealCands.map((d) => d.itemId),
+      ...closingCands.map((c) => c.itemId),
+      ...huntCands.map((h) => h.itemId),
+    ],
     opts,
   );
 
@@ -259,6 +285,42 @@ export async function carryForward(
     }
     regated++;
     out.deals.push(refreshDeal(d, l, g.allIn, g.depth, opts.now));
+  }
+
+  // ── auction-watch carry: refresh the bid, re-earn the gate ──
+  let closingDropped = 0;
+  for (const c of closingCands) {
+    if (v.absent.has(c.itemId)) {
+      closingDropped++; // listing gone (ended early/removed) — off the watch
+      continue;
+    }
+    const l = v.alive.get(c.itemId);
+    if (!l) {
+      out.closing.push(c); // unverified — carried as-was, retried next tick
+      continue;
+    }
+    // the bid moved — the watch re-earns its slot against its FROZEN book row
+    // under the wide goldmine window (it was admitted as a multi-day watch)
+    const cg = closingGate(l, rowOfCall(c), opts.now, { windowMs: GOLDMINE_CLOSING_WINDOW_MS });
+    if (!cg.pass) {
+      closingDropped++; // bid ran past value / listing changed — honest drop
+      continue;
+    }
+    out.closing.push({
+      ...c,
+      currentBid: l.price,
+      bidCount: l.bidCount ?? c.bidCount,
+      shipping: l.shippingCost,
+      allInBid: cg.allInBid,
+      bidVsBook: cg.bidVsBook,
+      edgeUsd: c.med - cg.allInBid,
+      ...(l.itemEndDate ? { endsAt: l.itemEndDate } : {}),
+    });
+  }
+  if (closingCands.length > 0) {
+    console.log(
+      `[carry] closing: ${closingCands.length} prior watches → carried ${out.closing.length} · dropped ${closingDropped}`,
+    );
   }
 
   let huntDropped = 0;

@@ -872,6 +872,18 @@ code {
   border-radius: 4px;
   padding: 1px 5px;
 }
+/* the "found today" chip — same micro-tag grammar, accent ink */
+.new-flag {
+  margin-left: 6px;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--butter, #e8dab6);
+  border: 1px solid rgba(232, 218, 182, 0.35);
+  border-radius: 4px;
+  padding: 1px 5px;
+}
 
 /* confidence dot-meter */
 .dotmeter {

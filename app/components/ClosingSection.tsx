@@ -84,6 +84,7 @@ function ClosingRow({ call, nowMs }: { call: AuctionCall; nowMs: number | null }
         </h4>
         <div className="closing-meta">
           <span className="closing-lens">{verticalLabel(call.vertical)}</span>
+          {call.isNew && <span className="new-flag" title="First surfaced in the last 24 hours">new</span>}
           <span>
             bid {money(call.currentBid)}
             {call.shipping != null && call.shipping > 0 ? ` + ${money(call.shipping)} ship` : ''}
@@ -149,6 +150,7 @@ function ClosingHero({ call, nowMs }: { call: AuctionCall; nowMs: number | null 
       <div className="closing-hero-body">
         <div className="closing-hero-eyebrow">
           <span className="kicker kicker-lit">Next hammer</span>
+          {call.isNew && <span className="new-flag" title="First surfaced in the last 24 hours">new</span>}
           <span
             className={`closing-countdown closing-hero-countdown${ended ? ' is-ended' : ''}`}
             title={`Auction ends ${new Date(call.endsAt).toLocaleString()}`}

@@ -63,6 +63,11 @@ export function sortHuntDeals(deals: HuntDeal[]): HuntDeal[] {
   });
 }
 
+/** "New find" window — anything FIRST surfaced within this of the build gets
+ *  the chip (Collin, Aug 21 2026). surfacedAt is frozen through carry, so the
+ *  chip ages off naturally after a day on the board. */
+const NEW_WINDOW_MS = 24 * 60 * 60 * 1000;
+
 export function publishBoard(
   deals: Deal[],
   perVertical: Partial<Record<Vertical, PerVerticalStat>>,
@@ -70,6 +75,11 @@ export function publishBoard(
   hunt?: HuntSection,
   extras?: { leads?: HuntNoBookDeal[]; stats?: BoardStats; closing?: AuctionCall[] },
 ): Board {
+  const builtMs = Date.parse(meta.builtAt);
+  const isNew = (surfacedAt: string | undefined): boolean => {
+    const t = surfacedAt ? Date.parse(surfacedAt) : NaN;
+    return Number.isFinite(t) && builtMs - t < NEW_WINDOW_MS;
+  };
   const board: Board = {
     schema: 1,
     builtAt: meta.builtAt,
@@ -81,14 +91,29 @@ export function publishBoard(
       .slice()
       .sort((a, b) => b.rank - a.rank)
       .slice(0, BOARD_CAP)
-      .map((d) => ({ ...d, tier: tierOf(d) })),
+      .map((d) => ({ ...d, tier: tierOf(d), ...(isNew(d.surfacedAt) ? { isNew: true as const } : {}) })),
     perVertical,
-    ...(hunt ? { hunt: { targets: hunt.targets, deals: sortHuntDeals(hunt.deals) } } : {}),
+    ...(hunt
+      ? {
+          hunt: {
+            targets: hunt.targets,
+            deals: sortHuntDeals(hunt.deals).map((d) =>
+              isNew(d.surfacedAt) ? { ...d, isNew: true as const } : d,
+            ),
+          },
+        }
+      : {}),
     // schema v2 additions — all optional, all absent on pre-sweep boards.
     // Leads arrive pre-capped/pre-sorted from run-board (ratio-to-context-med);
     // closing calls sort endsAt asc here (soonest hammer first) and cap at 30.
     ...(extras?.leads?.length ? { leads: extras.leads } : {}),
-    ...(extras?.closing?.length ? { closing: sortClosing(extras.closing).slice(0, CLOSING_CAP) } : {}),
+    ...(extras?.closing?.length
+      ? {
+          closing: sortClosing(extras.closing)
+            .slice(0, CLOSING_CAP)
+            .map((c) => (isNew(c.surfacedAt) ? { ...c, isNew: true as const } : c)),
+        }
+      : {}),
     ...(extras?.stats ? { stats: extras.stats } : {}),
   };
   if (!existsSync(OUT_DIR)) mkdirSync(OUT_DIR, { recursive: true });

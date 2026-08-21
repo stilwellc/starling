@@ -289,6 +289,8 @@ export interface Deal {
   risk: RiskResult;
   /** med − allIn — the DOLLARS under book; the lead term in rank (Aug 2026) */
   edgeUsd: number;
+  /** first surfaced within 24h of this build — the "new find" chip (publish.ts) */
+  isNew?: boolean;
   /** edgeUsd × depth × confW × riskW × freshBoost (rank.ts) — higher is better */
   rank: number;
   listedAt?: string;
@@ -355,6 +357,8 @@ export interface AuctionCall {
   bidVsBook: number;
   /** med − allInBid — dollars under book at the CURRENT bid (display + floor) */
   edgeUsd: number;
+  /** first surfaced within 24h of this build — the "new find" chip (publish.ts) */
+  isNew?: boolean;
   risk: RiskResult;
   listedAt?: string;
   affiliateUrl?: string;
@@ -406,6 +410,8 @@ export interface HuntNoBookDeal {
   noBook: true;
   /** the listing is an AUCTION — `allIn` is the CURRENT BID, not an ask */
   auction?: boolean;
+  /** first surfaced within 24h of this build — the "new find" chip (publish.ts) */
+  isNew?: boolean;
   id: string; // stable: hash of itemId (see lib/id.ts)
   itemId: string;
   legacyItemId?: string;

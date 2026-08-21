@@ -19,6 +19,7 @@ export interface FactRowItem {
   auction?: boolean;
   itemPrice?: number;
   shipping?: number | null;
+  isNew?: boolean;
   seller?: { username?: string; feedbackPercentage?: number; feedbackScore?: number };
   listedAt?: string;
   webUrl?: string;
@@ -64,6 +65,7 @@ export function FactRow({
 
         <div className="fact-row-main">
           <h4 className="fact-row-title">
+            {item.isNew && <span className="new-flag" title="First surfaced in the last 24 hours">new</span>}{' '}
             {linkProps ? <a {...linkProps}>{item.title}</a> : item.title}
           </h4>
           <div className="fact-row-meta">

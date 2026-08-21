@@ -725,11 +725,15 @@ async function main() {
       huntClaimed,
       liveHuntIds: new Set(huntEntries.map((e) => e.id)),
       huntEntryById: new Map(huntEntries.map((e) => [e.id, e])),
+      closing,
     },
     { mode, client, now },
   );
   deals.push(...carried.deals);
   huntDeals.push(...carried.huntNoBook);
+  for (const c of carried.closing) {
+    if (!closing.some((x) => x.itemId === c.itemId)) closing.push(c);
+  }
 
   // 7 — CONTEXT LEADS: swept listings with NO book key but a covering context
   // rollup, at all-in ≤ 0.5× the rollup med. Facts + context, capped, labeled —
@@ -816,6 +820,7 @@ async function main() {
       huntNoBook: (board.hunt?.deals ?? []).filter(
         (d): d is HuntNoBookDeal => d.noBook === true,
       ),
+      closing: board.closing ?? [],
     });
   }
 

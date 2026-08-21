@@ -131,6 +131,7 @@ function DealRow({ deal, huntLabel }: { deal: Deal; huntLabel?: string }) {
         </h3>
         <div className="deal-row-meta">
           <span className="deal-row-vertical">{verticalLabel(deal.vertical)}</span>
+          {deal.isNew && <span className="new-flag" title="First surfaced in the last 24 hours">new</span>}
           {huntLabel && <span className="deal-row-hunted">hunted</span>}
           <DealFlags deal={deal} />
           <span className="deal-row-fact">
@@ -170,6 +171,7 @@ function DealHero({ deal, huntLabel }: { deal: Deal; huntLabel?: string }) {
       <div className="card-body">
         <div className="card-eyebrow">
           <span className="kicker kicker-lit">Top of the board</span>
+          {deal.isNew && <span className="new-flag" title="First surfaced in the last 24 hours">new</span>}
           {huntLabel && (
             <span className="hunt-tag" title={`On the hunt list: ${huntLabel}`}>
               hunted · {huntLabel}
@@ -232,6 +234,7 @@ export function DealCard({
         <div className="card-depth">
           <span className="card-depth-num">{money(deal.med - deal.allIn)}</span>
           <span className="card-depth-word">under the book · {depthPct(deal.depth)}</span>
+          {deal.isNew && <span className="new-flag" title="First surfaced in the last 24 hours">new</span>}
           <DealFlags deal={deal} />
         </div>
 
