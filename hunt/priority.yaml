@@ -125,6 +125,6 @@
   label: "BSTJ — abbreviated titles (all target volumes)"
   vertical: science
   match: { q: "bstj", categoryHint: "books-magazines" }
-  titleMust: "\\b(19(24|28|40|48|49|50|63|64|70|78|79))\\b|\\b(iii|vii|xix|xxvii|xxviii|xxix|xlii|xliii|xlix|lvii|lviii)\\b|\\b(3|7|19|27|28|29|42|43|49|57|58)\\b|shannon|nyquist|hartley|shockley|hamming|telstar|unix"
+  titleMust: "^(?=.*\\bbstj\\b)(?=.*(\\b(iii|vii|xix|xxvii|xxviii|xxix|xlii|xliii|xlix|lvii|lviii)\\b|\\bvol|shannon|nyquist|hartley|shockley|hamming|telstar|unix|journal|technical))"
   titleNot: "reprint|facsimile|photocopy|photostat|xerox|pdf|cd-?rom|dvd|digitized|print.?on.?demand"
   added: 2026-08-21
