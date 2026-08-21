@@ -1,29 +1,119 @@
 # Starling hunt list — curated priority targets (§4.4 of PROPOSAL.md)
 #
-# CLEARED 2026-08-21 (Collin): the seeded targets (Eagles cards, Schulz, game-
-# used football, vintage Apple, Sendak, fossils…) were way too broad — wide
-# lenses are the sweep/goldmine lanes' job now. This list is reserved for
-# HYPER-SPECIFIC wants; the 10% reserved call budget sits idle until entries
-# return, and the lane reactivates the moment one is added (next cron tick).
+# BSTJ GRAIL HUNT (Collin, 2026-08-21): original printings of the Bell System
+# Technical Journal issues that carry the landmark papers — Shannon's
+# information theory, Shockley's junctions, Hamming codes, UNIX, the CCD,
+# Telstar, AMPS, Nyquist, Hartley, Bode — as single issues OR bound annual
+# volumes. ORIGINALS ONLY (titleNot kills reprints/facsimiles/print-on-demand).
 #
-# Rules of the lane:
-#   · polled EVERY cron run, paid from the reserved 10% call budget
-#   · the book still prices — hunting never inflates a value; targets with no
-#     book row surface as "hunted — no book value" (facts only, no depth %)
-#   · minDepth may loosen the 0.25 board bar per entry; the scam cap never moves
+# STRUCTURE (why one entry per volume-year, not one per phrasing): the
+# relevance guard requires EVERY query token in the listing title, so the
+# query is the minimal common denominator — the full journal name + year.
+# BSTJ's volume number maps 1:1 to its year (vol 1 = 1922), so a year IS the
+# volume. Roman-numeral and "BSTJ"-abbreviated titles that omit the year are
+# caught by the two catch-all entries at the bottom, whose titleMust unions
+# every target volume in roman numerals plus the landmark-paper names.
 #
-# Match forms (one per entry):
-#   match: { key: "player-slug|1986|fleer|57|PSA 9" }     exact book identity
-#   match: { keyPrefix: "michael-jordan|1986|fleer" }     key family (med-desc)
-#   match: { q: "raw search terms", categoryHint: "sports-cards" }
-# Optional per entry: titleMust / titleNot (regex, case-insensitive),
-#                     minDepth (loosen 0.25), label, note, added.
-#
-# Template:
-# - id: kebab-case-id
-#   label: "Human label"
-#   vertical: sports-cards | pokemon | autographs | art-editions | watches | sports | science
-#   match: { q: "…", categoryHint: "…" }
-#   titleMust: "…"
-#   titleNot: "…"
-#   added: 2026-08-21
+# Rules of the lane: polled EVERY cron run off the reserved 10% budget; the
+# book still prices (these will surface as "hunted — no book value" facts-only
+# cards — the corpus has no BSTJ rows); scam cap never moves.
+
+- id: bstj-1924-v3
+  label: "BSTJ Vol 3 (1924) — Nyquist, Certain Factors Affecting Telegraph Speed (No 2, Apr)"
+  vertical: science
+  match: { q: "bell system technical journal 1924", categoryHint: "books-magazines" }
+  titleNot: "reprint|facsimile|photocopy|photostat|xerox|pdf|cd-?rom|dvd|digitized|print.?on.?demand"
+  added: 2026-08-21
+
+- id: bstj-1928-v7
+  label: "BSTJ Vol 7 (1928) — Hartley, Transmission of Information (No 3, Jul)"
+  vertical: science
+  match: { q: "bell system technical journal 1928", categoryHint: "books-magazines" }
+  titleNot: "reprint|facsimile|photocopy|photostat|xerox|pdf|cd-?rom|dvd|digitized|print.?on.?demand"
+  added: 2026-08-21
+
+- id: bstj-1940-v19
+  label: "BSTJ Vol 19 (1940) — Bode, Relations Between Attenuation and Phase (No 3, Jul)"
+  vertical: science
+  match: { q: "bell system technical journal 1940", categoryHint: "books-magazines" }
+  titleNot: "reprint|facsimile|photocopy|photostat|xerox|pdf|cd-?rom|dvd|digitized|print.?on.?demand"
+  added: 2026-08-21
+
+- id: bstj-1948-v27
+  label: "BSTJ Vol 27 (1948) — Shannon, A Mathematical Theory of Communication (No 3 Jul + No 4 Oct, or bound)"
+  vertical: science
+  match: { q: "bell system technical journal 1948", categoryHint: "books-magazines" }
+  titleNot: "reprint|facsimile|photocopy|photostat|xerox|pdf|cd-?rom|dvd|digitized|print.?on.?demand"
+  note: >
+    THE grail. Part I in No 3 (July), Part II in No 4 (October). A bound
+    Volume XXVII carries both.
+  added: 2026-08-21
+
+- id: bstj-1949-v28
+  label: "BSTJ Vol 28 (1949) — transistor issue (No 2), Shockley p-n junctions (No 3), Shannon secrecy systems (No 4)"
+  vertical: science
+  match: { q: "bell system technical journal 1949", categoryHint: "books-magazines" }
+  titleNot: "reprint|facsimile|photocopy|photostat|xerox|pdf|cd-?rom|dvd|digitized|print.?on.?demand"
+  added: 2026-08-21
+
+- id: bstj-1950-v29
+  label: "BSTJ Vol 29 (1950) — Hamming, Error Detecting and Error Correcting Codes (No 2, Apr)"
+  vertical: science
+  match: { q: "bell system technical journal 1950", categoryHint: "books-magazines" }
+  titleNot: "reprint|facsimile|photocopy|photostat|xerox|pdf|cd-?rom|dvd|digitized|print.?on.?demand"
+  added: 2026-08-21
+
+- id: bstj-1963-v42
+  label: "BSTJ Vol 42 (1963) — the Telstar issue (No 4)"
+  vertical: science
+  match: { q: "bell system technical journal 1963", categoryHint: "books-magazines" }
+  titleNot: "reprint|facsimile|photocopy|photostat|xerox|pdf|cd-?rom|dvd|digitized|print.?on.?demand"
+  added: 2026-08-21
+
+- id: bstj-1964-v43
+  label: "BSTJ Vol 43 (1964) — No. 1 ESS issue (No 5)"
+  vertical: science
+  match: { q: "bell system technical journal 1964", categoryHint: "books-magazines" }
+  titleNot: "reprint|facsimile|photocopy|photostat|xerox|pdf|cd-?rom|dvd|digitized|print.?on.?demand"
+  added: 2026-08-21
+
+- id: bstj-1970-v49
+  label: "BSTJ Vol 49 (1970) — Boyle & Smith, Charge Coupled Semiconductor Devices (No 4)"
+  vertical: science
+  match: { q: "bell system technical journal 1970", categoryHint: "books-magazines" }
+  titleNot: "reprint|facsimile|photocopy|photostat|xerox|pdf|cd-?rom|dvd|digitized|print.?on.?demand"
+  added: 2026-08-21
+
+- id: bstj-1978-v57
+  label: "BSTJ Vol 57 (1978) — UNIX Time-Sharing System (No 6 Part 2) + Atlanta Fiber System (No 6 Part 1)"
+  vertical: science
+  match: { q: "bell system technical journal 1978", categoryHint: "books-magazines" }
+  titleNot: "reprint|facsimile|photocopy|photostat|xerox|pdf|cd-?rom|dvd|digitized|print.?on.?demand"
+  added: 2026-08-21
+
+- id: bstj-1979-v58
+  label: "BSTJ Vol 58 (1979) — Advanced Mobile Phone Service / AMPS (No 1)"
+  vertical: science
+  match: { q: "bell system technical journal 1979", categoryHint: "books-magazines" }
+  titleNot: "reprint|facsimile|photocopy|photostat|xerox|pdf|cd-?rom|dvd|digitized|print.?on.?demand"
+  added: 2026-08-21
+
+# ── catch-alls: titles that omit the year (roman-numeral spines, abbreviated
+#    listings). titleMust = union of every target volume in roman numerals,
+#    the vol/no forms, and the landmark-paper tells. \b guards keep XXVII from
+#    matching inside XXVIII.
+- id: bstj-roman-undated
+  label: "BSTJ — roman-numeral / undated titles (all target volumes)"
+  vertical: science
+  match: { q: "bell system technical journal", categoryHint: "books-magazines" }
+  titleMust: "\\b(iii|vii|xix|xxvii|xxviii|xxix|xlii|xliii|xlix|lvii|lviii)\\b|shannon|nyquist|hartley|\\bbode\\b|shockley|hamming|telstar|\\bunix\\b|charge.?coupled|secrecy|mobile phone|\\bess\\b"
+  titleNot: "reprint|facsimile|photocopy|photostat|xerox|pdf|cd-?rom|dvd|digitized|print.?on.?demand"
+  added: 2026-08-21
+
+- id: bstj-abbrev
+  label: "BSTJ — abbreviated titles (all target volumes)"
+  vertical: science
+  match: { q: "bstj", categoryHint: "books-magazines" }
+  titleMust: "\\b(19(24|28|40|48|49|50|63|64|70|78|79))\\b|\\b(iii|vii|xix|xxvii|xxviii|xxix|xlii|xliii|xlix|lvii|lviii)\\b|\\b(3|7|19|27|28|29|42|43|49|57|58)\\b|shannon|nyquist|hartley|shockley|hamming|telstar|unix"
+  titleNot: "reprint|facsimile|photocopy|photostat|xerox|pdf|cd-?rom|dvd|digitized|print.?on.?demand"
+  added: 2026-08-21
