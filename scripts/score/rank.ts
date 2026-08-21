@@ -1,11 +1,20 @@
 /**
- * score/rank.ts — board ranking (PROPOSAL §8).
+ * score/rank.ts — board ranking (PROPOSAL §8, dollar-edge weighted Aug 20 2026).
  *
  *   depth      = 1 − allIn/med                    // close-board.ts:127, buy-side
+ *   edgeUsd    = med − allIn                      // the DOLLARS on the table
  *   confW      = { high: 1.0, medium: 0.6 }
  *   riskW      = { A: 1.0, B: 0.85, C: 0.6, D: 0.3 }
  *   freshBoost = 1.15 if listed < 24h else 1.0     // fresh deals get sniped; surface fast
- *   rank       = depth × confW × riskW × freshBoost
+ *   rank       = edgeUsd × depth × confW × riskW × freshBoost
+ *
+ * WHY THE DOLLAR TERM LEADS (Collin, Aug 20 2026): "90% return on a $10 item
+ * is 9 bucks — that's not deep value." Percent-only ranking let $15-edge
+ * trinkets outrank a watch sitting $600 under book. The edge term carries the
+ * money; depth stays as the margin-of-safety multiplier between similar-edge
+ * deals (a 50%-under $600 edge beats a 27%-under $600 edge — the deeper one
+ * has more room to be wrong). Ranks are only compared to each other, so the
+ * unit change is free.
  *
  * NO VERTICAL TERM (PROPOSAL §2, the anti-cards-trap): ranking is honest. Cards
  * get no penalty and no boost — if a card deal earns the top slot it gets it.
@@ -74,18 +83,20 @@ function freshBoostOf(listedAt: string | undefined, now: Date): number {
 // ─────────────────────────────────────────────────────────────────────────────
 
 /**
- * rank = depth × confW × riskW × freshBoost. Higher is better. No vertical term.
+ * rank = edgeUsd × depth × confW × riskW × freshBoost. Higher is better. No
+ * vertical term.
  * `now` defaults to the wall clock only as a last resort — the pipeline injects
  * the run timestamp so a whole board ranks against one consistent moment.
  */
 export function rankOf(
+  edgeUsd: number,
   depth: number,
   conf: Confidence,
   grade: RiskGrade,
   listedAt?: string,
   now: Date = new Date()
 ): number {
-  return depth * CONF_W[conf] * RISK_W[grade] * freshBoostOf(listedAt, now);
+  return edgeUsd * depth * CONF_W[conf] * RISK_W[grade] * freshBoostOf(listedAt, now);
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -104,6 +115,7 @@ export function computeRank(
 ): { depth: number; rank: number } {
   const depth = depthOf(allIn, candidate.row.med);
   const rank = rankOf(
+    candidate.row.med - allIn,
     depth,
     candidate.row.conf,
     risk.grade,

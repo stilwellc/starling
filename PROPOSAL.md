@@ -29,7 +29,7 @@ The failure mode to engineer against is **hyper-indexing into cards by default**
 The rules, exactly:
 
 - **Cards are first-class.** Full matcher, full polling, full board presence. A great card deal is a great deal.
-- **Ranking stays honest — no cards penalty.** Board rank is `depth × confidence × risk` (§8), period. If a card deal earns the top slot, it gets the top slot. We do not cook the ranking.
+- **Ranking stays honest — no cards penalty.** Board rank is `dollar-edge × depth × confidence × risk` (§8), period. If a card deal earns the top slot, it gets the top slot. We do not cook the ranking.
 - **The guard lives in the scheduler, where the skew originates.** Cards get a hard **cap of 40% of the daily eBay call budget**; each of the other three launch verticals gets a **floor of 15%** (§5.4). Key count doesn't set the budget — the budget is allocated, then keys compete within their vertical's slice.
 - **Launch bar = vertical coverage, not deal volume.** Starling does not launch until at least **four verticals** are live on the board: watches (reference-keyed), sports cards, Pokémon, and art editions — with autograph material (science/culture) in the first post-launch milestone. A cards-only board is not a launchable state.
 - **One matcher interface, N implementations** (§6). Every vertical gets its own real implementation; no vertical rides a degraded generic path.
@@ -269,13 +269,21 @@ Score = weighted signals: authenticity anchor (0–40) · seller feedback %, vol
 
 ```
 depth      = 1 − allIn/med                       // close-board.ts:127 formula, buy-side
+edgeUsd    = med − allIn                         // the dollars on the table
 confW      = { high: 1.0, medium: 0.6 }
 riskW      = { A: 1.0, B: 0.85, C: 0.6, D: 0.3 }
 freshBoost = 1.15 if listed < 24h else 1.0        // fresh deals get sniped; surface fast
-rank       = depth × confW × riskW × freshBoost
+rank       = edgeUsd × depth × confW × riskW × freshBoost
 ```
 
 No vertical term — §2. Constants live in one file with the rationale in comments.
+
+**Dollar-edge amendment (Aug 20 2026):** percent-only ranking let $9-edge
+trinkets outrank four-figure watches sitting hundreds under book. The edge term
+leads; depth survives as the margin-of-safety multiplier. Paired with a
+`MIN_EDGE_USD = $50` gate floor (gate.ts, reason `edgeFloor` in the stats
+histogram) and sweep slice price floors raised so quota chases tickets that can
+actually clear $50 of edge.
 
 ---
 

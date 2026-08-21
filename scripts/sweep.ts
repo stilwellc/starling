@@ -67,10 +67,12 @@ export interface SweepSlice {
 
 export const SWEEP_SLICES: SweepSlice[] = [
   // 261328 = Sports Trading Card Singles. Two postures: slabs (condition 2750 =
-  // Graded) at any price, and raw with a $30 floor (raised from $20, Aug 2026:
-  // the $20–30 band is the bulk-common tide — budget spent, nothing gated in).
+  // Graded) at any price, and raw with a $50 floor (was $20→$30→$50, Aug 2026:
+  // the sub-$50 band can't clear the $50 dollar-edge gate at sane depths —
+  // budget spent on listings that could never publish). Autos floors moved
+  // $25→$50 for the same arithmetic.
   { id: 'cards-slabs', categoryId: '261328', lens: 'sports-cards', identifyVerticals: ['sports-cards'], sliceFilters: ['conditionIds:{2750}'], lane: 'cards' },
-  { id: 'cards-raw', categoryId: '261328', lens: 'sports-cards', identifyVerticals: ['sports-cards'], sliceFilters: ['price:[30..]', 'priceCurrency:USD'], lane: 'cards' },
+  { id: 'cards-raw', categoryId: '261328', lens: 'sports-cards', identifyVerticals: ['sports-cards'], sliceFilters: ['price:[50..]', 'priceCurrency:USD'], lane: 'cards' },
   // 183454 = CCG Individual Cards — pokémon identity is title-first, so the
   // singles firehose is identifiable at zero cost. Floor raised $10 → $50
   // (Aug 2026, measured): junk-tier holo BIN asks run 1.5–6× above the
@@ -80,9 +82,9 @@ export const SWEEP_SLICES: SweepSlice[] = [
   // 31387 = Wristwatches — the audit's 1,278 never-polled keys, now swept.
   { id: 'watches', categoryId: '31387', lens: 'watches', identifyVerticals: ['watches'], sliceFilters: ['price:[100..]', 'priceCurrency:USD'], lane: 'other' },
   // The three autograph pools (sports 51 / entertainment 57 / historical 14428).
-  { id: 'sports-autos', categoryId: '51', lens: 'autographs', identifyVerticals: ['autographs'], sliceFilters: ['price:[25..]', 'priceCurrency:USD'], lane: 'other' },
-  { id: 'ent-autos', categoryId: '57', lens: 'autographs', identifyVerticals: ['autographs'], sliceFilters: ['price:[25..]', 'priceCurrency:USD'], lane: 'other' },
-  { id: 'historical-autos', categoryId: '14428', lens: 'autographs', identifyVerticals: ['autographs'], sliceFilters: ['price:[25..]', 'priceCurrency:USD'], lane: 'other' },
+  { id: 'sports-autos', categoryId: '51', lens: 'autographs', identifyVerticals: ['autographs'], sliceFilters: ['price:[50..]', 'priceCurrency:USD'], lane: 'other' },
+  { id: 'ent-autos', categoryId: '57', lens: 'autographs', identifyVerticals: ['autographs'], sliceFilters: ['price:[50..]', 'priceCurrency:USD'], lane: 'other' },
+  { id: 'historical-autos', categoryId: '14428', lens: 'autographs', identifyVerticals: ['autographs'], sliceFilters: ['price:[50..]', 'priceCurrency:USD'], lane: 'other' },
   // 360 = Art Prints (leaf) — the edition matcher's home turf.
   { id: 'art-prints', categoryId: '360', lens: 'art-editions', identifyVerticals: ['art-editions'], sliceFilters: [], lane: 'other' },
   // Context-only classes: no exact key exists, but CLASS_CANON + the context
@@ -99,9 +101,9 @@ export const SWEEP_SLICES: SweepSlice[] = [
   // so it can't double-count within one run's overlapping pages).
   { id: 'cards-slabs-closing', categoryId: '261328', lens: 'sports-cards', identifyVerticals: ['sports-cards'], sliceFilters: ['conditionIds:{2750}'], lane: 'auction' },
   { id: 'watches-closing', categoryId: '31387', lens: 'watches', identifyVerticals: ['watches'], sliceFilters: ['price:[100..]', 'priceCurrency:USD'], lane: 'auction' },
-  { id: 'sports-autos-closing', categoryId: '51', lens: 'autographs', identifyVerticals: ['autographs'], sliceFilters: ['price:[25..]', 'priceCurrency:USD'], lane: 'auction' },
-  { id: 'ent-autos-closing', categoryId: '57', lens: 'autographs', identifyVerticals: ['autographs'], sliceFilters: ['price:[25..]', 'priceCurrency:USD'], lane: 'auction' },
-  { id: 'historical-autos-closing', categoryId: '14428', lens: 'autographs', identifyVerticals: ['autographs'], sliceFilters: ['price:[25..]', 'priceCurrency:USD'], lane: 'auction' },
+  { id: 'sports-autos-closing', categoryId: '51', lens: 'autographs', identifyVerticals: ['autographs'], sliceFilters: ['price:[50..]', 'priceCurrency:USD'], lane: 'auction' },
+  { id: 'ent-autos-closing', categoryId: '57', lens: 'autographs', identifyVerticals: ['autographs'], sliceFilters: ['price:[50..]', 'priceCurrency:USD'], lane: 'auction' },
+  { id: 'historical-autos-closing', categoryId: '14428', lens: 'autographs', identifyVerticals: ['autographs'], sliceFilters: ['price:[50..]', 'priceCurrency:USD'], lane: 'auction' },
 ];
 
 // ─────────────────────────────────────────────────────────────────────────────

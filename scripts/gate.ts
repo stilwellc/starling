@@ -15,6 +15,14 @@ import type { EbayListing, ValueBookRow } from './types';
 import { hasConditionFlag, conditionFlags } from './lib/condition';
 
 export const MIN_DEPTH = 0.25;
+
+/** The DOLLAR floor (Aug 20 2026, Collin: "90% of a $10 item is 9 bucks —
+ *  that's not deep value"). A listing must sit at least this many dollars
+ *  under book all-in, whatever its percent depth — percent floors alone let
+ *  trinkets through. Applies to the BIN gate and the closing lane; the hunt
+ *  gate is exempt on purpose (a curated want-list is allowed to want small
+ *  things). */
+export const MIN_EDGE_USD = 50;
 export const MAX_DEPTH = 0.9;
 /** conf:'thin' rows (n=3 pools) price BIN deals only this deep or deeper — a
  *  shallow read off a shallow pool isn't a call worth making. */
@@ -29,6 +37,7 @@ export interface GateResult {
   depth: number;
   reason?:
     | 'too-shallow'
+    | 'edge-floor'
     | 'thin-shallow'
     | 'ladder-shallow'
     | 'scam-cap'
@@ -44,6 +53,7 @@ export interface GateResult {
  *  is counted by the pipeline itself since no gate ever runs for it. */
 export const REASON_KEY: Record<string, string> = {
   'too-shallow': 'tooShallow',
+  'edge-floor': 'edgeFloor',
   'thin-shallow': 'thinTooShallow',
   'ladder-shallow': 'ladderTooShallow',
   'scam-cap': 'scamCap',
@@ -97,6 +107,11 @@ export function gate(
           : 'ladder-shallow'
         : 'too-shallow';
     return { pass: false, allIn, depth, reason, conditionFlags: flags };
+  }
+  // Percent floors cleared — now the money has to be real. med − allIn is the
+  // dollars on the table; under $50 it's a curiosity, not a deal.
+  if (row.med - allIn < MIN_EDGE_USD) {
+    return { pass: false, allIn, depth, reason: 'edge-floor', conditionFlags: flags };
   }
   return { pass: true, allIn, depth, conditionFlags: flags };
 }
@@ -187,6 +202,7 @@ export interface ClosingGateResult {
     | 'end-window'
     | 'thin-book'
     | 'seller-floor'
+    | 'edge-floor'
     | 'condition-flag'
     | 'too-shallow';
   conditionFlags: string[];
@@ -229,6 +245,11 @@ export function closingGate(
   }
   if (bidVsBook < CLOSING_MIN_BID_VS_BOOK) {
     return { pass: false, allInBid, bidVsBook, reason: 'too-shallow', conditionFlags: flags };
+  }
+  // Same dollar floor as the BIN gate, read against the CURRENT bid: a small-
+  // med lot whose whole upside is under $50 isn't worth a hammer watch either.
+  if (row.med - allInBid < MIN_EDGE_USD) {
+    return { pass: false, allInBid, bidVsBook, reason: 'edge-floor', conditionFlags: flags };
   }
   return { pass: true, allInBid, bidVsBook, conditionFlags: flags };
 }

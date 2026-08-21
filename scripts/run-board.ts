@@ -229,7 +229,7 @@ async function main() {
           risk = applyCertVerdict(risk, verdict);
         }
         const riskResult = scoreRisk(l, risk, identifiedVertical);
-        const rank = rankOf(g.depth!, row.conf, riskResult.grade, l.itemCreationDate, new Date(now));
+        const rank = rankOf(row.med - g.allIn, g.depth!, row.conf, riskResult.grade, l.itemCreationDate, new Date(now));
         huntDeals.push({
           huntId: entry.id,
           huntLabel: entry.label,
@@ -251,6 +251,7 @@ async function main() {
           trend: row.trend,
           conf: row.conf,
           depth: g.depth!,
+          edgeUsd: row.med - g.allIn,
           risk: riskResult,
           rank,
           listedAt: l.itemCreationDate,
@@ -417,7 +418,7 @@ async function main() {
     }
 
     const riskResult = scoreRisk(l, risk, hit.vertical);
-    const rank = rankOf(g.depth, row.conf, riskResult.grade, l.itemCreationDate, new Date(now));
+    const rank = rankOf(row.med - g.allIn, g.depth, row.conf, riskResult.grade, l.itemCreationDate, new Date(now));
     deals.push({
       id: dealId(l.itemId),
       itemId: l.itemId,
@@ -437,6 +438,7 @@ async function main() {
       trend: row.trend,
       conf: row.conf,
       depth: g.depth,
+      edgeUsd: row.med - g.allIn,
       risk: riskResult,
       rank,
       listedAt: l.itemCreationDate,
@@ -515,6 +517,7 @@ async function main() {
         endsAt: l.itemEndDate!, // closingGate proved it parses and sits in-window
         shipping: l.shippingCost,
         allInBid: cg.allInBid,
+        edgeUsd: row.med - cg.allInBid,
         med: row.med,
         lo: row.lo,
         hi: row.hi,

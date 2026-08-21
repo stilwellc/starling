@@ -279,7 +279,9 @@ export interface Deal {
   /** 1 - allIn/med (close-board.ts formula, buy-side) */
   depth: number;
   risk: RiskResult;
-  /** depth × confW × riskW × freshBoost (rank.ts) — higher is better */
+  /** med − allIn — the DOLLARS under book; the lead term in rank (Aug 2026) */
+  edgeUsd: number;
+  /** edgeUsd × depth × confW × riskW × freshBoost (rank.ts) — higher is better */
   rank: number;
   listedAt?: string;
   affiliateUrl?: string;
@@ -341,6 +343,8 @@ export interface AuctionCall {
   conf: Confidence;
   /** 1 − allInBid/med — depth of the CURRENT bid, not of any final price */
   bidVsBook: number;
+  /** med − allInBid — dollars under book at the CURRENT bid (display + floor) */
+  edgeUsd: number;
   risk: RiskResult;
   listedAt?: string;
   affiliateUrl?: string;

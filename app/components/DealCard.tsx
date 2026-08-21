@@ -148,8 +148,8 @@ function DealRow({ deal, huntLabel }: { deal: Deal; huntLabel?: string }) {
         />
       </div>
       <div className="deal-row-nums">
-        <span className="deal-row-depth">{depthPct(deal.depth)}</span>
-        <span className="deal-row-under">under</span>
+        <span className="deal-row-depth">{money(deal.med - deal.allIn)}</span>
+        <span className="deal-row-under">under · {depthPct(deal.depth)}</span>
         <span className="deal-row-price">{money(deal.allIn)}</span>
       </div>
       <div className="deal-row-end">
@@ -178,9 +178,9 @@ function DealHero({ deal, huntLabel }: { deal: Deal; huntLabel?: string }) {
           <DealFlags deal={deal} />
         </div>
         <div className="card-depth">
-          <span className="card-depth-num">{depthPct(deal.depth)}</span>
+          <span className="card-depth-num">{money(deal.med - deal.allIn)}</span>
           <span className="card-depth-word">
-            under the book
+            under the book · {depthPct(deal.depth)} deep
             <span className="card-depth-vs">
               {money(deal.allIn)} against a {money(deal.med)} median
             </span>
@@ -230,8 +230,8 @@ export function DealCard({
           </span>
         )}
         <div className="card-depth">
-          <span className="card-depth-num">{depthPct(deal.depth)}</span>
-          <span className="card-depth-word">under the book</span>
+          <span className="card-depth-num">{money(deal.med - deal.allIn)}</span>
+          <span className="card-depth-word">under the book · {depthPct(deal.depth)}</span>
           <DealFlags deal={deal} />
         </div>
 

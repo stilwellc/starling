@@ -153,7 +153,8 @@ function refreshDeal(d: Deal, l: EbayListing, allIn: number, depth: number, now:
     shipping: l.shippingCost,
     allIn,
     depth,
-    rank: rankOf(depth, d.conf, d.risk.grade, d.listedAt, new Date(now)),
+    edgeUsd: d.med - allIn,
+    rank: rankOf(d.med - allIn, depth, d.conf, d.risk.grade, d.listedAt, new Date(now)),
   };
 }
 

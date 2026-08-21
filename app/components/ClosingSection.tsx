@@ -103,8 +103,8 @@ function ClosingRow({ call, nowMs }: { call: AuctionCall; nowMs: number | null }
       </div>
 
       <div className="closing-nums">
-        <span className="closing-depth">{depthPct(call.bidVsBook)}</span>
-        <span className="closing-under">under · vs current bid</span>
+        <span className="closing-depth">{money(call.med - call.allInBid)}</span>
+        <span className="closing-under">under · {depthPct(call.bidVsBook)} vs current bid</span>
         <span
           className={`closing-countdown${ended ? ' is-ended' : ''}`}
           title={`Auction ends ${new Date(call.endsAt).toLocaleString()}`}
@@ -158,9 +158,9 @@ function ClosingHero({ call, nowMs }: { call: AuctionCall; nowMs: number | null 
         </div>
 
         <div className="card-depth">
-          <span className="card-depth-num">{depthPct(call.bidVsBook)}</span>
+          <span className="card-depth-num">{money(call.med - call.allInBid)}</span>
           <span className="card-depth-word">
-            under · vs current bid
+            under · {depthPct(call.bidVsBook)} vs current bid
             <span className="card-depth-vs">
               bidding sits at {money(call.allInBid)} all-in against a {money(call.med)} median —
               bid will move; watch signal, not a price
