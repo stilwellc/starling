@@ -220,6 +220,8 @@ export async function carryForward(
     .sort((a, b) => b.rank - a.rank);
   const huntCands = prev.huntNoBook
     .filter((h) => !freshIds.has(h.itemId))
+    // orphaned targets die here too — this is the list that actually carries
+    .filter((h) => !fresh.liveHuntIds || fresh.liveHuntIds.has(h.huntId))
     .sort((a, b) => String(b.listedAt || '').localeCompare(String(a.listedAt || '')));
   if (dealCands.length === 0 && huntCands.length === 0) return out;
 
