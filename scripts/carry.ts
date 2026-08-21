@@ -38,6 +38,7 @@ import type { Deal, EbayListing, HuntDeal, HuntNoBookDeal, ValueBookRow } from '
 import { GET_ITEMS_BATCH, type EbayClient } from './lib/ebay-client';
 import { gate, huntGate, allInOf, LADDER_MIN_DEPTH } from './gate';
 import { rankOf, evidenceWeightOf } from './score/rank';
+import { huntRelevant, type HuntEntry } from './hunt';
 import { carryFixture } from './lib/fixture-source';
 
 const STATE_PATH = join(process.cwd(), '.starling-state', 'board-state.json');
@@ -178,7 +179,7 @@ export interface CarryResult {
  */
 export async function carryForward(
   prev: BoardCarryState,
-  fresh: { deals: Deal[]; huntDeals: HuntDeal[]; huntClaimed: Set<string>; liveHuntIds?: Set<string> },
+  fresh: { deals: Deal[]; huntDeals: HuntDeal[]; huntClaimed: Set<string>; liveHuntIds?: Set<string>; huntEntryById?: Map<string, HuntEntry> },
   opts: { mode: 'fixture' | 'live'; client?: EbayClient; now: number },
 ): Promise<CarryResult> {
   const out: CarryResult = { deals: [], huntNoBook: [], endedItemIds: new Set() };
@@ -262,6 +263,14 @@ export async function carryForward(
 
   let huntDropped = 0;
   for (const h of huntCands) {
+    // the CURRENT guard definition rules — a hit surfaced under an older,
+    // looser titleMust/titleNot must re-earn its slot (Aug 21 2026: tightened
+    // bstj-abbrev left Limoges trinket boxes riding carry until end-of-listing)
+    const entry = fresh.huntEntryById?.get(h.huntId);
+    if (entry && !huntRelevant(entry, h.title || '')) {
+      huntDropped++;
+      continue;
+    }
     if (v.absent.has(h.itemId)) {
       huntDropped++; // noBook hits carry no receipt — nothing to resolve
       continue;
