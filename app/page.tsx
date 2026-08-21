@@ -25,7 +25,7 @@ export const metadata: Metadata = {
 
 export default function HomePage() {
   const board = loadBoardExt();
-  // Board rank is depth × confidence × risk (PROPOSAL §8) — sort desc, no vertical
+  // Board rank is dollar-edge × depth × confidence × risk (PROPOSAL §8) — sort desc, no vertical
   // term, so a great card deal and a great watch deal compete on equal footing.
   const deals = [...board.deals].sort((a, b) => b.rank - a.rank);
   const stale = isBoardStale(board);
@@ -36,7 +36,7 @@ export default function HomePage() {
     <>
       <div className="page-head">
         <div className="page-head-top">
-          <span className="kicker">The board · ranked by depth × confidence × risk</span>
+          <span className="kicker">The board · ranked by dollar edge × depth × confidence × risk</span>
           {serial && <span className="serial">No. {serial}</span>}
         </div>
         <h1>

@@ -116,7 +116,7 @@ export function BoardControls({ deals }: { deals: Deal[] }) {
       <p className="showing-count">
         Showing {shown.length} of {deals.length} deals
         {vertical !== 'all' ? ` in ${verticalLabel(vertical as Vertical)}` : ''} · {featured.length}{' '}
-        featured · ranked by depth × confidence × risk
+        featured · ranked by dollar edge × depth × confidence × risk
       </p>
 
       {shown.length > 0 ? (
