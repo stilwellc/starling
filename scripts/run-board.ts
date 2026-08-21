@@ -218,7 +218,12 @@ async function main() {
       // un-pinned hits from raw-terms targets must clear the relevance guard
       // (q-token presence + vertical hint) — the zip-jacket lesson from the
       // first live run. Pinned (priced) hits skip it: identity IS relevance.
-      if (!row && !huntRelevant(entry, l.title || '')) { hFun.guardCut++; huntClaimed.add(l.itemId); continue; }
+      // guard-cut does NOT claim (Aug 21 2026, the BSTJ lesson): overlapping
+      // targets share search results — eBay pads rare queries with the same
+      // best-match set, so entry #1's year-guard was claiming listings that
+      // entry #4 would have KEPT. Only a kept hit claims; re-running a cheap
+      // regex per entry is nothing.
+      if (!row && !huntRelevant(entry, l.title || '')) { hFun.guardCut++; continue; }
       const g = huntGate(l, entry, row);
       if (!g.pass) {
         hFun.gateCut++;
