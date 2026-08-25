@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "builtAt": "2026-08-25T13:08:59.212Z",
+  "builtAt": "2026-08-25T15:56:54.560Z",
   "bookBuiltAt": "2026-08-25T09:30:48.918Z",
   "deals": [
     {
@@ -1127,7 +1127,7 @@
       "imageUrl": "https://i.ebayimg.com/images/g/XX0AAeSwD~1qh6ay/s-l225.jpg",
       "allIn": 8995,
       "itemPrice": 8995,
-      "shipping": null,
+      "shipping": 0,
       "med": 35560,
       "lo": 32813,
       "hi": 48195,
@@ -1524,7 +1524,7 @@
       },
       "rank": 4286.879398903262,
       "listedAt": "2026-08-21T01:54:01.000Z",
-      "webUrl": "https://www.ebay.com/itm/198585588293?_skw=patek+philippe+3848%2F1&hash=item2e3c9f9a45:g:0GoAAeSwddFqh7Az",
+      "webUrl": "https://www.ebay.com/itm/198585588293?_skw=patek+philippe+4698&hash=item2e3c9f9a45:g:0GoAAeSwddFqh7Az",
       "marketplace": "EBAY_US",
       "evidenceUrl": "https://lectr.bid/key/watches/patek-philippe%7C3900",
       "surfacedAt": "2026-08-21T01:59:33.009Z",
@@ -5627,48 +5627,6 @@
       "tier": "worth-a-look"
     },
     {
-      "id": "nxbdc6",
-      "itemId": "v1|168636048044|0",
-      "legacyItemId": "168636048044",
-      "vertical": "watches",
-      "key": "rolex|1675",
-      "title": "1966 Rolex GMT-Master Pepsi 1675 Black Dial SS Oyster No Papers 40mm",
-      "imageUrl": "https://i.ebayimg.com/images/g/Y7QAAeSw3EVqjFbX/s-l225.jpg",
-      "allIn": 11800,
-      "itemPrice": 11800,
-      "shipping": 0,
-      "med": 20320,
-      "lo": 8663,
-      "hi": 36194,
-      "n": 366,
-      "n12": 27,
-      "lastSale": "2026-06-17",
-      "trend": -0.022,
-      "conf": "medium",
-      "depth": 0.4192913385826772,
-      "edgeUsd": 8520,
-      "risk": {
-        "grade": "B",
-        "score": 60,
-        "reasons": [
-          "papers / LOA named (unverified)",
-          "seller 100% feedback",
-          "established seller (1140 ratings)",
-          "sparse listing, no item specifics",
-          "not yet enriched (aspects provisional)",
-          "watches: elevated fake-rate prior"
-        ]
-      },
-      "rank": 2095.1904330708658,
-      "listedAt": "2026-08-24T14:29:19.000Z",
-      "webUrl": "https://www.ebay.com/itm/168636048044?_skw=rolex+116710&hash=item27437de2ac:g:Y7QAAeSw3EVqjFbX",
-      "marketplace": "EBAY_US",
-      "evidenceUrl": "https://lectr.bid/key/watches/rolex%7C1675",
-      "surfacedAt": "2026-08-24T21:41:44.967Z",
-      "tier": "worth-a-look",
-      "isNew": true
-    },
-    {
       "id": "1nrxb6x",
       "itemId": "v1|146165646266|0",
       "legacyItemId": "146165646266",
@@ -6825,6 +6783,48 @@
       "marketplace": "EBAY_US",
       "evidenceUrl": "https://lectr.bid/key/watches/rolex%7C1665",
       "surfacedAt": "2026-08-24T13:10:29.077Z",
+      "tier": "worth-a-look",
+      "isNew": true
+    },
+    {
+      "id": "nxbdc6",
+      "itemId": "v1|168636048044|0",
+      "legacyItemId": "168636048044",
+      "vertical": "watches",
+      "key": "rolex|1675",
+      "title": "1966 Rolex GMT-Master Pepsi 1675 Black Dial SS Oyster No Papers 40mm",
+      "imageUrl": "https://i.ebayimg.com/images/g/Y7QAAeSw3EVqjFbX/s-l225.jpg",
+      "allIn": 11800,
+      "itemPrice": 11800,
+      "shipping": 0,
+      "med": 20320,
+      "lo": 8663,
+      "hi": 36194,
+      "n": 366,
+      "n12": 27,
+      "lastSale": "2026-06-17",
+      "trend": -0.022,
+      "conf": "medium",
+      "depth": 0.4192913385826772,
+      "edgeUsd": 8520,
+      "risk": {
+        "grade": "B",
+        "score": 60,
+        "reasons": [
+          "papers / LOA named (unverified)",
+          "seller 100% feedback",
+          "established seller (1140 ratings)",
+          "sparse listing, no item specifics",
+          "not yet enriched (aspects provisional)",
+          "watches: elevated fake-rate prior"
+        ]
+      },
+      "rank": 1821.9047244094488,
+      "listedAt": "2026-08-24T14:29:19.000Z",
+      "webUrl": "https://www.ebay.com/itm/168636048044?_skw=rolex+116710&hash=item27437de2ac:g:Y7QAAeSw3EVqjFbX",
+      "marketplace": "EBAY_US",
+      "evidenceUrl": "https://lectr.bid/key/watches/rolex%7C1675",
+      "surfacedAt": "2026-08-24T21:41:44.967Z",
       "tier": "worth-a-look",
       "isNew": true
     },
@@ -8274,14 +8274,14 @@
   ],
   "perVertical": {
     "sports-cards": {
-      "polled": 4388,
-      "matched": 21,
-      "surfaced": 3
+      "polled": 4056,
+      "matched": 18,
+      "surfaced": 1
     },
     "autographs": {
-      "polled": 121,
-      "matched": 1,
-      "surfaced": 1
+      "polled": 1719,
+      "matched": 0,
+      "surfaced": 2
     },
     "pokemon": {
       "polled": 0,
@@ -8296,7 +8296,7 @@
     "watches": {
       "polled": 0,
       "matched": 0,
-      "surfaced": 137
+      "surfaced": 24
     }
   },
   "hunt": {
@@ -8514,7 +8514,7 @@
         "seller": {
           "username": "l.sorrell2012",
           "feedbackPercentage": 99.7,
-          "feedbackScore": 4749
+          "feedbackScore": 4753
         },
         "listedAt": "2026-07-08T23:23:24.000Z",
         "webUrl": "https://www.ebay.com/itm/257613048868?_skw=bell+system+technical+journal+1963&hash=item3bfaef2c24:g:zw0AAeSwrAxqTtu7",
@@ -8537,7 +8537,7 @@
         "seller": {
           "username": "l.sorrell2012",
           "feedbackPercentage": 99.7,
-          "feedbackScore": 4749
+          "feedbackScore": 4753
         },
         "listedAt": "2026-07-08T23:21:47.000Z",
         "webUrl": "https://www.ebay.com/itm/257613047011?_skw=bell+system+technical+journal+1963&hash=item3bfaef24e3:g:vRsAAeSwgf5qTtt2",
@@ -8560,7 +8560,7 @@
         "seller": {
           "username": "l.sorrell2012",
           "feedbackPercentage": 99.7,
-          "feedbackScore": 4749
+          "feedbackScore": 4753
         },
         "listedAt": "2026-07-08T23:20:12.000Z",
         "webUrl": "https://www.ebay.com/itm/257613046263?_skw=bell+system+technical+journal+1963&hash=item3bfaef21f7:g:VqkAAeSwh~9qTtsK",
@@ -8606,7 +8606,7 @@
         "seller": {
           "username": "l.sorrell2012",
           "feedbackPercentage": 99.7,
-          "feedbackScore": 4749
+          "feedbackScore": 4753
         },
         "listedAt": "2026-07-08T13:47:21.000Z",
         "webUrl": "https://www.ebay.com/itm/257612233634?_skw=bell+system+technical+journal+1963&hash=item3bfae2bba2:g:jGkAAeSwzMlqTlSb",
@@ -8629,7 +8629,7 @@
         "seller": {
           "username": "l.sorrell2012",
           "feedbackPercentage": 99.7,
-          "feedbackScore": 4749
+          "feedbackScore": 4753
         },
         "listedAt": "2026-07-07T23:19:31.000Z",
         "webUrl": "https://www.ebay.com/itm/257611188906?_skw=bell+system+technical+journal+1963&hash=item3bfad2caaa:g:uCUAAeSwXOVqTYlX",
@@ -8652,7 +8652,7 @@
         "seller": {
           "username": "l.sorrell2012",
           "feedbackPercentage": 99.7,
-          "feedbackScore": 4749
+          "feedbackScore": 4753
         },
         "listedAt": "2026-07-07T23:17:31.000Z",
         "webUrl": "https://www.ebay.com/itm/257611187629?_skw=bell+system+technical+journal+1963&hash=item3bfad2c5ad:g:qL4AAeSwYoFqTYjX",
@@ -8675,7 +8675,7 @@
         "seller": {
           "username": "l.sorrell2012",
           "feedbackPercentage": 99.7,
-          "feedbackScore": 4749
+          "feedbackScore": 4753
         },
         "listedAt": "2026-07-07T23:12:37.000Z",
         "webUrl": "https://www.ebay.com/itm/257611183424?_skw=bell+system+technical+journal+1950&hash=item3bfad2b540:g:uToAAeSwzNFqTYex",
@@ -8698,7 +8698,7 @@
         "seller": {
           "username": "l.sorrell2012",
           "feedbackPercentage": 99.7,
-          "feedbackScore": 4749
+          "feedbackScore": 4753
         },
         "listedAt": "2026-07-07T23:11:12.000Z",
         "webUrl": "https://www.ebay.com/itm/257611179505?_skw=bell+system+technical+journal+1963&hash=item3bfad2a5f1:g:qywAAeSwxoRqTYdj",
@@ -8721,7 +8721,7 @@
         "seller": {
           "username": "l.sorrell2012",
           "feedbackPercentage": 99.7,
-          "feedbackScore": 4749
+          "feedbackScore": 4753
         },
         "listedAt": "2026-07-07T22:56:15.000Z",
         "webUrl": "https://www.ebay.com/itm/257611155261?_skw=bell+system+technical+journal+1950&hash=item3bfad2473d:g:86cAAeSw5ehqTYPT",
@@ -8790,7 +8790,7 @@
         "seller": {
           "username": "l.sorrell2012",
           "feedbackPercentage": 99.7,
-          "feedbackScore": 4749
+          "feedbackScore": 4753
         },
         "listedAt": "2026-07-07T01:05:13.000Z",
         "webUrl": "https://www.ebay.com/itm/257609370982?_skw=bell+system+technical+journal+1964&hash=item3bfab70d66:g:uR8AAeSwaPdqTAlf",
@@ -8813,7 +8813,7 @@
         "seller": {
           "username": "l.sorrell2012",
           "feedbackPercentage": 99.7,
-          "feedbackScore": 4749
+          "feedbackScore": 4753
         },
         "listedAt": "2026-07-06T20:06:07.000Z",
         "webUrl": "https://www.ebay.com/itm/257608942747?_skw=bell+system+technical+journal+1964&hash=item3bfab0849b:g:ZCYAAeSwb-JqTApg",
@@ -8836,7 +8836,7 @@
         "seller": {
           "username": "l.sorrell2012",
           "feedbackPercentage": 99.7,
-          "feedbackScore": 4749
+          "feedbackScore": 4753
         },
         "listedAt": "2026-07-06T15:24:05.000Z",
         "webUrl": "https://www.ebay.com/itm/257608543199?_skw=bell+system+technical+journal+1964&hash=item3bfaaa6bdf:g:mcwAAeSwK4BqS8ha",
@@ -8859,7 +8859,7 @@
         "seller": {
           "username": "l.sorrell2012",
           "feedbackPercentage": 99.7,
-          "feedbackScore": 4749
+          "feedbackScore": 4753
         },
         "listedAt": "2026-07-06T15:21:52.000Z",
         "webUrl": "https://www.ebay.com/itm/257608541380?_skw=bell+system+technical+journal+1964&hash=item3bfaaa64c4:g:bU4AAeSwhnRqS8e0",
@@ -8951,7 +8951,7 @@
         "seller": {
           "username": "lastexitbooks",
           "feedbackPercentage": 100,
-          "feedbackScore": 22553
+          "feedbackScore": 22554
         },
         "listedAt": "2025-06-12T19:41:40.000Z",
         "webUrl": "https://www.ebay.com/itm/297406111395?_skw=bell+system+technical+journal+1928&hash=item453ec91ea3:g:0I4AAeSwGoloSy3K",
@@ -9034,24 +9034,24 @@
       "huntId": "sweep:fossils",
       "huntLabel": "context lead — not a priced call",
       "noBook": true,
-      "id": "1x0fx4",
-      "itemId": "v1|206514630144|0",
-      "legacyItemId": "206514630144",
+      "id": "1ttpww3",
+      "itemId": "v1|800561019557|0",
+      "legacyItemId": "800561019557",
       "vertical": "science",
-      "title": "Megalodon Natural Shark Tooth Real Fossil 3.25 in.",
-      "imageUrl": "https://i.ebayimg.com/images/g/rJMAAeSwpwZqcP0h/s-l225.jpg",
-      "allIn": 54.6,
-      "itemPrice": 45,
-      "shipping": 9.6,
+      "title": "Prehistoric Planet Store 5.5 Inch Megalodon (Carcharodon Small, Black",
+      "imageUrl": "https://i.ebayimg.com/images/g/MOUAAeSwNhhqjZo0/s-l225.jpg",
+      "allIn": 24.64,
+      "itemPrice": 24.64,
+      "shipping": 0,
       "seller": {
-        "username": "crossm72",
-        "feedbackPercentage": 100,
-        "feedbackScore": 382
+        "username": "sama-707726",
+        "feedbackPercentage": 99,
+        "feedbackScore": 960
       },
-      "listedAt": "2026-08-25T12:34:28.000Z",
-      "webUrl": "https://www.ebay.com/itm/206514630144?hash=item30153b2e00:g:rJMAAeSwpwZqcP0h",
+      "listedAt": "2026-08-25T13:35:46.000Z",
+      "webUrl": "https://www.ebay.com/itm/800561019557?hash=itemba6527baa5:g:MOUAAeSwNhhqjZo0",
       "marketplace": "EBAY_US",
-      "surfacedAt": "2026-08-25T13:08:59.212Z",
+      "surfacedAt": "2026-08-25T15:56:54.560Z",
       "context": {
         "k": "megalodon-tooth",
         "kind": "class",
@@ -9066,24 +9066,152 @@
       "huntId": "sweep:fossils",
       "huntLabel": "context lead — not a priced call",
       "noBook": true,
-      "id": "z9mzqe",
-      "itemId": "v1|800560735457|0",
-      "legacyItemId": "800560735457",
+      "id": "fbhzch",
+      "itemId": "v1|407169198736|0",
+      "legacyItemId": "407169198736",
       "vertical": "science",
-      "title": "Hastalis Shark Tooth Fossil Belgium 1.81\" Not Megalodon",
-      "imageUrl": "https://i.ebayimg.com/images/g/m2AAAeSwOCtqjYeb/s-l225.jpg",
-      "allIn": 67.74,
-      "itemPrice": 60,
+      "title": "Megalodon Shark Tooth 3.46 Inch - Carolina - Real Fossil - Natural Teeth 20652",
+      "imageUrl": "https://i.ebayimg.com/images/g/hcUAAeSwl01qjaW3/s-l225.jpg",
+      "allIn": 45,
+      "itemPrice": 39,
+      "shipping": 6,
+      "seller": {
+        "username": "scubaslogfossils",
+        "feedbackPercentage": 100,
+        "feedbackScore": 5941
+      },
+      "listedAt": "2026-08-25T14:25:21.000Z",
+      "webUrl": "https://www.ebay.com/itm/407169198736?hash=item5ecd2cea90:g:hcUAAeSwl01qjaW3",
+      "marketplace": "EBAY_US",
+      "surfacedAt": "2026-08-25T15:56:54.560Z",
+      "context": {
+        "k": "megalodon-tooth",
+        "kind": "class",
+        "med": 24320,
+        "lo": 3055,
+        "hi": 24320,
+        "n": 28,
+        "lastSale": "2026-07-14"
+      }
+    },
+    {
+      "huntId": "sweep:fossils",
+      "huntLabel": "context lead — not a priced call",
+      "noBook": true,
+      "id": "12q0dl5",
+      "itemId": "v1|188835048521|0",
+      "legacyItemId": "188835048521",
+      "vertical": "science",
+      "title": "Giant Megalodon Shark Tooth Fossil REAL FOSSIL Florida Rare Bone Rock Tooth",
+      "imageUrl": "https://i.ebayimg.com/images/g/lLIAAeSw7dlqa-hp/s-l225.jpg",
+      "allIn": 49.3,
+      "itemPrice": 41,
+      "shipping": 8.3,
+      "seller": {
+        "username": "s.carolina.auctions",
+        "feedbackPercentage": 99.4,
+        "feedbackScore": 29551
+      },
+      "listedAt": "2026-08-25T14:29:00.000Z",
+      "webUrl": "https://www.ebay.com/itm/188835048521?hash=item2bf7722c49:g:lLIAAeSw7dlqa-hp",
+      "marketplace": "EBAY_US",
+      "surfacedAt": "2026-08-25T15:56:54.560Z",
+      "context": {
+        "k": "megalodon-tooth",
+        "kind": "class",
+        "med": 24320,
+        "lo": 3055,
+        "hi": 24320,
+        "n": 28,
+        "lastSale": "2026-07-14"
+      }
+    },
+    {
+      "huntId": "sweep:fossils",
+      "huntLabel": "context lead — not a priced call",
+      "noBook": true,
+      "id": "c8gy2h",
+      "itemId": "v1|137659885638|0",
+      "legacyItemId": "137659885638",
+      "vertical": "science",
+      "title": "Douvilleiceras Ammonite Pair Tractor Wheel Polished Halves  Madagascar Free Post",
+      "imageUrl": "https://i.ebayimg.com/images/g/SZUAAeSwyQlpamUV/s-l225.jpg",
+      "allIn": 20.990000000000002,
+      "itemPrice": 7.43,
+      "shipping": 13.56,
+      "seller": {
+        "username": "crystalscience",
+        "feedbackPercentage": 99.3,
+        "feedbackScore": 21887
+      },
+      "listedAt": "2026-08-25T14:35:23.000Z",
+      "webUrl": "https://www.ebay.com/itm/137659885638?hash=item200d2b2846:g:SZUAAeSwyQlpamUV",
+      "marketplace": "EBAY_US",
+      "surfacedAt": "2026-08-25T15:56:54.560Z",
+      "context": {
+        "k": "ammonite",
+        "kind": "class",
+        "med": 9378,
+        "lo": 1914,
+        "hi": 11122,
+        "n": 106,
+        "lastSale": "2026-07-14"
+      }
+    },
+    {
+      "huntId": "sweep:fossils",
+      "huntLabel": "context lead — not a priced call",
+      "noBook": true,
+      "id": "dedxxq",
+      "itemId": "v1|407169195871|0",
+      "legacyItemId": "407169195871",
+      "vertical": "science",
+      "title": "Megalodon Shark Tooth 4.14 Inch - Natural - Carolina Fossil - Authentic 20651",
+      "imageUrl": "https://i.ebayimg.com/images/g/drwAAeSwc8FqjaU-/s-l225.jpg",
+      "allIn": 65,
+      "itemPrice": 59,
+      "shipping": 6,
+      "seller": {
+        "username": "scubaslogfossils",
+        "feedbackPercentage": 100,
+        "feedbackScore": 5941
+      },
+      "listedAt": "2026-08-25T14:23:25.000Z",
+      "webUrl": "https://www.ebay.com/itm/407169195871?hash=item5ecd2cdf5f:g:drwAAeSwc8FqjaU-",
+      "marketplace": "EBAY_US",
+      "surfacedAt": "2026-08-25T15:56:54.560Z",
+      "context": {
+        "k": "megalodon-tooth",
+        "kind": "class",
+        "med": 24320,
+        "lo": 3055,
+        "hi": 24320,
+        "n": 28,
+        "lastSale": "2026-07-14"
+      }
+    },
+    {
+      "huntId": "sweep:fossils",
+      "huntLabel": "context lead — not a priced call",
+      "noBook": true,
+      "id": "1pxhw2i",
+      "itemId": "v1|800561180342|0",
+      "legacyItemId": "800561180342",
+      "vertical": "science",
+      "title": "Hammerhead Shark Tooth Fossil Belgium Not Megalodon Lot Of 5",
+      "imageUrl": "https://i.ebayimg.com/images/g/OAMAAeSwwtVqjaNy/s-l225.jpg",
+      "allIn": 65.24,
+      "itemPrice": 57.5,
       "shipping": 7.74,
       "seller": {
         "username": "mtnbk_63",
         "feedbackPercentage": 99.3,
         "feedbackScore": 534
       },
-      "listedAt": "2026-08-25T12:18:13.000Z",
-      "webUrl": "https://www.ebay.com/itm/800560735457?hash=itemba652364e1:g:m2AAAeSwOCtqjYeb",
+      "listedAt": "2026-08-25T14:15:59.000Z",
+      "webUrl": "https://www.ebay.com/itm/800561180342?hash=itemba652a2eb6:g:OAMAAeSwwtVqjaNy",
       "marketplace": "EBAY_US",
-      "surfacedAt": "2026-08-25T13:08:59.212Z",
+      "surfacedAt": "2026-08-25T15:56:54.560Z",
       "context": {
         "k": "megalodon-tooth",
         "kind": "class",
@@ -9098,152 +9226,24 @@
       "huntId": "sweep:fossils",
       "huntLabel": "context lead — not a priced call",
       "noBook": true,
-      "id": "10kbx45",
-      "itemId": "v1|168638122408|0",
-      "legacyItemId": "168638122408",
+      "id": "14fzjdx",
+      "itemId": "v1|820045629841|0",
+      "legacyItemId": "820045629841",
       "vertical": "science",
-      "title": "Spinosaurus Tooth 5.5\" Dinosaur Fossil Not T Rex Cretaceous N15",
-      "imageUrl": "https://i.ebayimg.com/images/g/IG0AAeSw3h9qjYhy/s-l225.jpg",
-      "allIn": 148.75,
-      "itemPrice": 148.75,
-      "shipping": 0,
-      "seller": {
-        "username": "8ten1944",
-        "feedbackPercentage": 99.8,
-        "feedbackScore": 390905
-      },
-      "listedAt": "2026-08-25T12:17:56.000Z",
-      "webUrl": "https://www.ebay.com/itm/168638122408?hash=item27439d89a8:g:IG0AAeSw3h9qjYhy",
-      "marketplace": "EBAY_US",
-      "surfacedAt": "2026-08-25T13:08:59.212Z",
-      "context": {
-        "k": "trex-tooth",
-        "kind": "class",
-        "med": 40960,
-        "lo": 4973,
-        "hi": 40960,
-        "n": 8,
-        "lastSale": "2026-07-14"
-      }
-    },
-    {
-      "huntId": "sweep:fossils",
-      "huntLabel": "context lead — not a priced call",
-      "noBook": true,
-      "id": "wqs3is",
-      "itemId": "v1|168638089852|0",
-      "legacyItemId": "168638089852",
-      "vertical": "science",
-      "title": "Real Tyrannosaurus Tooth Judith River FM. Montana 1\" Dinosaur Fossil",
-      "imageUrl": "https://i.ebayimg.com/images/g/2B4AAeSwfPFqjYSv/s-l225.jpg",
-      "allIn": 200.57999999999998,
-      "itemPrice": 195.63,
-      "shipping": 4.95,
-      "seller": {
-        "username": "8ten1944",
-        "feedbackPercentage": 99.8,
-        "feedbackScore": 390905
-      },
-      "listedAt": "2026-08-25T11:59:51.000Z",
-      "webUrl": "https://www.ebay.com/itm/168638089852?hash=item27439d0a7c:g:2B4AAeSwfPFqjYSv",
-      "marketplace": "EBAY_US",
-      "surfacedAt": "2026-08-25T13:08:59.212Z",
-      "context": {
-        "k": "trex-tooth",
-        "kind": "class",
-        "med": 40960,
-        "lo": 4973,
-        "hi": 40960,
-        "n": 8,
-        "lastSale": "2026-07-14"
-      }
-    },
-    {
-      "huntId": "sweep:fossils",
-      "huntLabel": "context lead — not a priced call",
-      "noBook": true,
-      "id": "spiulh",
-      "itemId": "v1|206514472864|0",
-      "legacyItemId": "206514472864",
-      "vertical": "science",
-      "title": "Zonzxcv Trilobite Fossil Real Fossils Come from Western Hunan of China for Colle",
-      "imageUrl": "https://i.ebayimg.com/images/g/l1EAAeSwqlBqjXPg/s-l225.jpg",
-      "allIn": 29.4,
-      "itemPrice": 29.4,
-      "shipping": 0,
-      "seller": {
-        "username": "valueproductsforyou",
-        "feedbackPercentage": 99.3,
-        "feedbackScore": 380
-      },
-      "listedAt": "2026-08-25T10:52:24.000Z",
-      "webUrl": "https://www.ebay.com/itm/206514472864?hash=item301538c7a0:g:l1EAAeSwqlBqjXPg",
-      "marketplace": "EBAY_US",
-      "surfacedAt": "2026-08-25T13:08:59.212Z",
-      "context": {
-        "k": "trilobite",
-        "kind": "class",
-        "med": 5120,
-        "lo": 1320,
-        "hi": 6543,
-        "n": 26,
-        "lastSale": "2026-07-14"
-      }
-    },
-    {
-      "huntId": "sweep:fossils",
-      "huntLabel": "context lead — not a priced call",
-      "noBook": true,
-      "id": "1ptzb74",
-      "itemId": "v1|298614538059|0",
-      "legacyItemId": "298614538059",
-      "vertical": "science",
-      "title": "MEGALODON Shark tooth - Real Fossil 4.95” Shark teeth No Restorations Natural",
-      "imageUrl": "https://i.ebayimg.com/images/g/DqcAAeSwislqjYPV/s-l225.jpg",
-      "allIn": 156.85,
-      "itemPrice": 149,
-      "shipping": 7.85,
-      "seller": {
-        "username": "onlyrealfossils",
-        "feedbackPercentage": 100,
-        "feedbackScore": 2691
-      },
-      "listedAt": "2026-08-25T12:00:23.000Z",
-      "webUrl": "https://www.ebay.com/itm/298614538059?hash=item4586d03f4b:g:DqcAAeSwislqjYPV",
-      "marketplace": "EBAY_US",
-      "surfacedAt": "2026-08-25T13:08:59.212Z",
-      "context": {
-        "k": "megalodon-tooth",
-        "kind": "class",
-        "med": 24320,
-        "lo": 3055,
-        "hi": 24320,
-        "n": 28,
-        "lastSale": "2026-07-14"
-      }
-    },
-    {
-      "huntId": "sweep:fossils",
-      "huntLabel": "context lead — not a priced call",
-      "noBook": true,
-      "id": "cq3du2",
-      "itemId": "v1|407169027882|0",
-      "legacyItemId": "407169027882",
-      "vertical": "science",
-      "title": "Megalodon Shark Tooth Real Fossil 4.97” BIG XL Sharks Teeth -  No Restorations",
-      "imageUrl": "https://i.ebayimg.com/images/g/odQAAeSwo5FqjZIf/s-l225.jpg",
-      "allIn": 176.65,
-      "itemPrice": 169,
+      "title": "MEGALODON SHARK TOOTH  Fossil - 3.25”  REAL Sharks Teeth  SERRATED",
+      "imageUrl": "https://i.ebayimg.com/images/g/SboAAeSw94NqjZNf/s-l225.jpg",
+      "allIn": 66.65,
+      "itemPrice": 59,
       "shipping": 7.65,
       "seller": {
         "username": "sydni816",
         "feedbackPercentage": 100,
-        "feedbackScore": 15965
+        "feedbackScore": 15966
       },
-      "listedAt": "2026-08-25T13:01:19.000Z",
-      "webUrl": "https://www.ebay.com/itm/407169027882?hash=item5ecd2a4f2a:g:odQAAeSwo5FqjZIf",
+      "listedAt": "2026-08-25T13:06:39.000Z",
+      "webUrl": "https://www.ebay.com/itm/820045629841?hash=itembeee874991:g:SboAAeSw94NqjZNf",
       "marketplace": "EBAY_US",
-      "surfacedAt": "2026-08-25T13:08:59.212Z",
+      "surfacedAt": "2026-08-25T15:56:54.560Z",
       "context": {
         "k": "megalodon-tooth",
         "kind": "class",
@@ -9258,31 +9258,31 @@
       "huntId": "sweep:fossils",
       "huntLabel": "context lead — not a priced call",
       "noBook": true,
-      "id": "oe0j1z",
-      "itemId": "v1|820045108412|0",
-      "legacyItemId": "820045108412",
+      "id": "59iiug",
+      "itemId": "v1|407169124657|0",
+      "legacyItemId": "407169124657",
       "vertical": "science",
-      "title": "Boxed Stone Chondrite Meteorite - 15.74 Grams - Nicely Presented With Certifi",
-      "imageUrl": "https://i.ebayimg.com/images/g/ubcAAeSwa1BqjPGP/s-l225.jpg",
-      "allIn": 26.92,
-      "itemPrice": 13.31,
-      "shipping": 13.61,
+      "title": "Megalodon Shark Tooth 3.92 Inch - Natural - Black Fossil - Real Teeth 20644",
+      "imageUrl": "https://i.ebayimg.com/images/g/TB8AAeSwddFqjZzM/s-l225.jpg",
+      "allIn": 71,
+      "itemPrice": 65,
+      "shipping": 6,
       "seller": {
-        "username": "jurassicjewellery2010",
+        "username": "scubaslogfossils",
         "feedbackPercentage": 100,
-        "feedbackScore": 10756
+        "feedbackScore": 5941
       },
-      "listedAt": "2026-08-25T10:03:47.000Z",
-      "webUrl": "https://www.ebay.com/itm/820045108412?hash=itembeee7f54bc:g:ubcAAeSwa1BqjPGP",
+      "listedAt": "2026-08-25T13:47:27.000Z",
+      "webUrl": "https://www.ebay.com/itm/407169124657?hash=item5ecd2bc931:g:TB8AAeSwddFqjZzM",
       "marketplace": "EBAY_US",
-      "surfacedAt": "2026-08-25T13:08:59.212Z",
+      "surfacedAt": "2026-08-25T15:56:54.560Z",
       "context": {
-        "k": "meteorite",
+        "k": "megalodon-tooth",
         "kind": "class",
-        "med": 3575,
-        "lo": 550,
-        "hi": 15380,
-        "n": 359,
+        "med": 24320,
+        "lo": 3055,
+        "hi": 24320,
+        "n": 28,
         "lastSale": "2026-07-14"
       }
     },
@@ -9290,31 +9290,31 @@
       "huntId": "sweep:fossils",
       "huntLabel": "context lead — not a priced call",
       "noBook": true,
-      "id": "10jjule",
-      "itemId": "v1|257701463614|0",
-      "legacyItemId": "257701463614",
+      "id": "1kz1v58",
+      "itemId": "v1|377446625426|0",
+      "legacyItemId": "377446625426",
       "vertical": "science",
-      "title": "Ries Crater Miocene Meteorite Impact shocked belemnite fossil in display #5",
-      "imageUrl": "https://i.ebayimg.com/images/g/cfcAAeSwPXdqjXGw/s-l225.jpg",
-      "allIn": 34.08,
-      "itemPrice": 20.45,
-      "shipping": 13.63,
+      "title": "MEGALODON SHARK TOOTH 3 3/8\" SHARK TEETH LARGE JAW FOSSIL STUNNING COLOR ~REAL",
+      "imageUrl": "https://i.ebayimg.com/images/g/wkYAAeSwislqjabE/s-l225.jpg",
+      "allIn": 71.69,
+      "itemPrice": 64,
+      "shipping": 7.69,
       "seller": {
-        "username": "sdfossils",
-        "feedbackPercentage": 99.9,
-        "feedbackScore": 9663
+        "username": "kenny2000blue",
+        "feedbackPercentage": 100,
+        "feedbackScore": 18431
       },
-      "listedAt": "2026-08-25T10:43:26.000Z",
-      "webUrl": "https://www.ebay.com/itm/257701463614?hash=item3c0034463e:g:cfcAAeSwPXdqjXGw",
+      "listedAt": "2026-08-25T14:30:04.000Z",
+      "webUrl": "https://www.ebay.com/itm/377446625426?hash=item57e1927092:g:wkYAAeSwislqjabE",
       "marketplace": "EBAY_US",
-      "surfacedAt": "2026-08-25T13:08:59.212Z",
+      "surfacedAt": "2026-08-25T15:56:54.560Z",
       "context": {
-        "k": "meteorite",
+        "k": "megalodon-tooth",
         "kind": "class",
-        "med": 3575,
-        "lo": 550,
-        "hi": 15380,
-        "n": 359,
+        "med": 24320,
+        "lo": 3055,
+        "hi": 24320,
+        "n": 28,
         "lastSale": "2026-07-14"
       }
     },
@@ -9322,31 +9322,31 @@
       "huntId": "sweep:fossils",
       "huntLabel": "context lead — not a priced call",
       "noBook": true,
-      "id": "11q1i75",
-      "itemId": "v1|257701465071|0",
-      "legacyItemId": "257701465071",
+      "id": "737y9y",
+      "itemId": "v1|407169127076|0",
+      "legacyItemId": "407169127076",
       "vertical": "science",
-      "title": "Ries Crater Miocene Meteorite Impact shocked belemnite fossil in display #7",
-      "imageUrl": "https://i.ebayimg.com/images/g/~OMAAeSwpN5qjXI2/s-l225.jpg",
-      "allIn": 34.08,
-      "itemPrice": 20.45,
-      "shipping": 13.63,
+      "title": "Megalodon Shark Tooth 4.14 Inch - Carolina - Authentic Fossil - Natural 20645",
+      "imageUrl": "https://i.ebayimg.com/images/g/YkYAAeSw9fJqjZ0-/s-l225.jpg",
+      "allIn": 75,
+      "itemPrice": 69,
+      "shipping": 6,
       "seller": {
-        "username": "sdfossils",
-        "feedbackPercentage": 99.9,
-        "feedbackScore": 9663
+        "username": "scubaslogfossils",
+        "feedbackPercentage": 100,
+        "feedbackScore": 5941
       },
-      "listedAt": "2026-08-25T10:45:21.000Z",
-      "webUrl": "https://www.ebay.com/itm/257701465071?hash=item3c00344bef:g:~OMAAeSwpN5qjXI2",
+      "listedAt": "2026-08-25T13:49:10.000Z",
+      "webUrl": "https://www.ebay.com/itm/407169127076?hash=item5ecd2bd2a4:g:YkYAAeSw9fJqjZ0-",
       "marketplace": "EBAY_US",
-      "surfacedAt": "2026-08-25T13:08:59.212Z",
+      "surfacedAt": "2026-08-25T15:56:54.560Z",
       "context": {
-        "k": "meteorite",
+        "k": "megalodon-tooth",
         "kind": "class",
-        "med": 3575,
-        "lo": 550,
-        "hi": 15380,
-        "n": 359,
+        "med": 24320,
+        "lo": 3055,
+        "hi": 24320,
+        "n": 28,
         "lastSale": "2026-07-14"
       }
     },
@@ -9354,31 +9354,31 @@
       "huntId": "sweep:fossils",
       "huntLabel": "context lead — not a priced call",
       "noBook": true,
-      "id": "1jvpnbw",
-      "itemId": "v1|257701470205|0",
-      "legacyItemId": "257701470205",
+      "id": "1u8y8za",
+      "itemId": "v1|298614847773|0",
+      "legacyItemId": "298614847773",
       "vertical": "science",
-      "title": "Ries Crater Miocene Meteorite Impact shocked belemnite fossil in display #8",
-      "imageUrl": "https://i.ebayimg.com/images/g/Wm8AAeSwEQFqjXL8/s-l225.jpg",
-      "allIn": 34.08,
-      "itemPrice": 20.45,
-      "shipping": 13.63,
+      "title": "MEGALODON Shark tooth Real Fossil- 3.68” Shark teeth No Restorations No Repairs",
+      "imageUrl": "https://i.ebayimg.com/images/g/0roAAeSw0DZqjaew/s-l225.jpg",
+      "allIn": 76.85,
+      "itemPrice": 69,
+      "shipping": 7.85,
       "seller": {
-        "username": "sdfossils",
-        "feedbackPercentage": 99.9,
-        "feedbackScore": 9663
+        "username": "onlyrealfossils",
+        "feedbackPercentage": 100,
+        "feedbackScore": 2692
       },
-      "listedAt": "2026-08-25T10:48:34.000Z",
-      "webUrl": "https://www.ebay.com/itm/257701470205?hash=item3c00345ffd:g:Wm8AAeSwEQFqjXL8",
+      "listedAt": "2026-08-25T14:33:21.000Z",
+      "webUrl": "https://www.ebay.com/itm/298614847773?hash=item4586d4f91d:g:0roAAeSw0DZqjaew",
       "marketplace": "EBAY_US",
-      "surfacedAt": "2026-08-25T13:08:59.212Z",
+      "surfacedAt": "2026-08-25T15:56:54.560Z",
       "context": {
-        "k": "meteorite",
+        "k": "megalodon-tooth",
         "kind": "class",
-        "med": 3575,
-        "lo": 550,
-        "hi": 15380,
-        "n": 359,
+        "med": 24320,
+        "lo": 3055,
+        "hi": 24320,
+        "n": 28,
         "lastSale": "2026-07-14"
       }
     },
@@ -9386,31 +9386,31 @@
       "huntId": "sweep:fossils",
       "huntLabel": "context lead — not a priced call",
       "noBook": true,
-      "id": "1kkgute",
-      "itemId": "v1|257701471426|0",
-      "legacyItemId": "257701471426",
+      "id": "qdphre",
+      "itemId": "v1|298614723561|0",
+      "legacyItemId": "298614723561",
       "vertical": "science",
-      "title": "Ries Crater Miocene Meteorite Impact shocked belemnite fossil in display #10",
-      "imageUrl": "https://i.ebayimg.com/images/g/qFAAAeSwBO5qjXNe/s-l225.jpg",
-      "allIn": 34.08,
-      "itemPrice": 20.45,
-      "shipping": 13.63,
+      "title": "MEGALODON Shark tooth Real Fossil- 3.77” Shark teeth NO Restorations Natural",
+      "imageUrl": "https://i.ebayimg.com/images/g/BaEAAeSw0BpqjZkK/s-l225.jpg",
+      "allIn": 76.85,
+      "itemPrice": 69,
+      "shipping": 7.85,
       "seller": {
-        "username": "sdfossils",
-        "feedbackPercentage": 99.9,
-        "feedbackScore": 9663
+        "username": "onlyrealfossils",
+        "feedbackPercentage": 100,
+        "feedbackScore": 2692
       },
-      "listedAt": "2026-08-25T10:50:21.000Z",
-      "webUrl": "https://www.ebay.com/itm/257701471426?hash=item3c003464c2:g:qFAAAeSwBO5qjXNe",
+      "listedAt": "2026-08-25T13:30:51.000Z",
+      "webUrl": "https://www.ebay.com/itm/298614723561?hash=item4586d313e9:g:BaEAAeSw0BpqjZkK",
       "marketplace": "EBAY_US",
-      "surfacedAt": "2026-08-25T13:08:59.212Z",
+      "surfacedAt": "2026-08-25T15:56:54.560Z",
       "context": {
-        "k": "meteorite",
+        "k": "megalodon-tooth",
         "kind": "class",
-        "med": 3575,
-        "lo": 550,
-        "hi": 15380,
-        "n": 359,
+        "med": 24320,
+        "lo": 3055,
+        "hi": 24320,
+        "n": 28,
         "lastSale": "2026-07-14"
       }
     },
@@ -9418,31 +9418,31 @@
       "huntId": "sweep:fossils",
       "huntLabel": "context lead — not a priced call",
       "noBook": true,
-      "id": "1l7upye",
-      "itemId": "v1|257701472465|0",
-      "legacyItemId": "257701472465",
+      "id": "pvi43g",
+      "itemId": "v1|407169133114|0",
+      "legacyItemId": "407169133114",
       "vertical": "science",
-      "title": "Ries Crater Miocene Meteorite Impact shocked belemnite fossil in display #11",
-      "imageUrl": "https://i.ebayimg.com/images/g/0scAAeSwiOxqjXOK/s-l225.jpg",
-      "allIn": 34.08,
-      "itemPrice": 20.45,
-      "shipping": 13.63,
+      "title": "Megalodon Shark Tooth 4.10 Inch - Authentic - Carolina Fossil - Natural 20646",
+      "imageUrl": "https://i.ebayimg.com/images/g/K5AAAeSwc8FqjZ4B/s-l225.jpg",
+      "allIn": 78,
+      "itemPrice": 72,
+      "shipping": 6,
       "seller": {
-        "username": "sdfossils",
-        "feedbackPercentage": 99.9,
-        "feedbackScore": 9663
+        "username": "scubaslogfossils",
+        "feedbackPercentage": 100,
+        "feedbackScore": 5941
       },
-      "listedAt": "2026-08-25T10:50:59.000Z",
-      "webUrl": "https://www.ebay.com/itm/257701472465?hash=item3c003468d1:g:0scAAeSwiOxqjXOK",
+      "listedAt": "2026-08-25T13:52:35.000Z",
+      "webUrl": "https://www.ebay.com/itm/407169133114?hash=item5ecd2bea3a:g:K5AAAeSwc8FqjZ4B",
       "marketplace": "EBAY_US",
-      "surfacedAt": "2026-08-25T13:08:59.212Z",
+      "surfacedAt": "2026-08-25T15:56:54.560Z",
       "context": {
-        "k": "meteorite",
+        "k": "megalodon-tooth",
         "kind": "class",
-        "med": 3575,
-        "lo": 550,
-        "hi": 15380,
-        "n": 359,
+        "med": 24320,
+        "lo": 3055,
+        "hi": 24320,
+        "n": 28,
         "lastSale": "2026-07-14"
       }
     },
@@ -9450,31 +9450,31 @@
       "huntId": "sweep:fossils",
       "huntLabel": "context lead — not a priced call",
       "noBook": true,
-      "id": "1nvt72e",
-      "itemId": "v1|257701476830|0",
-      "legacyItemId": "257701476830",
+      "id": "1f7v8p7",
+      "itemId": "v1|407169149671|0",
+      "legacyItemId": "407169149671",
       "vertical": "science",
-      "title": "Ries Crater Miocene Meteorite Impact shocked belemnite fossil in display #12",
-      "imageUrl": "https://i.ebayimg.com/images/g/Zz0AAeSwvEZqjXPD/s-l225.jpg",
-      "allIn": 34.08,
-      "itemPrice": 20.45,
-      "shipping": 13.63,
+      "title": "Megalodon Shark Tooth 4.31 Inch - Authentic - Natural Fossil - Real Teeth 20648",
+      "imageUrl": "https://i.ebayimg.com/images/g/TVcAAeSwl01qjaB-/s-l225.jpg",
+      "allIn": 85,
+      "itemPrice": 79,
+      "shipping": 6,
       "seller": {
-        "username": "sdfossils",
-        "feedbackPercentage": 99.9,
-        "feedbackScore": 9663
+        "username": "scubaslogfossils",
+        "feedbackPercentage": 100,
+        "feedbackScore": 5941
       },
-      "listedAt": "2026-08-25T10:51:57.000Z",
-      "webUrl": "https://www.ebay.com/itm/257701476830?hash=item3c003479de:g:Zz0AAeSwvEZqjXPD",
+      "listedAt": "2026-08-25T14:03:11.000Z",
+      "webUrl": "https://www.ebay.com/itm/407169149671?hash=item5ecd2c2ae7:g:TVcAAeSwl01qjaB-",
       "marketplace": "EBAY_US",
-      "surfacedAt": "2026-08-25T13:08:59.212Z",
+      "surfacedAt": "2026-08-25T15:56:54.560Z",
       "context": {
-        "k": "meteorite",
+        "k": "megalodon-tooth",
         "kind": "class",
-        "med": 3575,
-        "lo": 550,
-        "hi": 15380,
-        "n": 359,
+        "med": 24320,
+        "lo": 3055,
+        "hi": 24320,
+        "n": 28,
         "lastSale": "2026-07-14"
       }
     },
@@ -9482,31 +9482,31 @@
       "huntId": "sweep:fossils",
       "huntLabel": "context lead — not a priced call",
       "noBook": true,
-      "id": "6wclca",
-      "itemId": "v1|257701481469|0",
-      "legacyItemId": "257701481469",
+      "id": "tpzg31",
+      "itemId": "v1|318777667122|0",
+      "legacyItemId": "318777667122",
       "vertical": "science",
-      "title": "Ries Crater Miocene Meteorite Impact shocked belemnite fossil in display #13",
-      "imageUrl": "https://i.ebayimg.com/images/g/gCAAAeSwpfhqjXPs/s-l225.jpg",
-      "allIn": 34.08,
-      "itemPrice": 20.45,
-      "shipping": 13.63,
+      "title": "MEGALODON SHARK TOOTH 3 1/2\" SHARK TEETH LARGE JAW FOSSIL STUNNING COLOR ~REAL",
+      "imageUrl": "https://i.ebayimg.com/images/g/a3oAAeSwGGJqjaf7/s-l225.jpg",
+      "allIn": 85.69,
+      "itemPrice": 78,
+      "shipping": 7.69,
       "seller": {
-        "username": "sdfossils",
-        "feedbackPercentage": 99.9,
-        "feedbackScore": 9663
+        "username": "kenny2000blue",
+        "feedbackPercentage": 100,
+        "feedbackScore": 18431
       },
-      "listedAt": "2026-08-25T10:52:59.000Z",
-      "webUrl": "https://www.ebay.com/itm/257701481469?hash=item3c00348bfd:g:gCAAAeSwpfhqjXPs",
+      "listedAt": "2026-08-25T14:35:18.000Z",
+      "webUrl": "https://www.ebay.com/itm/318777667122?hash=item4a38a12e32:g:a3oAAeSwGGJqjaf7",
       "marketplace": "EBAY_US",
-      "surfacedAt": "2026-08-25T13:08:59.212Z",
+      "surfacedAt": "2026-08-25T15:56:54.560Z",
       "context": {
-        "k": "meteorite",
+        "k": "megalodon-tooth",
         "kind": "class",
-        "med": 3575,
-        "lo": 550,
-        "hi": 15380,
-        "n": 359,
+        "med": 24320,
+        "lo": 3055,
+        "hi": 24320,
+        "n": 28,
         "lastSale": "2026-07-14"
       }
     },
@@ -9514,31 +9514,31 @@
       "huntId": "sweep:fossils",
       "huntLabel": "context lead — not a priced call",
       "noBook": true,
-      "id": "88ajoj",
-      "itemId": "v1|257701483631|0",
-      "legacyItemId": "257701483631",
+      "id": "fn2oml",
+      "itemId": "v1|407169090867|0",
+      "legacyItemId": "407169090867",
       "vertical": "science",
-      "title": "Ries Crater Miocene Meteorite Impact shocked belemnite fossil in display #14",
-      "imageUrl": "https://i.ebayimg.com/images/g/chsAAeSwzkRqjXQq/s-l225.jpg",
-      "allIn": 34.08,
-      "itemPrice": 20.45,
-      "shipping": 13.63,
+      "title": "Megalodon Shark Tooth 4.47” Real Fossil  JET BLACK - NO Restorations",
+      "imageUrl": "https://i.ebayimg.com/images/g/ihEAAeSwsoRqjZkJ/s-l225.jpg",
+      "allIn": 92.65,
+      "itemPrice": 85,
+      "shipping": 7.65,
       "seller": {
-        "username": "sdfossils",
-        "feedbackPercentage": 99.9,
-        "feedbackScore": 9663
+        "username": "sydni816",
+        "feedbackPercentage": 100,
+        "feedbackScore": 15966
       },
-      "listedAt": "2026-08-25T10:53:37.000Z",
-      "webUrl": "https://www.ebay.com/itm/257701483631?hash=item3c0034946f:g:chsAAeSwzkRqjXQq",
+      "listedAt": "2026-08-25T13:30:50.000Z",
+      "webUrl": "https://www.ebay.com/itm/407169090867?hash=item5ecd2b4533:g:ihEAAeSwsoRqjZkJ",
       "marketplace": "EBAY_US",
-      "surfacedAt": "2026-08-25T13:08:59.212Z",
+      "surfacedAt": "2026-08-25T15:56:54.560Z",
       "context": {
-        "k": "meteorite",
+        "k": "megalodon-tooth",
         "kind": "class",
-        "med": 3575,
-        "lo": 550,
-        "hi": 15380,
-        "n": 359,
+        "med": 24320,
+        "lo": 3055,
+        "hi": 24320,
+        "n": 28,
         "lastSale": "2026-07-14"
       }
     },
@@ -9546,31 +9546,31 @@
       "huntId": "sweep:fossils",
       "huntLabel": "context lead — not a priced call",
       "noBook": true,
-      "id": "8xtmgj",
-      "itemId": "v1|257701484988|0",
-      "legacyItemId": "257701484988",
+      "id": "semxyj",
+      "itemId": "v1|318777665005|0",
+      "legacyItemId": "318777665005",
       "vertical": "science",
-      "title": "Ries Crater Miocene Meteorite Impact shocked belemnite fossil in display #15",
-      "imageUrl": "https://i.ebayimg.com/images/g/3oQAAeSwMcdqjXRb/s-l225.jpg",
-      "allIn": 34.08,
-      "itemPrice": 20.45,
-      "shipping": 13.63,
+      "title": "MEGALODON SHARK TOOTH 3 1/2\" SHARK TEETH LARGE JAW FOSSIL STUNNING COLOR ~REAL",
+      "imageUrl": "https://i.ebayimg.com/images/g/ZjIAAeSwGGJqjad9/s-l225.jpg",
+      "allIn": 92.69,
+      "itemPrice": 85,
+      "shipping": 7.69,
       "seller": {
-        "username": "sdfossils",
-        "feedbackPercentage": 99.9,
-        "feedbackScore": 9663
+        "username": "kenny2000blue",
+        "feedbackPercentage": 100,
+        "feedbackScore": 18431
       },
-      "listedAt": "2026-08-25T10:54:32.000Z",
-      "webUrl": "https://www.ebay.com/itm/257701484988?hash=item3c003499bc:g:3oQAAeSwMcdqjXRb",
+      "listedAt": "2026-08-25T14:33:25.000Z",
+      "webUrl": "https://www.ebay.com/itm/318777665005?hash=item4a38a125ed:g:ZjIAAeSwGGJqjad9",
       "marketplace": "EBAY_US",
-      "surfacedAt": "2026-08-25T13:08:59.212Z",
+      "surfacedAt": "2026-08-25T15:56:54.560Z",
       "context": {
-        "k": "meteorite",
+        "k": "megalodon-tooth",
         "kind": "class",
-        "med": 3575,
-        "lo": 550,
-        "hi": 15380,
-        "n": 359,
+        "med": 24320,
+        "lo": 3055,
+        "hi": 24320,
+        "n": 28,
         "lastSale": "2026-07-14"
       }
     },
@@ -9578,31 +9578,31 @@
       "huntId": "sweep:fossils",
       "huntLabel": "context lead — not a priced call",
       "noBook": true,
-      "id": "yn6yfe",
-      "itemId": "v1|257701460877|0",
-      "legacyItemId": "257701460877",
+      "id": "1bxwwbp",
+      "itemId": "v1|407169144454|0",
+      "legacyItemId": "407169144454",
       "vertical": "science",
-      "title": "Ries Crater Miocene Meteorite Impact shocked belemnite fossil in display #1",
-      "imageUrl": "https://i.ebayimg.com/images/g/eEgAAeSwrj5qjXDF/s-l225.jpg",
-      "allIn": 34.08,
-      "itemPrice": 20.45,
-      "shipping": 13.63,
+      "title": "Megalodon Shark Tooth 4.56 Inch - Authentic - Black Fossil - Natural 20647",
+      "imageUrl": "https://i.ebayimg.com/images/g/7GoAAeSw-dlqjZ~l/s-l225.jpg",
+      "allIn": 95,
+      "itemPrice": 89,
+      "shipping": 6,
       "seller": {
-        "username": "sdfossils",
-        "feedbackPercentage": 99.9,
-        "feedbackScore": 9663
+        "username": "scubaslogfossils",
+        "feedbackPercentage": 100,
+        "feedbackScore": 5941
       },
-      "listedAt": "2026-08-25T10:39:21.000Z",
-      "webUrl": "https://www.ebay.com/itm/257701460877?hash=item3c00343b8d:g:eEgAAeSwrj5qjXDF",
+      "listedAt": "2026-08-25T14:00:39.000Z",
+      "webUrl": "https://www.ebay.com/itm/407169144454?hash=item5ecd2c1686:g:7GoAAeSw-dlqjZ~l",
       "marketplace": "EBAY_US",
-      "surfacedAt": "2026-08-25T13:08:59.212Z",
+      "surfacedAt": "2026-08-25T15:56:54.560Z",
       "context": {
-        "k": "meteorite",
+        "k": "megalodon-tooth",
         "kind": "class",
-        "med": 3575,
-        "lo": 550,
-        "hi": 15380,
-        "n": 359,
+        "med": 24320,
+        "lo": 3055,
+        "hi": 24320,
+        "n": 28,
         "lastSale": "2026-07-14"
       }
     },
@@ -9610,31 +9610,31 @@
       "huntId": "sweep:fossils",
       "huntLabel": "context lead — not a priced call",
       "noBook": true,
-      "id": "z6zav5",
-      "itemId": "v1|257701461381|0",
-      "legacyItemId": "257701461381",
+      "id": "m99nsc",
+      "itemId": "v1|407169168671|0",
+      "legacyItemId": "407169168671",
       "vertical": "science",
-      "title": "Ries Crater Miocene Meteorite Impact shocked belemnite fossil in display #2",
-      "imageUrl": "https://i.ebayimg.com/images/g/kkoAAeSwG9FqjXD~/s-l225.jpg",
-      "allIn": 34.08,
-      "itemPrice": 20.45,
-      "shipping": 13.63,
+      "title": "Megalodon Shark Tooth 4.83 Inch - Natural - Thick Fossil - Real Teeth 20649",
+      "imageUrl": "https://i.ebayimg.com/images/g/wVIAAeSwuVhqjaJ6/s-l225.jpg",
+      "allIn": 95,
+      "itemPrice": 89,
+      "shipping": 6,
       "seller": {
-        "username": "sdfossils",
-        "feedbackPercentage": 99.9,
-        "feedbackScore": 9663
+        "username": "scubaslogfossils",
+        "feedbackPercentage": 100,
+        "feedbackScore": 5941
       },
-      "listedAt": "2026-08-25T10:40:16.000Z",
-      "webUrl": "https://www.ebay.com/itm/257701461381?hash=item3c00343d85:g:kkoAAeSwG9FqjXD~",
+      "listedAt": "2026-08-25T14:11:33.000Z",
+      "webUrl": "https://www.ebay.com/itm/407169168671?hash=item5ecd2c751f:g:wVIAAeSwuVhqjaJ6",
       "marketplace": "EBAY_US",
-      "surfacedAt": "2026-08-25T13:08:59.212Z",
+      "surfacedAt": "2026-08-25T15:56:54.560Z",
       "context": {
-        "k": "meteorite",
+        "k": "megalodon-tooth",
         "kind": "class",
-        "med": 3575,
-        "lo": 550,
-        "hi": 15380,
-        "n": 359,
+        "med": 24320,
+        "lo": 3055,
+        "hi": 24320,
+        "n": 28,
         "lastSale": "2026-07-14"
       }
     },
@@ -9642,288 +9642,36 @@
       "huntId": "sweep:fossils",
       "huntLabel": "context lead — not a priced call",
       "noBook": true,
-      "id": "z8ya5e",
-      "itemId": "v1|257701461616|0",
-      "legacyItemId": "257701461616",
+      "id": "1cnhli1",
+      "itemId": "v1|318777673992|0",
+      "legacyItemId": "318777673992",
       "vertical": "science",
-      "title": "Ries Crater Miocene Meteorite Impact shocked belemnite fossil in display #3",
-      "imageUrl": "https://i.ebayimg.com/images/g/dWIAAeSwoAJqjXEg/s-l225.jpg",
-      "allIn": 34.08,
-      "itemPrice": 20.45,
-      "shipping": 13.63,
+      "title": "MEGALODON SHARK TOOTH 4 1/4\" SHARK TEETH LARGE JAW FOSSIL STUNNING COLOR ~REAL",
+      "imageUrl": "https://i.ebayimg.com/images/g/mWAAAeSwZuRqjakK/s-l225.jpg",
+      "allIn": 96.69,
+      "itemPrice": 89,
+      "shipping": 7.69,
       "seller": {
-        "username": "sdfossils",
-        "feedbackPercentage": 99.9,
-        "feedbackScore": 9663
+        "username": "kenny2000blue",
+        "feedbackPercentage": 100,
+        "feedbackScore": 18431
       },
-      "listedAt": "2026-08-25T10:40:41.000Z",
-      "webUrl": "https://www.ebay.com/itm/257701461616?hash=item3c00343e70:g:dWIAAeSwoAJqjXEg",
+      "listedAt": "2026-08-25T14:40:30.000Z",
+      "webUrl": "https://www.ebay.com/itm/318777673992?hash=item4a38a14908:g:mWAAAeSwZuRqjakK",
       "marketplace": "EBAY_US",
-      "surfacedAt": "2026-08-25T13:08:59.212Z",
+      "surfacedAt": "2026-08-25T15:56:54.560Z",
       "context": {
-        "k": "meteorite",
+        "k": "megalodon-tooth",
         "kind": "class",
-        "med": 3575,
-        "lo": 550,
-        "hi": 15380,
-        "n": 359,
+        "med": 24320,
+        "lo": 3055,
+        "hi": 24320,
+        "n": 28,
         "lastSale": "2026-07-14"
       }
     }
   ],
   "closing": [
-    {
-      "id": "lnpqz5",
-      "itemId": "v1|188811850786|0",
-      "legacyItemId": "188811850786",
-      "vertical": "watches",
-      "key": "rolex|18238",
-      "title": "ROLEX DAY DATE 18238 18239 DISK DAY AND DATA SPANISH CAL 3155 LIKE NEW",
-      "imageUrl": "https://i.ebayimg.com/images/g/-akAAeSwHOFpStLs/s-l225.jpg",
-      "currentBid": 383.75,
-      "bidCount": 0,
-      "endsAt": "2026-08-25T14:09:08.000Z",
-      "shipping": 44.32,
-      "allInBid": 428.07,
-      "edgeUsd": 35411.93,
-      "med": 35840,
-      "lo": 11611,
-      "hi": 50400,
-      "n": 123,
-      "n12": 11,
-      "lastSale": "2026-06-15",
-      "trend": -0.072,
-      "conf": "medium",
-      "bidVsBook": 0.9880560825892857,
-      "risk": {
-        "grade": "D",
-        "score": 38,
-        "reasons": [
-          "raw, no authenticity anchor",
-          "seller 100% feedback",
-          "established seller (161 ratings)",
-          "sparse listing, no item specifics",
-          "not yet enriched (aspects provisional)",
-          "watches: elevated fake-rate prior"
-        ]
-      },
-      "listedAt": "2026-08-19T14:09:25.000Z",
-      "webUrl": "https://www.ebay.com/itm/188811850786?hash=item2bf6103422:g:-akAAeSwHOFpStLs",
-      "marketplace": "EBAY_US",
-      "evidenceUrl": "https://lectr.bid/key/watches/rolex%7C18238",
-      "surfacedAt": "2026-08-25T13:08:59.212Z",
-      "isNew": true
-    },
-    {
-      "id": "ngl44n",
-      "itemId": "v1|188811853044|0",
-      "legacyItemId": "188811853044",
-      "vertical": "watches",
-      "key": "rolex|18238",
-      "title": "ROLEX DAY DATE 18238 18239 DISK DATA ITALIAN ITALIAN CAL 3155 LIKE NEW",
-      "imageUrl": "https://i.ebayimg.com/images/g/~rwAAeSwRpBpStOH/s-l225.jpg",
-      "currentBid": 348.75,
-      "bidCount": 0,
-      "endsAt": "2026-08-25T14:09:18.000Z",
-      "shipping": 44.32,
-      "allInBid": 393.07,
-      "edgeUsd": 35446.93,
-      "med": 35840,
-      "lo": 11611,
-      "hi": 50400,
-      "n": 123,
-      "n12": 11,
-      "lastSale": "2026-06-15",
-      "trend": -0.072,
-      "conf": "medium",
-      "bidVsBook": 0.9890326450892857,
-      "risk": {
-        "grade": "D",
-        "score": 38,
-        "reasons": [
-          "raw, no authenticity anchor",
-          "seller 100% feedback",
-          "established seller (161 ratings)",
-          "sparse listing, no item specifics",
-          "not yet enriched (aspects provisional)",
-          "watches: elevated fake-rate prior"
-        ]
-      },
-      "listedAt": "2026-08-19T14:09:20.000Z",
-      "webUrl": "https://www.ebay.com/itm/188811853044?hash=item2bf6103cf4:g:~rwAAeSwRpBpStOH",
-      "marketplace": "EBAY_US",
-      "evidenceUrl": "https://lectr.bid/key/watches/rolex%7C18238",
-      "surfacedAt": "2026-08-25T13:08:59.212Z",
-      "isNew": true
-    },
-    {
-      "id": "j8yfhs",
-      "itemId": "v1|188811887802|0",
-      "legacyItemId": "188811887802",
-      "vertical": "watches",
-      "key": "rolex|16520",
-      "title": "ROLEX DAYTONA 16520 16523 CASEBACK VINTAGE 16500 ORIGINAL CASEBACK",
-      "imageUrl": "https://i.ebayimg.com/images/g/LIQAAeSw00NoNcyZ/s-l225.jpg",
-      "currentBid": 2494.93,
-      "bidCount": 0,
-      "endsAt": "2026-08-25T14:11:35.000Z",
-      "shipping": 44.32,
-      "allInBid": 2539.25,
-      "edgeUsd": 31218.75,
-      "med": 33758,
-      "lo": 12094,
-      "hi": 51941,
-      "n": 246,
-      "n12": 7,
-      "lastSale": "2026-05-13",
-      "trend": -0.16,
-      "conf": "medium",
-      "bidVsBook": 0.9247807927009895,
-      "risk": {
-        "grade": "D",
-        "score": 38,
-        "reasons": [
-          "raw, no authenticity anchor",
-          "seller 100% feedback",
-          "established seller (161 ratings)",
-          "sparse listing, no item specifics",
-          "not yet enriched (aspects provisional)",
-          "watches: elevated fake-rate prior"
-        ]
-      },
-      "listedAt": "2026-08-18T14:11:35.000Z",
-      "webUrl": "https://www.ebay.com/itm/188811887802?hash=item2bf610c4ba:g:LIQAAeSw00NoNcyZ",
-      "marketplace": "EBAY_US",
-      "evidenceUrl": "https://lectr.bid/key/watches/rolex%7C16520",
-      "surfacedAt": "2026-08-25T13:08:59.212Z",
-      "isNew": true
-    },
-    {
-      "id": "10mmb5a",
-      "itemId": "v1|188811891346|0",
-      "legacyItemId": "188811891346",
-      "vertical": "watches",
-      "key": "rolex|116528",
-      "title": "ROLEX DAYTONA BLUE DIAL RACING 116528 116523 116518 116503 116508 WITH HANDS",
-      "imageUrl": "https://i.ebayimg.com/images/g/5g0AAeSwNBlp5ILi/s-l225.jpg",
-      "currentBid": 3614.67,
-      "bidCount": 0,
-      "endsAt": "2026-08-25T14:14:50.000Z",
-      "shipping": 58.32,
-      "allInBid": 3672.9900000000002,
-      "edgeUsd": 35341.01,
-      "med": 39014,
-      "lo": 17560,
-      "hi": 47288,
-      "n": 36,
-      "n12": 4,
-      "lastSale": "2026-05-13",
-      "trend": -0.04,
-      "conf": "medium",
-      "bidVsBook": 0.9058545650279387,
-      "risk": {
-        "grade": "D",
-        "score": 38,
-        "reasons": [
-          "raw, no authenticity anchor",
-          "seller 100% feedback",
-          "established seller (161 ratings)",
-          "sparse listing, no item specifics",
-          "not yet enriched (aspects provisional)",
-          "watches: elevated fake-rate prior"
-        ]
-      },
-      "listedAt": "2026-08-18T14:14:50.000Z",
-      "webUrl": "https://www.ebay.com/itm/188811891346?hash=item2bf610d292:g:5g0AAeSwNBlp5ILi",
-      "marketplace": "EBAY_US",
-      "evidenceUrl": "https://lectr.bid/key/watches/rolex%7C116528",
-      "surfacedAt": "2026-08-25T13:08:59.212Z",
-      "isNew": true
-    },
-    {
-      "id": "uo7qhr",
-      "itemId": "v1|128028064624|0",
-      "legacyItemId": "128028064624",
-      "vertical": "sports-cards",
-      "key": "chipper-jones|1991|bowman|569|raw",
-      "title": "1991 Bowman - Chipper Jones #569 (RC)",
-      "imageUrl": "https://i.ebayimg.com/images/g/PoIAAeSwN0locsA6/s-l225.jpg",
-      "currentBid": 45,
-      "bidCount": 0,
-      "endsAt": "2026-08-25T14:35:26.000Z",
-      "shipping": 5.5,
-      "allInBid": 50.5,
-      "edgeUsd": 54.5,
-      "med": 105,
-      "lo": 61,
-      "hi": 129,
-      "n": 4,
-      "n12": 3,
-      "lastSale": "2026-01-15",
-      "trend": null,
-      "conf": "medium",
-      "bidVsBook": 0.519047619047619,
-      "risk": {
-        "grade": "C",
-        "score": 44,
-        "reasons": [
-          "raw, no authenticity anchor",
-          "seller 100% feedback",
-          "established seller (364 ratings)",
-          "sparse listing, no item specifics",
-          "not yet enriched (aspects provisional)",
-          "sports-cards: low fake-rate prior"
-        ]
-      },
-      "listedAt": "2026-08-15T14:35:26.000Z",
-      "webUrl": "https://www.ebay.com/itm/128028064624?hash=item1dcf113b70:g:PoIAAeSwN0locsA6",
-      "marketplace": "EBAY_US",
-      "evidenceUrl": "https://lectr.bid/key/sports-cards/chipper-jones%7C1991%7Cbowman%7C569%7Craw",
-      "surfacedAt": "2026-08-25T13:08:59.212Z",
-      "isNew": true
-    },
-    {
-      "id": "l6f4z5",
-      "itemId": "v1|267760838284|0",
-      "legacyItemId": "267760838284",
-      "vertical": "watches",
-      "key": "rolex|1500",
-      "title": "1976 Rolex Oyster Perpetual Date 34mm Blue Date Dial Mens Watch 1500",
-      "imageUrl": "https://i.ebayimg.com/images/g/ojUAAeSw0FZqhG1j/s-l225.jpg",
-      "currentBid": 3800,
-      "bidCount": 16,
-      "endsAt": "2026-08-25T14:37:56.000Z",
-      "shipping": 5.89,
-      "allInBid": 3805.89,
-      "edgeUsd": 5084.110000000001,
-      "med": 8890,
-      "lo": 2354,
-      "hi": 11290,
-      "n": 44,
-      "n12": 4,
-      "lastSale": "2026-06-17",
-      "trend": 1.419,
-      "conf": "medium",
-      "bidVsBook": 0.5718908886389201,
-      "risk": {
-        "grade": "C",
-        "score": 40,
-        "reasons": [
-          "raw, no authenticity anchor",
-          "seller 99.7% feedback",
-          "established seller (17413 ratings)",
-          "sparse listing, no item specifics",
-          "not yet enriched (aspects provisional)",
-          "watches: elevated fake-rate prior"
-        ]
-      },
-      "listedAt": "2026-08-18T14:37:56.000Z",
-      "webUrl": "https://www.ebay.com/itm/267760838284?hash=item3e57ca268c:g:ojUAAeSw0FZqhG1j",
-      "marketplace": "EBAY_US",
-      "evidenceUrl": "https://lectr.bid/key/watches/rolex%7C1500",
-      "surfacedAt": "2026-08-25T13:08:59.212Z",
-      "isNew": true
-    },
     {
       "id": "12xg6zo",
       "itemId": "v1|407156736144|0",
@@ -9969,14 +9717,14 @@
   ],
   "stats": {
     "calls": {
-      "search": 156,
+      "search": 167,
       "getItems": 235
     },
-    "listingsEvaluated": 8370,
+    "listingsEvaluated": 10662,
     "bySlice": {
       "cards-slabs": {
-        "calls": 23,
-        "listings": 4388
+        "calls": 21,
+        "listings": 4056
       },
       "cards-raw": {
         "calls": 1,
@@ -9991,16 +9739,16 @@
         "listings": 0
       },
       "sports-autos": {
-        "calls": 1,
-        "listings": 18
+        "calls": 8,
+        "listings": 1509
       },
       "ent-autos": {
         "calls": 1,
-        "listings": 98
+        "listings": 182
       },
       "historical-autos": {
         "calls": 1,
-        "listings": 5
+        "listings": 28
       },
       "art-prints": {
         "calls": 1,
@@ -10008,71 +9756,69 @@
       },
       "fossils": {
         "calls": 4,
-        "listings": 758
+        "listings": 665
       },
       "vintage-computing": {
         "calls": 1,
-        "listings": 109
+        "listings": 171
       },
       "cards-slabs-closing": {
-        "calls": 10,
-        "listings": 1936
+        "calls": 13,
+        "listings": 2580
       },
       "watches-closing": {
-        "calls": 3,
-        "listings": 578
+        "calls": 4,
+        "listings": 783
       },
       "sports-autos-closing": {
-        "calls": 2,
-        "listings": 346
+        "calls": 3,
+        "listings": 447
       },
       "ent-autos-closing": {
-        "calls": 1,
-        "listings": 130
+        "calls": 2,
+        "listings": 234
       },
       "historical-autos-closing": {
         "calls": 1,
-        "listings": 4
+        "listings": 7
       }
     },
     "gateReasons": {
       "sports-cards": {
-        "noBookRow": 3247,
-        "tooShallow": 26,
-        "staleBook": 15,
-        "scamCap": 1,
-        "thinBook": 4,
-        "sellerFloor": 1
+        "noBookRow": 3453,
+        "staleBook": 13,
+        "edgeFloor": 1,
+        "tooShallow": 15,
+        "sellerFloor": 4,
+        "thinBook": 7
       },
       "autographs": {
-        "noBookRow": 21,
-        "staleBook": 2,
-        "tooShallow": 9
+        "noBookRow": 109,
+        "tooShallow": 36,
+        "scamCap": 4,
+        "endWindow": 1,
+        "staleBook": 1,
+        "sellerFloor": 1
       },
       "watches": {
-        "noBookRow": 110,
-        "tooShallow": 280,
+        "tooShallow": 184,
+        "noBookRow": 58,
         "staleBook": 14,
-        "scamCap": 4,
-        "endWindow": 1
-      },
-      "pokemon": {
-        "noBookRow": 35,
-        "tooShallow": 5
+        "scamCap": 9
       },
       "art-editions": {
-        "noBookRow": 17
+        "noBookRow": 32
       }
     },
     "identified": {
-      "sports-cards": 3209,
-      "autographs": 10,
-      "watches": 26
+      "sports-cards": 3471,
+      "autographs": 49,
+      "watches": 33
     },
     "goldmine": {
       "keys": 91,
-      "listings": 1299,
-      "surfaced": 139,
+      "listings": 1073,
+      "surfaced": 26,
       "closing": 0
     }
   }
