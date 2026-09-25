@@ -125,3 +125,13 @@ The 13 BSTJ grails that ran inside the deal board (`hunt/priority.yaml`, now an 
 - Their title rules match the old lane: journal name + year for the per-year hunts, plus the roman-numeral and "BSTJ" catch-alls.
 
 When one listing matches several hunts, only the highest-priority hunt keeps it; the others record `claimed-by-earlier-hunt:<id>`. This matters for the catch-alls. `/hunt/` now forwards to `/#hunts-grails`. The engine's worst case is now 35 × 10 = 350 calls per tick; the board still gets whatever the hunts leave.
+
+## Access (PIN gate, Sep 25 2026)
+
+The whole site is private. `functions/_middleware.ts` runs in front of every request: pages, `/data/*.json` and `/api/v1/*`.
+
+- **Browsers** get a PIN screen. The correct PIN sets an HttpOnly, Secure cookie (an HMAC of the PIN) for 30 days.
+- **Agents** send the PIN in an `X-Starling-Pin` header.
+- **Where the PIN lives:** the GitHub secret `STARLING_PIN`. `deploy.yml` pushes it to the Pages project as a secret before each deploy and refuses to deploy if it's missing. It is never in this public repo.
+- **If the PIN is unset, the gate fails closed** and serves a 503.
+- **Strength:** a 4-digit PIN keeps the site private from casual visitors and search engines. It is not strong security: wrong attempts are slowed, but not rate-limited per IP.
