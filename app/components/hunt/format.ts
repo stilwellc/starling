@@ -62,12 +62,14 @@ const REASONS: Record<string, string> = {
   'over-cap': 'over cap',
   'watch-only': 'watch-only (no cap)',
   'all-in-unknown': 'all-in unknown',
+  'claims-original': 'listed as original',
 };
 
 export function reasonText(code: string): string {
   if (REASONS[code]) return REASONS[code];
   if (code.startsWith('must:')) return `title has “${code.slice(5)}”`;
   if (code.startsWith('game-used:')) return `game-used wording: “${code.slice(10)}”`;
+  if (code.startsWith('medium:')) return `medium: ${code.slice(7)}`;
   return code;
 }
 
@@ -81,10 +83,14 @@ const FLAGS: Record<string, string> = {
   'condition:for-parts': 'condition: for parts',
   'seller-low-feedback': 'seller feedback low',
   'shipping-unknown': 'shipping not listed',
+  'price-far-below-market': 'price far below market — authenticity doubtful',
+  'fake-art-template': 'matches a common fake-art listing template',
 };
 
 export function flagText(code: string): string {
-  return FLAGS[code] ?? code;
+  if (FLAGS[code]) return FLAGS[code];
+  if (code.startsWith('same-seller-repeats:')) return `seller lists ${code.split(':')[1]} more like this`;
+  return code;
 }
 
 export function isKnownCode(code: string): boolean {
@@ -92,6 +98,8 @@ export function isKnownCode(code: string): boolean {
     code in FLAGS ||
     code in REASONS ||
     code.startsWith('must:') ||
+    code.startsWith('medium:') ||
+    code.startsWith('same-seller-repeats:') ||
     code.startsWith('game-used:')
   );
 }

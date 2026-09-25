@@ -152,6 +152,11 @@ export function HuntCard({ c }: { c: Card }) {
           ) : (
             <span className="hx-badge">reviewed ok</span>
           )}
+          {c.similarCount > 0 && (
+            <span className="hx-badge" title="Same seller, same title — folded into this card; the lowest all-in is shown.">
+              +{c.similarCount} similar from this seller
+            </span>
+          )}
           {c.carried && (
             <span className="hx-badge hx-badge-warn" title="This hunt's latest search did not complete; this listing is from an earlier successful run.">
               carried from an earlier run

@@ -67,6 +67,8 @@ export interface ProviderHealth {
 export interface Observation {
   listing: HuntListing;
   evaluation: Evaluation;
+  /** other item ids from the same seller with the same normalized title, folded into this one (lowest all-in kept) */
+  similar?: string[];
 }
 
 export interface RunSummary {

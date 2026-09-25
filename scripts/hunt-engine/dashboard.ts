@@ -91,6 +91,8 @@ export interface Card {
   review: 'ok' | 'review';
   carried: boolean;
   alertKey: string | null;
+  /** same-seller, same-title repeats folded into this card */
+  similarCount: number;
 }
 
 export interface DashboardPayload {
@@ -171,6 +173,7 @@ export function buildDashboard(args: {
         review: e.review,
         carried,
         alertKey: pendingKey && ledger.alerts[pendingKey] ? pendingKey : null,
+        similarCount: o.similar?.length ?? 0,
       });
     }
     rows.push({
@@ -197,6 +200,7 @@ export function buildDashboard(args: {
   const rank = (c: Card) => GROUP_ORDER.indexOf(c.group);
   cards.sort((a, b) =>
     rank(a) - rank(b) ||
+    (a.review === 'review' ? 1 : 0) - (b.review === 'review' ? 1 : 0) ||
     (b.underPct ?? -Infinity) - (a.underPct ?? -Infinity) ||
     (byId.get(a.huntId)!.priority - byId.get(b.huntId)!.priority) ||
     a.listingId.localeCompare(b.listingId));

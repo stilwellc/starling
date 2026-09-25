@@ -129,7 +129,7 @@ test('page and API report the same run; staleness is computed at read time', asy
 
 test('alerts paginate with a stable cursor', async () => {
   const store = new MemoryStore();
-  const items = Array.from({ length: 7 }, (_, i) => crumb(`k${i}`, 1000 + i));
+  const items = Array.from({ length: 7 }, (_, i) => summary(`k${i}`, `Robert Crumb Original Ink Drawing sheet ${i}`, 1000 + i, 25));
   const r = await runScan({ provider: new FixtureProvider({ 'art-crumb-drawing': { itemSummaries: items } }), store, mode: 'fixture', now: clockFrom('2026-09-24T00:00:00Z'), runId: 'pg', log: () => {} });
   const now = Date.parse('2026-09-24T00:30:00Z');
   const p1 = alertsResponse(r.dashboard, now, { limit: 3 });

@@ -16,6 +16,7 @@
 import { type Hunt } from './hunts';
 import { validateHunts } from './validate';
 import { evaluate } from './evaluate';
+import { normalizeText } from './text';
 import { ProviderAuthError, ProviderRateLimitError, type HuntProvider } from './provider';
 import { getJson, putJson, type ObjectStore } from './store';
 import { emptyLedger, updateLedger } from './ledger';
@@ -81,6 +82,7 @@ export async function runScan(o: ScanOptions): Promise<ScanResult> {
         seen.add(l.itemId);
         obs.push({ listing: l, evaluation: evaluate(h, l) });
       }
+      collapseDuplicates(obs);
       returnedTotal += r.returned;
       rejectedTotal += obs.filter((x) => x.evaluation.classification === 'reject').length;
       fresh.set(h.id, obs);
@@ -208,4 +210,24 @@ export async function runScan(o: ScanOptions): Promise<ScanResult> {
   };
   await putJson(o.store, `runs/${runId}/summary.json`, summary); // 10
   return { summary, dashboard, manifest };
+}
+
+/** Fold same-seller, same-title repeats (spam listings) into one observation — the lowest all-in stands, the rest are listed as `similar`. Rejects are left as-is (evidence). */
+export function collapseDuplicates(obs: Observation[]): void {
+  const groups = new Map<string, Observation[]>();
+  for (const o of obs) {
+    if (o.evaluation.classification === 'reject') continue;
+    const k = `${o.listing.seller?.username ?? ''}|${normalizeText(o.listing.title)}`;
+    const g = groups.get(k);
+    if (g) g.push(o); else groups.set(k, [o]);
+  }
+  const drop = new Set<Observation>();
+  for (const g of groups.values()) {
+    if (g.length < 2) continue;
+    g.sort((a, b) => (a.evaluation.allIn ?? Infinity) - (b.evaluation.allIn ?? Infinity) || a.listing.itemId.localeCompare(b.listing.itemId));
+    g[0].similar = g.slice(1).map((o) => o.listing.itemId);
+    g[0].evaluation.flags.push(`same-seller-repeats:${g.length - 1}`);
+    for (const o of g.slice(1)) drop.add(o);
+  }
+  for (let i = obs.length - 1; i >= 0; i--) if (drop.has(obs[i])) obs.splice(i, 1);
 }

@@ -143,3 +143,65 @@ export const AUTHENTICITY_EVIDENCE = [
   'photo matched', 'photomatched', 'photo match', 'photomatch', 'meigray', 'resolution photomatching',
   'coa', 'loa', 'psa dna', 'psa', 'jsa', 'beckett', 'bas', 'fanatics', 'mears', 'provenance', 'nfl auction', 'authenticated',
 ];
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Collection-level enforcement of the brief's own rules. These sit ON TOP of
+// each hunt's pinned titleMust/titleExcludes (which stay exactly as briefed):
+// the first live run (2026-09-25) showed sellers never write "trading card" on
+// a relic card, and "unique works only" needs the publication vocabulary.
+// ─────────────────────────────────────────────────────────────────────────────
+
+/** Unique works only: publications, multiples, merch and objects are not a work by the artist. */
+export const ART_NOT_UNIQUE = [
+  'books', 'hardcover', 'hard cover', 'softcover', 'soft cover', 'paperback', 'catalog', 'catalogue', 'monograph', 'isbn',
+  'postcard', 'comic', 'comics', 'zine', 'fanzine', 'reproduction', 'repro', 'copy', 'style of', 'in the style', 'after',
+  'inspired', 'homage', 'tribute', 'photograph', 'photo', 'digital', 'flag', 'hat', 'spray paint can', 'skateboard', 'deck',
+  'hoodie', 'shirt', 'tee', 'figure', 'toy', 'vinyl', 'sneaker', 'poster', 'lithograph', 'offset', 'giclée', 'canvas print', 'art print',
+  'paintings', 'checklist', 'criticism', 'volume', 'vol', 'issue', 'gallery guide', 'bag', 'tote', 'mug', 'keychain', 'pin', 'socks',
+  'jacket', 'sweatshirt', 'futura laboratories', 'hc', 'hb', 'pb', 'hardback', 'graphic novel', 'novel', '1st', 'vf', 'nm',
+  'the works of', 'kitchen sink press', 'last gasp', 'fantagraphics', 'press', 'draws the blues', 'art and beauty',
+];
+
+/** A recurring fake-art listing template ("drawing on old paper, signed & stamped"): kept visible, flagged for review. */
+export const FAKE_TEMPLATE_PHRASES = [['old paper', 'stamped'], ['handmade', 'stamped'], ['coa', 'original drawing', 'vintage']];
+
+/** Other artists — a title naming two or more of them is keyword stuffing, not a work by the hunted artist. */
+export const OTHER_ARTISTS = [
+  'banksy', 'barry mcgee', 'retna', 'irak', 'cope2', 'cope 2', 'dondi', 'shepard fairey', 'os gemeos', 'invader', 'kaws',
+  'basquiat', 'keith haring', 'haring', 'doze green', 'zephyr', 'lee quinones', 'revs', 'katsu', 'mike giant', 'jose parla',
+  'andy warhol', 'warhol', 'lady pink', 'crash', 'daze', 'seen', 'phase 2', 'rammellzee', 'kenny scharf', 'dash snow', 'twist',
+  'eric haze', 'futura', 'george condo', 'peter saul', 'robert crumb', 'r crumb',
+];
+
+/** The artist's name as it must appear (full name or a known alias) — a surname alone ("Saul", "Crumb", "Haze") is not enough. */
+export const ARTIST_NAMES: Record<string, string[]> = {
+  'art-haze-painting': ['eric haze'],
+  'art-haze-painting-misspell': ['eric hayes', 'erik haze', 'erik hayes'],
+  'art-futura-painting': ['futura 2000', 'futura2000', 'futura 2k', 'futura'],
+  'art-futura-atoms': ['futura 2000', 'futura2000', 'futura 2k', 'futura'],
+  'art-saul-painting': ['peter saul'],
+  'art-haze-drawing': ['eric haze'],
+  'art-condo-drawing': ['george condo'],
+  'art-saul-drawing': ['peter saul'],
+  'art-crumb-drawing': ['robert crumb', 'r crumb', 'robert r crumb'],
+};
+
+/** True game-used only: a relic/swatch trading card is not a game-used jersey, whatever its title says. */
+export const TRADING_CARD_SIGNALS = [
+  'card', 'cards', 'swatch', 'relic', 'panini', 'topps', 'donruss', 'prizm', 'bowman', 'upper deck', 'fleer', 'leaf',
+  'jersey fusion', 'contenders', 'chronicles', 'mosaic', 'optic', 'rookie phenoms', 'rpa', 'plates and patches', 'materials',
+  'absolute', 'burners', 'ssp', 'game day', '2 color', '3 color', '4 color', 'jersey patch', 'dual', 'triple', 'quad', 'prime',
+  'auto patch', 'souvenirs', 'gamers',
+];
+
+/** Publications are never furniture. */
+export const FURNITURE_NOT_OBJECT = ['furnishings', 'catalog', 'catalogue', 'book', 'books', 'hardcover', 'softcover', 'paperback', 'brochure', 'magazine', 'the soul of a tree'];
+
+/** Medium/object evidence the title must carry, per the brief's own scopes (Paintings: canvas/board — acrylic, oil, spray; Drawings: works on paper). */
+export const ART_MEDIUM_EVIDENCE: Record<'Paintings' | 'Drawings', string[]> = {
+  Paintings: ['painting', 'painted', 'canvas', 'board', 'panel', 'acrylic', 'oil', 'spray', 'spray paint', 'enamel', 'original', 'mixed media'],
+  Drawings: ['drawing', 'drawn', 'sketch', 'ink', 'pen', 'pencil', 'marker', 'pastel', 'crayon', 'gouache', 'watercolor', 'paper', 'illustration', 'original', 'doodle', 'blackbook'],
+};
+
+/** Other designers — a furniture title naming two or more is a book, a lot, or a keyword-stuffed listing. */
+export const OTHER_DESIGNERS = ['eames', 'nelson', 'wanscher', 'bbpr', 'saarinen', 'bertoia', 'noguchi', 'wegner', 'jacobsen', 'aalto', 'breuer', 'mies', 'knoll associates catalog'];

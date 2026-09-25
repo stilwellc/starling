@@ -12,8 +12,16 @@
  *   reject — a title or category rule fails
  */
 import {
+  ARTIST_NAMES,
+  ART_MEDIUM_EVIDENCE,
+  OTHER_DESIGNERS,
+  ART_NOT_UNIQUE,
   AUTHENTICITY_EVIDENCE,
+  FAKE_TEMPLATE_PHRASES,
+  FURNITURE_NOT_OBJECT,
   GAME_USED_ALIASES,
+  OTHER_ARTISTS,
+  TRADING_CARD_SIGNALS,
   PHOTO_MATCH_ALIASES,
   SUPER_BOWL_52_ALIASES,
   type Hunt,
@@ -73,7 +81,42 @@ export function evaluate(hunt: Hunt, l: HuntListing): Evaluation {
   }
 
   // 3. collection rules
+  if (hunt.vertical === 'art') {
+    const names = ARTIST_NAMES[hunt.id] ?? [];
+    const name = firstPhrase(t, names);
+    if (names.length && !name) rejects.push('art:artist-name-missing');
+    for (const x of ART_NOT_UNIQUE) if (hasPhrase(t, x)) rejects.push(`art:not-unique:${x}`);
+    const medium = ART_MEDIUM_EVIDENCE[hunt.section as 'Paintings' | 'Drawings'] ?? [];
+    const med = firstPhrase(t, medium);
+    if (medium.length && !med) rejects.push('art:medium-missing');
+    else if (med) reasons.push(`medium:${med}`);
+    const own = new Set(names.map((n) => normalizeText(n).trim()));
+    const others = OTHER_ARTISTS.filter((a) => !own.has(normalizeText(a).trim()) && !names.some((n) => normalizeText(n).includes(normalizeText(a))) && hasPhrase(t, a));
+    if (others.length >= 2) rejects.push(`art:keyword-stuffed:${others.slice(0, 3).join('+')}`);
+    const claimsOriginal = hasPhrase(t, 'original') || hasPhrase(t, 'hand drawn') || hasPhrase(t, 'handmade') || hasPhrase(t, 'unique') || hasPhrase(t, 'one of a kind');
+    if (claimsOriginal) reasons.push('claims-original');
+    // publication forms: "Peter Saul: New Paintings…", "…by R. Crumb" with no original claim, "number 3"
+    const lead = l.title.trim().toLowerCase();
+    if (names.some((n) => new RegExp(`^\\W*${n.replace(/ /g, '[\\s.]+')}\\s*:`).test(lead))) rejects.push('art:publication-title');
+    if (!claimsOriginal && names.some((n) => hasPhrase(t, `by ${n}`) || hasPhrase(t, `by ${n.split(' ').slice(-1)[0]}`))) rejects.push('art:authored-publication');
+    if (/ number \d/.test(t) || / no \d+ /.test(t)) rejects.push('art:numbered-publication');
+  }
+  if (hunt.vertical === 'furniture') {
+    for (const x of FURNITURE_NOT_OBJECT) if (hasPhrase(t, x)) rejects.push(`furniture:publication:${x}`);
+    const designers = OTHER_DESIGNERS.filter((d) => hasPhrase(t, d));
+    if (designers.length >= 2) rejects.push(`furniture:other-designers:${designers.slice(0, 3).join('+')}`);
+  }
   if (hunt.vertical === 'sports') {
+    for (const x of TRADING_CARD_SIGNALS) if (hasPhrase(t, x)) { rejects.push(`sports:trading-card:${x}`); break; }
+    const surnames = ['mccoy', 'maclin', 'mcnabb', 'vick', 'westbrook', 'lynch', 'kelce', 'brown', 'goedert', 'wentz'];
+    if (surnames.filter((n) => hasPhrase(t, n)).length >= 1 && FULL_NAME[hunt.id] && !FULL_NAME[hunt.id].endsWith(surnames.find((n) => hasPhrase(t, n))!)) rejects.push('sports:multi-player');
+    if (/(^|[\s#(])\d{0,4}\s?\/\s?\d{1,4}(?![\d/])/.test(` ${l.title.toLowerCase()}`)) rejects.push('sports:serial-numbered');
+    if (hunt.id !== 'sports-sb52-football' && !hasPhrase(t, 'jersey')) rejects.push('sports:object-not-jersey');
+    if (hunt.id === 'sports-sb52-football') {
+      if (!hasPhrase(t, 'football') && !hasPhrase(t, 'ball')) rejects.push('sports:object-not-football');
+      const m = t.match(/ super ?bowl (\d{1,2}|[ivxl]{1,6}) /);
+      if (m && m[1] !== '52' && m[1] !== 'lii') rejects.push(`sports:different-super-bowl:${m[1]}`);
+    }
     const gu = firstPhrase(t, GAME_USED_ALIASES);
     if (gu) reasons.push(`game-used:${gu}`);
     else rejects.push('sports:not-game-used');
@@ -104,6 +147,8 @@ export function evaluate(hunt: Hunt, l: HuntListing): Evaluation {
   if ((fb != null && fb < 98) || (fs != null && fs < 10)) { flags.push('seller-low-feedback'); confidence -= 0.1; }
   if (l.shipping === null) flags.push('shipping-unknown');
 
+  if (hunt.vertical === 'art' && hunt.maxAllIn && l.price < hunt.maxAllIn * 0.05) { flags.push('price-far-below-market'); confidence -= 0.35; }
+  if (hunt.vertical === 'art' && FAKE_TEMPLATE_PHRASES.some((set) => set.every((p) => hasPhrase(t, p)))) { flags.push('fake-art-template'); confidence -= 0.45; }
   const allIn = l.shipping === null ? null : round2(l.price + l.shipping);
   const cap = hunt.maxAllIn;
   const base = {

@@ -27,6 +27,11 @@ on:
         description: 'Scan ONE hunt only (an id from scripts/hunt-engine/hunts.ts). Leave empty for the full tick (all 22 hunts, then the board).'
         required: false
         default: ''
+      hunts_only:
+        description: 'Run all 22 hunts but skip the deal board (saves the board budget).'
+        type: boolean
+        required: false
+        default: false
 
 # contents: write — the job commits the regenerated board JSON back to main.
 # (lectr learned this the hard way via 403s — commit 43e4005.)
@@ -92,7 +97,7 @@ jobs:
       # secret via env (secrets aren't available to step-level `if:`), so an
       # empty EBAY_CLIENT_ID transparently routes to board:fixture.
       - name: Run board pipeline
-        if: ${{ !inputs.hunt_id }}
+        if: ${{ !inputs.hunt_id && !inputs.hunts_only }}
         env:
           EBAY_CLIENT_ID: ${{ secrets.EBAY_CLIENT_ID }}
           EBAY_CLIENT_SECRET: ${{ secrets.EBAY_CLIENT_SECRET }}
@@ -119,7 +124,7 @@ jobs:
       # was created). Non-fatal: if it already exists or can't be created, the
       # push step below just degrades gracefully.
       - name: Ensure R2 bucket
-        if: ${{ !inputs.hunt_id }}
+        if: ${{ !inputs.hunt_id && !inputs.hunts_only }}
         run: npx --yes wrangler@4.120.1 r2 bucket create starling-data 2>/dev/null || echo "bucket exists or unavailable — continuing"
         continue-on-error: true
 
@@ -129,11 +134,11 @@ jobs:
       # from publishing + deploying. A failed push just means this tick is
       # stateless; the next tick retries.
       - name: Push R2 state
-        if: ${{ !inputs.hunt_id }}
+        if: ${{ !inputs.hunt_id && !inputs.hunts_only }}
         run: bash scripts/lib/data-store.sh push || echo "R2 state push failed (non-fatal) — board still publishes"
         continue-on-error: true
       - name: Prune old R2 versions (keep 14)
-        if: ${{ !inputs.hunt_id }}
+        if: ${{ !inputs.hunt_id && !inputs.hunts_only }}
         run: bash scripts/lib/data-store.sh prune 14 || echo "prune failed (non-fatal, retries next tick)"
         continue-on-error: true
 

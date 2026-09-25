@@ -112,3 +112,75 @@ test('fixed-price says "under cap"; auctions say "under cap now"', () => {
   assert.equal(a.capWording, 'under cap now');
   assert.ok(a.flags.includes('auction-price-moves'));
 });
+
+// ── collection-level rules, from real titles in the first live run (2026-09-25) ──
+test('sports: relic and swatch cards are not game-used jerseys', () => {
+  for (const t of [
+    'Jalen Hurts GAME USED JERSEY CARD #11/15 Donovan McNabb 2024 LEAF PHILADELPHIA',
+    'Jalen Hurts Game-Used Swatch Jersey Fusion Philadelphia Eagles',
+    '2022 Jersey Fusion Jalen Hurts Game Worn Pants Swatch Philadelphia Eagles',
+    'Jalen Hurts 2022 Panini Contenders - 2025 Jersey Fusion Game Used Swatch Eagles',
+  ]) assert.equal(ev('sports-hurts-jersey', t).classification, 'reject', t);
+  for (const t of [
+    'DESEAN JACKSON 2020 ABSOLUTE ABSOLUTE BURNERS EAGLES GAME WORN JERSEY PATCH /25!',
+    '2019 Panini Playoff DeSean Jackson Game Day Game Worn Jersey ! Eagles',
+    'DeSEAN JACKSON 2013 Momentum Materials Game-Used Jersey #65 107/199',
+  ]) assert.equal(ev('sports-djackson-jersey', t).classification, 'reject', t);
+  assert.notEqual(ev('sports-hurts-jersey', 'Jalen Hurts 2023 Game Worn Eagles Jersey Photo Matched Fanatics').classification, 'reject');
+});
+
+test('Super Bowl lane: another Super Bowl or a non-football object is out', () => {
+  assert.equal(ev('sports-sb52-football', 'Authentic Super Bowl 55 LV Tampa Bay Kansas City B&W Game Used PLAY SHEETS BRADY').classification, 'reject');
+  assert.equal(ev('sports-sb52-football', 'Super Bowl LII game used towel Eagles').classification, 'reject');
+  assert.notEqual(ev('sports-sb52-football', 'Super Bowl LII Game Used Football Eagles Patriots').classification, 'reject');
+});
+
+test('art: publications, keyword stuffing and surname-only hits are out', () => {
+  assert.equal(ev('art-crumb-drawing', 'The Sweeter Side of R. Crumb (2006, Robert Crumb) hardcover').classification, 'reject');
+  assert.equal(ev('art-crumb-drawing', 'Robert Crumb Lot of 3 Vintage 1992 Postcards - Kitchen Sink Press').classification, 'reject');
+  assert.equal(ev('art-crumb-drawing', 'R. Crumb Draws The Blues Paperback').classification, 'reject');
+  assert.equal(ev('art-condo-drawing', 'GEORGE CONDO: Paintings and Drawings 1988 The Pace Gallery catalog').classification, 'reject');
+  assert.equal(ev('art-futura-painting', 'Phobia Original Graffiti Art Barry McGee Futura 2000 Irak Cope2 Retna Doze Green').classification, 'reject');
+  assert.equal(ev('art-futura-painting', 'James Top NYC Graffiti Art Dondi Futura 2000 Eric Haze Zephyr Revolt Revs').classification, 'reject');
+  assert.equal(ev('art-saul-painting', 'Peter Gould "Better Call Saul" Creator AUTOGRAPH Signed 8x10 Photo').classification, 'reject');
+  assert.equal(ev('art-saul-painting', "Peter's Song by Carol P. Saul (1992, Hardcover)").classification, 'reject');
+  const real = ev('art-futura-painting', 'SIGNED Futura 2000 Hand Drawn Original Drawing Point Man blackbook pages nyc', { price: 990, shipping: 24 });
+  assert.notEqual(real.classification, 'reject');
+  assert.ok(real.reasons.includes('claims-original'));
+});
+
+test('art: a price far below the cap is flagged for review, not trusted', () => {
+  const e = ev('art-condo-drawing', 'George Condo (Handmade) Drawing On old Paper Signed & Stamped', { price: 110, shipping: 10 });
+  assert.notEqual(e.classification, 'reject');
+  assert.ok(e.flags.includes('price-far-below-market'));
+  assert.equal(e.review, 'review');
+});
+
+test('furniture: catalogs and books are not furniture', () => {
+  assert.equal(ev('design-nakashima-seating', "Sotheby's 20th C. Art Design Deco Nouveau Tiffany Nakashima Auction Catalog 2002").classification, 'reject');
+  assert.equal(ev('design-nakashima-seating', 'George Nakashima The Soul of a Tree Popular Edition Wood Furniture Chair').classification, 'reject');
+  assert.notEqual(ev('design-nakashima-seating', '1949 George Nakashima for Knoll N19 Straight Chair in Solid Birch').classification, 'reject');
+});
+
+test('art: the title must show a medium or object from the brief scope', () => {
+  assert.equal(ev('art-crumb-drawing', 'The Sweeter Side of R. Crumb').classification, 'reject');
+  assert.equal(ev('art-crumb-drawing', 'R CRUMB DRAWS THE BLUES ~ A BRILLIANT GRAPHIC NOVEL!').classification, 'reject');
+  assert.notEqual(ev('art-crumb-drawing', 'Robert Crumb Eat It Spot Illustration Page Original Art 1974', { price: 1500 }).classification, 'reject');
+  assert.notEqual(ev('art-futura-atoms', 'FUTURA ATOMIC RINGS Large Size Canvas Art', { price: 2000 }).classification, 'reject');
+});
+
+test('furniture: design books naming other designers are out', () => {
+  assert.equal(ev('design-nakashima-seating', 'Chairs Nelson George 1953 George Nakashima Ole Wanscher BBPR').classification, 'reject');
+  assert.equal(ev('design-nakashima-seating', 'Modern furnishings for the Home 1952 Furniture chairs George Nakashima Eames').classification, 'reject');
+});
+
+test('same-seller repeats fold into one card', async () => {
+  const { collapseDuplicates } = await import('../scan');
+  const { evaluate } = await import('../evaluate');
+  const mk = (id: string, price: number) => { const l = listing({ itemId: id, title: 'Robert Crumb original ink drawing', price, seller: { username: 'spam', feedbackPercentage: 99, feedbackScore: 50 } }); return { listing: l, evaluation: evaluate(hunt('art-crumb-drawing'), l) }; };
+  const obs: import('../types').Observation[] = [mk('a', 150), mk('b', 120), mk('c', 130)];
+  collapseDuplicates(obs);
+  assert.equal(obs.length, 1);
+  assert.equal(obs[0].listing.itemId, 'b');
+  assert.deepEqual(obs[0].similar, ['c', 'a']);
+});
