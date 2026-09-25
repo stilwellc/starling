@@ -24,6 +24,7 @@ const NOTE_LABEL: Record<keyof typeof HUNT_NOTES, string> = {
   drawings: 'Drawings',
   sports: 'Sports',
   furniture: 'Furniture',
+  grails: 'Grails',
   researchShape: 'Research result shape',
   priceMax: 'Price max',
 };
@@ -36,7 +37,7 @@ function mustText(m: Hunt['titleMust']): React.ReactNode {
   ));
 }
 
-const VERTICALS = ['art', 'sports', 'furniture'] as const;
+const VERTICALS = ['art', 'sports', 'furniture', 'grails'] as const;
 
 export default function BriefPage() {
   const s = HUNT_LIST_META.sections;

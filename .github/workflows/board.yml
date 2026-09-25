@@ -24,11 +24,11 @@ on:
   workflow_dispatch:
     inputs:
       hunt_id:
-        description: 'Scan ONE hunt only (an id from scripts/hunt-engine/hunts.ts). Leave empty for the full tick (all 22 hunts, then the board).'
+        description: 'Scan ONE hunt only (an id from scripts/hunt-engine/hunts.ts). Leave empty for the full tick (all 35 hunts, then the board).'
         required: false
         default: ''
       hunts_only:
-        description: 'Run all 22 hunts but skip the deal board (saves the board budget).'
+        description: 'Run all 35 hunts but skip the deal board (saves the board budget).'
         type: boolean
         required: false
         default: false
@@ -71,7 +71,7 @@ jobs:
         run: bash scripts/lib/data-store.sh pull
 
       # The acquisition hunt engine runs FIRST (before the board spends its
-      # budget): 22 checked-in hunts (scripts/hunt-engine/hunts.ts), live eBay
+      # budget): 35 checked-in hunts (22 acquisition hunts + 13 BSTJ grails) (scripts/hunt-engine/hunts.ts), live eBay
       # Browse only — it fails CLOSED on missing credentials and never falls back
       # to fixtures. Evidence + manifests go to R2 (starling-data, hunt/ prefix);
       # the dashboard payload lands in public/data/starling/hunt/ and ships with

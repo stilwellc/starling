@@ -40,10 +40,16 @@ const EXCLUDES: Record<string, string[]> = {
   'design-nakashima-seating': ['style', 'reproduction', 'replica', 'inspired', 'book', 'magazine', 'poster', 'print'],
 };
 
-test('exactly 22 active hunts, in the pinned order', () => {
-  assert.equal(HUNTS.filter((h) => h.active).length, 22);
-  assert.deepEqual(HUNTS.map((h) => h.id), PINNED.map((p) => p[0]));
-  assert.deepEqual(HUNTS.map((h) => h.priority), PINNED.map((_, i) => i + 1));
+const ACQ = HUNTS.filter((h) => h.vertical !== 'grails');
+
+test('the 22 acquisition hunts, in the pinned order, then the 13 grails', () => {
+  assert.equal(ACQ.filter((h) => h.active).length, 22);
+  assert.deepEqual(ACQ.map((h) => h.id), PINNED.map((p) => p[0]));
+  assert.deepEqual(ACQ.map((h) => h.priority), PINNED.map((_, i) => i + 1));
+  const grails = HUNTS.filter((h) => h.vertical === 'grails');
+  assert.equal(grails.length, 13);
+  assert.deepEqual(grails.map((h) => h.priority), grails.map((_, i) => 23 + i), 'grails come after the acquisition hunts');
+  for (const g of grails) assert.equal(g.maxAllIn, null, `${g.id} is watch-only, like the old lane`);
 });
 
 test('queries, title rules, caps, sections and scopes match the brief exactly', () => {

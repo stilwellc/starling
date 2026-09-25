@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { HUNTS } from '../hunts';
 import { validateHunts, HuntConfigError } from '../validate';
 
-test('the checked-in list validates', () => { assert.equal(validateHunts().length, 22); });
+test('the checked-in list validates', () => { assert.equal(validateHunts().length, 35); });
 
 test('duplicate ids fail', () => {
   const bad = HUNTS.map((h, i) => (i === 1 ? { ...h, id: HUNTS[0].id } : h));
@@ -13,7 +13,7 @@ test('duplicate ids fail', () => {
 test('non-positive caps fail; null (watch-only) is allowed', () => {
   assert.throws(() => validateHunts(HUNTS.map((h, i) => (i === 0 ? { ...h, maxAllIn: 0 } : h))), /positive number or null/);
   assert.throws(() => validateHunts(HUNTS.map((h, i) => (i === 0 ? { ...h, maxAllIn: -5 } : h))), /positive number or null/);
-  assert.equal(validateHunts(HUNTS.map((h, i) => (i === 0 ? { ...h, maxAllIn: null } : h))).length, 22);
+  assert.equal(validateHunts(HUNTS.map((h, i) => (i === 0 ? { ...h, maxAllIn: null } : h))).length, 35);
 });
 
 test('empty query or title terms fail', () => {
@@ -22,9 +22,9 @@ test('empty query or title terms fail', () => {
   assert.throws(() => validateHunts(HUNTS.map((h, i) => (i === 3 ? { ...h, titleMust: [['', 'x']] } : h))), /empty titleMust/);
 });
 
-test('anything other than 22 active hunts fails', () => {
-  assert.throws(() => validateHunts(HUNTS.slice(1)), /exactly 22 active hunts/);
-  assert.throws(() => validateHunts(HUNTS.map((h, i) => (i === 0 ? { ...h, active: false } : h))), /exactly 22 active hunts/);
+test('anything other than 35 active hunts fails', () => {
+  assert.throws(() => validateHunts(HUNTS.slice(1)), /exactly 35 active hunts/);
+  assert.throws(() => validateHunts(HUNTS.map((h, i) => (i === 0 ? { ...h, active: false } : h))), /exactly 35 active hunts/);
 });
 
 import { MAX_PAGES } from '../provider';

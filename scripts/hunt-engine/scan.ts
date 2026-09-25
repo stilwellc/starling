@@ -64,6 +64,7 @@ export async function runScan(o: ScanOptions): Promise<ScanResult> {
   const fresh = new Map<string, Observation[]>();
   let returnedTotal = 0, rejectedTotal = 0;
   let stopReason: string | null = null;
+  const claimed = new Map<string, string>(); // itemId → the highest-priority hunt that kept it
   for (const h of hunts) {
     if (o.onlyHuntId && h.id !== o.onlyHuntId) {
       results.push({ huntId: h.id, state: 'not-searched', pages: 0, returned: 0, error: null, searchedAt: null });
@@ -82,6 +83,13 @@ export async function runScan(o: ScanOptions): Promise<ScanResult> {
         if (seen.has(l.itemId)) continue;
         seen.add(l.itemId);
         obs.push({ listing: l, evaluation: evaluate(h, l) });
+      }
+      for (const x of obs) {
+        if (x.evaluation.classification === 'reject') continue;
+        const owner = claimed.get(x.listing.itemId);
+        if (owner) {
+          x.evaluation = { ...x.evaluation, classification: 'reject', reasons: [`claimed-by-earlier-hunt:${owner}`, ...x.evaluation.reasons], underBy: null, underPct: null, capWording: 'rejected' };
+        } else claimed.set(x.listing.itemId, h.id);
       }
       collapseDuplicates(obs);
       returnedTotal += r.returned;

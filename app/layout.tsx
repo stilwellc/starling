@@ -72,7 +72,6 @@ function StarlingLogotype() {
 const NAV = [
   { href: '/', label: 'Hunts' },
   { href: '/board/', label: 'Board' },
-  { href: '/hunt/', label: 'Grails' },
   { href: '/tape/', label: 'Tape' },
   { href: '/about/', label: 'About' },
 ];
@@ -147,7 +146,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <nav className="footer-nav" aria-label="Footer">
               <Link href="/">Hunts</Link>
               <Link href="/board/">Board</Link>
-              <Link href="/hunt/">Grails</Link>
               <Link href="/tape/">Tape</Link>
               <Link href="/about/">About</Link>
               <a href="https://lectr.bid" target="_blank" rel="noopener noreferrer">

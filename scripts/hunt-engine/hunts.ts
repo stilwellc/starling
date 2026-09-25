@@ -10,7 +10,7 @@
  * the same commit, on purpose.
  */
 
-export type HuntVertical = 'art' | 'sports' | 'furniture';
+export type HuntVertical = 'art' | 'sports' | 'furniture' | 'grails';
 export type BuyingMode = 'FIXED_PRICE' | 'AUCTION';
 
 export type Hunt = {
@@ -62,6 +62,11 @@ export const HUNT_LIST_META = {
       subsections: ['Lighting', 'Seating', 'Storage / Tables'],
       emptySubsections: ['Storage / Tables'],
     },
+    grails: {
+      heading: 'GRAILS — Bell System Technical Journal',
+      scope: 'Original printings only — single issues or bound annual volumes. No reprints, facsimiles, photocopies, PDFs, or print-on-demand.',
+      volumeRule: "A volume number maps 1:1 to its year (vol 1 = 1922). No caps — every grail is watched, so every listing is reported.",
+    },
   },
 } as const;
 
@@ -97,6 +102,44 @@ export const HUNTS: Hunt[] = [
   { id: 'design-nakashima-seating', label: 'George Nakashima — chairs & seating (all)', active: true, vertical: 'furniture', section: 'Seating', scope: 'All chairs and seating', query: 'nakashima chair', titleMust: ['nakashima'], titleExcludes: ['style', 'reproduction', 'replica', 'inspired', 'book', 'magazine', 'poster', 'print'], maxAllIn: 3000, currency: 'USD', buyingModes: BOTH, priority: 22 },
 ];
 
+// ─────────────────────────────────────────────────────────────────────────────
+// GRAILS — the Bell System Technical Journal landmark issues (moved here from
+// the deal board's hunt/priority.yaml lane on Sep 25 2026). Original printings
+// only, single issues or bound annual volumes. No caps: watch-only, so every
+// qualifying listing is reported. A listing that matches several grails is
+// kept only by the highest-priority one (the per-year hunts come before the
+// two catch-alls), as the old lane did.
+// ─────────────────────────────────────────────────────────────────────────────
+export const GRAIL_EXCLUDES = ['reprint', 'facsimile', 'photocopy', 'photostat', 'xerox', 'pdf', 'cd rom', 'cdrom', 'dvd', 'digitized', 'print on demand'];
+const BSTJ_NAME: string[] = ['bell system', 'bellsystem'];
+const BSTJ_ROMANS = ['iii', 'vii', 'xix', 'xxvii', 'xxviii', 'xxix', 'xlii', 'xliii', 'xlix', 'lvii', 'lviii'];
+const BSTJ_PAPERS = ['shannon', 'nyquist', 'hartley', 'bode', 'shockley', 'hamming', 'telstar', 'unix', 'charge coupled', 'secrecy', 'mobile phone', 'ess'];
+const GRAIL_SCOPE = HUNT_LIST_META.sections.grails.scope;
+const grailYear = (id: string, label: string, year: number, priority: number): Hunt => ({
+  id, label, active: true, vertical: 'grails', section: 'Bell System Technical Journal', scope: GRAIL_SCOPE,
+  query: `bell system technical journal ${year}`,
+  titleMust: [BSTJ_NAME, ['technical journal'], [String(year)]],
+  titleExcludes: GRAIL_EXCLUDES, maxAllIn: null, currency: 'USD', buyingModes: BOTH, priority,
+});
+export const GRAILS: Hunt[] = [
+  grailYear('bstj-1924-v3', 'BSTJ Vol 3 (1924) — Nyquist, Certain Factors Affecting Telegraph Speed (No 2, Apr)', 1924, 23),
+  grailYear('bstj-1928-v7', 'BSTJ Vol 7 (1928) — Hartley, Transmission of Information (No 3, Jul)', 1928, 24),
+  grailYear('bstj-1940-v19', 'BSTJ Vol 19 (1940) — Bode, Relations Between Attenuation and Phase (No 3, Jul)', 1940, 25),
+  { ...grailYear('bstj-1948-v27', 'BSTJ Vol 27 (1948) — Shannon, A Mathematical Theory of Communication (No 3 Jul + No 4 Oct, or bound)', 1948, 26), notes: ['THE grail. Part I in No 3 (July), Part II in No 4 (October). A bound Volume XXVII carries both.'] },
+  grailYear('bstj-1949-v28', 'BSTJ Vol 28 (1949) — transistor issue (No 2), Shockley p-n junctions (No 3), Shannon secrecy systems (No 4)', 1949, 27),
+  grailYear('bstj-1950-v29', 'BSTJ Vol 29 (1950) — Hamming, Error Detecting and Error Correcting Codes (No 2, Apr)', 1950, 28),
+  grailYear('bstj-1963-v42', 'BSTJ Vol 42 (1963) — the Telstar issue (No 4)', 1963, 29),
+  grailYear('bstj-1964-v43', 'BSTJ Vol 43 (1964) — No. 1 ESS issue (No 5)', 1964, 30),
+  grailYear('bstj-1970-v49', 'BSTJ Vol 49 (1970) — Boyle & Smith, Charge Coupled Semiconductor Devices (No 4)', 1970, 31),
+  grailYear('bstj-1978-v57', 'BSTJ Vol 57 (1978) — UNIX Time-Sharing System (No 6 Part 2) + Atlanta Fiber System (No 6 Part 1)', 1978, 32),
+  grailYear('bstj-1979-v58', 'BSTJ Vol 58 (1979) — Advanced Mobile Phone Service / AMPS (No 1)', 1979, 33),
+  { id: 'bstj-roman-undated', label: 'BSTJ — roman-numeral / undated titles (all target volumes)', active: true, vertical: 'grails', section: 'Bell System Technical Journal', scope: GRAIL_SCOPE,
+    query: 'bell system technical journal', titleMust: [BSTJ_NAME, ['technical journal'], [...BSTJ_ROMANS, ...BSTJ_PAPERS]], titleExcludes: GRAIL_EXCLUDES, maxAllIn: null, currency: 'USD', buyingModes: BOTH, priority: 34 },
+  { id: 'bstj-abbrev', label: 'BSTJ — abbreviated titles (all target volumes)', active: true, vertical: 'grails', section: 'Bell System Technical Journal', scope: GRAIL_SCOPE,
+    query: 'bstj', titleMust: [['bstj'], [...BSTJ_ROMANS, 'vol', 'volume', ...BSTJ_PAPERS, 'journal', 'technical']], titleExcludes: GRAIL_EXCLUDES, maxAllIn: null, currency: 'USD', buyingModes: BOTH, priority: 35 },
+];
+HUNTS.push(...GRAILS);
+
 export const MANUAL_RESEARCH_BRIEF: ManualResearchBrief = {
   tactics: [
     'Vague-seller-wording tactics cannot be automated queries; run these manually.',
@@ -130,6 +173,7 @@ export const HUNT_NOTES = {
   drawings: 'Works on paper; marker, ink, pencil, pastel, crayon, or gouache.',
   sports: 'True game-used only. Never game-issued and never replicas. Standard exclusions are issued, replica, game style, facsimile, reprint, youth, toddler, mini, plaque, 8x10, coin, trading card, and Funko. Photo is excluded except photo matched; photomatching is authenticity proof. Signed game-used is fine; signed replicas are out.',
   furniture: 'Grouped as Lighting and Seating. Storage / Tables is an intentionally empty subsection — empty on purpose, not lost configuration.',
+  grails: 'Bell System Technical Journal landmark issues (Nyquist, Hartley, Bode, Shannon, Shockley, Hamming, Telstar, ESS, CCD, UNIX, AMPS). Original printings only — single issues or bound volumes; reprints, facsimiles, photocopies, PDFs and print-on-demand are out. Watched with no cap.',
   researchShape: 'Research results record title, year, medium, dimensions, venue, sale date, estimate versus hammer/sold price, and link. Flag provenance, COA, signature, and unique versus print/multiple.',
   priceMax: 'Report anything listed at or under its max. A blank cap means watching with no cap. Every max is all-in: price plus shipping. Tax is excluded.',
 } as const;

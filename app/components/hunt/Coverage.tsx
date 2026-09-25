@@ -7,7 +7,7 @@ import type { HuntRow } from '@/scripts/hunt-engine/dashboard';
 import { HUNT_LIST_META } from '@/scripts/hunt-engine/hunts';
 import { usd, utcShort, utcStamp } from './format';
 
-const VERTICALS = ['art', 'sports', 'furniture'] as const;
+const VERTICALS = ['art', 'sports', 'furniture', 'grails'] as const;
 
 const STATE_LABEL: Record<HuntRow['state'], string> = {
   complete: 'complete',
@@ -74,7 +74,7 @@ export function Coverage({ rows, runLabel = 'this run' }: { rows: HuntRow[]; run
         const secs = sectionsFor(v, rows);
         if (secs.length === 0) return null;
         return (
-          <div key={v} className="hx-cov-vertical">
+          <div key={v} id={`hunts-${v}`} className="hx-cov-vertical">
             <h3 className="hx-cov-vh">{HUNT_LIST_META.sections[v].heading}</h3>
             <div className="hx-cov-wrap">
               <table className="hx-cov">

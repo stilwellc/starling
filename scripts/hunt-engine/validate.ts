@@ -5,7 +5,8 @@
 import { HUNTS, type Hunt } from './hunts';
 import { normalizeText } from './text';
 
-export const EXPECTED_ACTIVE_HUNTS = 22;
+/** 22 acquisition hunts + 13 BSTJ grails (moved from the deal board, Sep 25 2026) */
+export const EXPECTED_ACTIVE_HUNTS = 35;
 
 export class HuntConfigError extends Error {
   constructor(public problems: string[]) {
@@ -35,7 +36,7 @@ export function validateHunts(hunts: readonly Hunt[] = HUNTS): Hunt[] {
     if (h.currency !== 'USD') problems.push(`${where}: currency must be USD`);
     if (!h.buyingModes?.length || h.buyingModes.some((m) => m !== 'FIXED_PRICE' && m !== 'AUCTION'))
       problems.push(`${where}: buyingModes must be FIXED_PRICE and/or AUCTION`);
-    if (!['art', 'sports', 'furniture'].includes(h.vertical)) problems.push(`${where}: unknown vertical`);
+    if (!['art', 'sports', 'furniture', 'grails'].includes(h.vertical)) problems.push(`${where}: unknown vertical`);
     if (!Number.isInteger(h.priority)) problems.push(`${where}: priority must be an integer`);
   }
   const active = hunts.filter((h) => h.active);

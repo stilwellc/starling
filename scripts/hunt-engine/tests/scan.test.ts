@@ -68,7 +68,7 @@ test('an auth failure stops live work; the run is failed, nothing is promoted, t
   assert.equal(r.summary.state, 'failed');
   assert.equal(r.summary.promoted, false);
   assert.equal(store.objects.get(`${PREFIX}manifests/latest.json`), before, 'latest manifest untouched');
-  assert.equal(r.summary.hunts.filter((h) => /skipped/.test(h.error ?? '')).length, 21);
+  assert.equal(r.summary.hunts.filter((h) => /skipped/.test(h.error ?? '')).length, 34);
   const row = r.dashboard.hunts.find((h) => h.id === 'art-crumb-drawing')!;
   assert.equal(row.state, 'failed');
   assert.equal(row.carried, true, 'failed coverage shows carried results, never "0 matches"');
@@ -84,7 +84,7 @@ test('a timed-out hunt is failed, others complete — partial run promotes with 
     store, mode: 'fixture', now: clockFrom('2026-09-24T00:00:00Z'), runId: 'p', log: () => {},
   });
   assert.equal(r.summary.state, 'partial');
-  assert.equal(r.summary.huntsComplete, 21);
+  assert.equal(r.summary.huntsComplete, 34);
   assert.equal(r.summary.promoted, true);
   assert.equal(r.dashboard.hunts.find((h) => h.id === 'art-saul-drawing')!.state, 'failed');
   const empty = r.dashboard.hunts.find((h) => h.id === 'art-condo-drawing')!;
@@ -96,7 +96,7 @@ test('a single-hunt run leaves the other 21 as they were', async () => {
   const store = new MemoryStore();
   await runScan({ provider: new FixtureProvider({ 'art-crumb-drawing': { itemSummaries: [crumb('one', 1500)] } }), store, mode: 'fixture', now: clockFrom('2026-09-24T00:00:00Z'), runId: 'all', log: () => {} });
   const r = await runScan({ provider: new FixtureProvider({}), store, mode: 'fixture', now: clockFrom('2026-09-24T01:00:00Z'), runId: 'solo', onlyHuntId: 'art-saul-drawing', log: () => {} });
-  assert.equal(r.summary.hunts.filter((h) => h.state === 'not-searched').length, 21);
+  assert.equal(r.summary.hunts.filter((h) => h.state === 'not-searched').length, 34);
   const crumbRow = r.dashboard.hunts.find((h) => h.id === 'art-crumb-drawing')!;
   assert.equal(crumbRow.state, 'complete');
   assert.equal(crumbRow.matchCount, 1);
@@ -143,6 +143,16 @@ test('alerts paginate with a stable cursor', async () => {
 test('bad configuration fails before any provider call', async () => {
   let calls = 0;
   const provider = { kind: 'fixture' as const, health: () => ({ status: 'fixture' as const, calls }), search: async () => { calls++; throw new Error('should not run'); } };
-  await assert.rejects(runScan({ provider, store: new MemoryStore(), mode: 'fixture', hunts: HUNTS.slice(1), log: () => {} }), /exactly 22/);
+  await assert.rejects(runScan({ provider, store: new MemoryStore(), mode: 'fixture', hunts: HUNTS.slice(1), log: () => {} }), /exactly 35/);
   assert.equal(calls, 0);
+});
+
+test('a listing matched by several grails is kept only by the highest-priority one', async () => {
+  const store = new MemoryStore();
+  const issue = summary('shannon48', 'Bell System Technical Journal July 1948 Vol XXVII No 3 Shannon Original', 180, 8);
+  const r = await runScan({ provider: new FixtureProvider({ 'bstj-1948-v27': { itemSummaries: [issue] }, 'bstj-roman-undated': { itemSummaries: [issue] } }), store, mode: 'fixture', now: clockFrom('2026-09-25T00:00:00Z'), runId: 'claim', log: () => {} });
+  const cards = r.dashboard.cards.filter((c) => c.listingId === 'shannon48');
+  assert.equal(cards.length, 1);
+  assert.equal(cards[0].huntId, 'bstj-1948-v27');
+  assert.equal(cards[0].group, 'watch', 'grails have no cap — watched, not under/over');
 });

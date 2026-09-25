@@ -1,6 +1,6 @@
 # Hunt engine
 
-Starling's primary job is now an **acquisition hunt**: 22 checked-in hunts are searched on live eBay (official Browse API) every tick. Every listing is evaluated against deterministic rules, the evidence is persisted, and under-cap inventory is shown first on `/` and served at `/api/v1/*`. The deep-value deal board is kept as a secondary feature at `/board`.
+Starling's primary job is now an **acquisition hunt**: 35 checked-in hunts (22 acquisition hunts plus the 13 Bell System Technical Journal grails, moved in from the deal board on Sep 25 2026) are searched on live eBay (official Browse API) every tick. Every listing is evaluated against deterministic rules, the evidence is persisted, and under-cap inventory is shown first on `/` and served at `/api/v1/*`. The deep-value deal board is kept as a secondary feature at `/board`.
 
 ## Path mapping (prompt → this repo)
 
@@ -15,7 +15,7 @@ Starling's primary job is now an **acquisition hunt**: 22 checked-in hunts are s
 ## Files
 
 **Engine** (`scripts/hunt-engine/`)
-- `hunts.ts`: the 22 hunts, collection meta, notes, the manual research brief, and the alias lists. This file is the source of truth; there is no Notion.
+- `hunts.ts`: the 22 acquisition hunts and the 13 BSTJ grails (`GRAILS`, watch-only, originals only), collection meta, notes, the manual research brief, and the alias lists. This file is the source of truth; there is no Notion.
 - `validate.ts`: ids unique and slugged, exactly 22 active, caps positive or `null`, queries and terms nonempty. A bad config throws before any provider call.
 - `text.ts`: case- and punctuation-tolerant whole-word phrase matching (tolerates a trailing plural "s").
 - `evaluate.ts`: classifies each candidate as under, over, watch or reject, with machine-readable reasons and flags, a confidence score, all-in, dollars under and percent under, `taxExcluded`, and the cap wording.
@@ -69,7 +69,7 @@ public/dashboard.json                   the published view model
 ```
 
 **Promotion policy**
-- `success` (22 of 22 searched) and `partial` (at least one hunt searched) promote.
+- `success` (35 of 35 searched) and `partial` (at least one hunt searched) promote.
 - `failed` (nothing searched) writes its summary and the ledger but never touches `manifests/latest.json`. The last good results stay live and every hunt row shows `failed`.
 - A hunt the run could not search keeps its last good observations, marked `carried`. It is never replaced by an empty list.
 
@@ -97,7 +97,7 @@ public/dashboard.json                   the published view model
 ## Commands
 
 ```
-npm run hunt:validate      validate the 22 hunts
+npm run hunt:validate      validate the 35 hunts
 npm run hunt:test          engine tests
 npm test                   matcher harness + engine tests
 npm run hunt:scan          live scan (needs EBAY_* and R2 credentials; fails closed)
@@ -116,3 +116,12 @@ Do not commit a fixture `public/data/starling/hunt/dashboard.json`. The deploy w
 - **R2 GET lag**: the R2 REST API can serve a stale object for a short time after a PUT (see `data-store.sh`). Runs are 3h apart, so the ledger and manifest reads are unaffected in practice.
 - **Lint**: `next lint` has no ESLint installed or configured in this repo, so it prompts interactively. It was not run.
 - **Unchanged**: the value book integration, `receipts.json`, and the BSTJ lane (`hunt/priority.yaml`).
+
+## Grails (moved Sep 25 2026)
+
+The 13 BSTJ grails that ran inside the deal board (`hunt/priority.yaml`, now an intentionally empty list) are hunts 23–35 in `hunts.ts`, section "Bell System Technical Journal":
+- They are watch-only (no cap), exactly as before.
+- They use the originals-only exclusions (reprint, facsimile, photocopy, PDF, print-on-demand and so on).
+- Their title rules match the old lane: journal name + year for the per-year hunts, plus the roman-numeral and "BSTJ" catch-alls.
+
+When one listing matches several hunts, only the highest-priority hunt keeps it; the others record `claimed-by-earlier-hunt:<id>`. This matters for the catch-alls. `/hunt/` now forwards to `/#hunts-grails`. The engine's worst case is now 35 × 10 = 350 calls per tick; the board still gets whatever the hunts leave.

@@ -209,3 +209,13 @@ test('fake risk: folded same-seller copies of a "unique" work are high', async (
   assert.equal(obs[0].evaluation.risk, 'high');
   assert.ok(obs[0].evaluation.riskReasons.some((r) => /2 copies of a “unique” work/.test(r)));
 });
+
+test('grails: originals of the target volume only', () => {
+  assert.equal(ev('bstj-1948-v27', 'Bell System Technical Journal 1948 July Shannon Mathematical Theory').classification, 'watch');
+  assert.equal(ev('bstj-1948-v27', 'Bell System Technical Journal 1948 Shannon REPRINT').classification, 'reject');
+  assert.equal(ev('bstj-1948-v27', 'Bell System Technical Journal 1949 transistor issue').classification, 'reject');
+  assert.equal(ev('bstj-roman-undated', 'The Bell System Technical Journal Vol XXVII bound volume').classification, 'watch');
+  assert.equal(ev('bstj-abbrev', 'BSTJ Vol 57 No 6 Part 2 UNIX Time-Sharing System').classification, 'watch');
+  assert.equal(ev('bstj-abbrev', 'Limoges porcelain plate BStJ 1949').classification, 'reject', 'a maker mark is not the journal');
+  assert.equal(ev('bstj-abbrev', 'Auto part 44341BSTJ bracket').classification, 'reject');
+});

@@ -38,7 +38,7 @@ const PROVIDER_TONE: Record<string, string> = {
   'not-configured': 'down',
 };
 
-/** When no run has been published, the coverage table still lists all 22
+/** When no run has been published, the coverage table still lists every
  *  hunts — each honestly "not searched". Never an empty table, never "0". */
 function unsearchedRows(): HuntRow[] {
   return HUNTS.filter((h) => h.active).map((h) => ({
