@@ -48,12 +48,30 @@ function Verdict({ c }: { c: Card }) {
   );
 }
 
+/** Fake / misrepresentation risk — the first thing you read about a listing. */
+function RiskBadge({ c }: { c: Card }) {
+  const risk = c.risk ?? 'low';
+  const label = risk === 'high' ? 'High fake risk' : risk === 'medium' ? 'Medium risk' : 'Low risk';
+  return (
+    <div className={`hx-risk hx-risk-${risk}`}>
+      <span className="hx-risk-label">{label}</span>
+      {c.riskReasons?.length > 0 && (
+        <ul className="hx-risk-why">
+          {c.riskReasons.map((r) => (
+            <li key={r}>{r}</li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
+}
+
 export function HuntCard({ c }: { c: Card }) {
   const auction = c.buyingMode === 'AUCTION';
   const tone = c.underBy == null ? undefined : c.underBy >= 0 ? 'up' : 'down';
   const s = c.seller;
   return (
-    <article className={`hx-card hx-card-${c.group}`} data-classification={c.classification}>
+    <article className={`hx-card hx-card-${c.group} hx-card-risk-${c.risk ?? 'low'}`} data-classification={c.classification} data-risk={c.risk ?? 'low'}>
       <a className="hx-media" href={c.url} target="_blank" rel="noopener noreferrer" tabIndex={-1} aria-hidden="true">
         <HuntImage src={c.imageUrl} alt={c.title} />
         <span className={`hx-mode ${auction ? 'hx-mode-auction' : ''}`}>{auction ? 'Auction' : 'Fixed price'}</span>
@@ -71,6 +89,7 @@ export function HuntCard({ c }: { c: Card }) {
           </a>
         </h3>
 
+        <RiskBadge c={c} />
         <Verdict c={c} />
         <p className="hx-capword">
           <span className={`hx-capword-chip ${tone ? `hx-${tone}` : ''}`}>{c.capWording}</span>

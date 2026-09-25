@@ -18,6 +18,8 @@ import {
   ART_NOT_UNIQUE,
   AUTHENTICITY_EVIDENCE,
   FAKE_TEMPLATE_PHRASES,
+  FORGERY_PRONE_HUNTS,
+  PROVENANCE_EVIDENCE,
   FURNITURE_NOT_OBJECT,
   GAME_USED_ALIASES,
   OTHER_ARTISTS,
@@ -27,7 +29,7 @@ import {
   type Hunt,
 } from './hunts';
 import { firstPhrase, hasPhrase, normalizeText } from './text';
-import type { Evaluation, HuntListing } from './types';
+import type { Evaluation, HuntListing, RiskLevel } from './types';
 
 const round2 = (n: number) => Math.round(n * 100) / 100;
 
@@ -159,8 +161,10 @@ export function evaluate(hunt: Hunt, l: HuntListing): Evaluation {
     allIn,
     maxAllIn: cap,
     taxExcluded: true as const,
+    ...riskOf(hunt, l, flags),
   };
-  const review: 'ok' | 'review' = base.confidence < 0.75 ? 'review' : 'ok';
+  const r = riskOf(hunt, l, flags);
+  const review: 'ok' | 'review' = base.confidence < 0.75 || r.risk === 'high' ? 'review' : 'ok';
 
   if (rejects.length) {
     return { ...base, classification: 'reject', reasons: [...rejects, ...reasons], review: 'review', underBy: null, underPct: null, capWording: 'rejected' };
@@ -178,4 +182,37 @@ export function evaluate(hunt: Hunt, l: HuntListing): Evaluation {
     return { ...base, classification: 'under', reasons: [...reasons, 'at-or-under-cap'], review, underBy, underPct, capWording: auction ? 'under cap now' : 'under cap' };
   }
   return { ...base, classification: 'over', reasons: [...reasons, 'over-cap'], review, underBy, underPct, capWording: auction ? 'over cap now' : 'over cap' };
+}
+
+/**
+ * Fake / misrepresentation risk. Deterministic, from the title, price and flags.
+ * Recomputed after same-seller folding (a seller with several copies of a
+ * "unique" work is itself a fake signal).
+ */
+export function riskOf(hunt: Hunt, l: HuntListing, flags: string[]): { risk: RiskLevel; riskReasons: string[] } {
+  const t = normalizeText(l.title);
+  const high: string[] = [];
+  const med: string[] = [];
+  const cap = hunt.maxAllIn;
+  if (hunt.vertical === 'art') {
+    const provenance = PROVENANCE_EVIDENCE.some((p) => hasPhrase(t, p));
+    if (flags.includes('fake-art-template')) high.push('matches a common fake-art listing template (“on old paper, signed & stamped”)');
+    if (flags.includes('price-far-below-market')) high.push('priced far below what this artist sells for');
+    const repeats = flags.find((f) => f.startsWith('same-seller-repeats:'));
+    if (repeats) high.push(`seller has ${Number(repeats.split(':')[1]) + 1} copies of a “unique” work`);
+    if (FORGERY_PRONE_HUNTS.includes(hunt.id) && !provenance) {
+      if (cap && l.price < cap * 0.25) high.push(`${hunt.label.split(' — ')[0]} is heavily forged on eBay and this is priced like a fake`);
+      else med.push(`${hunt.label.split(' — ')[0]} is heavily forged on eBay — no provenance in the listing`);
+    }
+    if (!provenance && hasPhrase(t, 'coa') && !high.length) med.push('only a generic COA — fakes routinely include one');
+    if (l.location && !/\bUS\b|United States/i.test(l.location) && FORGERY_PRONE_HUNTS.includes(hunt.id)) med.push(`ships from ${l.location}`);
+  }
+  if (hunt.vertical === 'sports') {
+    if (flags.includes('no-authentication-in-title')) med.push('no photo-match, team or third-party authentication named');
+  }
+  if (flags.includes('seller-low-feedback')) med.push('seller feedback is low');
+  if (flags.includes('condition:for-parts')) med.push('listed for parts / not working');
+  if (high.length) return { risk: 'high', riskReasons: [...high, ...med] };
+  if (med.length) return { risk: 'medium', riskReasons: med };
+  return { risk: 'low', riskReasons: [] };
 }

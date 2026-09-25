@@ -13,6 +13,7 @@ import type {
 } from './types';
 
 export const DASHBOARD_SCHEMA = 1 as const;
+const RISK_RANK = { low: 0, medium: 1, high: 2 } as const;
 
 export type CardGroup = 'new-under' | 'changed-under' | 'under' | 'watch' | 'over';
 export const GROUP_ORDER: CardGroup[] = ['new-under', 'changed-under', 'under', 'watch', 'over'];
@@ -93,6 +94,9 @@ export interface Card {
   alertKey: string | null;
   /** same-seller, same-title repeats folded into this card */
   similarCount: number;
+  /** fake / misrepresentation risk, with plain-English reasons */
+  risk: 'high' | 'medium' | 'low';
+  riskReasons: string[];
 }
 
 export interface DashboardPayload {
@@ -107,7 +111,7 @@ export interface DashboardPayload {
   hunts: HuntRow[];
   cards: Card[];
   alerts: Array<AlertRecord & { state: AlertState; trigger: string; version: number }>;
-  counts: { cards: number; under: number; newUnder: number; watch: number; over: number; pendingAlerts: number };
+  counts: { cards: number; under: number; newUnder: number; watch: number; over: number; pendingAlerts: number; highRisk: number };
 }
 
 export function buildDashboard(args: {
@@ -174,6 +178,8 @@ export function buildDashboard(args: {
         carried,
         alertKey: pendingKey && ledger.alerts[pendingKey] ? pendingKey : null,
         similarCount: o.similar?.length ?? 0,
+        risk: e.risk ?? 'low',
+        riskReasons: e.riskReasons ?? [],
       });
     }
     rows.push({
@@ -200,6 +206,7 @@ export function buildDashboard(args: {
   const rank = (c: Card) => GROUP_ORDER.indexOf(c.group);
   cards.sort((a, b) =>
     rank(a) - rank(b) ||
+    RISK_RANK[a.risk] - RISK_RANK[b.risk] ||
     (a.review === 'review' ? 1 : 0) - (b.review === 'review' ? 1 : 0) ||
     (b.underPct ?? -Infinity) - (a.underPct ?? -Infinity) ||
     (byId.get(a.huntId)!.priority - byId.get(b.huntId)!.priority) ||
@@ -224,6 +231,7 @@ export function buildDashboard(args: {
       watch: cards.filter((c) => c.group === 'watch').length,
       over: cards.filter((c) => c.group === 'over').length,
       pendingAlerts: alerts.filter((a) => a.state === 'pending').length,
+      highRisk: cards.filter((c) => c.risk === 'high').length,
     },
   };
 }
@@ -274,11 +282,11 @@ export function alertsResponse(
 ) {
   const state = opts.state && ['pending', 'delivered', 'expired', 'all'].includes(opts.state) ? opts.state : 'pending';
   const limit = Math.min(Math.max(Number(opts.limit) || ALERT_PAGE_SIZE, 1), 200);
-  // most trustworthy first: confidence, then how far under, then a stable key
+  // most trustworthy first: fake risk, confidence, then how far under, then a stable key
   const all = d.alerts
     .filter((a) => state === 'all' || a.state === state)
     .slice()
-    .sort((a, b) => b.confidence - a.confidence || (b.underPct ?? -1) - (a.underPct ?? -1) || a.alertKey.localeCompare(b.alertKey));
+    .sort((a, b) => RISK_RANK[a.risk ?? 'low'] - RISK_RANK[b.risk ?? 'low'] || b.confidence - a.confidence || (b.underPct ?? -1) - (a.underPct ?? -1) || a.alertKey.localeCompare(b.alertKey));
   let start = 0;
   if (opts.cursor) {
     const idx = all.findIndex((a) => a.alertKey === decodeCursor(opts.cursor!));

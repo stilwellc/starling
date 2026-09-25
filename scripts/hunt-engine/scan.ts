@@ -15,7 +15,8 @@
  */
 import { type Hunt } from './hunts';
 import { validateHunts } from './validate';
-import { evaluate } from './evaluate';
+import { evaluate, riskOf } from './evaluate';
+import { HUNTS } from './hunts';
 import { normalizeText } from './text';
 import { ProviderAuthError, ProviderRateLimitError, type HuntProvider } from './provider';
 import { getJson, putJson, type ObjectStore } from './store';
@@ -227,6 +228,13 @@ export function collapseDuplicates(obs: Observation[]): void {
     g.sort((a, b) => (a.evaluation.allIn ?? Infinity) - (b.evaluation.allIn ?? Infinity) || a.listing.itemId.localeCompare(b.listing.itemId));
     g[0].similar = g.slice(1).map((o) => o.listing.itemId);
     g[0].evaluation.flags.push(`same-seller-repeats:${g.length - 1}`);
+    const h = HUNTS.find((x) => x.id === g[0].evaluation.huntId);
+    if (h) {
+      const r = riskOf(h, g[0].listing, g[0].evaluation.flags);
+      g[0].evaluation.risk = r.risk;
+      g[0].evaluation.riskReasons = r.riskReasons;
+      if (r.risk === 'high') g[0].evaluation.review = 'review';
+    }
     for (const o of g.slice(1)) drop.add(o);
   }
   for (let i = obs.length - 1; i >= 0; i--) if (drop.has(obs[i])) obs.splice(i, 1);

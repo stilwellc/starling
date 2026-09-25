@@ -42,7 +42,13 @@ export interface Evaluation {
   taxExcluded: true;
   /** human wording for the price position ("under cap", "under cap now" for auctions) */
   capWording: string;
+  /** how likely this is fake / not what it claims — shown prominently on every card */
+  risk: RiskLevel;
+  /** plain-English reasons for the risk level */
+  riskReasons: string[];
 }
+
+export type RiskLevel = 'high' | 'medium' | 'low';
 
 export type HuntRunState = 'complete' | 'partial' | 'failed' | 'not-searched';
 
@@ -143,6 +149,9 @@ export interface AlertRecord {
   underPct: number | null;
   currency: 'USD';
   confidence: number;
+  /** additive (schema 1 compatible): fake / misrepresentation risk */
+  risk?: RiskLevel;
+  riskReasons?: string[];
   reasons: string[];
   flags: string[];
   firstSeenAt: string;

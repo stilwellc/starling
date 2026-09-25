@@ -184,3 +184,28 @@ test('same-seller repeats fold into one card', async () => {
   assert.equal(obs[0].listing.itemId, 'b');
   assert.deepEqual(obs[0].similar, ['c', 'a']);
 });
+
+test('fake risk: Condo and Crumb without provenance are never low; the fake template and cheap copies are high', () => {
+  const tpl = ev('art-condo-drawing', 'George Condo (Handmade) Drawing On old Paper Signed & Stamped', { price: 110, shipping: 10 });
+  assert.equal(tpl.risk, 'high');
+  assert.ok(tpl.riskReasons.some((r) => /fake-art listing template/.test(r)));
+  const cheap = ev('art-crumb-drawing', 'Robert Crumb original ink drawing signed', { price: 300, shipping: 20 });
+  assert.equal(cheap.risk, 'high', 'Crumb at 15% of cap is priced like a fake');
+  const mid = ev('art-crumb-drawing', 'Robert Crumb original ink drawing signed', { price: 1600, shipping: 20 });
+  assert.equal(mid.risk, 'medium');
+  assert.ok(mid.riskReasons.some((r) => /heavily forged/.test(r)));
+  const prov = ev('art-condo-drawing', 'George Condo original drawing on paper, provenance Skarstedt gallery label', { price: 8000, shipping: 50 });
+  assert.equal(prov.risk, 'low');
+  assert.equal(ev('art-futura-painting', 'SIGNED Futura 2000 Hand Drawn Original Drawing Point Man', { price: 990, shipping: 24 }).risk, 'low');
+});
+
+test('fake risk: folded same-seller copies of a "unique" work are high', async () => {
+  const { collapseDuplicates } = await import('../scan');
+  const { evaluate } = await import('../evaluate');
+  const mk = (id: string, price: number) => { const l = listing({ itemId: id, title: 'Futura 2000 original spray painting on canvas', price, seller: { username: 'repeat', feedbackPercentage: 100, feedbackScore: 900 } }); return { listing: l, evaluation: evaluate(hunt('art-futura-painting'), l) }; };
+  const obs: import('../types').Observation[] = [mk('a', 2000), mk('b', 2100)];
+  assert.equal(obs[0].evaluation.risk, 'low');
+  collapseDuplicates(obs);
+  assert.equal(obs[0].evaluation.risk, 'high');
+  assert.ok(obs[0].evaluation.riskReasons.some((r) => /2 copies of a “unique” work/.test(r)));
+});

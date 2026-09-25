@@ -205,3 +205,13 @@ export const ART_MEDIUM_EVIDENCE: Record<'Paintings' | 'Drawings', string[]> = {
 
 /** Other designers — a furniture title naming two or more is a book, a lot, or a keyword-stuffed listing. */
 export const OTHER_DESIGNERS = ['eames', 'nelson', 'wanscher', 'bbpr', 'saarinen', 'bertoia', 'noguchi', 'wegner', 'jacobsen', 'aalto', 'breuer', 'mies', 'knoll associates catalog'];
+
+/** Artists heavily forged on eBay (Collin, Sep 25 2026: "the George Condo and R Crumb — a lot of those are fake").
+ *  A listing for these without real provenance is never better than MEDIUM fake risk. */
+export const FORGERY_PRONE_HUNTS = ['art-condo-drawing', 'art-crumb-drawing'];
+/** Evidence that actually lowers forgery risk — a generic "COA" does NOT (fakes ship with one). */
+export const PROVENANCE_EVIDENCE = [
+  'provenance', 'gallery label', 'exhibited', 'exhibition label', 'ex collection', 'from the collection of', 'estate of',
+  'christies', 'christie s', 'sothebys', 'sotheby s', 'phillips', 'bonhams', 'heritage auctions', 'rago', 'wright',
+  'skarstedt', 'luhring augustine', 'pace gallery', 'david zwirner', 'paul morris', 'fantagraphics provenance', 'jsa', 'psa dna', 'beckett',
+];
