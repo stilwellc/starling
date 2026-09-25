@@ -1,18 +1,18 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-09-25T04:52:23.890Z",
+ "generatedAt": "2026-09-25T09:41:39.186Z",
  "run": {
-  "id": "20260925T045132Z-eurw",
+  "id": "20260925T093758Z-pvk1",
   "state": "success",
   "mode": "live",
-  "startedAt": "2026-09-25T04:51:32.274Z",
-  "finishedAt": "2026-09-25T04:52:23.890Z",
-  "succeededAt": "2026-09-25T04:52:23.890Z",
+  "startedAt": "2026-09-25T09:37:58.164Z",
+  "finishedAt": "2026-09-25T09:41:39.186Z",
+  "succeededAt": "2026-09-25T09:41:39.186Z",
   "huntsTotal": 35,
   "huntsComplete": 35,
   "providerHealth": {
    "status": "ok",
-   "calls": 62,
+   "calls": 94,
    "rateLimit": null,
    "message": null
   },
@@ -20,11 +20,11 @@
   "staleAfterMinutes": 240,
   "discovery": {
    "searches": 62,
-   "fullSweeps": 0,
-   "deltaScans": 35,
-   "newThisRun": 3,
-   "newToday": 144,
-   "secondLooks": 1
+   "fullSweeps": 35,
+   "deltaScans": 0,
+   "newThisRun": 2806,
+   "newToday": 2936,
+   "secondLooks": 8
   }
  },
  "meta": {
@@ -138,19 +138,19 @@
    "maxAllIn": 5000,
    "priority": 1,
    "state": "complete",
-   "lastSearchedAt": "2026-09-25T04:51:33.403Z",
-   "lastSuccessfulAt": "2026-09-25T04:51:33.403Z",
+   "lastSearchedAt": "2026-09-25T09:37:59.395Z",
+   "lastSuccessfulAt": "2026-09-25T09:37:59.395Z",
    "carried": false,
    "error": null,
    "matchCount": 3,
-   "underCount": 2,
-   "overCount": 0,
+   "underCount": 1,
+   "overCount": 1,
    "watchCount": 1,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-09-25T03:16:48.500Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-09-25T09:37:59.395Z",
    "searches": 3,
-   "newThisRun": 0,
-   "newToday": 1
+   "newThisRun": 23,
+   "newToday": 24
   },
   {
    "id": "art-haze-painting-misspell",
@@ -162,16 +162,16 @@
    "maxAllIn": 5000,
    "priority": 2,
    "state": "complete",
-   "lastSearchedAt": "2026-09-25T04:51:35.041Z",
-   "lastSuccessfulAt": "2026-09-25T04:51:35.041Z",
+   "lastSearchedAt": "2026-09-25T09:38:00.739Z",
+   "lastSuccessfulAt": "2026-09-25T09:38:00.739Z",
    "carried": false,
    "error": null,
    "matchCount": 0,
    "underCount": 0,
    "overCount": 0,
    "watchCount": 0,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-09-25T03:16:50.576Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-09-25T09:38:00.739Z",
    "searches": 1,
    "newThisRun": 0,
    "newToday": 0
@@ -186,19 +186,19 @@
    "maxAllIn": 15000,
    "priority": 3,
    "state": "complete",
-   "lastSearchedAt": "2026-09-25T04:51:35.350Z",
-   "lastSuccessfulAt": "2026-09-25T04:51:35.350Z",
+   "lastSearchedAt": "2026-09-25T09:38:01.059Z",
+   "lastSuccessfulAt": "2026-09-25T09:38:01.059Z",
    "carried": false,
    "error": null,
    "matchCount": 10,
    "underCount": 10,
    "overCount": 0,
    "watchCount": 0,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-09-25T03:16:51.016Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-09-25T09:38:01.059Z",
    "searches": 4,
-   "newThisRun": 0,
-   "newToday": 9
+   "newThisRun": 543,
+   "newToday": 552
   },
   {
    "id": "art-futura-atoms",
@@ -210,19 +210,19 @@
    "maxAllIn": 15000,
    "priority": 4,
    "state": "complete",
-   "lastSearchedAt": "2026-09-25T04:51:36.826Z",
-   "lastSuccessfulAt": "2026-09-25T04:51:36.826Z",
+   "lastSearchedAt": "2026-09-25T09:38:05.280Z",
+   "lastSuccessfulAt": "2026-09-25T09:38:05.280Z",
    "carried": false,
    "error": null,
    "matchCount": 2,
    "underCount": 2,
    "overCount": 0,
    "watchCount": 0,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-09-25T03:16:55.651Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-09-25T09:38:05.280Z",
    "searches": 1,
-   "newThisRun": 0,
-   "newToday": 0
+   "newThisRun": 4,
+   "newToday": 4
   },
   {
    "id": "art-saul-painting",
@@ -234,19 +234,19 @@
    "maxAllIn": 8000,
    "priority": 5,
    "state": "complete",
-   "lastSearchedAt": "2026-09-25T04:51:37.170Z",
-   "lastSuccessfulAt": "2026-09-25T04:51:37.170Z",
+   "lastSearchedAt": "2026-09-25T09:38:05.863Z",
+   "lastSuccessfulAt": "2026-09-25T09:38:05.863Z",
    "carried": false,
    "error": null,
    "matchCount": 0,
    "underCount": 0,
    "overCount": 0,
    "watchCount": 0,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-09-25T03:16:56.011Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-09-25T09:38:05.863Z",
    "searches": 3,
-   "newThisRun": 2,
-   "newToday": 65
+   "newThisRun": 841,
+   "newToday": 899
   },
   {
    "id": "art-haze-drawing",
@@ -258,19 +258,19 @@
    "maxAllIn": 8000,
    "priority": 6,
    "state": "complete",
-   "lastSearchedAt": "2026-09-25T04:51:38.376Z",
-   "lastSuccessfulAt": "2026-09-25T04:51:38.376Z",
+   "lastSearchedAt": "2026-09-25T09:38:14.563Z",
+   "lastSuccessfulAt": "2026-09-25T09:38:14.563Z",
    "carried": false,
    "error": null,
    "matchCount": 0,
    "underCount": 0,
    "overCount": 0,
    "watchCount": 0,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-09-25T03:17:05.263Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-09-25T09:38:14.563Z",
    "searches": 3,
-   "newThisRun": 0,
-   "newToday": 0
+   "newThisRun": 19,
+   "newToday": 19
   },
   {
    "id": "art-condo-drawing",
@@ -282,19 +282,19 @@
    "maxAllIn": 10000,
    "priority": 7,
    "state": "complete",
-   "lastSearchedAt": "2026-09-25T04:51:39.022Z",
-   "lastSuccessfulAt": "2026-09-25T04:51:39.022Z",
+   "lastSearchedAt": "2026-09-25T09:38:15.290Z",
+   "lastSuccessfulAt": "2026-09-25T09:38:15.290Z",
    "carried": false,
    "error": null,
    "matchCount": 17,
    "underCount": 14,
    "overCount": 3,
    "watchCount": 0,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-09-25T03:17:05.943Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-09-25T09:38:15.290Z",
    "searches": 3,
-   "newThisRun": 0,
-   "newToday": 0
+   "newThisRun": 170,
+   "newToday": 170
   },
   {
    "id": "art-saul-drawing",
@@ -306,19 +306,19 @@
    "maxAllIn": 2000,
    "priority": 8,
    "state": "complete",
-   "lastSearchedAt": "2026-09-25T04:51:40.209Z",
-   "lastSuccessfulAt": "2026-09-25T04:51:40.209Z",
+   "lastSearchedAt": "2026-09-25T09:38:16.841Z",
+   "lastSuccessfulAt": "2026-09-25T09:38:16.841Z",
    "carried": false,
    "error": null,
    "matchCount": 2,
    "underCount": 2,
    "overCount": 0,
    "watchCount": 0,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-09-25T03:17:07.478Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-09-25T09:38:16.841Z",
    "searches": 3,
-   "newThisRun": 1,
-   "newToday": 61
+   "newThisRun": 184,
+   "newToday": 238
   },
   {
    "id": "art-crumb-drawing",
@@ -330,19 +330,19 @@
    "maxAllIn": 2000,
    "priority": 9,
    "state": "complete",
-   "lastSearchedAt": "2026-09-25T04:51:40.948Z",
-   "lastSuccessfulAt": "2026-09-25T04:51:40.948Z",
+   "lastSearchedAt": "2026-09-25T09:38:17.920Z",
+   "lastSuccessfulAt": "2026-09-25T09:38:17.920Z",
    "carried": false,
    "error": null,
    "matchCount": 46,
    "underCount": 41,
    "overCount": 4,
    "watchCount": 1,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-09-25T03:17:08.531Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-09-25T09:38:17.920Z",
    "searches": 4,
-   "newThisRun": 0,
-   "newToday": 7
+   "newThisRun": 512,
+   "newToday": 519
   },
   {
    "id": "sports-ertz-jersey",
@@ -354,19 +354,19 @@
    "maxAllIn": 3000,
    "priority": 10,
    "state": "complete",
-   "lastSearchedAt": "2026-09-25T04:51:42.426Z",
-   "lastSuccessfulAt": "2026-09-25T04:51:42.426Z",
+   "lastSearchedAt": "2026-09-25T09:38:21.522Z",
+   "lastSuccessfulAt": "2026-09-25T09:38:21.522Z",
    "carried": false,
    "error": null,
    "matchCount": 1,
    "underCount": 0,
    "overCount": 1,
    "watchCount": 0,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-09-25T03:17:11.790Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-09-25T09:38:21.522Z",
    "searches": 2,
-   "newThisRun": 0,
-   "newToday": 0
+   "newThisRun": 2,
+   "newToday": 2
   },
   {
    "id": "sports-hurts-jersey",
@@ -378,19 +378,19 @@
    "maxAllIn": 8000,
    "priority": 11,
    "state": "complete",
-   "lastSearchedAt": "2026-09-25T04:51:43.041Z",
-   "lastSuccessfulAt": "2026-09-25T04:51:43.041Z",
+   "lastSearchedAt": "2026-09-25T09:38:22.180Z",
+   "lastSuccessfulAt": "2026-09-25T09:38:22.180Z",
    "carried": false,
    "error": null,
    "matchCount": 0,
    "underCount": 0,
    "overCount": 0,
    "watchCount": 0,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-09-25T03:17:12.474Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-09-25T09:38:22.180Z",
    "searches": 2,
-   "newThisRun": 0,
-   "newToday": 0
+   "newThisRun": 66,
+   "newToday": 66
   },
   {
    "id": "sports-smith-jersey",
@@ -402,19 +402,19 @@
    "maxAllIn": 4000,
    "priority": 12,
    "state": "complete",
-   "lastSearchedAt": "2026-09-25T04:51:43.785Z",
-   "lastSuccessfulAt": "2026-09-25T04:51:43.785Z",
+   "lastSearchedAt": "2026-09-25T09:38:22.906Z",
+   "lastSuccessfulAt": "2026-09-25T09:38:22.906Z",
    "carried": false,
    "error": null,
    "matchCount": 0,
    "underCount": 0,
    "overCount": 0,
    "watchCount": 0,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-09-25T03:17:13.276Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-09-25T09:38:22.906Z",
    "searches": 2,
-   "newThisRun": 0,
-   "newToday": 1
+   "newThisRun": 10,
+   "newToday": 11
   },
   {
    "id": "sports-graham-jersey",
@@ -426,19 +426,19 @@
    "maxAllIn": 4000,
    "priority": 13,
    "state": "complete",
-   "lastSearchedAt": "2026-09-25T04:51:44.430Z",
-   "lastSuccessfulAt": "2026-09-25T04:51:44.430Z",
+   "lastSearchedAt": "2026-09-25T09:38:23.687Z",
+   "lastSuccessfulAt": "2026-09-25T09:38:23.687Z",
    "carried": false,
    "error": null,
    "matchCount": 1,
    "underCount": 0,
    "overCount": 1,
    "watchCount": 0,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-09-25T03:17:14.012Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-09-25T09:38:23.687Z",
    "searches": 2,
-   "newThisRun": 0,
-   "newToday": 0
+   "newThisRun": 13,
+   "newToday": 13
   },
   {
    "id": "sports-djackson-jersey",
@@ -450,19 +450,19 @@
    "maxAllIn": 4000,
    "priority": 14,
    "state": "complete",
-   "lastSearchedAt": "2026-09-25T04:51:44.981Z",
-   "lastSuccessfulAt": "2026-09-25T04:51:44.981Z",
+   "lastSearchedAt": "2026-09-25T09:38:24.379Z",
+   "lastSuccessfulAt": "2026-09-25T09:38:24.379Z",
    "carried": false,
    "error": null,
    "matchCount": 2,
    "underCount": 2,
    "overCount": 0,
    "watchCount": 0,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-09-25T03:17:14.690Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-09-25T09:38:24.379Z",
    "searches": 2,
-   "newThisRun": 0,
-   "newToday": 0
+   "newThisRun": 48,
+   "newToday": 48
   },
   {
    "id": "sports-foles-eagles-jersey",
@@ -474,19 +474,19 @@
    "maxAllIn": 4000,
    "priority": 15,
    "state": "complete",
-   "lastSearchedAt": "2026-09-25T04:51:45.738Z",
-   "lastSuccessfulAt": "2026-09-25T04:51:45.738Z",
+   "lastSearchedAt": "2026-09-25T09:38:25.134Z",
+   "lastSuccessfulAt": "2026-09-25T09:38:25.134Z",
    "carried": false,
    "error": null,
    "matchCount": 0,
    "underCount": 0,
    "overCount": 0,
    "watchCount": 0,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-09-25T03:17:15.449Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-09-25T09:38:25.134Z",
    "searches": 2,
-   "newThisRun": 0,
-   "newToday": 0
+   "newThisRun": 6,
+   "newToday": 6
   },
   {
    "id": "sports-foles-bears-jersey",
@@ -498,19 +498,19 @@
    "maxAllIn": 1500,
    "priority": 16,
    "state": "complete",
-   "lastSearchedAt": "2026-09-25T04:51:46.321Z",
-   "lastSuccessfulAt": "2026-09-25T04:51:46.321Z",
+   "lastSearchedAt": "2026-09-25T09:38:25.780Z",
+   "lastSuccessfulAt": "2026-09-25T09:38:25.780Z",
    "carried": false,
    "error": null,
    "matchCount": 1,
    "underCount": 1,
    "overCount": 0,
    "watchCount": 0,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-09-25T03:17:16.131Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-09-25T09:38:25.780Z",
    "searches": 2,
-   "newThisRun": 0,
-   "newToday": 0
+   "newThisRun": 4,
+   "newToday": 4
   },
   {
    "id": "sports-foles-jaguars-jersey",
@@ -522,19 +522,19 @@
    "maxAllIn": 1500,
    "priority": 17,
    "state": "complete",
-   "lastSearchedAt": "2026-09-25T04:51:46.645Z",
-   "lastSuccessfulAt": "2026-09-25T04:51:46.645Z",
+   "lastSearchedAt": "2026-09-25T09:38:26.089Z",
+   "lastSuccessfulAt": "2026-09-25T09:38:26.089Z",
    "carried": false,
    "error": null,
    "matchCount": 0,
    "underCount": 0,
    "overCount": 0,
    "watchCount": 0,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-09-25T03:17:16.558Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-09-25T09:38:26.089Z",
    "searches": 2,
-   "newThisRun": 0,
-   "newToday": 0
+   "newThisRun": 3,
+   "newToday": 3
   },
   {
    "id": "sports-sb52-football",
@@ -546,19 +546,19 @@
    "maxAllIn": 6000,
    "priority": 18,
    "state": "complete",
-   "lastSearchedAt": "2026-09-25T04:51:46.933Z",
-   "lastSuccessfulAt": "2026-09-25T04:51:46.933Z",
+   "lastSearchedAt": "2026-09-25T09:38:26.393Z",
+   "lastSuccessfulAt": "2026-09-25T09:38:26.393Z",
    "carried": false,
    "error": null,
    "matchCount": 2,
    "underCount": 0,
    "overCount": 2,
    "watchCount": 0,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-09-25T03:17:16.987Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-09-25T09:38:26.393Z",
    "searches": 2,
-   "newThisRun": 0,
-   "newToday": 0
+   "newThisRun": 62,
+   "newToday": 62
   },
   {
    "id": "design-pileo-lamp",
@@ -570,19 +570,19 @@
    "maxAllIn": 300,
    "priority": 19,
    "state": "complete",
-   "lastSearchedAt": "2026-09-25T04:51:47.773Z",
-   "lastSuccessfulAt": "2026-09-25T04:51:47.773Z",
+   "lastSearchedAt": "2026-09-25T09:38:27.165Z",
+   "lastSuccessfulAt": "2026-09-25T09:38:27.165Z",
    "carried": false,
    "error": null,
    "matchCount": 1,
    "underCount": 0,
    "overCount": 1,
    "watchCount": 0,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-09-25T03:17:17.920Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-09-25T09:38:27.165Z",
    "searches": 2,
-   "newThisRun": 0,
-   "newToday": 0
+   "newThisRun": 1,
+   "newToday": 1
   },
   {
    "id": "design-sintesi-lamp",
@@ -594,19 +594,19 @@
    "maxAllIn": 200,
    "priority": 20,
    "state": "complete",
-   "lastSearchedAt": "2026-09-25T04:51:48.508Z",
-   "lastSuccessfulAt": "2026-09-25T04:51:48.508Z",
+   "lastSearchedAt": "2026-09-25T09:38:27.850Z",
+   "lastSuccessfulAt": "2026-09-25T09:38:27.850Z",
    "carried": false,
    "error": null,
    "matchCount": 12,
    "underCount": 0,
    "overCount": 11,
    "watchCount": 1,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-09-25T03:17:18.562Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-09-25T09:38:27.850Z",
    "searches": 2,
-   "newThisRun": 0,
-   "newToday": 0
+   "newThisRun": 17,
+   "newToday": 17
   },
   {
    "id": "design-beaubourg-armchair",
@@ -618,19 +618,19 @@
    "maxAllIn": 500,
    "priority": 21,
    "state": "complete",
-   "lastSearchedAt": "2026-09-25T04:51:49.207Z",
-   "lastSuccessfulAt": "2026-09-25T04:51:49.207Z",
+   "lastSearchedAt": "2026-09-25T09:38:28.629Z",
+   "lastSuccessfulAt": "2026-09-25T09:38:28.629Z",
    "carried": false,
    "error": null,
    "matchCount": 1,
    "underCount": 0,
    "overCount": 0,
    "watchCount": 1,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-09-25T03:17:19.397Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-09-25T09:38:28.629Z",
    "searches": 2,
-   "newThisRun": 0,
-   "newToday": 0
+   "newThisRun": 1,
+   "newToday": 1
   },
   {
    "id": "design-nakashima-seating",
@@ -642,19 +642,19 @@
    "maxAllIn": 3000,
    "priority": 22,
    "state": "complete",
-   "lastSearchedAt": "2026-09-25T04:51:49.841Z",
-   "lastSuccessfulAt": "2026-09-25T04:51:49.841Z",
+   "lastSearchedAt": "2026-09-25T09:38:29.213Z",
+   "lastSuccessfulAt": "2026-09-25T09:38:29.213Z",
    "carried": false,
    "error": null,
    "matchCount": 27,
    "underCount": 6,
    "overCount": 14,
    "watchCount": 7,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-09-25T03:17:20.139Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-09-25T09:38:29.213Z",
    "searches": 4,
-   "newThisRun": 0,
-   "newToday": 0
+   "newThisRun": 33,
+   "newToday": 33
   },
   {
    "id": "bstj-1924-v3",
@@ -666,16 +666,16 @@
    "maxAllIn": null,
    "priority": 23,
    "state": "complete",
-   "lastSearchedAt": "2026-09-25T04:51:51.142Z",
-   "lastSuccessfulAt": "2026-09-25T04:51:51.142Z",
+   "lastSearchedAt": "2026-09-25T09:38:30.639Z",
+   "lastSuccessfulAt": "2026-09-25T09:38:30.639Z",
    "carried": false,
    "error": null,
    "matchCount": 0,
    "underCount": 0,
    "overCount": 0,
    "watchCount": 0,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-09-25T03:17:21.423Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-09-25T09:38:30.639Z",
    "searches": 1,
    "newThisRun": 0,
    "newToday": 0
@@ -690,19 +690,19 @@
    "maxAllIn": null,
    "priority": 24,
    "state": "complete",
-   "lastSearchedAt": "2026-09-25T04:51:51.395Z",
-   "lastSuccessfulAt": "2026-09-25T04:51:51.395Z",
+   "lastSearchedAt": "2026-09-25T09:38:30.852Z",
+   "lastSuccessfulAt": "2026-09-25T09:38:30.852Z",
    "carried": false,
    "error": null,
    "matchCount": 2,
    "underCount": 0,
    "overCount": 0,
    "watchCount": 2,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-09-25T03:17:21.701Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-09-25T09:38:30.852Z",
    "searches": 1,
-   "newThisRun": 0,
-   "newToday": 0
+   "newThisRun": 6,
+   "newToday": 6
   },
   {
    "id": "bstj-1940-v19",
@@ -714,19 +714,19 @@
    "maxAllIn": null,
    "priority": 25,
    "state": "complete",
-   "lastSearchedAt": "2026-09-25T04:51:51.771Z",
-   "lastSuccessfulAt": "2026-09-25T04:51:51.771Z",
+   "lastSearchedAt": "2026-09-25T09:38:31.118Z",
+   "lastSuccessfulAt": "2026-09-25T09:38:31.118Z",
    "carried": false,
    "error": null,
    "matchCount": 0,
    "underCount": 0,
    "overCount": 0,
    "watchCount": 0,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-09-25T03:17:22.040Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-09-25T09:38:31.118Z",
    "searches": 1,
-   "newThisRun": 0,
-   "newToday": 0
+   "newThisRun": 4,
+   "newToday": 4
   },
   {
    "id": "bstj-1948-v27",
@@ -738,19 +738,19 @@
    "maxAllIn": null,
    "priority": 26,
    "state": "complete",
-   "lastSearchedAt": "2026-09-25T04:51:52.102Z",
-   "lastSuccessfulAt": "2026-09-25T04:51:52.102Z",
+   "lastSearchedAt": "2026-09-25T09:38:31.433Z",
+   "lastSuccessfulAt": "2026-09-25T09:38:31.433Z",
    "carried": false,
    "error": null,
    "matchCount": 0,
    "underCount": 0,
    "overCount": 0,
    "watchCount": 0,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-09-25T03:17:22.328Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-09-25T09:38:31.433Z",
    "searches": 1,
-   "newThisRun": 0,
-   "newToday": 0
+   "newThisRun": 4,
+   "newToday": 4
   },
   {
    "id": "bstj-1949-v28",
@@ -762,19 +762,19 @@
    "maxAllIn": null,
    "priority": 27,
    "state": "complete",
-   "lastSearchedAt": "2026-09-25T04:51:52.453Z",
-   "lastSuccessfulAt": "2026-09-25T04:51:52.453Z",
+   "lastSearchedAt": "2026-09-25T09:38:31.807Z",
+   "lastSuccessfulAt": "2026-09-25T09:38:31.807Z",
    "carried": false,
    "error": null,
    "matchCount": 2,
    "underCount": 0,
    "overCount": 0,
    "watchCount": 2,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-09-25T03:17:22.641Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-09-25T09:38:31.807Z",
    "searches": 1,
-   "newThisRun": 0,
-   "newToday": 0
+   "newThisRun": 6,
+   "newToday": 6
   },
   {
    "id": "bstj-1950-v29",
@@ -786,19 +786,19 @@
    "maxAllIn": null,
    "priority": 28,
    "state": "complete",
-   "lastSearchedAt": "2026-09-25T04:51:52.786Z",
-   "lastSuccessfulAt": "2026-09-25T04:51:52.786Z",
+   "lastSearchedAt": "2026-09-25T09:38:32.186Z",
+   "lastSuccessfulAt": "2026-09-25T09:38:32.186Z",
    "carried": false,
    "error": null,
    "matchCount": 3,
    "underCount": 0,
    "overCount": 0,
    "watchCount": 3,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-09-25T03:17:23.058Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-09-25T09:38:32.186Z",
    "searches": 1,
-   "newThisRun": 0,
-   "newToday": 0
+   "newThisRun": 6,
+   "newToday": 6
   },
   {
    "id": "bstj-1963-v42",
@@ -810,19 +810,19 @@
    "maxAllIn": null,
    "priority": 29,
    "state": "complete",
-   "lastSearchedAt": "2026-09-25T04:51:53.126Z",
-   "lastSuccessfulAt": "2026-09-25T04:51:53.126Z",
+   "lastSearchedAt": "2026-09-25T09:38:32.550Z",
+   "lastSuccessfulAt": "2026-09-25T09:38:32.550Z",
    "carried": false,
    "error": null,
    "matchCount": 11,
    "underCount": 0,
    "overCount": 0,
    "watchCount": 11,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-09-25T03:17:23.435Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-09-25T09:38:32.550Z",
    "searches": 1,
-   "newThisRun": 0,
-   "newToday": 0
+   "newThisRun": 15,
+   "newToday": 15
   },
   {
    "id": "bstj-1964-v43",
@@ -834,19 +834,19 @@
    "maxAllIn": null,
    "priority": 30,
    "state": "complete",
-   "lastSearchedAt": "2026-09-25T04:51:53.483Z",
-   "lastSuccessfulAt": "2026-09-25T04:51:53.483Z",
+   "lastSearchedAt": "2026-09-25T09:38:32.971Z",
+   "lastSuccessfulAt": "2026-09-25T09:38:32.971Z",
    "carried": false,
    "error": null,
    "matchCount": 10,
    "underCount": 0,
    "overCount": 0,
    "watchCount": 10,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-09-25T03:17:23.745Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-09-25T09:38:32.971Z",
    "searches": 1,
-   "newThisRun": 0,
-   "newToday": 0
+   "newThisRun": 14,
+   "newToday": 14
   },
   {
    "id": "bstj-1970-v49",
@@ -858,19 +858,19 @@
    "maxAllIn": null,
    "priority": 31,
    "state": "complete",
-   "lastSearchedAt": "2026-09-25T04:51:53.817Z",
-   "lastSuccessfulAt": "2026-09-25T04:51:53.817Z",
+   "lastSearchedAt": "2026-09-25T09:38:33.372Z",
+   "lastSuccessfulAt": "2026-09-25T09:38:33.372Z",
    "carried": false,
    "error": null,
    "matchCount": 2,
    "underCount": 0,
    "overCount": 0,
    "watchCount": 2,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-09-25T03:17:24.066Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-09-25T09:38:33.372Z",
    "searches": 1,
-   "newThisRun": 0,
-   "newToday": 0
+   "newThisRun": 2,
+   "newToday": 2
   },
   {
    "id": "bstj-1978-v57",
@@ -882,19 +882,19 @@
    "maxAllIn": null,
    "priority": 32,
    "state": "complete",
-   "lastSearchedAt": "2026-09-25T04:51:54.138Z",
-   "lastSuccessfulAt": "2026-09-25T04:51:54.138Z",
+   "lastSearchedAt": "2026-09-25T09:38:33.702Z",
+   "lastSuccessfulAt": "2026-09-25T09:38:33.702Z",
    "carried": false,
    "error": null,
    "matchCount": 1,
    "underCount": 0,
    "overCount": 0,
    "watchCount": 1,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-09-25T03:17:24.423Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-09-25T09:38:33.702Z",
    "searches": 1,
-   "newThisRun": 0,
-   "newToday": 0
+   "newThisRun": 1,
+   "newToday": 1
   },
   {
    "id": "bstj-1979-v58",
@@ -906,19 +906,19 @@
    "maxAllIn": null,
    "priority": 33,
    "state": "complete",
-   "lastSearchedAt": "2026-09-25T04:51:54.468Z",
-   "lastSuccessfulAt": "2026-09-25T04:51:54.468Z",
+   "lastSearchedAt": "2026-09-25T09:38:34.010Z",
+   "lastSuccessfulAt": "2026-09-25T09:38:34.010Z",
    "carried": false,
    "error": null,
    "matchCount": 1,
    "underCount": 0,
    "overCount": 0,
    "watchCount": 1,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-09-25T03:17:24.744Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-09-25T09:38:34.010Z",
    "searches": 1,
-   "newThisRun": 0,
-   "newToday": 0
+   "newThisRun": 1,
+   "newToday": 1
   },
   {
    "id": "bstj-roman-undated",
@@ -930,19 +930,19 @@
    "maxAllIn": null,
    "priority": 34,
    "state": "complete",
-   "lastSearchedAt": "2026-09-25T04:51:54.761Z",
-   "lastSuccessfulAt": "2026-09-25T04:51:54.761Z",
+   "lastSearchedAt": "2026-09-25T09:38:34.295Z",
+   "lastSuccessfulAt": "2026-09-25T09:38:34.295Z",
    "carried": false,
    "error": null,
    "matchCount": 1,
    "underCount": 0,
    "overCount": 0,
    "watchCount": 1,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-09-25T03:17:25.047Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-09-25T09:38:34.295Z",
    "searches": 1,
-   "newThisRun": 0,
-   "newToday": 0
+   "newThisRun": 113,
+   "newToday": 113
   },
   {
    "id": "bstj-abbrev",
@@ -954,19 +954,19 @@
    "maxAllIn": null,
    "priority": 35,
    "state": "complete",
-   "lastSearchedAt": "2026-09-25T04:51:55.177Z",
-   "lastSuccessfulAt": "2026-09-25T04:51:55.177Z",
+   "lastSearchedAt": "2026-09-25T09:38:34.965Z",
+   "lastSuccessfulAt": "2026-09-25T09:38:34.965Z",
    "carried": false,
    "error": null,
    "matchCount": 1,
    "underCount": 0,
    "overCount": 0,
    "watchCount": 1,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-09-25T03:17:25.680Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-09-25T09:38:34.965Z",
    "searches": 1,
-   "newThisRun": 0,
-   "newToday": 0
+   "newThisRun": 72,
+   "newToday": 72
   }
  ],
  "cards": [
@@ -998,7 +998,7 @@
    "condition": "New",
    "location": "US",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:nakashima",
     "at-or-under-cap"
@@ -1082,7 +1082,7 @@
    "condition": "New",
    "location": "US",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:nakashima",
     "at-or-under-cap"
@@ -1166,7 +1166,7 @@
    "condition": "New",
    "location": "US",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:nakashima",
     "at-or-under-cap"
@@ -1250,7 +1250,7 @@
    "condition": "New without tags",
    "location": "US",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:haze",
     "medium:original",
@@ -1318,7 +1318,7 @@
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:futura",
     "medium:original",
@@ -1398,7 +1398,7 @@
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:futura",
     "medium:painting",
@@ -1465,7 +1465,7 @@
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:futura",
     "medium:original",
@@ -1544,7 +1544,7 @@
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:futura",
     "medium:original",
@@ -1624,7 +1624,7 @@
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:futura",
     "medium:original",
@@ -1692,7 +1692,7 @@
    "condition": "Used",
    "location": "JP",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:futura",
     "medium:canvas",
@@ -1780,7 +1780,7 @@
    "condition": "Used",
    "location": "JP",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:futura",
     "medium:canvas",
@@ -1868,7 +1868,7 @@
    "condition": "Unspecified",
    "location": "US",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:saul",
     "medium:drawn",
@@ -1928,7 +1928,7 @@
    "condition": "Unspecified",
    "location": "US",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:saul",
     "medium:drawn",
@@ -1990,7 +1990,7 @@
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:nakashima",
     "aspect:original",
@@ -2070,7 +2070,7 @@
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:nakashima",
     "aspect:original",
@@ -2150,7 +2150,7 @@
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:nakashima",
     "aspect:original",
@@ -2203,97 +2203,6 @@
    "dismissible": true
   },
   {
-   "key": "art-haze-painting:v1|227489171717|0",
-   "group": "under",
-   "huntId": "art-haze-painting",
-   "huntLabel": "Eric Haze — painting",
-   "classification": "under",
-   "listingId": "v1|227489171717|0",
-   "title": "Men 8.0US  Dunk High ''Eric Haze'' F F/Sp Box LTD Collection Original Sports Sho",
-   "url": "https://www.ebay.com/itm/227489171717?_skw=eric+haze+original&hash=item34f7694905:g:ov4AAeSwg4BqGKul",
-   "imageUrl": "https://i.ebayimg.com/images/g/ov4AAeSwg4BqGKul/s-l225.jpg",
-   "buyingMode": "FIXED_PRICE",
-   "endsAt": null,
-   "bidCount": null,
-   "price": 4817.39,
-   "shipping": 31.9,
-   "allIn": 4849.29,
-   "maxAllIn": 5000,
-   "underBy": 150.71,
-   "underPct": 0.03,
-   "capWording": "under cap",
-   "seller": {
-    "username": "japan-hobby-clubs",
-    "feedbackPercentage": 98.9,
-    "feedbackScore": 2165
-   },
-   "condition": "Pre-owned - Good",
-   "location": "JP",
-   "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
-   "reasons": [
-    "must:haze",
-    "medium:original",
-    "claims-original",
-    "at-or-under-cap"
-   ],
-   "flags": [],
-   "confidence": 0.95,
-   "review": "ok",
-   "carried": false,
-   "alertKey": "ebay:v1|227489171717|0:art-haze-painting:v1",
-   "similarCount": 0,
-   "risk": "low",
-   "riskReasons": [],
-   "details": {
-    "aspects": {
-     "Brand": "Nike",
-     "Country": "Japan",
-     "US Shoe Size": "8",
-     "Color": "Multicolor",
-     "Department": "Men",
-     "Customized": "NA",
-     "Style Code": "NA",
-     "UK Shoe Size": "7.5",
-     "Product Line": "Nike Dunk",
-     "Model": "NA",
-     "Country of Origin": "NA",
-     "Style": "Sneaker",
-     "Shoe Width": "Standard",
-     "Shoe Shaft Style": "NA",
-     "Release Year": "NA",
-     "Upper Material": "Various",
-     "EU Shoe Size": "42",
-     "Type": "Athletic",
-     "Vintage": "NA",
-     "Character": "Nike Dunk",
-     "Theme": "Sports",
-     "Features": "Limited Edition",
-     "Performance/Activity": "Any",
-     "Closure": "Lace Up",
-     "Season": "Fall, Spring, Summer, Winter",
-     "Occasion": "Activewear, Casual",
-     "California Prop 65 Warning": "No",
-     "JP Shoe Size": "26",
-     "Number": "335",
-     "UPC": "NA"
-    },
-    "descriptionSnippet": "Item Title Men 8.0US Dunk High ''Eric Haze'' F F/Sp Box LTD Collection Original Sports Sho Payment Supports managed payments Please pay within 5 days after auction is finished. About Us We are located in Japan. It's our pleasure to make you happy by proposing our recommend item. ",
-    "fetchedAt": "2026-09-25T03:17:44.787Z"
-   },
-   "priceHistory": [
-    {
-     "at": "2026-09-25T03:20:24.636Z",
-     "price": 4817.39,
-     "allIn": 4849.29
-    }
-   ],
-   "priceChange": null,
-   "relisted": null,
-   "photoReused": null,
-   "dismissible": true
-  },
-  {
    "key": "sports-djackson-jersey:v1|164927153766|0",
    "group": "under",
    "huntId": "sports-djackson-jersey",
@@ -2321,7 +2230,7 @@
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:jackson",
     "game-used:game used",
@@ -2387,7 +2296,7 @@
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:jackson",
     "game-used:game used",
@@ -2453,7 +2362,7 @@
    "condition": "Like New",
    "location": "US",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:crumb",
     "medium:original",
@@ -2524,7 +2433,7 @@
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:crumb",
     "medium:illustration",
@@ -2602,7 +2511,7 @@
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:foles",
     "game-used:game used",
@@ -2672,7 +2581,7 @@
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:futura",
     "medium:original",
@@ -2724,11 +2633,11 @@
    "buyingMode": "FIXED_PRICE",
    "endsAt": null,
    "bidCount": null,
-   "price": 22.49,
-   "shipping": 33.45,
-   "allIn": 55.94,
+   "price": 22.46,
+   "shipping": 33.4,
+   "allIn": 55.86,
    "maxAllIn": 15000,
-   "underBy": 14944.06,
+   "underBy": 14944.14,
    "underPct": 1,
    "capWording": "under cap",
    "seller": {
@@ -2739,7 +2648,7 @@
    "condition": "Used",
    "location": "GB",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:futura",
     "medium:original",
@@ -2773,16 +2682,25 @@
      "Colour": "Multi-colour"
     },
     "descriptionSnippet": "HERE WE HAVE A QUALITY COLLECTABLE CORGI CLASSICS THE ORIGINAL OMNIBUS COMPANY DIE-CAST MODEL BOVA FUTURA COACH WITH FLIGHT LINK LIVERY, THE PIECE IS A LIMITED EDITION PIECE OF 5000 AND IS IN MINT CONDITION AND COMES WITHIN THE ORIGINAL PLASTIC DISPLAY BOX WHICH HAS SOME MARKS TH",
-    "fetchedAt": "2026-09-25T03:17:44.787Z"
+    "fetchedAt": "2026-09-25T09:38:53.047Z"
    },
    "priceHistory": [
     {
      "at": "2026-09-25T03:20:24.636Z",
      "price": 22.49,
      "allIn": 55.94
+    },
+    {
+     "at": "2026-09-25T09:41:39.186Z",
+     "price": 22.46,
+     "allIn": 55.86
     }
    ],
-   "priceChange": null,
+   "priceChange": {
+    "from": 55.94,
+    "to": 55.86,
+    "since": "2026-09-25T03:20:24.636Z"
+   },
    "relisted": null,
    "photoReused": null,
    "dismissible": true
@@ -2800,11 +2718,11 @@
    "buyingMode": "FIXED_PRICE",
    "endsAt": null,
    "bidCount": null,
-   "price": 20.9,
-   "shipping": 33.39,
-   "allIn": 54.29,
+   "price": 20.87,
+   "shipping": 33.34,
+   "allIn": 54.21,
    "maxAllIn": 15000,
-   "underBy": 14945.71,
+   "underBy": 14945.79,
    "underPct": 1,
    "capWording": "under cap",
    "seller": {
@@ -2815,7 +2733,7 @@
    "condition": "Used",
    "location": "GB",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:futura",
     "medium:original",
@@ -2853,16 +2771,25 @@
      "Country of Origin": "China"
     },
     "descriptionSnippet": "OM45308 Corgi Original Omnibus BOVA FUTURA – NATIONAL EXPRESS Scale 1:76 Limited edition number 0642 of only 2500 distributed worldwide. Model is in good condition overall, with a couple of marks. Sleeve and case are in good condition with some age-related wear, as per the photos",
-    "fetchedAt": "2026-09-25T03:17:44.787Z"
+    "fetchedAt": "2026-09-25T09:38:53.047Z"
    },
    "priceHistory": [
     {
      "at": "2026-09-25T03:20:24.636Z",
      "price": 20.9,
      "allIn": 54.29
+    },
+    {
+     "at": "2026-09-25T09:41:39.186Z",
+     "price": 20.87,
+     "allIn": 54.21
     }
    ],
-   "priceChange": null,
+   "priceChange": {
+    "from": 54.29,
+    "to": 54.21,
+    "since": "2026-09-25T03:20:24.636Z"
+   },
    "relisted": null,
    "photoReused": null,
    "dismissible": true
@@ -2895,7 +2822,7 @@
    "condition": "Unspecified",
    "location": "US",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:futura",
     "medium:acrylic",
@@ -2949,11 +2876,11 @@
    "buyingMode": "FIXED_PRICE",
    "endsAt": null,
    "bidCount": null,
-   "price": 112.68,
-   "shipping": 33.01,
-   "allIn": 145.69,
+   "price": 112.66,
+   "shipping": 33,
+   "allIn": 145.66,
    "maxAllIn": 15000,
-   "underBy": 14854.31,
+   "underBy": 14854.34,
    "underPct": 0.99,
    "capWording": "under cap",
    "seller": {
@@ -2964,7 +2891,7 @@
    "condition": "Usato - Eccellente",
    "location": "IT",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:futura",
     "medium:board",
@@ -2994,16 +2921,25 @@
      "Vintage": "Sì"
     },
     "descriptionSnippet": "Futura 2000 x Quiksilver vintage board shorts rare Splinter Pointman limited edition SZ 30 M Ready to ship whit all cares",
-    "fetchedAt": "2026-09-25T03:17:44.787Z"
+    "fetchedAt": "2026-09-25T09:38:53.047Z"
    },
    "priceHistory": [
     {
      "at": "2026-09-25T03:20:24.636Z",
      "price": 112.68,
      "allIn": 145.69
+    },
+    {
+     "at": "2026-09-25T09:41:39.186Z",
+     "price": 112.66,
+     "allIn": 145.66
     }
    ],
-   "priceChange": null,
+   "priceChange": {
+    "from": 145.69,
+    "to": 145.66,
+    "since": "2026-09-25T03:20:24.636Z"
+   },
    "relisted": null,
    "photoReused": null,
    "dismissible": true
@@ -3036,7 +2972,7 @@
    "condition": "Used",
    "location": "PE",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:condo",
     "medium:drawing",
@@ -3102,7 +3038,7 @@
    "condition": "Used",
    "location": "PE",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:condo",
     "medium:drawing",
@@ -3163,12 +3099,12 @@
    "seller": {
     "username": "vicberdillan_0",
     "feedbackPercentage": 100,
-    "feedbackScore": 118
+    "feedbackScore": 119
    },
    "condition": "Used",
    "location": "PE",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:condo",
     "medium:drawing",
@@ -3243,11 +3179,11 @@
    "buyingMode": "FIXED_PRICE",
    "endsAt": null,
    "bidCount": null,
-   "price": 52.79,
-   "shipping": 20.41,
-   "allIn": 73.2,
+   "price": 52.59,
+   "shipping": 20.33,
+   "allIn": 72.92,
    "maxAllIn": 10000,
-   "underBy": 9926.8,
+   "underBy": 9927.08,
    "underPct": 0.99,
    "capWording": "under cap",
    "seller": {
@@ -3258,7 +3194,7 @@
    "condition": "Pre-owned - Good",
    "location": "AU",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:condo",
     "medium:sketch",
@@ -3290,16 +3226,25 @@
      "Colour": "White"
     },
     "descriptionSnippet": "Released as part of the \"Franchise\" single merch drop in 2020. This white tee features minimalist gallery-style specifications on the front chest and a massive brown line-art sketch by George Condo on the back. ITEM DETAILS: Brand: Travis Scott / Cactus Jack Artist: George Condo ",
-    "fetchedAt": "2026-09-25T03:17:44.787Z"
+    "fetchedAt": "2026-09-25T09:38:53.047Z"
    },
    "priceHistory": [
     {
      "at": "2026-09-25T03:20:24.636Z",
      "price": 52.79,
      "allIn": 73.2
+    },
+    {
+     "at": "2026-09-25T09:41:39.186Z",
+     "price": 52.59,
+     "allIn": 72.92
     }
    ],
-   "priceChange": null,
+   "priceChange": {
+    "from": 73.2,
+    "to": 72.92,
+    "since": "2026-09-25T03:20:24.636Z"
+   },
    "relisted": null,
    "photoReused": null,
    "dismissible": true
@@ -3332,7 +3277,7 @@
    "condition": "Used",
    "location": "PE",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:condo",
     "medium:drawing",
@@ -3398,7 +3343,7 @@
    "condition": "Used",
    "location": "PE",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:condo",
     "medium:drawing",
@@ -3408,18 +3353,18 @@
    "flags": [
     "price-far-below-market",
     "fake-art-template",
-    "same-seller-repeats:6"
+    "same-seller-repeats:5"
    ],
    "confidence": 0.2,
    "review": "review",
    "carried": false,
    "alertKey": "ebay:v1|305946826246|0:art-condo-drawing:v1",
-   "similarCount": 6,
+   "similarCount": 5,
    "risk": "high",
    "riskReasons": [
     "matches a common fake-art listing template (“on old paper, signed & stamped”)",
     "priced far below what this artist sells for",
-    "seller has 7 copies of a “unique” work",
+    "seller has 6 copies of a “unique” work",
     "George Condo is heavily forged on eBay and this is priced like a fake",
     "ships from PE"
    ],
@@ -3464,7 +3409,7 @@
    "condition": "Used",
    "location": "PE",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:condo",
     "medium:drawing",
@@ -3540,7 +3485,7 @@
    "condition": "Used",
    "location": "PE",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:condo",
     "medium:drawing",
@@ -3606,7 +3551,7 @@
    "condition": "Used",
    "location": "PE",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:condo",
     "medium:drawing",
@@ -3688,7 +3633,7 @@
    "condition": "Used",
    "location": "PE",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:condo",
     "medium:drawing",
@@ -3754,7 +3699,7 @@
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:crumb",
     "medium:paper",
@@ -3825,12 +3770,12 @@
    "seller": {
     "username": "irononqueen",
     "feedbackPercentage": 99.8,
-    "feedbackScore": 11360
+    "feedbackScore": 11362
    },
    "condition": "New without tags",
    "location": "US",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:crumb",
     "medium:original",
@@ -3901,7 +3846,7 @@
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:crumb",
     "medium:original",
@@ -3969,7 +3914,7 @@
    "condition": "Very Good",
    "location": "US",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:crumb",
     "medium:original",
@@ -4053,7 +3998,7 @@
    "condition": "Unspecified",
    "location": "US",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:crumb",
     "medium:original",
@@ -4121,7 +4066,7 @@
    "condition": "New – Open box",
    "location": "US",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:crumb",
     "medium:original",
@@ -4184,7 +4129,7 @@
    "condition": "New – Open box",
    "location": "US",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:crumb",
     "medium:original",
@@ -4254,7 +4199,7 @@
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:crumb",
     "medium:original",
@@ -4322,7 +4267,7 @@
    "condition": "New – Open box",
    "location": "US",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:crumb",
     "medium:original",
@@ -4392,7 +4337,7 @@
    "condition": "New without tags",
    "location": "US",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:crumb",
     "medium:original",
@@ -4459,7 +4404,7 @@
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:crumb",
     "medium:original",
@@ -4546,7 +4491,7 @@
    "condition": "New",
    "location": "US",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:crumb",
     "medium:original",
@@ -4630,12 +4575,12 @@
    "seller": {
     "username": "jackson92142",
     "feedbackPercentage": 100,
-    "feedbackScore": 2096
+    "feedbackScore": 2099
    },
    "condition": "New",
    "location": "US",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:crumb",
     "medium:original",
@@ -4655,7 +4600,13 @@
     "priced far below what this artist sells for",
     "Robert Crumb is heavily forged on eBay and this is priced like a fake"
    ],
-   "details": null,
+   "details": {
+    "aspects": {
+     "Color": "Multi-Color"
+    },
+    "descriptionSnippet": "UNPEELED, UNUSED vintage decal sticker. In great vintage condition with age-related signs of wear and yellowing. Due to long-term storage, adhesive may have weakened. Please review all photos carefully, as they are an integral part of the description and condition. You are receiv",
+    "fetchedAt": "2026-09-25T09:38:53.047Z"
+   },
    "priceHistory": [
     {
      "at": "2026-09-25T03:20:24.636Z",
@@ -4691,12 +4642,12 @@
    "seller": {
     "username": "rusish4153",
     "feedbackPercentage": 100,
-    "feedbackScore": 64
+    "feedbackScore": 67
    },
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:crumb",
     "medium:original",
@@ -4769,7 +4720,7 @@
    "condition": "Used",
    "location": "PE",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:condo",
     "medium:drawing",
@@ -4832,12 +4783,12 @@
    "seller": {
     "username": "love-for-art",
     "feedbackPercentage": 99.6,
-    "feedbackScore": 418
+    "feedbackScore": 419
    },
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:condo",
     "medium:drawing",
@@ -4897,12 +4848,12 @@
    "seller": {
     "username": "cdcubed-26",
     "feedbackPercentage": 99.5,
-    "feedbackScore": 186
+    "feedbackScore": 187
    },
    "condition": "Used",
    "location": "BA",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:condo",
     "medium:drawing",
@@ -4968,7 +4919,7 @@
    "condition": "Used",
    "location": "PE",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:condo",
     "medium:drawing",
@@ -5027,19 +4978,21 @@
    "seller": {
     "username": "irononqueen",
     "feedbackPercentage": 99.8,
-    "feedbackScore": 11360
+    "feedbackScore": 11362
    },
    "condition": "New without tags",
    "location": "US",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:crumb",
     "medium:original",
     "claims-original",
+    "aspect:original",
     "at-or-under-cap"
    ],
    "flags": [
+    "description:reproduction-language",
     "price-far-below-market"
    ],
    "confidence": 0.6,
@@ -5050,9 +5003,18 @@
    "risk": "high",
    "riskReasons": [
     "priced far below what this artist sells for",
+    "the description uses reproduction / print language",
     "Robert Crumb is heavily forged on eBay and this is priced like a fake"
    ],
-   "details": null,
+   "details": {
+    "aspects": {
+     "Material": "Down",
+     "Original/Reproduction": "Original",
+     "Country of Origin": "United States"
+    },
+    "descriptionSnippet": "Approx 11 x 10 inches NOS New Old Stock Made in USA Collector's Item----THIS IS NOT A REPRODUCTION! I found this RARE Iron-on T-shirt heat transfer amongst a treasure trove of vintage tees and iron-ons in a dilapidated warehouse in New Jersey back in the early nineties. I recomme",
+    "fetchedAt": "2026-09-25T09:38:53.047Z"
+   },
    "priceHistory": [
     {
      "at": "2026-09-25T03:20:24.636Z",
@@ -5088,19 +5050,21 @@
    "seller": {
     "username": "irononqueen",
     "feedbackPercentage": 99.8,
-    "feedbackScore": 11360
+    "feedbackScore": 11362
    },
    "condition": "New without tags",
    "location": "US",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:crumb",
     "medium:original",
     "claims-original",
+    "aspect:original",
     "at-or-under-cap"
    ],
    "flags": [
+    "description:reproduction-language",
     "price-far-below-market"
    ],
    "confidence": 0.6,
@@ -5111,9 +5075,19 @@
    "risk": "high",
    "riskReasons": [
     "priced far below what this artist sells for",
+    "the description uses reproduction / print language",
     "Robert Crumb is heavily forged on eBay and this is priced like a fake"
    ],
-   "details": null,
+   "details": {
+    "aspects": {
+     "Color": "Multi-Color",
+     "Original/Reproduction": "Original",
+     "Gender": "Adult Unisex",
+     "Country of Origin": "United States"
+    },
+    "descriptionSnippet": "Approx 5 x 4 inches Very Good Condition NOS New Old Stock Collector's Item----THIS IS NOT A REPRODUCTION! I found this RARE Iron-on T-shirt heat transfer amongst a treasure trove of vintage tees and iron-ons in a dilapidated warehouse in New Jersey back in the early nineties. I r",
+    "fetchedAt": "2026-09-25T09:38:53.047Z"
+   },
    "priceHistory": [
     {
      "at": "2026-09-25T03:20:24.636Z",
@@ -5154,11 +5128,12 @@
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:crumb",
     "medium:original",
     "claims-original",
+    "aspect:original",
     "at-or-under-cap"
    ],
    "flags": [
@@ -5174,7 +5149,16 @@
     "priced far below what this artist sells for",
     "Robert Crumb is heavily forged on eBay and this is priced like a fake"
    ],
-   "details": null,
+   "details": {
+    "aspects": {
+     "Industry": "Music",
+     "Artist/Band": "Janis Joplin",
+     "Original/Reproduction": "Original",
+     "Genre": "Rock & Pop"
+    },
+    "descriptionSnippet": "Average cond.",
+    "fetchedAt": "2026-09-25T09:38:53.047Z"
+   },
    "priceHistory": [
     {
      "at": "2026-09-25T03:20:24.636Z",
@@ -5215,7 +5199,7 @@
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:crumb",
     "medium:sketch",
@@ -5234,7 +5218,33 @@
     "priced far below what this artist sells for",
     "Robert Crumb is heavily forged on eBay and this is priced like a fake"
    ],
-   "details": null,
+   "details": {
+    "aspects": {
+     "Author": "Point / Coevolution Quarterly",
+     "Book Title": "\"Why We Should Drop the Bombs,\" by Alia Johnson, And, from R.",
+     "Cover": "Magazine",
+     "Language": "English",
+     "Book Series": "No. 18",
+     "Publisher": "Point / Coevolution Quarterly",
+     "Publication Year": "1981",
+     "Publication Name": "No. 18",
+     "Place Published": "Sausalito, CA",
+     "Pages": "144p.",
+     "Topic": "Counter-culture",
+     "Format": "Magazine",
+     "Book Condition": "Very Good-",
+     "Defects": "This is a larger than trade sized magazine. The magazine is in, Very Good- condition and was issued without a dust jacket., There is some light rubbing and wear to the spine ends and, corners of the m",
+     "Illustrator": "Robert Crumb",
+     "Illustration Type": "B&W Illustrations",
+     "Binding": "Magazine",
+     "Subject": "Counter-culture",
+     "Place of Publication": "Sausalito, CA",
+     "Year Printed": "1981",
+     "Special Attributes": "Illustrated"
+    },
+    "descriptionSnippet": "(Counter-culture) Point / Coevolution Quarterly: \"Why We Should Drop the Bombs,\" by Alia Johnson, And, from R. Crumb's Sketch Book (As Found in the Coevolution Quarterly) : Magazine. Point / Coevolution Quarterly, Sausalito, CA. 1981. B&W Illustrations: Robert Crumb. Very Good- T",
+    "fetchedAt": "2026-09-25T09:38:53.047Z"
+   },
    "priceHistory": [
     {
      "at": "2026-09-25T03:20:24.636Z",
@@ -5275,11 +5285,12 @@
    "condition": "New with tags",
    "location": "US",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:crumb",
     "medium:original",
     "claims-original",
+    "aspect:original",
     "at-or-under-cap"
    ],
    "flags": [
@@ -5295,7 +5306,17 @@
     "priced far below what this artist sells for",
     "Robert Crumb is heavily forged on eBay and this is priced like a fake"
    ],
-   "details": null,
+   "details": {
+    "aspects": {
+     "Type": "Heat Press",
+     "Transfer Style": "Countries",
+     "Country of Origin": "United States",
+     "Brand": "Rare",
+     "Original/Reproduction": "Original"
+    },
+    "descriptionSnippet": "Vintage Heat Transfer Iron On Rare vintage original heat transfer iron on for a shirt A heat press will be needed for application as this is the old school heat press version!!",
+    "fetchedAt": "2026-09-25T09:38:53.047Z"
+   },
    "priceHistory": [
     {
      "at": "2026-09-25T03:20:24.636Z",
@@ -5336,7 +5357,7 @@
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:crumb",
     "medium:original",
@@ -5356,7 +5377,19 @@
     "priced far below what this artist sells for",
     "Robert Crumb is heavily forged on eBay and this is priced like a fake"
    ],
-   "details": null,
+   "details": {
+    "aspects": {
+     "Unit of Sale": "Single",
+     "Brand": "Black Ball Corp.",
+     "Type": "Iron-On",
+     "Composition": "Cloth",
+     "Theme": "Cartoons, TV & Movie Characters",
+     "Suitable For": "Apparel - Coat/Jacket",
+     "UPC": "840471710936"
+    },
+    "descriptionSnippet": "R. Crumb Keep on trucking Patch March of Dimes Super Walk This is a vintage original embroidered patch for the March of Dimes Superwalk. \"March of Dimes, Super walk, I walked\" Orange blue and white colors, figure show the 1960's \"Keep on trucking.\" Icon of Robert Crumb. Not sure ",
+    "fetchedAt": "2026-09-25T09:38:53.047Z"
+   },
    "priceHistory": [
     {
      "at": "2026-09-25T03:20:24.636Z",
@@ -5392,12 +5425,12 @@
    "seller": {
     "username": "scarcezhenzteeth",
     "feedbackPercentage": 100,
-    "feedbackScore": 9475
+    "feedbackScore": 9476
    },
    "condition": "Unspecified",
    "location": "US",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:crumb",
     "medium:original",
@@ -5417,7 +5450,11 @@
     "priced far below what this artist sells for",
     "Robert Crumb is heavily forged on eBay and this is priced like a fake"
    ],
-   "details": null,
+   "details": {
+    "aspects": {},
+    "descriptionSnippet": "--> Image not available Photos not available for this variation &amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;lt;style type=\"text/css\"&amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;gt;.vi-hide-mImgThr {display: none;}&a",
+    "fetchedAt": "2026-09-25T09:38:53.047Z"
+   },
    "priceHistory": [
     {
      "at": "2026-09-25T03:20:24.636Z",
@@ -5458,11 +5495,12 @@
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:crumb",
     "medium:original",
     "claims-original",
+    "aspect:original",
     "at-or-under-cap"
    ],
    "flags": [
@@ -5478,7 +5516,22 @@
     "priced far below what this artist sells for",
     "Robert Crumb is heavily forged on eBay and this is priced like a fake"
    ],
-   "details": null,
+   "details": {
+    "aspects": {
+     "Unit of Sale": "Single Piece",
+     "Type": "Film Slide",
+     "Format": "35mm",
+     "Theme": "Animation",
+     "Image Color": "Color",
+     "Material": "Celluloid",
+     "Original/Licensed Reprint": "Original",
+     "Brand/Publisher": "Agfachrome",
+     "Subject": "Anime, Cartoons & Caricatures",
+     "Vintage": "Yes"
+    },
+    "descriptionSnippet": "The product is an original 35mm color slide featuring a Mr. Natural R. Crumb cartoon animation. Created with celluloid material and Agfachrome brand, this vintage film slide showcases a unique and collectible piece of anime and cartoon history. Perfect for collectors and enthusia",
+    "fetchedAt": "2026-09-25T09:38:53.047Z"
+   },
    "priceHistory": [
     {
      "at": "2026-09-25T03:20:24.636Z",
@@ -5514,19 +5567,21 @@
    "seller": {
     "username": "irononqueen",
     "feedbackPercentage": 99.8,
-    "feedbackScore": 11360
+    "feedbackScore": 11362
    },
    "condition": "New without tags",
    "location": "US",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:crumb",
     "medium:original",
     "claims-original",
+    "aspect:original",
     "at-or-under-cap"
    ],
    "flags": [
+    "description:reproduction-language",
     "price-far-below-market"
    ],
    "confidence": 0.6,
@@ -5537,9 +5592,21 @@
    "risk": "high",
    "riskReasons": [
     "priced far below what this artist sells for",
+    "the description uses reproduction / print language",
     "Robert Crumb is heavily forged on eBay and this is priced like a fake"
    ],
-   "details": null,
+   "details": {
+    "aspects": {
+     "Brand": "R Crumb",
+     "Color": "Multi-Color",
+     "Decade": "1960s",
+     "Original/Reproduction": "Original",
+     "Gender": "Adult Unisex",
+     "Country of Origin": "United States"
+    },
+    "descriptionSnippet": "NOS New Old Stock Good Condition Approx 11 x 9.5 inches Combined shipping *Please use the eBay desktop site ... not the app *Add items to cart *Your shipping should automatically combine *If you do not receive combined shipping..request total from seller or message me! Collector'",
+    "fetchedAt": "2026-09-25T09:38:53.047Z"
+   },
    "priceHistory": [
     {
      "at": "2026-09-25T03:20:24.636Z",
@@ -5580,14 +5647,16 @@
    "condition": "Unspecified",
    "location": "US",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:crumb",
     "medium:original",
     "claims-original",
+    "aspect:original",
     "at-or-under-cap"
    ],
    "flags": [
+    "description:reproduction-language",
     "price-far-below-market"
    ],
    "confidence": 0.6,
@@ -5598,9 +5667,22 @@
    "risk": "high",
    "riskReasons": [
     "priced far below what this artist sells for",
+    "the description uses reproduction / print language",
     "Robert Crumb is heavily forged on eBay and this is priced like a fake"
    ],
-   "details": null,
+   "details": {
+    "aspects": {
+     "Country of Origin": "United States",
+     "Vintage Type": "True Vintage",
+     "Decade": "1960s",
+     "Color": "Multi-Color",
+     "Original/Reproduction": "Original",
+     "Look": "Psychedelic",
+     "Gender": "Unisex"
+    },
+    "descriptionSnippet": "Collector's Item----THIS IS NOT A REPRODUCTION! RARE Iron-on T-shirt heat transfer I recommend going to your local t-shirt shop and having this put on a tee by a professional using a t-shirt heat press machine. The transfer will appear much brighter than the photos after it is he",
+    "fetchedAt": "2026-09-25T09:38:53.047Z"
+   },
    "priceHistory": [
     {
      "at": "2026-09-25T03:20:24.636Z",
@@ -5636,12 +5718,12 @@
    "seller": {
     "username": "zuber",
     "feedbackPercentage": 99,
-    "feedbackScore": 349498
+    "feedbackScore": 349520
    },
    "condition": "Brand New",
    "location": "US",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:crumb",
     "medium:original",
@@ -5661,7 +5743,19 @@
     "priced far below what this artist sells for",
     "Robert Crumb is heavily forged on eBay and this is priced like a fake"
    ],
-   "details": null,
+   "details": {
+    "aspects": {
+     "UPC": "714798900120",
+     "Release Title": "R Crumb the Musical",
+     "Format": "Cast Recording",
+     "Artist": "Original Cast Recording",
+     "Type": "Audio CD",
+     "Record Label": "Shel-Tone Records",
+     "Release Year": "1996"
+    },
+    "descriptionSnippet": "Free Shipping On All Domestic Orders Home About View All Products Contact ORIGINAL CAST RECORDING - R Crumb The Musical - CD - Cast Recording - SEALED/NEW ORIGINAL CAST RECORDING - R Crumb The Musical - CD - Cast Recording - **BRAND NEW/STILL SEALED** - RARE Item specifics UPC: 7",
+    "fetchedAt": "2026-09-25T09:38:53.047Z"
+   },
    "priceHistory": [
     {
      "at": "2026-09-25T03:20:24.636Z",
@@ -5697,16 +5791,17 @@
    "seller": {
     "username": "lindy$",
     "feedbackPercentage": 100,
-    "feedbackScore": 1068
+    "feedbackScore": 1069
    },
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:crumb",
     "medium:original",
     "claims-original",
+    "aspect:original",
     "at-or-under-cap"
    ],
    "flags": [
@@ -5722,7 +5817,17 @@
     "priced far below what this artist sells for",
     "Robert Crumb is heavily forged on eBay and this is priced like a fake"
    ],
-   "details": null,
+   "details": {
+    "aspects": {
+     "Item Height": "8 in",
+     "Item Length": "8 in",
+     "Item Width": "8 in",
+     "Type": "Drawing",
+     "Original/Licensed Reproduction": "Original"
+    },
+    "descriptionSnippet": "CARTOON JUMBLES by Jeremy JEM Eaton Features irreverent pairing of cartoon icons. Flakey Foont and perhaps...Flip the Frog India ink and colored pencil on 8\" x 10\" pulp-hewn manila drawing paper. I am listing four unsigned originals. This sale is for ONE. Free shipping on additio",
+    "fetchedAt": "2026-09-25T09:38:53.047Z"
+   },
    "priceHistory": [
     {
      "at": "2026-09-25T03:20:24.636Z",
@@ -5763,14 +5868,16 @@
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:crumb",
     "medium:original",
     "claims-original",
+    "aspect:original",
     "at-or-under-cap"
    ],
    "flags": [
+    "description:reproduction-language",
     "price-far-below-market"
    ],
    "confidence": 0.6,
@@ -5781,9 +5888,20 @@
    "risk": "high",
    "riskReasons": [
     "priced far below what this artist sells for",
+    "the description uses reproduction / print language",
     "Robert Crumb is heavily forged on eBay and this is priced like a fake"
    ],
-   "details": null,
+   "details": {
+    "aspects": {
+     "Artist": "Robert Crumb",
+     "Industry": "Music",
+     "Original/Reproduction": "Original",
+     "Genre": "Country",
+     "Country of Origin": "United States"
+    },
+    "descriptionSnippet": "The R Crumb Pioneers of Country Music Card Set. This collectible set pays homage to the music industry, specifically focusing on country music. With a United States origin, this unique item offers fans and collectors a glimpse into the legacy of country music through the lens of ",
+    "fetchedAt": "2026-09-25T09:38:53.047Z"
+   },
    "priceHistory": [
     {
      "at": "2026-09-25T03:20:24.636Z",
@@ -5824,11 +5942,12 @@
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:crumb",
     "medium:original",
     "claims-original",
+    "aspect:original",
     "at-or-under-cap"
    ],
    "flags": [
@@ -5844,7 +5963,17 @@
     "priced far below what this artist sells for",
     "Robert Crumb is heavily forged on eBay and this is priced like a fake"
    ],
-   "details": null,
+   "details": {
+    "aspects": {
+     "Country of Origin": "United States",
+     "Artist": "Robert Crumb",
+     "Genre": "Country",
+     "Industry": "Music",
+     "Original/Reproduction": "Original"
+    },
+    "descriptionSnippet": "This is an uncut press proof from the 2004 R. Crumb Pioneers of Country Music card set press run. It's endlessly fascinating to look at, colorful and rich with detail as 40 of the country music's most influential and enduring performers are depicted with style and grace. The card",
+    "fetchedAt": "2026-09-25T09:38:53.047Z"
+   },
    "priceHistory": [
     {
      "at": "2026-09-25T03:20:24.636Z",
@@ -5885,10 +6014,11 @@
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:crumb",
     "medium:illustration",
+    "aspect:original",
     "at-or-under-cap"
    ],
    "flags": [
@@ -5904,7 +6034,21 @@
     "priced far below what this artist sells for",
     "Robert Crumb is heavily forged on eBay and this is priced like a fake"
    ],
-   "details": null,
+   "details": {
+    "aspects": {
+     "Language": "English",
+     "Signed": "No",
+     "Special Attributes": "1st Edition",
+     "Author": "Charles Bukowski",
+     "Personalized": "No",
+     "Region": "North America",
+     "Publisher": "Black Sparrow Press",
+     "Original/Facsimile": "Original",
+     "Year Printed": "1983"
+    },
+    "descriptionSnippet": "The is a first edition of the paperbound story \"Bring Me Your Love\" by Charles Bukowski, with illustrations by R. Crumb. It was printed in 1983 by Black Sparrow Press of Santa Barbara, California. I'm including in this sale Broadsheet/Flyers number 10 and 11, making it a unique c",
+    "fetchedAt": "2026-09-25T09:38:53.047Z"
+   },
    "priceHistory": [
     {
      "at": "2026-09-25T03:20:24.636Z",
@@ -5945,11 +6089,12 @@
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:crumb",
     "medium:original",
     "claims-original",
+    "aspect:original",
     "at-or-under-cap"
    ],
    "flags": [
@@ -5965,7 +6110,16 @@
     "priced far below what this artist sells for",
     "Robert Crumb is heavily forged on eBay and this is priced like a fake"
    ],
-   "details": null,
+   "details": {
+    "aspects": {
+     "Illustrator": "R Crumb",
+     "Author": "Charles Bukowski",
+     "Subject": "Literature & Fiction",
+     "Original/Facsimile": "Original"
+    },
+    "descriptionSnippet": "Original Broadside/Flyer no 11 for the Bukowski/Crumb collaborative volume BRING ME YOUR LOVE. This was issued by Black Sparrow Press's exclusive Canadian distributor BROWN & COMPANY before the book's release. Printed on quite fragile (and thin!) stock this has held up remarkably",
+    "fetchedAt": "2026-09-25T09:38:53.047Z"
+   },
    "priceHistory": [
     {
      "at": "2026-09-25T03:20:24.636Z",
@@ -6006,7 +6160,7 @@
    "condition": "Used",
    "location": "PE",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:crumb",
     "medium:drawing",
@@ -6070,7 +6224,7 @@
    "condition": "Used",
    "location": "PE",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:crumb",
     "medium:drawing",
@@ -6134,7 +6288,7 @@
    "condition": "Used",
    "location": "PE",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:crumb",
     "medium:drawing",
@@ -6198,14 +6352,16 @@
    "condition": "Used",
    "location": "PE",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:crumb",
     "medium:drawing",
     "claims-original",
+    "aspect:signed",
     "at-or-under-cap"
    ],
    "flags": [
+    "description:reproduction-language",
     "fake-art-template",
     "same-seller-repeats:1"
    ],
@@ -6218,10 +6374,28 @@
    "riskReasons": [
     "matches a common fake-art listing template (“on old paper, signed & stamped”)",
     "seller has 2 copies of a “unique” work",
+    "the description uses reproduction / print language",
     "Robert Crumb is heavily forged on eBay and this is priced like a fake",
     "ships from PE"
    ],
-   "details": null,
+   "details": {
+    "aspects": {
+     "Artist": "Robert Crumb",
+     "Unit of Sale": "Single Piece",
+     "Personalize": "No",
+     "Type": "Drawing",
+     "Size": "Small",
+     "Signed": "Yes",
+     "Item Height": "11 in",
+     "Theme": "Art, Stamps",
+     "Material": "Paper",
+     "Subject": "Stamps",
+     "Handmade": "Yes",
+     "Item Width": "8.5 in"
+    },
+    "descriptionSnippet": "Robert Crumb (HANDMADE) DRAWING ON OLD PAPER, SIGNED & STAMPED , MIXED MEDIA ARTWORK This unique piece of art is a one-of-a-kind mixed media drawing on old paper. I sell this item in the style of the artist or as reproduction according to the ebay rules, just like you can see in ",
+    "fetchedAt": "2026-09-25T09:38:53.047Z"
+   },
    "priceHistory": [
     {
      "at": "2026-09-25T02:43:43.147Z",
@@ -6262,14 +6436,17 @@
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:crumb",
     "medium:original",
     "claims-original",
+    "aspect:original",
     "at-or-under-cap"
    ],
-   "flags": [],
+   "flags": [
+    "description:reproduction-language"
+   ],
    "confidence": 0.95,
    "review": "review",
    "carried": false,
@@ -6277,9 +6454,23 @@
    "similarCount": 0,
    "risk": "high",
    "riskReasons": [
+    "the description uses reproduction / print language",
     "Robert Crumb is heavily forged on eBay and this is priced like a fake"
    ],
-   "details": null,
+   "details": {
+    "aspects": {
+     "Style": "1970s",
+     "Original/Reproduction": "Original",
+     "Brand": "R. Crumb",
+     "Type": "Plaque",
+     "Size": "Medium",
+     "Color": "Brown",
+     "Material": "Wood",
+     "Subject": "Trucks"
+    },
+    "descriptionSnippet": "Authentic 1970s \"Keep on Truckin'\" Vintage Wood PlaqueUp for sale is a genuine piece of 1970s counterculture history. This original wood novelty wall plaque features the iconic \"Keep on Truckin'\" characters popularized by legendary underground cartoonist Robert Crumb (R. Crumb).C",
+    "fetchedAt": "2026-09-25T09:38:53.047Z"
+   },
    "priceHistory": [
     {
      "at": "2026-09-25T03:20:24.636Z",
@@ -6320,7 +6511,7 @@
    "condition": "Used",
    "location": "PE",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:crumb",
     "medium:drawing",
@@ -6383,7 +6574,7 @@
    "condition": "Used",
    "location": "PE",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:crumb",
     "medium:drawing",
@@ -6459,7 +6650,7 @@
    "condition": "Used",
    "location": "PE",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:crumb",
     "medium:drawing",
@@ -6525,11 +6716,12 @@
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:crumb",
     "medium:original",
     "claims-original",
+    "aspect:original",
     "at-or-under-cap"
    ],
    "flags": [],
@@ -6542,7 +6734,15 @@
    "riskReasons": [
     "Robert Crumb is heavily forged on eBay and this is priced like a fake"
    ],
-   "details": null,
+   "details": {
+    "aspects": {
+     "Type": "Production Cel",
+     "Year of Production": "1972",
+     "Original/Licensed Reproduction": "Original Production Art"
+    },
+    "descriptionSnippet": "ORIGINAL FRITZ THE CAT 1970s MOVIE ANIMATION CEL WITH A SCENE OF THE PIGS/POLICE. PICTURES ARE OF THE ACTUAL ITEM YOU WILL RECEIVE. WE COMBINE SHIPPING ON MULTIPLE ITEMS. PLEASE ASK US IF YOU ARE LOOKING FOR SOMETHING YOU DON'T SEE. ------------ Almost Anything LLC is located in ",
+    "fetchedAt": "2026-09-25T09:38:53.047Z"
+   },
    "priceHistory": [
     {
      "at": "2026-09-25T03:20:24.636Z",
@@ -6583,7 +6783,7 @@
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:nakashima",
     "aspect:original",
@@ -6662,7 +6862,7 @@
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:nakashima",
     "all-in-unknown"
@@ -6745,7 +6945,7 @@
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:nakashima",
     "all-in-unknown"
@@ -6816,7 +7016,7 @@
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:nakashima",
     "all-in-unknown"
@@ -6892,7 +7092,7 @@
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:nakashima",
     "all-in-unknown"
@@ -6964,7 +7164,7 @@
    "condition": "New",
    "location": "US",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:nakashima",
     "all-in-unknown"
@@ -7020,7 +7220,7 @@
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:nakashima",
     "all-in-unknown"
@@ -7088,7 +7288,7 @@
    "condition": "Like New",
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -7163,7 +7363,7 @@
    "condition": "Very Good",
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -7238,7 +7438,7 @@
    "condition": "Very Good",
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -7309,12 +7509,12 @@
    "seller": {
     "username": "cardsguycom",
     "feedbackPercentage": 100,
-    "feedbackScore": 1426
+    "feedbackScore": 1427
    },
    "condition": "Very Good",
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -7390,7 +7590,7 @@
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -7466,7 +7666,7 @@
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -7542,7 +7742,7 @@
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -7605,7 +7805,7 @@
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -7661,7 +7861,7 @@
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -7717,7 +7917,7 @@
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -7773,7 +7973,7 @@
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -7829,7 +8029,7 @@
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -7885,7 +8085,7 @@
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -7941,7 +8141,7 @@
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -7997,7 +8197,7 @@
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -8073,7 +8273,7 @@
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -8129,7 +8329,7 @@
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -8170,9 +8370,9 @@
    "buyingMode": "FIXED_PRICE",
    "endsAt": null,
    "bidCount": null,
-   "price": 52.24,
-   "shipping": 56.91,
-   "allIn": 109.15,
+   "price": 52.23,
+   "shipping": 56.9,
+   "allIn": 109.13,
    "maxAllIn": null,
    "underBy": null,
    "underPct": null,
@@ -8180,12 +8380,12 @@
    "seller": {
     "username": "ce_buch",
     "feedbackPercentage": 100,
-    "feedbackScore": 23231
+    "feedbackScore": 23234
    },
    "condition": "Gut",
    "location": "DE",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -8206,9 +8406,18 @@
      "at": "2026-09-25T02:43:43.147Z",
      "price": 52.24,
      "allIn": 109.15
+    },
+    {
+     "at": "2026-09-25T09:41:39.186Z",
+     "price": 52.23,
+     "allIn": 109.13
     }
    ],
-   "priceChange": null,
+   "priceChange": {
+    "from": 109.15,
+    "to": 109.13,
+    "since": "2026-09-25T02:43:43.147Z"
+   },
    "relisted": null,
    "photoReused": null,
    "dismissible": true
@@ -8236,12 +8445,12 @@
    "seller": {
     "username": "terrysbooksandthings",
     "feedbackPercentage": 100,
-    "feedbackScore": 3483
+    "feedbackScore": 3484
    },
    "condition": "Acceptable",
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -8297,7 +8506,7 @@
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -8353,7 +8562,7 @@
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -8411,7 +8620,7 @@
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -8467,7 +8676,7 @@
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -8523,7 +8732,7 @@
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -8579,7 +8788,7 @@
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -8635,7 +8844,7 @@
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -8691,7 +8900,7 @@
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -8747,7 +8956,7 @@
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -8803,7 +9012,7 @@
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -8859,7 +9068,7 @@
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -8915,7 +9124,7 @@
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -8956,9 +9165,9 @@
    "buyingMode": "FIXED_PRICE",
    "endsAt": null,
    "bidCount": null,
-   "price": 97.77,
+   "price": 97.75,
    "shipping": 0,
-   "allIn": 97.77,
+   "allIn": 97.75,
    "maxAllIn": null,
    "underBy": null,
    "underPct": null,
@@ -8966,12 +9175,12 @@
    "seller": {
     "username": "ce_buch",
     "feedbackPercentage": 100,
-    "feedbackScore": 23231
+    "feedbackScore": 23234
    },
    "condition": "Gut",
    "location": "DE",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -8992,9 +9201,18 @@
      "at": "2026-09-25T02:43:43.147Z",
      "price": 97.77,
      "allIn": 97.77
+    },
+    {
+     "at": "2026-09-25T09:41:39.186Z",
+     "price": 97.75,
+     "allIn": 97.75
     }
    ],
-   "priceChange": null,
+   "priceChange": {
+    "from": 97.77,
+    "to": 97.75,
+    "since": "2026-09-25T02:43:43.147Z"
+   },
    "relisted": null,
    "photoReused": null,
    "dismissible": true
@@ -9022,12 +9240,12 @@
    "seller": {
     "username": "bargainbookstores",
     "feedbackPercentage": 99.7,
-    "feedbackScore": 1209904
+    "feedbackScore": 1209917
    },
    "condition": "Brand New",
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -9083,7 +9301,7 @@
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:bstj",
     "must:technical",
@@ -9138,7 +9356,7 @@
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:haze",
     "medium:painting",
@@ -9198,7 +9416,7 @@
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:sintesi",
     "all-in-unknown"
@@ -9257,7 +9475,7 @@
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:beaubourg",
     "all-in-unknown"
@@ -9311,12 +9529,12 @@
    "seller": {
     "username": "foudus",
     "feedbackPercentage": 100,
-    "feedbackScore": 813
+    "feedbackScore": 814
    },
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:crumb",
     "medium:original",
@@ -9373,13 +9591,13 @@
    "capWording": "over cap",
    "seller": {
     "username": "www.jpn",
-    "feedbackPercentage": 98,
-    "feedbackScore": 658
+    "feedbackPercentage": 98.1,
+    "feedbackScore": 659
    },
    "condition": "Open box",
    "location": "JP",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:nakashima",
     "over-cap"
@@ -9401,6 +9619,106 @@
     }
    ],
    "priceChange": null,
+   "relisted": null,
+   "photoReused": null,
+   "dismissible": true
+  },
+  {
+   "key": "art-haze-painting:v1|227489171717|0",
+   "group": "over",
+   "huntId": "art-haze-painting",
+   "huntLabel": "Eric Haze — painting",
+   "classification": "over",
+   "listingId": "v1|227489171717|0",
+   "title": "Men 8.0US  Dunk High ''Eric Haze'' F F/Sp Box LTD Collection Original Sports Sho",
+   "url": "https://www.ebay.com/itm/227489171717?_skw=eric+haze+original&hash=item34f7694905:g:ov4AAeSwg4BqGKul",
+   "imageUrl": "https://i.ebayimg.com/images/g/ov4AAeSwg4BqGKul/s-l225.jpg",
+   "buyingMode": "FIXED_PRICE",
+   "endsAt": null,
+   "bidCount": null,
+   "price": 5179.99,
+   "shipping": 31.9,
+   "allIn": 5211.89,
+   "maxAllIn": 5000,
+   "underBy": -211.89,
+   "underPct": -0.04,
+   "capWording": "over cap",
+   "seller": {
+    "username": "japan-hobby-clubs",
+    "feedbackPercentage": 98.9,
+    "feedbackScore": 2165
+   },
+   "condition": "Pre-owned - Good",
+   "location": "JP",
+   "firstSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
+   "reasons": [
+    "must:haze",
+    "medium:original",
+    "claims-original",
+    "over-cap"
+   ],
+   "flags": [],
+   "confidence": 0.95,
+   "review": "ok",
+   "carried": false,
+   "alertKey": "ebay:v1|227489171717|0:art-haze-painting:v1",
+   "similarCount": 0,
+   "risk": "low",
+   "riskReasons": [],
+   "details": {
+    "aspects": {
+     "Brand": "Nike",
+     "Country": "Japan",
+     "US Shoe Size": "8",
+     "Color": "Multicolor",
+     "Department": "Men",
+     "Customized": "NA",
+     "Style Code": "NA",
+     "UK Shoe Size": "7.5",
+     "Product Line": "Nike Dunk",
+     "Model": "NA",
+     "Country of Origin": "NA",
+     "Style": "Sneaker",
+     "Shoe Width": "Standard",
+     "Shoe Shaft Style": "NA",
+     "Release Year": "NA",
+     "Upper Material": "Various",
+     "EU Shoe Size": "42",
+     "Type": "Athletic",
+     "Vintage": "NA",
+     "Character": "Nike Dunk",
+     "Theme": "Sports",
+     "Features": "Limited Edition",
+     "Performance/Activity": "Any",
+     "Closure": "Lace Up",
+     "Season": "Fall, Spring, Summer, Winter",
+     "Occasion": "Activewear, Casual",
+     "California Prop 65 Warning": "No",
+     "JP Shoe Size": "26",
+     "Number": "335",
+     "UPC": "NA"
+    },
+    "descriptionSnippet": "Item Title Men 8.0US Dunk High ''Eric Haze'' F F/Sp Box LTD Collection Original Sports Sho Payment Supports managed payments Please pay within 5 days after auction is finished. About Us We are located in Japan. It's our pleasure to make you happy by proposing our recommend item. ",
+    "fetchedAt": "2026-09-25T09:38:53.047Z"
+   },
+   "priceHistory": [
+    {
+     "at": "2026-09-25T03:20:24.636Z",
+     "price": 4817.39,
+     "allIn": 4849.29
+    },
+    {
+     "at": "2026-09-25T09:41:39.186Z",
+     "price": 5179.99,
+     "allIn": 5211.89
+    }
+   ],
+   "priceChange": {
+    "from": 4849.29,
+    "to": 5211.89,
+    "since": "2026-09-25T03:20:24.636Z"
+   },
    "relisted": null,
    "photoReused": null,
    "dismissible": true
@@ -9433,7 +9751,7 @@
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:nakashima",
     "over-cap"
@@ -9487,7 +9805,7 @@
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:graham",
     "game-used:game used",
@@ -9542,7 +9860,7 @@
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:nakashima",
     "over-cap"
@@ -9596,7 +9914,7 @@
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:nakashima",
     "over-cap"
@@ -9635,11 +9953,11 @@
    "buyingMode": "FIXED_PRICE",
    "endsAt": null,
    "bidCount": null,
-   "price": 2731.68,
-   "shipping": 2048.76,
-   "allIn": 4780.44,
+   "price": 2731.2,
+   "shipping": 2048.4,
+   "allIn": 4779.6,
    "maxAllIn": 3000,
-   "underBy": -1780.44,
+   "underBy": -1779.6,
    "underPct": -0.59,
    "capWording": "over cap",
    "seller": {
@@ -9650,7 +9968,7 @@
    "condition": null,
    "location": "FR",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:nakashima",
     "over-cap"
@@ -9669,9 +9987,18 @@
      "at": "2026-09-25T03:20:24.636Z",
      "price": 2731.68,
      "allIn": 4780.44
+    },
+    {
+     "at": "2026-09-25T09:41:39.186Z",
+     "price": 2731.2,
+     "allIn": 4779.6
     }
    ],
-   "priceChange": null,
+   "priceChange": {
+    "from": 4780.44,
+    "to": 4779.6,
+    "since": "2026-09-25T03:20:24.636Z"
+   },
    "relisted": null,
    "photoReused": null,
    "dismissible": true
@@ -9689,22 +10016,22 @@
    "buyingMode": "FIXED_PRICE",
    "endsAt": null,
    "bidCount": null,
-   "price": 324.36,
-   "shipping": 116.62,
-   "allIn": 440.98,
+   "price": 323.87,
+   "shipping": 116.45,
+   "allIn": 440.32,
    "maxAllIn": 200,
-   "underBy": -240.98,
+   "underBy": -240.32,
    "underPct": -1.2,
    "capWording": "over cap",
    "seller": {
     "username": "liminal_spaces",
     "feedbackPercentage": 100,
-    "feedbackScore": 271
+    "feedbackScore": 272
    },
    "condition": "Used",
    "location": "GB",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:sintesi",
     "over-cap"
@@ -9723,9 +10050,18 @@
      "at": "2026-09-25T02:43:43.147Z",
      "price": 324.36,
      "allIn": 440.98
+    },
+    {
+     "at": "2026-09-25T09:41:39.186Z",
+     "price": 323.87,
+     "allIn": 440.32
     }
    ],
-   "priceChange": null,
+   "priceChange": {
+    "from": 440.98,
+    "to": 440.32,
+    "since": "2026-09-25T02:43:43.147Z"
+   },
    "relisted": null,
    "photoReused": null,
    "dismissible": true
@@ -9758,7 +10094,7 @@
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:sintesi",
     "over-cap"
@@ -9812,7 +10148,7 @@
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:nakashima",
     "over-cap"
@@ -9866,7 +10202,7 @@
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:sintesi",
     "over-cap"
@@ -9920,7 +10256,7 @@
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:nakashima",
     "over-cap"
@@ -9959,12 +10295,12 @@
    "buyingMode": "FIXED_PRICE",
    "endsAt": null,
    "bidCount": null,
-   "price": 549.42,
-   "shipping": 124.39,
-   "allIn": 673.81,
+   "price": 548.59,
+   "shipping": 124.21,
+   "allIn": 672.8,
    "maxAllIn": 200,
-   "underBy": -473.81,
-   "underPct": -2.37,
+   "underBy": -472.8,
+   "underPct": -2.36,
    "capWording": "over cap",
    "seller": {
     "username": "dotscurates4u",
@@ -9974,7 +10310,7 @@
    "condition": "Used",
    "location": "GB",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:sintesi",
     "over-cap"
@@ -9993,9 +10329,18 @@
      "at": "2026-09-25T02:43:43.147Z",
      "price": 549.42,
      "allIn": 673.81
+    },
+    {
+     "at": "2026-09-25T09:41:39.186Z",
+     "price": 548.59,
+     "allIn": 672.8
     }
    ],
-   "priceChange": null,
+   "priceChange": {
+    "from": 673.81,
+    "to": 672.8,
+    "since": "2026-09-25T02:43:43.147Z"
+   },
    "relisted": null,
    "photoReused": null,
    "dismissible": true
@@ -10023,12 +10368,12 @@
    "seller": {
     "username": "dimanoinmanocoop",
     "feedbackPercentage": 99.7,
-    "feedbackScore": 22512
+    "feedbackScore": 22517
    },
    "condition": "Used",
    "location": "IT",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:sintesi",
     "over-cap"
@@ -10077,12 +10422,12 @@
    "seller": {
     "username": "wheelznmore",
     "feedbackPercentage": 99.8,
-    "feedbackScore": 3543
+    "feedbackScore": 3545
    },
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:sintesi",
     "over-cap"
@@ -10136,7 +10481,7 @@
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:nakashima",
     "over-cap"
@@ -10190,7 +10535,7 @@
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:sintesi",
     "over-cap"
@@ -10244,7 +10589,7 @@
    "condition": "Used",
    "location": "IT",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:sintesi",
     "over-cap"
@@ -10298,7 +10643,7 @@
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:nakashima",
     "over-cap"
@@ -10352,7 +10697,7 @@
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:nakashima",
     "over-cap"
@@ -10406,7 +10751,7 @@
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:nakashima",
     "over-cap"
@@ -10460,7 +10805,7 @@
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:nakashima",
     "over-cap"
@@ -10514,7 +10859,7 @@
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:nakashima",
     "over-cap"
@@ -10568,7 +10913,7 @@
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:pileo",
     "over-cap"
@@ -10617,12 +10962,12 @@
    "seller": {
     "username": "curioddities",
     "feedbackPercentage": 100,
-    "feedbackScore": 7200
+    "feedbackScore": 7201
    },
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:crumb",
     "medium:original",
@@ -10680,7 +11025,7 @@
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:ertz",
     "game-used:game worn",
@@ -10739,7 +11084,7 @@
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:super bowl",
     "game-used:game used",
@@ -10798,7 +11143,7 @@
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:sintesi",
     "over-cap"
@@ -10857,7 +11202,7 @@
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:super bowl",
     "game-used:game used",
@@ -10917,7 +11262,7 @@
    "condition": "Unspecified",
    "location": "US",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:nakashima",
     "over-cap"
@@ -10975,7 +11320,7 @@
    "condition": "Unspecified",
    "location": "US",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:condo",
     "medium:crayon",
@@ -11018,11 +11363,11 @@
    "buyingMode": "FIXED_PRICE",
    "endsAt": null,
    "bidCount": null,
-   "price": 409.75,
-   "shipping": 102.44,
-   "allIn": 512.19,
+   "price": 409.68,
+   "shipping": 102.42,
+   "allIn": 512.1,
    "maxAllIn": 200,
-   "underBy": -312.19,
+   "underBy": -312.1,
    "underPct": -1.56,
    "capWording": "over cap",
    "seller": {
@@ -11033,7 +11378,7 @@
    "condition": null,
    "location": "IT",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:sintesi",
     "over-cap"
@@ -11056,9 +11401,18 @@
      "at": "2026-09-25T03:20:24.636Z",
      "price": 409.75,
      "allIn": 512.19
+    },
+    {
+     "at": "2026-09-25T09:41:39.186Z",
+     "price": 409.68,
+     "allIn": 512.1
     }
    ],
-   "priceChange": null,
+   "priceChange": {
+    "from": 512.19,
+    "to": 512.1,
+    "since": "2026-09-25T03:20:24.636Z"
+   },
    "relisted": null,
    "photoReused": null,
    "dismissible": true
@@ -11091,7 +11445,7 @@
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:sintesi",
     "over-cap"
@@ -11149,7 +11503,7 @@
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:crumb",
     "medium:original",
@@ -11207,7 +11561,7 @@
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:condo",
     "medium:drawing",
@@ -11265,7 +11619,7 @@
    "condition": "Unspecified",
    "location": "US",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:condo",
     "medium:drawing",
@@ -11323,7 +11677,7 @@
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:crumb",
     "medium:drawing",
@@ -11381,7 +11735,7 @@
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "reasons": [
     "must:crumb",
     "medium:illustration",
@@ -11443,7 +11797,7 @@
    ],
    "flags": [],
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "state": "pending",
    "trigger": "first-under",
    "version": 1
@@ -11468,19 +11822,22 @@
    "risk": "high",
    "riskReasons": [
     "priced far below what this artist sells for",
+    "the description uses reproduction / print language",
     "Robert Crumb is heavily forged on eBay and this is priced like a fake"
    ],
    "reasons": [
     "must:crumb",
     "medium:original",
     "claims-original",
+    "aspect:original",
     "at-or-under-cap"
    ],
    "flags": [
+    "description:reproduction-language",
     "price-far-below-market"
    ],
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "state": "pending",
    "trigger": "first-under",
    "version": 1
@@ -11514,7 +11871,7 @@
    ],
    "flags": [],
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "state": "pending",
    "trigger": "first-under",
    "version": 1
@@ -11551,7 +11908,7 @@
     "price-far-below-market"
    ],
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "state": "pending",
    "trigger": "first-under",
    "version": 1
@@ -11576,19 +11933,22 @@
    "risk": "high",
    "riskReasons": [
     "priced far below what this artist sells for",
+    "the description uses reproduction / print language",
     "Robert Crumb is heavily forged on eBay and this is priced like a fake"
    ],
    "reasons": [
     "must:crumb",
     "medium:original",
     "claims-original",
+    "aspect:original",
     "at-or-under-cap"
    ],
    "flags": [
+    "description:reproduction-language",
     "price-far-below-market"
    ],
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "state": "pending",
    "trigger": "first-under",
    "version": 1
@@ -11628,7 +11988,7 @@
     "price-far-below-market"
    ],
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "state": "pending",
    "trigger": "first-under",
    "version": 1
@@ -11653,19 +12013,22 @@
    "risk": "high",
    "riskReasons": [
     "priced far below what this artist sells for",
+    "the description uses reproduction / print language",
     "Robert Crumb is heavily forged on eBay and this is priced like a fake"
    ],
    "reasons": [
     "must:crumb",
     "medium:original",
     "claims-original",
+    "aspect:original",
     "at-or-under-cap"
    ],
    "flags": [
+    "description:reproduction-language",
     "price-far-below-market"
    ],
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "state": "pending",
    "trigger": "first-under",
    "version": 1
@@ -11697,7 +12060,7 @@
    ],
    "flags": [],
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "state": "pending",
    "trigger": "first-under",
    "version": 1
@@ -11734,7 +12097,7 @@
     "price-far-below-market"
    ],
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "state": "pending",
    "trigger": "first-under",
    "version": 1
@@ -11770,7 +12133,7 @@
     "no-authentication-in-title"
    ],
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "state": "pending",
    "trigger": "first-under",
    "version": 1
@@ -11806,7 +12169,7 @@
     "no-authentication-in-title"
    ],
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "state": "pending",
    "trigger": "first-under",
    "version": 1
@@ -11836,11 +12199,12 @@
     "must:crumb",
     "medium:original",
     "claims-original",
+    "aspect:original",
     "at-or-under-cap"
    ],
    "flags": [],
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "state": "pending",
    "trigger": "first-under",
    "version": 1
@@ -11865,19 +12229,22 @@
    "risk": "high",
    "riskReasons": [
     "priced far below what this artist sells for",
+    "the description uses reproduction / print language",
     "Robert Crumb is heavily forged on eBay and this is priced like a fake"
    ],
    "reasons": [
     "must:crumb",
     "medium:original",
     "claims-original",
+    "aspect:original",
     "at-or-under-cap"
    ],
    "flags": [
+    "description:reproduction-language",
     "price-far-below-market"
    ],
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "state": "pending",
    "trigger": "first-under",
    "version": 1
@@ -11914,7 +12281,7 @@
     "price-far-below-market"
    ],
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "state": "pending",
    "trigger": "first-under",
    "version": 1
@@ -11953,7 +12320,7 @@
     "price-far-below-market"
    ],
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "state": "pending",
    "trigger": "first-under",
    "version": 1
@@ -11987,7 +12354,7 @@
    ],
    "flags": [],
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "state": "pending",
    "trigger": "first-under",
    "version": 1
@@ -12018,13 +12385,14 @@
     "must:crumb",
     "medium:original",
     "claims-original",
+    "aspect:original",
     "at-or-under-cap"
    ],
    "flags": [
     "price-far-below-market"
    ],
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "state": "pending",
    "trigger": "first-under",
    "version": 1
@@ -12060,7 +12428,7 @@
     "price-far-below-market"
    ],
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "state": "pending",
    "trigger": "first-under",
    "version": 1
@@ -12098,7 +12466,7 @@
     "price-far-below-market"
    ],
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "state": "pending",
    "trigger": "first-under",
    "version": 1
@@ -12129,13 +12497,14 @@
     "must:crumb",
     "medium:original",
     "claims-original",
+    "aspect:original",
     "at-or-under-cap"
    ],
    "flags": [
     "price-far-below-market"
    ],
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "state": "pending",
    "trigger": "first-under",
    "version": 1
@@ -12149,12 +12518,12 @@
    "imageUrl": "https://i.ebayimg.com/images/g/ov4AAeSwg4BqGKul/s-l225.jpg",
    "buyingMode": "FIXED_PRICE",
    "endsAt": null,
-   "price": 4817.39,
+   "price": 5179.99,
    "shipping": 31.9,
-   "allIn": 4849.29,
+   "allIn": 5211.89,
    "maxAllIn": 5000,
-   "underBy": 150.71,
-   "underPct": 0.03,
+   "underBy": -211.89,
+   "underPct": -0.04,
    "currency": "USD",
    "confidence": 0.95,
    "risk": "low",
@@ -12163,12 +12532,12 @@
     "must:haze",
     "medium:original",
     "claims-original",
-    "at-or-under-cap"
+    "over-cap"
    ],
    "flags": [],
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
-   "state": "pending",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
+   "state": "expired",
    "trigger": "first-under",
    "version": 1
   },
@@ -12197,7 +12566,7 @@
    ],
    "flags": [],
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "state": "pending",
    "trigger": "first-under",
    "version": 1
@@ -12227,7 +12596,7 @@
    ],
    "flags": [],
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "state": "pending",
    "trigger": "first-under",
    "version": 1
@@ -12257,7 +12626,7 @@
    ],
    "flags": [],
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "state": "pending",
    "trigger": "first-under",
    "version": 1
@@ -12293,7 +12662,7 @@
     "price-far-below-market"
    ],
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "state": "pending",
    "trigger": "first-under",
    "version": 1
@@ -12307,11 +12676,11 @@
    "imageUrl": "https://i.ebayimg.com/images/g/lVoAAeSw0Ulp4bIh/s-l225.jpg",
    "buyingMode": "FIXED_PRICE",
    "endsAt": null,
-   "price": 52.79,
-   "shipping": 20.41,
-   "allIn": 73.2,
+   "price": 52.59,
+   "shipping": 20.33,
+   "allIn": 72.92,
    "maxAllIn": 10000,
-   "underBy": 9926.8,
+   "underBy": 9927.08,
    "underPct": 0.99,
    "currency": "USD",
    "confidence": 0.5,
@@ -12332,7 +12701,7 @@
     "price-far-below-market"
    ],
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "state": "pending",
    "trigger": "first-under",
    "version": 1
@@ -12356,17 +12725,21 @@
    "confidence": 0.95,
    "risk": "high",
    "riskReasons": [
+    "the description uses reproduction / print language",
     "Robert Crumb is heavily forged on eBay and this is priced like a fake"
    ],
    "reasons": [
     "must:crumb",
     "medium:original",
     "claims-original",
+    "aspect:original",
     "at-or-under-cap"
    ],
-   "flags": [],
+   "flags": [
+    "description:reproduction-language"
+   ],
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "state": "pending",
    "trigger": "first-under",
    "version": 1
@@ -12402,7 +12775,7 @@
     "price-far-below-market"
    ],
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "state": "pending",
    "trigger": "first-under",
    "version": 1
@@ -12416,11 +12789,11 @@
    "imageUrl": "https://i.ebayimg.com/images/g/2BEAAeSwwNhpZ4C6/s-l225.jpg",
    "buyingMode": "FIXED_PRICE",
    "endsAt": null,
-   "price": 22.49,
-   "shipping": 33.45,
-   "allIn": 55.94,
+   "price": 22.46,
+   "shipping": 33.4,
+   "allIn": 55.86,
    "maxAllIn": 15000,
-   "underBy": 14944.06,
+   "underBy": 14944.14,
    "underPct": 1,
    "currency": "USD",
    "confidence": 0.6,
@@ -12438,7 +12811,7 @@
     "price-far-below-market"
    ],
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "state": "pending",
    "trigger": "first-under",
    "version": 1
@@ -12468,13 +12841,14 @@
    "reasons": [
     "must:crumb",
     "medium:illustration",
+    "aspect:original",
     "at-or-under-cap"
    ],
    "flags": [
     "price-far-below-market"
    ],
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "state": "pending",
    "trigger": "first-under",
    "version": 1
@@ -12513,7 +12887,7 @@
     "same-seller-repeats:1"
    ],
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "state": "pending",
    "trigger": "first-under",
    "version": 1
@@ -12550,7 +12924,7 @@
     "price-far-below-market"
    ],
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "state": "pending",
    "trigger": "first-under",
    "version": 1
@@ -12588,7 +12962,7 @@
     "price-far-below-market"
    ],
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "state": "pending",
    "trigger": "first-under",
    "version": 1
@@ -12625,7 +12999,7 @@
     "price-far-below-market"
    ],
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "state": "pending",
    "trigger": "first-under",
    "version": 1
@@ -12650,19 +13024,22 @@
    "risk": "high",
    "riskReasons": [
     "priced far below what this artist sells for",
+    "the description uses reproduction / print language",
     "Robert Crumb is heavily forged on eBay and this is priced like a fake"
    ],
    "reasons": [
     "must:crumb",
     "medium:original",
     "claims-original",
+    "aspect:original",
     "at-or-under-cap"
    ],
    "flags": [
+    "description:reproduction-language",
     "price-far-below-market"
    ],
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "state": "pending",
    "trigger": "first-under",
    "version": 1
@@ -12693,13 +13070,14 @@
     "must:crumb",
     "medium:original",
     "claims-original",
+    "aspect:original",
     "at-or-under-cap"
    ],
    "flags": [
     "price-far-below-market"
    ],
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "state": "pending",
    "trigger": "first-under",
    "version": 1
@@ -12736,7 +13114,7 @@
     "price-far-below-market"
    ],
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "state": "pending",
    "trigger": "first-under",
    "version": 1
@@ -12773,7 +13151,7 @@
     "price-far-below-market"
    ],
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "state": "pending",
    "trigger": "first-under",
    "version": 1
@@ -12787,11 +13165,11 @@
    "imageUrl": "https://i.ebayimg.com/images/g/QgUAAeSwU79qf6NO/s-l225.jpg",
    "buyingMode": "FIXED_PRICE",
    "endsAt": null,
-   "price": 20.9,
-   "shipping": 33.39,
-   "allIn": 54.29,
+   "price": 20.87,
+   "shipping": 33.34,
+   "allIn": 54.21,
    "maxAllIn": 15000,
-   "underBy": 14945.71,
+   "underBy": 14945.79,
    "underPct": 1,
    "currency": "USD",
    "confidence": 0.6,
@@ -12809,7 +13187,7 @@
     "price-far-below-market"
    ],
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "state": "pending",
    "trigger": "first-under",
    "version": 1
@@ -12848,7 +13226,7 @@
     "price-far-below-market"
    ],
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "state": "pending",
    "trigger": "first-under",
    "version": 1
@@ -12887,7 +13265,7 @@
     "price-far-below-market"
    ],
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "state": "pending",
    "trigger": "first-under",
    "version": 1
@@ -12924,7 +13302,7 @@
     "price-far-below-market"
    ],
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "state": "pending",
    "trigger": "first-under",
    "version": 1
@@ -12961,7 +13339,7 @@
     "price-far-below-market"
    ],
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "state": "pending",
    "trigger": "first-under",
    "version": 1
@@ -12992,13 +13370,14 @@
     "must:crumb",
     "medium:original",
     "claims-original",
+    "aspect:original",
     "at-or-under-cap"
    ],
    "flags": [
     "price-far-below-market"
    ],
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "state": "pending",
    "trigger": "first-under",
    "version": 1
@@ -13012,11 +13391,11 @@
    "imageUrl": "https://i.ebayimg.com/images/g/OfwAAeSwKnpp41e0/s-l225.jpg",
    "buyingMode": "FIXED_PRICE",
    "endsAt": null,
-   "price": 112.68,
-   "shipping": 33.01,
-   "allIn": 145.69,
+   "price": 112.66,
+   "shipping": 33,
+   "allIn": 145.66,
    "maxAllIn": 15000,
-   "underBy": 14854.31,
+   "underBy": 14854.34,
    "underPct": 0.99,
    "currency": "USD",
    "confidence": 0.5,
@@ -13035,7 +13414,7 @@
     "price-far-below-market"
    ],
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "state": "pending",
    "trigger": "first-under",
    "version": 1
@@ -13073,7 +13452,7 @@
     "price-far-below-market"
    ],
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "state": "pending",
    "trigger": "first-under",
    "version": 1
@@ -13104,13 +13483,14 @@
     "must:crumb",
     "medium:original",
     "claims-original",
+    "aspect:original",
     "at-or-under-cap"
    ],
    "flags": [
     "price-far-below-market"
    ],
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "state": "pending",
    "trigger": "first-under",
    "version": 1
@@ -13141,13 +13521,14 @@
     "must:crumb",
     "medium:original",
     "claims-original",
+    "aspect:original",
     "at-or-under-cap"
    ],
    "flags": [
     "price-far-below-market"
    ],
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "state": "pending",
    "trigger": "first-under",
    "version": 1
@@ -13770,7 +14151,7 @@
     "same-seller-repeats:3"
    ],
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "state": "pending",
    "trigger": "first-under",
    "version": 1
@@ -14083,6 +14464,7 @@
    "riskReasons": [
     "matches a common fake-art listing template (“on old paper, signed & stamped”)",
     "seller has 2 copies of a “unique” work",
+    "the description uses reproduction / print language",
     "Robert Crumb is heavily forged on eBay and this is priced like a fake",
     "ships from PE"
    ],
@@ -14090,14 +14472,16 @@
     "must:crumb",
     "medium:drawing",
     "claims-original",
+    "aspect:signed",
     "at-or-under-cap"
    ],
    "flags": [
+    "description:reproduction-language",
     "fake-art-template",
     "same-seller-repeats:1"
    ],
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "state": "pending",
    "trigger": "first-under",
    "version": 1
@@ -14227,7 +14611,7 @@
     "same-seller-repeats:2"
    ],
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "state": "pending",
    "trigger": "first-under",
    "version": 1
@@ -15071,7 +15455,7 @@
     "same-seller-repeats:19"
    ],
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "state": "pending",
    "trigger": "first-under",
    "version": 1
@@ -15448,7 +15832,7 @@
    ],
    "flags": [],
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "state": "pending",
    "trigger": "first-under",
    "version": 1
@@ -15479,7 +15863,7 @@
    ],
    "flags": [],
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "state": "pending",
    "trigger": "first-under",
    "version": 1
@@ -15542,7 +15926,7 @@
    ],
    "flags": [],
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "state": "pending",
    "trigger": "first-under",
    "version": 1
@@ -16089,7 +16473,7 @@
    ],
    "flags": [],
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "state": "pending",
    "trigger": "first-under",
    "version": 1
@@ -17377,7 +17761,7 @@
    ],
    "flags": [],
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "state": "pending",
    "trigger": "first-under",
    "version": 1
@@ -19095,7 +19479,7 @@
     "same-seller-repeats:46"
    ],
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "state": "pending",
    "trigger": "first-under",
    "version": 1
@@ -19740,7 +20124,7 @@
    "riskReasons": [
     "matches a common fake-art listing template (“on old paper, signed & stamped”)",
     "priced far below what this artist sells for",
-    "seller has 7 copies of a “unique” work",
+    "seller has 6 copies of a “unique” work",
     "George Condo is heavily forged on eBay and this is priced like a fake",
     "ships from PE"
    ],
@@ -19753,10 +20137,10 @@
    "flags": [
     "price-far-below-market",
     "fake-art-template",
-    "same-seller-repeats:6"
+    "same-seller-repeats:5"
    ],
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "state": "pending",
    "trigger": "first-under",
    "version": 1
@@ -19880,7 +20264,7 @@
     "same-seller-repeats:23"
    ],
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "state": "pending",
    "trigger": "first-under",
    "version": 1
@@ -20896,7 +21280,7 @@
     "same-seller-repeats:9"
    ],
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "state": "pending",
    "trigger": "first-under",
    "version": 1
@@ -21104,7 +21488,7 @@
    ],
    "flags": [],
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "state": "pending",
    "trigger": "first-under",
    "version": 1
@@ -21145,7 +21529,7 @@
     "same-seller-repeats:4"
    ],
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "state": "pending",
    "trigger": "first-under",
    "version": 1
@@ -21292,7 +21676,7 @@
     "no-authentication-in-title"
    ],
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "state": "pending",
    "trigger": "first-under",
    "version": 1
@@ -22092,7 +22476,7 @@
    ],
    "flags": [],
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "state": "pending",
    "trigger": "first-under",
    "version": 1
@@ -22244,7 +22628,7 @@
    ],
    "flags": [],
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "state": "pending",
    "trigger": "first-under",
    "version": 1
@@ -22430,7 +22814,7 @@
     "same-seller-repeats:6"
    ],
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "state": "pending",
    "trigger": "first-under",
    "version": 1
@@ -22612,7 +22996,7 @@
     "same-seller-repeats:3"
    ],
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "state": "pending",
    "trigger": "first-under",
    "version": 1
@@ -22654,7 +23038,7 @@
     "same-seller-repeats:8"
    ],
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "state": "pending",
    "trigger": "first-under",
    "version": 1
@@ -22750,7 +23134,7 @@
     "same-seller-repeats:27"
    ],
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "state": "pending",
    "trigger": "first-under",
    "version": 1
@@ -23520,7 +23904,7 @@
     "same-seller-repeats:14"
    ],
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "state": "pending",
    "trigger": "first-under",
    "version": 1
@@ -24196,7 +24580,7 @@
    ],
    "flags": [],
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "state": "pending",
    "trigger": "first-under",
    "version": 1
@@ -24531,7 +24915,7 @@
     "same-seller-repeats:19"
    ],
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "state": "pending",
    "trigger": "first-under",
    "version": 1
@@ -25669,7 +26053,7 @@
     "same-seller-repeats:18"
    ],
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "state": "pending",
    "trigger": "first-under",
    "version": 1
@@ -26412,7 +26796,7 @@
     "same-seller-repeats:24"
    ],
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "state": "pending",
    "trigger": "first-under",
    "version": 1
@@ -26535,7 +26919,7 @@
     "same-seller-repeats:1"
    ],
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "state": "pending",
    "trigger": "first-under",
    "version": 1
@@ -26694,7 +27078,7 @@
     "same-seller-repeats:1"
    ],
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "state": "pending",
    "trigger": "first-under",
    "version": 1
@@ -26942,7 +27326,7 @@
     "same-seller-repeats:9"
    ],
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T03:20:24.636Z",
+   "lastSeenAt": "2026-09-25T09:41:39.186Z",
    "state": "pending",
    "trigger": "first-under",
    "version": 1
@@ -27220,11 +27604,11 @@
  ],
  "counts": {
   "cards": 162,
-  "under": 80,
+  "under": 79,
   "newUnder": 0,
   "watch": 45,
-  "over": 37,
-  "pendingAlerts": 78,
+  "over": 38,
+  "pendingAlerts": 77,
   "highRisk": 59
  }
 }
