@@ -75,6 +75,12 @@ export interface Observation {
   evaluation: Evaluation;
   /** other item ids from the same seller with the same normalized title, folded into this one (lowest all-in kept) */
   similar?: string[];
+  /** eBay item details, when fetched */
+  details?: { aspects: Record<string, string>; descriptionSnippet: string | null; fetchedAt: string };
+  /** other listings (this run) using the same photo */
+  photoReusedWith?: string[];
+  /** same seller + same title seen before under other item ids */
+  relistedFrom?: { firstSeenAt: string; previousItemIds: string[] };
 }
 
 export interface RunSummary {
@@ -163,6 +169,8 @@ export interface AlertLedger {
   /** per (listing, hunt): the last material facts, to decide what counts as a change */
   tracks: Record<string, {
     version: number;
+    /** oldest → newest, one point per change, ≤ 12 */
+    priceHistory?: Array<{ at: string; price: number; allIn: number | null }>;
     lastClassification: 'under' | 'over' | 'watch';
     lastAllIn: number | null;
     alertedAllIn: number | null;
@@ -171,6 +179,8 @@ export interface AlertLedger {
     lastSeenAt: string;
   }>;
   alerts: Record<string, LedgerEntry>;
+  /** seller|normalized title → every item id seen for it (relist detection) */
+  sellerTitles?: Record<string, { firstSeenAt: string; itemIds: string[] }>;
 }
 
 export type { BuyingMode, HuntVertical };

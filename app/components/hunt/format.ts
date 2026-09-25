@@ -41,6 +41,16 @@ export function utcShort(iso: string | null | undefined): string {
   return `${MONTHS[d.getUTCMonth()]} ${d.getUTCDate()} ${pad(d.getUTCHours())}:${pad(d.getUTCMinutes())} UTC`;
 }
 
+/** Date only, UTC: "Sep 20" (adds the year when it isn't `refYear`). */
+export function utcDay(iso: string | null | undefined, refYear?: number): string {
+  if (!iso) return '—';
+  const t = Date.parse(iso);
+  if (!Number.isFinite(t)) return '—';
+  const d = new Date(t);
+  const y = d.getUTCFullYear();
+  return `${MONTHS[d.getUTCMonth()]} ${d.getUTCDate()}${refYear != null && refYear !== y ? `, ${y}` : ''}`;
+}
+
 /** Compact span: "5d 18h" / "3h 12m" / "8m" / "<1m". */
 export function span(ms: number): string {
   const mins = Math.floor(Math.abs(ms) / 60_000);
@@ -63,6 +73,13 @@ const REASONS: Record<string, string> = {
   'watch-only': 'watch-only (no cap)',
   'all-in-unknown': 'all-in unknown',
   'claims-original': 'listed as original',
+  'aspect:original': 'item specifics: Original',
+  'aspect:signed': 'item specifics: signed',
+  'description:provenance': 'description names provenance',
+  // rejects — only shown in evidence, never on a card
+  'dismissed-by-you': 'dismissed by you',
+  'seller-blocked': 'seller blocked by you',
+  'seller-blocked:learned': 'seller blocked (learned from your dismissals)',
 };
 
 export function reasonText(code: string): string {
@@ -70,6 +87,9 @@ export function reasonText(code: string): string {
   if (code.startsWith('must:')) return `title has “${code.slice(5)}”`;
   if (code.startsWith('game-used:')) return `game-used wording: “${code.slice(10)}”`;
   if (code.startsWith('medium:')) return `medium: ${code.slice(7)}`;
+  if (code.startsWith('aspect:authenticated:')) return `authenticated: ${code.slice(21)}`;
+  if (code.startsWith('aspect:not-original:')) return `item specifics: not original (${code.slice(20)})`;
+  if (code.startsWith('aspect:print-technique:')) return `print technique: ${code.slice(23)}`;
   return code;
 }
 
@@ -85,11 +105,18 @@ const FLAGS: Record<string, string> = {
   'shipping-unknown': 'shipping not listed',
   'price-far-below-market': 'price far below market — authenticity doubtful',
   'fake-art-template': 'matches a common fake-art listing template',
+  'description:reproduction-language': 'description mentions reproduction / print',
+  relisted: 'relisted',
+  'price-dropped': 'price dropped',
 };
 
 export function flagText(code: string): string {
   if (FLAGS[code]) return FLAGS[code];
   if (code.startsWith('same-seller-repeats:')) return `seller lists ${code.split(':')[1]} more like this`;
+  if (code.startsWith('photo-reused:')) {
+    const n = Number(code.slice(13));
+    return `same photo on ${code.slice(13)} other ${n === 1 ? 'listing' : 'listings'}`;
+  }
   return code;
 }
 
@@ -100,6 +127,10 @@ export function isKnownCode(code: string): boolean {
     code.startsWith('must:') ||
     code.startsWith('medium:') ||
     code.startsWith('same-seller-repeats:') ||
-    code.startsWith('game-used:')
+    code.startsWith('game-used:') ||
+    code.startsWith('aspect:authenticated:') ||
+    code.startsWith('aspect:not-original:') ||
+    code.startsWith('aspect:print-technique:') ||
+    code.startsWith('photo-reused:')
   );
 }

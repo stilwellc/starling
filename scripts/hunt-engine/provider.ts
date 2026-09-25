@@ -21,6 +21,9 @@ export const PAGE_SIZE = 100;
  *  first each tick; the deal board budgets from whatever this leaves. */
 export const MAX_PAGES = 10;
 export const REQUEST_TIMEOUT_MS = 20_000;
+/** Per-run search ceiling: past this, hunts get their FIRST page only (marked partial), so a run
+ *  costs at most CALL_CEILING + one page per hunt ≈ 205 — three hunt runs fit a 625-call board window. */
+export const CALL_CEILING = 170;
 
 export class ProviderAuthError extends Error { constructor(msg: string) { super(msg); this.name = 'ProviderAuthError'; } }
 export class ProviderRateLimitError extends Error {
@@ -38,10 +41,41 @@ export interface SearchResult {
   raw: unknown[];
 }
 
+/** eBay item details (Browse getItem): item specifics + description. */
+export interface ItemDetails {
+  aspects: Record<string, string>;
+  description: string; // plain text, truncated
+  imageUrl: string | null;
+}
+
 export interface HuntProvider {
   readonly kind: 'ebay' | 'fixture';
   search(hunt: Hunt, now: Date): Promise<SearchResult>;
+  /** item details; null when the item is gone or the lookup failed (never throws for one bad item) */
+  getItem?(itemId: string, now: Date): Promise<ItemDetails | null>;
   health(): ProviderHealth;
+}
+
+/** html → plain text (for rules; never rendered as HTML) */
+export function plainText(html: string, max = 4000): string {
+  return html
+    .replace(/<(script|style)[^>]*>[\s\S]*?<\/\1>/gi, ' ')
+    .replace(/<br\s*\/?>|<\/p>|<\/div>|<\/li>/gi, '\n')
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/&nbsp;/g, ' ').replace(/&amp;/g, '&').replace(/&quot;/g, '"').replace(/&#39;|&apos;/g, "'").replace(/&lt;/g, '<').replace(/&gt;/g, '>')
+    .replace(/[ \t]+/g, ' ')
+    .replace(/\s*\n\s*/g, '\n')
+    .trim()
+    .slice(0, max);
+}
+
+export function normalizeDetails(raw: any): ItemDetails {
+  const aspects: Record<string, string> = {};
+  for (const a of Array.isArray(raw?.localizedAspects) ? raw.localizedAspects : []) {
+    if (typeof a?.name === 'string' && a.value != null) aspects[a.name] = String(a.value).slice(0, 200);
+  }
+  const desc = typeof raw?.description === 'string' ? raw.description : typeof raw?.shortDescription === 'string' ? raw.shortDescription : '';
+  return { aspects, description: plainText(desc), imageUrl: raw?.image?.imageUrl ?? null };
 }
 
 export interface EbayConfig {
@@ -52,6 +86,7 @@ export interface EbayConfig {
   buyerZip?: string;
   fetchImpl?: typeof fetch;
   timeoutMs?: number;
+  callCeiling?: number;
 }
 
 const HOSTS = {
@@ -186,6 +221,32 @@ export class EbayBrowseProvider implements HuntProvider {
     };
   }
 
+  private detailCalls = 0;
+  private detailsStopped = false;
+  detailHealth() { return { calls: this.detailCalls, stopped: this.detailsStopped }; }
+
+  /** singular getItem (batch getItems is limited-release for this keyset). A 429 stops details only. */
+  async getItem(itemId: string, now: Date): Promise<ItemDetails | null> {
+    if (this.stopped || this.detailsStopped) return null;
+    let token: string;
+    try { token = await this.ensureToken(now.getTime()); } catch { return null; }
+    this.detailCalls++;
+    let res: Response;
+    try {
+      res = await this.timed(`${HOSTS[this.cfg.env].browse}/item/${encodeURIComponent(itemId)}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          'X-EBAY-C-MARKETPLACE-ID': this.cfg.marketplaceId,
+          'X-EBAY-C-ENDUSERCTX': `contextualLocation=country%3DUS%2Czip%3D${encodeURIComponent(this.cfg.buyerZip ?? '10001')}`,
+        },
+      });
+    } catch { return null; }
+    if (res.status === 429) { this.detailsStopped = true; return null; }
+    if (res.status === 401 || res.status === 403) { this.detailsStopped = true; return null; }
+    if (!res.ok) return null;
+    try { return normalizeDetails(await res.json()); } catch { return null; }
+  }
+
   async search(hunt: Hunt, now: Date): Promise<SearchResult> {
     if (this.stopped === 'auth-failed') throw new ProviderAuthError('provider stopped after an authentication failure');
     if (this.stopped === 'rate-limited') throw new ProviderRateLimitError('provider stopped after a 429 this run', this.rateLimit);
@@ -195,6 +256,9 @@ export class EbayBrowseProvider implements HuntProvider {
     let pages = 0;
     let returned = 0;
     for (let page = 0; page < MAX_PAGES; page++) {
+      if (page > 0 && this.calls >= (this.cfg.callCeiling ?? CALL_CEILING)) {
+        return { listings, pages, returned, partialError: `run call ceiling (${this.cfg.callCeiling ?? CALL_CEILING}) reached — first page only`, raw };
+      }
       const token = await this.ensureToken(now.getTime());
       const params = new URLSearchParams({
         q: hunt.query,

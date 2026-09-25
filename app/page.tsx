@@ -6,6 +6,7 @@ import { loadHuntDashboard } from '@/app/lib/hunt-data';
 import { HuntCard } from '@/app/components/hunt/HuntCard';
 import { Coverage } from '@/app/components/hunt/Coverage';
 import { Ago, FreshnessChip, StaleRunBanner } from '@/app/components/hunt/Live';
+import { HiddenControl } from '@/app/components/hunt/Feedback';
 import { utcStamp } from '@/app/components/hunt/format';
 
 // Static export: dashboard.json is read once at build time and baked into HTML.
@@ -189,29 +190,32 @@ function Cards({ d }: { d: DashboardPayload }) {
     );
   }
   return (
-    <div className="hx-groups">
-      {GROUP_ORDER.map((g) => {
-        const cards = d.cards.filter((c) => c.group === g);
-        if (cards.length === 0) return null;
-        return (
-          <section key={g} className={`hx-group-sec hx-group-sec-${g}`} aria-labelledby={`hx-g-${g}`}>
-            <div className="rule-head">
-              <h2 id={`hx-g-${g}`} className="hx-h2">
-                {GROUP_LABEL[g]}
-              </h2>
-              <span className="rule-head-count">
-                {cards.length} {cards.length === 1 ? 'listing' : 'listings'}
-              </span>
-            </div>
-            <div className="hx-grid">
-              {cards.map((c) => (
-                <HuntCard key={c.key} c={c} />
-              ))}
-            </div>
-          </section>
-        );
-      })}
-    </div>
+    <>
+      <HiddenControl />
+      <div className="hx-groups">
+        {GROUP_ORDER.map((g) => {
+          const cards = d.cards.filter((c) => c.group === g);
+          if (cards.length === 0) return null;
+          return (
+            <section key={g} className={`hx-group-sec hx-group-sec-${g}`} aria-labelledby={`hx-g-${g}`}>
+              <div className="rule-head">
+                <h2 id={`hx-g-${g}`} className="hx-h2">
+                  {GROUP_LABEL[g]}
+                </h2>
+                <span className="rule-head-count">
+                  {cards.length} {cards.length === 1 ? 'listing' : 'listings'}
+                </span>
+              </div>
+              <div className="hx-grid">
+                {cards.map((c) => (
+                  <HuntCard key={c.key} c={c} />
+                ))}
+              </div>
+            </section>
+          );
+        })}
+      </div>
+    </>
   );
 }
 

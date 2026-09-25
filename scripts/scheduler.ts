@@ -35,15 +35,20 @@ export const RUNS_PER_DAY = Math.floor((24 * 60 * 60 * 1000) / ROTATE_PERIOD_MS)
  *  is unknown (file missing or stale) the board assumes the engine's worst case,
  *  so the two together can never exceed the daily quota. */
 export const PER_RUN_CALLS = Math.floor(DAILY_CALL_BUDGET / RUNS_PER_DAY); // 625
-/** 35 hunts × MAX_PAGES (10, scripts/hunt-engine/provider.ts) — the engine's worst case per tick */
-export const HUNT_ENGINE_MAX_CALLS_PER_RUN = 350;
+/** a hunt run's hard worst case: CALL_CEILING (170, scripts/hunt-engine/provider.ts) + one first page per hunt (35) */
+export const HUNT_ENGINE_MAX_CALLS_PER_RUN = 205;
 
 /** The board's DAILY-equivalent budget for this tick, given the engine's actual spend
  *  (the lane functions below divide by RUNS_PER_DAY, so per-run = PER_RUN_CALLS − engineCalls). */
+/** Hunts also run hourly on their own (board.yml), i.e. 3 hunt runs per 3-hour board window:
+ *  the board reserves the engine's spend for all three. */
+export const HUNT_RUNS_PER_BOARD_TICK = 3;
+
 export function boardDailyBudget(engineCallsThisRun: number | null): number {
-  const used = engineCallsThisRun == null || !Number.isFinite(engineCallsThisRun)
+  const perHuntRun = engineCallsThisRun == null || !Number.isFinite(engineCallsThisRun)
     ? HUNT_ENGINE_MAX_CALLS_PER_RUN
-    : Math.min(Math.max(0, Math.ceil(engineCallsThisRun)), PER_RUN_CALLS);
+    : Math.max(0, Math.ceil(engineCallsThisRun));
+  const used = Math.min(perHuntRun * HUNT_RUNS_PER_BOARD_TICK, PER_RUN_CALLS);
   return (PER_RUN_CALLS - used) * RUNS_PER_DAY;
 }
 

@@ -11,6 +11,7 @@
  */
 import { authenticityEvidence } from './evaluate';
 import type { AlertLedger, AlertRecord, LedgerEntry, Observation } from './types';
+import { normalizeText } from './text';
 
 export const PRICE_DROP_MIN_USD = 25;
 export const PRICE_DROP_MIN_PCT = 0.05;
@@ -88,8 +89,12 @@ export function updateLedger(
     }
 
     const version = trigger ? (prev?.version ?? 0) + 1 : prev?.version ?? 0;
+    const hist = [...(prev?.priceHistory ?? [])];
+    const last = hist[hist.length - 1];
+    if (!last || last.price !== o.listing.price || last.allIn !== e.allIn) hist.push({ at: now, price: o.listing.price, allIn: e.allIn });
     ledger.tracks[key] = {
       version,
+      priceHistory: hist.slice(-12),
       lastClassification: e.classification,
       lastAllIn: e.allIn,
       alertedAllIn: trigger ? e.allIn : prev?.alertedAllIn ?? null,
@@ -130,6 +135,15 @@ export function updateLedger(
     }
   }
 
+  ledger.sellerTitles ??= {};
+  for (const o of observations) {
+    if (o.evaluation.classification === 'reject' || !o.listing.seller?.username) continue;
+    const k = sellerTitleKey(o.listing.seller.username, o.listing.title);
+    const cur = ledger.sellerTitles[k] ?? { firstSeenAt: now, itemIds: [] };
+    if (!cur.itemIds.includes(o.listing.itemId)) cur.itemIds = [...cur.itemIds, o.listing.itemId].slice(-20);
+    ledger.sellerTitles[k] = cur;
+  }
+
   const expired: string[] = [];
   for (const a of Object.values(ledger.alerts)) {
     if (a.state !== 'pending') continue;
@@ -137,4 +151,20 @@ export function updateLedger(
     if (!underNow.has(trackKey(a.huntId, a.listingId))) { a.state = 'expired'; expired.push(a.alertKey); }
   }
   return { created, expired };
+}
+
+export const sellerTitleKey = (seller: string, title: string) => `${seller.toLowerCase()}|${normalizeText(title).trim()}`;
+
+/** itemId → relist info, when the same seller listed the same title before under a different item id */
+export function relistIndex(ledger: AlertLedger, obs: Observation[]): Map<string, { firstSeenAt: string; previousItemIds: string[] }> {
+  const out = new Map<string, { firstSeenAt: string; previousItemIds: string[] }>();
+  for (const o of obs) {
+    const s = o.listing.seller?.username;
+    if (!s) continue;
+    const rec = ledger.sellerTitles?.[sellerTitleKey(s, o.listing.title)];
+    if (!rec) continue;
+    const previous = rec.itemIds.filter((id) => id !== o.listing.itemId);
+    if (previous.length && !rec.itemIds.includes(o.listing.itemId)) out.set(o.listing.itemId, { firstSeenAt: rec.firstSeenAt, previousItemIds: previous });
+  }
+  return out;
 }

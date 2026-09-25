@@ -13,14 +13,19 @@
  *   manifests/latest.json                pointer (full copy), swapped last
  *   alerts/ledger.json                   dedupe + alert queue
  *   public/dashboard.json                the published view model
+ *   details/ebay/{itemId}.json           item specifics + description cache (24h)
+ *   feedback/dismiss/{huntId}__{itemId}.json   "Not it" (written by the /api/v1/feedback function)
+ *   feedback/seller/{seller}.json        blocked sellers
  */
-import { mkdirSync, readFileSync, writeFileSync, existsSync } from 'node:fs';
+import { mkdirSync, readFileSync, writeFileSync, existsSync, readdirSync, statSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 
 export interface ObjectStore {
   readonly kind: 'r2' | 'file' | 'memory';
   get(key: string): Promise<string | null>;
   put(key: string, body: string): Promise<void>;
+  /** keys under a prefix (full keys, including the prefix) */
+  list(prefix: string): Promise<string[]>;
 }
 
 export const PREFIX = 'hunt/';
@@ -31,6 +36,7 @@ export class MemoryStore implements ObjectStore {
   writes: string[] = [];
   failOn: ((key: string) => boolean) | null = null;
   async get(key: string) { return this.objects.get(key) ?? null; }
+  async list(prefix: string) { return [...this.objects.keys()].filter((k) => k.startsWith(prefix)).sort(); }
   async put(key: string, body: string) {
     if (this.failOn?.(key)) throw new Error(`simulated write failure: ${key}`);
     this.objects.set(key, body);
@@ -50,6 +56,18 @@ export class FileStore implements ObjectStore {
     mkdirSync(dirname(p), { recursive: true });
     writeFileSync(p, body);
   }
+  async list(prefix: string) {
+    const out: string[] = [];
+    const walk = (dir: string, rel: string) => {
+      if (!existsSync(dir)) return;
+      for (const n of readdirSync(dir)) {
+        const full = join(dir, n), k = rel ? `${rel}/${n}` : n;
+        if (statSync(full).isDirectory()) walk(full, k); else if (k.startsWith(prefix)) out.push(k);
+      }
+    };
+    walk(this.root, '');
+    return out.sort();
+  }
 }
 
 export class R2RestStore implements ObjectStore {
@@ -65,6 +83,22 @@ export class R2RestStore implements ObjectStore {
     if (res.status === 404) return null;
     if (!res.ok) throw new Error(`R2 GET ${key} → HTTP ${res.status}`);
     return await res.text();
+  }
+  async list(prefix: string): Promise<string[]> {
+    const f = this.cfg.fetchImpl ?? fetch;
+    const out: string[] = [];
+    let cursor: string | null = null;
+    for (let i = 0; i < 50; i++) {
+      const q = new URLSearchParams({ prefix, per_page: '1000' });
+      if (cursor) q.set('cursor', cursor);
+      const res = await f(`${this.base.replace(/\/$/, '')}?${q}`, { headers: { Authorization: `Bearer ${this.cfg.token}` } });
+      if (!res.ok) throw new Error(`R2 LIST ${prefix} → HTTP ${res.status}`);
+      const body: any = await res.json();
+      for (const o of body?.result ?? []) if (typeof o?.key === 'string') out.push(o.key);
+      cursor = body?.result_info?.cursor || null;
+      if (!cursor || !body?.result_info?.is_truncated) break;
+    }
+    return out.sort();
   }
   async put(key: string, body: string): Promise<void> {
     const f = this.cfg.fetchImpl ?? fetch;

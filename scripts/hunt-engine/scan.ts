@@ -16,6 +16,9 @@
 import { type Hunt } from './hunts';
 import { validateHunts } from './validate';
 import { evaluate, riskOf } from './evaluate';
+import { DETAILS_PER_RUN, PHOTOS_PER_RUN, hashPhoto, loadDetails, reusedPhotos } from './enrich';
+import { feedbackFor, loadFeedback } from './feedback';
+import { relistIndex } from './ledger';
 import { HUNTS } from './hunts';
 import { normalizeText } from './text';
 import { ProviderAuthError, ProviderRateLimitError, type HuntProvider } from './provider';
@@ -37,6 +40,10 @@ export interface ScanOptions {
   webhookUrl?: string | null;
   fetchImpl?: typeof fetch;
   log?: (msg: string) => void;
+  /** item-detail lookups allowed this run (default DETAILS_PER_RUN) */
+  detailsBudget?: number;
+  /** hash listing photos (default true; tests turn it off) */
+  hashPhotos?: boolean;
 }
 
 export interface ScanResult { summary: RunSummary; dashboard: DashboardPayload; manifest: Manifest }
@@ -64,7 +71,6 @@ export async function runScan(o: ScanOptions): Promise<ScanResult> {
   const fresh = new Map<string, Observation[]>();
   let returnedTotal = 0, rejectedTotal = 0;
   let stopReason: string | null = null;
-  const claimed = new Map<string, string>(); // itemId → the highest-priority hunt that kept it
   for (const h of hunts) {
     if (o.onlyHuntId && h.id !== o.onlyHuntId) {
       results.push({ huntId: h.id, state: 'not-searched', pages: 0, returned: 0, error: null, searchedAt: null });
@@ -84,21 +90,11 @@ export async function runScan(o: ScanOptions): Promise<ScanResult> {
         seen.add(l.itemId);
         obs.push({ listing: l, evaluation: evaluate(h, l) });
       }
-      for (const x of obs) {
-        if (x.evaluation.classification === 'reject') continue;
-        const owner = claimed.get(x.listing.itemId);
-        if (owner) {
-          x.evaluation = { ...x.evaluation, classification: 'reject', reasons: [`claimed-by-earlier-hunt:${owner}`, ...x.evaluation.reasons], underBy: null, underPct: null, capWording: 'rejected' };
-        } else claimed.set(x.listing.itemId, h.id);
-      }
-      collapseDuplicates(obs);
       returnedTotal += r.returned;
-      rejectedTotal += obs.filter((x) => x.evaluation.classification === 'reject').length;
       fresh.set(h.id, obs);
       await putJson(o.store, `runs/${runId}/raw/ebay/${h.id}.json`, { huntId: h.id, query: h.query, fetchedAt: at.toISOString(), pages: r.raw });
-      await putJson(o.store, `runs/${runId}/evaluations/${h.id}.json`, obs.map((x) => ({ title: x.listing.title, ...x.evaluation })));
       results.push({ huntId: h.id, state: r.partialError ? 'partial' : 'complete', pages: r.pages, returned: r.returned, error: r.partialError, searchedAt: at.toISOString() });
-      log(`[hunt] ${h.id}: ${r.returned} returned · ${obs.filter((x) => x.evaluation.classification !== 'reject').length} kept · ${obs.filter((x) => x.evaluation.classification === 'under').length} under${r.partialError ? ` · PARTIAL (${r.partialError})` : ''}`);
+      log(`[hunt] ${h.id}: ${r.returned} returned${r.partialError ? ` · PARTIAL (${r.partialError})` : ''}`);
     } catch (e: any) {
       const msg = String(e?.message ?? e).slice(0, 300);
       results.push({ huntId: h.id, state: 'failed', pages: 0, returned: 0, error: msg, searchedAt: at.toISOString() });
@@ -107,6 +103,56 @@ export async function runScan(o: ScanOptions): Promise<ScanResult> {
       if (e instanceof ProviderRateLimitError) stopReason = 'eBay rate limit (429) — no further calls this run';
     }
   }
+
+  // 4b — evidence beyond the title, then the final evaluation of every candidate
+  const byId = new Map(hunts.map((h) => [h.id, h]));
+  const feedback = await loadFeedback(o.store);
+  const firstPass = [...fresh.values()].flat();
+  const det = await loadDetails(firstPass, o.provider, o.store, clock(), o.detailsBudget ?? DETAILS_PER_RUN);
+  const hashes = new Map<string, string>();
+  if (o.hashPhotos !== false) {
+    const photoCands = firstPass.filter((x) => x.evaluation.classification !== 'reject' && x.listing.imageUrl && byId.get(x.evaluation.huntId)?.vertical !== 'grails');
+    for (const x of photoCands.slice(0, PHOTOS_PER_RUN)) {
+      if (hashes.has(x.listing.itemId)) continue;
+      const hsh = await hashPhoto(x.listing.imageUrl!, o.fetchImpl);
+      if (hsh) hashes.set(x.listing.itemId, hsh);
+    }
+  }
+  const reused = reusedPhotos(hashes);
+  const relists = relistIndex(ledger, firstPass);
+  const claimed = new Map<string, string>(); // itemId → the highest-priority hunt that kept it
+  for (const h of hunts) {
+    const obs = fresh.get(h.id);
+    if (!obs) continue;
+    for (let i = 0; i < obs.length; i++) {
+      const l = obs[i].listing;
+      const extra: string[] = [];
+      const others = reused.get(l.itemId);
+      if (others?.length) extra.push(`photo-reused:${others.length}`);
+      const rel = relists.get(l.itemId);
+      if (rel) extra.push('relisted');
+      const d = det.details.get(l.itemId);
+      obs[i] = {
+        listing: l,
+        evaluation: evaluate(h, l, { details: d ? { aspects: d.aspects, description: d.description } : null, flags: extra, feedback: feedbackFor(feedback, h.id, l.itemId, l.seller?.username) }),
+        details: d ? { aspects: d.aspects, descriptionSnippet: d.descriptionSnippet, fetchedAt: d.fetchedAt } : undefined,
+        photoReusedWith: others,
+        relistedFrom: rel,
+      };
+    }
+    for (const x of obs) {
+      if (x.evaluation.classification === 'reject') continue;
+      const owner = claimed.get(x.listing.itemId);
+      if (owner) {
+        x.evaluation = { ...x.evaluation, classification: 'reject', reasons: [`claimed-by-earlier-hunt:${owner}`, ...x.evaluation.reasons], underBy: null, underPct: null, capWording: 'rejected' };
+      } else claimed.set(x.listing.itemId, h.id);
+    }
+    collapseDuplicates(obs);
+    rejectedTotal += obs.filter((x) => x.evaluation.classification === 'reject').length;
+    await putJson(o.store, `runs/${runId}/evaluations/${h.id}.json`, obs.map((x) => ({ title: x.listing.title, ...x.evaluation })));
+    log(`[hunt] ${h.id}: ${obs.filter((x) => x.evaluation.classification !== 'reject').length} kept · ${obs.filter((x) => x.evaluation.classification === 'under').length} under`);
+  }
+  log(`[hunt] evidence: ${det.fetched} item lookups (${det.cached} cached) · ${hashes.size} photos hashed · ${[...reused.keys()].length} reused photos · ${feedback.dismissed.size} dismissed · ${feedback.blockedSellers.size + feedback.learnedSellers.size} blocked sellers`);
 
   // 5
   const finished = clock();
@@ -238,7 +284,7 @@ export function collapseDuplicates(obs: Observation[]): void {
     g[0].evaluation.flags.push(`same-seller-repeats:${g.length - 1}`);
     const h = HUNTS.find((x) => x.id === g[0].evaluation.huntId);
     if (h) {
-      const r = riskOf(h, g[0].listing, g[0].evaluation.flags);
+      const r = riskOf(h, g[0].listing, g[0].evaluation.flags, g[0].evaluation.reasons);
       g[0].evaluation.risk = r.risk;
       g[0].evaluation.riskReasons = r.riskReasons;
       if (r.risk === 'high') g[0].evaluation.review = 'review';

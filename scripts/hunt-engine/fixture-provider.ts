@@ -7,7 +7,7 @@
 import { readFileSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 import type { Hunt } from './hunts';
-import { normalizeSummary, ProviderPageError, type HuntProvider, type SearchResult } from './provider';
+import { normalizeDetails, normalizeSummary, ProviderPageError, type HuntProvider, type ItemDetails, type SearchResult } from './provider';
 import type { ProviderHealth } from './types';
 
 export const FIXTURE_PATH = join(process.cwd(), 'fixtures', 'hunt-engine', 'browse-search.json');
@@ -21,6 +21,11 @@ export class FixtureProvider implements HuntProvider {
     if (data) this.data = data;
     else if (existsSync(FIXTURE_PATH)) this.data = JSON.parse(readFileSync(FIXTURE_PATH, 'utf8'));
     else this.data = {};
+  }
+  /** fixture file may carry `details: { [itemId]: <raw getItem> }` at the top level */
+  async getItem(itemId: string): Promise<ItemDetails | null> {
+    const raw = this.data.details?.[itemId];
+    return raw ? normalizeDetails(raw) : null;
   }
   health(): ProviderHealth { return { status: 'fixture', calls: this.calls, rateLimit: null, message: 'fixture data — not live eBay inventory' }; }
   async search(hunt: Hunt, now: Date): Promise<SearchResult> {

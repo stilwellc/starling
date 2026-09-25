@@ -135,3 +135,17 @@ The whole site is private. `functions/_middleware.ts` runs in front of every req
 - **Where the PIN lives:** the GitHub secret `STARLING_PIN`. `deploy.yml` pushes it to the Pages project as a secret before each deploy and refuses to deploy if it's missing. It is never in this public repo.
 - **If the PIN is unset, the gate fails closed** and serves a 503.
 - **Strength:** a 4-digit PIN keeps the site private from casual visitors and search engines. It is not strong security: wrong attempts are slowed, but not rate-limited per IP.
+
+## v2 (Sep 25 2026): evidence, feedback, cadence
+
+- **Item details** (`enrich.ts`): candidates that pass the title rules get an eBay `getItem` lookup, unders first. The limit is 40 lookups per run, cached in R2 `details/ebay/` for 24h, or less if the price moves. The rules read the item specifics:
+  - "Original/Licensed Reprint", a print production technique, or a "not game used" value → reject.
+  - Original, signed, or an authenticator (PSA/JSA/Beckett/MeiGray/Fanatics/Resolution) → a reason. An authenticator clears the sports "no authentication" flag.
+  - The description: provenance language lowers forgery risk; reproduction or replica language raises it to high.
+- **Photos** (`enrich.ts`): a 64-bit dHash of each candidate's small eBay image (`jpeg-js`). The same photo on other listings (Hamming distance ≤ 6) is flagged `photo-reused:<n>`: high risk for art, medium for sports.
+- **Price history and relists** (`ledger.ts`): each track keeps up to 12 price points, and cards show "was $X · since …" with a sparkline. The same seller relisting the same title under a new item id is flagged `relisted` (medium risk).
+- **Feedback** (`feedback.ts` and `functions/api/v1/feedback.ts`): "Not it" and "Block seller" on each card POST to `/api/v1/feedback`. Each choice is one R2 object under `feedback/`, and the next run drops those listings (reject reasons `dismissed-by-you`, `seller-blocked`). A seller dismissed twice is blocked automatically (`seller-blocked:learned`). The function reaches R2 with the Pages secrets `STARLING_R2_TOKEN` and `CLOUDFLARE_ACCOUNT_ID`, which `deploy.yml` pushes.
+- **Cadence and budget**:
+  - The hunts now also run hourly: `board.yml` has a second cron for the non-board hours that skips the board.
+  - The board reserves three hunt runs' worth of search calls per 3-hour window: `625 − 3 × hunt spend`.
+  - A run stops paginating at `CALL_CEILING` = 170 calls (later hunts get their first page, marked partial). A run's worst case is therefore 205, so three fit in a window.

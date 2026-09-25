@@ -92,4 +92,7 @@ jobs:
             echo "::error::STARLING_PIN secret is not set — refusing to deploy a site whose gate would lock everyone out"; exit 1
           fi
           printf '%s' "$STARLING_PIN" | npx wrangler@4.120.1 pages secret put STARLING_PIN --project-name starling
+          # the feedback function writes your "Not it" / "Block seller" choices to R2
+          printf '%s' "$CLOUDFLARE_API_TOKEN" | npx wrangler@4.120.1 pages secret put STARLING_R2_TOKEN --project-name starling
+          printf '%s' "$CLOUDFLARE_ACCOUNT_ID" | npx wrangler@4.120.1 pages secret put CLOUDFLARE_ACCOUNT_ID --project-name starling
           npx wrangler@4.120.1 pages deploy out --project-name starling --branch main --commit-dirty=true

@@ -97,6 +97,12 @@ export interface Card {
   /** fake / misrepresentation risk, with plain-English reasons */
   risk: 'high' | 'medium' | 'low';
   riskReasons: string[];
+  details?: { aspects: Record<string, string>; descriptionSnippet: string | null; fetchedAt: string } | null;
+  priceHistory?: Array<{ at: string; price: number; allIn: number | null }>;
+  priceChange?: { from: number; to: number; since: string } | null;
+  relisted?: { firstSeenAt: string; previousItemIds: string[] } | null;
+  photoReused?: { count: number; otherListingIds: string[] } | null;
+  dismissible: boolean;
 }
 
 export interface DashboardPayload {
@@ -180,6 +186,12 @@ export function buildDashboard(args: {
         similarCount: o.similar?.length ?? 0,
         risk: e.risk ?? 'low',
         riskReasons: e.riskReasons ?? [],
+        details: o.details ?? null,
+        priceHistory: track?.priceHistory ?? [],
+        priceChange: priceChangeOf(track?.priceHistory),
+        relisted: o.relistedFrom ?? null,
+        photoReused: o.photoReusedWith?.length ? { count: o.photoReusedWith.length, otherListingIds: o.photoReusedWith } : null,
+        dismissible: true,
       });
     }
     rows.push({
@@ -312,4 +324,12 @@ function unb64(s: string) {
 export const encodeCursor = (alertKey: string) => b64(alertKey).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
 export function decodeCursor(c: string): string {
   try { return unb64(c.replace(/-/g, '+').replace(/_/g, '/')); } catch { return ''; }
+}
+
+/** first recorded all-in (or price) → current, when it moved */
+export function priceChangeOf(h: Array<{ at: string; price: number; allIn: number | null }> | undefined) {
+  if (!h || h.length < 2) return null;
+  const v = (p: { price: number; allIn: number | null }) => p.allIn ?? p.price;
+  const first = h[0], last = h[h.length - 1];
+  return v(first) === v(last) ? null : { from: v(first), to: v(last), since: first.at };
 }
