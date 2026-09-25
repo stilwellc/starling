@@ -25,21 +25,25 @@ function Row({ k, children, tone }: { k: string; children: React.ReactNode; tone
   );
 }
 
+/** Price first (what you'd pay, all-in), THEN how it sits against the budget. */
 function Verdict({ c }: { c: Card }) {
-  if (c.underBy != null && c.underPct != null) {
-    const under = c.underBy >= 0;
-    return (
-      <div className={`hx-verdict ${under ? 'hx-verdict-up' : 'hx-verdict-down'}`}>
-        <span className="hx-verdict-num">{usd(Math.abs(c.underBy))}</span>
-        <span className="hx-verdict-word">
-          {under ? 'under' : 'over'} · {pct(c.underPct)} {under ? 'under' : 'over'} max
-        </span>
-      </div>
-    );
-  }
+  const auction = c.buyingMode === 'AUCTION';
+  const price = c.allIn ?? c.price;
+  const priceLabel = c.allIn != null
+    ? `${auction ? 'current bid ' : ''}all-in · price + shipping`
+    : `${auction ? 'current bid' : 'item price'} · shipping not listed`;
+  let delta: { text: string; cls: string };
+  if (c.maxAllIn == null) delta = { text: 'no cap — watching', cls: 'hx-verdict-na' };
+  else if (c.underBy == null || c.underPct == null) delta = { text: `max ${usd(c.maxAllIn)} · all-in unknown`, cls: 'hx-verdict-na' };
+  else if (c.underBy >= 0) delta = { text: `${usd(c.underBy)} under your ${usd(c.maxAllIn)} max (${pct(c.underPct)})`, cls: 'hx-verdict-up' };
+  else delta = { text: `${usd(-c.underBy)} over your ${usd(c.maxAllIn)} max (${pct(-c.underPct)})`, cls: 'hx-verdict-down' };
   return (
-    <div className="hx-verdict hx-verdict-na">
-      <span className="hx-verdict-num">{c.allIn == null ? 'all-in unknown' : 'no cap'}</span>
+    <div className="hx-verdict">
+      <div className="hx-verdict-price">
+        <span className="hx-verdict-num">{usd(price)}</span>
+        <span className="hx-verdict-word">{priceLabel}</span>
+      </div>
+      <div className={`hx-verdict-delta ${delta.cls}`}>{delta.text}</div>
     </div>
   );
 }
