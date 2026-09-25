@@ -21,6 +21,10 @@ import {
   FORGERY_PRONE_HUNTS,
   PROVENANCE_EVIDENCE,
   FURNITURE_NOT_OBJECT,
+  FURNITURE_NOT_AUTHENTIC,
+  OTHER_GAME_OBJECTS,
+  SEATING_WORDS,
+  WEAK_MEDIUM_EVIDENCE,
   GAME_USED_ALIASES,
   OTHER_ARTISTS,
   TRADING_CARD_SIGNALS,
@@ -67,6 +71,8 @@ export interface EvalContext {
   flags?: string[];
   /** your feedback: dismissed listing / blocked seller */
   feedback?: 'dismissed-by-you' | 'seller-blocked' | 'seller-blocked:learned' | null;
+  /** found only by a recall search (not the hunt's pinned query) — held to a stricter medium bar */
+  recallOnly?: boolean;
 }
 
 const NOT_ORIGINAL = /reprint|reproduction|replica|facsimile|\bcopy\b|licensed|unauthori[sz]ed/i;
@@ -103,7 +109,7 @@ export function evaluate(hunt: Hunt, l: HuntListing, ctx: EvalContext = {}): Eva
     const name = firstPhrase(t, names);
     if (names.length && !name) rejects.push('art:artist-name-missing');
     for (const x of ART_NOT_UNIQUE) if (hasPhrase(t, x)) rejects.push(`art:not-unique:${x}`);
-    const medium = ART_MEDIUM_EVIDENCE[hunt.section as 'Paintings' | 'Drawings'] ?? [];
+    const medium = (ART_MEDIUM_EVIDENCE[hunt.section as 'Paintings' | 'Drawings'] ?? []).filter((m) => !ctx.recallOnly || !WEAK_MEDIUM_EVIDENCE.includes(m));
     const med = firstPhrase(t, medium);
     if (medium.length && !med) rejects.push('art:medium-missing');
     else if (med) reasons.push(`medium:${med}`);
@@ -116,12 +122,14 @@ export function evaluate(hunt: Hunt, l: HuntListing, ctx: EvalContext = {}): Eva
     const lead = l.title.trim().toLowerCase();
     if (names.some((n) => new RegExp(`^\\W*${n.replace(/ /g, '[\\s.]+')}\\s*:`).test(lead))) rejects.push('art:publication-title');
     if (!claimsOriginal && names.some((n) => hasPhrase(t, `by ${n}`) || hasPhrase(t, `by ${n.split(' ').slice(-1)[0]}`))) rejects.push('art:authored-publication');
-    if (/ number \d/.test(t) || / no \d+ /.test(t)) rejects.push('art:numbered-publication');
+    if (/ number \d/.test(t) || / no \d+ /.test(t) || /#\s?\d/.test(l.title)) rejects.push('art:numbered-publication');
   }
   if (hunt.vertical === 'furniture') {
     for (const x of FURNITURE_NOT_OBJECT) if (hasPhrase(t, x)) rejects.push(`furniture:publication:${x}`);
     const designers = OTHER_DESIGNERS.filter((d) => hasPhrase(t, d));
     if (designers.length >= 2) rejects.push(`furniture:other-designers:${designers.slice(0, 3).join('+')}`);
+    for (const x of FURNITURE_NOT_AUTHENTIC) if (hasPhrase(t, x)) { rejects.push(`furniture:not-authentic:${x}`); break; }
+    if (hunt.section === 'Seating' && !firstPhrase(t, SEATING_WORDS)) rejects.push('furniture:not-seating');
   }
   if (hunt.vertical === 'sports') {
     for (const x of TRADING_CARD_SIGNALS) if (hasPhrase(t, x)) { rejects.push(`sports:trading-card:${x}`); break; }
@@ -129,6 +137,10 @@ export function evaluate(hunt: Hunt, l: HuntListing, ctx: EvalContext = {}): Eva
     if (surnames.filter((n) => hasPhrase(t, n)).length >= 1 && FULL_NAME[hunt.id] && !FULL_NAME[hunt.id].endsWith(surnames.find((n) => hasPhrase(t, n))!)) rejects.push('sports:multi-player');
     if (/(^|[\s#(])\d{0,4}\s?\/\s?\d{1,4}(?![\d/])/.test(` ${l.title.toLowerCase()}`)) rejects.push('sports:serial-numbered');
     if (hunt.id !== 'sports-sb52-football' && !hasPhrase(t, 'jersey')) rejects.push('sports:object-not-jersey');
+    if (hunt.id !== 'sports-sb52-football') {
+      const other = firstPhrase(t, OTHER_GAME_OBJECTS);
+      if (other) rejects.push(`sports:other-object:${other}`);
+    }
     if (hunt.id === 'sports-sb52-football') {
       if (!hasPhrase(t, 'football') && !hasPhrase(t, 'ball')) rejects.push('sports:object-not-football');
       const m = t.match(/ super ?bowl (\d{1,2}|[ivxl]{1,6}) /);

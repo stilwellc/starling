@@ -240,7 +240,23 @@ export const ART_NOT_UNIQUE = [
   'paintings', 'checklist', 'criticism', 'volume', 'vol', 'issue', 'gallery guide', 'bag', 'tote', 'mug', 'keychain', 'pin', 'socks',
   'jacket', 'sweatshirt', 'futura laboratories', 'hc', 'hb', 'pb', 'hardback', 'graphic novel', 'novel', '1st', 'vf', 'nm',
   'the works of', 'kitchen sink press', 'last gasp', 'fantagraphics', 'press', 'draws the blues', 'art and beauty',
+  // merch and media the recall searches surface (Sep 2026 live run)
+  'iron on', 'transfer', 'decal', 'patch', 'vhs', 'dvd', 'cd', 'lp', 'record', 'soundtrack', 'cast recording', 'card set',
+  'trading card', 'slide', '35mm', 'cel', 'shorts', 'shoe', 'dunk', 'plaque', 'flyer', 'broadside', 'die cast', 'diecast',
+  'bobbin', 'inflatable', 'promo', 'spray can', 'illustrations', 'illustrated', 'aceo', 'atc', 'button', 'corgi', 'cactus jack', 'travis scott',
 ];
+
+/** Found only by a recall search, a listing must name a real medium — "original" alone is how merch is titled. */
+export const WEAK_MEDIUM_EVIDENCE = ['original', 'paper', 'board', 'panel', 'illustration'];
+
+/** Furniture listings that are new imports sold on a famous name ("Modern Nakashima St(yle)", NWT). */
+export const FURNITURE_NOT_AUTHENTIC = ['nwt', 'new with tags', 'nakashima st', 'modern nakashima', 'nakashima inspired'];
+
+/** A seating hunt's listing must be seating. */
+export const SEATING_WORDS = ['chair', 'armchair', 'stool', 'bench', 'seat', 'settee', 'sofa', 'lounge', 'rocker', 'rocking'];
+
+/** A jersey hunt's listing naming another game-used object is that object, keyword-stuffed with "jersey". */
+export const OTHER_GAME_OBJECTS = ['nameplate', 'glove', 'cleat', 'helmet', 'pants', 'towel', 'wristband', 'football', 'ball', 'locker'];
 
 /** A recurring fake-art listing template ("drawing on old paper, signed & stamped"): kept visible, flagged for review. */
 export const FAKE_TEMPLATE_PHRASES = [['old paper', 'stamped'], ['handmade', 'stamped'], ['coa', 'original drawing', 'vintage']];
@@ -280,7 +296,7 @@ export const FURNITURE_NOT_OBJECT = ['furnishings', 'catalog', 'catalogue', 'boo
 /** Medium/object evidence the title must carry, per the brief's own scopes (Paintings: canvas/board — acrylic, oil, spray; Drawings: works on paper). */
 export const ART_MEDIUM_EVIDENCE: Record<'Paintings' | 'Drawings', string[]> = {
   Paintings: ['painting', 'painted', 'canvas', 'board', 'panel', 'acrylic', 'oil', 'spray', 'spray paint', 'enamel', 'original', 'mixed media'],
-  Drawings: ['drawing', 'drawn', 'sketch', 'ink', 'pen', 'pencil', 'marker', 'pastel', 'crayon', 'gouache', 'watercolor', 'paper', 'illustration', 'original', 'doodle', 'blackbook'],
+  Drawings: ['drawing', 'drawn', 'sketch', 'ink', 'pen', 'pencil', 'marker', 'pastel', 'crayon', 'gouache', 'watercolor', 'paper', 'illustration', 'original', 'original art', 'doodle', 'blackbook'],
 };
 
 /** Other designers — a furniture title naming two or more is a book, a lot, or a keyword-stuffed listing. */

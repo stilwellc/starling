@@ -34,6 +34,11 @@ on:
         type: boolean
         required: false
         default: false
+      full_sweep:
+        description: 'Force every hunt to a full sweep (default: full every ~3h, new listings only in between).'
+        type: boolean
+        required: false
+        default: false
 
 # contents: write — the job commits the regenerated board JSON back to main.
 # (lectr learned this the hard way via 403s — commit 43e4005.)
@@ -93,6 +98,7 @@ jobs:
           EBAY_MARKETPLACE_ID: EBAY_US
           STARLING_ALERT_WEBHOOK_URL: ${{ secrets.STARLING_ALERT_WEBHOOK_URL }}
           HUNT_ID: ${{ inputs.hunt_id }}
+          HUNT_FULL: ${{ inputs.full_sweep && '1' || '' }}
         run: npm run hunt:scan
 
       # Live if the eBay keyset exists; fixtures otherwise. The gate reads the

@@ -89,6 +89,8 @@ export interface ProviderHealth {
 export interface Observation {
   listing: HuntListing;
   evaluation: Evaluation;
+  /** found only by a recall search, not the hunt's pinned query */
+  recallOnly?: boolean;
   /** other item ids from the same seller with the same normalized title, folded into this one (lowest all-in kept) */
   similar?: string[];
   /** eBay item details, when fetched */

@@ -89,6 +89,7 @@ export async function runScan(o: ScanOptions): Promise<ScanResult> {
   const discovery = new Map<string, { newThisRun: number; newToday: number; sweep: 'full' | 'delta'; searches: number }>();
   let returnedTotal = 0, rejectedTotal = 0;
   let stopReason: string | null = null;
+  const recallOnly = new Set<string>(); // huntId|itemId found only by a recall search
   const plan = new Map<string, { sweep: 'full' | 'delta'; since: string | null }>();
   for (const h of hunts) {
     if (o.onlyHuntId && h.id !== o.onlyHuntId) continue;
@@ -146,6 +147,7 @@ export async function runScan(o: ScanOptions): Promise<ScanResult> {
     const ids = new Set<string>();
     let pages = 0, returned = 0;
     const errors: string[] = [];
+    const pinnedIds = new Set((pinned.s.result.listings).map((l) => l.itemId));
     for (const { q, s: srch } of mine) {
       if (!srch.result) { errors.push(`"${q}": ${srch.error}`); continue; }
       if (srch.result.partialError) errors.push(`"${q}": ${srch.result.partialError}`);
@@ -158,7 +160,8 @@ export async function runScan(o: ScanOptions): Promise<ScanResult> {
         listings.push(l);
       }
     }
-    const obs = listings.map((l) => ({ listing: l, evaluation: evaluate(h, l) }));
+    for (const l of listings) if (!pinnedIds.has(l.itemId)) recallOnly.add(`${h.id}|${l.itemId}`);
+    const obs = listings.map((l) => ({ listing: l, evaluation: evaluate(h, l, { recallOnly: recallOnly.has(`${h.id}|${l.itemId}`) }) }));
     fresh.set(h.id, obs);
     returnedTotal += returned;
     // seen-index: every returned id, rejects included
@@ -234,8 +237,9 @@ export async function runScan(o: ScanOptions): Promise<ScanResult> {
       const d = det.details.get(l.itemId);
       obs[i] = {
         listing: l,
-        evaluation: evaluate(h, l, { details: d ? { aspects: d.aspects, description: d.description } : null, flags: extra, feedback: feedbackFor(feedback, h.id, l.itemId, l.seller?.username) }),
+        evaluation: evaluate(h, l, { details: d ? { aspects: d.aspects, description: d.description } : null, flags: extra, feedback: feedbackFor(feedback, h.id, l.itemId, l.seller?.username), recallOnly: recallOnly.has(`${h.id}|${l.itemId}`) }),
         details: d ? { aspects: d.aspects, descriptionSnippet: d.descriptionSnippet, fetchedAt: d.fetchedAt } : undefined,
+        recallOnly: recallOnly.has(`${h.id}|${l.itemId}`) || undefined,
         photoReusedWith: others,
         relistedFrom: rel,
       };
@@ -275,10 +279,13 @@ export async function runScan(o: ScanOptions): Promise<ScanResult> {
     // what an earlier run found and this one didn't re-read: drop ended auctions and anything you dismissed since
     const carry = () => {
       const ids = new Set((fresh.get(r.huntId) ?? []).map((x) => x.listing.itemId));
+      const h = byId.get(r.huntId)!;
       return (before?.observations ?? []).filter((x) =>
         !ids.has(x.listing.itemId) &&
         !(x.listing.endsAt && Date.parse(x.listing.endsAt) < finished.getTime()) &&
-        !feedbackFor(feedback, r.huntId, x.listing.itemId, x.listing.seller?.username));
+        !feedbackFor(feedback, r.huntId, x.listing.itemId, x.listing.seller?.username) &&
+        // today's rules still apply to what's carried: a listing the current title rules reject drops now, not at the next sweep
+        evaluate(h, x.listing, { details: x.details ? { aspects: x.details.aspects, description: '' } : null, recallOnly: x.recallOnly }).classification !== 'reject');
     };
     const fullSweepAt = r.sweep === 'full' ? r.searchedAt : before?.lastFullSweepAt ?? null;
     if (r.state === 'complete' && r.sweep === 'full') {

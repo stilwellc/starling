@@ -113,3 +113,18 @@ test('borderline rejects get a second look: item specifics can supply what the t
   await runScan({ provider: p, store, mode: 'fixture', now: clockFrom('2026-09-26T06:00:00Z'), runId: 'b2', hashPhotos: false, sweep: 'full', log: () => {} });
   assert.equal(lookups, 1, 'item specifics are cached — the same lot is never looked up twice');
 });
+
+test('recall-only listings must name a real medium; merch and media the recall searches surface reject', () => {
+  const haze = hunt('art-haze-painting');
+  const t = 'Huff Eric Haze This Is an Original Design By Graffiti artist';
+  assert.notEqual(evaluate(haze, listing({ title: t })).classification, 'reject', 'the pinned query keeps its old bar');
+  assert.equal(evaluate(haze, listing({ title: t }), { recallOnly: true }).classification, 'reject');
+  const crumb = hunt('art-crumb-drawing');
+  for (const junk of ['Original Vintage 1967 R. Crumb Keep On Truckin Iron On Transfer', 'R. Crumb The Musical CD Original Cast Recording', 'Fritz the Cat 1972 Original Production Animation Cel R Crumb', 'R Crumb Pioneers of Country Music Card Set Original'])
+    assert.equal(evaluate(crumb, listing({ title: junk })).classification, 'reject', junk);
+  assert.notEqual(evaluate(crumb, listing({ title: 'Robert Crumb Eat It Spot Illustration Page Original Art 1974', price: 900 }), { recallOnly: true }).classification, 'reject', '"original art" is real evidence');
+  const nak = hunt('design-nakashima-seating');
+  assert.equal(evaluate(nak, listing({ title: 'NWT Modern Nakashima St natural form ACACIA wood side table' })).classification, 'reject');
+  assert.equal(evaluate(nak, listing({ title: 'George Nakashima coffee table walnut' })).classification, 'reject', 'a seating hunt keeps seating only');
+  assert.equal(evaluate(hunt('sports-djackson-jersey'), listing({ title: 'Desean Jackson Game Used Gloves Game Worn Jersey' })).classification, 'reject');
+});
