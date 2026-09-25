@@ -1,18 +1,18 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-09-25T11:47:02.652Z",
+ "generatedAt": "2026-09-25T15:21:15.019Z",
  "run": {
-  "id": "20260925T114528Z-pc2a",
+  "id": "20260925T151747Z-7hlm",
   "state": "success",
   "mode": "live",
-  "startedAt": "2026-09-25T11:45:28.265Z",
-  "finishedAt": "2026-09-25T11:47:02.652Z",
-  "succeededAt": "2026-09-25T11:47:02.652Z",
+  "startedAt": "2026-09-25T15:17:47.085Z",
+  "finishedAt": "2026-09-25T15:21:15.019Z",
+  "succeededAt": "2026-09-25T15:21:15.019Z",
   "huntsTotal": 35,
   "huntsComplete": 35,
   "providerHealth": {
    "status": "ok",
-   "calls": 62,
+   "calls": 95,
    "rateLimit": null,
    "message": null
   },
@@ -20,11 +20,11 @@
   "staleAfterMinutes": 240,
   "discovery": {
    "searches": 62,
-   "fullSweeps": 0,
-   "deltaScans": 35,
-   "newThisRun": 9,
-   "newToday": 2936,
-   "secondLooks": 0
+   "fullSweeps": 35,
+   "deltaScans": 0,
+   "newThisRun": 26,
+   "newToday": 2953,
+   "secondLooks": 8
   }
  },
  "meta": {
@@ -138,18 +138,18 @@
    "maxAllIn": 5000,
    "priority": 1,
    "state": "complete",
-   "lastSearchedAt": "2026-09-25T11:45:29.692Z",
-   "lastSuccessfulAt": "2026-09-25T11:45:29.692Z",
+   "lastSearchedAt": "2026-09-25T15:17:48.600Z",
+   "lastSuccessfulAt": "2026-09-25T15:17:48.600Z",
    "carried": false,
    "error": null,
-   "matchCount": 2,
-   "underCount": 1,
+   "matchCount": 1,
+   "underCount": 0,
    "overCount": 0,
    "watchCount": 1,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-09-25T09:37:59.395Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-09-25T15:17:48.600Z",
    "searches": 3,
-   "newThisRun": 1,
+   "newThisRun": 0,
    "newToday": 25
   },
   {
@@ -162,16 +162,16 @@
    "maxAllIn": 5000,
    "priority": 2,
    "state": "complete",
-   "lastSearchedAt": "2026-09-25T11:45:35.816Z",
-   "lastSuccessfulAt": "2026-09-25T11:45:35.816Z",
+   "lastSearchedAt": "2026-09-25T15:17:50.126Z",
+   "lastSuccessfulAt": "2026-09-25T15:17:50.126Z",
    "carried": false,
    "error": null,
    "matchCount": 0,
    "underCount": 0,
    "overCount": 0,
    "watchCount": 0,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-09-25T09:38:00.739Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-09-25T15:17:50.126Z",
    "searches": 1,
    "newThisRun": 0,
    "newToday": 0
@@ -186,18 +186,18 @@
    "maxAllIn": 15000,
    "priority": 3,
    "state": "complete",
-   "lastSearchedAt": "2026-09-25T11:45:36.834Z",
-   "lastSuccessfulAt": "2026-09-25T11:45:36.834Z",
+   "lastSearchedAt": "2026-09-25T15:17:50.422Z",
+   "lastSuccessfulAt": "2026-09-25T15:17:50.422Z",
    "carried": false,
    "error": null,
-   "matchCount": 4,
-   "underCount": 4,
+   "matchCount": 2,
+   "underCount": 2,
    "overCount": 0,
    "watchCount": 0,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-09-25T09:38:01.059Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-09-25T15:17:50.422Z",
    "searches": 4,
-   "newThisRun": 0,
+   "newThisRun": 2,
    "newToday": 552
   },
   {
@@ -210,16 +210,16 @@
    "maxAllIn": 15000,
    "priority": 4,
    "state": "complete",
-   "lastSearchedAt": "2026-09-25T11:45:42.987Z",
-   "lastSuccessfulAt": "2026-09-25T11:45:42.987Z",
+   "lastSearchedAt": "2026-09-25T15:17:55.322Z",
+   "lastSuccessfulAt": "2026-09-25T15:17:55.322Z",
    "carried": false,
    "error": null,
-   "matchCount": 2,
-   "underCount": 2,
+   "matchCount": 0,
+   "underCount": 0,
    "overCount": 0,
    "watchCount": 0,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-09-25T09:38:05.280Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-09-25T15:17:55.322Z",
    "searches": 1,
    "newThisRun": 0,
    "newToday": 4
@@ -234,19 +234,19 @@
    "maxAllIn": 8000,
    "priority": 5,
    "state": "complete",
-   "lastSearchedAt": "2026-09-25T11:45:43.771Z",
-   "lastSuccessfulAt": "2026-09-25T11:45:43.771Z",
+   "lastSearchedAt": "2026-09-25T15:17:55.665Z",
+   "lastSuccessfulAt": "2026-09-25T15:17:55.665Z",
    "carried": false,
    "error": null,
    "matchCount": 0,
    "underCount": 0,
    "overCount": 0,
    "watchCount": 0,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-09-25T09:38:05.863Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-09-25T15:17:55.665Z",
    "searches": 3,
-   "newThisRun": 4,
-   "newToday": 898
+   "newThisRun": 17,
+   "newToday": 911
   },
   {
    "id": "art-haze-drawing",
@@ -258,16 +258,16 @@
    "maxAllIn": 8000,
    "priority": 6,
    "state": "complete",
-   "lastSearchedAt": "2026-09-25T11:45:46.518Z",
-   "lastSuccessfulAt": "2026-09-25T11:45:46.518Z",
+   "lastSearchedAt": "2026-09-25T15:18:05.776Z",
+   "lastSuccessfulAt": "2026-09-25T15:18:05.776Z",
    "carried": false,
    "error": null,
    "matchCount": 0,
    "underCount": 0,
    "overCount": 0,
    "watchCount": 0,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-09-25T09:38:14.563Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-09-25T15:18:05.776Z",
    "searches": 3,
    "newThisRun": 0,
    "newToday": 19
@@ -282,19 +282,19 @@
    "maxAllIn": 10000,
    "priority": 7,
    "state": "complete",
-   "lastSearchedAt": "2026-09-25T11:45:48.319Z",
-   "lastSuccessfulAt": "2026-09-25T11:45:48.319Z",
+   "lastSearchedAt": "2026-09-25T15:18:06.419Z",
+   "lastSuccessfulAt": "2026-09-25T15:18:06.419Z",
    "carried": false,
    "error": null,
-   "matchCount": 16,
-   "underCount": 13,
+   "matchCount": 5,
+   "underCount": 2,
    "overCount": 3,
    "watchCount": 0,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-09-25T09:38:15.290Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-09-25T15:18:06.419Z",
    "searches": 3,
-   "newThisRun": 0,
-   "newToday": 170
+   "newThisRun": 1,
+   "newToday": 171
   },
   {
    "id": "art-saul-drawing",
@@ -306,19 +306,19 @@
    "maxAllIn": 2000,
    "priority": 8,
    "state": "complete",
-   "lastSearchedAt": "2026-09-25T11:45:50.662Z",
-   "lastSuccessfulAt": "2026-09-25T11:45:50.662Z",
+   "lastSearchedAt": "2026-09-25T15:18:08.148Z",
+   "lastSuccessfulAt": "2026-09-25T15:18:08.148Z",
    "carried": false,
    "error": null,
    "matchCount": 2,
    "underCount": 2,
    "overCount": 0,
    "watchCount": 0,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-09-25T09:38:16.841Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-09-25T15:18:08.148Z",
    "searches": 3,
-   "newThisRun": 4,
-   "newToday": 238
+   "newThisRun": 5,
+   "newToday": 240
   },
   {
    "id": "art-crumb-drawing",
@@ -330,16 +330,16 @@
    "maxAllIn": 2000,
    "priority": 9,
    "state": "complete",
-   "lastSearchedAt": "2026-09-25T11:45:52.156Z",
-   "lastSuccessfulAt": "2026-09-25T11:45:52.156Z",
+   "lastSearchedAt": "2026-09-25T15:18:09.379Z",
+   "lastSuccessfulAt": "2026-09-25T15:18:09.379Z",
    "carried": false,
    "error": null,
-   "matchCount": 14,
-   "underCount": 10,
-   "overCount": 4,
+   "matchCount": 5,
+   "underCount": 2,
+   "overCount": 3,
    "watchCount": 0,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-09-25T09:38:17.920Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-09-25T15:18:09.379Z",
    "searches": 4,
    "newThisRun": 0,
    "newToday": 519
@@ -354,16 +354,16 @@
    "maxAllIn": 3000,
    "priority": 10,
    "state": "complete",
-   "lastSearchedAt": "2026-09-25T11:45:55.531Z",
-   "lastSuccessfulAt": "2026-09-25T11:45:55.531Z",
+   "lastSearchedAt": "2026-09-25T15:18:13.597Z",
+   "lastSuccessfulAt": "2026-09-25T15:18:13.597Z",
    "carried": false,
    "error": null,
    "matchCount": 1,
    "underCount": 0,
    "overCount": 1,
    "watchCount": 0,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-09-25T09:38:21.522Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-09-25T15:18:13.597Z",
    "searches": 2,
    "newThisRun": 0,
    "newToday": 2
@@ -378,16 +378,16 @@
    "maxAllIn": 8000,
    "priority": 11,
    "state": "complete",
-   "lastSearchedAt": "2026-09-25T11:45:57.094Z",
-   "lastSuccessfulAt": "2026-09-25T11:45:57.094Z",
+   "lastSearchedAt": "2026-09-25T15:18:14.335Z",
+   "lastSuccessfulAt": "2026-09-25T15:18:14.335Z",
    "carried": false,
    "error": null,
    "matchCount": 0,
    "underCount": 0,
    "overCount": 0,
    "watchCount": 0,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-09-25T09:38:22.180Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-09-25T15:18:14.335Z",
    "searches": 2,
    "newThisRun": 0,
    "newToday": 66
@@ -402,16 +402,16 @@
    "maxAllIn": 4000,
    "priority": 12,
    "state": "complete",
-   "lastSearchedAt": "2026-09-25T11:45:58.682Z",
-   "lastSuccessfulAt": "2026-09-25T11:45:58.682Z",
+   "lastSearchedAt": "2026-09-25T15:18:15.243Z",
+   "lastSuccessfulAt": "2026-09-25T15:18:15.243Z",
    "carried": false,
    "error": null,
    "matchCount": 0,
    "underCount": 0,
    "overCount": 0,
    "watchCount": 0,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-09-25T09:38:22.906Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-09-25T15:18:15.243Z",
    "searches": 2,
    "newThisRun": 0,
    "newToday": 11
@@ -426,16 +426,16 @@
    "maxAllIn": 4000,
    "priority": 13,
    "state": "complete",
-   "lastSearchedAt": "2026-09-25T11:46:01.181Z",
-   "lastSuccessfulAt": "2026-09-25T11:46:01.181Z",
+   "lastSearchedAt": "2026-09-25T15:18:16.051Z",
+   "lastSuccessfulAt": "2026-09-25T15:18:16.051Z",
    "carried": false,
    "error": null,
    "matchCount": 1,
    "underCount": 0,
    "overCount": 1,
    "watchCount": 0,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-09-25T09:38:23.687Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-09-25T15:18:16.051Z",
    "searches": 2,
    "newThisRun": 0,
    "newToday": 13
@@ -450,16 +450,16 @@
    "maxAllIn": 4000,
    "priority": 14,
    "state": "complete",
-   "lastSearchedAt": "2026-09-25T11:46:03.325Z",
-   "lastSuccessfulAt": "2026-09-25T11:46:03.325Z",
+   "lastSearchedAt": "2026-09-25T15:18:16.769Z",
+   "lastSuccessfulAt": "2026-09-25T15:18:16.769Z",
    "carried": false,
    "error": null,
    "matchCount": 0,
    "underCount": 0,
    "overCount": 0,
    "watchCount": 0,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-09-25T09:38:24.379Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-09-25T15:18:16.769Z",
    "searches": 2,
    "newThisRun": 0,
    "newToday": 48
@@ -474,16 +474,16 @@
    "maxAllIn": 4000,
    "priority": 15,
    "state": "complete",
-   "lastSearchedAt": "2026-09-25T11:46:05.319Z",
-   "lastSuccessfulAt": "2026-09-25T11:46:05.319Z",
+   "lastSearchedAt": "2026-09-25T15:18:17.615Z",
+   "lastSuccessfulAt": "2026-09-25T15:18:17.615Z",
    "carried": false,
    "error": null,
    "matchCount": 0,
    "underCount": 0,
    "overCount": 0,
    "watchCount": 0,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-09-25T09:38:25.134Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-09-25T15:18:17.615Z",
    "searches": 2,
    "newThisRun": 0,
    "newToday": 6
@@ -498,16 +498,16 @@
    "maxAllIn": 1500,
    "priority": 16,
    "state": "complete",
-   "lastSearchedAt": "2026-09-25T11:46:06.624Z",
-   "lastSuccessfulAt": "2026-09-25T11:46:06.624Z",
+   "lastSearchedAt": "2026-09-25T15:18:18.506Z",
+   "lastSuccessfulAt": "2026-09-25T15:18:18.506Z",
    "carried": false,
    "error": null,
    "matchCount": 1,
    "underCount": 1,
    "overCount": 0,
    "watchCount": 0,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-09-25T09:38:25.780Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-09-25T15:18:18.506Z",
    "searches": 2,
    "newThisRun": 0,
    "newToday": 4
@@ -522,16 +522,16 @@
    "maxAllIn": 1500,
    "priority": 17,
    "state": "complete",
-   "lastSearchedAt": "2026-09-25T11:46:07.375Z",
-   "lastSuccessfulAt": "2026-09-25T11:46:07.375Z",
+   "lastSearchedAt": "2026-09-25T15:18:18.858Z",
+   "lastSuccessfulAt": "2026-09-25T15:18:18.858Z",
    "carried": false,
    "error": null,
    "matchCount": 0,
    "underCount": 0,
    "overCount": 0,
    "watchCount": 0,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-09-25T09:38:26.089Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-09-25T15:18:18.858Z",
    "searches": 2,
    "newThisRun": 0,
    "newToday": 3
@@ -546,16 +546,16 @@
    "maxAllIn": 6000,
    "priority": 18,
    "state": "complete",
-   "lastSearchedAt": "2026-09-25T11:46:08.648Z",
-   "lastSuccessfulAt": "2026-09-25T11:46:08.648Z",
+   "lastSearchedAt": "2026-09-25T15:18:19.156Z",
+   "lastSuccessfulAt": "2026-09-25T15:18:19.156Z",
    "carried": false,
    "error": null,
    "matchCount": 2,
    "underCount": 0,
    "overCount": 2,
    "watchCount": 0,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-09-25T09:38:26.393Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-09-25T15:18:19.156Z",
    "searches": 2,
    "newThisRun": 0,
    "newToday": 62
@@ -570,16 +570,16 @@
    "maxAllIn": 300,
    "priority": 19,
    "state": "complete",
-   "lastSearchedAt": "2026-09-25T11:46:11.247Z",
-   "lastSuccessfulAt": "2026-09-25T11:46:11.247Z",
+   "lastSearchedAt": "2026-09-25T15:18:20.136Z",
+   "lastSuccessfulAt": "2026-09-25T15:18:20.136Z",
    "carried": false,
    "error": null,
    "matchCount": 1,
    "underCount": 0,
    "overCount": 1,
    "watchCount": 0,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-09-25T09:38:27.165Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-09-25T15:18:20.136Z",
    "searches": 2,
    "newThisRun": 0,
    "newToday": 1
@@ -594,16 +594,16 @@
    "maxAllIn": 200,
    "priority": 20,
    "state": "complete",
-   "lastSearchedAt": "2026-09-25T11:46:13.740Z",
-   "lastSuccessfulAt": "2026-09-25T11:46:13.740Z",
+   "lastSearchedAt": "2026-09-25T15:18:21.056Z",
+   "lastSuccessfulAt": "2026-09-25T15:18:21.056Z",
    "carried": false,
    "error": null,
    "matchCount": 12,
    "underCount": 0,
    "overCount": 11,
    "watchCount": 1,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-09-25T09:38:27.850Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-09-25T15:18:21.056Z",
    "searches": 2,
    "newThisRun": 0,
    "newToday": 17
@@ -618,16 +618,16 @@
    "maxAllIn": 500,
    "priority": 21,
    "state": "complete",
-   "lastSearchedAt": "2026-09-25T11:46:16.444Z",
-   "lastSuccessfulAt": "2026-09-25T11:46:16.444Z",
+   "lastSearchedAt": "2026-09-25T15:18:21.922Z",
+   "lastSuccessfulAt": "2026-09-25T15:18:21.922Z",
    "carried": false,
    "error": null,
    "matchCount": 1,
    "underCount": 0,
    "overCount": 0,
    "watchCount": 1,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-09-25T09:38:28.629Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-09-25T15:18:21.922Z",
    "searches": 2,
    "newThisRun": 0,
    "newToday": 1
@@ -642,16 +642,16 @@
    "maxAllIn": 3000,
    "priority": 22,
    "state": "complete",
-   "lastSearchedAt": "2026-09-25T11:46:17.977Z",
-   "lastSuccessfulAt": "2026-09-25T11:46:17.977Z",
+   "lastSearchedAt": "2026-09-25T15:18:22.681Z",
+   "lastSuccessfulAt": "2026-09-25T15:18:22.681Z",
    "carried": false,
    "error": null,
    "matchCount": 23,
    "underCount": 3,
    "overCount": 14,
    "watchCount": 6,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-09-25T09:38:29.213Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-09-25T15:18:22.681Z",
    "searches": 4,
    "newThisRun": 0,
    "newToday": 33
@@ -666,16 +666,16 @@
    "maxAllIn": null,
    "priority": 23,
    "state": "complete",
-   "lastSearchedAt": "2026-09-25T11:46:20.668Z",
-   "lastSuccessfulAt": "2026-09-25T11:46:20.668Z",
+   "lastSearchedAt": "2026-09-25T15:18:24.394Z",
+   "lastSuccessfulAt": "2026-09-25T15:18:24.394Z",
    "carried": false,
    "error": null,
    "matchCount": 0,
    "underCount": 0,
    "overCount": 0,
    "watchCount": 0,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-09-25T09:38:30.639Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-09-25T15:18:24.394Z",
    "searches": 1,
    "newThisRun": 0,
    "newToday": 0
@@ -690,16 +690,16 @@
    "maxAllIn": null,
    "priority": 24,
    "state": "complete",
-   "lastSearchedAt": "2026-09-25T11:46:21.127Z",
-   "lastSuccessfulAt": "2026-09-25T11:46:21.127Z",
+   "lastSearchedAt": "2026-09-25T15:18:24.731Z",
+   "lastSuccessfulAt": "2026-09-25T15:18:24.731Z",
    "carried": false,
    "error": null,
    "matchCount": 2,
    "underCount": 0,
    "overCount": 0,
    "watchCount": 2,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-09-25T09:38:30.852Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-09-25T15:18:24.731Z",
    "searches": 1,
    "newThisRun": 0,
    "newToday": 6
@@ -714,16 +714,16 @@
    "maxAllIn": null,
    "priority": 25,
    "state": "complete",
-   "lastSearchedAt": "2026-09-25T11:46:21.676Z",
-   "lastSuccessfulAt": "2026-09-25T11:46:21.676Z",
+   "lastSearchedAt": "2026-09-25T15:18:25.123Z",
+   "lastSuccessfulAt": "2026-09-25T15:18:25.123Z",
    "carried": false,
    "error": null,
    "matchCount": 0,
    "underCount": 0,
    "overCount": 0,
    "watchCount": 0,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-09-25T09:38:31.118Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-09-25T15:18:25.123Z",
    "searches": 1,
    "newThisRun": 0,
    "newToday": 4
@@ -738,16 +738,16 @@
    "maxAllIn": null,
    "priority": 26,
    "state": "complete",
-   "lastSearchedAt": "2026-09-25T11:46:22.429Z",
-   "lastSuccessfulAt": "2026-09-25T11:46:22.429Z",
+   "lastSearchedAt": "2026-09-25T15:18:25.641Z",
+   "lastSuccessfulAt": "2026-09-25T15:18:25.641Z",
    "carried": false,
    "error": null,
    "matchCount": 0,
    "underCount": 0,
    "overCount": 0,
    "watchCount": 0,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-09-25T09:38:31.433Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-09-25T15:18:25.641Z",
    "searches": 1,
    "newThisRun": 0,
    "newToday": 4
@@ -762,16 +762,16 @@
    "maxAllIn": null,
    "priority": 27,
    "state": "complete",
-   "lastSearchedAt": "2026-09-25T11:46:23.421Z",
-   "lastSuccessfulAt": "2026-09-25T11:46:23.421Z",
+   "lastSearchedAt": "2026-09-25T15:18:26.146Z",
+   "lastSuccessfulAt": "2026-09-25T15:18:26.146Z",
    "carried": false,
    "error": null,
    "matchCount": 2,
    "underCount": 0,
    "overCount": 0,
    "watchCount": 2,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-09-25T09:38:31.807Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-09-25T15:18:26.146Z",
    "searches": 1,
    "newThisRun": 0,
    "newToday": 6
@@ -786,16 +786,16 @@
    "maxAllIn": null,
    "priority": 28,
    "state": "complete",
-   "lastSearchedAt": "2026-09-25T11:46:24.048Z",
-   "lastSuccessfulAt": "2026-09-25T11:46:24.048Z",
+   "lastSearchedAt": "2026-09-25T15:18:26.644Z",
+   "lastSuccessfulAt": "2026-09-25T15:18:26.644Z",
    "carried": false,
    "error": null,
    "matchCount": 3,
    "underCount": 0,
    "overCount": 0,
    "watchCount": 3,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-09-25T09:38:32.186Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-09-25T15:18:26.644Z",
    "searches": 1,
    "newThisRun": 0,
    "newToday": 6
@@ -810,16 +810,16 @@
    "maxAllIn": null,
    "priority": 29,
    "state": "complete",
-   "lastSearchedAt": "2026-09-25T11:46:24.710Z",
-   "lastSuccessfulAt": "2026-09-25T11:46:24.710Z",
+   "lastSearchedAt": "2026-09-25T15:18:26.980Z",
+   "lastSuccessfulAt": "2026-09-25T15:18:26.980Z",
    "carried": false,
    "error": null,
    "matchCount": 11,
    "underCount": 0,
    "overCount": 0,
    "watchCount": 11,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-09-25T09:38:32.550Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-09-25T15:18:26.980Z",
    "searches": 1,
    "newThisRun": 0,
    "newToday": 15
@@ -834,16 +834,16 @@
    "maxAllIn": null,
    "priority": 30,
    "state": "complete",
-   "lastSearchedAt": "2026-09-25T11:46:25.426Z",
-   "lastSuccessfulAt": "2026-09-25T11:46:25.426Z",
+   "lastSearchedAt": "2026-09-25T15:18:27.431Z",
+   "lastSuccessfulAt": "2026-09-25T15:18:27.431Z",
    "carried": false,
    "error": null,
    "matchCount": 10,
    "underCount": 0,
    "overCount": 0,
    "watchCount": 10,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-09-25T09:38:32.971Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-09-25T15:18:27.431Z",
    "searches": 1,
    "newThisRun": 0,
    "newToday": 14
@@ -858,16 +858,16 @@
    "maxAllIn": null,
    "priority": 31,
    "state": "complete",
-   "lastSearchedAt": "2026-09-25T11:46:27.285Z",
-   "lastSuccessfulAt": "2026-09-25T11:46:27.285Z",
+   "lastSearchedAt": "2026-09-25T15:18:27.766Z",
+   "lastSuccessfulAt": "2026-09-25T15:18:27.766Z",
    "carried": false,
    "error": null,
    "matchCount": 2,
    "underCount": 0,
    "overCount": 0,
    "watchCount": 2,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-09-25T09:38:33.372Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-09-25T15:18:27.766Z",
    "searches": 1,
    "newThisRun": 0,
    "newToday": 2
@@ -882,16 +882,16 @@
    "maxAllIn": null,
    "priority": 32,
    "state": "complete",
-   "lastSearchedAt": "2026-09-25T11:46:28.624Z",
-   "lastSuccessfulAt": "2026-09-25T11:46:28.624Z",
+   "lastSearchedAt": "2026-09-25T15:18:28.274Z",
+   "lastSuccessfulAt": "2026-09-25T15:18:28.274Z",
    "carried": false,
    "error": null,
    "matchCount": 1,
    "underCount": 0,
    "overCount": 0,
    "watchCount": 1,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-09-25T09:38:33.702Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-09-25T15:18:28.274Z",
    "searches": 1,
    "newThisRun": 0,
    "newToday": 1
@@ -906,16 +906,16 @@
    "maxAllIn": null,
    "priority": 33,
    "state": "complete",
-   "lastSearchedAt": "2026-09-25T11:46:29.916Z",
-   "lastSuccessfulAt": "2026-09-25T11:46:29.916Z",
+   "lastSearchedAt": "2026-09-25T15:18:28.610Z",
+   "lastSuccessfulAt": "2026-09-25T15:18:28.610Z",
    "carried": false,
    "error": null,
    "matchCount": 1,
    "underCount": 0,
    "overCount": 0,
    "watchCount": 1,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-09-25T09:38:34.010Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-09-25T15:18:28.610Z",
    "searches": 1,
    "newThisRun": 0,
    "newToday": 1
@@ -930,19 +930,19 @@
    "maxAllIn": null,
    "priority": 34,
    "state": "complete",
-   "lastSearchedAt": "2026-09-25T11:46:31.895Z",
-   "lastSuccessfulAt": "2026-09-25T11:46:31.895Z",
+   "lastSearchedAt": "2026-09-25T15:18:29.117Z",
+   "lastSuccessfulAt": "2026-09-25T15:18:29.117Z",
    "carried": false,
    "error": null,
    "matchCount": 1,
    "underCount": 0,
    "overCount": 0,
    "watchCount": 1,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-09-25T09:38:34.295Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-09-25T15:18:29.117Z",
    "searches": 1,
-   "newThisRun": 0,
-   "newToday": 113
+   "newThisRun": 1,
+   "newToday": 114
   },
   {
    "id": "bstj-abbrev",
@@ -954,16 +954,16 @@
    "maxAllIn": null,
    "priority": 35,
    "state": "complete",
-   "lastSearchedAt": "2026-09-25T11:46:33.575Z",
-   "lastSuccessfulAt": "2026-09-25T11:46:33.575Z",
+   "lastSearchedAt": "2026-09-25T15:18:30.053Z",
+   "lastSuccessfulAt": "2026-09-25T15:18:30.053Z",
    "carried": false,
    "error": null,
    "matchCount": 1,
    "underCount": 0,
    "overCount": 0,
    "watchCount": 1,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-09-25T09:38:34.965Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-09-25T15:18:30.053Z",
    "searches": 1,
    "newThisRun": 0,
    "newToday": 72
@@ -971,69 +971,80 @@
  ],
  "cards": [
   {
-   "key": "art-haze-painting:v1|155308223218|0",
-   "group": "under",
-   "huntId": "art-haze-painting",
-   "huntLabel": "Eric Haze — painting",
+   "key": "sports-foles-bears-jersey:v1|318875185094|0",
+   "group": "changed-under",
+   "huntId": "sports-foles-bears-jersey",
+   "huntLabel": "Nick Foles — game-used Bears jersey",
    "classification": "under",
-   "listingId": "v1|155308223218|0",
-   "title": "Huff Eric Haze This Is an Original Design By Graffiti artist Eric “Haze” Leibert",
-   "url": "https://www.ebay.com/itm/155308223218?_skw=eric+haze+original&hash=item2429176af2:g:xQkAAOSwVQ5jmNsV",
-   "imageUrl": "https://i.ebayimg.com/images/g/xQkAAOSwVQ5jmNsV/s-l225.jpg",
+   "listingId": "v1|318875185094|0",
+   "title": "Nick Foles #9 Chicago Bears Game Used Jersey Week 18 1/9/2022",
+   "url": "https://www.ebay.com/itm/318875185094?_skw=nick+foles+game+used+bears+jersey&hash=item4a3e712fc6:g:mQYAAeSwoXNqqZCQ",
+   "imageUrl": "https://i.ebayimg.com/images/g/mQYAAeSwoXNqqZCQ/s-l225.jpg",
    "buyingMode": "FIXED_PRICE",
    "endsAt": null,
    "bidCount": null,
-   "price": 350,
-   "shipping": 7.9,
-   "allIn": 357.9,
-   "maxAllIn": 5000,
-   "underBy": 4642.1,
-   "underPct": 0.93,
+   "price": 800,
+   "shipping": 14.46,
+   "allIn": 814.46,
+   "maxAllIn": 1500,
+   "underBy": 685.54,
+   "underPct": 0.46,
    "capWording": "under cap",
    "seller": {
-    "username": "poma_carm",
+    "username": "westtexassports1600",
     "feedbackPercentage": 100,
-    "feedbackScore": 15
+    "feedbackScore": 21
    },
-   "condition": "New without tags",
+   "condition": null,
    "location": "US",
-   "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
+   "firstSeenAt": "2026-09-25T01:26:41.021Z",
+   "lastSeenAt": "2026-09-25T15:21:15.019Z",
    "reasons": [
-    "must:haze",
-    "medium:original",
-    "claims-original",
+    "must:foles",
+    "game-used:game used",
     "at-or-under-cap"
    ],
-   "flags": [],
-   "confidence": 0.95,
+   "flags": [
+    "no-authentication-in-title"
+   ],
+   "confidence": 0.85,
    "review": "ok",
    "carried": false,
-   "alertKey": "ebay:v1|155308223218|0:art-haze-painting:v1",
+   "alertKey": "ebay:v1|318875185094|0:sports-foles-bears-jersey:v2",
    "similarCount": 0,
-   "risk": "low",
-   "riskReasons": [],
+   "risk": "medium",
+   "riskReasons": [
+    "no photo-match, team or third-party authentication named"
+   ],
    "details": {
     "aspects": {
-     "Brand": "HUF",
-     "Size Type": "Regular",
-     "Department": "Men",
-     "Type": "Sweater",
-     "Size": "XL",
-     "Color": "Black",
-     "Theme": "Designer"
+     "League": "National Football League (NFL)",
+     "Sport": "Football",
+     "Officially Licensed": "Yes",
+     "Features": "Used in Game",
+     "Team": "Chicago Bears",
+     "Event/Tournament": "Week 18 (1/9/2022)"
     },
-    "descriptionSnippet": "Huff Eric Haze.",
-    "fetchedAt": "2026-09-25T03:17:44.787Z"
+    "descriptionSnippet": "Nick Foles #9 Chicago Bears Game Used Jersey Week 18 1/9/2022",
+    "fetchedAt": "2026-09-25T15:18:51.078Z"
    },
    "priceHistory": [
     {
-     "at": "2026-09-25T03:20:24.636Z",
-     "price": 350,
-     "allIn": 357.9
+     "at": "2026-09-25T02:43:43.147Z",
+     "price": 1000,
+     "allIn": 1014.46
+    },
+    {
+     "at": "2026-09-25T15:21:15.019Z",
+     "price": 800,
+     "allIn": 814.46
     }
    ],
-   "priceChange": null,
+   "priceChange": {
+    "from": 1014.46,
+    "to": 814.46,
+    "since": "2026-09-25T02:43:43.147Z"
+   },
    "relisted": null,
    "photoReused": null,
    "dismissible": true
@@ -1066,16 +1077,18 @@
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
+   "lastSeenAt": "2026-09-25T15:21:15.019Z",
    "reasons": [
     "must:futura",
-    "medium:original",
     "claims-original",
     "aspect:original",
+    "aspect:medium:original",
     "at-or-under-cap"
    ],
-   "flags": [],
-   "confidence": 0.95,
+   "flags": [
+    "medium-from-item-specifics"
+   ],
+   "confidence": 0.9,
    "review": "ok",
    "carried": false,
    "alertKey": "ebay:v1|366429860571|0:art-futura-painting:v1",
@@ -1119,73 +1132,6 @@
    "dismissible": true
   },
   {
-   "key": "art-futura-painting:v1|197080266678|0",
-   "group": "under",
-   "huntId": "art-futura-painting",
-   "huntLabel": "Futura 2000 — painting",
-   "classification": "under",
-   "listingId": "v1|197080266678|0",
-   "title": "Futura 2000 Splatter Painting Canvas 5x7 Inches 9x11” Framed Signed Rare OG",
-   "url": "https://www.ebay.com/itm/197080266678?_skw=futura+2000+painting&hash=item2de2e637b6:g:ifcAAOSwNWxe6INq",
-   "imageUrl": "https://i.ebayimg.com/images/g/ifcAAOSwNWxe6INq/s-l225.jpg",
-   "buyingMode": "FIXED_PRICE",
-   "endsAt": null,
-   "bidCount": null,
-   "price": 1250,
-   "shipping": 29,
-   "allIn": 1279,
-   "maxAllIn": 15000,
-   "underBy": 13721,
-   "underPct": 0.91,
-   "capWording": "under cap",
-   "seller": {
-    "username": "8309richard",
-    "feedbackPercentage": 100,
-    "feedbackScore": 1072
-   },
-   "condition": "Used",
-   "location": "US",
-   "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "reasons": [
-    "must:futura",
-    "medium:painting",
-    "at-or-under-cap"
-   ],
-   "flags": [],
-   "confidence": 0.95,
-   "review": "ok",
-   "carried": false,
-   "alertKey": "ebay:v1|197080266678|0:art-futura-painting:v1",
-   "similarCount": 0,
-   "risk": "low",
-   "riskReasons": [],
-   "details": {
-    "aspects": {
-     "Type": "Painting",
-     "Year of Production": "2000",
-     "Date of Creation": "2000-Now",
-     "Painting Surface": "Canvas",
-     "Material": "Canvas",
-     "Features": "Framed",
-     "Framing": "Framed"
-    },
-    "descriptionSnippet": "Futura ‘Splatter Painting’ On Canvas 5x7 Inches 9x11” Framed Signed Rare OG Boldly Signed on Verso A true original from a Master Urban Artist",
-    "fetchedAt": "2026-09-25T02:48:19.979Z"
-   },
-   "priceHistory": [
-    {
-     "at": "2026-09-25T02:43:43.147Z",
-     "price": 1250,
-     "allIn": 1279
-    }
-   ],
-   "priceChange": null,
-   "relisted": null,
-   "photoReused": null,
-   "dismissible": true
-  },
-  {
    "key": "art-futura-painting:v1|257603158065|0",
    "group": "under",
    "huntId": "art-futura-painting",
@@ -1213,16 +1159,18 @@
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
+   "lastSeenAt": "2026-09-25T15:21:15.019Z",
    "reasons": [
     "must:futura",
-    "medium:original",
     "claims-original",
     "aspect:original",
+    "aspect:medium:original",
     "at-or-under-cap"
    ],
-   "flags": [],
-   "confidence": 0.95,
+   "flags": [
+    "medium-from-item-specifics"
+   ],
+   "confidence": 0.9,
    "review": "ok",
    "carried": false,
    "alertKey": "ebay:v1|257603158065|0:art-futura-painting:v1",
@@ -1266,250 +1214,6 @@
    "dismissible": true
   },
   {
-   "key": "art-futura-painting:v1|375982049928|0",
-   "group": "under",
-   "huntId": "art-futura-painting",
-   "huntLabel": "Futura 2000 — painting",
-   "classification": "under",
-   "listingId": "v1|375982049928|0",
-   "title": "Futura 2000 Original Graffiti Signature On Subway Tile - RARE",
-   "url": "https://www.ebay.com/itm/375982049928?_skw=futura2000&hash=item578a46ca88:g:WrAAAOSwAlRnp7NI",
-   "imageUrl": "https://i.ebayimg.com/images/g/WrAAAOSwAlRnp7NI/s-l225.jpg",
-   "buyingMode": "FIXED_PRICE",
-   "endsAt": null,
-   "bidCount": null,
-   "price": 1900,
-   "shipping": 6.57,
-   "allIn": 1906.57,
-   "maxAllIn": 15000,
-   "underBy": 13093.43,
-   "underPct": 0.87,
-   "capWording": "under cap",
-   "seller": {
-    "username": "shoptrueblue",
-    "feedbackPercentage": 100,
-    "feedbackScore": 21
-   },
-   "condition": null,
-   "location": "US",
-   "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "reasons": [
-    "must:futura",
-    "medium:original",
-    "claims-original",
-    "aspect:signed",
-    "at-or-under-cap"
-   ],
-   "flags": [],
-   "confidence": 0.95,
-   "review": "ok",
-   "carried": false,
-   "alertKey": "ebay:v1|375982049928|0:art-futura-painting:v1",
-   "similarCount": 0,
-   "risk": "low",
-   "riskReasons": [],
-   "details": {
-    "aspects": {
-     "Brand": "Futura 2000",
-     "Type": "Futura 2000",
-     "Signed": "Yes",
-     "Personalized": "No",
-     "Features": "Limited Edition",
-     "Unit Quantity": "1"
-    },
-    "descriptionSnippet": "VERY RARE Signed and embellished Futura 2000 subway tile. Futura signed this tile in September 2015 while painting the infamous Bowery Wall in lower manhattan. See last photo for reference. A must have for the Futura collector..",
-    "fetchedAt": "2026-09-25T02:48:19.979Z"
-   },
-   "priceHistory": [
-    {
-     "at": "2026-09-25T02:43:43.147Z",
-     "price": 1900,
-     "allIn": 1906.57
-    }
-   ],
-   "priceChange": null,
-   "relisted": null,
-   "photoReused": null,
-   "dismissible": true
-  },
-  {
-   "key": "art-futura-atoms:v1|318487073077|0",
-   "group": "under",
-   "huntId": "art-futura-atoms",
-   "huntLabel": "Futura 2000 — Atoms canvases",
-   "classification": "under",
-   "listingId": "v1|318487073077|0",
-   "title": "FUTURA \" ATOMIC RINGS \" Large Size Canvas Art Size H 20.2 x W 25.3 in 2606TK",
-   "url": "https://www.ebay.com/itm/318487073077?_skw=futura+atoms+canvas&hash=item4a274f1135:g:sZgAAeSwJslqOFoK",
-   "imageUrl": "https://i.ebayimg.com/images/g/sZgAAeSwJslqOFoK/s-l225.jpg",
-   "buyingMode": "FIXED_PRICE",
-   "endsAt": null,
-   "bidCount": null,
-   "price": 2241,
-   "shipping": 0,
-   "allIn": 2241,
-   "maxAllIn": 15000,
-   "underBy": 12759,
-   "underPct": 0.85,
-   "capWording": "under cap",
-   "seller": {
-    "username": "transporter_in-ex_japan",
-    "feedbackPercentage": 100,
-    "feedbackScore": 402
-   },
-   "condition": "Used",
-   "location": "JP",
-   "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "reasons": [
-    "must:futura",
-    "medium:canvas",
-    "aspect:original",
-    "at-or-under-cap"
-   ],
-   "flags": [],
-   "confidence": 0.95,
-   "review": "ok",
-   "carried": false,
-   "alertKey": "ebay:v1|318487073077|0:art-futura-atoms:v1",
-   "similarCount": 0,
-   "risk": "low",
-   "riskReasons": [],
-   "details": {
-    "aspects": {
-     "Country of Origin": "United States",
-     "Artist": "FUTURA",
-     "Unit of Sale": "Single Piece",
-     "Size": "Large",
-     "Item Length": "25.3in",
-     "Region of Origin": "NA",
-     "Framing": "Unframed",
-     "Personalize": "No",
-     "Year of Production": "NA",
-     "Original/Licensed Reproduction": "Original",
-     "Item Height": "20.2in",
-     "Style": "NA",
-     "Features": "NA",
-     "Unit Quantity": "1",
-     "Culture": "NA",
-     "Item Width": "0.8in",
-     "Handmade": "Yes",
-     "Time Period Produced": "NA",
-     "Signed": "No",
-     "Period": "NA",
-     "Title": "ATOMIC RINGS",
-     "Material": "Canvas",
-     "Certificate of Authenticity (COA)": "No",
-     "Subject": "ATOMIC RINGS",
-     "Type": "Painting",
-     "Theme": "Art",
-     "Production Technique": "NA"
-    },
-    "descriptionSnippet": "Thank you for visiting my store! Description About This Items Condition : Used, Pre-owned Shipping We will ship by FedEx, DHL, or other courier service. The estimated time for package arrival is as follows. Economy delivery: 14 days or more Express delivery: 4-10 days *The above ",
-    "fetchedAt": "2026-09-25T02:48:19.979Z"
-   },
-   "priceHistory": [
-    {
-     "at": "2026-09-25T02:43:43.147Z",
-     "price": 2241,
-     "allIn": 2241
-    }
-   ],
-   "priceChange": null,
-   "relisted": null,
-   "photoReused": null,
-   "dismissible": true
-  },
-  {
-   "key": "art-futura-atoms:v1|396702561996|0",
-   "group": "under",
-   "huntId": "art-futura-atoms",
-   "huntLabel": "Futura 2000 — Atoms canvases",
-   "classification": "under",
-   "listingId": "v1|396702561996|0",
-   "title": "FUTURA \" ATOMIC RINGS \" Large Size Canvas Art Size H 20.2 x W 25.3 x D 0.8 in",
-   "url": "https://www.ebay.com/itm/396702561996?_skw=futura+atoms+canvas&hash=item5c5d50b6cc:g:zLIAAOSwv-hoPZy-",
-   "imageUrl": "https://i.ebayimg.com/images/g/zLIAAOSwv-hoPZy-/s-l225.jpg",
-   "buyingMode": "FIXED_PRICE",
-   "endsAt": null,
-   "bidCount": null,
-   "price": 2207.38,
-   "shipping": 0,
-   "allIn": 2207.38,
-   "maxAllIn": 15000,
-   "underBy": 12792.62,
-   "underPct": 0.85,
-   "capWording": "under cap",
-   "seller": {
-    "username": "market01",
-    "feedbackPercentage": 99.8,
-    "feedbackScore": 1767
-   },
-   "condition": "Used",
-   "location": "JP",
-   "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "reasons": [
-    "must:futura",
-    "medium:canvas",
-    "aspect:original",
-    "at-or-under-cap"
-   ],
-   "flags": [],
-   "confidence": 0.95,
-   "review": "ok",
-   "carried": false,
-   "alertKey": "ebay:v1|396702561996|0:art-futura-atoms:v1",
-   "similarCount": 0,
-   "risk": "low",
-   "riskReasons": [],
-   "details": {
-    "aspects": {
-     "Country of Origin": "United States",
-     "Artist": "FUTURA",
-     "Unit of Sale": "Single Piece",
-     "Size": "Large",
-     "Item Length": "25.3in",
-     "Region of Origin": "NA",
-     "Framing": "Unframed",
-     "Personalize": "No",
-     "Year of Production": "NA",
-     "Original/Licensed Reproduction": "Original",
-     "Item Height": "20.2in",
-     "Style": "NA",
-     "Features": "NA",
-     "Unit Quantity": "1",
-     "Culture": "NA",
-     "Item Width": "0.8in",
-     "Handmade": "Yes",
-     "Time Period Produced": "NA",
-     "Signed": "No",
-     "Period": "NA",
-     "Title": "ATOMIC RINGS",
-     "Material": "Canvas",
-     "Certificate of Authenticity (COA)": "No",
-     "Subject": "ATOMIC RINGS",
-     "Type": "Painting",
-     "Theme": "Art",
-     "Production Technique": "NA"
-    },
-    "descriptionSnippet": "Description FUTURA \" ATOMIC RINGS \" Large Size Canvas Art Size: Height: Approx. 20.2in Width: Approx. 25.3in Depth: Approx. 0.8in Contact us If you have any questions, comments, or product requests, you can always contact us via eBay message. I will do my best to support you. If ",
-    "fetchedAt": "2026-09-25T02:48:19.979Z"
-   },
-   "priceHistory": [
-    {
-     "at": "2026-09-25T02:43:43.147Z",
-     "price": 2207.38,
-     "allIn": 2207.38
-    }
-   ],
-   "priceChange": null,
-   "relisted": null,
-   "photoReused": null,
-   "dismissible": true
-  },
-  {
    "key": "art-saul-drawing:v1|176015732373|0",
    "group": "under",
    "huntId": "art-saul-drawing",
@@ -1532,12 +1236,12 @@
    "seller": {
     "username": "alltimegreatauthentics",
     "feedbackPercentage": 100,
-    "feedbackScore": 17712
+    "feedbackScore": 17713
    },
    "condition": "Unspecified",
    "location": "US",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
+   "lastSeenAt": "2026-09-25T15:21:15.019Z",
    "reasons": [
     "must:saul",
     "medium:drawn",
@@ -1592,12 +1296,12 @@
    "seller": {
     "username": "alltimegreatauthentics",
     "feedbackPercentage": 100,
-    "feedbackScore": 17712
+    "feedbackScore": 17713
    },
    "condition": "Unspecified",
    "location": "US",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
+   "lastSeenAt": "2026-09-25T15:21:15.019Z",
    "reasons": [
     "must:saul",
     "medium:drawn",
@@ -1654,12 +1358,12 @@
    "seller": {
     "username": "d-rose-mod",
     "feedbackPercentage": 100,
-    "feedbackScore": 1702
+    "feedbackScore": 1703
    },
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
+   "lastSeenAt": "2026-09-25T15:21:15.019Z",
    "reasons": [
     "must:nakashima",
     "aspect:original",
@@ -1734,12 +1438,12 @@
    "seller": {
     "username": "d-rose-mod",
     "feedbackPercentage": 100,
-    "feedbackScore": 1702
+    "feedbackScore": 1703
    },
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
+   "lastSeenAt": "2026-09-25T15:21:15.019Z",
    "reasons": [
     "must:nakashima",
     "aspect:original",
@@ -1814,12 +1518,12 @@
    "seller": {
     "username": "d-rose-mod",
     "feedbackPercentage": 100,
-    "feedbackScore": 1702
+    "feedbackScore": 1703
    },
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
+   "lastSeenAt": "2026-09-25T15:21:15.019Z",
    "reasons": [
     "must:nakashima",
     "aspect:original",
@@ -1872,104 +1576,34 @@
    "dismissible": true
   },
   {
-   "key": "sports-foles-bears-jersey:v1|318875185094|0",
-   "group": "under",
-   "huntId": "sports-foles-bears-jersey",
-   "huntLabel": "Nick Foles — game-used Bears jersey",
-   "classification": "under",
-   "listingId": "v1|318875185094|0",
-   "title": "Nick Foles #9 Chicago Bears Game Used Jersey Week 18 1/9/2022",
-   "url": "https://www.ebay.com/itm/318875185094?_skw=nick+foles+game+used+bears+jersey&hash=item4a3e712fc6:g:mQYAAeSwoXNqqZCQ",
-   "imageUrl": "https://i.ebayimg.com/images/g/mQYAAeSwoXNqqZCQ/s-l225.jpg",
-   "buyingMode": "FIXED_PRICE",
-   "endsAt": null,
-   "bidCount": null,
-   "price": 1000,
-   "shipping": 14.46,
-   "allIn": 1014.46,
-   "maxAllIn": 1500,
-   "underBy": 485.54,
-   "underPct": 0.32,
-   "capWording": "under cap",
-   "seller": {
-    "username": "westtexassports1600",
-    "feedbackPercentage": 100,
-    "feedbackScore": 21
-   },
-   "condition": null,
-   "location": "US",
-   "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "reasons": [
-    "must:foles",
-    "game-used:game used",
-    "at-or-under-cap"
-   ],
-   "flags": [
-    "no-authentication-in-title"
-   ],
-   "confidence": 0.85,
-   "review": "ok",
-   "carried": false,
-   "alertKey": "ebay:v1|318875185094|0:sports-foles-bears-jersey:v1",
-   "similarCount": 0,
-   "risk": "medium",
-   "riskReasons": [
-    "no photo-match, team or third-party authentication named"
-   ],
-   "details": {
-    "aspects": {
-     "League": "National Football League (NFL)",
-     "Sport": "Football",
-     "Officially Licensed": "Yes",
-     "Features": "Used in Game",
-     "Team": "Chicago Bears",
-     "Event/Tournament": "Week 18 (1/9/2022)"
-    },
-    "descriptionSnippet": "Nick Foles #9 Chicago Bears Game Used Jersey Week 18 1/9/2022",
-    "fetchedAt": "2026-09-25T02:48:19.979Z"
-   },
-   "priceHistory": [
-    {
-     "at": "2026-09-25T02:43:43.147Z",
-     "price": 1000,
-     "allIn": 1014.46
-    }
-   ],
-   "priceChange": null,
-   "relisted": null,
-   "photoReused": null,
-   "dismissible": true
-  },
-  {
-   "key": "art-condo-drawing:v1|128055449225|0",
+   "key": "art-condo-drawing:v1|128086152763|0",
    "group": "under",
    "huntId": "art-condo-drawing",
    "huntLabel": "George Condo — drawing",
    "classification": "under",
-   "listingId": "v1|128055449225|0",
+   "listingId": "v1|128086152763|0",
    "title": "George Condo (Handmade) Drawing On old Paper Signed & Stamped, Vtg Art",
-   "url": "https://www.ebay.com/itm/128055449225?_skw=george+condo+drawing&hash=item1dd0b31689:g:nOkAAeSw83Rps3Vq",
-   "imageUrl": "https://i.ebayimg.com/images/g/nOkAAeSw83Rps3Vq/s-l225.jpg",
+   "url": "https://www.ebay.com/itm/128086152763?_skw=george+condo+drawing&hash=item1dd287963b:g:VCUAAeSw3FNps3UE",
+   "imageUrl": "https://i.ebayimg.com/images/g/VCUAAeSw3FNps3UE/s-l225.jpg",
    "buyingMode": "FIXED_PRICE",
    "endsAt": null,
    "bidCount": null,
-   "price": 120.5,
+   "price": 119.5,
    "shipping": 0,
-   "allIn": 120.5,
+   "allIn": 119.5,
    "maxAllIn": 10000,
-   "underBy": 9879.5,
+   "underBy": 9880.5,
    "underPct": 0.99,
    "capWording": "under cap",
    "seller": {
     "username": "golden_art_gallery",
     "feedbackPercentage": 99.2,
-    "feedbackScore": 129
+    "feedbackScore": 130
    },
    "condition": "Used",
    "location": "PE",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
+   "lastSeenAt": "2026-09-25T15:21:15.019Z",
    "reasons": [
     "must:condo",
     "medium:drawing",
@@ -1977,72 +1611,8 @@
     "at-or-under-cap"
    ],
    "flags": [
-    "price-far-below-market",
-    "fake-art-template",
-    "same-seller-repeats:3"
-   ],
-   "confidence": 0.2,
-   "review": "review",
-   "carried": false,
-   "alertKey": "ebay:v1|128055449225|0:art-condo-drawing:v1",
-   "similarCount": 3,
-   "risk": "high",
-   "riskReasons": [
-    "matches a common fake-art listing template (“on old paper, signed & stamped”)",
-    "priced far below what this artist sells for",
-    "seller has 4 copies of a “unique” work",
-    "George Condo is heavily forged on eBay and this is priced like a fake",
-    "ships from PE"
-   ],
-   "details": null,
-   "priceHistory": [
-    {
-     "at": "2026-09-25T02:43:43.147Z",
-     "price": 120.5,
-     "allIn": 120.5
-    }
-   ],
-   "priceChange": null,
-   "relisted": null,
-   "photoReused": null,
-   "dismissible": true
-  },
-  {
-   "key": "art-condo-drawing:v1|137465500722|0",
-   "group": "under",
-   "huntId": "art-condo-drawing",
-   "huntLabel": "George Condo — drawing",
-   "classification": "under",
-   "listingId": "v1|137465500722|0",
-   "title": "George Condo Drawing on old paper (Handmade) signed and stamped artwork",
-   "url": "https://www.ebay.com/itm/137465500722?_skw=george+condo+drawing&hash=item2001951432:g:mb8AAeSwCNRqQt90",
-   "imageUrl": "https://i.ebayimg.com/images/g/mb8AAeSwCNRqQt90/s-l225.jpg",
-   "buyingMode": "FIXED_PRICE",
-   "endsAt": null,
-   "bidCount": null,
-   "price": 100,
-   "shipping": 25,
-   "allIn": 125,
-   "maxAllIn": 10000,
-   "underBy": 9875,
-   "underPct": 0.99,
-   "capWording": "under cap",
-   "seller": {
-    "username": "maracespinoza_0",
-    "feedbackPercentage": 100,
-    "feedbackScore": 50
-   },
-   "condition": "Used",
-   "location": "PE",
-   "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "reasons": [
-    "must:condo",
-    "medium:drawing",
-    "claims-original",
-    "at-or-under-cap"
-   ],
-   "flags": [
+    "photo-reused:1",
+    "relisted",
     "price-far-below-market",
     "fake-art-template",
     "same-seller-repeats:2"
@@ -2050,117 +1620,39 @@
    "confidence": 0.2,
    "review": "review",
    "carried": false,
-   "alertKey": "ebay:v1|137465500722|0:art-condo-drawing:v1",
+   "alertKey": "ebay:v1|128086152763|0:art-condo-drawing:v1",
    "similarCount": 2,
    "risk": "high",
    "riskReasons": [
     "matches a common fake-art listing template (“on old paper, signed & stamped”)",
     "priced far below what this artist sells for",
     "seller has 3 copies of a “unique” work",
+    "the same photo appears on 1 other listing(s)",
     "George Condo is heavily forged on eBay and this is priced like a fake",
+    "relisted — this seller has listed it before",
     "ships from PE"
    ],
    "details": null,
    "priceHistory": [
     {
-     "at": "2026-09-25T02:43:43.147Z",
-     "price": 100,
-     "allIn": 125
+     "at": "2026-09-25T15:21:15.019Z",
+     "price": 119.5,
+     "allIn": 119.5
     }
    ],
    "priceChange": null,
-   "relisted": null,
-   "photoReused": null,
-   "dismissible": true
-  },
-  {
-   "key": "art-condo-drawing:v1|157664943233|0",
-   "group": "under",
-   "huntId": "art-condo-drawing",
-   "huntLabel": "George Condo — drawing",
-   "classification": "under",
-   "listingId": "v1|157664943233|0",
-   "title": "George Condo Drawing on paper (Handmade) signed & Stamped",
-   "url": "https://www.ebay.com/itm/157664943233?_skw=george+condo+drawing&hash=item24b5901c81:g:kV0AAeSwLwhpho4N",
-   "imageUrl": "https://i.ebayimg.com/images/g/kV0AAeSwLwhpho4N/s-l225.jpg",
-   "buyingMode": "FIXED_PRICE",
-   "endsAt": null,
-   "bidCount": null,
-   "price": 125,
-   "shipping": 25,
-   "allIn": 150,
-   "maxAllIn": 10000,
-   "underBy": 9850,
-   "underPct": 0.99,
-   "capWording": "under cap",
-   "seller": {
-    "username": "vicberdillan_0",
-    "feedbackPercentage": 100,
-    "feedbackScore": 119
+   "relisted": {
+    "firstSeenAt": "2026-09-25T02:43:43.147Z",
+    "previousItemIds": [
+     "v1|128055449225|0"
+    ]
    },
-   "condition": "Used",
-   "location": "PE",
-   "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "reasons": [
-    "must:condo",
-    "medium:drawing",
-    "claims-original",
-    "aspect:signed",
-    "aspect:original",
-    "at-or-under-cap"
-   ],
-   "flags": [
-    "description:reproduction-language",
-    "price-far-below-market",
-    "fake-art-template",
-    "same-seller-repeats:19"
-   ],
-   "confidence": 0.2,
-   "review": "review",
-   "carried": false,
-   "alertKey": "ebay:v1|157664943233|0:art-condo-drawing:v1",
-   "similarCount": 19,
-   "risk": "high",
-   "riskReasons": [
-    "matches a common fake-art listing template (“on old paper, signed & stamped”)",
-    "priced far below what this artist sells for",
-    "seller has 20 copies of a “unique” work",
-    "the description uses reproduction / print language",
-    "George Condo is heavily forged on eBay and this is priced like a fake",
-    "ships from PE"
-   ],
-   "details": {
-    "aspects": {
-     "Artist": "George Condo",
-     "Unit of Sale": "Single Piece",
-     "Size": "Small",
-     "Signed": "Yes",
-     "Material": "Paper",
-     "Subject": "Stamps",
-     "Personalize": "No",
-     "Type": "Drawing",
-     "Item Height": "12\"",
-     "Theme": "Art",
-     "Style": "Modernism",
-     "Handmade": "Yes",
-     "Item Width": "8\"",
-     "Country of Origin": "Spain",
-     "Original/Licensed Reproduction": "Original"
-    },
-    "descriptionSnippet": "George Condo - DRAWING, INKS ON OLD PAPER, SIGNED, ARTWORK, VTG We do combined shipments. Tamaño: 21 x 29,7 cm Registered shipping - insured All shipments will be sent by USPS, first class, reliable and safe company. Easy and safe to track with the tracking number (Tracking numbe",
-    "fetchedAt": "2026-09-25T02:41:09.670Z"
+   "photoReused": {
+    "count": 1,
+    "otherListingIds": [
+     "v1|298650892470|0"
+    ]
    },
-   "priceHistory": [
-    {
-     "at": "2026-09-25T02:43:43.147Z",
-     "price": 125,
-     "allIn": 150
-    }
-   ],
-   "priceChange": null,
-   "relisted": null,
-   "photoReused": null,
    "dismissible": true
   },
   {
@@ -2191,7 +1683,7 @@
    "condition": "Used",
    "location": "PE",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
+   "lastSeenAt": "2026-09-25T15:21:15.019Z",
    "reasons": [
     "must:condo",
     "medium:drawing",
@@ -2230,693 +1722,6 @@
    "dismissible": true
   },
   {
-   "key": "art-condo-drawing:v1|305946826246|0",
-   "group": "under",
-   "huntId": "art-condo-drawing",
-   "huntLabel": "George Condo — drawing",
-   "classification": "under",
-   "listingId": "v1|305946826246|0",
-   "title": "George Condo (Handmade) Drawing On Old Paper Signed & Stamped, vtg art",
-   "url": "https://www.ebay.com/itm/305946826246?_skw=george+condo+drawing&hash=item473bda1606:g:HQoAAOSwB-9mmukf",
-   "imageUrl": "https://i.ebayimg.com/images/g/HQoAAOSwB-9mmukf/s-l225.jpg",
-   "buyingMode": "FIXED_PRICE",
-   "endsAt": null,
-   "bidCount": null,
-   "price": 105,
-   "shipping": 20,
-   "allIn": 125,
-   "maxAllIn": 10000,
-   "underBy": 9875,
-   "underPct": 0.99,
-   "capWording": "under cap",
-   "seller": {
-    "username": "jbonil99",
-    "feedbackPercentage": 100,
-    "feedbackScore": 315
-   },
-   "condition": "Used",
-   "location": "PE",
-   "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "reasons": [
-    "must:condo",
-    "medium:drawing",
-    "claims-original",
-    "at-or-under-cap"
-   ],
-   "flags": [
-    "price-far-below-market",
-    "fake-art-template",
-    "same-seller-repeats:5"
-   ],
-   "confidence": 0.2,
-   "review": "review",
-   "carried": false,
-   "alertKey": "ebay:v1|305946826246|0:art-condo-drawing:v1",
-   "similarCount": 5,
-   "risk": "high",
-   "riskReasons": [
-    "matches a common fake-art listing template (“on old paper, signed & stamped”)",
-    "priced far below what this artist sells for",
-    "seller has 6 copies of a “unique” work",
-    "George Condo is heavily forged on eBay and this is priced like a fake",
-    "ships from PE"
-   ],
-   "details": null,
-   "priceHistory": [
-    {
-     "at": "2026-09-25T02:43:43.147Z",
-     "price": 105,
-     "allIn": 125
-    }
-   ],
-   "priceChange": null,
-   "relisted": null,
-   "photoReused": null,
-   "dismissible": true
-  },
-  {
-   "key": "art-condo-drawing:v1|387023262535|0",
-   "group": "under",
-   "huntId": "art-condo-drawing",
-   "huntLabel": "George Condo — drawing",
-   "classification": "under",
-   "listingId": "v1|387023262535|0",
-   "title": "George Condo (Handmade) Drawing On old Paper Signed Mixed Media, Vtg Art",
-   "url": "https://www.ebay.com/itm/387023262535?_skw=george+condo+drawing&hash=item5a1c625347:g:a78AAOSwd6FmTRGg",
-   "imageUrl": "https://i.ebayimg.com/images/g/a78AAOSwd6FmTRGg/s-l225.jpg",
-   "buyingMode": "FIXED_PRICE",
-   "endsAt": null,
-   "bidCount": null,
-   "price": 115,
-   "shipping": 19,
-   "allIn": 134,
-   "maxAllIn": 10000,
-   "underBy": 9866,
-   "underPct": 0.99,
-   "capWording": "under cap",
-   "seller": {
-    "username": "lauravbonilla0",
-    "feedbackPercentage": 100,
-    "feedbackScore": 826
-   },
-   "condition": "Used",
-   "location": "PE",
-   "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "reasons": [
-    "must:condo",
-    "medium:drawing",
-    "claims-original",
-    "at-or-under-cap"
-   ],
-   "flags": [
-    "description:reproduction-language",
-    "price-far-below-market",
-    "same-seller-repeats:3"
-   ],
-   "confidence": 0.6,
-   "review": "review",
-   "carried": false,
-   "alertKey": "ebay:v1|387023262535|0:art-condo-drawing:v1",
-   "similarCount": 3,
-   "risk": "high",
-   "riskReasons": [
-    "priced far below what this artist sells for",
-    "seller has 4 copies of a “unique” work",
-    "the description uses reproduction / print language",
-    "George Condo is heavily forged on eBay and this is priced like a fake",
-    "ships from PE"
-   ],
-   "details": {
-    "aspects": {
-     "Artist": "George Condo",
-     "Type": "Drawing",
-     "Theme": "Art",
-     "Material": "Paper",
-     "Handmade": "Yes"
-    },
-    "descriptionSnippet": "GEORGE CONDO ( HANDMADE) DRAWING ON OLD PAPER, SIGNED MIXED MEDIA ARTWORK . MEASURE: 23 x 30.5 cm Registered shipping – insured *We make combined shipments (Only one shipping cost for all pieces you buy)* This is a handmade painting, not a print or a lithograph of any kind. I sel",
-    "fetchedAt": "2026-09-25T03:17:44.787Z"
-   },
-   "priceHistory": [
-    {
-     "at": "2026-09-25T02:43:43.147Z",
-     "price": 115,
-     "allIn": 134
-    }
-   ],
-   "priceChange": null,
-   "relisted": null,
-   "photoReused": null,
-   "dismissible": true
-  },
-  {
-   "key": "art-condo-drawing:v1|387123473324|0",
-   "group": "under",
-   "huntId": "art-condo-drawing",
-   "huntLabel": "George Condo — drawing",
-   "classification": "under",
-   "listingId": "v1|387123473324|0",
-   "title": "George Condo (Handmade) Drawing On old Paper Signed & Stamped, Vtg Art",
-   "url": "https://www.ebay.com/itm/387123473324?_skw=george+condo+drawing&hash=item5a225b6bac:g:MfkAAOSw7qxmfKJr",
-   "imageUrl": "https://i.ebayimg.com/images/g/MfkAAOSw7qxmfKJr/s-l225.jpg",
-   "buyingMode": "FIXED_PRICE",
-   "endsAt": null,
-   "bidCount": null,
-   "price": 100,
-   "shipping": 19,
-   "allIn": 119,
-   "maxAllIn": 10000,
-   "underBy": 9881,
-   "underPct": 0.99,
-   "capWording": "under cap",
-   "seller": {
-    "username": "lauravbonilla0",
-    "feedbackPercentage": 100,
-    "feedbackScore": 826
-   },
-   "condition": "Used",
-   "location": "PE",
-   "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "reasons": [
-    "must:condo",
-    "medium:drawing",
-    "claims-original",
-    "at-or-under-cap"
-   ],
-   "flags": [
-    "price-far-below-market",
-    "fake-art-template",
-    "same-seller-repeats:8"
-   ],
-   "confidence": 0.2,
-   "review": "review",
-   "carried": false,
-   "alertKey": "ebay:v1|387123473324|0:art-condo-drawing:v1",
-   "similarCount": 8,
-   "risk": "high",
-   "riskReasons": [
-    "matches a common fake-art listing template (“on old paper, signed & stamped”)",
-    "priced far below what this artist sells for",
-    "seller has 9 copies of a “unique” work",
-    "George Condo is heavily forged on eBay and this is priced like a fake",
-    "ships from PE"
-   ],
-   "details": null,
-   "priceHistory": [
-    {
-     "at": "2026-09-25T02:43:43.147Z",
-     "price": 100,
-     "allIn": 119
-    }
-   ],
-   "priceChange": null,
-   "relisted": null,
-   "photoReused": null,
-   "dismissible": true
-  },
-  {
-   "key": "art-condo-drawing:v1|406682445878|0",
-   "group": "under",
-   "huntId": "art-condo-drawing",
-   "huntLabel": "George Condo — drawing",
-   "classification": "under",
-   "listingId": "v1|406682445878|0",
-   "title": "George Condo Drawing on paper (Handmade) signed & Stamped",
-   "url": "https://www.ebay.com/itm/406682445878?_skw=george+condo+drawing&hash=item5eb029a836:g:2IEAAeSwalhpiRkx",
-   "imageUrl": "https://i.ebayimg.com/images/g/2IEAAeSwalhpiRkx/s-l225.jpg",
-   "buyingMode": "FIXED_PRICE",
-   "endsAt": null,
-   "bidCount": null,
-   "price": 125,
-   "shipping": 25,
-   "allIn": 150,
-   "maxAllIn": 10000,
-   "underBy": 9850,
-   "underPct": 0.99,
-   "capWording": "under cap",
-   "seller": {
-    "username": "artbrokeruser",
-    "feedbackPercentage": 99,
-    "feedbackScore": 220
-   },
-   "condition": "Used",
-   "location": "PE",
-   "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "reasons": [
-    "must:condo",
-    "medium:drawing",
-    "claims-original",
-    "aspect:signed",
-    "at-or-under-cap"
-   ],
-   "flags": [
-    "price-far-below-market",
-    "fake-art-template",
-    "same-seller-repeats:18"
-   ],
-   "confidence": 0.2,
-   "review": "review",
-   "carried": false,
-   "alertKey": "ebay:v1|406682445878|0:art-condo-drawing:v1",
-   "similarCount": 18,
-   "risk": "high",
-   "riskReasons": [
-    "matches a common fake-art listing template (“on old paper, signed & stamped”)",
-    "priced far below what this artist sells for",
-    "seller has 19 copies of a “unique” work",
-    "George Condo is heavily forged on eBay and this is priced like a fake",
-    "ships from PE"
-   ],
-   "details": {
-    "aspects": {
-     "Artist": "George Condo",
-     "Unit of Sale": "Single Piece",
-     "Type": "Drawing",
-     "Signed": "Yes",
-     "Theme": "Art, Stamps",
-     "Material": "Paper",
-     "Framing": "Unframed",
-     "Subject": "Hare",
-     "Handmade": "Yes",
-     "Country of Origin": "United States"
-    },
-    "descriptionSnippet": "George Condo DIBUJO EN PAPEL VIEJO HECHO A MANO FIRMADO Y ESTAMPADO Medidas: 21 x 29.7 cm Vendo este artículo al estilo del artista o como reproducción según las reglas de eBay, puedes ver las fotos. Vendo estos artículos sin certificación, lee esto. ES UN DIBUJO HECHO A MANO Y N",
-    "fetchedAt": "2026-09-25T02:41:09.670Z"
-   },
-   "priceHistory": [
-    {
-     "at": "2026-09-25T02:43:43.147Z",
-     "price": 125,
-     "allIn": 150
-    }
-   ],
-   "priceChange": null,
-   "relisted": null,
-   "photoReused": null,
-   "dismissible": true
-  },
-  {
-   "key": "art-condo-drawing:v1|800454503618|0",
-   "group": "under",
-   "huntId": "art-condo-drawing",
-   "huntLabel": "George Condo — drawing",
-   "classification": "under",
-   "listingId": "v1|800454503618|0",
-   "title": "George Condo (Handmade) Drawing On old Paper Signed & Stamped Mixed Media",
-   "url": "https://www.ebay.com/itm/800454503618?_skw=george+condo+drawing&hash=itemba5ece6cc2:g:EpAAAOSwBD5lbif~",
-   "imageUrl": "https://i.ebayimg.com/images/g/EpAAAOSwBD5lbif~/s-l225.jpg",
-   "buyingMode": "FIXED_PRICE",
-   "endsAt": null,
-   "bidCount": null,
-   "price": 119,
-   "shipping": 19,
-   "allIn": 138,
-   "maxAllIn": 10000,
-   "underBy": 9862,
-   "underPct": 0.99,
-   "capWording": "under cap",
-   "seller": {
-    "username": "lauravbonilla0",
-    "feedbackPercentage": 100,
-    "feedbackScore": 826
-   },
-   "condition": "Used",
-   "location": "PE",
-   "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "reasons": [
-    "must:condo",
-    "medium:drawing",
-    "claims-original",
-    "at-or-under-cap"
-   ],
-   "flags": [
-    "price-far-below-market",
-    "fake-art-template",
-    "same-seller-repeats:1"
-   ],
-   "confidence": 0.2,
-   "review": "review",
-   "carried": false,
-   "alertKey": "ebay:v1|800454503618|0:art-condo-drawing:v1",
-   "similarCount": 1,
-   "risk": "high",
-   "riskReasons": [
-    "matches a common fake-art listing template (“on old paper, signed & stamped”)",
-    "priced far below what this artist sells for",
-    "seller has 2 copies of a “unique” work",
-    "George Condo is heavily forged on eBay and this is priced like a fake",
-    "ships from PE"
-   ],
-   "details": null,
-   "priceHistory": [
-    {
-     "at": "2026-09-25T02:43:43.147Z",
-     "price": 119,
-     "allIn": 138
-    }
-   ],
-   "priceChange": null,
-   "relisted": null,
-   "photoReused": null,
-   "dismissible": true
-  },
-  {
-   "key": "art-crumb-drawing:v1|158295303555|0",
-   "group": "under",
-   "huntId": "art-crumb-drawing",
-   "huntLabel": "Robert Crumb — drawing",
-   "classification": "under",
-   "listingId": "v1|158295303555|0",
-   "title": "R. Crumb Original Design - SF Mitchell Brothers O’Farrell Theatre Dance Chip",
-   "url": "https://www.ebay.com/itm/158295303555?_skw=r+crumb+original&hash=item24db22a583:g:KjEAAeSw7nRpbXIY",
-   "imageUrl": "https://i.ebayimg.com/images/g/KjEAAeSw7nRpbXIY/s-l225.jpg",
-   "buyingMode": "FIXED_PRICE",
-   "endsAt": null,
-   "bidCount": null,
-   "price": 15,
-   "shipping": 6.07,
-   "allIn": 21.07,
-   "maxAllIn": 2000,
-   "underBy": 1978.93,
-   "underPct": 0.99,
-   "capWording": "under cap",
-   "seller": {
-    "username": "ajmr",
-    "feedbackPercentage": 100,
-    "feedbackScore": 102
-   },
-   "condition": "Used",
-   "location": "US",
-   "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "reasons": [
-    "must:crumb",
-    "medium:original",
-    "claims-original",
-    "at-or-under-cap"
-   ],
-   "flags": [
-    "price-far-below-market"
-   ],
-   "confidence": 0.6,
-   "review": "review",
-   "carried": false,
-   "alertKey": "ebay:v1|158295303555|0:art-crumb-drawing:v1",
-   "similarCount": 0,
-   "risk": "high",
-   "riskReasons": [
-    "priced far below what this artist sells for",
-    "Robert Crumb is heavily forged on eBay and this is priced like a fake"
-   ],
-   "details": {
-    "aspects": {
-     "Type": "Non-Casino",
-     "Country of Origin": "United States"
-    },
-    "descriptionSnippet": "Vintage Mitchell Brothers O’Farrell Theatre Dance Chips – R. Crumb Artwork This is a rare lot of vintage “dance chip” tokens from the legendary Mitchell Brothers O’Farrell Theatre in San Francisco, famous for pioneering lap dancing and adult stage shows. These tokens were used in",
-    "fetchedAt": "2026-09-25T03:17:44.787Z"
-   },
-   "priceHistory": [
-    {
-     "at": "2026-09-25T03:20:24.636Z",
-     "price": 15,
-     "allIn": 21.07
-    }
-   ],
-   "priceChange": null,
-   "relisted": null,
-   "photoReused": null,
-   "dismissible": true
-  },
-  {
-   "key": "art-condo-drawing:v1|317911708441|0",
-   "group": "under",
-   "huntId": "art-condo-drawing",
-   "huntLabel": "George Condo — drawing",
-   "classification": "under",
-   "listingId": "v1|317911708441|0",
-   "title": "George Condo Drawing On Paper (handmade) Signed And Stamped Vtg Art",
-   "url": "https://www.ebay.com/itm/317911708441?_skw=george+condo+drawing&hash=item4a0503b319:g:EF0AAOSwJVBoFiJV",
-   "imageUrl": "https://i.ebayimg.com/images/g/EF0AAOSwJVBoFiJV/s-l225.jpg",
-   "buyingMode": "FIXED_PRICE",
-   "endsAt": null,
-   "bidCount": null,
-   "price": 128,
-   "shipping": 25,
-   "allIn": 153,
-   "maxAllIn": 10000,
-   "underBy": 9847,
-   "underPct": 0.98,
-   "capWording": "under cap",
-   "seller": {
-    "username": "amazing_art_gallery",
-    "feedbackPercentage": 100,
-    "feedbackScore": 5
-   },
-   "condition": "Used",
-   "location": "PE",
-   "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "reasons": [
-    "must:condo",
-    "medium:drawing",
-    "claims-original",
-    "at-or-under-cap"
-   ],
-   "flags": [
-    "seller-low-feedback",
-    "price-far-below-market",
-    "fake-art-template",
-    "same-seller-repeats:9"
-   ],
-   "confidence": 0.2,
-   "review": "review",
-   "carried": false,
-   "alertKey": "ebay:v1|317911708441|0:art-condo-drawing:v1",
-   "similarCount": 9,
-   "risk": "high",
-   "riskReasons": [
-    "matches a common fake-art listing template (“on old paper, signed & stamped”)",
-    "priced far below what this artist sells for",
-    "seller has 10 copies of a “unique” work",
-    "George Condo is heavily forged on eBay and this is priced like a fake",
-    "ships from PE",
-    "seller feedback is low"
-   ],
-   "details": null,
-   "priceHistory": [
-    {
-     "at": "2026-09-25T02:43:43.147Z",
-     "price": 128,
-     "allIn": 153
-    }
-   ],
-   "priceChange": null,
-   "relisted": null,
-   "photoReused": null,
-   "dismissible": true
-  },
-  {
-   "key": "art-condo-drawing:v1|318625834532|0",
-   "group": "under",
-   "huntId": "art-condo-drawing",
-   "huntLabel": "George Condo — drawing",
-   "classification": "under",
-   "listingId": "v1|318625834532|0",
-   "title": "George Condo Drawing on paper (Handmade) signed and stamped mixed media.",
-   "url": "https://www.ebay.com/itm/318625834532?_skw=george+condo+drawing&hash=item4a2f946624:g:3KsAAeSw0VtqYmUG",
-   "imageUrl": "https://i.ebayimg.com/images/g/3KsAAeSw0VtqYmUG/s-l225.jpg",
-   "buyingMode": "FIXED_PRICE",
-   "endsAt": null,
-   "bidCount": null,
-   "price": 130,
-   "shipping": 35,
-   "allIn": 165,
-   "maxAllIn": 10000,
-   "underBy": 9835,
-   "underPct": 0.98,
-   "capWording": "under cap",
-   "seller": {
-    "username": "love-for-art",
-    "feedbackPercentage": 99.6,
-    "feedbackScore": 419
-   },
-   "condition": "Used",
-   "location": "US",
-   "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "reasons": [
-    "must:condo",
-    "medium:drawing",
-    "claims-original",
-    "at-or-under-cap"
-   ],
-   "flags": [
-    "price-far-below-market",
-    "fake-art-template",
-    "same-seller-repeats:4"
-   ],
-   "confidence": 0.2,
-   "review": "review",
-   "carried": false,
-   "alertKey": "ebay:v1|318625834532|0:art-condo-drawing:v1",
-   "similarCount": 4,
-   "risk": "high",
-   "riskReasons": [
-    "matches a common fake-art listing template (“on old paper, signed & stamped”)",
-    "priced far below what this artist sells for",
-    "seller has 5 copies of a “unique” work",
-    "George Condo is heavily forged on eBay and this is priced like a fake"
-   ],
-   "details": null,
-   "priceHistory": [
-    {
-     "at": "2026-09-25T02:43:43.147Z",
-     "price": 130,
-     "allIn": 165
-    }
-   ],
-   "priceChange": null,
-   "relisted": null,
-   "photoReused": null,
-   "dismissible": true
-  },
-  {
-   "key": "art-condo-drawing:v1|389723417004|0",
-   "group": "under",
-   "huntId": "art-condo-drawing",
-   "huntLabel": "George Condo — drawing",
-   "classification": "under",
-   "listingId": "v1|389723417004|0",
-   "title": "George Condo COA Art Painting Original Drawing Vintage",
-   "url": "https://www.ebay.com/itm/389723417004?_skw=george+condo+drawing&hash=item5abd5369ac:g:Bo8AAeSwstRphxZG",
-   "imageUrl": "https://i.ebayimg.com/images/g/Bo8AAeSwstRphxZG/s-l225.jpg",
-   "buyingMode": "FIXED_PRICE",
-   "endsAt": null,
-   "bidCount": null,
-   "price": 129.95,
-   "shipping": 34.99,
-   "allIn": 164.94,
-   "maxAllIn": 10000,
-   "underBy": 9835.06,
-   "underPct": 0.98,
-   "capWording": "under cap",
-   "seller": {
-    "username": "cdcubed-26",
-    "feedbackPercentage": 99.5,
-    "feedbackScore": 187
-   },
-   "condition": "Used",
-   "location": "BA",
-   "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "reasons": [
-    "must:condo",
-    "medium:drawing",
-    "claims-original",
-    "at-or-under-cap"
-   ],
-   "flags": [
-    "price-far-below-market",
-    "fake-art-template",
-    "same-seller-repeats:14"
-   ],
-   "confidence": 0.2,
-   "review": "review",
-   "carried": false,
-   "alertKey": "ebay:v1|389723417004|0:art-condo-drawing:v1",
-   "similarCount": 14,
-   "risk": "high",
-   "riskReasons": [
-    "matches a common fake-art listing template (“on old paper, signed & stamped”)",
-    "priced far below what this artist sells for",
-    "seller has 15 copies of a “unique” work",
-    "George Condo is heavily forged on eBay and this is priced like a fake",
-    "ships from BA"
-   ],
-   "details": null,
-   "priceHistory": [
-    {
-     "at": "2026-09-25T02:43:43.147Z",
-     "price": 129.95,
-     "allIn": 164.94
-    }
-   ],
-   "priceChange": null,
-   "relisted": null,
-   "photoReused": null,
-   "dismissible": true
-  },
-  {
-   "key": "art-condo-drawing:v1|406553807975|0",
-   "group": "under",
-   "huntId": "art-condo-drawing",
-   "huntLabel": "George Condo — drawing",
-   "classification": "under",
-   "listingId": "v1|406553807975|0",
-   "title": "George Condo Drawing on paper (Handmade) signed",
-   "url": "https://www.ebay.com/itm/406553807975?_skw=george+condo+drawing&hash=item5ea87ecc67:g:fv8AAeSwZTppWZ1p",
-   "imageUrl": "https://i.ebayimg.com/images/g/fv8AAeSwZTppWZ1p/s-l225.jpg",
-   "buyingMode": "FIXED_PRICE",
-   "endsAt": null,
-   "bidCount": null,
-   "price": 125,
-   "shipping": 30,
-   "allIn": 155,
-   "maxAllIn": 10000,
-   "underBy": 9845,
-   "underPct": 0.98,
-   "capWording": "under cap",
-   "seller": {
-    "username": "artbrokeruser",
-    "feedbackPercentage": 99,
-    "feedbackScore": 220
-   },
-   "condition": "Used",
-   "location": "PE",
-   "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "reasons": [
-    "must:condo",
-    "medium:drawing",
-    "claims-original",
-    "at-or-under-cap"
-   ],
-   "flags": [
-    "price-far-below-market",
-    "same-seller-repeats:19"
-   ],
-   "confidence": 0.6,
-   "review": "review",
-   "carried": false,
-   "alertKey": "ebay:v1|406553807975|0:art-condo-drawing:v1",
-   "similarCount": 19,
-   "risk": "high",
-   "riskReasons": [
-    "priced far below what this artist sells for",
-    "seller has 20 copies of a “unique” work",
-    "George Condo is heavily forged on eBay and this is priced like a fake",
-    "ships from PE"
-   ],
-   "details": null,
-   "priceHistory": [
-    {
-     "at": "2026-09-25T02:43:43.147Z",
-     "price": 125,
-     "allIn": 155
-    }
-   ],
-   "priceChange": null,
-   "relisted": null,
-   "photoReused": null,
-   "dismissible": true
-  },
-  {
    "key": "art-crumb-drawing:v1|206487015239|0",
    "group": "under",
    "huntId": "art-crumb-drawing",
@@ -2944,7 +1749,7 @@
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
+   "lastSeenAt": "2026-09-25T15:21:15.019Z",
    "reasons": [
     "must:crumb",
     "medium:sketch",
@@ -3003,354 +1808,6 @@
    "dismissible": true
   },
   {
-   "key": "art-crumb-drawing:v1|227436862655|0",
-   "group": "under",
-   "huntId": "art-crumb-drawing",
-   "huntLabel": "Robert Crumb — drawing",
-   "classification": "under",
-   "listingId": "v1|227436862655|0",
-   "title": "JEREMY EATON~JEM~8\" x 10\" Originals~Flakey Foont~(R.Crumb)",
-   "url": "https://www.ebay.com/itm/227436862655?_skw=r+crumb+original&hash=item34f44b1cbf:g:7SYAAeSwSwhqW7EI",
-   "imageUrl": "https://i.ebayimg.com/images/g/7SYAAeSwSwhqW7EI/s-l225.jpg",
-   "buyingMode": "FIXED_PRICE",
-   "endsAt": null,
-   "bidCount": null,
-   "price": 50.99,
-   "shipping": 10,
-   "allIn": 60.99,
-   "maxAllIn": 2000,
-   "underBy": 1939.01,
-   "underPct": 0.97,
-   "capWording": "under cap",
-   "seller": {
-    "username": "lindy$",
-    "feedbackPercentage": 100,
-    "feedbackScore": 1069
-   },
-   "condition": "Used",
-   "location": "US",
-   "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "reasons": [
-    "must:crumb",
-    "medium:original",
-    "claims-original",
-    "aspect:original",
-    "at-or-under-cap"
-   ],
-   "flags": [
-    "price-far-below-market"
-   ],
-   "confidence": 0.6,
-   "review": "review",
-   "carried": false,
-   "alertKey": "ebay:v1|227436862655|0:art-crumb-drawing:v1",
-   "similarCount": 0,
-   "risk": "high",
-   "riskReasons": [
-    "priced far below what this artist sells for",
-    "Robert Crumb is heavily forged on eBay and this is priced like a fake"
-   ],
-   "details": {
-    "aspects": {
-     "Item Height": "8 in",
-     "Item Length": "8 in",
-     "Item Width": "8 in",
-     "Type": "Drawing",
-     "Original/Licensed Reproduction": "Original"
-    },
-    "descriptionSnippet": "CARTOON JUMBLES by Jeremy JEM Eaton Features irreverent pairing of cartoon icons. Flakey Foont and perhaps...Flip the Frog India ink and colored pencil on 8\" x 10\" pulp-hewn manila drawing paper. I am listing four unsigned originals. This sale is for ONE. Free shipping on additio",
-    "fetchedAt": "2026-09-25T09:38:53.047Z"
-   },
-   "priceHistory": [
-    {
-     "at": "2026-09-25T03:20:24.636Z",
-     "price": 50.99,
-     "allIn": 60.99
-    }
-   ],
-   "priceChange": null,
-   "relisted": null,
-   "photoReused": null,
-   "dismissible": true
-  },
-  {
-   "key": "art-crumb-drawing:v1|306034737393|0",
-   "group": "under",
-   "huntId": "art-crumb-drawing",
-   "huntLabel": "Robert Crumb — drawing",
-   "classification": "under",
-   "listingId": "v1|306034737393|0",
-   "title": "Robert Crumb (Handmade) Drawing On Old Paper Signed & Stamped, Vtg art",
-   "url": "https://www.ebay.com/itm/306034737393?_skw=robert+crumb+drawing&hash=item47411780f1:g:RBYAAOSwTqlngrNV",
-   "imageUrl": "https://i.ebayimg.com/images/g/RBYAAOSwTqlngrNV/s-l225.jpg",
-   "buyingMode": "FIXED_PRICE",
-   "endsAt": null,
-   "bidCount": null,
-   "price": 100,
-   "shipping": 15,
-   "allIn": 115,
-   "maxAllIn": 2000,
-   "underBy": 1885,
-   "underPct": 0.94,
-   "capWording": "under cap",
-   "seller": {
-    "username": "jbonil99",
-    "feedbackPercentage": 100,
-    "feedbackScore": 315
-   },
-   "condition": "Used",
-   "location": "PE",
-   "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "reasons": [
-    "must:crumb",
-    "medium:drawing",
-    "claims-original",
-    "at-or-under-cap"
-   ],
-   "flags": [
-    "fake-art-template",
-    "same-seller-repeats:23"
-   ],
-   "confidence": 0.5,
-   "review": "review",
-   "carried": false,
-   "alertKey": "ebay:v1|306034737393|0:art-crumb-drawing:v1",
-   "similarCount": 23,
-   "risk": "high",
-   "riskReasons": [
-    "matches a common fake-art listing template (“on old paper, signed & stamped”)",
-    "seller has 24 copies of a “unique” work",
-    "Robert Crumb is heavily forged on eBay and this is priced like a fake",
-    "ships from PE"
-   ],
-   "details": null,
-   "priceHistory": [
-    {
-     "at": "2026-09-25T02:43:43.147Z",
-     "price": 100,
-     "allIn": 115
-    }
-   ],
-   "priceChange": null,
-   "relisted": null,
-   "photoReused": null,
-   "dismissible": true
-  },
-  {
-   "key": "art-crumb-drawing:v1|386848792675|0",
-   "group": "under",
-   "huntId": "art-crumb-drawing",
-   "huntLabel": "Robert Crumb — drawing",
-   "classification": "under",
-   "listingId": "v1|386848792675|0",
-   "title": "Robert Crumb (Handmade) Drawing On old Paper Signed & Stamped, Vtg Art",
-   "url": "https://www.ebay.com/itm/386848792675?_skw=robert+crumb+drawing&hash=item5a11fc2063:g:gu4AAOSwSgBl7kl3",
-   "imageUrl": "https://i.ebayimg.com/images/g/gu4AAOSwSgBl7kl3/s-l225.jpg",
-   "buyingMode": "FIXED_PRICE",
-   "endsAt": null,
-   "bidCount": null,
-   "price": 110,
-   "shipping": 19,
-   "allIn": 129,
-   "maxAllIn": 2000,
-   "underBy": 1871,
-   "underPct": 0.94,
-   "capWording": "under cap",
-   "seller": {
-    "username": "lauravbonilla0",
-    "feedbackPercentage": 100,
-    "feedbackScore": 826
-   },
-   "condition": "Used",
-   "location": "PE",
-   "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "reasons": [
-    "must:crumb",
-    "medium:drawing",
-    "claims-original",
-    "at-or-under-cap"
-   ],
-   "flags": [
-    "fake-art-template",
-    "same-seller-repeats:6"
-   ],
-   "confidence": 0.5,
-   "review": "review",
-   "carried": false,
-   "alertKey": "ebay:v1|386848792675|0:art-crumb-drawing:v1",
-   "similarCount": 6,
-   "risk": "high",
-   "riskReasons": [
-    "matches a common fake-art listing template (“on old paper, signed & stamped”)",
-    "seller has 7 copies of a “unique” work",
-    "Robert Crumb is heavily forged on eBay and this is priced like a fake",
-    "ships from PE"
-   ],
-   "details": null,
-   "priceHistory": [
-    {
-     "at": "2026-09-25T02:43:43.147Z",
-     "price": 110,
-     "allIn": 129
-    }
-   ],
-   "priceChange": null,
-   "relisted": null,
-   "photoReused": null,
-   "dismissible": true
-  },
-  {
-   "key": "art-crumb-drawing:v1|387284256911|0",
-   "group": "under",
-   "huntId": "art-crumb-drawing",
-   "huntLabel": "Robert Crumb — drawing",
-   "classification": "under",
-   "listingId": "v1|387284256911|0",
-   "title": "Robert Crumb (Handmade) Drawing On old Paper Signed & Stamped Mixed Media",
-   "url": "https://www.ebay.com/itm/387284256911?_skw=robert+crumb+drawing&hash=item5a2bf0c88f:g:AlMAAOSwacNlIDfQ",
-   "imageUrl": "https://i.ebayimg.com/images/g/AlMAAOSwacNlIDfQ/s-l225.jpg",
-   "buyingMode": "FIXED_PRICE",
-   "endsAt": null,
-   "bidCount": null,
-   "price": 100,
-   "shipping": 19,
-   "allIn": 119,
-   "maxAllIn": 2000,
-   "underBy": 1881,
-   "underPct": 0.94,
-   "capWording": "under cap",
-   "seller": {
-    "username": "lauravbonilla0",
-    "feedbackPercentage": 100,
-    "feedbackScore": 826
-   },
-   "condition": "Used",
-   "location": "PE",
-   "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "reasons": [
-    "must:crumb",
-    "medium:drawing",
-    "claims-original",
-    "at-or-under-cap"
-   ],
-   "flags": [
-    "fake-art-template",
-    "same-seller-repeats:27"
-   ],
-   "confidence": 0.5,
-   "review": "review",
-   "carried": false,
-   "alertKey": "ebay:v1|387284256911|0:art-crumb-drawing:v1",
-   "similarCount": 27,
-   "risk": "high",
-   "riskReasons": [
-    "matches a common fake-art listing template (“on old paper, signed & stamped”)",
-    "seller has 28 copies of a “unique” work",
-    "Robert Crumb is heavily forged on eBay and this is priced like a fake",
-    "ships from PE"
-   ],
-   "details": null,
-   "priceHistory": [
-    {
-     "at": "2026-09-25T02:43:43.147Z",
-     "price": 100,
-     "allIn": 119
-    }
-   ],
-   "priceChange": null,
-   "relisted": null,
-   "photoReused": null,
-   "dismissible": true
-  },
-  {
-   "key": "art-crumb-drawing:v1|137069819275|0",
-   "group": "under",
-   "huntId": "art-crumb-drawing",
-   "huntLabel": "Robert Crumb — drawing",
-   "classification": "under",
-   "listingId": "v1|137069819275|0",
-   "title": "Robert Crumb Drawing on old paper (Handmade) signed  & stamped artwork",
-   "url": "https://www.ebay.com/itm/137069819275?_skw=robert+crumb+drawing&hash=item1fe9ff758b:g:u8AAAeSwD-Rpnn2B",
-   "imageUrl": "https://i.ebayimg.com/images/g/u8AAAeSwD-Rpnn2B/s-l225.jpg",
-   "buyingMode": "FIXED_PRICE",
-   "endsAt": null,
-   "bidCount": null,
-   "price": 109,
-   "shipping": 25,
-   "allIn": 134,
-   "maxAllIn": 2000,
-   "underBy": 1866,
-   "underPct": 0.93,
-   "capWording": "under cap",
-   "seller": {
-    "username": "maracespinoza_0",
-    "feedbackPercentage": 100,
-    "feedbackScore": 50
-   },
-   "condition": "Used",
-   "location": "PE",
-   "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "reasons": [
-    "must:crumb",
-    "medium:drawing",
-    "claims-original",
-    "aspect:signed",
-    "at-or-under-cap"
-   ],
-   "flags": [
-    "description:reproduction-language",
-    "fake-art-template",
-    "same-seller-repeats:1"
-   ],
-   "confidence": 0.5,
-   "review": "review",
-   "carried": false,
-   "alertKey": "ebay:v1|137069819275|0:art-crumb-drawing:v1",
-   "similarCount": 1,
-   "risk": "high",
-   "riskReasons": [
-    "matches a common fake-art listing template (“on old paper, signed & stamped”)",
-    "seller has 2 copies of a “unique” work",
-    "the description uses reproduction / print language",
-    "Robert Crumb is heavily forged on eBay and this is priced like a fake",
-    "ships from PE"
-   ],
-   "details": {
-    "aspects": {
-     "Artist": "Robert Crumb",
-     "Unit of Sale": "Single Piece",
-     "Personalize": "No",
-     "Type": "Drawing",
-     "Size": "Small",
-     "Signed": "Yes",
-     "Item Height": "11 in",
-     "Theme": "Art, Stamps",
-     "Material": "Paper",
-     "Subject": "Stamps",
-     "Handmade": "Yes",
-     "Item Width": "8.5 in"
-    },
-    "descriptionSnippet": "Robert Crumb (HANDMADE) DRAWING ON OLD PAPER, SIGNED & STAMPED , MIXED MEDIA ARTWORK This unique piece of art is a one-of-a-kind mixed media drawing on old paper. I sell this item in the style of the artist or as reproduction according to the ebay rules, just like you can see in ",
-    "fetchedAt": "2026-09-25T09:38:53.047Z"
-   },
-   "priceHistory": [
-    {
-     "at": "2026-09-25T02:43:43.147Z",
-     "price": 109,
-     "allIn": 134
-    }
-   ],
-   "priceChange": null,
-   "relisted": null,
-   "photoReused": null,
-   "dismissible": true
-  },
-  {
    "key": "art-crumb-drawing:v1|407120003462|0",
    "group": "under",
    "huntId": "art-crumb-drawing",
@@ -3378,7 +1835,7 @@
    "condition": "Used",
    "location": "PE",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
+   "lastSeenAt": "2026-09-25T15:21:15.019Z",
    "reasons": [
     "must:crumb",
     "medium:drawing",
@@ -3414,148 +1871,6 @@
    "dismissible": true
   },
   {
-   "key": "art-crumb-drawing:v1|407122749369|0",
-   "group": "under",
-   "huntId": "art-crumb-drawing",
-   "huntLabel": "Robert Crumb — drawing",
-   "classification": "under",
-   "listingId": "v1|407122749369|0",
-   "title": "ROBERT CRUMB painting drawing on old paper signed stamped",
-   "url": "https://www.ebay.com/itm/407122749369?_skw=robert+crumb+drawing&hash=item5eca6827b9:g:kOgAAeSwjYdqc3Hd",
-   "imageUrl": "https://i.ebayimg.com/images/g/kOgAAeSwjYdqc3Hd/s-l225.jpg",
-   "buyingMode": "FIXED_PRICE",
-   "endsAt": null,
-   "bidCount": null,
-   "price": 135,
-   "shipping": 35,
-   "allIn": 170,
-   "maxAllIn": 2000,
-   "underBy": 1830,
-   "underPct": 0.92,
-   "capWording": "under cap",
-   "seller": {
-    "username": "joa_6559",
-    "feedbackPercentage": 100,
-    "feedbackScore": 68
-   },
-   "condition": "Used",
-   "location": "PE",
-   "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "reasons": [
-    "must:crumb",
-    "medium:drawing",
-    "at-or-under-cap"
-   ],
-   "flags": [
-    "fake-art-template",
-    "same-seller-repeats:1"
-   ],
-   "confidence": 0.5,
-   "review": "review",
-   "carried": false,
-   "alertKey": "ebay:v1|407122749369|0:art-crumb-drawing:v1",
-   "similarCount": 1,
-   "risk": "high",
-   "riskReasons": [
-    "matches a common fake-art listing template (“on old paper, signed & stamped”)",
-    "seller has 2 copies of a “unique” work",
-    "Robert Crumb is heavily forged on eBay and this is priced like a fake",
-    "ships from PE"
-   ],
-   "details": {
-    "aspects": {
-     "Unit of Sale": "Single Piece",
-     "Type": "Painting",
-     "Theme": "Art",
-     "Style": "MIXED MEDIA",
-     "Material": "Paper",
-     "Subject": "Art",
-     "Country of Origin": "United States",
-     "UPC": "0709039350925"
-    },
-    "descriptionSnippet": "ROBERT CRUMB Dibujo sobre papel antiguo, firmado y sellado (HECHO A MANO) Medidas: 33.0CM x 22.9 CM Vendo este artículo en el estilo del artista o como reproducción según las reglas de Ebay, tal como se puede ver en las imágenes. Vendemos estos artículos sin ninguna certificación",
-    "fetchedAt": "2026-09-25T02:48:19.979Z"
-   },
-   "priceHistory": [
-    {
-     "at": "2026-09-25T02:43:43.147Z",
-     "price": 135,
-     "allIn": 170
-    }
-   ],
-   "priceChange": null,
-   "relisted": null,
-   "photoReused": null,
-   "dismissible": true
-  },
-  {
-   "key": "art-crumb-drawing:v1|820112129168|0",
-   "group": "under",
-   "huntId": "art-crumb-drawing",
-   "huntLabel": "Robert Crumb — drawing",
-   "classification": "under",
-   "listingId": "v1|820112129168|0",
-   "title": "Robert Crumb (Handmade) Drawing mixed media on paper signed & stamped",
-   "url": "https://www.ebay.com/itm/820112129168?_skw=robert+crumb+drawing&hash=itembef27dfc90:g:ya0AAeSw~fxqozL4",
-   "imageUrl": "https://i.ebayimg.com/images/g/ya0AAeSw~fxqozL4/s-l225.jpg",
-   "buyingMode": "FIXED_PRICE",
-   "endsAt": null,
-   "bidCount": null,
-   "price": 230,
-   "shipping": 20,
-   "allIn": 250,
-   "maxAllIn": 2000,
-   "underBy": 1750,
-   "underPct": 0.88,
-   "capWording": "under cap",
-   "seller": {
-    "username": "black-gallery",
-    "feedbackPercentage": 96.8,
-    "feedbackScore": 61
-   },
-   "condition": "Used",
-   "location": "PE",
-   "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "reasons": [
-    "must:crumb",
-    "medium:drawing",
-    "claims-original",
-    "at-or-under-cap"
-   ],
-   "flags": [
-    "seller-low-feedback",
-    "fake-art-template",
-    "same-seller-repeats:9"
-   ],
-   "confidence": 0.4,
-   "review": "review",
-   "carried": false,
-   "alertKey": "ebay:v1|820112129168|0:art-crumb-drawing:v1",
-   "similarCount": 9,
-   "risk": "high",
-   "riskReasons": [
-    "matches a common fake-art listing template (“on old paper, signed & stamped”)",
-    "seller has 10 copies of a “unique” work",
-    "Robert Crumb is heavily forged on eBay and this is priced like a fake",
-    "ships from PE",
-    "seller feedback is low"
-   ],
-   "details": null,
-   "priceHistory": [
-    {
-     "at": "2026-09-25T02:43:43.147Z",
-     "price": 230,
-     "allIn": 250
-    }
-   ],
-   "priceChange": null,
-   "relisted": null,
-   "photoReused": null,
-   "dismissible": true
-  },
-  {
    "key": "design-nakashima-seating:v1|155369305086|0",
    "group": "watch",
    "huntId": "design-nakashima-seating",
@@ -3583,7 +1898,7 @@
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
+   "lastSeenAt": "2026-09-25T15:21:15.019Z",
    "reasons": [
     "must:nakashima",
     "aspect:original",
@@ -3662,7 +1977,7 @@
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
+   "lastSeenAt": "2026-09-25T15:21:15.019Z",
    "reasons": [
     "must:nakashima",
     "all-in-unknown"
@@ -3745,7 +2060,7 @@
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
+   "lastSeenAt": "2026-09-25T15:21:15.019Z",
    "reasons": [
     "must:nakashima",
     "all-in-unknown"
@@ -3816,7 +2131,7 @@
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
+   "lastSeenAt": "2026-09-25T15:21:15.019Z",
    "reasons": [
     "must:nakashima",
     "all-in-unknown"
@@ -3892,7 +2207,7 @@
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
+   "lastSeenAt": "2026-09-25T15:21:15.019Z",
    "reasons": [
     "must:nakashima",
     "all-in-unknown"
@@ -3964,7 +2279,7 @@
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
+   "lastSeenAt": "2026-09-25T15:21:15.019Z",
    "reasons": [
     "must:nakashima",
     "all-in-unknown"
@@ -4032,7 +2347,7 @@
    "condition": "Like New",
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
+   "lastSeenAt": "2026-09-25T15:21:15.019Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -4102,12 +2417,12 @@
    "seller": {
     "username": "lastexitbooks",
     "feedbackPercentage": 100,
-    "feedbackScore": 22733
+    "feedbackScore": 22735
    },
    "condition": "Very Good",
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
+   "lastSeenAt": "2026-09-25T15:21:15.019Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -4177,12 +2492,12 @@
    "seller": {
     "username": "lastexitbooks",
     "feedbackPercentage": 100,
-    "feedbackScore": 22733
+    "feedbackScore": 22735
    },
    "condition": "Very Good",
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
+   "lastSeenAt": "2026-09-25T15:21:15.019Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -4258,7 +2573,7 @@
    "condition": "Very Good",
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
+   "lastSeenAt": "2026-09-25T15:21:15.019Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -4329,12 +2644,12 @@
    "seller": {
     "username": "l.sorrell2012",
     "feedbackPercentage": 99.7,
-    "feedbackScore": 4905
+    "feedbackScore": 4906
    },
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
+   "lastSeenAt": "2026-09-25T15:21:15.019Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -4405,12 +2720,12 @@
    "seller": {
     "username": "l.sorrell2012",
     "feedbackPercentage": 99.7,
-    "feedbackScore": 4905
+    "feedbackScore": 4906
    },
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
+   "lastSeenAt": "2026-09-25T15:21:15.019Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -4481,12 +2796,12 @@
    "seller": {
     "username": "rfenterprise",
     "feedbackPercentage": 99.1,
-    "feedbackScore": 3523
+    "feedbackScore": 3524
    },
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
+   "lastSeenAt": "2026-09-25T15:21:15.019Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -4549,11 +2864,12 @@
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
+   "lastSeenAt": "2026-09-25T15:21:15.019Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
     "must:1963",
+    "aspect:original",
     "watch-only"
    ],
    "flags": [],
@@ -4564,7 +2880,24 @@
    "similarCount": 0,
    "risk": "low",
    "riskReasons": [],
-   "details": null,
+   "details": {
+    "aspects": {
+     "Binding": "Softcover, Wraps",
+     "Signed": "No",
+     "Publisher": "American Telephone and Telegraph Company",
+     "Subject": "History",
+     "Year Printed": "1963",
+     "Original/Facsimile": "Original",
+     "Language": "English",
+     "Special Attributes": "Numbered",
+     "Author": "Bell Systems",
+     "Personalized": "No",
+     "Topic": "Science & Technology",
+     "Country of Origin": "United States"
+    },
+    "descriptionSnippet": "The Bell System Technical Journal 1963 Vol. 42 Number 4 The Telstar Experiment See photos for details. Pages are clean and crisp, bindings are intact. The spines have the remark \"TELSTAR\" in hand writing. A little over 9 x 6 inches height/width. The Bell System Technical Journal:",
+    "fetchedAt": "2026-09-25T15:18:51.078Z"
+   },
    "priceHistory": [
     {
      "at": "2026-09-25T02:43:43.147Z",
@@ -4605,11 +2938,12 @@
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
+   "lastSeenAt": "2026-09-25T15:21:15.019Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
     "must:1963",
+    "aspect:original",
     "watch-only"
    ],
    "flags": [],
@@ -4620,7 +2954,24 @@
    "similarCount": 0,
    "risk": "low",
    "riskReasons": [],
-   "details": null,
+   "details": {
+    "aspects": {
+     "Binding": "Softcover, Wraps",
+     "Language": "English",
+     "Signed": "No",
+     "Special Attributes": "Numbered",
+     "Author": "Bell Systems",
+     "Personalized": "No",
+     "Publisher": "American Telephone and Telegraph Company",
+     "Topic": "Science & Technology",
+     "Subject": "History",
+     "Country of Origin": "United States",
+     "Year Printed": "1963",
+     "Original/Facsimile": "Original"
+    },
+    "descriptionSnippet": "The Bell System Technical Journal 1963 Vol. 42 Number 5 See photos for details. Pages are clean and crisp, bindings are intact. A little over 9 x 6 inches height/width. <br> Among the eight topics, \"Phase-Lock Loop Design for Coherent Angle-Error Detection in the Telstar Satellit",
+    "fetchedAt": "2026-09-25T15:18:51.078Z"
+   },
    "priceHistory": [
     {
      "at": "2026-09-25T02:43:43.147Z",
@@ -4656,16 +3007,17 @@
    "seller": {
     "username": "l.sorrell2012",
     "feedbackPercentage": 99.7,
-    "feedbackScore": 4905
+    "feedbackScore": 4906
    },
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
+   "lastSeenAt": "2026-09-25T15:21:15.019Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
     "must:1963",
+    "aspect:original",
     "watch-only"
    ],
    "flags": [],
@@ -4676,7 +3028,26 @@
    "similarCount": 0,
    "risk": "low",
    "riskReasons": [],
-   "details": null,
+   "details": {
+    "aspects": {
+     "Binding": "Softcover, Wraps",
+     "Place of Publication": "New York",
+     "Signed": "No",
+     "Publisher": "American Telephone and Telegraph Company",
+     "Subject": "History",
+     "Year Printed": "1963",
+     "Original/Facsimile": "Original",
+     "Language": "English",
+     "Special Attributes": "Numbered",
+     "Author": "Bell Systems",
+     "Personalized": "No",
+     "Topic": "Radio",
+     "SKU": "0034",
+     "Country of Origin": "United States"
+    },
+    "descriptionSnippet": "The Bell System Technical Journal from September 1963 is a sought-after collectible for history enthusiasts and those interested in the early days of radio technology. Published by American Telephone and Telegraph Company, this original softcover journal features articles by Bell",
+    "fetchedAt": "2026-09-25T15:18:51.078Z"
+   },
    "priceHistory": [
     {
      "at": "2026-09-25T02:43:43.147Z",
@@ -4712,16 +3083,17 @@
    "seller": {
     "username": "l.sorrell2012",
     "feedbackPercentage": 99.7,
-    "feedbackScore": 4905
+    "feedbackScore": 4906
    },
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
+   "lastSeenAt": "2026-09-25T15:21:15.019Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
     "must:1963",
+    "aspect:original",
     "watch-only"
    ],
    "flags": [],
@@ -4732,7 +3104,26 @@
    "similarCount": 0,
    "risk": "low",
    "riskReasons": [],
-   "details": null,
+   "details": {
+    "aspects": {
+     "Binding": "Softcover, Wraps",
+     "Place of Publication": "New York",
+     "Signed": "No",
+     "Publisher": "American Telephone and Telegraph Company",
+     "Subject": "History",
+     "Year Printed": "1963",
+     "Original/Facsimile": "Original",
+     "Language": "English",
+     "Special Attributes": "Numbered",
+     "Author": "Bell Systems",
+     "Personalized": "No",
+     "Topic": "Radio",
+     "SKU": "0034",
+     "Country of Origin": "United States"
+    },
+    "descriptionSnippet": "The Bell System Technical Journal - May 1963 Volume XLII Number 3 is a softcover publication by the American Telephone and Telegraph Company. This edition, printed in 1963 in New York, focuses on the history of radio technology. Authored by Bell Systems, the journal is in its ori",
+    "fetchedAt": "2026-09-25T15:18:51.078Z"
+   },
    "priceHistory": [
     {
      "at": "2026-09-25T02:43:43.147Z",
@@ -4768,16 +3159,17 @@
    "seller": {
     "username": "l.sorrell2012",
     "feedbackPercentage": 99.7,
-    "feedbackScore": 4905
+    "feedbackScore": 4906
    },
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
+   "lastSeenAt": "2026-09-25T15:21:15.019Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
     "must:1963",
+    "aspect:original",
     "watch-only"
    ],
    "flags": [],
@@ -4788,7 +3180,26 @@
    "similarCount": 0,
    "risk": "low",
    "riskReasons": [],
-   "details": null,
+   "details": {
+    "aspects": {
+     "Binding": "Softcover, Wraps",
+     "Place of Publication": "New York",
+     "Signed": "No",
+     "Publisher": "American Telephone and Telegraph Company",
+     "Subject": "History",
+     "Year Printed": "1963",
+     "Original/Facsimile": "Original",
+     "Language": "English",
+     "Special Attributes": "Numbered",
+     "Author": "Bell Systems",
+     "Personalized": "No",
+     "Topic": "Radio",
+     "SKU": "0034",
+     "Country of Origin": "United States"
+    },
+    "descriptionSnippet": "The Bell System Technical Journal - November 1963 Volume XLII Number 6 is a softcover book published by American Telephone and Telegraph Company in New York. This collectible item is an original edition printed in English, focusing on the history of radio technology. The journal ",
+    "fetchedAt": "2026-09-25T15:18:51.078Z"
+   },
    "priceHistory": [
     {
      "at": "2026-09-25T02:43:43.147Z",
@@ -4824,16 +3235,17 @@
    "seller": {
     "username": "l.sorrell2012",
     "feedbackPercentage": 99.7,
-    "feedbackScore": 4905
+    "feedbackScore": 4906
    },
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
+   "lastSeenAt": "2026-09-25T15:21:15.019Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
     "must:1963",
+    "aspect:original",
     "watch-only"
    ],
    "flags": [],
@@ -4844,7 +3256,26 @@
    "similarCount": 0,
    "risk": "low",
    "riskReasons": [],
-   "details": null,
+   "details": {
+    "aspects": {
+     "Binding": "Softcover, Wraps",
+     "Place of Publication": "New York",
+     "Signed": "No",
+     "Publisher": "American Telephone and Telegraph Company",
+     "Subject": "History",
+     "Year Printed": "1963",
+     "Original/Facsimile": "Original",
+     "Language": "English",
+     "Special Attributes": "Numbered",
+     "Author": "Bell Systems",
+     "Personalized": "No",
+     "Topic": "Radio",
+     "SKU": "0034",
+     "Country of Origin": "United States"
+    },
+    "descriptionSnippet": "The Bell System Technical Journal - January 1963 Volume XLII Number 1 is a softcover book published by American Telephone and Telegraph Company in New York. This collectible item is an original edition printed in English, focusing on the history of radio technology. The journal i",
+    "fetchedAt": "2026-09-25T15:18:51.078Z"
+   },
    "priceHistory": [
     {
      "at": "2026-09-25T02:43:43.147Z",
@@ -4880,16 +3311,17 @@
    "seller": {
     "username": "l.sorrell2012",
     "feedbackPercentage": 99.7,
-    "feedbackScore": 4905
+    "feedbackScore": 4906
    },
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
+   "lastSeenAt": "2026-09-25T15:21:15.019Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
     "must:1963",
+    "aspect:original",
     "watch-only"
    ],
    "flags": [],
@@ -4900,7 +3332,26 @@
    "similarCount": 0,
    "risk": "low",
    "riskReasons": [],
-   "details": null,
+   "details": {
+    "aspects": {
+     "Binding": "Softcover, Wraps",
+     "Place of Publication": "New York",
+     "Signed": "No",
+     "Publisher": "American Telephone and Telegraph Company",
+     "Subject": "History",
+     "Year Printed": "1963",
+     "Original/Facsimile": "Original",
+     "Language": "English",
+     "Special Attributes": "Numbered",
+     "Author": "Bell Systems",
+     "Personalized": "No",
+     "Topic": "Radio",
+     "SKU": "0034",
+     "Country of Origin": "United States"
+    },
+    "descriptionSnippet": "The Bell System Technical Journal - March 1963 Volume XLII Number 2 is a vintage softcover book published by American Telephone and Telegraph Company. This original English-language journal from 1963 focuses on the history of radio technology, with special attributes including be",
+    "fetchedAt": "2026-09-25T15:18:51.078Z"
+   },
    "priceHistory": [
     {
      "at": "2026-09-25T02:43:43.147Z",
@@ -4936,12 +3387,12 @@
    "seller": {
     "username": "l.sorrell2012",
     "feedbackPercentage": 99.7,
-    "feedbackScore": 4905
+    "feedbackScore": 4906
    },
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
+   "lastSeenAt": "2026-09-25T15:21:15.019Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -5012,16 +3463,17 @@
    "seller": {
     "username": "l.sorrell2012",
     "feedbackPercentage": 99.7,
-    "feedbackScore": 4905
+    "feedbackScore": 4906
    },
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
+   "lastSeenAt": "2026-09-25T15:21:15.019Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
     "must:1963",
+    "aspect:original",
     "watch-only"
    ],
    "flags": [],
@@ -5032,7 +3484,26 @@
    "similarCount": 0,
    "risk": "low",
    "riskReasons": [],
-   "details": null,
+   "details": {
+    "aspects": {
+     "Binding": "Softcover, Wraps",
+     "Place of Publication": "New York",
+     "Signed": "No",
+     "Publisher": "American Telephone and Telegraph Company",
+     "Subject": "History",
+     "Year Printed": "1963",
+     "Original/Facsimile": "Original",
+     "Language": "English",
+     "Special Attributes": "Numbered",
+     "Author": "Bell Systems",
+     "Personalized": "No",
+     "Topic": "Radio",
+     "SKU": "0034",
+     "Country of Origin": "United States"
+    },
+    "descriptionSnippet": "The Bell System Technical Journal - July 1963 Volume XLII Number 4 Part 2 is a vintage softcover book published by the American Telephone and Telegraph Company in 1963. This edition focuses on the history of the Bell System, with a specific emphasis on radio technology. The journ",
+    "fetchedAt": "2026-09-25T15:18:51.078Z"
+   },
    "priceHistory": [
     {
      "at": "2026-09-25T02:43:43.147Z",
@@ -5068,16 +3539,17 @@
    "seller": {
     "username": "l.sorrell2012",
     "feedbackPercentage": 99.7,
-    "feedbackScore": 4905
+    "feedbackScore": 4906
    },
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
+   "lastSeenAt": "2026-09-25T15:21:15.019Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
     "must:1963",
+    "aspect:original",
     "watch-only"
    ],
    "flags": [],
@@ -5088,7 +3560,26 @@
    "similarCount": 0,
    "risk": "low",
    "riskReasons": [],
-   "details": null,
+   "details": {
+    "aspects": {
+     "Binding": "Softcover, Wraps",
+     "Place of Publication": "New York",
+     "Signed": "No",
+     "Publisher": "American Telephone and Telegraph Company",
+     "Subject": "History",
+     "Year Printed": "1963",
+     "Original/Facsimile": "Original",
+     "Language": "English",
+     "Special Attributes": "Numbered",
+     "Author": "Bell Systems",
+     "Personalized": "No",
+     "Topic": "Radio",
+     "SKU": "0034",
+     "Country of Origin": "United States"
+    },
+    "descriptionSnippet": "The Bell System Technical Journal - July 1963 Volume XLII Number 4 Part 3 is a vintage softcover book published by the American Telephone and Telegraph Company in 1963. This edition focuses on the history of the Bell System, with a specific emphasis on radio technology. The journ",
+    "fetchedAt": "2026-09-25T15:18:51.078Z"
+   },
    "priceHistory": [
     {
      "at": "2026-09-25T02:43:43.147Z",
@@ -5124,12 +3615,12 @@
    "seller": {
     "username": "ce_buch",
     "feedbackPercentage": 100,
-    "feedbackScore": 23234
+    "feedbackScore": 23241
    },
    "condition": "Gut",
    "location": "DE",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
+   "lastSeenAt": "2026-09-25T15:21:15.019Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -5144,7 +3635,11 @@
    "similarCount": 0,
    "risk": "low",
    "riskReasons": [],
-   "details": null,
+   "details": {
+    "aspects": {},
+    "descriptionSnippet": "Volume XLII. Year 1963 Part I Autor The Bell System. Technical Journal Buchdaten & Bucherhaltung American Telephone and Telegraph Company, New York,1963. 1657 pages with some graphics and 16 pages of index, cloth cover with embossed title, (stamp on flyleaf) Gewicht ca. 2600g Bem",
+    "fetchedAt": "2026-09-25T15:18:51.078Z"
+   },
    "priceHistory": [
     {
      "at": "2026-09-25T02:43:43.147Z",
@@ -5194,7 +3689,7 @@
    "condition": "Acceptable",
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
+   "lastSeenAt": "2026-09-25T15:21:15.019Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -5209,7 +3704,24 @@
    "similarCount": 0,
    "risk": "low",
    "riskReasons": [],
-   "details": null,
+   "details": {
+    "aspects": {
+     "Publication Year": "1964",
+     "Format": "Paperback",
+     "Language": "English",
+     "Book Title": "The Bell System Technical Journal",
+     "Author": "Mixed Authors",
+     "Narrative Type": "Nonfiction",
+     "Features": "Illustrated",
+     "Genre": "Engineering & Technology",
+     "Publisher": "American Telephone and Telegraph Company",
+     "Topic": "Electrical Engineering, Ships",
+     "Country of Origin": "United States",
+     "Vintage": "Yes"
+    },
+    "descriptionSnippet": "The Bell System Technical Journal - Volume 43 - July 1964 - Number 4, Part 1 SD Submarine Cable System Book will be carefully packed for safe shipping",
+    "fetchedAt": "2026-09-25T15:18:51.078Z"
+   },
    "priceHistory": [
     {
      "at": "2026-09-25T02:43:43.147Z",
@@ -5250,11 +3762,12 @@
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
+   "lastSeenAt": "2026-09-25T15:21:15.019Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
     "must:1964",
+    "aspect:original",
     "watch-only"
    ],
    "flags": [],
@@ -5265,7 +3778,24 @@
    "similarCount": 0,
    "risk": "low",
    "riskReasons": [],
-   "details": null,
+   "details": {
+    "aspects": {
+     "Binding": "Softcover, Wraps",
+     "Language": "English",
+     "Signed": "No",
+     "Special Attributes": "Numbered",
+     "Author": "Bell Systems",
+     "Personalized": "No",
+     "Publisher": "American Telephone and Telegraph Company",
+     "Topic": "Science & Technology",
+     "Subject": "History",
+     "Country of Origin": "United States",
+     "Year Printed": "1964",
+     "Original/Facsimile": "Original"
+    },
+    "descriptionSnippet": "The Bell System Technical Journal 1964 Vol. 43 Number 5, part 1 and part 2, NO. 1 ELECTRONIC SWITCHING SYSTEM See photos for details. Pages are clean and crisp, bindings are intact. The spines have the remark \"ESS\" in hand writing. A little over 9 x 6 inches height/width. No. 1 E",
+    "fetchedAt": "2026-09-25T15:18:51.078Z"
+   },
    "priceHistory": [
     {
      "at": "2026-09-25T02:43:43.147Z",
@@ -5301,12 +3831,12 @@
    "seller": {
     "username": "l.sorrell2012",
     "feedbackPercentage": 99.7,
-    "feedbackScore": 4905
+    "feedbackScore": 4906
    },
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
+   "lastSeenAt": "2026-09-25T15:21:15.019Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -5359,16 +3889,17 @@
    "seller": {
     "username": "l.sorrell2012",
     "feedbackPercentage": 99.7,
-    "feedbackScore": 4905
+    "feedbackScore": 4906
    },
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
+   "lastSeenAt": "2026-09-25T15:21:15.019Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
     "must:1964",
+    "aspect:original",
     "watch-only"
    ],
    "flags": [],
@@ -5379,7 +3910,26 @@
    "similarCount": 0,
    "risk": "low",
    "riskReasons": [],
-   "details": null,
+   "details": {
+    "aspects": {
+     "Binding": "Softcover, Wraps",
+     "Place of Publication": "New York",
+     "Signed": "No",
+     "Publisher": "American Telephone and Telegraph Company",
+     "Subject": "History",
+     "Year Printed": "1964",
+     "Original/Facsimile": "Original",
+     "Language": "English",
+     "Special Attributes": "Numbered",
+     "Author": "Bell Systems",
+     "Personalized": "No",
+     "Topic": "Radio",
+     "SKU": "0034",
+     "Country of Origin": "United States"
+    },
+    "descriptionSnippet": "The Bell System Technical Journal from January 1964, Volume XLIII, No 1 Part 1 is a softcover publication by American Telephone and Telegraph Company. This original English-language journal covers a range of topics related to radio history, with a focus on Bell Systems. This coll",
+    "fetchedAt": "2026-09-25T15:18:51.078Z"
+   },
    "priceHistory": [
     {
      "at": "2026-09-25T02:43:43.147Z",
@@ -5415,16 +3965,17 @@
    "seller": {
     "username": "l.sorrell2012",
     "feedbackPercentage": 99.7,
-    "feedbackScore": 4905
+    "feedbackScore": 4906
    },
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
+   "lastSeenAt": "2026-09-25T15:21:15.019Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
     "must:1964",
+    "aspect:original",
     "watch-only"
    ],
    "flags": [],
@@ -5435,7 +3986,26 @@
    "similarCount": 0,
    "risk": "low",
    "riskReasons": [],
-   "details": null,
+   "details": {
+    "aspects": {
+     "Binding": "Softcover, Wraps",
+     "Place of Publication": "New York",
+     "Signed": "No",
+     "Publisher": "American Telephone and Telegraph Company",
+     "Subject": "History",
+     "Year Printed": "1964",
+     "Original/Facsimile": "Original",
+     "Language": "English",
+     "Special Attributes": "Numbered",
+     "Author": "Bell Systems",
+     "Personalized": "No",
+     "Topic": "Radio",
+     "SKU": "0034",
+     "Country of Origin": "United States"
+    },
+    "descriptionSnippet": "The Bell System Technical Journal September 1964 Volume XLIII - No 5 Part 2 is a vintage softcover book published by American Telephone and Telegraph Company in New York. This original edition features articles on radio history authored by Bell Systems. Printed in English, this c",
+    "fetchedAt": "2026-09-25T15:18:51.078Z"
+   },
    "priceHistory": [
     {
      "at": "2026-09-25T02:43:43.147Z",
@@ -5471,16 +4041,17 @@
    "seller": {
     "username": "l.sorrell2012",
     "feedbackPercentage": 99.7,
-    "feedbackScore": 4905
+    "feedbackScore": 4906
    },
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
+   "lastSeenAt": "2026-09-25T15:21:15.019Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
     "must:1964",
+    "aspect:original",
     "watch-only"
    ],
    "flags": [],
@@ -5491,7 +4062,26 @@
    "similarCount": 0,
    "risk": "low",
    "riskReasons": [],
-   "details": null,
+   "details": {
+    "aspects": {
+     "Binding": "Softcover, Wraps",
+     "Place of Publication": "New York",
+     "Signed": "No",
+     "Publisher": "American Telephone and Telegraph Company",
+     "Subject": "History",
+     "Year Printed": "1964",
+     "Original/Facsimile": "Original",
+     "Language": "English",
+     "Special Attributes": "Numbered",
+     "Author": "Bell Systems",
+     "Personalized": "No",
+     "Topic": "Radio",
+     "SKU": "0034",
+     "Country of Origin": "United States"
+    },
+    "descriptionSnippet": "The Bell System Technical Journal for September 1964 is a vintage collection of articles and technical papers related to radio and telecommunications history. Published by the American Telephone and Telegraph Company, this softcover volume features content from Bell Systems autho",
+    "fetchedAt": "2026-09-25T15:18:51.078Z"
+   },
    "priceHistory": [
     {
      "at": "2026-09-25T02:43:43.147Z",
@@ -5527,16 +4117,17 @@
    "seller": {
     "username": "l.sorrell2012",
     "feedbackPercentage": 99.7,
-    "feedbackScore": 4905
+    "feedbackScore": 4906
    },
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
+   "lastSeenAt": "2026-09-25T15:21:15.019Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
     "must:1964",
+    "aspect:original",
     "watch-only"
    ],
    "flags": [],
@@ -5547,7 +4138,26 @@
    "similarCount": 0,
    "risk": "low",
    "riskReasons": [],
-   "details": null,
+   "details": {
+    "aspects": {
+     "Binding": "Softcover, Wraps",
+     "Place of Publication": "New York",
+     "Signed": "No",
+     "Publisher": "American Telephone and Telegraph Company",
+     "Subject": "History",
+     "Year Printed": "1964",
+     "Original/Facsimile": "Original",
+     "Language": "English",
+     "Special Attributes": "Numbered",
+     "Author": "Bell Systems",
+     "Personalized": "No",
+     "Topic": "Radio",
+     "SKU": "0034",
+     "Country of Origin": "United States"
+    },
+    "descriptionSnippet": "The Bell System Technical Journal for March 1964 is a vintage softcover publication by the American Telephone and Telegraph Company. Focused on history and radio subjects, this original edition features articles by Bell System authors. Printed in English in the United States, thi",
+    "fetchedAt": "2026-09-25T15:18:51.078Z"
+   },
    "priceHistory": [
     {
      "at": "2026-09-25T02:43:43.147Z",
@@ -5583,16 +4193,17 @@
    "seller": {
     "username": "l.sorrell2012",
     "feedbackPercentage": 99.7,
-    "feedbackScore": 4905
+    "feedbackScore": 4906
    },
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
+   "lastSeenAt": "2026-09-25T15:21:15.019Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
     "must:1964",
+    "aspect:original",
     "watch-only"
    ],
    "flags": [],
@@ -5603,7 +4214,26 @@
    "similarCount": 0,
    "risk": "low",
    "riskReasons": [],
-   "details": null,
+   "details": {
+    "aspects": {
+     "Binding": "Softcover, Wraps",
+     "Place of Publication": "New York",
+     "Signed": "No",
+     "Publisher": "American Telephone and Telegraph Company",
+     "Subject": "History",
+     "Year Printed": "1964",
+     "Original/Facsimile": "Original",
+     "Language": "English",
+     "Special Attributes": "Numbered",
+     "Author": "Bell Systems",
+     "Personalized": "No",
+     "Topic": "Radio",
+     "SKU": "0034",
+     "Country of Origin": "United States"
+    },
+    "descriptionSnippet": "The Bell System Technical Journal for May 1964, Volume XLIII NO 3, is a valuable collectible for history enthusiasts interested in the telecommunications industry. Published by the American Telephone and Telegraph Company, this softcover book delves into the subject of radio tech",
+    "fetchedAt": "2026-09-25T15:18:51.078Z"
+   },
    "priceHistory": [
     {
      "at": "2026-09-25T02:43:43.147Z",
@@ -5639,16 +4269,17 @@
    "seller": {
     "username": "l.sorrell2012",
     "feedbackPercentage": 99.7,
-    "feedbackScore": 4905
+    "feedbackScore": 4906
    },
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
+   "lastSeenAt": "2026-09-25T15:21:15.019Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
     "must:1964",
+    "aspect:original",
     "watch-only"
    ],
    "flags": [],
@@ -5659,7 +4290,26 @@
    "similarCount": 0,
    "risk": "low",
    "riskReasons": [],
-   "details": null,
+   "details": {
+    "aspects": {
+     "Binding": "Softcover, Wraps",
+     "Place of Publication": "New York",
+     "Signed": "No",
+     "Publisher": "American Telephone and Telegraph Company",
+     "Subject": "History",
+     "Year Printed": "1964",
+     "Original/Facsimile": "Original",
+     "Language": "English",
+     "Special Attributes": "Numbered",
+     "Author": "Bell Systems",
+     "Personalized": "No",
+     "Topic": "Radio",
+     "SKU": "0034",
+     "Country of Origin": "United States"
+    },
+    "descriptionSnippet": "The Bell System Technical Journal July 1964 Volume XLIII No 4 Part 1 is a vintage softcover publication by the American Telephone and Telegraph Company. Focused on the history and development of radio technology, this original edition features articles by Bell Systems authors and",
+    "fetchedAt": "2026-09-25T15:18:51.078Z"
+   },
    "priceHistory": [
     {
      "at": "2026-09-25T02:43:43.147Z",
@@ -5700,11 +4350,12 @@
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
+   "lastSeenAt": "2026-09-25T15:21:15.019Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
     "must:1964",
+    "aspect:original",
     "watch-only"
    ],
    "flags": [],
@@ -5715,7 +4366,25 @@
    "similarCount": 0,
    "risk": "low",
    "riskReasons": [],
-   "details": null,
+   "details": {
+    "aspects": {
+     "Binding": "Softcover, Wraps",
+     "Place of Publication": "New York",
+     "Signed": "No",
+     "Publisher": "American Telephone and Telegraph Company",
+     "Subject": "History",
+     "Year Printed": "1964",
+     "Original/Facsimile": "Original",
+     "Language": "English",
+     "Special Attributes": "Numbered",
+     "Author": "Bell Systems",
+     "Personalized": "No",
+     "Topic": "Radio",
+     "Country of Origin": "United States"
+    },
+    "descriptionSnippet": "The Bell System Technical Journal - September 1964 Volume XLIII No 5 is a vintage softcover book published by American Telephone and Telegraph Company in New York. This original edition covers topics related to radio history and is written in English. It features special attribut",
+    "fetchedAt": "2026-09-25T15:18:51.078Z"
+   },
    "priceHistory": [
     {
      "at": "2026-09-25T02:43:43.147Z",
@@ -5751,16 +4420,17 @@
    "seller": {
     "username": "paperattic",
     "feedbackPercentage": 100,
-    "feedbackScore": 7091
+    "feedbackScore": 7092
    },
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
+   "lastSeenAt": "2026-09-25T15:21:15.019Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
     "must:1970",
+    "aspect:original",
     "watch-only"
    ],
    "flags": [],
@@ -5771,7 +4441,24 @@
    "similarCount": 0,
    "risk": "low",
    "riskReasons": [],
-   "details": null,
+   "details": {
+    "aspects": {
+     "Country of Origin": "United States",
+     "Binding": "Softcover, Wraps",
+     "Language": "English",
+     "Special Attributes": "Illustrated",
+     "Signed": "No",
+     "Author": "Bell Labs",
+     "Personalized": "No",
+     "Publisher": "Bell Systems",
+     "Topic": "Electronics",
+     "Subject": "Science & Medicine",
+     "Original/Facsimile": "Original",
+     "Year Printed": "1970"
+    },
+    "descriptionSnippet": "ITEM: Up for sale is this vintage Bell System Technical Journal, Volume 49, October 1970, Number 8. Good shape, all original. Includes the following articles: R. W. Hamming On the Distribution of Numbers . . . . . 1609--1625 R. L. Graham A Mathematical Study of a Model of Magneti",
+    "fetchedAt": "2026-09-25T15:18:51.078Z"
+   },
    "priceHistory": [
     {
      "at": "2026-09-25T02:43:43.147Z",
@@ -5807,16 +4494,17 @@
    "seller": {
     "username": "paperattic",
     "feedbackPercentage": 100,
-    "feedbackScore": 7091
+    "feedbackScore": 7092
    },
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
+   "lastSeenAt": "2026-09-25T15:21:15.019Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
     "must:1970",
+    "aspect:original",
     "watch-only"
    ],
    "flags": [],
@@ -5827,7 +4515,24 @@
    "similarCount": 0,
    "risk": "low",
    "riskReasons": [],
-   "details": null,
+   "details": {
+    "aspects": {
+     "Country of Origin": "United States",
+     "Binding": "Softcover, Wraps",
+     "Language": "English",
+     "Special Attributes": "Illustrated",
+     "Signed": "No",
+     "Author": "Bell Labs",
+     "Personalized": "No",
+     "Publisher": "Bell Systems",
+     "Topic": "Electronics",
+     "Subject": "Science & Medicine",
+     "Original/Facsimile": "Original",
+     "Year Printed": "1970"
+    },
+    "descriptionSnippet": "ITEM: Up for sale is this vintage Bell System Technical Journal, Volume 51, September 1972, Number 7. Good shape, all original. Includes the following articles: W. E. Beadle and A. J. Schorr Picturephone Silicon Target Signal Analysis . . . . . . . . . . . . . . . . 921--952 A. H",
+    "fetchedAt": "2026-09-25T15:18:51.078Z"
+   },
    "priceHistory": [
     {
      "at": "2026-09-25T02:43:43.147Z",
@@ -5868,11 +4573,12 @@
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
+   "lastSeenAt": "2026-09-25T15:21:15.019Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
     "must:1978",
+    "aspect:original",
     "watch-only"
    ],
    "flags": [],
@@ -5883,7 +4589,26 @@
    "similarCount": 0,
    "risk": "low",
    "riskReasons": [],
-   "details": null,
+   "details": {
+    "aspects": {
+     "Binding": "Softcover, Wraps",
+     "Place of Publication": "New Jersey",
+     "Signed": "No",
+     "Publisher": "American Telephone & Telegraph, Inc.",
+     "Subject": "Engineering & Technical",
+     "Modified Item": "No",
+     "part 2": "UNIX Time-Sharing System",
+     "Original/Facsimile": "Original",
+     "Year Printed": "1978",
+     "Language": "English",
+     "Region": "North America",
+     "Author": "Various",
+     "Topic": "Engineering",
+     "Country of Origin": "United States"
+    },
+    "descriptionSnippet": "The Bell System Technical Journal Vol 57 No 6 Part 2 July - August 1978 is a softcover publication by American Telephone & Telegraph, Inc. It is an original edition with no modifications, providing valuable insights in the history and development of engineering systems in North A",
+    "fetchedAt": "2026-09-25T15:18:51.078Z"
+   },
    "priceHistory": [
     {
      "at": "2026-09-25T02:43:43.147Z",
@@ -5919,12 +4644,12 @@
    "seller": {
     "username": "ce_buch",
     "feedbackPercentage": 100,
-    "feedbackScore": 23234
+    "feedbackScore": 23241
    },
    "condition": "Gut",
    "location": "DE",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
+   "lastSeenAt": "2026-09-25T15:21:15.019Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -5939,7 +4664,11 @@
    "similarCount": 0,
    "risk": "low",
    "riskReasons": [],
-   "details": null,
+   "details": {
+    "aspects": {},
+    "descriptionSnippet": "Volume 58. Year 1979. Index and Contents. No. 1-10 in two volumes Autor The Bell System. Technical Journal Buchdaten & Bucherhaltung American Telephone and Telegraph Company, New York, 1979. XXX, 2326 pages in total with some graphics, cloth cover with embossed title, (stamp on f",
+    "fetchedAt": "2026-09-25T15:18:51.078Z"
+   },
    "priceHistory": [
     {
      "at": "2026-09-25T02:43:43.147Z",
@@ -5984,12 +4713,12 @@
    "seller": {
     "username": "bargainbookstores",
     "feedbackPercentage": 99.7,
-    "feedbackScore": 1209917
+    "feedbackScore": 1209936
    },
    "condition": "Brand New",
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
+   "lastSeenAt": "2026-09-25T15:21:15.019Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -6004,7 +4733,26 @@
    "similarCount": 0,
    "risk": "low",
    "riskReasons": [],
-   "details": null,
+   "details": {
+    "aspects": {
+     "Brand": "Literary Licensing, LLC",
+     "Binding": "TP",
+     "Author": "Bell System Technical Journal",
+     "Publisher": "Literary Licensing, LLC",
+     "Format": "Paperback or Softback",
+     "Language": "ENG",
+     "Item Weight": "0.85",
+     "Item Length": "9.02",
+     "Item Width": "5.98",
+     "Item Height": "0.6",
+     "Book Title": "The Telstar Experiment: Papers from the Bell Syste",
+     "ISBN": "1258290308",
+     "EAN": "9781258290306",
+     "Manufacturer": "Literary Licensing, LLC"
+    },
+    "descriptionSnippet": "Bargainbookstores The Telstar Experiment: Papers from the Bell System Technical Journal, V42, Part 3, July, 1963 (Paperback or Softback) By Bell System Technical Journal Condition: Format: Paperback or Softback Publisher: Literary Licensing, LLC Publication Date: 4/14/2012 ISBN: ",
+    "fetchedAt": "2026-09-25T15:18:51.078Z"
+   },
    "priceHistory": [
     {
      "at": "2026-09-25T02:43:43.147Z",
@@ -6040,12 +4788,12 @@
    "seller": {
     "username": "rfenterprise",
     "feedbackPercentage": 99.1,
-    "feedbackScore": 3523
+    "feedbackScore": 3524
    },
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
+   "lastSeenAt": "2026-09-25T15:21:15.019Z",
    "reasons": [
     "must:bstj",
     "must:technical",
@@ -6059,7 +4807,14 @@
    "similarCount": 0,
    "risk": "low",
    "riskReasons": [],
-   "details": null,
+   "details": {
+    "aspects": {
+     "Type": "Book",
+     "Vintage": "Yes"
+    },
+    "descriptionSnippet": "Vintage 1960s Bell Telephone System Technical Publications Monographs 5021-5050 | Solid-State & Telecomm Research Bound Book. Features a comprehensive block of 30 sequential technical monographs covering advanced electronics, wave propagation, and communication systems from the e",
+    "fetchedAt": "2026-09-25T15:18:51.078Z"
+   },
    "priceHistory": [
     {
      "at": "2026-09-25T02:43:43.147Z",
@@ -6100,10 +4855,11 @@
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
+   "lastSeenAt": "2026-09-25T15:21:15.019Z",
    "reasons": [
     "must:haze",
     "medium:painting",
+    "aspect:original",
     "all-in-unknown"
    ],
    "flags": [
@@ -6119,7 +4875,24 @@
    "riskReasons": [
     "seller feedback is low"
    ],
-   "details": null,
+   "details": {
+    "aspects": {
+     "Artist": "Eric Haze",
+     "Type": "Painting",
+     "Original/Licensed Reproduction": "Original",
+     "Size": "Large",
+     "Item Height": "40 in",
+     "Theme": "Graffiti",
+     "Style": "Abstract, Contemporary Art, Graffiti Art, Urban Art",
+     "Material": "Canvas",
+     "Item Length": "40 in",
+     "Region of Origin": "New York, USA",
+     "Subject": "Street Art",
+     "Time Period Produced": "2010-2019"
+    },
+    "descriptionSnippet": "This stunning canvas painting by Eric Haze is a true masterpiece of urban art. The piece features his infamous crown design that showcases the artist's unique style and talent. Measuring 40 inches in both height and length, this large painting is an original piece that is sure to",
+    "fetchedAt": "2026-09-25T15:18:51.078Z"
+   },
    "priceHistory": [
     {
      "at": "2026-09-25T02:43:43.147Z",
@@ -6160,9 +4933,10 @@
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
+   "lastSeenAt": "2026-09-25T15:21:15.019Z",
    "reasons": [
     "must:sintesi",
+    "aspect:original",
     "all-in-unknown"
    ],
    "flags": [
@@ -6178,7 +4952,31 @@
    "riskReasons": [
     "seller feedback is low"
    ],
-   "details": null,
+   "details": {
+    "aspects": {
+     "Light Color": "White",
+     "Antique": "No",
+     "Power Source": "Corded Electric",
+     "EC Range": "A+++ - G",
+     "Size": "Medium",
+     "Color": "Black",
+     "Material": "Metal",
+     "Vintage": "Yes",
+     "Brand": "Artemide",
+     "Type": "Desk Lamp",
+     "Department": "Unisex Adults",
+     "Control Style": "Switch",
+     "Sensor Type": "Light",
+     "Cord Color": "Black",
+     "Style": "Italian",
+     "Original/Reproduction": "Original",
+     "Features": "Adjustable",
+     "Time Period Manufactured": "1970-1979",
+     "Finish": "Matte"
+    },
+    "descriptionSnippet": "The Sintesi Adjustable Desk Lamp by Ernesto Gismondi for Artemide is a stylish and functional addition to any workspace. With a sleek black metal design and adjustable features, this Italian-designed lamp offers a modern twist on a vintage look. Designed in the 1970s, this origin",
+    "fetchedAt": "2026-09-25T15:18:51.078Z"
+   },
    "priceHistory": [
     {
      "at": "2026-09-25T03:20:24.636Z",
@@ -6219,9 +5017,10 @@
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
+   "lastSeenAt": "2026-09-25T15:21:15.019Z",
    "reasons": [
     "must:beaubourg",
+    "aspect:original",
     "all-in-unknown"
    ],
    "flags": [
@@ -6237,7 +5036,32 @@
    "riskReasons": [
     "seller feedback is low"
    ],
-   "details": null,
+   "details": {
+    "aspects": {
+     "Country of Origin": "France",
+     "Number of Items in Set": "2",
+     "Antique": "No",
+     "Assembly Status": "Fully Assembled",
+     "Color": "Brown",
+     "Year Manufactured": "1976",
+     "Material": "Steel And Leather",
+     "Set Includes": "2 chairs",
+     "Item Length": "20.5 in",
+     "Brand": "Teda",
+     "Type": "Side Chair Set Of 6",
+     "Original/Licensed Reproduction": "Original",
+     "Assembly Required": "No",
+     "Item Height": "31.25 in",
+     "Style": "Mid-Century Modern",
+     "Time Period Manufactured": "1976",
+     "Room": "Dining Room",
+     "Item Width": "20.75 in",
+     "Item Weight": "50 lb",
+     "Upholstery Fabric": "Leather"
+    },
+    "descriptionSnippet": "Pompidou Beaubourg Chairs . 1976 Michel Cadestin & Georges Laurent . SET OF 2. 3 SETS AVAILABLE",
+    "fetchedAt": "2026-09-25T15:18:51.078Z"
+   },
    "priceHistory": [
     {
      "at": "2026-09-25T03:20:24.636Z",
@@ -6278,7 +5102,7 @@
    "condition": "Open box",
    "location": "JP",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
+   "lastSeenAt": "2026-09-25T15:21:15.019Z",
    "reasons": [
     "must:nakashima",
     "over-cap"
@@ -6332,7 +5156,7 @@
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
+   "lastSeenAt": "2026-09-25T15:21:15.019Z",
    "reasons": [
     "must:nakashima",
     "over-cap"
@@ -6386,7 +5210,7 @@
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
+   "lastSeenAt": "2026-09-25T15:21:15.019Z",
    "reasons": [
     "must:graham",
     "game-used:game used",
@@ -6436,12 +5260,12 @@
    "seller": {
     "username": "d-rose-mod",
     "feedbackPercentage": 100,
-    "feedbackScore": 1702
+    "feedbackScore": 1703
    },
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
+   "lastSeenAt": "2026-09-25T15:21:15.019Z",
    "reasons": [
     "must:nakashima",
     "over-cap"
@@ -6490,12 +5314,12 @@
    "seller": {
     "username": "d-rose-mod",
     "feedbackPercentage": 100,
-    "feedbackScore": 1702
+    "feedbackScore": 1703
    },
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
+   "lastSeenAt": "2026-09-25T15:21:15.019Z",
    "reasons": [
     "must:nakashima",
     "over-cap"
@@ -6549,7 +5373,7 @@
    "condition": null,
    "location": "FR",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
+   "lastSeenAt": "2026-09-25T15:21:15.019Z",
    "reasons": [
     "must:nakashima",
     "over-cap"
@@ -6612,7 +5436,7 @@
    "condition": "Used",
    "location": "GB",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
+   "lastSeenAt": "2026-09-25T15:21:15.019Z",
    "reasons": [
     "must:sintesi",
     "over-cap"
@@ -6675,7 +5499,7 @@
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
+   "lastSeenAt": "2026-09-25T15:21:15.019Z",
    "reasons": [
     "must:sintesi",
     "over-cap"
@@ -6729,7 +5553,7 @@
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
+   "lastSeenAt": "2026-09-25T15:21:15.019Z",
    "reasons": [
     "must:nakashima",
     "over-cap"
@@ -6783,7 +5607,7 @@
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
+   "lastSeenAt": "2026-09-25T15:21:15.019Z",
    "reasons": [
     "must:sintesi",
     "over-cap"
@@ -6832,12 +5656,12 @@
    "seller": {
     "username": "d-rose-mod",
     "feedbackPercentage": 100,
-    "feedbackScore": 1702
+    "feedbackScore": 1703
    },
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
+   "lastSeenAt": "2026-09-25T15:21:15.019Z",
    "reasons": [
     "must:nakashima",
     "over-cap"
@@ -6891,7 +5715,7 @@
    "condition": "Used",
    "location": "GB",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
+   "lastSeenAt": "2026-09-25T15:21:15.019Z",
    "reasons": [
     "must:sintesi",
     "over-cap"
@@ -6949,12 +5773,12 @@
    "seller": {
     "username": "dimanoinmanocoop",
     "feedbackPercentage": 99.7,
-    "feedbackScore": 22517
+    "feedbackScore": 22520
    },
    "condition": "Used",
    "location": "IT",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
+   "lastSeenAt": "2026-09-25T15:21:15.019Z",
    "reasons": [
     "must:sintesi",
     "over-cap"
@@ -7008,7 +5832,7 @@
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
+   "lastSeenAt": "2026-09-25T15:21:15.019Z",
    "reasons": [
     "must:sintesi",
     "over-cap"
@@ -7057,12 +5881,12 @@
    "seller": {
     "username": "d-rose-mod",
     "feedbackPercentage": 100,
-    "feedbackScore": 1702
+    "feedbackScore": 1703
    },
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
+   "lastSeenAt": "2026-09-25T15:21:15.019Z",
    "reasons": [
     "must:nakashima",
     "over-cap"
@@ -7111,12 +5935,12 @@
    "seller": {
     "username": "d-rose-mod",
     "feedbackPercentage": 100,
-    "feedbackScore": 1702
+    "feedbackScore": 1703
    },
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
+   "lastSeenAt": "2026-09-25T15:21:15.019Z",
    "reasons": [
     "must:sintesi",
     "over-cap"
@@ -7165,12 +5989,12 @@
    "seller": {
     "username": "x-squall",
     "feedbackPercentage": 100,
-    "feedbackScore": 957
+    "feedbackScore": 958
    },
    "condition": "Used",
    "location": "IT",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
+   "lastSeenAt": "2026-09-25T15:21:15.019Z",
    "reasons": [
     "must:sintesi",
     "over-cap"
@@ -7219,12 +6043,12 @@
    "seller": {
     "username": "d-rose-mod",
     "feedbackPercentage": 100,
-    "feedbackScore": 1702
+    "feedbackScore": 1703
    },
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
+   "lastSeenAt": "2026-09-25T15:21:15.019Z",
    "reasons": [
     "must:nakashima",
     "over-cap"
@@ -7273,12 +6097,12 @@
    "seller": {
     "username": "d-rose-mod",
     "feedbackPercentage": 100,
-    "feedbackScore": 1702
+    "feedbackScore": 1703
    },
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
+   "lastSeenAt": "2026-09-25T15:21:15.019Z",
    "reasons": [
     "must:nakashima",
     "over-cap"
@@ -7327,12 +6151,12 @@
    "seller": {
     "username": "d-rose-mod",
     "feedbackPercentage": 100,
-    "feedbackScore": 1702
+    "feedbackScore": 1703
    },
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
+   "lastSeenAt": "2026-09-25T15:21:15.019Z",
    "reasons": [
     "must:nakashima",
     "over-cap"
@@ -7386,7 +6210,7 @@
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
+   "lastSeenAt": "2026-09-25T15:21:15.019Z",
    "reasons": [
     "must:nakashima",
     "over-cap"
@@ -7440,7 +6264,7 @@
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
+   "lastSeenAt": "2026-09-25T15:21:15.019Z",
    "reasons": [
     "must:nakashima",
     "over-cap"
@@ -7494,7 +6318,7 @@
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
+   "lastSeenAt": "2026-09-25T15:21:15.019Z",
    "reasons": [
     "must:pileo",
     "over-cap"
@@ -7513,64 +6337,6 @@
      "at": "2026-09-25T03:20:24.636Z",
      "price": 8700,
      "allIn": 9260
-    }
-   ],
-   "priceChange": null,
-   "relisted": null,
-   "photoReused": null,
-   "dismissible": true
-  },
-  {
-   "key": "art-crumb-drawing:v1|144671479654|0",
-   "group": "over",
-   "huntId": "art-crumb-drawing",
-   "huntLabel": "Robert Crumb — drawing",
-   "classification": "over",
-   "listingId": "v1|144671479654|0",
-   "title": "Signed Robert R.Crumb Original FOOTSY Embossed Etching Pre-Rework Design Ltd /50",
-   "url": "https://www.ebay.com/itm/144671479654?_skw=r+crumb+original&hash=item21af179766:g:jzgAAOSw7pNi7Wrz",
-   "imageUrl": "https://i.ebayimg.com/images/g/jzgAAOSw7pNi7Wrz/s-l225.jpg",
-   "buyingMode": "FIXED_PRICE",
-   "endsAt": null,
-   "bidCount": null,
-   "price": 2000,
-   "shipping": 22.4,
-   "allIn": 2022.4,
-   "maxAllIn": 2000,
-   "underBy": -22.4,
-   "underPct": -0.01,
-   "capWording": "over cap",
-   "seller": {
-    "username": "curioddities",
-    "feedbackPercentage": 100,
-    "feedbackScore": 7201
-   },
-   "condition": "Used",
-   "location": "US",
-   "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "reasons": [
-    "must:crumb",
-    "medium:original",
-    "claims-original",
-    "over-cap"
-   ],
-   "flags": [],
-   "confidence": 0.95,
-   "review": "ok",
-   "carried": false,
-   "alertKey": null,
-   "similarCount": 0,
-   "risk": "medium",
-   "riskReasons": [
-    "Robert Crumb is heavily forged on eBay — no provenance in the listing"
-   ],
-   "details": null,
-   "priceHistory": [
-    {
-     "at": "2026-09-25T03:20:24.636Z",
-     "price": 2000,
-     "allIn": 2022.4
     }
    ],
    "priceChange": null,
@@ -7606,7 +6372,7 @@
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
+   "lastSeenAt": "2026-09-25T15:21:15.019Z",
    "reasons": [
     "must:ertz",
     "game-used:game worn",
@@ -7665,7 +6431,7 @@
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
+   "lastSeenAt": "2026-09-25T15:21:15.019Z",
    "reasons": [
     "must:super bowl",
     "game-used:game used",
@@ -7724,7 +6490,7 @@
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
+   "lastSeenAt": "2026-09-25T15:21:15.019Z",
    "reasons": [
     "must:sintesi",
     "over-cap"
@@ -7783,7 +6549,7 @@
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
+   "lastSeenAt": "2026-09-25T15:21:15.019Z",
    "reasons": [
     "must:super bowl",
     "game-used:game used",
@@ -7843,7 +6609,7 @@
    "condition": "Unspecified",
    "location": "US",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
+   "lastSeenAt": "2026-09-25T15:21:15.019Z",
    "reasons": [
     "must:nakashima",
     "over-cap"
@@ -7901,7 +6667,7 @@
    "condition": "Unspecified",
    "location": "US",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
+   "lastSeenAt": "2026-09-25T15:21:15.019Z",
    "reasons": [
     "must:condo",
     "medium:crayon",
@@ -7959,7 +6725,7 @@
    "condition": null,
    "location": "IT",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
+   "lastSeenAt": "2026-09-25T15:21:15.019Z",
    "reasons": [
     "must:sintesi",
     "over-cap"
@@ -8026,7 +6792,7 @@
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
+   "lastSeenAt": "2026-09-25T15:21:15.019Z",
    "reasons": [
     "must:sintesi",
     "over-cap"
@@ -8084,10 +6850,10 @@
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
+   "lastSeenAt": "2026-09-25T15:21:15.019Z",
    "reasons": [
     "must:crumb",
-    "medium:original",
+    "medium:original art",
     "claims-original",
     "over-cap"
    ],
@@ -8142,7 +6908,7 @@
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
+   "lastSeenAt": "2026-09-25T15:21:15.019Z",
    "reasons": [
     "must:condo",
     "medium:drawing",
@@ -8200,7 +6966,7 @@
    "condition": "Unspecified",
    "location": "US",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
+   "lastSeenAt": "2026-09-25T15:21:15.019Z",
    "reasons": [
     "must:condo",
     "medium:drawing",
@@ -8258,7 +7024,7 @@
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
+   "lastSeenAt": "2026-09-25T15:21:15.019Z",
    "reasons": [
     "must:crumb",
     "medium:drawing",
@@ -8316,7 +7082,7 @@
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
+   "lastSeenAt": "2026-09-25T15:21:15.019Z",
    "reasons": [
     "must:crumb",
     "medium:illustration",
@@ -8379,7 +7145,7 @@
    "flags": [],
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
    "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "state": "pending",
+   "state": "expired",
    "trigger": "first-under",
    "version": 1
   },
@@ -8419,7 +7185,7 @@
    ],
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
    "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "state": "pending",
+   "state": "expired",
    "trigger": "first-under",
    "version": 1
   },
@@ -8453,7 +7219,7 @@
    "flags": [],
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
    "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "state": "pending",
+   "state": "expired",
    "trigger": "first-under",
    "version": 1
   },
@@ -8490,7 +7256,7 @@
    ],
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
    "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "state": "pending",
+   "state": "expired",
    "trigger": "first-under",
    "version": 1
   },
@@ -8530,7 +7296,7 @@
    ],
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
    "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "state": "pending",
+   "state": "expired",
    "trigger": "first-under",
    "version": 1
   },
@@ -8570,7 +7336,7 @@
    ],
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
    "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "state": "pending",
+   "state": "expired",
    "trigger": "first-under",
    "version": 1
   },
@@ -8610,7 +7376,7 @@
    ],
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
    "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "state": "pending",
+   "state": "expired",
    "trigger": "first-under",
    "version": 1
   },
@@ -8642,7 +7408,7 @@
    "flags": [],
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
    "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "state": "pending",
+   "state": "expired",
    "trigger": "first-under",
    "version": 1
   },
@@ -8679,7 +7445,7 @@
    ],
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
    "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "state": "pending",
+   "state": "expired",
    "trigger": "first-under",
    "version": 1
   },
@@ -8715,7 +7481,7 @@
    ],
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
    "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "state": "pending",
+   "state": "expired",
    "trigger": "first-under",
    "version": 1
   },
@@ -8751,7 +7517,7 @@
    ],
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
    "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "state": "pending",
+   "state": "expired",
    "trigger": "first-under",
    "version": 1
   },
@@ -8786,7 +7552,7 @@
    "flags": [],
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
    "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "state": "pending",
+   "state": "expired",
    "trigger": "first-under",
    "version": 1
   },
@@ -8826,7 +7592,7 @@
    ],
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
    "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "state": "pending",
+   "state": "expired",
    "trigger": "first-under",
    "version": 1
   },
@@ -8863,7 +7629,7 @@
    ],
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
    "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "state": "pending",
+   "state": "expired",
    "trigger": "first-under",
    "version": 1
   },
@@ -8902,7 +7668,7 @@
    ],
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
    "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "state": "pending",
+   "state": "expired",
    "trigger": "first-under",
    "version": 1
   },
@@ -8936,7 +7702,7 @@
    "flags": [],
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
    "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "state": "pending",
+   "state": "expired",
    "trigger": "first-under",
    "version": 1
   },
@@ -8974,7 +7740,7 @@
    ],
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
    "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "state": "pending",
+   "state": "expired",
    "trigger": "first-under",
    "version": 1
   },
@@ -9009,7 +7775,7 @@
     "price-far-below-market"
    ],
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
+   "lastSeenAt": "2026-09-25T15:21:15.019Z",
    "state": "pending",
    "trigger": "first-under",
    "version": 1
@@ -9048,7 +7814,7 @@
    ],
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
    "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "state": "pending",
+   "state": "expired",
    "trigger": "first-under",
    "version": 1
   },
@@ -9086,7 +7852,7 @@
    ],
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
    "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "state": "pending",
+   "state": "expired",
    "trigger": "first-under",
    "version": 1
   },
@@ -9148,7 +7914,7 @@
    "flags": [],
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
    "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "state": "pending",
+   "state": "expired",
    "trigger": "first-under",
    "version": 1
   },
@@ -9178,7 +7944,7 @@
    "flags": [],
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
    "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "state": "pending",
+   "state": "expired",
    "trigger": "first-under",
    "version": 1
   },
@@ -9208,7 +7974,7 @@
    "flags": [],
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
    "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "state": "pending",
+   "state": "expired",
    "trigger": "first-under",
    "version": 1
   },
@@ -9244,7 +8010,7 @@
    ],
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
    "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "state": "pending",
+   "state": "expired",
    "trigger": "first-under",
    "version": 1
   },
@@ -9283,7 +8049,7 @@
    ],
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
    "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "state": "pending",
+   "state": "expired",
    "trigger": "first-under",
    "version": 1
   },
@@ -9321,7 +8087,7 @@
    ],
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
    "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "state": "pending",
+   "state": "expired",
    "trigger": "first-under",
    "version": 1
   },
@@ -9357,7 +8123,7 @@
    ],
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
    "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "state": "pending",
+   "state": "expired",
    "trigger": "first-under",
    "version": 1
   },
@@ -9393,7 +8159,7 @@
    ],
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
    "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "state": "pending",
+   "state": "expired",
    "trigger": "first-under",
    "version": 1
   },
@@ -9430,7 +8196,7 @@
    ],
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
    "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "state": "pending",
+   "state": "expired",
    "trigger": "first-under",
    "version": 1
   },
@@ -9469,7 +8235,7 @@
    ],
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
    "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "state": "pending",
+   "state": "expired",
    "trigger": "first-under",
    "version": 1
   },
@@ -9506,7 +8272,7 @@
    ],
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
    "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "state": "pending",
+   "state": "expired",
    "trigger": "first-under",
    "version": 1
   },
@@ -9544,7 +8310,7 @@
    ],
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
    "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "state": "pending",
+   "state": "expired",
    "trigger": "first-under",
    "version": 1
   },
@@ -9581,7 +8347,7 @@
    ],
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
    "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "state": "pending",
+   "state": "expired",
    "trigger": "first-under",
    "version": 1
   },
@@ -9621,7 +8387,7 @@
    ],
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
    "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "state": "pending",
+   "state": "expired",
    "trigger": "first-under",
    "version": 1
   },
@@ -9659,7 +8425,7 @@
    ],
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
    "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "state": "pending",
+   "state": "expired",
    "trigger": "first-under",
    "version": 1
   },
@@ -9696,7 +8462,7 @@
    ],
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
    "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "state": "pending",
+   "state": "expired",
    "trigger": "first-under",
    "version": 1
   },
@@ -9733,7 +8499,7 @@
    ],
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
    "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "state": "pending",
+   "state": "expired",
    "trigger": "first-under",
    "version": 1
   },
@@ -9769,7 +8535,7 @@
    ],
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
    "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "state": "pending",
+   "state": "expired",
    "trigger": "first-under",
    "version": 1
   },
@@ -9808,7 +8574,7 @@
    ],
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
    "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "state": "pending",
+   "state": "expired",
    "trigger": "first-under",
    "version": 1
   },
@@ -9847,7 +8613,7 @@
    ],
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
    "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "state": "pending",
+   "state": "expired",
    "trigger": "first-under",
    "version": 1
   },
@@ -9884,7 +8650,7 @@
    ],
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
    "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "state": "pending",
+   "state": "expired",
    "trigger": "first-under",
    "version": 1
   },
@@ -9921,7 +8687,7 @@
    ],
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
    "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "state": "pending",
+   "state": "expired",
    "trigger": "first-under",
    "version": 1
   },
@@ -9959,7 +8725,7 @@
    ],
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
    "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "state": "pending",
+   "state": "expired",
    "trigger": "first-under",
    "version": 1
   },
@@ -9996,7 +8762,7 @@
    ],
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
    "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "state": "pending",
+   "state": "expired",
    "trigger": "first-under",
    "version": 1
   },
@@ -10034,7 +8800,7 @@
    ],
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
    "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "state": "pending",
+   "state": "expired",
    "trigger": "first-under",
    "version": 1
   },
@@ -10072,7 +8838,7 @@
    ],
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
    "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "state": "pending",
+   "state": "expired",
    "trigger": "first-under",
    "version": 1
   },
@@ -10110,7 +8876,7 @@
    ],
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
    "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "state": "pending",
+   "state": "expired",
    "trigger": "first-under",
    "version": 1
   },
@@ -10733,7 +9499,7 @@
    ],
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
    "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "state": "pending",
+   "state": "expired",
    "trigger": "first-under",
    "version": 1
   },
@@ -11063,7 +9829,7 @@
    ],
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
    "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "state": "pending",
+   "state": "expired",
    "trigger": "first-under",
    "version": 1
   },
@@ -11193,7 +9959,7 @@
    ],
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
    "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "state": "pending",
+   "state": "expired",
    "trigger": "first-under",
    "version": 1
   },
@@ -12037,7 +10803,7 @@
    ],
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
    "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "state": "pending",
+   "state": "expired",
    "trigger": "first-under",
    "version": 1
   },
@@ -12413,7 +11179,7 @@
    ],
    "flags": [],
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
+   "lastSeenAt": "2026-09-25T15:21:15.019Z",
    "state": "pending",
    "trigger": "first-under",
    "version": 1
@@ -12444,7 +11210,7 @@
    ],
    "flags": [],
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
+   "lastSeenAt": "2026-09-25T15:21:15.019Z",
    "state": "pending",
    "trigger": "first-under",
    "version": 1
@@ -12507,7 +11273,7 @@
    ],
    "flags": [],
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
+   "lastSeenAt": "2026-09-25T15:21:15.019Z",
    "state": "pending",
    "trigger": "first-under",
    "version": 1
@@ -13055,7 +11821,7 @@
    "flags": [],
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
    "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "state": "pending",
+   "state": "expired",
    "trigger": "first-under",
    "version": 1
   },
@@ -14330,19 +13096,21 @@
    "underBy": 13550,
    "underPct": 0.9,
    "currency": "USD",
-   "confidence": 0.95,
+   "confidence": 0.9,
    "risk": "low",
    "riskReasons": [],
    "reasons": [
     "must:futura",
-    "medium:original",
     "claims-original",
     "aspect:original",
+    "aspect:medium:original",
     "at-or-under-cap"
    ],
-   "flags": [],
+   "flags": [
+    "medium-from-item-specifics"
+   ],
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
+   "lastSeenAt": "2026-09-25T15:21:15.019Z",
    "state": "pending",
    "trigger": "first-under",
    "version": 1
@@ -16060,7 +14828,7 @@
     "same-seller-repeats:46"
    ],
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
+   "lastSeenAt": "2026-09-25T15:21:15.019Z",
    "state": "pending",
    "trigger": "first-under",
    "version": 1
@@ -16722,7 +15490,7 @@
    ],
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
    "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "state": "pending",
+   "state": "expired",
    "trigger": "first-under",
    "version": 1
   },
@@ -16846,7 +15614,7 @@
    ],
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
    "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "state": "pending",
+   "state": "expired",
    "trigger": "first-under",
    "version": 1
   },
@@ -17862,7 +16630,7 @@
    ],
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
    "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "state": "pending",
+   "state": "expired",
    "trigger": "first-under",
    "version": 1
   },
@@ -18070,7 +16838,7 @@
    "flags": [],
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
    "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "state": "pending",
+   "state": "expired",
    "trigger": "first-under",
    "version": 1
   },
@@ -18111,7 +16879,7 @@
    ],
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
    "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "state": "pending",
+   "state": "expired",
    "trigger": "first-under",
    "version": 1
   },
@@ -18258,9 +17026,44 @@
    ],
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
    "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "state": "pending",
+   "state": "expired",
    "trigger": "first-under",
    "version": 1
+  },
+  {
+   "alertKey": "ebay:v1|318875185094|0:sports-foles-bears-jersey:v2",
+   "huntId": "sports-foles-bears-jersey",
+   "listingId": "v1|318875185094|0",
+   "title": "Nick Foles #9 Chicago Bears Game Used Jersey Week 18 1/9/2022",
+   "url": "https://www.ebay.com/itm/318875185094?_skw=nick+foles+game+used+bears+jersey&hash=item4a3e712fc6:g:mQYAAeSwoXNqqZCQ",
+   "imageUrl": "https://i.ebayimg.com/images/g/mQYAAeSwoXNqqZCQ/s-l225.jpg",
+   "buyingMode": "FIXED_PRICE",
+   "endsAt": null,
+   "price": 800,
+   "shipping": 14.46,
+   "allIn": 814.46,
+   "maxAllIn": 1500,
+   "underBy": 685.54,
+   "underPct": 0.46,
+   "currency": "USD",
+   "confidence": 0.85,
+   "risk": "medium",
+   "riskReasons": [
+    "no photo-match, team or third-party authentication named"
+   ],
+   "reasons": [
+    "must:foles",
+    "game-used:game used",
+    "at-or-under-cap"
+   ],
+   "flags": [
+    "no-authentication-in-title"
+   ],
+   "firstSeenAt": "2026-09-25T01:26:41.021Z",
+   "lastSeenAt": "2026-09-25T15:21:15.019Z",
+   "state": "pending",
+   "trigger": "price-drop",
+   "version": 2
   },
   {
    "alertKey": "ebay:v1|318908205227|0:sports-hurts-jersey:v1",
@@ -19045,19 +17848,21 @@
    "underBy": 13986,
    "underPct": 0.93,
    "currency": "USD",
-   "confidence": 0.95,
+   "confidence": 0.9,
    "risk": "low",
    "riskReasons": [],
    "reasons": [
     "must:futura",
-    "medium:original",
     "claims-original",
     "aspect:original",
+    "aspect:medium:original",
     "at-or-under-cap"
    ],
-   "flags": [],
+   "flags": [
+    "medium-from-item-specifics"
+   ],
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
+   "lastSeenAt": "2026-09-25T15:21:15.019Z",
    "state": "pending",
    "trigger": "first-under",
    "version": 1
@@ -19210,7 +18015,7 @@
    "flags": [],
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
    "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "state": "pending",
+   "state": "expired",
    "trigger": "first-under",
    "version": 1
   },
@@ -19396,7 +18201,7 @@
    ],
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
    "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "state": "pending",
+   "state": "expired",
    "trigger": "first-under",
    "version": 1
   },
@@ -19578,7 +18383,7 @@
    ],
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
    "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "state": "pending",
+   "state": "expired",
    "trigger": "first-under",
    "version": 1
   },
@@ -19620,7 +18425,7 @@
    ],
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
    "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "state": "pending",
+   "state": "expired",
    "trigger": "first-under",
    "version": 1
   },
@@ -19716,7 +18521,7 @@
    ],
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
    "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "state": "pending",
+   "state": "expired",
    "trigger": "first-under",
    "version": 1
   },
@@ -20486,7 +19291,7 @@
    ],
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
    "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "state": "pending",
+   "state": "expired",
    "trigger": "first-under",
    "version": 1
   },
@@ -21162,7 +19967,7 @@
    "flags": [],
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
    "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "state": "pending",
+   "state": "expired",
    "trigger": "first-under",
    "version": 1
   },
@@ -21497,7 +20302,7 @@
    ],
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
    "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "state": "pending",
+   "state": "expired",
    "trigger": "first-under",
    "version": 1
   },
@@ -22635,7 +21440,7 @@
    ],
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
    "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "state": "pending",
+   "state": "expired",
    "trigger": "first-under",
    "version": 1
   },
@@ -23377,7 +22182,7 @@
     "same-seller-repeats:24"
    ],
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
+   "lastSeenAt": "2026-09-25T15:21:15.019Z",
    "state": "pending",
    "trigger": "first-under",
    "version": 1
@@ -23501,7 +22306,7 @@
    ],
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
    "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "state": "pending",
+   "state": "expired",
    "trigger": "first-under",
    "version": 1
   },
@@ -23660,7 +22465,7 @@
    ],
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
    "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "state": "pending",
+   "state": "expired",
    "trigger": "first-under",
    "version": 1
   },
@@ -23908,7 +22713,7 @@
    ],
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
    "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "state": "pending",
+   "state": "expired",
    "trigger": "first-under",
    "version": 1
   },
@@ -24184,12 +22989,12 @@
   }
  ],
  "counts": {
-  "cards": 116,
-  "under": 36,
+  "cards": 91,
+  "under": 12,
   "newUnder": 0,
   "watch": 43,
-  "over": 37,
-  "pendingAlerts": 77,
-  "highRisk": 23
+  "over": 36,
+  "pendingAlerts": 9,
+  "highRisk": 4
  }
 }
