@@ -39,14 +39,23 @@ export async function loadDetails(
 ): Promise<{ details: Map<string, DetailsRecord>; fetched: number; cached: number }> {
   const out = new Map<string, DetailsRecord>();
   let fetched = 0, cached = 0;
+  // spend lookups where they change a decision: one per distinct seller+title (spam repeats
+  // fold into one card anyway), unders before watch, lower fake risk first, most-under first
+  const riskRank = { low: 0, medium: 1, high: 2 } as const;
   const cands = obs
     .filter((o) => o.evaluation.classification === 'under' || o.evaluation.classification === 'watch')
-    .sort((a, b) => (a.evaluation.classification === 'under' ? 0 : 1) - (b.evaluation.classification === 'under' ? 0 : 1) || (b.evaluation.underPct ?? -1) - (a.evaluation.underPct ?? -1));
+    .sort((a, b) =>
+      (a.evaluation.classification === 'under' ? 0 : 1) - (b.evaluation.classification === 'under' ? 0 : 1) ||
+      riskRank[a.evaluation.risk ?? 'low'] - riskRank[b.evaluation.risk ?? 'low'] ||
+      (b.evaluation.underPct ?? -1) - (a.evaluation.underPct ?? -1));
   const seen = new Set<string>();
+  const seenGroup = new Set<string>();
   for (const o of cands) {
     const id = o.listing.itemId;
-    if (seen.has(id)) continue;
+    const group = `${o.listing.seller?.username ?? ''}|${o.listing.title.toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim()}`;
+    if (seen.has(id) || seenGroup.has(group)) continue;
     seen.add(id);
+    seenGroup.add(group);
     const key = `details/ebay/${safeKey(id)}.json`;
     const hit = await getJson<DetailsRecord>(store, key).catch(() => null);
     if (hit && now.getTime() - Date.parse(hit.fetchedAt) < DETAILS_TTL_MS && hit.price === o.listing.price) {
