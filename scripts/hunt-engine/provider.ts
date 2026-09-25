@@ -16,14 +16,15 @@ import type { HuntListing, ProviderHealth } from './types';
 
 /** results per search page (Browse max is 200; 100 keeps pages small and the budget predictable) */
 export const PAGE_SIZE = 100;
-/** pages per hunt per run — hunts are searched to completion (up to 1,000 listings each);
- *  worst case 22 × 10 = 220 calls = scheduler.HUNT_ENGINE_MAX_CALLS_PER_RUN. Hunts are paid
- *  first each tick; the deal board budgets from whatever this leaves. */
+/** pages per search on a full sweep (up to 1,000 listings each). Results come newest first;
+ *  delta scans stop at the first page that reaches listings older than the last search. Hunts
+ *  are paid first each tick; the deal board budgets from whatever this leaves. */
 export const MAX_PAGES = 10;
 export const REQUEST_TIMEOUT_MS = 20_000;
-/** Per-run search ceiling: past this, hunts get their FIRST page only (marked partial), so a run
- *  costs at most CALL_CEILING + one page per hunt ≈ 205 — three hunt runs fit a 625-call board window. */
-export const CALL_CEILING = 170;
+/** Per-run search ceiling: past this, searches get their FIRST page only (marked partial), so a run
+ *  costs at most CALL_CEILING + one page per distinct search (pinned + recall) — three hunt runs
+ *  fit a 625-call board window. */
+export const CALL_CEILING = 140;
 
 export class ProviderAuthError extends Error { constructor(msg: string) { super(msg); this.name = 'ProviderAuthError'; } }
 export class ProviderRateLimitError extends Error {
@@ -48,9 +49,17 @@ export interface ItemDetails {
   imageUrl: string | null;
 }
 
+/** per-call search options */
+export interface SearchOptions {
+  /** a recall query instead of the hunt's pinned query */
+  query?: string;
+  /** delta scan: newest first, stop paging at the first listing created before this instant */
+  since?: string | null;
+}
+
 export interface HuntProvider {
   readonly kind: 'ebay' | 'fixture';
-  search(hunt: Hunt, now: Date): Promise<SearchResult>;
+  search(hunt: Hunt, now: Date, opts?: SearchOptions): Promise<SearchResult>;
   /** item details; null when the item is gone or the lookup failed (never throws for one bad item) */
   getItem?(itemId: string, now: Date): Promise<ItemDetails | null>;
   health(): ProviderHealth;
@@ -139,6 +148,7 @@ export function normalizeSummary(raw: any, fetchedAt: string): HuntListing | nul
     shipping,
     buyingMode,
     endsAt: typeof raw.itemEndDate === 'string' ? raw.itemEndDate : null,
+    listedAt: typeof raw.itemCreationDate === 'string' ? raw.itemCreationDate : null,
     bidCount: num(raw.bidCount),
     condition: typeof raw.condition === 'string' ? raw.condition : null,
     seller: raw.seller
@@ -247,7 +257,7 @@ export class EbayBrowseProvider implements HuntProvider {
     try { return normalizeDetails(await res.json()); } catch { return null; }
   }
 
-  async search(hunt: Hunt, now: Date): Promise<SearchResult> {
+  async search(hunt: Hunt, now: Date, opts: SearchOptions = {}): Promise<SearchResult> {
     if (this.stopped === 'auth-failed') throw new ProviderAuthError('provider stopped after an authentication failure');
     if (this.stopped === 'rate-limited') throw new ProviderRateLimitError('provider stopped after a 429 this run', this.rateLimit);
     const fetchedAt = now.toISOString();
@@ -260,10 +270,12 @@ export class EbayBrowseProvider implements HuntProvider {
         return { listings, pages, returned, partialError: `run call ceiling (${this.cfg.callCeiling ?? CALL_CEILING}) reached — first page only`, raw };
       }
       const token = await this.ensureToken(now.getTime());
+      // newest first: a brand-new listing is always on page 1, and delta scans stop early
       const params = new URLSearchParams({
-        q: hunt.query,
+        q: opts.query ?? hunt.query,
         limit: String(PAGE_SIZE),
         offset: String(page * PAGE_SIZE),
+        sort: 'newlyListed',
         filter: `buyingOptions:{${hunt.buyingModes.join('|')}}`,
       });
       let res: Response;
@@ -323,7 +335,13 @@ export class EbayBrowseProvider implements HuntProvider {
       }
       const total = Number(body.total ?? 0);
       if (items.length < PAGE_SIZE || (page + 1) * PAGE_SIZE >= total) break;
+      // delta: results are newest-first, so once a page reaches listings older than `since` we're done
+      if (opts.since) {
+        const oldest = items[items.length - 1]?.itemCreationDate;
+        if (typeof oldest === 'string' && Date.parse(oldest) < Date.parse(opts.since)) break;
+      }
     }
-    return { listings, pages, returned, partialError: null, raw };
+    const kept = opts.since ? listings.filter((l) => !l.listedAt || Date.parse(l.listedAt) >= Date.parse(opts.since!)) : listings;
+    return { listings: kept, pages, returned, partialError: null, raw };
   }
 }

@@ -167,6 +167,26 @@ export function evaluate(hunt: Hunt, l: HuntListing, ctx: EvalContext = {}): Eva
       if (/authentic|coa|certificate/.test(key) && AUTH_VALUE.test(v)) reasons.push(`aspect:authenticated:${v.toLowerCase().slice(0, 30)}`);
       if (hunt.vertical === 'sports' && /game used|game worn|use/.test(key) && /^no\b|not game/i.test(v)) rejects.push(`aspect:not-game-used:${v.toLowerCase().slice(0, 30)}`);
     }
+    // second look: evidence the title left out can clear a title-only reject
+    if (hunt.vertical === 'art' && rejects.includes('art:medium-missing')) {
+      const medium = ART_MEDIUM_EVIDENCE[hunt.section as 'Paintings' | 'Drawings'] ?? [];
+      const hit = Object.entries(d.aspects).find(([k, v]) => /technique|medium|material|type/i.test(k) && firstPhrase(normalizeText(v), medium));
+      if (hit && !rejects.some((r) => r.startsWith('aspect:print-technique'))) {
+        rejects.splice(rejects.indexOf('art:medium-missing'), 1);
+        reasons.push(`aspect:medium:${firstPhrase(normalizeText(hit[1]), medium)}`);
+        flags.push('medium-from-item-specifics');
+        confidence -= 0.05;
+      }
+    }
+    if (hunt.vertical === 'sports' && rejects.includes('sports:not-game-used')) {
+      const hit = Object.entries(d.aspects).find(([k, v]) => /game used|game worn|^use$/i.test(k.trim()) && /^(yes|game used|game worn)\b/i.test(v.trim()));
+      if (hit) {
+        rejects.splice(rejects.indexOf('sports:not-game-used'), 1);
+        reasons.push('aspect:game-used');
+        flags.push('game-used-from-item-specifics');
+        confidence -= 0.05;
+      }
+    }
     if (DESC_PROVENANCE.test(d.description)) reasons.push('description:provenance');
     if (DESC_REPRO.test(d.description)) flags.push('description:reproduction-language');
     if (hunt.vertical === 'sports' && reasons.some((r) => r.startsWith('aspect:authenticated'))) {
@@ -230,6 +250,17 @@ export function evaluate(hunt: Hunt, l: HuntListing, ctx: EvalContext = {}): Eva
  * Recomputed after same-seller folding (a seller with several copies of a
  * "unique" work is itself a fake signal).
  */
+/** title-only rejects that item details can clear — worth a lookup when the price fits */
+export const SECOND_LOOK_REJECTS = ['art:medium-missing', 'sports:not-game-used'] as const;
+
+/** a reject whose only failures are ones item details could clear, priced at or under cap */
+export function isBorderline(e: Evaluation): boolean {
+  if (e.classification !== 'reject') return false;
+  const fails = e.reasons.filter((r) => !/^(must|medium|game-used|photo-matched|signed|claims-original|aspect|description):?/.test(r) && r !== 'photo-matched' && r !== 'signed' && r !== 'claims-original');
+  if (!fails.length || !fails.every((r) => (SECOND_LOOK_REJECTS as readonly string[]).includes(r))) return false;
+  return e.maxAllIn === null || (e.allIn !== null && e.allIn <= e.maxAllIn);
+}
+
 export function riskOf(hunt: Hunt, l: HuntListing, flags: string[], reasons: string[] = []): { risk: RiskLevel; riskReasons: string[] } {
   const t = normalizeText(l.title);
   const high: string[] = [];

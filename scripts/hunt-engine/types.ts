@@ -16,6 +16,8 @@ export interface HuntListing {
   shipping: number | null;
   buyingMode: BuyingMode;
   endsAt: string | null;
+  /** when the listing went live (eBay itemCreationDate) — drives delta scans */
+  listedAt?: string | null;
   bidCount: number | null;
   condition: string | null;
   seller: { username: string | null; feedbackPercentage: number | null; feedbackScore: number | null } | null;
@@ -59,6 +61,20 @@ export interface HuntRunResult {
   returned: number;
   error: string | null;
   searchedAt: string | null;
+  /** full: every page re-read · delta: only listings created since the last search */
+  sweep?: 'full' | 'delta';
+  /** distinct eBay searches behind this hunt (pinned + recall) */
+  searches?: number;
+  /** returned ids (rejects included) this hunt had never seen before */
+  newThisRun?: number;
+  /** ids first seen in the last 24h */
+  newToday?: number;
+}
+
+/** every item id each hunt's searches have returned, with when it was first seen */
+export interface SeenIndex {
+  schemaVersion: 1;
+  hunts: Record<string, Record<string, string>>;
 }
 
 export type RunState = 'success' | 'partial' | 'failed';
@@ -95,6 +111,7 @@ export interface RunSummary {
   huntsComplete: number;
   hunts: HuntRunResult[];
   provider: ProviderHealth;
+  discovery?: { searches: number; fullSweeps: number; deltaScans: number; newThisRun: number; secondLooks: number };
   counts: { returned: number; retained: number; rejected: number; under: number; over: number; watch: number };
   promoted: boolean;
   promotedReason: string;
@@ -114,6 +131,8 @@ export interface Manifest {
     lastSearchedAt: string | null;
     lastSuccessfulAt: string | null;
     lastSuccessfulRunId: string | null;
+    /** last time every page of every search for this hunt was re-read */
+    lastFullSweepAt?: string | null;
     error: string | null;
     observations: Observation[];
   }>;

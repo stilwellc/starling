@@ -140,6 +140,42 @@ export const GRAILS: Hunt[] = [
 ];
 HUNTS.push(...GRAILS);
 
+/**
+ * Recall queries — extra eBay searches per hunt, run through the SAME rules as
+ * the pinned query (titleMust, excludes, caps, risk). eBay only returns listings
+ * containing every word of a search, so "eric haze painting" never sees a seller
+ * who wrote "Eric Haze original acrylic on canvas". The pinned queries above
+ * stay exactly as specified; these widen the net around them.
+ * A query shared by several hunts is searched once per run.
+ */
+export const RECALL_QUERIES: Record<string, string[]> = {
+  'art-haze-painting': ['eric haze canvas', 'eric haze original'],
+  'art-haze-drawing': ['eric haze original', 'eric haze sketch'],
+  'art-futura-painting': ['futura2000', 'futura 2000 original', 'futura 2000 canvas'],
+  'art-saul-painting': ['peter saul original', 'peter saul acrylic'],
+  'art-saul-drawing': ['peter saul original', 'peter saul sketch'],
+  'art-condo-drawing': ['george condo original', 'george condo sketch'],
+  'art-crumb-drawing': ['r crumb original', 'crumb original art', 'r crumb sketch'],
+  'sports-ertz-jersey': ['ertz game worn'],
+  'sports-hurts-jersey': ['jalen hurts game worn'],
+  'sports-smith-jersey': ['devonta smith game worn'],
+  'sports-graham-jersey': ['brandon graham game worn'],
+  'sports-djackson-jersey': ['desean jackson game worn'],
+  'sports-foles-eagles-jersey': ['nick foles game worn'],
+  'sports-foles-bears-jersey': ['nick foles game worn'],
+  'sports-foles-jaguars-jersey': ['nick foles game worn'],
+  'sports-sb52-football': ['super bowl lii game used football'],
+  'design-pileo-lamp': ['pileo lamp'],
+  'design-sintesi-lamp': ['artemide sintesi'],
+  'design-beaubourg-armchair': ['beaubourg chair'],
+  'design-nakashima-seating': ['nakashima stool', 'nakashima conoid', 'nakashima bench'],
+};
+
+/** every distinct search a full run makes (pinned + recall) */
+export function searchesFor(h: Hunt): string[] {
+  return [...new Set([h.query, ...(RECALL_QUERIES[h.id] ?? [])])];
+}
+
 export const MANUAL_RESEARCH_BRIEF: ManualResearchBrief = {
   tactics: [
     'Vague-seller-wording tactics cannot be automated queries; run these manually.',

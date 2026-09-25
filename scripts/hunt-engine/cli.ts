@@ -1,6 +1,7 @@
 /**
  * cli.ts — `npm run hunt:scan` (live) / `npm run hunt:scan:fixture` (explicit local fixture).
  *   --hunt=<id>   search one hunt only (others carry their last results)
+ *   --full        every hunt gets a full sweep (default: full when due, new-listings-only otherwise)
  *   --validate    validate the checked-in hunts and exit
  * Writes the dashboard payload to public/data/starling/hunt/dashboard.json so
  * the static page and the /api/v1 functions ship the same run.
@@ -41,10 +42,13 @@ async function main() {
     const { summary, dashboard } = await runScan({
       provider, store, mode: env.mode, onlyHuntId: only,
       staleAfterMinutes: env.staleAfterMinutes, webhookUrl: env.alertWebhookUrl,
+      sweep: args.includes('--full') || process.env.HUNT_FULL === '1' ? 'full' : 'auto',
     });
     runId = summary.runId;
     mkdirSync(dirname(PUBLIC_DASHBOARD), { recursive: true });
     writeFileSync(PUBLIC_DASHBOARD, JSON.stringify(dashboard, null, 1));
+    const d = summary.discovery;
+    if (d) console.log(`[hunt] discovery: ${d.searches} searches · ${d.fullSweeps} full sweeps · ${d.deltaScans} new-only scans · ${d.newThisRun} new listings · ${d.secondLooks} second looks`);
     console.log(`[hunt] run ${summary.runId}: ${summary.state} · ${summary.huntsComplete}/${summary.huntsTotal} complete · ${summary.counts.under} under · ${summary.alerts.created} new alerts · promoted=${summary.promoted} · ${summary.provider.calls} calls`);
     return summary.state === 'failed' ? 1 : 0;
   } catch (e: any) {

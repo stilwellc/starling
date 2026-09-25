@@ -34,6 +34,12 @@ function matchesText(r: HuntRow): string {
   }
 }
 
+/** listings this hunt's searches had never returned before (rejects included) */
+function newText(r: HuntRow): string {
+  if (r.newThisRun == null) return '—';
+  return `${r.newThisRun} · ${r.newToday ?? 0} today`;
+}
+
 function undersText(r: HuntRow): string {
   if (r.state === 'complete' || r.matchCount > 0) return String(r.underCount);
   return '—';
@@ -67,6 +73,13 @@ export function Coverage({ rows, runLabel = 'this run' }: { rows: HuntRow[]; run
         </h2>
         <span className="rule-head-count">
           {rows.filter((r) => r.state === 'complete').length}/{rows.length} searched completely {runLabel}
+          {rows.some((r) => r.newThisRun != null) && (
+            <>
+              {' · '}
+              {rows.reduce((a, r) => a + (r.newThisRun ?? 0), 0)} new listings this run ·{' '}
+              {rows.reduce((a, r) => a + (r.newToday ?? 0), 0)} in the last 24h
+            </>
+          )}
         </span>
       </div>
       {VERTICALS.map((v) => {
@@ -85,6 +98,7 @@ export function Coverage({ rows, runLabel = 'this run' }: { rows: HuntRow[]; run
                     <th>State</th>
                     <th>Matches</th>
                     <th className="hx-num">Unders</th>
+                    <th className="hx-num" title="Listings the searches returned for the first time — rejects included. Run · last 24h.">New</th>
                     <th>Last searched</th>
                     <th>Last successful</th>
                     <th>Error</th>
@@ -97,14 +111,14 @@ export function Coverage({ rows, runLabel = 'this run' }: { rows: HuntRow[]; run
                   return (
                     <tbody key={sec}>
                       <tr className="hx-cov-sec">
-                        <th colSpan={8} scope="rowgroup">
+                        <th colSpan={9} scope="rowgroup">
                           {sec}
                           <span>{sRows.length} {sRows.length === 1 ? 'hunt' : 'hunts'}</span>
                         </th>
                       </tr>
                       {sRows.length === 0 && (
                         <tr className="hx-cov-empty">
-                          <td colSpan={8}>
+                          <td colSpan={9}>
                             {EMPTY_ON_PURPOSE.includes(sec)
                               ? `${sec} is intentionally empty — no hunts on purpose, not lost configuration.`
                               : 'No hunts in this subsection.'}
@@ -128,8 +142,21 @@ export function Coverage({ rows, runLabel = 'this run' }: { rows: HuntRow[]; run
                           <td data-label="Unders" className={`hx-num ${r.underCount > 0 ? 'hx-up' : ''}`}>
                             {undersText(r)}
                           </td>
-                          <td data-label="Last searched" className="hx-mono" title={r.lastSearchedAt ? utcStamp(r.lastSearchedAt) : undefined}>
+                          <td data-label="New" className={`hx-num ${r.newThisRun ? 'hx-up' : ''}`}>
+                            {newText(r)}
+                          </td>
+                          <td
+                            data-label="Last searched"
+                            className="hx-mono"
+                            title={[
+                              r.lastSearchedAt ? utcStamp(r.lastSearchedAt) : null,
+                              r.sweep === 'delta' ? 'new listings only — every page re-read on the full sweep' : r.sweep === 'full' ? 'full sweep — every page re-read' : null,
+                              r.lastFullSweepAt ? `last full sweep ${utcStamp(r.lastFullSweepAt)}` : null,
+                              r.searches ? `${r.searches} ${r.searches === 1 ? 'search' : 'searches'}` : null,
+                            ].filter(Boolean).join(' · ') || undefined}
+                          >
                             {r.lastSearchedAt ? utcShort(r.lastSearchedAt) : 'never'}
+                            {r.sweep && <span className="hx-sweep">{r.sweep === 'full' ? 'full' : 'new only'}</span>}
                           </td>
                           <td data-label="Last successful" className="hx-mono" title={r.lastSuccessfulAt ? utcStamp(r.lastSuccessfulAt) : undefined}>
                             {r.lastSuccessfulAt ? utcShort(r.lastSuccessfulAt) : 'never'}

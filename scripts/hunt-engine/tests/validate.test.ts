@@ -30,13 +30,15 @@ test('anything other than 35 active hunts fails', () => {
 import { MAX_PAGES } from '../provider';
 import { HUNT_ENGINE_MAX_CALLS_PER_RUN, HUNT_RUNS_PER_BOARD_TICK, PER_RUN_CALLS, RUNS_PER_DAY, DAILY_CALL_BUDGET, boardDailyBudget } from '../../scheduler';
 import { CALL_CEILING } from '../provider';
+import { searchesFor } from '../hunts';
 import { readHuntUsage, writeHuntUsage } from '../usage';
 import { mkdtempSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 
 test('hunts are paid first; the board gets what they leave, never more than the quota', () => {
-  assert.equal(HUNT_ENGINE_MAX_CALLS_PER_RUN, CALL_CEILING + validateHunts().length, 'ceiling + one first page per hunt');
+  assert.equal(HUNT_ENGINE_MAX_CALLS_PER_RUN, CALL_CEILING + new Set(validateHunts().flatMap((h) => searchesFor(h).map((q) => `${q}|${[...h.buyingModes].sort().join(',')}`))).size, 'ceiling + one first page per distinct search');
+  assert.ok(3 * HUNT_ENGINE_MAX_CALLS_PER_RUN <= 625, 'three worst-case hunt runs fit one board window');
   assert.ok(HUNT_ENGINE_MAX_CALLS_PER_RUN * HUNT_RUNS_PER_BOARD_TICK <= PER_RUN_CALLS, 'three hunt runs fit one board window even at worst case');
   assert.equal(boardDailyBudget(28) / RUNS_PER_DAY, PER_RUN_CALLS - 28 * 3, 'hunts run hourly: the board reserves three runs of hunt spend');
   assert.equal(boardDailyBudget(null) / RUNS_PER_DAY, PER_RUN_CALLS - HUNT_ENGINE_MAX_CALLS_PER_RUN * 3, 'unknown usage assumes the worst case');

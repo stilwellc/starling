@@ -2,7 +2,13 @@
  * scan.ts — one autonomous hunt run:
  *   1 validate the checked-in hunts      (bad config → throw, zero provider calls)
  *   2 load the promoted manifest + alert ledger
- *   3 search each hunt (priority order), normalize, evaluate
+ *   3 search each hunt (priority order) — its pinned query plus its recall
+ *     queries, each distinct search once — newest first. A FULL SWEEP reads
+ *     every page (every ~3h: refreshes prices, drops ended listings); between
+ *     sweeps a DELTA scan reads only listings created since the last search
+ *     (usually one call) and carries everything else forward, so API calls go
+ *     to new lots, not the same ones again. Every returned id, rejects too,
+ *     lands in the seen-index — that's what "new this run / today" counts.
  *   4 persist raw pages + every evaluation (kept or rejected) per hunt
  *   5 merge into a new manifest — a hunt this run could not search carries its
  *     last good results, marked, never replaced by an empty list
@@ -16,17 +22,25 @@
 import { type Hunt } from './hunts';
 import { validateHunts } from './validate';
 import { evaluate, riskOf } from './evaluate';
-import { DETAILS_PER_RUN, PHOTOS_PER_RUN, hashPhoto, loadDetails, reusedPhotos } from './enrich';
+import { DETAILS_PER_RUN, PHOTOS_PER_RUN, hashPhoto, loadDetails, loadPhotoCache, reusedPhotos, savePhotoCache } from './enrich';
 import { feedbackFor, loadFeedback } from './feedback';
 import { relistIndex } from './ledger';
-import { HUNTS } from './hunts';
+import { HUNTS, searchesFor } from './hunts';
 import { normalizeText } from './text';
-import { ProviderAuthError, ProviderRateLimitError, type HuntProvider } from './provider';
+import { ProviderAuthError, ProviderRateLimitError, type HuntProvider, type SearchResult } from './provider';
 import { getJson, putJson, type ObjectStore } from './store';
 import { emptyLedger, updateLedger } from './ledger';
 import { deliverPending } from './sink';
 import { buildDashboard, type DashboardPayload } from './dashboard';
-import type { AlertLedger, DataMode, HuntRunResult, Manifest, Observation, RunState, RunSummary } from './types';
+import type { AlertLedger, DataMode, HuntListing, HuntRunResult, Manifest, Observation, RunState, RunSummary, SeenIndex } from './types';
+
+/** a hunt gets a full sweep when its last one is at least this old (hourly runs → every 3rd run) */
+export const FULL_SWEEP_EVERY_MIN = 170;
+/** delta scans re-read this much before the last search (eBay indexes new listings with a lag) */
+export const DELTA_OVERLAP_MIN = 30;
+/** seen-index entries older than this are dropped */
+export const SEEN_KEEP_DAYS = 45;
+export const SEEN_KEY = 'seen/ebay.json';
 
 export interface ScanOptions {
   provider: HuntProvider;
@@ -44,6 +58,8 @@ export interface ScanOptions {
   detailsBudget?: number;
   /** hash listing photos (default true; tests turn it off) */
   hashPhotos?: boolean;
+  /** 'auto' (default): full sweep when due, delta otherwise · 'full': every hunt full */
+  sweep?: 'auto' | 'full';
 }
 
 export interface ScanResult { summary: RunSummary; dashboard: DashboardPayload; manifest: Manifest }
@@ -66,59 +82,143 @@ export async function runScan(o: ScanOptions): Promise<ScanResult> {
   const prev = await getJson<Manifest>(o.store, 'manifests/latest.json');
   const ledger = (await getJson<AlertLedger>(o.store, 'alerts/ledger.json')) ?? emptyLedger();
 
-  // 3 + 4
+  // 3 + 4 — plan: which hunts sweep fully, which only look for new listings
+  const seenIdx = (await getJson<SeenIndex>(o.store, SEEN_KEY).catch(() => null)) ?? { schemaVersion: 1, hunts: {} };
   const results: HuntRunResult[] = [];
   const fresh = new Map<string, Observation[]>();
+  const discovery = new Map<string, { newThisRun: number; newToday: number; sweep: 'full' | 'delta'; searches: number }>();
   let returnedTotal = 0, rejectedTotal = 0;
   let stopReason: string | null = null;
+  const plan = new Map<string, { sweep: 'full' | 'delta'; since: string | null }>();
   for (const h of hunts) {
-    if (o.onlyHuntId && h.id !== o.onlyHuntId) {
-      results.push({ huntId: h.id, state: 'not-searched', pages: 0, returned: 0, error: null, searchedAt: null });
-      continue;
+    if (o.onlyHuntId && h.id !== o.onlyHuntId) continue;
+    const before = prev?.hunts[h.id];
+    const lastFull = before?.lastFullSweepAt ? Date.parse(before.lastFullSweepAt) : NaN;
+    const due = o.sweep === 'full' || !Number.isFinite(lastFull) || started.getTime() - lastFull >= FULL_SWEEP_EVERY_MIN * 60_000
+      || before?.lastSearchState !== 'complete' || !before?.lastSuccessfulAt;
+    plan.set(h.id, due
+      ? { sweep: 'full', since: null }
+      : { sweep: 'delta', since: new Date(Date.parse(before!.lastSuccessfulAt!) - DELTA_OVERLAP_MIN * 60_000).toISOString() });
+  }
+  // each distinct search once per run; a search shared by a full-sweep hunt runs full
+  const searches = new Map<string, { owner: Hunt; query: string; since: string | null; result?: SearchResult; error?: string }>();
+  for (const h of hunts) {
+    const p = plan.get(h.id);
+    if (!p) continue;
+    for (const q of searchesFor(h)) {
+      const key = `${q}|${[...h.buyingModes].sort().join(',')}`;
+      const cur = searches.get(key);
+      if (!cur) searches.set(key, { owner: h, query: q, since: p.since });
+      else if (cur.since && (!p.since || Date.parse(p.since) < Date.parse(cur.since))) cur.since = p.since;
     }
-    if (stopReason) {
-      results.push({ huntId: h.id, state: 'failed', pages: 0, returned: 0, error: `skipped: ${stopReason}`, searchedAt: null });
-      continue;
-    }
+  }
+  const searchAt = new Map<string, string>();
+  for (const [key, srch] of searches) {
+    if (stopReason) { srch.error = `skipped: ${stopReason}`; continue; }
     const at = clock();
+    searchAt.set(key, at.toISOString());
     try {
-      const r = await o.provider.search(h, at);
-      const seen = new Set<string>();
-      const obs: Observation[] = [];
-      for (const l of r.listings) {
-        if (seen.has(l.itemId)) continue;
-        seen.add(l.itemId);
-        obs.push({ listing: l, evaluation: evaluate(h, l) });
-      }
-      returnedTotal += r.returned;
-      fresh.set(h.id, obs);
-      await putJson(o.store, `runs/${runId}/raw/ebay/${h.id}.json`, { huntId: h.id, query: h.query, fetchedAt: at.toISOString(), pages: r.raw });
-      results.push({ huntId: h.id, state: r.partialError ? 'partial' : 'complete', pages: r.pages, returned: r.returned, error: r.partialError, searchedAt: at.toISOString() });
-      log(`[hunt] ${h.id}: ${r.returned} returned${r.partialError ? ` · PARTIAL (${r.partialError})` : ''}`);
+      srch.result = await o.provider.search(srch.owner, at, { query: srch.query === srch.owner.query ? undefined : srch.query, since: srch.since });
     } catch (e: any) {
-      const msg = String(e?.message ?? e).slice(0, 300);
-      results.push({ huntId: h.id, state: 'failed', pages: 0, returned: 0, error: msg, searchedAt: at.toISOString() });
-      log(`[hunt] ${h.id}: FAILED — ${msg}`);
+      srch.error = String(e?.message ?? e).slice(0, 300);
+      log(`[hunt] search "${srch.query}": FAILED — ${srch.error}`);
       if (e instanceof ProviderAuthError) stopReason = 'provider authentication failed';
       if (e instanceof ProviderRateLimitError) stopReason = 'eBay rate limit (429) — no further calls this run';
     }
   }
+  const nowIso = clock().toISOString();
+  const dayAgo = started.getTime() - 24 * 3600_000;
+  for (const h of hunts) {
+    const p = plan.get(h.id);
+    if (!p) {
+      results.push({ huntId: h.id, state: 'not-searched', pages: 0, returned: 0, error: null, searchedAt: null });
+      continue;
+    }
+    const mine = searchesFor(h).map((q) => ({ q, s: searches.get(`${q}|${[...h.buyingModes].sort().join(',')}`)! }));
+    const pinned = mine[0];
+    const searchedAt = searchAt.get(`${pinned.q}|${[...h.buyingModes].sort().join(',')}`) ?? null;
+    if (!pinned.s.result) {
+      results.push({ huntId: h.id, state: 'failed', pages: 0, returned: 0, error: pinned.s.error ?? 'not searched', searchedAt, sweep: p.sweep });
+      log(`[hunt] ${h.id}: FAILED — ${pinned.s.error}`);
+      continue;
+    }
+    const listings: HuntListing[] = [];
+    const ids = new Set<string>();
+    let pages = 0, returned = 0;
+    const errors: string[] = [];
+    for (const { q, s: srch } of mine) {
+      if (!srch.result) { errors.push(`"${q}": ${srch.error}`); continue; }
+      if (srch.result.partialError) errors.push(`"${q}": ${srch.result.partialError}`);
+      if (srch.owner === h) { pages += srch.result.pages; returned += srch.result.returned; }
+      for (const l of srch.result.listings) {
+        // a delta hunt riding on a full search still only needs the new part
+        if (p.since && l.listedAt && Date.parse(l.listedAt) < Date.parse(p.since)) continue;
+        if (ids.has(l.itemId)) continue;
+        ids.add(l.itemId);
+        listings.push(l);
+      }
+    }
+    const obs = listings.map((l) => ({ listing: l, evaluation: evaluate(h, l) }));
+    fresh.set(h.id, obs);
+    returnedTotal += returned;
+    // seen-index: every returned id, rejects included
+    const seededAlready = !!seenIdx.hunts[h.id];
+    const idx = (seenIdx.hunts[h.id] ??= {});
+    let newThisRun = 0;
+    for (const l of listings) {
+      if (idx[l.itemId]) continue;
+      // first run for a hunt seeds the index: date each id by when it was listed, not "now"
+      idx[l.itemId] = seededAlready ? nowIso : (l.listedAt ?? '1970-01-01T00:00:00.000Z');
+      if (seededAlready) newThisRun++;
+    }
+    const newToday = Object.values(idx).filter((t) => Date.parse(t) >= dayAgo).length;
+    discovery.set(h.id, { newThisRun, newToday, sweep: p.sweep, searches: mine.length });
+    await putJson(o.store, `runs/${runId}/raw/ebay/${h.id}.json`, {
+      huntId: h.id, query: h.query, sweep: p.sweep, since: p.since, fetchedAt: searchedAt,
+      searches: mine.map(({ q, s: srch }) => ({ query: q, ownedBy: srch.owner.id, pages: srch.result?.raw ?? null, error: srch.error ?? null })),
+      pages: pinned.s.result.raw,
+    });
+    const error = errors.length ? errors.join(' · ').slice(0, 300) : null;
+    results.push({ huntId: h.id, state: error ? 'partial' : 'complete', pages, returned, error, searchedAt, sweep: p.sweep, searches: mine.length, newThisRun, newToday });
+    log(`[hunt] ${h.id}: ${p.sweep} · ${mine.length} searches · ${returned} returned · ${newThisRun} new${error ? ` · PARTIAL (${error})` : ''}`);
+  }
+  // prune the seen-index
+  const keepAfter = started.getTime() - SEEN_KEEP_DAYS * 24 * 3600_000;
+  for (const idx of Object.values(seenIdx.hunts)) for (const [id, t] of Object.entries(idx)) if (Date.parse(t) < keepAfter && t !== '1970-01-01T00:00:00.000Z') delete idx[id];
 
   // 4b — evidence beyond the title, then the final evaluation of every candidate
   const byId = new Map(hunts.map((h) => [h.id, h]));
   const feedback = await loadFeedback(o.store);
   const firstPass = [...fresh.values()].flat();
   const det = await loadDetails(firstPass, o.provider, o.store, clock(), o.detailsBudget ?? DETAILS_PER_RUN);
-  const hashes = new Map<string, string>();
+  const photoCache = await loadPhotoCache(o.store);
+  const hashes = new Map<string, string>(Object.entries(photoCache.items).map(([id, v]) => [id, v.hash]));
+  const runPhotoIds = new Set<string>();
+  let photosHashed = 0;
   if (o.hashPhotos !== false) {
     const photoCands = firstPass.filter((x) => x.evaluation.classification !== 'reject' && x.listing.imageUrl && byId.get(x.evaluation.huntId)?.vertical !== 'grails');
-    for (const x of photoCands.slice(0, PHOTOS_PER_RUN)) {
-      if (hashes.has(x.listing.itemId)) continue;
+    for (const x of photoCands) {
+      const id = x.listing.itemId;
+      const cachedPhoto = photoCache.items[id];
+      if (cachedPhoto && cachedPhoto.url === x.listing.imageUrl) { runPhotoIds.add(id); continue; }
+      if (photosHashed >= PHOTOS_PER_RUN) continue;
+      photosHashed++;
       const hsh = await hashPhoto(x.listing.imageUrl!, o.fetchImpl);
-      if (hsh) hashes.set(x.listing.itemId, hsh);
+      if (hsh) {
+        hashes.set(id, hsh);
+        photoCache.items[id] = { hash: hsh, url: x.listing.imageUrl!, at: nowIso, seller: x.listing.seller?.username ?? null };
+        runPhotoIds.add(id);
+      }
     }
   }
-  const reused = reusedPhotos(hashes);
+  // a match against an older listing from the SAME seller is a relist, not a reused photo
+  const sellerOf = new Map(firstPass.map((x) => [x.listing.itemId, x.listing.seller?.username ?? null]));
+  const reused = new Map<string, string[]>();
+  for (const [id, others] of reusedPhotos(hashes, runPhotoIds)) {
+    const mine = sellerOf.get(id);
+    const keep = others.filter((oid) => runPhotoIds.has(oid) || !mine || (photoCache.items[oid]?.seller ?? null) !== mine);
+    if (keep.length) reused.set(id, keep);
+  }
   const relists = relistIndex(ledger, firstPass);
   const claimed = new Map<string, string>(); // itemId → the highest-priority hunt that kept it
   for (const h of hunts) {
@@ -152,7 +252,7 @@ export async function runScan(o: ScanOptions): Promise<ScanResult> {
     await putJson(o.store, `runs/${runId}/evaluations/${h.id}.json`, obs.map((x) => ({ title: x.listing.title, ...x.evaluation })));
     log(`[hunt] ${h.id}: ${obs.filter((x) => x.evaluation.classification !== 'reject').length} kept · ${obs.filter((x) => x.evaluation.classification === 'under').length} under`);
   }
-  log(`[hunt] evidence: ${det.fetched} item lookups (${det.cached} cached) · ${hashes.size} photos hashed · ${[...reused.keys()].length} reused photos · ${feedback.dismissed.size} dismissed · ${feedback.blockedSellers.size + feedback.learnedSellers.size} blocked sellers`);
+  log(`[hunt] evidence: ${det.fetched} item lookups (${det.secondLook} second looks at borderline rejects, ${det.cached} cached) · ${photosHashed} photos hashed (${runPhotoIds.size - photosHashed} from cache) · ${[...reused.keys()].length} reused photos · ${feedback.dismissed.size} dismissed · ${feedback.blockedSellers.size + feedback.learnedSellers.size} blocked sellers`);
 
   // 5
   const finished = clock();
@@ -172,18 +272,28 @@ export async function runScan(o: ScanOptions): Promise<ScanResult> {
   for (const r of results) {
     const before = prev?.hunts[r.huntId];
     const obs = (fresh.get(r.huntId) ?? []).filter((x) => x.evaluation.classification !== 'reject');
-    if (r.state === 'complete') {
-      manifest.hunts[r.huntId] = { lastSearchState: 'complete', lastSearchedAt: r.searchedAt, lastSuccessfulAt: r.searchedAt, lastSuccessfulRunId: runId, error: null, observations: obs };
+    // what an earlier run found and this one didn't re-read: drop ended auctions and anything you dismissed since
+    const carry = () => {
+      const ids = new Set((fresh.get(r.huntId) ?? []).map((x) => x.listing.itemId));
+      return (before?.observations ?? []).filter((x) =>
+        !ids.has(x.listing.itemId) &&
+        !(x.listing.endsAt && Date.parse(x.listing.endsAt) < finished.getTime()) &&
+        !feedbackFor(feedback, r.huntId, x.listing.itemId, x.listing.seller?.username));
+    };
+    const fullSweepAt = r.sweep === 'full' ? r.searchedAt : before?.lastFullSweepAt ?? null;
+    if (r.state === 'complete' && r.sweep === 'full') {
+      manifest.hunts[r.huntId] = { lastSearchState: 'complete', lastSearchedAt: r.searchedAt, lastSuccessfulAt: r.searchedAt, lastSuccessfulRunId: runId, lastFullSweepAt: fullSweepAt, error: null, observations: obs };
+    } else if (r.state === 'complete') {
+      manifest.hunts[r.huntId] = { lastSearchState: 'complete', lastSearchedAt: r.searchedAt, lastSuccessfulAt: r.searchedAt, lastSuccessfulRunId: runId, lastFullSweepAt: fullSweepAt, error: null, observations: [...obs, ...carry()] };
     } else if (r.state === 'partial') {
-      const ids = new Set(obs.map((x) => x.listing.itemId));
-      const kept = (before?.observations ?? []).filter((x) => !ids.has(x.listing.itemId));
-      manifest.hunts[r.huntId] = { lastSearchState: 'partial', lastSearchedAt: r.searchedAt, lastSuccessfulAt: before?.lastSuccessfulAt ?? null, lastSuccessfulRunId: before?.lastSuccessfulRunId ?? null, error: r.error, observations: [...obs, ...kept] };
+      manifest.hunts[r.huntId] = { lastSearchState: 'partial', lastSearchedAt: r.searchedAt, lastSuccessfulAt: before?.lastSuccessfulAt ?? null, lastSuccessfulRunId: before?.lastSuccessfulRunId ?? null, lastFullSweepAt: before?.lastFullSweepAt ?? null, error: r.error, observations: [...obs, ...carry()] };
     } else {
       manifest.hunts[r.huntId] = {
         lastSearchState: r.state === 'not-searched' && before ? before.lastSearchState : r.state,
         lastSearchedAt: r.state === 'not-searched' ? before?.lastSearchedAt ?? null : r.searchedAt,
         lastSuccessfulAt: before?.lastSuccessfulAt ?? null,
         lastSuccessfulRunId: before?.lastSuccessfulRunId ?? null,
+        lastFullSweepAt: before?.lastFullSweepAt ?? null,
         error: r.state === 'not-searched' ? before?.error ?? null : r.error,
         observations: before?.observations ?? [],
       };
@@ -192,7 +302,8 @@ export async function runScan(o: ScanOptions): Promise<ScanResult> {
 
   // 8 — only hunts this run actually searched feed the ledger
   const searchedObs = [...fresh.entries()].flatMap(([, obs]) => obs);
-  const complete = new Set(results.filter((r) => r.state === 'complete').map((r) => r.huntId));
+  // only a full sweep proves an item is gone — a delta scan never expires an alert
+  const complete = new Set(results.filter((r) => r.state === 'complete' && r.sweep === 'full').map((r) => r.huntId));
   const upd = updateLedger(ledger, searchedObs, complete, runId, finishedAt);
   const createdThisRun = new Map(upd.created.map((a) => [`${a.huntId}|${a.listingId}`, { alertKey: a.alertKey, trigger: a.trigger }]));
 
@@ -209,6 +320,7 @@ export async function runScan(o: ScanOptions): Promise<ScanResult> {
     manifest,
     ledger,
     createdThisRun,
+    discovery,
     generatedAt: finishedAt,
     run: {
       id: runId, state, mode: o.mode, startedAt, finishedAt,
@@ -216,6 +328,14 @@ export async function runScan(o: ScanOptions): Promise<ScanResult> {
       huntsTotal, huntsComplete,
       providerHealth: o.provider.health(),
       promoted, staleAfterMinutes,
+      discovery: {
+        searches: searches.size,
+        fullSweeps: results.filter((r) => r.sweep === 'full').length,
+        deltaScans: results.filter((r) => r.sweep === 'delta').length,
+        newThisRun: [...discovery.values()].reduce((a, d) => a + d.newThisRun, 0),
+        newToday: [...discovery.values()].reduce((a, d) => a + d.newToday, 0),
+        secondLooks: det.secondLook,
+      },
     },
   });
 
@@ -227,6 +347,8 @@ export async function runScan(o: ScanOptions): Promise<ScanResult> {
     }
   }
   await putJson(o.store, 'alerts/ledger.json', ledger);
+  await putJson(o.store, SEEN_KEY, seenIdx);
+  if (o.hashPhotos !== false) await savePhotoCache(o.store, photoCache);
   if (promoted) {
     await putJson(o.store, `manifests/${runId}.json`, manifest);
     await putJson(o.store, 'public/dashboard.json', dashboard);
@@ -246,6 +368,13 @@ export async function runScan(o: ScanOptions): Promise<ScanResult> {
     huntsComplete,
     hunts: results,
     provider: o.provider.health(),
+    discovery: {
+      searches: searches.size,
+      fullSweeps: results.filter((r) => r.sweep === 'full').length,
+      deltaScans: results.filter((r) => r.sweep === 'delta').length,
+      newThisRun: [...discovery.values()].reduce((a, d) => a + d.newThisRun, 0),
+      secondLooks: det.secondLook,
+    },
     counts: {
       returned: returnedTotal,
       retained: retained.length,

@@ -7,7 +7,7 @@
  * over. Hunt rows carry coverage so a failed or unsearched hunt can never read
  * as "0 matches".
  */
-import { HUNT_LIST_META, HUNT_NOTES, MANUAL_RESEARCH_BRIEF, type Hunt } from './hunts';
+import { HUNT_LIST_META, HUNT_NOTES, MANUAL_RESEARCH_BRIEF, searchesFor, type Hunt } from './hunts';
 import type {
   AlertLedger, AlertRecord, AlertState, Classification, DataMode, HuntRunState, Manifest, ProviderHealth, RunState,
 } from './types';
@@ -38,6 +38,8 @@ export interface DashboardRun {
   providerHealth: ProviderHealth;
   promoted: boolean;
   staleAfterMinutes: number;
+  /** how this run spent its searches: distinct eBay searches, full sweeps vs delta scans, new ids, second looks */
+  discovery?: { searches: number; fullSweeps: number; deltaScans: number; newThisRun: number; newToday: number; secondLooks: number };
 }
 
 export interface HuntRow {
@@ -59,6 +61,14 @@ export interface HuntRow {
   underCount: number;
   overCount: number;
   watchCount: number;
+  /** full = every page re-read this run · delta = only listings created since the last search */
+  sweep?: 'full' | 'delta' | null;
+  lastFullSweepAt?: string | null;
+  /** distinct eBay searches behind this hunt (pinned + recall) */
+  searches?: number;
+  /** returned listings (rejects included) this hunt had never seen — null when not searched this run */
+  newThisRun?: number | null;
+  newToday?: number | null;
 }
 
 export interface Card {
@@ -126,9 +136,12 @@ export function buildDashboard(args: {
   ledger: AlertLedger;
   run: DashboardRun;
   createdThisRun: Map<string, { alertKey: string; trigger: string }>;
+  /** per hunt, from this run's seen-index update */
+  discovery?: Map<string, { newThisRun: number; newToday: number; sweep?: 'full' | 'delta'; searches?: number }>;
   generatedAt: string;
 }): DashboardPayload {
   const { hunts, manifest, ledger, run, createdThisRun, generatedAt } = args;
+  const disc = args.discovery ?? new Map();
   const byId = new Map(hunts.map((h) => [h.id, h]));
   const cards: Card[] = [];
   const rows: HuntRow[] = [];
@@ -212,6 +225,11 @@ export function buildDashboard(args: {
       underCount: under,
       overCount: over,
       watchCount: watch,
+      sweep: disc.get(h.id)?.sweep ?? null,
+      lastFullSweepAt: m?.lastFullSweepAt ?? null,
+      searches: searchesFor(h).length,
+      newThisRun: disc.get(h.id)?.newThisRun ?? null,
+      newToday: disc.get(h.id)?.newToday ?? null,
     });
   }
 
@@ -278,6 +296,12 @@ export function statusResponse(d: DashboardPayload, now: number) {
     generatedAt: d.generatedAt,
     run: { ...runView(d, now), finishedAt: d.run.finishedAt, promoted: d.run.promoted, staleAfterMinutes: d.run.staleAfterMinutes },
     counts: d.counts,
+    discovery: d.run.discovery
+      ? {
+          ...d.run.discovery,
+          hunts: d.hunts.filter((h) => h.newThisRun != null).map((h) => ({ id: h.id, sweep: h.sweep, searches: h.searches, newThisRun: h.newThisRun, newToday: h.newToday })),
+        }
+      : null,
   };
 }
 

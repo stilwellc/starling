@@ -7,7 +7,7 @@
 import { readFileSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 import type { Hunt } from './hunts';
-import { normalizeDetails, normalizeSummary, ProviderPageError, type HuntProvider, type ItemDetails, type SearchResult } from './provider';
+import { normalizeDetails, normalizeSummary, ProviderPageError, type HuntProvider, type ItemDetails, type SearchOptions, type SearchResult } from './provider';
 import type { ProviderHealth } from './types';
 
 export const FIXTURE_PATH = join(process.cwd(), 'fixtures', 'hunt-engine', 'browse-search.json');
@@ -28,14 +28,16 @@ export class FixtureProvider implements HuntProvider {
     return raw ? normalizeDetails(raw) : null;
   }
   health(): ProviderHealth { return { status: 'fixture', calls: this.calls, rateLimit: null, message: 'fixture data — not live eBay inventory' }; }
-  async search(hunt: Hunt, now: Date): Promise<SearchResult> {
+  /** keyed by hunt id for the pinned query, or by `q:<query>` for a recall query */
+  async search(hunt: Hunt, now: Date, opts: SearchOptions = {}): Promise<SearchResult> {
     this.calls++;
-    const entry = this.data[hunt.id];
+    const entry = opts.query ? this.data[`q:${opts.query}`] : this.data[hunt.id];
     if (entry?.error) throw new ProviderPageError(String(entry.error));
     const items: any[] = entry?.itemSummaries ?? [];
     const fetchedAt = now.toISOString();
+    const all = items.map((i) => normalizeSummary(i, fetchedAt)).filter((l): l is NonNullable<typeof l> => l !== null);
     return {
-      listings: items.map((i) => normalizeSummary(i, fetchedAt)).filter((l): l is NonNullable<typeof l> => l !== null),
+      listings: opts.since ? all.filter((l) => !l.listedAt || Date.parse(l.listedAt) >= Date.parse(opts.since!)) : all,
       pages: 1,
       returned: items.length,
       partialError: null,

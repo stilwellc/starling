@@ -148,4 +148,29 @@ The whole site is private. `functions/_middleware.ts` runs in front of every req
 - **Cadence and budget**:
   - The hunts now also run hourly: `board.yml` has a second cron for the non-board hours that skips the board.
   - The board reserves three hunt runs' worth of search calls per 3-hour window: `625 − 3 × hunt spend`.
-  - A run stops paginating at `CALL_CEILING` = 170 calls (later hunts get their first page, marked partial). A run's worst case is therefore 205, so three fit in a window.
+  - A run stops paginating at `CALL_CEILING` = 140 calls (later searches get their first page, marked partial). A run's worst case is therefore 140 + 62 distinct searches = 202, so three fit in a 625-call window.
+
+## Discovery (Sep 2026) — new lots, not the same lots again
+
+- **Recall queries** (`RECALL_QUERIES` in `hunts.ts`): extra searches per hunt ("eric haze canvas",
+  "futura2000", "nakashima conoid", "… game worn"). eBay returns only listings containing every
+  word of a search, so the pinned query alone misses sellers who phrase it differently. Recall
+  results go through the exact same rules. The pinned 22 are unchanged (parity test).
+  A search shared by several hunts (e.g. "nick foles game worn") runs once per run.
+- **Newest first**: every search sends `sort=newlyListed`, so a brand-new listing is always on page 1.
+- **Full sweep vs delta**: a hunt gets a full sweep (every page, every search) when its last one is
+  ≥ `FULL_SWEEP_EVERY_MIN` (170) old — about every third hourly run. Between sweeps a *delta* scan
+  asks only for listings created since the last search (−30 min overlap) and stops paging at the
+  first page older than that — usually one call per search. Everything found earlier is carried
+  forward (ended auctions and your dismissals drop out). Only a full sweep can expire an alert or
+  record a price change; `--full` / `HUNT_FULL=1` forces one.
+- **Seen-index** (`seen/ebay.json`): every returned item id per hunt, rejects included, with when it
+  was first seen (45-day window). A hunt's first run seeds it (nothing counts as new). The coverage
+  table's **New** column and `/api/v1/status` → `discovery` report new this run / last 24h.
+- **Second look** (`BORDERLINE_PER_RUN` = 8 of the 40 lookups): a reject whose only failures are
+  title-only (`art:medium-missing`, `sports:not-game-used`) and priced at/under cap gets an item
+  lookup; item specifics (Medium: Ink, Game Used: Yes) can clear it. A looked-up lot is cached
+  for good — never paid for twice.
+- **Photo hashes** persist (`evidence/photo-hashes.json`, 4,000 newest): each photo is downloaded
+  once, and a new listing reusing a photo seen days ago is still caught (same-seller matches are
+  relists, not reuse).
