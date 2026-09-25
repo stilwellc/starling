@@ -28,9 +28,24 @@ test('anything other than 22 active hunts fails', () => {
 });
 
 import { MAX_PAGES } from '../provider';
-import { HUNT_ENGINE_CALLS_PER_RUN, BOARD_DAILY_BUDGET, DAILY_CALL_BUDGET, HUNT_ENGINE_DAILY_RESERVE } from '../../scheduler';
+import { HUNT_ENGINE_MAX_CALLS_PER_RUN, PER_RUN_CALLS, RUNS_PER_DAY, DAILY_CALL_BUDGET, boardDailyBudget } from '../../scheduler';
+import { readHuntUsage, writeHuntUsage } from '../usage';
+import { mkdtempSync } from 'node:fs';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
 
-test('the engine budget covers every hunt at max pages, and board + engine stay within the daily quota', () => {
-  assert.ok(HUNT_ENGINE_CALLS_PER_RUN >= validateHunts().length * MAX_PAGES);
-  assert.equal(BOARD_DAILY_BUDGET + HUNT_ENGINE_DAILY_RESERVE, DAILY_CALL_BUDGET);
+test('hunts are paid first; the board gets what they leave, never more than the quota', () => {
+  assert.equal(HUNT_ENGINE_MAX_CALLS_PER_RUN, validateHunts().length * MAX_PAGES);
+  assert.ok(HUNT_ENGINE_MAX_CALLS_PER_RUN <= PER_RUN_CALLS);
+  assert.equal(boardDailyBudget(28) / RUNS_PER_DAY, PER_RUN_CALLS - 28);
+  assert.equal(boardDailyBudget(null) / RUNS_PER_DAY, PER_RUN_CALLS - HUNT_ENGINE_MAX_CALLS_PER_RUN, 'unknown usage assumes the worst case');
+  assert.equal(boardDailyBudget(10_000), 0, 'the board never goes negative');
+  assert.ok((boardDailyBudget(0) / RUNS_PER_DAY + 0) * RUNS_PER_DAY <= DAILY_CALL_BUDGET);
+});
+
+test('usage hand-off: fresh usage is read, stale usage is ignored', () => {
+  const p = join(mkdtempSync(join(tmpdir(), 'hu-')), 'u.json');
+  writeHuntUsage({ runId: 'r', finishedAt: new Date(1_000_000_000_000).toISOString(), calls: 31 }, p);
+  assert.equal(readHuntUsage(p, 1_000_000_000_000 + 60_000)?.calls, 31);
+  assert.equal(readHuntUsage(p, 1_000_000_000_000 + 3 * 3600_000), null);
 });

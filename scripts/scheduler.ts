@@ -27,13 +27,28 @@ export const DAILY_CALL_BUDGET = 5000; // confirmed default Browse SEARCH quota 
 const ROTATE_PERIOD_MS = 3 * 60 * 60 * 1000; // one cron tick
 export const RUNS_PER_DAY = Math.floor((24 * 60 * 60 * 1000) / ROTATE_PERIOD_MS); // 8 at the 3h cadence
 
-/** The acquisition hunt engine (scripts/hunt-engine) runs BEFORE the board each
- *  tick and is paid off the very top: 22 hunts × MAX_PAGES(2) = 44 search calls
- *  per run, × 8 runs = 352/day. The board's lanes split what remains, so the two
- *  together can never exceed the 5,000/day Browse search quota. */
-export const HUNT_ENGINE_CALLS_PER_RUN = 44;
-export const HUNT_ENGINE_DAILY_RESERVE = HUNT_ENGINE_CALLS_PER_RUN * RUNS_PER_DAY;
-export const BOARD_DAILY_BUDGET = DAILY_CALL_BUDGET - HUNT_ENGINE_DAILY_RESERVE;
+/** HUNTS FIRST, BOARD GETS THE REST. Each tick's share of the daily Browse
+ *  search quota is PER_RUN_CALLS. The acquisition hunt engine
+ *  (scripts/hunt-engine) runs first and searches every checked-in hunt to
+ *  completion; it records what it actually spent (.starling-state/hunt-usage.json).
+ *  The board then budgets from what is left this tick. If the engine's usage
+ *  is unknown (file missing or stale) the board assumes the engine's worst case,
+ *  so the two together can never exceed the daily quota. */
+export const PER_RUN_CALLS = Math.floor(DAILY_CALL_BUDGET / RUNS_PER_DAY); // 625
+/** 22 hunts × MAX_PAGES (10, scripts/hunt-engine/provider.ts) — the engine's worst case per tick */
+export const HUNT_ENGINE_MAX_CALLS_PER_RUN = 220;
+
+/** The board's DAILY-equivalent budget for this tick, given the engine's actual spend
+ *  (the lane functions below divide by RUNS_PER_DAY, so per-run = PER_RUN_CALLS − engineCalls). */
+export function boardDailyBudget(engineCallsThisRun: number | null): number {
+  const used = engineCallsThisRun == null || !Number.isFinite(engineCallsThisRun)
+    ? HUNT_ENGINE_MAX_CALLS_PER_RUN
+    : Math.min(Math.max(0, Math.ceil(engineCallsThisRun)), PER_RUN_CALLS);
+  return (PER_RUN_CALLS - used) * RUNS_PER_DAY;
+}
+
+/** conservative default for callers that don't know the engine's spend */
+export const BOARD_DAILY_BUDGET = boardDailyBudget(null);
 
 // ─────────────────────────────────────────────────────────────────────────────
 // The hunt reserve — curated priorities are paid FIRST (PROPOSAL §4.4 / §5.4)

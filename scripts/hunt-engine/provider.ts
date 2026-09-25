@@ -16,8 +16,10 @@ import type { HuntListing, ProviderHealth } from './types';
 
 /** results per search page (Browse max is 200; 100 keeps pages small and the budget predictable) */
 export const PAGE_SIZE = 100;
-/** pages per hunt per run — at most 200 listings per hunt; budget = 22 × 2 = 44 search calls per run */
-export const MAX_PAGES = 2;
+/** pages per hunt per run — hunts are searched to completion (up to 1,000 listings each);
+ *  worst case 22 × 10 = 220 calls = scheduler.HUNT_ENGINE_MAX_CALLS_PER_RUN. Hunts are paid
+ *  first each tick; the deal board budgets from whatever this leaves. */
+export const MAX_PAGES = 10;
 export const REQUEST_TIMEOUT_MS = 20_000;
 
 export class ProviderAuthError extends Error { constructor(msg: string) { super(msg); this.name = 'ProviderAuthError'; } }

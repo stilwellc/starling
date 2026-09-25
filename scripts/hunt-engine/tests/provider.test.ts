@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { EbayBrowseProvider, ProviderAuthError, ProviderConfigError, ProviderPageError, ProviderRateLimitError, PAGE_SIZE, redact } from '../provider';
+import { EbayBrowseProvider, ProviderAuthError, ProviderConfigError, ProviderPageError, ProviderRateLimitError, PAGE_SIZE, MAX_PAGES, redact } from '../provider';
 import { hunt, jsonResponse, summary } from './helpers';
 
 const SECRET = 'SUPERSECRET-client-secret-value';
@@ -34,13 +34,17 @@ test('the OAuth token is minted once and cached across searches', async () => {
   assert.equal(p.health().calls, 2);
 });
 
-test('search paginates up to the documented limit', async () => {
-  const page = (off: number) => Array.from({ length: PAGE_SIZE }, (_, i) => summary(`id${off + i}`, 'Robert Crumb drawing', 10, 5));
-  const e = fakeEbay((u) => jsonResponse({ total: 500, itemSummaries: page(Number(new URL(u).searchParams.get('offset'))) }));
-  const r = await mk(e.f).search(hunt('art-crumb-drawing'), new Date());
-  assert.equal(r.pages, 2);
-  assert.equal(r.listings.length, 2 * PAGE_SIZE);
-  assert.ok(e.calls[0].includes('filter=buyingOptions%3A%7BFIXED_PRICE%7CAUCTION%7D'));
+test('search paginates to completion, and stops at the documented page cap', async () => {
+  const page = (off: number, total: number) => Array.from({ length: Math.min(PAGE_SIZE, total - off) }, (_, i) => summary(`id${off + i}`, 'Robert Crumb drawing', 10, 5));
+  const five = fakeEbay((u) => jsonResponse({ total: 500, itemSummaries: page(Number(new URL(u).searchParams.get('offset')), 500) }));
+  const r = await mk(five.f).search(hunt('art-crumb-drawing'), new Date());
+  assert.equal(r.pages, 5);
+  assert.equal(r.listings.length, 500);
+  assert.ok(five.calls[0].includes('filter=buyingOptions%3A%7BFIXED_PRICE%7CAUCTION%7D'));
+  const huge = fakeEbay((u) => jsonResponse({ total: 50_000, itemSummaries: page(Number(new URL(u).searchParams.get('offset')), 50_000) }));
+  const h = await mk(huge.f).search(hunt('art-crumb-drawing'), new Date());
+  assert.equal(h.pages, MAX_PAGES);
+  assert.equal(huge.calls.length, MAX_PAGES);
 });
 
 test('401 and 403 stop the provider', async () => {

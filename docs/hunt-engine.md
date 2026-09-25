@@ -19,7 +19,7 @@ Starling's primary job is now an **acquisition hunt**: 22 checked-in hunts are s
 - `validate.ts`: ids unique and slugged, exactly 22 active, caps positive or `null`, queries and terms nonempty. A bad config throws before any provider call.
 - `text.ts`: case- and punctuation-tolerant whole-word phrase matching (tolerates a trailing plural "s").
 - `evaluate.ts`: classifies each candidate as under, over, watch or reject, with machine-readable reasons and flags, a confidence score, all-in, dollars under and percent under, `taxExcluded`, and the cap wording.
-- `provider.ts`: `EbayBrowseProvider`. OAuth client credentials, token cached until 60s before expiry. `PAGE_SIZE` is 100 and `MAX_PAGES` is 2. 20s timeout. Error handling:
+- `provider.ts`: `EbayBrowseProvider`. OAuth client credentials, token cached until 60s before expiry. `PAGE_SIZE` is 100 and `MAX_PAGES` is 10, so each hunt is searched to completion (up to 1,000 listings). 20s timeout. Error handling:
   - 401 or 403: auth failure; the provider stops.
   - 429: hard stop for the rest of the run, keeping the rate-limit headers.
   - A timeout or malformed page: that hunt fails, or is partial if earlier pages succeeded.
@@ -37,7 +37,7 @@ Starling's primary job is now an **acquisition hunt**: 22 checked-in hunts are s
 **Other files**
 - **Functions**: `functions/api/v1/{_shared,status,hunts,alerts}.ts`.
 - **UI**: `/` is the Hunt view, `/board` the deep-value board (moved), `/hunt` the BSTJ lane (now labeled "Grails"), `/hunts/brief/` the read-only brief. Also `app/lib/hunt-data.ts` and the hunt components.
-- **Budget**: `scripts/scheduler.ts` pays `HUNT_ENGINE_CALLS_PER_RUN` = 44 (22 hunts × 2 pages) off the top. The board's lanes split `BOARD_DAILY_BUDGET` = 5000 − 352, so the two together stay within the 5,000/day Browse search quota.
+- **Budget: hunts first, the board gets the rest.** Each tick's share of the 5,000/day quota is `PER_RUN_CALLS` = 625. The engine runs first, searches every hunt to completion, and writes what it actually spent to `.starling-state/hunt-usage.json` (`scripts/hunt-engine/usage.ts`). `run-board.ts` then budgets 625 minus that spend (`boardDailyBudget` in `scripts/scheduler.ts`). If the usage file is missing or older than 90 minutes, the board assumes the engine's worst case (`HUNT_ENGINE_MAX_CALLS_PER_RUN` = 22 × 10 = 220), so the two together can never exceed the quota.
 - **Workflows**:
   - `board.yml`: validates the hunt list, then runs the hunt scan, then the board. `workflow_dispatch` takes an optional `hunt_id` for a single-hunt run, which skips the board. The existing `board` concurrency group means one production writer.
   - `deploy.yml`: refuses a fixture hunt payload, runs typecheck and tests, and watches `functions/**` and `scripts/hunt-engine/**`.
@@ -110,7 +110,7 @@ Do not commit a fixture `public/data/starling/hunt/dashboard.json`. The deploy w
 
 ## Migration risks
 
-- **Budget**: the board now has 352 fewer search calls per day, about 7% of the quota. The hunt reserve and the lanes are proportional, so each shrinks slightly.
+- **Budget**: the board's share now varies by tick: 625 minus what the hunts used (typically about 30–60 calls, at most 220). The BSTJ reserve and the board's lanes are proportional, so each flexes with it.
 - **Home route**: `/` changed from the deal board to the Hunt view. Old links to `/` land on the hunts, and the board is one click away at `/board`.
 - **Functions**: the first deploy with Functions adds a Worker in front of `/api/*` only, via the auto-generated `_routes.json`. Static pages are unaffected.
 - **R2 GET lag**: the R2 REST API can serve a stale object for a short time after a PUT (see `data-store.sh`). Runs are 3h apart, so the ledger and manifest reads are unaffected in practice.

@@ -14,12 +14,16 @@ import { EbayBrowseProvider, ProviderConfigError } from './provider';
 import { FixtureProvider } from './fixture-provider';
 import { FileStore, R2RestStore } from './store';
 import { runScan } from './scan';
+import { writeHuntUsage } from './usage';
+import type { HuntProvider } from './provider';
 
 export const PUBLIC_DASHBOARD = join(process.cwd(), 'public', 'data', 'starling', 'hunt', 'dashboard.json');
 
 async function main() {
   const args = process.argv.slice(2);
   const only = args.find((a) => a.startsWith('--hunt='))?.slice(7) || process.env.HUNT_ID?.trim() || null;
+  let provider: HuntProvider | null = null;
+  let runId: string | null = null;
   try {
     const hunts = validateHunts();
     if (args.includes('--validate')) {
@@ -27,7 +31,7 @@ async function main() {
       return 0;
     }
     const env = readEngineEnv();
-    const provider = env.mode === 'fixture'
+    provider = env.mode === 'fixture'
       ? new FixtureProvider()
       : new EbayBrowseProvider({ ...env.ebay! });
     const store = env.storage.kind === 'r2'
@@ -38,6 +42,7 @@ async function main() {
       provider, store, mode: env.mode, onlyHuntId: only,
       staleAfterMinutes: env.staleAfterMinutes, webhookUrl: env.alertWebhookUrl,
     });
+    runId = summary.runId;
     mkdirSync(dirname(PUBLIC_DASHBOARD), { recursive: true });
     writeFileSync(PUBLIC_DASHBOARD, JSON.stringify(dashboard, null, 1));
     console.log(`[hunt] run ${summary.runId}: ${summary.state} · ${summary.huntsComplete}/${summary.huntsTotal} complete · ${summary.counts.under} under · ${summary.alerts.created} new alerts · promoted=${summary.promoted} · ${summary.provider.calls} calls`);
@@ -49,6 +54,13 @@ async function main() {
     }
     console.error(`[hunt] run aborted: ${String(e?.message ?? e).slice(0, 300)}`);
     return 1;
+  } finally {
+    // tell the board what the hunts actually spent this tick (it budgets the rest)
+    if (provider) {
+      const calls = provider.health().calls;
+      writeHuntUsage({ runId, finishedAt: new Date().toISOString(), calls });
+      console.log(`[hunt] spent ${calls} search calls this tick — the board gets the rest`);
+    }
   }
 }
 

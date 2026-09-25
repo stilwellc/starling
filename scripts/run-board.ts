@@ -40,7 +40,8 @@ import type {
 import { LAUNCH_VERTICALS } from './types';
 import { matcherFor } from './match/registry';
 import { syncBook } from './sync-book';
-import { reserveHuntBudget, planHunt, allocateSweepBudget, goldmineBudget } from './scheduler';
+import { reserveHuntBudget, planHunt, allocateSweepBudget, goldmineBudget, boardDailyBudget, PER_RUN_CALLS } from './scheduler';
+import { readHuntUsage } from './hunt-engine/usage';
 import { loadHuntList, compileHuntQueries, toHuntTarget, huntRelevant, NOBOOK_CAP_PER_TARGET } from './hunt';
 import { pollHunt } from './poll';
 import { SWEEP_SLICES, sweep, loadSweepState, commitSweepState, type SweepSlice } from './sweep';
@@ -158,13 +159,21 @@ async function main() {
 
   // 2 — plan: the hunt is PAID FIRST (10% reserved off the top), THEN the sweep
   // split (cards-lane slices capped at 40% combined) runs on what remains.
-  const { huntBudget } = reserveHuntBudget();
-  const huntPlan = planHunt(huntCompiled);
+  // hunts first: the acquisition engine already ran this tick; the board gets what it left
+  const engineUsage = readHuntUsage();
+  const boardTotal = boardDailyBudget(engineUsage?.calls ?? null);
+  console.log(
+    engineUsage
+      ? `[budget] hunt engine used ${engineUsage.calls} of ${PER_RUN_CALLS} calls this tick (run ${engineUsage.runId}) → board gets ${boardTotal / 8}`
+      : `[budget] hunt engine usage unknown this tick → board assumes the engine's worst case and gets ${boardTotal / 8}`,
+  );
+  const { huntBudget } = reserveHuntBudget(boardTotal);
+  const huntPlan = planHunt(huntCompiled, 1, boardTotal);
   console.log(
     `[run-board] hunt: ${huntEntries.length} targets → ${huntPlan.queries.length} queries ` +
       `(${huntBudget}/day reserved, paid first)`,
   );
-  const sweepBudgets = allocateSweepBudget(SWEEP_SLICES);
+  const sweepBudgets = allocateSweepBudget(SWEEP_SLICES, boardTotal);
 
   // The run's funnel numbers — published in board.stats (schema v2). Gate
   // reasons are AGGREGATED, never discarded: the audit's core observability fix.
@@ -493,7 +502,7 @@ async function main() {
   // eBay for the identities the book prices best. Hits ride the exact same
   // gate → risk → rank path as sweep hits.
   const gmQueries = compileGoldmine(synced.book.rows, matcherFor, now);
-  const gmBudget = mode === 'live' ? goldmineBudget(SWEEP_SLICES) : 0;
+  const gmBudget = mode === 'live' ? goldmineBudget(SWEEP_SLICES, boardTotal) : 0;
   const gmWindow = goldmineWindow(gmQueries, now, gmBudget);
   const gmStats = { keys: gmWindow.length, listings: 0, surfaced: 0, closing: 0 };
   /** goldmine AUCTION finds — merged into the closing lane in 6b (Collin,
