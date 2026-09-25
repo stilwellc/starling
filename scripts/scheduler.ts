@@ -27,6 +27,14 @@ export const DAILY_CALL_BUDGET = 5000; // confirmed default Browse SEARCH quota 
 const ROTATE_PERIOD_MS = 3 * 60 * 60 * 1000; // one cron tick
 export const RUNS_PER_DAY = Math.floor((24 * 60 * 60 * 1000) / ROTATE_PERIOD_MS); // 8 at the 3h cadence
 
+/** The acquisition hunt engine (scripts/hunt-engine) runs BEFORE the board each
+ *  tick and is paid off the very top: 22 hunts × MAX_PAGES(2) = 44 search calls
+ *  per run, × 8 runs = 352/day. The board's lanes split what remains, so the two
+ *  together can never exceed the 5,000/day Browse search quota. */
+export const HUNT_ENGINE_CALLS_PER_RUN = 44;
+export const HUNT_ENGINE_DAILY_RESERVE = HUNT_ENGINE_CALLS_PER_RUN * RUNS_PER_DAY;
+export const BOARD_DAILY_BUDGET = DAILY_CALL_BUDGET - HUNT_ENGINE_DAILY_RESERVE;
+
 // ─────────────────────────────────────────────────────────────────────────────
 // The hunt reserve — curated priorities are paid FIRST (PROPOSAL §4.4 / §5.4)
 // ─────────────────────────────────────────────────────────────────────────────
@@ -39,7 +47,7 @@ export const HUNT_RESERVE = 0.1;
 
 /** Split the daily budget: the hunt's reserve off the top, the rest to the
  *  sweeps (allocateSweepBudget). Pure function — no clock, no state. */
-export function reserveHuntBudget(total = DAILY_CALL_BUDGET): {
+export function reserveHuntBudget(total = BOARD_DAILY_BUDGET): {
   huntBudget: number;
   bookBudget: number;
 } {
@@ -63,7 +71,7 @@ export interface HuntPlan {
 export function planHunt(
   compiled: CompiledHuntQuery[],
   callsPerQuery = 1,
-  total = DAILY_CALL_BUDGET,
+  total = BOARD_DAILY_BUDGET,
 ): HuntPlan {
   const { huntBudget } = reserveHuntBudget(total);
   const perRunCalls = Math.floor(huntBudget / RUNS_PER_DAY);
@@ -120,7 +128,7 @@ export interface SweepLaneInfo {
 export const GOLDMINE_CAP = 0.25;
 
 /** Per-run search calls reserved for the goldmine lane. */
-export function goldmineBudget(slices: SweepLaneInfo[], total = DAILY_CALL_BUDGET): number {
+export function goldmineBudget(slices: SweepLaneInfo[], total = BOARD_DAILY_BUDGET): number {
   const { bookBudget } = reserveHuntBudget(total);
   const perRun = Math.floor(bookBudget / RUNS_PER_DAY);
   const auctionPool = slices.some((s) => s.lane === 'auction')
@@ -131,7 +139,7 @@ export function goldmineBudget(slices: SweepLaneInfo[], total = DAILY_CALL_BUDGE
 
 export function allocateSweepBudget(
   slices: SweepLaneInfo[],
-  total = DAILY_CALL_BUDGET,
+  total = BOARD_DAILY_BUDGET,
 ): Record<string, number> {
   const { bookBudget } = reserveHuntBudget(total);
   const perRun = Math.floor(bookBudget / RUNS_PER_DAY);

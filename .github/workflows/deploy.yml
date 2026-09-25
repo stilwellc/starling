@@ -13,6 +13,8 @@ on:
     paths:
       - 'app/**'
       - 'public/**'
+      - 'functions/**'
+      - 'scripts/hunt-engine/**'
       - '.github/workflows/deploy.yml'
   workflow_dispatch:
 
@@ -44,6 +46,21 @@ jobs:
 
       # The board JSON is already in the checkout (committed by board.yml) — no
       # R2 pull needed here; next just exports it to out/.
+      # Production never ships fixture hunt data: the hunt engine refuses fixture
+      # mode in CI, and this guard refuses to deploy a fixture payload that was
+      # committed by hand.
+      - name: Refuse fixture hunt data
+        run: |
+          f=public/data/starling/hunt/dashboard.json
+          if [ -f "$f" ] && node -e "process.exit(JSON.parse(require('fs').readFileSync('$f','utf8')).run.mode==='fixture'?0:1)"; then
+            echo "::error::public/data/starling/hunt/dashboard.json is FIXTURE data — refusing to deploy"; exit 1
+          fi
+
+      - name: Typecheck and tests
+        run: |
+          npm run typecheck
+          npm test
+
       - name: Build static export
         run: npm run build
 

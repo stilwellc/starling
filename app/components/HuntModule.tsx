@@ -35,10 +35,10 @@ export function HuntModule({ hunt }: { hunt: HuntSection }) {
   const noBookCount = hunt.deals.length - priced.length;
 
   return (
-    <section className="hunt-module" aria-label="The hunt — curated targets">
+    <section className="hunt-module" aria-label="Grails — curated targets">
       <div className="hunt-module-head">
         <div>
-          <span className="kicker">The hunt · curated targets, polled every run</span>
+          <span className="kicker">Grails · curated targets, polled every run</span>
           <p className="hunt-module-sub">
             {priced.length > 0 ? (
               <>

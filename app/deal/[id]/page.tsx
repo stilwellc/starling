@@ -63,7 +63,7 @@ export default function DealPage({ params }: { params: { id: string } }) {
   if (!deal && params.id === EMPTY_SENTINEL) {
     return (
       <>
-        <Link href="/" className="back-link">
+        <Link href="/board/" className="back-link">
           ← Board
         </Link>
         <p className="lede" style={{ marginTop: 24 }}>
@@ -82,7 +82,7 @@ export default function DealPage({ params }: { params: { id: string } }) {
 
   return (
     <>
-      <Link href="/" className="back-link">
+      <Link href="/board/" className="back-link">
         ← Board
       </Link>
 

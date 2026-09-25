@@ -13,11 +13,11 @@ import { huntLensLabel, shortDate } from '@/app/lib/display';
 export const dynamic = 'force-static';
 
 export const metadata: Metadata = {
-  title: 'The Hunt — curated targets, polled every run · Starling',
+  title: 'Grails — curated targets, polled every run · Starling',
   description:
     "Starling's hunt list: hand-curated priority targets watched above book-driven discovery — every target polled every run, every hit surfaced with its evidence or honestly labeled when no book value exists.",
   openGraph: {
-    title: 'The Hunt · Starling',
+    title: 'Grails · Starling',
     description:
       'Hand-curated targets watched every run — priced hits with full evidence, everything else as honest listing facts.',
     type: 'website',
@@ -43,7 +43,7 @@ export default function HuntPage() {
     <>
       <div className="page-head">
         <div className="page-head-top">
-          <span className="kicker">The hunt · curated priorities above the book</span>
+          <span className="kicker">Grails · curated priorities above the book</span>
           {serial && <span className="serial">No. {serial}</span>}
         </div>
         <h1>
@@ -145,8 +145,8 @@ export default function HuntPage() {
       )}
 
       <p className="build-stamp" style={{ marginTop: 28 }}>
-        <Link href="/" className="back-link" style={{ margin: 0 }}>
-          ← Back to the mixed board
+        <Link href="/board/" className="back-link" style={{ margin: 0 }}>
+          ← Back to the board
         </Link>
       </p>
     </>

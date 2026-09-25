@@ -2,7 +2,7 @@
   "name": "starling",
   "version": "0.1.0",
   "private": true,
-  "description": "Starling — a public deal board that points lectr's certified price knowledge at eBay Buy It Now. Powered by lectr (lectr.bid).",
+  "description": "Starling \u2014 a public deal board that points lectr's certified price knowledge at eBay Buy It Now. Powered by lectr (lectr.bid).",
   "engines": {
     "node": ">=22"
   },
@@ -15,7 +15,12 @@
     "board": "tsx scripts/run-board.ts",
     "board:fixture": "STARLING_MODE=fixture tsx scripts/run-board.ts",
     "pipeline:fixtures": "STARLING_MODE=fixture tsx scripts/run-board.ts",
-    "test:matchers": "tsx scripts/match/test-matchers.ts"
+    "test:matchers": "tsx scripts/match/test-matchers.ts",
+    "hunt:scan": "tsx scripts/hunt-engine/cli.ts",
+    "hunt:scan:fixture": "STARLING_DATA_MODE=fixture tsx scripts/hunt-engine/cli.ts",
+    "hunt:validate": "tsx scripts/hunt-engine/cli.ts --validate",
+    "hunt:test": "node --import tsx --test scripts/hunt-engine/tests/*.test.ts",
+    "test": "npm run test:matchers && npm run hunt:test"
   },
   "dependencies": {
     "next": "14.2.35",

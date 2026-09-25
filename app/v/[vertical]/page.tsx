@@ -68,7 +68,7 @@ export default function VerticalPage({ params }: { params: { vertical: string } 
         <div className="control-row">
           <span className="control-label">Vertical</span>
           <div className="chips">
-            <Link className="chip" href="/">
+            <Link className="chip" href="/board/">
               All
             </Link>
             {ALL_VERTICALS.map((v) => (
@@ -120,8 +120,8 @@ export default function VerticalPage({ params }: { params: { vertical: string } 
       )}
 
       <p className="build-stamp" style={{ marginTop: 28 }}>
-        <Link href="/" className="back-link" style={{ margin: 0 }}>
-          ← Back to the mixed board
+        <Link href="/board/" className="back-link" style={{ margin: 0 }}>
+          ← Back to the board
         </Link>
       </p>
     </>
