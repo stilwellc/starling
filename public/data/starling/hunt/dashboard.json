@@ -1,18 +1,18 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-09-25T09:41:39.186Z",
+ "generatedAt": "2026-09-25T11:47:02.652Z",
  "run": {
-  "id": "20260925T093758Z-pvk1",
+  "id": "20260925T114528Z-pc2a",
   "state": "success",
   "mode": "live",
-  "startedAt": "2026-09-25T09:37:58.164Z",
-  "finishedAt": "2026-09-25T09:41:39.186Z",
-  "succeededAt": "2026-09-25T09:41:39.186Z",
+  "startedAt": "2026-09-25T11:45:28.265Z",
+  "finishedAt": "2026-09-25T11:47:02.652Z",
+  "succeededAt": "2026-09-25T11:47:02.652Z",
   "huntsTotal": 35,
   "huntsComplete": 35,
   "providerHealth": {
    "status": "ok",
-   "calls": 94,
+   "calls": 62,
    "rateLimit": null,
    "message": null
   },
@@ -20,11 +20,11 @@
   "staleAfterMinutes": 240,
   "discovery": {
    "searches": 62,
-   "fullSweeps": 35,
-   "deltaScans": 0,
-   "newThisRun": 2806,
+   "fullSweeps": 0,
+   "deltaScans": 35,
+   "newThisRun": 9,
    "newToday": 2936,
-   "secondLooks": 8
+   "secondLooks": 0
   }
  },
  "meta": {
@@ -138,19 +138,19 @@
    "maxAllIn": 5000,
    "priority": 1,
    "state": "complete",
-   "lastSearchedAt": "2026-09-25T09:37:59.395Z",
-   "lastSuccessfulAt": "2026-09-25T09:37:59.395Z",
+   "lastSearchedAt": "2026-09-25T11:45:29.692Z",
+   "lastSuccessfulAt": "2026-09-25T11:45:29.692Z",
    "carried": false,
    "error": null,
-   "matchCount": 3,
+   "matchCount": 2,
    "underCount": 1,
-   "overCount": 1,
+   "overCount": 0,
    "watchCount": 1,
-   "sweep": "full",
+   "sweep": "delta",
    "lastFullSweepAt": "2026-09-25T09:37:59.395Z",
    "searches": 3,
-   "newThisRun": 23,
-   "newToday": 24
+   "newThisRun": 1,
+   "newToday": 25
   },
   {
    "id": "art-haze-painting-misspell",
@@ -162,15 +162,15 @@
    "maxAllIn": 5000,
    "priority": 2,
    "state": "complete",
-   "lastSearchedAt": "2026-09-25T09:38:00.739Z",
-   "lastSuccessfulAt": "2026-09-25T09:38:00.739Z",
+   "lastSearchedAt": "2026-09-25T11:45:35.816Z",
+   "lastSuccessfulAt": "2026-09-25T11:45:35.816Z",
    "carried": false,
    "error": null,
    "matchCount": 0,
    "underCount": 0,
    "overCount": 0,
    "watchCount": 0,
-   "sweep": "full",
+   "sweep": "delta",
    "lastFullSweepAt": "2026-09-25T09:38:00.739Z",
    "searches": 1,
    "newThisRun": 0,
@@ -186,18 +186,18 @@
    "maxAllIn": 15000,
    "priority": 3,
    "state": "complete",
-   "lastSearchedAt": "2026-09-25T09:38:01.059Z",
-   "lastSuccessfulAt": "2026-09-25T09:38:01.059Z",
+   "lastSearchedAt": "2026-09-25T11:45:36.834Z",
+   "lastSuccessfulAt": "2026-09-25T11:45:36.834Z",
    "carried": false,
    "error": null,
-   "matchCount": 10,
-   "underCount": 10,
+   "matchCount": 4,
+   "underCount": 4,
    "overCount": 0,
    "watchCount": 0,
-   "sweep": "full",
+   "sweep": "delta",
    "lastFullSweepAt": "2026-09-25T09:38:01.059Z",
    "searches": 4,
-   "newThisRun": 543,
+   "newThisRun": 0,
    "newToday": 552
   },
   {
@@ -210,18 +210,18 @@
    "maxAllIn": 15000,
    "priority": 4,
    "state": "complete",
-   "lastSearchedAt": "2026-09-25T09:38:05.280Z",
-   "lastSuccessfulAt": "2026-09-25T09:38:05.280Z",
+   "lastSearchedAt": "2026-09-25T11:45:42.987Z",
+   "lastSuccessfulAt": "2026-09-25T11:45:42.987Z",
    "carried": false,
    "error": null,
    "matchCount": 2,
    "underCount": 2,
    "overCount": 0,
    "watchCount": 0,
-   "sweep": "full",
+   "sweep": "delta",
    "lastFullSweepAt": "2026-09-25T09:38:05.280Z",
    "searches": 1,
-   "newThisRun": 4,
+   "newThisRun": 0,
    "newToday": 4
   },
   {
@@ -234,19 +234,19 @@
    "maxAllIn": 8000,
    "priority": 5,
    "state": "complete",
-   "lastSearchedAt": "2026-09-25T09:38:05.863Z",
-   "lastSuccessfulAt": "2026-09-25T09:38:05.863Z",
+   "lastSearchedAt": "2026-09-25T11:45:43.771Z",
+   "lastSuccessfulAt": "2026-09-25T11:45:43.771Z",
    "carried": false,
    "error": null,
    "matchCount": 0,
    "underCount": 0,
    "overCount": 0,
    "watchCount": 0,
-   "sweep": "full",
+   "sweep": "delta",
    "lastFullSweepAt": "2026-09-25T09:38:05.863Z",
    "searches": 3,
-   "newThisRun": 841,
-   "newToday": 899
+   "newThisRun": 4,
+   "newToday": 898
   },
   {
    "id": "art-haze-drawing",
@@ -258,18 +258,18 @@
    "maxAllIn": 8000,
    "priority": 6,
    "state": "complete",
-   "lastSearchedAt": "2026-09-25T09:38:14.563Z",
-   "lastSuccessfulAt": "2026-09-25T09:38:14.563Z",
+   "lastSearchedAt": "2026-09-25T11:45:46.518Z",
+   "lastSuccessfulAt": "2026-09-25T11:45:46.518Z",
    "carried": false,
    "error": null,
    "matchCount": 0,
    "underCount": 0,
    "overCount": 0,
    "watchCount": 0,
-   "sweep": "full",
+   "sweep": "delta",
    "lastFullSweepAt": "2026-09-25T09:38:14.563Z",
    "searches": 3,
-   "newThisRun": 19,
+   "newThisRun": 0,
    "newToday": 19
   },
   {
@@ -282,18 +282,18 @@
    "maxAllIn": 10000,
    "priority": 7,
    "state": "complete",
-   "lastSearchedAt": "2026-09-25T09:38:15.290Z",
-   "lastSuccessfulAt": "2026-09-25T09:38:15.290Z",
+   "lastSearchedAt": "2026-09-25T11:45:48.319Z",
+   "lastSuccessfulAt": "2026-09-25T11:45:48.319Z",
    "carried": false,
    "error": null,
-   "matchCount": 17,
-   "underCount": 14,
+   "matchCount": 16,
+   "underCount": 13,
    "overCount": 3,
    "watchCount": 0,
-   "sweep": "full",
+   "sweep": "delta",
    "lastFullSweepAt": "2026-09-25T09:38:15.290Z",
    "searches": 3,
-   "newThisRun": 170,
+   "newThisRun": 0,
    "newToday": 170
   },
   {
@@ -306,18 +306,18 @@
    "maxAllIn": 2000,
    "priority": 8,
    "state": "complete",
-   "lastSearchedAt": "2026-09-25T09:38:16.841Z",
-   "lastSuccessfulAt": "2026-09-25T09:38:16.841Z",
+   "lastSearchedAt": "2026-09-25T11:45:50.662Z",
+   "lastSuccessfulAt": "2026-09-25T11:45:50.662Z",
    "carried": false,
    "error": null,
    "matchCount": 2,
    "underCount": 2,
    "overCount": 0,
    "watchCount": 0,
-   "sweep": "full",
+   "sweep": "delta",
    "lastFullSweepAt": "2026-09-25T09:38:16.841Z",
    "searches": 3,
-   "newThisRun": 184,
+   "newThisRun": 4,
    "newToday": 238
   },
   {
@@ -330,18 +330,18 @@
    "maxAllIn": 2000,
    "priority": 9,
    "state": "complete",
-   "lastSearchedAt": "2026-09-25T09:38:17.920Z",
-   "lastSuccessfulAt": "2026-09-25T09:38:17.920Z",
+   "lastSearchedAt": "2026-09-25T11:45:52.156Z",
+   "lastSuccessfulAt": "2026-09-25T11:45:52.156Z",
    "carried": false,
    "error": null,
-   "matchCount": 46,
-   "underCount": 41,
+   "matchCount": 14,
+   "underCount": 10,
    "overCount": 4,
-   "watchCount": 1,
-   "sweep": "full",
+   "watchCount": 0,
+   "sweep": "delta",
    "lastFullSweepAt": "2026-09-25T09:38:17.920Z",
    "searches": 4,
-   "newThisRun": 512,
+   "newThisRun": 0,
    "newToday": 519
   },
   {
@@ -354,18 +354,18 @@
    "maxAllIn": 3000,
    "priority": 10,
    "state": "complete",
-   "lastSearchedAt": "2026-09-25T09:38:21.522Z",
-   "lastSuccessfulAt": "2026-09-25T09:38:21.522Z",
+   "lastSearchedAt": "2026-09-25T11:45:55.531Z",
+   "lastSuccessfulAt": "2026-09-25T11:45:55.531Z",
    "carried": false,
    "error": null,
    "matchCount": 1,
    "underCount": 0,
    "overCount": 1,
    "watchCount": 0,
-   "sweep": "full",
+   "sweep": "delta",
    "lastFullSweepAt": "2026-09-25T09:38:21.522Z",
    "searches": 2,
-   "newThisRun": 2,
+   "newThisRun": 0,
    "newToday": 2
   },
   {
@@ -378,18 +378,18 @@
    "maxAllIn": 8000,
    "priority": 11,
    "state": "complete",
-   "lastSearchedAt": "2026-09-25T09:38:22.180Z",
-   "lastSuccessfulAt": "2026-09-25T09:38:22.180Z",
+   "lastSearchedAt": "2026-09-25T11:45:57.094Z",
+   "lastSuccessfulAt": "2026-09-25T11:45:57.094Z",
    "carried": false,
    "error": null,
    "matchCount": 0,
    "underCount": 0,
    "overCount": 0,
    "watchCount": 0,
-   "sweep": "full",
+   "sweep": "delta",
    "lastFullSweepAt": "2026-09-25T09:38:22.180Z",
    "searches": 2,
-   "newThisRun": 66,
+   "newThisRun": 0,
    "newToday": 66
   },
   {
@@ -402,18 +402,18 @@
    "maxAllIn": 4000,
    "priority": 12,
    "state": "complete",
-   "lastSearchedAt": "2026-09-25T09:38:22.906Z",
-   "lastSuccessfulAt": "2026-09-25T09:38:22.906Z",
+   "lastSearchedAt": "2026-09-25T11:45:58.682Z",
+   "lastSuccessfulAt": "2026-09-25T11:45:58.682Z",
    "carried": false,
    "error": null,
    "matchCount": 0,
    "underCount": 0,
    "overCount": 0,
    "watchCount": 0,
-   "sweep": "full",
+   "sweep": "delta",
    "lastFullSweepAt": "2026-09-25T09:38:22.906Z",
    "searches": 2,
-   "newThisRun": 10,
+   "newThisRun": 0,
    "newToday": 11
   },
   {
@@ -426,18 +426,18 @@
    "maxAllIn": 4000,
    "priority": 13,
    "state": "complete",
-   "lastSearchedAt": "2026-09-25T09:38:23.687Z",
-   "lastSuccessfulAt": "2026-09-25T09:38:23.687Z",
+   "lastSearchedAt": "2026-09-25T11:46:01.181Z",
+   "lastSuccessfulAt": "2026-09-25T11:46:01.181Z",
    "carried": false,
    "error": null,
    "matchCount": 1,
    "underCount": 0,
    "overCount": 1,
    "watchCount": 0,
-   "sweep": "full",
+   "sweep": "delta",
    "lastFullSweepAt": "2026-09-25T09:38:23.687Z",
    "searches": 2,
-   "newThisRun": 13,
+   "newThisRun": 0,
    "newToday": 13
   },
   {
@@ -450,18 +450,18 @@
    "maxAllIn": 4000,
    "priority": 14,
    "state": "complete",
-   "lastSearchedAt": "2026-09-25T09:38:24.379Z",
-   "lastSuccessfulAt": "2026-09-25T09:38:24.379Z",
+   "lastSearchedAt": "2026-09-25T11:46:03.325Z",
+   "lastSuccessfulAt": "2026-09-25T11:46:03.325Z",
    "carried": false,
    "error": null,
-   "matchCount": 2,
-   "underCount": 2,
+   "matchCount": 0,
+   "underCount": 0,
    "overCount": 0,
    "watchCount": 0,
-   "sweep": "full",
+   "sweep": "delta",
    "lastFullSweepAt": "2026-09-25T09:38:24.379Z",
    "searches": 2,
-   "newThisRun": 48,
+   "newThisRun": 0,
    "newToday": 48
   },
   {
@@ -474,18 +474,18 @@
    "maxAllIn": 4000,
    "priority": 15,
    "state": "complete",
-   "lastSearchedAt": "2026-09-25T09:38:25.134Z",
-   "lastSuccessfulAt": "2026-09-25T09:38:25.134Z",
+   "lastSearchedAt": "2026-09-25T11:46:05.319Z",
+   "lastSuccessfulAt": "2026-09-25T11:46:05.319Z",
    "carried": false,
    "error": null,
    "matchCount": 0,
    "underCount": 0,
    "overCount": 0,
    "watchCount": 0,
-   "sweep": "full",
+   "sweep": "delta",
    "lastFullSweepAt": "2026-09-25T09:38:25.134Z",
    "searches": 2,
-   "newThisRun": 6,
+   "newThisRun": 0,
    "newToday": 6
   },
   {
@@ -498,18 +498,18 @@
    "maxAllIn": 1500,
    "priority": 16,
    "state": "complete",
-   "lastSearchedAt": "2026-09-25T09:38:25.780Z",
-   "lastSuccessfulAt": "2026-09-25T09:38:25.780Z",
+   "lastSearchedAt": "2026-09-25T11:46:06.624Z",
+   "lastSuccessfulAt": "2026-09-25T11:46:06.624Z",
    "carried": false,
    "error": null,
    "matchCount": 1,
    "underCount": 1,
    "overCount": 0,
    "watchCount": 0,
-   "sweep": "full",
+   "sweep": "delta",
    "lastFullSweepAt": "2026-09-25T09:38:25.780Z",
    "searches": 2,
-   "newThisRun": 4,
+   "newThisRun": 0,
    "newToday": 4
   },
   {
@@ -522,18 +522,18 @@
    "maxAllIn": 1500,
    "priority": 17,
    "state": "complete",
-   "lastSearchedAt": "2026-09-25T09:38:26.089Z",
-   "lastSuccessfulAt": "2026-09-25T09:38:26.089Z",
+   "lastSearchedAt": "2026-09-25T11:46:07.375Z",
+   "lastSuccessfulAt": "2026-09-25T11:46:07.375Z",
    "carried": false,
    "error": null,
    "matchCount": 0,
    "underCount": 0,
    "overCount": 0,
    "watchCount": 0,
-   "sweep": "full",
+   "sweep": "delta",
    "lastFullSweepAt": "2026-09-25T09:38:26.089Z",
    "searches": 2,
-   "newThisRun": 3,
+   "newThisRun": 0,
    "newToday": 3
   },
   {
@@ -546,18 +546,18 @@
    "maxAllIn": 6000,
    "priority": 18,
    "state": "complete",
-   "lastSearchedAt": "2026-09-25T09:38:26.393Z",
-   "lastSuccessfulAt": "2026-09-25T09:38:26.393Z",
+   "lastSearchedAt": "2026-09-25T11:46:08.648Z",
+   "lastSuccessfulAt": "2026-09-25T11:46:08.648Z",
    "carried": false,
    "error": null,
    "matchCount": 2,
    "underCount": 0,
    "overCount": 2,
    "watchCount": 0,
-   "sweep": "full",
+   "sweep": "delta",
    "lastFullSweepAt": "2026-09-25T09:38:26.393Z",
    "searches": 2,
-   "newThisRun": 62,
+   "newThisRun": 0,
    "newToday": 62
   },
   {
@@ -570,18 +570,18 @@
    "maxAllIn": 300,
    "priority": 19,
    "state": "complete",
-   "lastSearchedAt": "2026-09-25T09:38:27.165Z",
-   "lastSuccessfulAt": "2026-09-25T09:38:27.165Z",
+   "lastSearchedAt": "2026-09-25T11:46:11.247Z",
+   "lastSuccessfulAt": "2026-09-25T11:46:11.247Z",
    "carried": false,
    "error": null,
    "matchCount": 1,
    "underCount": 0,
    "overCount": 1,
    "watchCount": 0,
-   "sweep": "full",
+   "sweep": "delta",
    "lastFullSweepAt": "2026-09-25T09:38:27.165Z",
    "searches": 2,
-   "newThisRun": 1,
+   "newThisRun": 0,
    "newToday": 1
   },
   {
@@ -594,18 +594,18 @@
    "maxAllIn": 200,
    "priority": 20,
    "state": "complete",
-   "lastSearchedAt": "2026-09-25T09:38:27.850Z",
-   "lastSuccessfulAt": "2026-09-25T09:38:27.850Z",
+   "lastSearchedAt": "2026-09-25T11:46:13.740Z",
+   "lastSuccessfulAt": "2026-09-25T11:46:13.740Z",
    "carried": false,
    "error": null,
    "matchCount": 12,
    "underCount": 0,
    "overCount": 11,
    "watchCount": 1,
-   "sweep": "full",
+   "sweep": "delta",
    "lastFullSweepAt": "2026-09-25T09:38:27.850Z",
    "searches": 2,
-   "newThisRun": 17,
+   "newThisRun": 0,
    "newToday": 17
   },
   {
@@ -618,18 +618,18 @@
    "maxAllIn": 500,
    "priority": 21,
    "state": "complete",
-   "lastSearchedAt": "2026-09-25T09:38:28.629Z",
-   "lastSuccessfulAt": "2026-09-25T09:38:28.629Z",
+   "lastSearchedAt": "2026-09-25T11:46:16.444Z",
+   "lastSuccessfulAt": "2026-09-25T11:46:16.444Z",
    "carried": false,
    "error": null,
    "matchCount": 1,
    "underCount": 0,
    "overCount": 0,
    "watchCount": 1,
-   "sweep": "full",
+   "sweep": "delta",
    "lastFullSweepAt": "2026-09-25T09:38:28.629Z",
    "searches": 2,
-   "newThisRun": 1,
+   "newThisRun": 0,
    "newToday": 1
   },
   {
@@ -642,18 +642,18 @@
    "maxAllIn": 3000,
    "priority": 22,
    "state": "complete",
-   "lastSearchedAt": "2026-09-25T09:38:29.213Z",
-   "lastSuccessfulAt": "2026-09-25T09:38:29.213Z",
+   "lastSearchedAt": "2026-09-25T11:46:17.977Z",
+   "lastSuccessfulAt": "2026-09-25T11:46:17.977Z",
    "carried": false,
    "error": null,
-   "matchCount": 27,
-   "underCount": 6,
+   "matchCount": 23,
+   "underCount": 3,
    "overCount": 14,
-   "watchCount": 7,
-   "sweep": "full",
+   "watchCount": 6,
+   "sweep": "delta",
    "lastFullSweepAt": "2026-09-25T09:38:29.213Z",
    "searches": 4,
-   "newThisRun": 33,
+   "newThisRun": 0,
    "newToday": 33
   },
   {
@@ -666,15 +666,15 @@
    "maxAllIn": null,
    "priority": 23,
    "state": "complete",
-   "lastSearchedAt": "2026-09-25T09:38:30.639Z",
-   "lastSuccessfulAt": "2026-09-25T09:38:30.639Z",
+   "lastSearchedAt": "2026-09-25T11:46:20.668Z",
+   "lastSuccessfulAt": "2026-09-25T11:46:20.668Z",
    "carried": false,
    "error": null,
    "matchCount": 0,
    "underCount": 0,
    "overCount": 0,
    "watchCount": 0,
-   "sweep": "full",
+   "sweep": "delta",
    "lastFullSweepAt": "2026-09-25T09:38:30.639Z",
    "searches": 1,
    "newThisRun": 0,
@@ -690,18 +690,18 @@
    "maxAllIn": null,
    "priority": 24,
    "state": "complete",
-   "lastSearchedAt": "2026-09-25T09:38:30.852Z",
-   "lastSuccessfulAt": "2026-09-25T09:38:30.852Z",
+   "lastSearchedAt": "2026-09-25T11:46:21.127Z",
+   "lastSuccessfulAt": "2026-09-25T11:46:21.127Z",
    "carried": false,
    "error": null,
    "matchCount": 2,
    "underCount": 0,
    "overCount": 0,
    "watchCount": 2,
-   "sweep": "full",
+   "sweep": "delta",
    "lastFullSweepAt": "2026-09-25T09:38:30.852Z",
    "searches": 1,
-   "newThisRun": 6,
+   "newThisRun": 0,
    "newToday": 6
   },
   {
@@ -714,18 +714,18 @@
    "maxAllIn": null,
    "priority": 25,
    "state": "complete",
-   "lastSearchedAt": "2026-09-25T09:38:31.118Z",
-   "lastSuccessfulAt": "2026-09-25T09:38:31.118Z",
+   "lastSearchedAt": "2026-09-25T11:46:21.676Z",
+   "lastSuccessfulAt": "2026-09-25T11:46:21.676Z",
    "carried": false,
    "error": null,
    "matchCount": 0,
    "underCount": 0,
    "overCount": 0,
    "watchCount": 0,
-   "sweep": "full",
+   "sweep": "delta",
    "lastFullSweepAt": "2026-09-25T09:38:31.118Z",
    "searches": 1,
-   "newThisRun": 4,
+   "newThisRun": 0,
    "newToday": 4
   },
   {
@@ -738,18 +738,18 @@
    "maxAllIn": null,
    "priority": 26,
    "state": "complete",
-   "lastSearchedAt": "2026-09-25T09:38:31.433Z",
-   "lastSuccessfulAt": "2026-09-25T09:38:31.433Z",
+   "lastSearchedAt": "2026-09-25T11:46:22.429Z",
+   "lastSuccessfulAt": "2026-09-25T11:46:22.429Z",
    "carried": false,
    "error": null,
    "matchCount": 0,
    "underCount": 0,
    "overCount": 0,
    "watchCount": 0,
-   "sweep": "full",
+   "sweep": "delta",
    "lastFullSweepAt": "2026-09-25T09:38:31.433Z",
    "searches": 1,
-   "newThisRun": 4,
+   "newThisRun": 0,
    "newToday": 4
   },
   {
@@ -762,18 +762,18 @@
    "maxAllIn": null,
    "priority": 27,
    "state": "complete",
-   "lastSearchedAt": "2026-09-25T09:38:31.807Z",
-   "lastSuccessfulAt": "2026-09-25T09:38:31.807Z",
+   "lastSearchedAt": "2026-09-25T11:46:23.421Z",
+   "lastSuccessfulAt": "2026-09-25T11:46:23.421Z",
    "carried": false,
    "error": null,
    "matchCount": 2,
    "underCount": 0,
    "overCount": 0,
    "watchCount": 2,
-   "sweep": "full",
+   "sweep": "delta",
    "lastFullSweepAt": "2026-09-25T09:38:31.807Z",
    "searches": 1,
-   "newThisRun": 6,
+   "newThisRun": 0,
    "newToday": 6
   },
   {
@@ -786,18 +786,18 @@
    "maxAllIn": null,
    "priority": 28,
    "state": "complete",
-   "lastSearchedAt": "2026-09-25T09:38:32.186Z",
-   "lastSuccessfulAt": "2026-09-25T09:38:32.186Z",
+   "lastSearchedAt": "2026-09-25T11:46:24.048Z",
+   "lastSuccessfulAt": "2026-09-25T11:46:24.048Z",
    "carried": false,
    "error": null,
    "matchCount": 3,
    "underCount": 0,
    "overCount": 0,
    "watchCount": 3,
-   "sweep": "full",
+   "sweep": "delta",
    "lastFullSweepAt": "2026-09-25T09:38:32.186Z",
    "searches": 1,
-   "newThisRun": 6,
+   "newThisRun": 0,
    "newToday": 6
   },
   {
@@ -810,18 +810,18 @@
    "maxAllIn": null,
    "priority": 29,
    "state": "complete",
-   "lastSearchedAt": "2026-09-25T09:38:32.550Z",
-   "lastSuccessfulAt": "2026-09-25T09:38:32.550Z",
+   "lastSearchedAt": "2026-09-25T11:46:24.710Z",
+   "lastSuccessfulAt": "2026-09-25T11:46:24.710Z",
    "carried": false,
    "error": null,
    "matchCount": 11,
    "underCount": 0,
    "overCount": 0,
    "watchCount": 11,
-   "sweep": "full",
+   "sweep": "delta",
    "lastFullSweepAt": "2026-09-25T09:38:32.550Z",
    "searches": 1,
-   "newThisRun": 15,
+   "newThisRun": 0,
    "newToday": 15
   },
   {
@@ -834,18 +834,18 @@
    "maxAllIn": null,
    "priority": 30,
    "state": "complete",
-   "lastSearchedAt": "2026-09-25T09:38:32.971Z",
-   "lastSuccessfulAt": "2026-09-25T09:38:32.971Z",
+   "lastSearchedAt": "2026-09-25T11:46:25.426Z",
+   "lastSuccessfulAt": "2026-09-25T11:46:25.426Z",
    "carried": false,
    "error": null,
    "matchCount": 10,
    "underCount": 0,
    "overCount": 0,
    "watchCount": 10,
-   "sweep": "full",
+   "sweep": "delta",
    "lastFullSweepAt": "2026-09-25T09:38:32.971Z",
    "searches": 1,
-   "newThisRun": 14,
+   "newThisRun": 0,
    "newToday": 14
   },
   {
@@ -858,18 +858,18 @@
    "maxAllIn": null,
    "priority": 31,
    "state": "complete",
-   "lastSearchedAt": "2026-09-25T09:38:33.372Z",
-   "lastSuccessfulAt": "2026-09-25T09:38:33.372Z",
+   "lastSearchedAt": "2026-09-25T11:46:27.285Z",
+   "lastSuccessfulAt": "2026-09-25T11:46:27.285Z",
    "carried": false,
    "error": null,
    "matchCount": 2,
    "underCount": 0,
    "overCount": 0,
    "watchCount": 2,
-   "sweep": "full",
+   "sweep": "delta",
    "lastFullSweepAt": "2026-09-25T09:38:33.372Z",
    "searches": 1,
-   "newThisRun": 2,
+   "newThisRun": 0,
    "newToday": 2
   },
   {
@@ -882,18 +882,18 @@
    "maxAllIn": null,
    "priority": 32,
    "state": "complete",
-   "lastSearchedAt": "2026-09-25T09:38:33.702Z",
-   "lastSuccessfulAt": "2026-09-25T09:38:33.702Z",
+   "lastSearchedAt": "2026-09-25T11:46:28.624Z",
+   "lastSuccessfulAt": "2026-09-25T11:46:28.624Z",
    "carried": false,
    "error": null,
    "matchCount": 1,
    "underCount": 0,
    "overCount": 0,
    "watchCount": 1,
-   "sweep": "full",
+   "sweep": "delta",
    "lastFullSweepAt": "2026-09-25T09:38:33.702Z",
    "searches": 1,
-   "newThisRun": 1,
+   "newThisRun": 0,
    "newToday": 1
   },
   {
@@ -906,18 +906,18 @@
    "maxAllIn": null,
    "priority": 33,
    "state": "complete",
-   "lastSearchedAt": "2026-09-25T09:38:34.010Z",
-   "lastSuccessfulAt": "2026-09-25T09:38:34.010Z",
+   "lastSearchedAt": "2026-09-25T11:46:29.916Z",
+   "lastSuccessfulAt": "2026-09-25T11:46:29.916Z",
    "carried": false,
    "error": null,
    "matchCount": 1,
    "underCount": 0,
    "overCount": 0,
    "watchCount": 1,
-   "sweep": "full",
+   "sweep": "delta",
    "lastFullSweepAt": "2026-09-25T09:38:34.010Z",
    "searches": 1,
-   "newThisRun": 1,
+   "newThisRun": 0,
    "newToday": 1
   },
   {
@@ -930,18 +930,18 @@
    "maxAllIn": null,
    "priority": 34,
    "state": "complete",
-   "lastSearchedAt": "2026-09-25T09:38:34.295Z",
-   "lastSuccessfulAt": "2026-09-25T09:38:34.295Z",
+   "lastSearchedAt": "2026-09-25T11:46:31.895Z",
+   "lastSuccessfulAt": "2026-09-25T11:46:31.895Z",
    "carried": false,
    "error": null,
    "matchCount": 1,
    "underCount": 0,
    "overCount": 0,
    "watchCount": 1,
-   "sweep": "full",
+   "sweep": "delta",
    "lastFullSweepAt": "2026-09-25T09:38:34.295Z",
    "searches": 1,
-   "newThisRun": 113,
+   "newThisRun": 0,
    "newToday": 113
   },
   {
@@ -954,274 +954,22 @@
    "maxAllIn": null,
    "priority": 35,
    "state": "complete",
-   "lastSearchedAt": "2026-09-25T09:38:34.965Z",
-   "lastSuccessfulAt": "2026-09-25T09:38:34.965Z",
+   "lastSearchedAt": "2026-09-25T11:46:33.575Z",
+   "lastSuccessfulAt": "2026-09-25T11:46:33.575Z",
    "carried": false,
    "error": null,
    "matchCount": 1,
    "underCount": 0,
    "overCount": 0,
    "watchCount": 1,
-   "sweep": "full",
+   "sweep": "delta",
    "lastFullSweepAt": "2026-09-25T09:38:34.965Z",
    "searches": 1,
-   "newThisRun": 72,
+   "newThisRun": 0,
    "newToday": 72
   }
  ],
  "cards": [
-  {
-   "key": "design-nakashima-seating:v1|234824624281|0",
-   "group": "under",
-   "huntId": "design-nakashima-seating",
-   "huntLabel": "George Nakashima — chairs & seating (all)",
-   "classification": "under",
-   "listingId": "v1|234824624281|0",
-   "title": "NWT Modern Nakashima St natural form ACACIA wood/Iron legs Low side table 13.5\"h",
-   "url": "https://www.ebay.com/itm/234824624281?_skw=nakashima+bench&hash=item36aca36899:g:UQ4AAOSwdj5jniIE",
-   "imageUrl": "https://i.ebayimg.com/images/g/UQ4AAOSwdj5jniIE/s-l225.jpg",
-   "buyingMode": "FIXED_PRICE",
-   "endsAt": null,
-   "bidCount": null,
-   "price": 105,
-   "shipping": 38,
-   "allIn": 143,
-   "maxAllIn": 3000,
-   "underBy": 2857,
-   "underPct": 0.95,
-   "capWording": "under cap",
-   "seller": {
-    "username": "sanysa",
-    "feedbackPercentage": 100,
-    "feedbackScore": 1501
-   },
-   "condition": "New",
-   "location": "US",
-   "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "reasons": [
-    "must:nakashima",
-    "at-or-under-cap"
-   ],
-   "flags": [],
-   "confidence": 0.95,
-   "review": "ok",
-   "carried": false,
-   "alertKey": "ebay:v1|234824624281|0:design-nakashima-seating:v1",
-   "similarCount": 0,
-   "risk": "low",
-   "riskReasons": [],
-   "details": {
-    "aspects": {
-     "Country of Origin": "Indonesia",
-     "Number of Items in Set": "1",
-     "Antique": "No",
-     "Wood Tone": "Red Wood",
-     "Indoor/Outdoor": "Indoor",
-     "Item Length": "21 in",
-     "Additional Parts Required": "No",
-     "Department": "Adults",
-     "Item Height": "13.5",
-     "Seat Height": "13.5 in",
-     "Frame Material": "Acacia, Iron, Wood",
-     "Features": "Iron legs",
-     "Room": "Bedroom, Dining Room, Entryway, Home Office/Study, Living Room",
-     "Finish": "natural wood",
-     "Item Width": "21 in",
-     "Upholstery Fabric": "100% Wool",
-     "Assembly Status": "Assembly Required",
-     "Color": "Brown",
-     "Set Includes": "Table",
-     "Brand": "Unbranded",
-     "Type": "side table",
-     "Seating Capacity": "1",
-     "Assembly Required": "No",
-     "Theme": "Nature",
-     "Item Weight": "17 lb"
-    },
-    "descriptionSnippet": "Please, ask your questions, before you place your Bid! as there is NO RETURN for this item! NOTE!!! This listing is for ONE stool ONLY !!! Last 2 pictures show items listed separately!! This is a designer High Quality,. ONE OF A KIND item It has natural wood edge/form we will nev",
-    "fetchedAt": "2026-09-25T03:17:44.787Z"
-   },
-   "priceHistory": [
-    {
-     "at": "2026-09-25T03:20:24.636Z",
-     "price": 105,
-     "allIn": 143
-    }
-   ],
-   "priceChange": null,
-   "relisted": null,
-   "photoReused": null,
-   "dismissible": true
-  },
-  {
-   "key": "design-nakashima-seating:v1|234824635851|0",
-   "group": "under",
-   "huntId": "design-nakashima-seating",
-   "huntLabel": "George Nakashima — chairs & seating (all)",
-   "classification": "under",
-   "listingId": "v1|234824635851|0",
-   "title": "NWT Modern Nakashima St natural form ACACIA wood/Iron legs Low side table 17.5\"h",
-   "url": "https://www.ebay.com/itm/234824635851?_skw=nakashima+bench&hash=item36aca395cb:g:yacAAOSw3FZjniVO",
-   "imageUrl": "https://i.ebayimg.com/images/g/yacAAOSw3FZjniVO/s-l225.jpg",
-   "buyingMode": "FIXED_PRICE",
-   "endsAt": null,
-   "bidCount": null,
-   "price": 115,
-   "shipping": 42,
-   "allIn": 157,
-   "maxAllIn": 3000,
-   "underBy": 2843,
-   "underPct": 0.95,
-   "capWording": "under cap",
-   "seller": {
-    "username": "sanysa",
-    "feedbackPercentage": 100,
-    "feedbackScore": 1501
-   },
-   "condition": "New",
-   "location": "US",
-   "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "reasons": [
-    "must:nakashima",
-    "at-or-under-cap"
-   ],
-   "flags": [],
-   "confidence": 0.95,
-   "review": "ok",
-   "carried": false,
-   "alertKey": "ebay:v1|234824635851|0:design-nakashima-seating:v1",
-   "similarCount": 0,
-   "risk": "low",
-   "riskReasons": [],
-   "details": {
-    "aspects": {
-     "Country of Origin": "Indonesia",
-     "Number of Items in Set": "1",
-     "Antique": "No",
-     "Wood Tone": "Red Wood",
-     "Indoor/Outdoor": "Indoor",
-     "Item Length": "25 in",
-     "Additional Parts Required": "No",
-     "Department": "Adults",
-     "Item Height": "17.5 in",
-     "Seat Height": "17.5 in",
-     "Frame Material": "Acacia, Iron, Wood",
-     "Features": "Iron legs",
-     "Room": "Bedroom, Dining Room, Entryway, Home Office/Study, Living Room",
-     "Finish": "natural wood",
-     "Item Width": "19 in",
-     "Upholstery Fabric": "100% Wool",
-     "Assembly Status": "Assembly Required",
-     "Color": "Brown",
-     "Set Includes": "Table",
-     "Brand": "Unbranded",
-     "Type": "side table",
-     "Seating Capacity": "1",
-     "Assembly Required": "No",
-     "Theme": "Nature",
-     "Item Weight": "18 lb"
-    },
-    "descriptionSnippet": "Please, ask your questions, before you place your Bid! as there is NO RETURN for this item! NOTE!!! This listing is for ONE stool ONLY !!! Last 2 pictures show items listed separately!! This is a designer High Quality,. ONE OF A KIND item It has natural wood edge/form we will nev",
-    "fetchedAt": "2026-09-25T03:17:44.787Z"
-   },
-   "priceHistory": [
-    {
-     "at": "2026-09-25T03:20:24.636Z",
-     "price": 115,
-     "allIn": 157
-    }
-   ],
-   "priceChange": null,
-   "relisted": null,
-   "photoReused": null,
-   "dismissible": true
-  },
-  {
-   "key": "design-nakashima-seating:v1|234824646838|0",
-   "group": "under",
-   "huntId": "design-nakashima-seating",
-   "huntLabel": "George Nakashima — chairs & seating (all)",
-   "classification": "under",
-   "listingId": "v1|234824646838|0",
-   "title": "NWT Modern Nakashima St natural form ACACIA wood/Iron legs Low side table 14\"h",
-   "url": "https://www.ebay.com/itm/234824646838?_skw=nakashima+bench&hash=item36aca3c0b6:g:elsAAOSw6CZjnilO",
-   "imageUrl": "https://i.ebayimg.com/images/g/elsAAOSw6CZjnilO/s-l225.jpg",
-   "buyingMode": "FIXED_PRICE",
-   "endsAt": null,
-   "bidCount": null,
-   "price": 105,
-   "shipping": 42,
-   "allIn": 147,
-   "maxAllIn": 3000,
-   "underBy": 2853,
-   "underPct": 0.95,
-   "capWording": "under cap",
-   "seller": {
-    "username": "sanysa",
-    "feedbackPercentage": 100,
-    "feedbackScore": 1501
-   },
-   "condition": "New",
-   "location": "US",
-   "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "reasons": [
-    "must:nakashima",
-    "at-or-under-cap"
-   ],
-   "flags": [],
-   "confidence": 0.95,
-   "review": "ok",
-   "carried": false,
-   "alertKey": "ebay:v1|234824646838|0:design-nakashima-seating:v1",
-   "similarCount": 0,
-   "risk": "low",
-   "riskReasons": [],
-   "details": {
-    "aspects": {
-     "Country of Origin": "Indonesia",
-     "Number of Items in Set": "1",
-     "Antique": "No",
-     "Wood Tone": "Red Wood",
-     "Indoor/Outdoor": "Indoor",
-     "Item Length": "18 in",
-     "Additional Parts Required": "No",
-     "Department": "Adults",
-     "Item Height": "14 in",
-     "Seat Height": "14 in",
-     "Frame Material": "Acacia, Iron, Wood",
-     "Features": "Iron legs",
-     "Room": "Bedroom, Dining Room, Entryway, Home Office/Study, Living Room",
-     "Finish": "natural wood",
-     "Item Width": "18 in",
-     "Upholstery Fabric": "100% Wool",
-     "Assembly Status": "Assembly Required",
-     "Color": "Brown",
-     "Set Includes": "Table",
-     "Brand": "Unbranded",
-     "Type": "side table",
-     "Seating Capacity": "1",
-     "Assembly Required": "No",
-     "Theme": "Nature",
-     "Item Weight": "17 lb"
-    },
-    "descriptionSnippet": "Please, ask your questions, before you place your Bid! as there is NO RETURN for this item! NOTE!!! This listing is for ONE stool ONLY !!! Last 4 pictures show items listed separately!! This is a designer High Quality,. ONE OF A KIND item It has natural wood edge/form we will nev",
-    "fetchedAt": "2026-09-25T03:17:44.787Z"
-   },
-   "priceHistory": [
-    {
-     "at": "2026-09-25T03:20:24.636Z",
-     "price": 105,
-     "allIn": 147
-    }
-   ],
-   "priceChange": null,
-   "relisted": null,
-   "photoReused": null,
-   "dismissible": true
-  },
   {
    "key": "art-haze-painting:v1|155308223218|0",
    "group": "under",
@@ -1430,85 +1178,6 @@
      "at": "2026-09-25T02:43:43.147Z",
      "price": 1250,
      "allIn": 1279
-    }
-   ],
-   "priceChange": null,
-   "relisted": null,
-   "photoReused": null,
-   "dismissible": true
-  },
-  {
-   "key": "art-futura-painting:v1|137201466480|0",
-   "group": "under",
-   "huntId": "art-futura-painting",
-   "huntLabel": "Futura 2000 — painting",
-   "classification": "under",
-   "listingId": "v1|137201466480|0",
-   "title": "Futura 2000 UNKLE Psyence Fiction Inflatable Promo 1998 Mo Wax Original Staff",
-   "url": "https://www.ebay.com/itm/137201466480?_skw=futura2000&hash=item1ff1d83c70:g:57YAAeSwHpVp035z",
-   "imageUrl": "https://i.ebayimg.com/images/g/57YAAeSwHpVp035z/s-l225.jpg",
-   "buyingMode": "FIXED_PRICE",
-   "endsAt": null,
-   "bidCount": null,
-   "price": 1449.99,
-   "shipping": 10.15,
-   "allIn": 1460.14,
-   "maxAllIn": 15000,
-   "underBy": 13539.86,
-   "underPct": 0.9,
-   "capWording": "under cap",
-   "seller": {
-    "username": "evilbase13",
-    "feedbackPercentage": 100,
-    "feedbackScore": 158
-   },
-   "condition": "Used",
-   "location": "US",
-   "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "reasons": [
-    "must:futura",
-    "medium:original",
-    "claims-original",
-    "aspect:original",
-    "description:provenance",
-    "at-or-under-cap"
-   ],
-   "flags": [],
-   "confidence": 0.95,
-   "review": "ok",
-   "carried": false,
-   "alertKey": "ebay:v1|137201466480|0:art-futura-painting:v1",
-   "similarCount": 0,
-   "risk": "low",
-   "riskReasons": [],
-   "details": {
-    "aspects": {
-     "Artist": "Futura2000",
-     "Size": "Large",
-     "Color": "Multicolor",
-     "Material": "rubber",
-     "Subject": "Pointman",
-     "Brand": "Futura",
-     "Type": "Statue",
-     "Year of Production": "1998",
-     "Original/Licensed Reproduction": "Original",
-     "Item Height": "38",
-     "Theme": "Art",
-     "Style": "3D, Contemporary Art",
-     "Features": "1st Edition, Limited Edition",
-     "Time Period Manufactured": "1990-1999",
-     "Item Width": "24 in",
-     "Country of Origin": "United States"
-    },
-    "descriptionSnippet": "★ PRICE REDUCED - PRICED TO SELL ★ Originally listed at $1,699. Now $1,449 OBO for serious collector. Best documented provenance available. Futura 2000 x UNKLE Psyence Fiction Promotional Inflatable - 1998 WHERE IT CAME FROM: I worked record store promo for Mo' Wax in Florida whe",
-    "fetchedAt": "2026-09-25T03:17:44.787Z"
-   },
-   "priceHistory": [
-    {
-     "at": "2026-09-25T03:20:24.636Z",
-     "price": 1449.99,
-     "allIn": 1460.14
     }
    ],
    "priceChange": null,
@@ -2203,287 +1872,6 @@
    "dismissible": true
   },
   {
-   "key": "sports-djackson-jersey:v1|164927153766|0",
-   "group": "under",
-   "huntId": "sports-djackson-jersey",
-   "huntLabel": "DeSean Jackson — game-used Eagles jersey",
-   "classification": "under",
-   "listingId": "v1|164927153766|0",
-   "title": "DeSean Jackson Game Used Vegas Bowl Locker Room Nameplate game worn jersey",
-   "url": "https://www.ebay.com/itm/164927153766?_skw=desean+jackson+game+worn&hash=item26666ca666:g:uQ4AAOSwFLVg02gE",
-   "imageUrl": "https://i.ebayimg.com/images/g/uQ4AAOSwFLVg02gE/s-l225.jpg",
-   "buyingMode": "FIXED_PRICE",
-   "endsAt": null,
-   "bidCount": null,
-   "price": 149,
-   "shipping": 0,
-   "allIn": 149,
-   "maxAllIn": 4000,
-   "underBy": 3851,
-   "underPct": 0.96,
-   "capWording": "under cap",
-   "seller": {
-    "username": "nikejustdoit1972",
-    "feedbackPercentage": 100,
-    "feedbackScore": 486
-   },
-   "condition": null,
-   "location": "US",
-   "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "reasons": [
-    "must:jackson",
-    "game-used:game used",
-    "at-or-under-cap"
-   ],
-   "flags": [
-    "team-not-in-title",
-    "no-authentication-in-title"
-   ],
-   "confidence": 0.75,
-   "review": "ok",
-   "carried": false,
-   "alertKey": "ebay:v1|164927153766|0:sports-djackson-jersey:v1",
-   "similarCount": 0,
-   "risk": "medium",
-   "riskReasons": [
-    "no photo-match, team or third-party authentication named"
-   ],
-   "details": {
-    "aspects": {
-     "Country of Origin": "Jersey"
-    },
-    "descriptionSnippet": "DeSean Jackson Game Used Vegas Bowl Locker Room Nameplate. Jackson was the game MVP.",
-    "fetchedAt": "2026-09-25T03:17:44.787Z"
-   },
-   "priceHistory": [
-    {
-     "at": "2026-09-25T03:20:24.636Z",
-     "price": 149,
-     "allIn": 149
-    }
-   ],
-   "priceChange": null,
-   "relisted": null,
-   "photoReused": null,
-   "dismissible": true
-  },
-  {
-   "key": "sports-djackson-jersey:v1|164790974679|0",
-   "group": "under",
-   "huntId": "sports-djackson-jersey",
-   "huntLabel": "DeSean Jackson — game-used Eagles jersey",
-   "classification": "under",
-   "listingId": "v1|164790974679|0",
-   "title": "Desean Jackson Game Used Gloves California Bears Game Worn Jersey",
-   "url": "https://www.ebay.com/itm/164790974679?_skw=desean+jackson+game+worn&hash=item265e4eb8d7:g:I6kAAOSwDUBgZTkr",
-   "imageUrl": "https://i.ebayimg.com/images/g/I6kAAOSwDUBgZTkr/s-l225.jpg",
-   "buyingMode": "FIXED_PRICE",
-   "endsAt": null,
-   "bidCount": null,
-   "price": 199,
-   "shipping": 7,
-   "allIn": 206,
-   "maxAllIn": 4000,
-   "underBy": 3794,
-   "underPct": 0.95,
-   "capWording": "under cap",
-   "seller": {
-    "username": "nikejustdoit1972",
-    "feedbackPercentage": 100,
-    "feedbackScore": 486
-   },
-   "condition": null,
-   "location": "US",
-   "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "reasons": [
-    "must:jackson",
-    "game-used:game used",
-    "at-or-under-cap"
-   ],
-   "flags": [
-    "team-not-in-title",
-    "no-authentication-in-title"
-   ],
-   "confidence": 0.75,
-   "review": "ok",
-   "carried": false,
-   "alertKey": "ebay:v1|164790974679|0:sports-djackson-jersey:v1",
-   "similarCount": 0,
-   "risk": "medium",
-   "riskReasons": [
-    "no photo-match, team or third-party authentication named"
-   ],
-   "details": {
-    "aspects": {
-     "Country of Origin": "Jersey"
-    },
-    "descriptionSnippet": "Desean Jackson Game Used Gloves California Bears Game Worn Jersey. Shipped with USPS First Class.",
-    "fetchedAt": "2026-09-25T03:17:44.787Z"
-   },
-   "priceHistory": [
-    {
-     "at": "2026-09-25T03:20:24.636Z",
-     "price": 199,
-     "allIn": 206
-    }
-   ],
-   "priceChange": null,
-   "relisted": null,
-   "photoReused": null,
-   "dismissible": true
-  },
-  {
-   "key": "art-crumb-drawing:v1|205700478757|0",
-   "group": "under",
-   "huntId": "art-crumb-drawing",
-   "huntLabel": "Robert Crumb — drawing",
-   "classification": "under",
-   "listingId": "v1|205700478757|0",
-   "title": "Vintage Original Warner Home Video VHS FRITZ THE CAT Robert Crumb Rated.",
-   "url": "https://www.ebay.com/itm/205700478757?_skw=r+crumb+original&hash=item2fe4b43725:g:0h8AAOSwSfdi0Ls2",
-   "imageUrl": "https://i.ebayimg.com/images/g/0h8AAOSwSfdi0Ls2/s-l225.jpg",
-   "buyingMode": "FIXED_PRICE",
-   "endsAt": null,
-   "bidCount": null,
-   "price": 550,
-   "shipping": 5.13,
-   "allIn": 555.13,
-   "maxAllIn": 2000,
-   "underBy": 1444.87,
-   "underPct": 0.72,
-   "capWording": "under cap",
-   "seller": {
-    "username": "probuzzard",
-    "feedbackPercentage": 100,
-    "feedbackScore": 2850
-   },
-   "condition": "Like New",
-   "location": "US",
-   "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "reasons": [
-    "must:crumb",
-    "medium:original",
-    "claims-original",
-    "at-or-under-cap"
-   ],
-   "flags": [],
-   "confidence": 0.95,
-   "review": "ok",
-   "carried": false,
-   "alertKey": "ebay:v1|205700478757|0:art-crumb-drawing:v1",
-   "similarCount": 0,
-   "risk": "medium",
-   "riskReasons": [
-    "Robert Crumb is heavily forged on eBay — no provenance in the listing"
-   ],
-   "details": {
-    "aspects": {
-     "Language": "English",
-     "Rating": "R",
-     "Former Rental": "No",
-     "Sub-Genre": "Comedy, Period/Historical",
-     "Genre": "Animation & Anime",
-     "Movie/TV Title": "Fritz the Cat",
-     "Studio": "Warner Home Video",
-     "Modified Item": "No"
-    },
-    "descriptionSnippet": "Vintage Original Warner Home Video VHS FRITZ THE CAT Robert Crumb Rated.. See pics for condition",
-    "fetchedAt": "2026-09-25T03:17:44.787Z"
-   },
-   "priceHistory": [
-    {
-     "at": "2026-09-25T03:20:24.636Z",
-     "price": 550,
-     "allIn": 555.13
-    }
-   ],
-   "priceChange": null,
-   "relisted": null,
-   "photoReused": null,
-   "dismissible": true
-  },
-  {
-   "key": "art-crumb-drawing:v1|116461334813|0",
-   "group": "under",
-   "huntId": "art-crumb-drawing",
-   "huntLabel": "Robert Crumb — drawing",
-   "classification": "under",
-   "listingId": "v1|116461334813|0",
-   "title": "Edward Abbey The Monkey Wrench Gang Signed 1985 R. Crumb Illustrations Near Fine",
-   "url": "https://www.ebay.com/itm/116461334813?_skw=r+crumb+original&hash=item1b1da2f11d:g:VX0AAOSw2qtnmrWb",
-   "imageUrl": "https://i.ebayimg.com/images/g/VX0AAOSw2qtnmrWb/s-l225.jpg",
-   "buyingMode": "FIXED_PRICE",
-   "endsAt": null,
-   "bidCount": null,
-   "price": 810,
-   "shipping": 0,
-   "allIn": 810,
-   "maxAllIn": 2000,
-   "underBy": 1190,
-   "underPct": 0.6,
-   "capWording": "under cap",
-   "seller": {
-    "username": "xochis",
-    "feedbackPercentage": 100,
-    "feedbackScore": 12624
-   },
-   "condition": null,
-   "location": "US",
-   "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "reasons": [
-    "must:crumb",
-    "medium:illustration",
-    "aspect:signed",
-    "aspect:original",
-    "at-or-under-cap"
-   ],
-   "flags": [],
-   "confidence": 0.95,
-   "review": "ok",
-   "carried": false,
-   "alertKey": "ebay:v1|116461334813|0:art-crumb-drawing:v1",
-   "similarCount": 0,
-   "risk": "medium",
-   "riskReasons": [
-    "Robert Crumb is heavily forged on eBay — no provenance in the listing"
-   ],
-   "details": {
-    "aspects": {
-     "Binding": "Hardcover",
-     "Place of Publication": "Dream Garden Press",
-     "Signed": "Yes",
-     "Publisher": "Dream Garden Press",
-     "Subject": "Literature & Fiction",
-     "Year Printed": "1985",
-     "Original/Facsimile": "Original",
-     "Language": "English",
-     "Illustrator": "R. Crumb",
-     "Special Attributes": "Dust Jacket, Signed",
-     "Author": "Abbey, Edward",
-     "Region": "North America",
-     "Topic": "Action, Adventure",
-     "Character Family": "Rudolph The Red"
-    },
-    "descriptionSnippet": "From Xochi's Upper Hall Bottom, 356pp.; HB black w/silver-wrench cover; slight rub w/ripple & damp stain, top spine; light tan on hinges; clean, tight pgs. DJ white w/red & black spine color pic cover; some rub w/small chips & tears; some sun on spine. illus. The Abbey classic ab",
-    "fetchedAt": "2026-09-25T03:17:44.787Z"
-   },
-   "priceHistory": [
-    {
-     "at": "2026-09-25T03:20:24.636Z",
-     "price": 810,
-     "allIn": 810
-    }
-   ],
-   "priceChange": null,
-   "relisted": null,
-   "photoReused": null,
-   "dismissible": true
-  },
-  {
    "key": "sports-foles-bears-jersey:v1|318875185094|0",
    "group": "under",
    "huntId": "sports-foles-bears-jersey",
@@ -2549,397 +1937,6 @@
     }
    ],
    "priceChange": null,
-   "relisted": null,
-   "photoReused": null,
-   "dismissible": true
-  },
-  {
-   "key": "art-futura-painting:v1|256135884613|0",
-   "group": "under",
-   "huntId": "art-futura-painting",
-   "huntLabel": "Futura 2000 — painting",
-   "classification": "under",
-   "listingId": "v1|256135884613|0",
-   "title": "Vintage Singer (6) BOBBINS Futura 900 920 II Transparent Original Athena 2000",
-   "url": "https://www.ebay.com/itm/256135884613?_skw=futura+2000+original&hash=item3ba2e36f45:g:7x0AAOSwZl9kqqr4",
-   "imageUrl": "https://i.ebayimg.com/images/g/7x0AAOSwZl9kqqr4/s-l225.jpg",
-   "buyingMode": "FIXED_PRICE",
-   "endsAt": null,
-   "bidCount": null,
-   "price": 6.99,
-   "shipping": 5.84,
-   "allIn": 12.83,
-   "maxAllIn": 15000,
-   "underBy": 14987.17,
-   "underPct": 1,
-   "capWording": "under cap",
-   "seller": {
-    "username": "hjplt",
-    "feedbackPercentage": 100,
-    "feedbackScore": 1158
-   },
-   "condition": "Used",
-   "location": "US",
-   "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "reasons": [
-    "must:futura",
-    "medium:original",
-    "claims-original",
-    "at-or-under-cap"
-   ],
-   "flags": [
-    "price-far-below-market"
-   ],
-   "confidence": 0.6,
-   "review": "review",
-   "carried": false,
-   "alertKey": "ebay:v1|256135884613|0:art-futura-painting:v1",
-   "similarCount": 0,
-   "risk": "high",
-   "riskReasons": [
-    "priced far below what this artist sells for"
-   ],
-   "details": {
-    "aspects": {
-     "Brand": "SINGER",
-     "Type": "Bobbins"
-    },
-    "descriptionSnippet": "I have several listings for items that came together that I believe to be accessories to the Singer Futura 900 and Futura II 920 (or the Athena 2000). Please look at the pictures carefully and make sure that the items will work for your application. (6) transparent bobbins in goo",
-    "fetchedAt": "2026-09-25T03:17:44.787Z"
-   },
-   "priceHistory": [
-    {
-     "at": "2026-09-25T03:20:24.636Z",
-     "price": 6.99,
-     "allIn": 12.83
-    }
-   ],
-   "priceChange": null,
-   "relisted": null,
-   "photoReused": null,
-   "dismissible": true
-  },
-  {
-   "key": "art-futura-painting:v1|257538597285|0",
-   "group": "under",
-   "huntId": "art-futura-painting",
-   "huntLabel": "Futura 2000 — painting",
-   "classification": "under",
-   "listingId": "v1|257538597285|0",
-   "title": "CORGI CLASSICS ORIGINAL OMNIBUS DIE-CAST 45303 BOVA FUTURA COACH FLIGHT LINK MIB",
-   "url": "https://www.ebay.com/itm/257538597285?_skw=futura+2000+original&hash=item3bf67f21a5:g:2BEAAeSwwNhpZ4C6",
-   "imageUrl": "https://i.ebayimg.com/images/g/2BEAAeSwwNhpZ4C6/s-l225.jpg",
-   "buyingMode": "FIXED_PRICE",
-   "endsAt": null,
-   "bidCount": null,
-   "price": 22.46,
-   "shipping": 33.4,
-   "allIn": 55.86,
-   "maxAllIn": 15000,
-   "underBy": 14944.14,
-   "underPct": 1,
-   "capWording": "under cap",
-   "seller": {
-    "username": "switchgear71",
-    "feedbackPercentage": 99.9,
-    "feedbackScore": 6696
-   },
-   "condition": "Used",
-   "location": "GB",
-   "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "reasons": [
-    "must:futura",
-    "medium:original",
-    "claims-original",
-    "at-or-under-cap"
-   ],
-   "flags": [
-    "price-far-below-market"
-   ],
-   "confidence": 0.6,
-   "review": "review",
-   "carried": false,
-   "alertKey": "ebay:v1|257538597285|0:art-futura-painting:v1",
-   "similarCount": 0,
-   "risk": "high",
-   "riskReasons": [
-    "priced far below what this artist sells for"
-   ],
-   "details": {
-    "aspects": {
-     "Brand": "Corgi",
-     "Series": "Corgi Classics",
-     "Signed": "No",
-     "Vehicle Type": "Bus",
-     "Theme": "Omnibus",
-     "Features": "Limited Edition",
-     "Material": "Diecast",
-     "Scale": "1:76",
-     "Year of Manufacture": "2000",
-     "Country of Origin": "China",
-     "Colour": "Multi-colour"
-    },
-    "descriptionSnippet": "HERE WE HAVE A QUALITY COLLECTABLE CORGI CLASSICS THE ORIGINAL OMNIBUS COMPANY DIE-CAST MODEL BOVA FUTURA COACH WITH FLIGHT LINK LIVERY, THE PIECE IS A LIMITED EDITION PIECE OF 5000 AND IS IN MINT CONDITION AND COMES WITHIN THE ORIGINAL PLASTIC DISPLAY BOX WHICH HAS SOME MARKS TH",
-    "fetchedAt": "2026-09-25T09:38:53.047Z"
-   },
-   "priceHistory": [
-    {
-     "at": "2026-09-25T03:20:24.636Z",
-     "price": 22.49,
-     "allIn": 55.94
-    },
-    {
-     "at": "2026-09-25T09:41:39.186Z",
-     "price": 22.46,
-     "allIn": 55.86
-    }
-   ],
-   "priceChange": {
-    "from": 55.94,
-    "to": 55.86,
-    "since": "2026-09-25T03:20:24.636Z"
-   },
-   "relisted": null,
-   "photoReused": null,
-   "dismissible": true
-  },
-  {
-   "key": "art-futura-painting:v1|318883907419|0",
-   "group": "under",
-   "huntId": "art-futura-painting",
-   "huntLabel": "Futura 2000 — painting",
-   "classification": "under",
-   "listingId": "v1|318883907419|0",
-   "title": "CORGI ORIGINAL OMNIBUS 1:76 BOVA FUTURA - NATIONAL EXPRESS OM45308",
-   "url": "https://www.ebay.com/itm/318883907419?_skw=futura+2000+original&hash=item4a3ef6475b:g:QgUAAeSwU79qf6NO",
-   "imageUrl": "https://i.ebayimg.com/images/g/QgUAAeSwU79qf6NO/s-l225.jpg",
-   "buyingMode": "FIXED_PRICE",
-   "endsAt": null,
-   "bidCount": null,
-   "price": 20.87,
-   "shipping": 33.34,
-   "allIn": 54.21,
-   "maxAllIn": 15000,
-   "underBy": 14945.79,
-   "underPct": 1,
-   "capWording": "under cap",
-   "seller": {
-    "username": "jrandjrmodels_48",
-    "feedbackPercentage": 99.8,
-    "feedbackScore": 1287
-   },
-   "condition": "Used",
-   "location": "GB",
-   "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "reasons": [
-    "must:futura",
-    "medium:original",
-    "claims-original",
-    "at-or-under-cap"
-   ],
-   "flags": [
-    "price-far-below-market"
-   ],
-   "confidence": 0.6,
-   "review": "review",
-   "carried": false,
-   "alertKey": "ebay:v1|318883907419|0:art-futura-painting:v1",
-   "similarCount": 0,
-   "risk": "high",
-   "riskReasons": [
-    "priced far below what this artist sells for"
-   ],
-   "details": {
-    "aspects": {
-     "Signed": "No",
-     "Vehicle Make": "Bova",
-     "Vehicle Type": "Futura",
-     "Scale": "1:76",
-     "MPN": "OM45308",
-     "Material": "Diecast",
-     "Year of Manufacture": "2003",
-     "Customised": "No",
-     "Colour": "White",
-     "Brand": "Corgi",
-     "Series": "Original Omnibus",
-     "Theme": "National Express",
-     "Features": "Limited Edition",
-     "Vehicle Year": "2000",
-     "Country of Origin": "China"
-    },
-    "descriptionSnippet": "OM45308 Corgi Original Omnibus BOVA FUTURA – NATIONAL EXPRESS Scale 1:76 Limited edition number 0642 of only 2500 distributed worldwide. Model is in good condition overall, with a couple of marks. Sleeve and case are in good condition with some age-related wear, as per the photos",
-    "fetchedAt": "2026-09-25T09:38:53.047Z"
-   },
-   "priceHistory": [
-    {
-     "at": "2026-09-25T03:20:24.636Z",
-     "price": 20.9,
-     "allIn": 54.29
-    },
-    {
-     "at": "2026-09-25T09:41:39.186Z",
-     "price": 20.87,
-     "allIn": 54.21
-    }
-   ],
-   "priceChange": {
-    "from": 54.29,
-    "to": 54.21,
-    "since": "2026-09-25T03:20:24.636Z"
-   },
-   "relisted": null,
-   "photoReused": null,
-   "dismissible": true
-  },
-  {
-   "key": "art-futura-painting:v1|234988813069|0",
-   "group": "under",
-   "huntId": "art-futura-painting",
-   "huntLabel": "Futura 2000 — painting",
-   "classification": "under",
-   "listingId": "v1|234988813069|0",
-   "title": "FUTURA 2000 SPRAY CAN STREET URBAN BLACK ACRYLIC LABORATORIES NYC GRAFFITI BLK",
-   "url": "https://www.ebay.com/itm/234988813069?_skw=futura2000&hash=item36b66cbb0d:g:I-UAAOSwxxFh~awW",
-   "imageUrl": "https://i.ebayimg.com/images/g/I-UAAOSwxxFh~awW/s-l225.jpg",
-   "buyingMode": "FIXED_PRICE",
-   "endsAt": null,
-   "bidCount": null,
-   "price": 106,
-   "shipping": 17.95,
-   "allIn": 123.95,
-   "maxAllIn": 15000,
-   "underBy": 14876.05,
-   "underPct": 0.99,
-   "capWording": "under cap",
-   "seller": {
-    "username": "art_and_records_online",
-    "feedbackPercentage": 100,
-    "feedbackScore": 8033
-   },
-   "condition": "Unspecified",
-   "location": "US",
-   "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "reasons": [
-    "must:futura",
-    "medium:acrylic",
-    "aspect:original",
-    "at-or-under-cap"
-   ],
-   "flags": [
-    "price-far-below-market"
-   ],
-   "confidence": 0.6,
-   "review": "review",
-   "carried": false,
-   "alertKey": "ebay:v1|234988813069|0:art-futura-painting:v1",
-   "similarCount": 0,
-   "risk": "high",
-   "riskReasons": [
-    "priced far below what this artist sells for"
-   ],
-   "details": {
-    "aspects": {
-     "Artist": "Futura 2000",
-     "Type": "Spraycan",
-     "Original/Licensed Reproduction": "Original",
-     "Country of Origin": "United States"
-    },
-    "descriptionSnippet": "This Auction is for an Original Limited Edition Artist Spray Can Futura 2000 \"Futura Laboratories\" (Black Acrylic Spray Can) (Limited Edition Futura 2000 Spraycan) (Spraycan Only/ No Box Included) 100% Positive Feedback (Check Our Feedback) 17.95 s/h via Fedex Home Delivery (with",
-    "fetchedAt": "2026-09-25T03:17:44.787Z"
-   },
-   "priceHistory": [
-    {
-     "at": "2026-09-25T03:20:24.636Z",
-     "price": 106,
-     "allIn": 123.95
-    }
-   ],
-   "priceChange": null,
-   "relisted": null,
-   "photoReused": null,
-   "dismissible": true
-  },
-  {
-   "key": "art-futura-painting:v1|377122815573|0",
-   "group": "under",
-   "huntId": "art-futura-painting",
-   "huntLabel": "Futura 2000 — painting",
-   "classification": "under",
-   "listingId": "v1|377122815573|0",
-   "title": "Futura 2000 x Quiksilver Vintage Board Shorts Rare Splinter Pointman",
-   "url": "https://www.ebay.com/itm/377122815573?_skw=futura2000&hash=item57ce457e55:g:OfwAAeSwKnpp41e0",
-   "imageUrl": "https://i.ebayimg.com/images/g/OfwAAeSwKnpp41e0/s-l225.jpg",
-   "buyingMode": "FIXED_PRICE",
-   "endsAt": null,
-   "bidCount": null,
-   "price": 112.66,
-   "shipping": 33,
-   "allIn": 145.66,
-   "maxAllIn": 15000,
-   "underBy": 14854.34,
-   "underPct": 0.99,
-   "capWording": "under cap",
-   "seller": {
-    "username": "secondwingroom",
-    "feedbackPercentage": 100,
-    "feedbackScore": 5
-   },
-   "condition": "Usato - Eccellente",
-   "location": "IT",
-   "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "reasons": [
-    "must:futura",
-    "medium:board",
-    "at-or-under-cap"
-   ],
-   "flags": [
-    "seller-low-feedback",
-    "price-far-below-market"
-   ],
-   "confidence": 0.5,
-   "review": "review",
-   "carried": false,
-   "alertKey": "ebay:v1|377122815573|0:art-futura-painting:v1",
-   "similarCount": 0,
-   "risk": "high",
-   "riskReasons": [
-    "priced far below what this artist sells for",
-    "seller feedback is low"
-   ],
-   "details": {
-    "aspects": {
-     "Colore": "Multicolore",
-     "Taglia": "30",
-     "Marca": "Quiksilver",
-     "Stile": "Cargo",
-     "Reparto": "Uomo",
-     "Vintage": "Sì"
-    },
-    "descriptionSnippet": "Futura 2000 x Quiksilver vintage board shorts rare Splinter Pointman limited edition SZ 30 M Ready to ship whit all cares",
-    "fetchedAt": "2026-09-25T09:38:53.047Z"
-   },
-   "priceHistory": [
-    {
-     "at": "2026-09-25T03:20:24.636Z",
-     "price": 112.68,
-     "allIn": 145.69
-    },
-    {
-     "at": "2026-09-25T09:41:39.186Z",
-     "price": 112.66,
-     "allIn": 145.66
-    }
-   ],
-   "priceChange": {
-    "from": 145.69,
-    "to": 145.66,
-    "since": "2026-09-25T03:20:24.636Z"
-   },
    "relisted": null,
    "photoReused": null,
    "dismissible": true
@@ -3162,89 +2159,6 @@
     }
    ],
    "priceChange": null,
-   "relisted": null,
-   "photoReused": null,
-   "dismissible": true
-  },
-  {
-   "key": "art-condo-drawing:v1|236761441551|0",
-   "group": "under",
-   "huntId": "art-condo-drawing",
-   "huntLabel": "George Condo — drawing",
-   "classification": "under",
-   "listingId": "v1|236761441551|0",
-   "title": "Travis Scott, Cactus Jack, Franchise, George Condo, Sketch, White, Large, L, T-S",
-   "url": "https://www.ebay.com/itm/236761441551?_skw=george+condo+sketch&hash=item372014e50f:g:lVoAAeSw0Ulp4bIh",
-   "imageUrl": "https://i.ebayimg.com/images/g/lVoAAeSw0Ulp4bIh/s-l225.jpg",
-   "buyingMode": "FIXED_PRICE",
-   "endsAt": null,
-   "bidCount": null,
-   "price": 52.59,
-   "shipping": 20.33,
-   "allIn": 72.92,
-   "maxAllIn": 10000,
-   "underBy": 9927.08,
-   "underPct": 0.99,
-   "capWording": "under cap",
-   "seller": {
-    "username": "000bluemoon000",
-    "feedbackPercentage": 97.8,
-    "feedbackScore": 163
-   },
-   "condition": "Pre-owned - Good",
-   "location": "AU",
-   "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "reasons": [
-    "must:condo",
-    "medium:sketch",
-    "at-or-under-cap"
-   ],
-   "flags": [
-    "seller-low-feedback",
-    "price-far-below-market"
-   ],
-   "confidence": 0.5,
-   "review": "review",
-   "carried": false,
-   "alertKey": "ebay:v1|236761441551|0:art-condo-drawing:v1",
-   "similarCount": 0,
-   "risk": "high",
-   "riskReasons": [
-    "priced far below what this artist sells for",
-    "George Condo is heavily forged on eBay and this is priced like a fake",
-    "ships from AU",
-    "seller feedback is low"
-   ],
-   "details": {
-    "aspects": {
-     "Brand": "travis scott",
-     "Size Type": "Regular",
-     "Type": "T-Shirt",
-     "Department": "Men",
-     "Size": "L",
-     "Colour": "White"
-    },
-    "descriptionSnippet": "Released as part of the \"Franchise\" single merch drop in 2020. This white tee features minimalist gallery-style specifications on the front chest and a massive brown line-art sketch by George Condo on the back. ITEM DETAILS: Brand: Travis Scott / Cactus Jack Artist: George Condo ",
-    "fetchedAt": "2026-09-25T09:38:53.047Z"
-   },
-   "priceHistory": [
-    {
-     "at": "2026-09-25T03:20:24.636Z",
-     "price": 52.79,
-     "allIn": 73.2
-    },
-    {
-     "at": "2026-09-25T09:41:39.186Z",
-     "price": 52.59,
-     "allIn": 72.92
-    }
-   ],
-   "priceChange": {
-    "from": 73.2,
-    "to": 72.92,
-    "since": "2026-09-25T03:20:24.636Z"
-   },
    "relisted": null,
    "photoReused": null,
    "dismissible": true
@@ -3672,153 +2586,6 @@
    "dismissible": true
   },
   {
-   "key": "art-crumb-drawing:v1|137254437523|0",
-   "group": "under",
-   "huntId": "art-crumb-drawing",
-   "huntLabel": "Robert Crumb — drawing",
-   "classification": "under",
-   "listingId": "v1|137254437523|0",
-   "title": "R. CRUMB - ALOHA #1 MAY 1969 - BOB DYLAN IKE & TINA  HOLLAND DUTCH/ENGLISH PAPER",
-   "url": "https://www.ebay.com/itm/137254437523?_skw=r+crumb+original&hash=item1ff5008293:g:5SgAAeSwFd5p68uL",
-   "imageUrl": "https://i.ebayimg.com/images/g/5SgAAeSwFd5p68uL/s-l225.jpg",
-   "buyingMode": "FIXED_PRICE",
-   "endsAt": null,
-   "bidCount": null,
-   "price": 19,
-   "shipping": 7.95,
-   "allIn": 26.95,
-   "maxAllIn": 2000,
-   "underBy": 1973.05,
-   "underPct": 0.99,
-   "capWording": "under cap",
-   "seller": {
-    "username": "waterrow",
-    "feedbackPercentage": 100,
-    "feedbackScore": 29067
-   },
-   "condition": null,
-   "location": "US",
-   "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "reasons": [
-    "must:crumb",
-    "medium:paper",
-    "aspect:original",
-    "at-or-under-cap"
-   ],
-   "flags": [
-    "price-far-below-market"
-   ],
-   "confidence": 0.6,
-   "review": "review",
-   "carried": false,
-   "alertKey": "ebay:v1|137254437523|0:art-crumb-drawing:v1",
-   "similarCount": 0,
-   "risk": "high",
-   "riskReasons": [
-    "priced far below what this artist sells for",
-    "Robert Crumb is heavily forged on eBay and this is priced like a fake"
-   ],
-   "details": {
-    "aspects": {
-     "Binding": "Softcover, Wraps",
-     "Place of Publication": "Netherlands",
-     "Language": "Dutch and English",
-     "Author": "Various",
-     "Publisher": "Aloha",
-     "Topic": "Comics",
-     "Subject": "Illustrated",
-     "Country of Origin": "Netherlands",
-     "Original/Facsimile": "Original",
-     "Year Printed": "1969"
-    },
-    "descriptionSnippet": "ALOHA Number 1 May 1969 Underground Newspaper Published in The Netherlands Language: Dutch and English * R. Crumb * Bob Dylan * Woman Power * Ike and Tina Turner * Much More... Very Good Condition Slight wear Newspaper Format Satisfaction Guaranteed! /90",
-    "fetchedAt": "2026-09-25T03:17:44.787Z"
-   },
-   "priceHistory": [
-    {
-     "at": "2026-09-25T03:20:24.636Z",
-     "price": 19,
-     "allIn": 26.95
-    }
-   ],
-   "priceChange": null,
-   "relisted": null,
-   "photoReused": null,
-   "dismissible": true
-  },
-  {
-   "key": "art-crumb-drawing:v1|145170616014|0",
-   "group": "under",
-   "huntId": "art-crumb-drawing",
-   "huntLabel": "Robert Crumb — drawing",
-   "classification": "under",
-   "listingId": "v1|145170616014|0",
-   "title": "Original Dr I.M. Looney I’m Crazy About You! R. Crumb Mini Iron On Transfer",
-   "url": "https://www.ebay.com/itm/145170616014?_skw=r+crumb+original&hash=item21ccd7cece:g:2kUAAOSwC~Nko1wd",
-   "imageUrl": "https://i.ebayimg.com/images/g/2kUAAOSwC~Nko1wd/s-l225.jpg",
-   "buyingMode": "FIXED_PRICE",
-   "endsAt": null,
-   "bidCount": null,
-   "price": 18.5,
-   "shipping": 5.99,
-   "allIn": 24.49,
-   "maxAllIn": 2000,
-   "underBy": 1975.51,
-   "underPct": 0.99,
-   "capWording": "under cap",
-   "seller": {
-    "username": "irononqueen",
-    "feedbackPercentage": 99.8,
-    "feedbackScore": 11362
-   },
-   "condition": "New without tags",
-   "location": "US",
-   "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "reasons": [
-    "must:crumb",
-    "medium:original",
-    "claims-original",
-    "aspect:original",
-    "at-or-under-cap"
-   ],
-   "flags": [
-    "description:reproduction-language",
-    "price-far-below-market"
-   ],
-   "confidence": 0.6,
-   "review": "review",
-   "carried": false,
-   "alertKey": "ebay:v1|145170616014|0:art-crumb-drawing:v1",
-   "similarCount": 0,
-   "risk": "high",
-   "riskReasons": [
-    "priced far below what this artist sells for",
-    "the description uses reproduction / print language",
-    "Robert Crumb is heavily forged on eBay and this is priced like a fake"
-   ],
-   "details": {
-    "aspects": {
-     "Original/Reproduction": "Original",
-     "Country of Origin": "United States"
-    },
-    "descriptionSnippet": "Approx 4 x 4 inches NOS New Old Stock Good Condition Made in USA Collector's Item----THIS IS NOT A REPRODUCTION! I found this RARE Iron-on T-shirt heat transfer amongst a treasure trove of vintage tees and iron-ons in a dilapidated warehouse in New Jersey back in the early nineti",
-    "fetchedAt": "2026-09-25T03:17:44.787Z"
-   },
-   "priceHistory": [
-    {
-     "at": "2026-09-25T03:20:24.636Z",
-     "price": 18.5,
-     "allIn": 24.49
-    }
-   ],
-   "priceChange": null,
-   "relisted": null,
-   "photoReused": null,
-   "dismissible": true
-  },
-  {
    "key": "art-crumb-drawing:v1|158295303555|0",
    "group": "under",
    "huntId": "art-crumb-drawing",
@@ -3879,812 +2646,6 @@
      "at": "2026-09-25T03:20:24.636Z",
      "price": 15,
      "allIn": 21.07
-    }
-   ],
-   "priceChange": null,
-   "relisted": null,
-   "photoReused": null,
-   "dismissible": true
-  },
-  {
-   "key": "art-crumb-drawing:v1|197968236010|0",
-   "group": "under",
-   "huntId": "art-crumb-drawing",
-   "huntLabel": "Robert Crumb — drawing",
-   "classification": "under",
-   "listingId": "v1|197968236010|0",
-   "title": "R. Crumb The Musical CD Original Cast Recording Soundtrack Michael Aitch Price",
-   "url": "https://www.ebay.com/itm/197968236010?_skw=r+crumb+original&hash=item2e17d38dea:g:p1sAAeSwJ1lpSNBW",
-   "imageUrl": "https://i.ebayimg.com/images/g/p1sAAeSwJ1lpSNBW/s-l225.jpg",
-   "buyingMode": "FIXED_PRICE",
-   "endsAt": null,
-   "bidCount": null,
-   "price": 15,
-   "shipping": 4.39,
-   "allIn": 19.39,
-   "maxAllIn": 2000,
-   "underBy": 1980.61,
-   "underPct": 0.99,
-   "capWording": "under cap",
-   "seller": {
-    "username": "caro23-13",
-    "feedbackPercentage": 96.4,
-    "feedbackScore": 910
-   },
-   "condition": "Very Good",
-   "location": "US",
-   "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "reasons": [
-    "must:crumb",
-    "medium:original",
-    "claims-original",
-    "at-or-under-cap"
-   ],
-   "flags": [
-    "seller-low-feedback",
-    "price-far-below-market"
-   ],
-   "confidence": 0.5,
-   "review": "review",
-   "carried": false,
-   "alertKey": "ebay:v1|197968236010|0:art-crumb-drawing:v1",
-   "similarCount": 0,
-   "risk": "high",
-   "riskReasons": [
-    "priced far below what this artist sells for",
-    "Robert Crumb is heavily forged on eBay and this is priced like a fake",
-    "seller feedback is low"
-   ],
-   "details": {
-    "aspects": {
-     "Artist": "Original Cast Recording",
-     "CD Grading": "Very Good Plus (VG+)",
-     "Record Label": "Shel-Tone Records",
-     "Release Title": "R Crumb the Musical",
-     "Case Type": "Jewel Case: Standard",
-     "Color": "Multicolor",
-     "UPC": "714798900120",
-     "Case Condition": "Very Good Plus (VG+)",
-     "Inlay Condition": "Very Good Plus (VG+)",
-     "Edition": "Various Artist",
-     "Type": "Audio CD",
-     "Format": "Cast Recording",
-     "Release Year": "1996",
-     "Style": "Musical/Original Cast",
-     "Features": "Sealed",
-     "Genre": "Soundtracks & Musicals"
-    },
-    "descriptionSnippet": "R. Crumb The Musical CD Original Cast Recording Soundtrack Michael Aitch Price. Condition is Very Good. Shipped with USPS Media Mail.",
-    "fetchedAt": "2026-09-25T03:17:44.787Z"
-   },
-   "priceHistory": [
-    {
-     "at": "2026-09-25T03:20:24.636Z",
-     "price": 15,
-     "allIn": 19.39
-    }
-   ],
-   "priceChange": null,
-   "relisted": null,
-   "photoReused": null,
-   "dismissible": true
-  },
-  {
-   "key": "art-crumb-drawing:v1|226333104269|0",
-   "group": "under",
-   "huntId": "art-crumb-drawing",
-   "huntLabel": "Robert Crumb — drawing",
-   "classification": "under",
-   "listingId": "v1|226333104269|0",
-   "title": "Original Rats Hole Vintage Keep On Bikin'  R Crumb Iron On Transfer NOS",
-   "url": "https://www.ebay.com/itm/226333104269?_skw=r+crumb+original&hash=item34b281188d:g:aEoAAOSwkMpm2JJV",
-   "imageUrl": "https://i.ebayimg.com/images/g/aEoAAOSwkMpm2JJV/s-l225.jpg",
-   "buyingMode": "FIXED_PRICE",
-   "endsAt": null,
-   "bidCount": null,
-   "price": 16.75,
-   "shipping": 10.6,
-   "allIn": 27.35,
-   "maxAllIn": 2000,
-   "underBy": 1972.65,
-   "underPct": 0.99,
-   "capWording": "under cap",
-   "seller": {
-    "username": "oldbluepaint",
-    "feedbackPercentage": 100,
-    "feedbackScore": 1531
-   },
-   "condition": "Unspecified",
-   "location": "US",
-   "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "reasons": [
-    "must:crumb",
-    "medium:original",
-    "claims-original",
-    "aspect:original",
-    "at-or-under-cap"
-   ],
-   "flags": [
-    "price-far-below-market"
-   ],
-   "confidence": 0.6,
-   "review": "review",
-   "carried": false,
-   "alertKey": "ebay:v1|226333104269|0:art-crumb-drawing:v1",
-   "similarCount": 0,
-   "risk": "high",
-   "riskReasons": [
-    "priced far below what this artist sells for",
-    "Robert Crumb is heavily forged on eBay and this is priced like a fake"
-   ],
-   "details": {
-    "aspects": {
-     "Original/Reproduction": "Original"
-    },
-    "descriptionSnippet": "New old stock. Contains creases from age / storage but in nice shape. Please see photos. I currently have a few other transfers in other listings and am happy to combine shipping. Smoke and pet free home. Shipped flat with cardboard.",
-    "fetchedAt": "2026-09-25T03:17:44.787Z"
-   },
-   "priceHistory": [
-    {
-     "at": "2026-09-25T03:20:24.636Z",
-     "price": 16.75,
-     "allIn": 27.35
-    }
-   ],
-   "priceChange": null,
-   "relisted": null,
-   "photoReused": null,
-   "dismissible": true
-  },
-  {
-   "key": "art-crumb-drawing:v1|267414131524|0",
-   "group": "under",
-   "huntId": "art-crumb-drawing",
-   "huntLabel": "Robert Crumb — drawing",
-   "classification": "under",
-   "listingId": "v1|267414131524|0",
-   "title": "Original VINTAGE 1970s Heat Transfer | Truckin’ My Blues Away R. Crumb",
-   "url": "https://www.ebay.com/itm/267414131524?_skw=r+crumb+original&hash=item3e431fd344:g:NDUAAeSw58Ro0-DU",
-   "imageUrl": "https://i.ebayimg.com/images/g/NDUAAeSw58Ro0-DU/s-l225.jpg",
-   "buyingMode": "FIXED_PRICE",
-   "endsAt": null,
-   "bidCount": null,
-   "price": 22.1,
-   "shipping": 0,
-   "allIn": 22.1,
-   "maxAllIn": 2000,
-   "underBy": 1977.9,
-   "underPct": 0.99,
-   "capWording": "under cap",
-   "seller": {
-    "username": "briapowel44",
-    "feedbackPercentage": 100,
-    "feedbackScore": 2309
-   },
-   "condition": "New – Open box",
-   "location": "US",
-   "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "reasons": [
-    "must:crumb",
-    "medium:original",
-    "claims-original",
-    "at-or-under-cap"
-   ],
-   "flags": [
-    "price-far-below-market",
-    "same-seller-repeats:1"
-   ],
-   "confidence": 0.6,
-   "review": "review",
-   "carried": false,
-   "alertKey": "ebay:v1|267414131524|0:art-crumb-drawing:v1",
-   "similarCount": 1,
-   "risk": "high",
-   "riskReasons": [
-    "priced far below what this artist sells for",
-    "seller has 2 copies of a “unique” work",
-    "Robert Crumb is heavily forged on eBay and this is priced like a fake"
-   ],
-   "details": null,
-   "priceHistory": [
-    {
-     "at": "2026-09-25T03:20:24.636Z",
-     "price": 22.1,
-     "allIn": 22.1
-    }
-   ],
-   "priceChange": null,
-   "relisted": null,
-   "photoReused": null,
-   "dismissible": true
-  },
-  {
-   "key": "art-crumb-drawing:v1|267504220262|0",
-   "group": "under",
-   "huntId": "art-crumb-drawing",
-   "huntLabel": "Robert Crumb — drawing",
-   "classification": "under",
-   "listingId": "v1|267504220262|0",
-   "title": "Original VINTAGE 1970s Heat Transfer | R. Crumb Truckin’ On Down the Line",
-   "url": "https://www.ebay.com/itm/267504220262?_skw=r+crumb+original&hash=item3e487e7866:g:QMIAAeSwYcNpNbU0",
-   "imageUrl": "https://i.ebayimg.com/images/g/QMIAAeSwYcNpNbU0/s-l225.jpg",
-   "buyingMode": "FIXED_PRICE",
-   "endsAt": null,
-   "bidCount": null,
-   "price": 22.1,
-   "shipping": 0,
-   "allIn": 22.1,
-   "maxAllIn": 2000,
-   "underBy": 1977.9,
-   "underPct": 0.99,
-   "capWording": "under cap",
-   "seller": {
-    "username": "briapowel44",
-    "feedbackPercentage": 100,
-    "feedbackScore": 2309
-   },
-   "condition": "New – Open box",
-   "location": "US",
-   "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "reasons": [
-    "must:crumb",
-    "medium:original",
-    "claims-original",
-    "at-or-under-cap"
-   ],
-   "flags": [
-    "price-far-below-market"
-   ],
-   "confidence": 0.6,
-   "review": "review",
-   "carried": false,
-   "alertKey": "ebay:v1|267504220262|0:art-crumb-drawing:v1",
-   "similarCount": 0,
-   "risk": "high",
-   "riskReasons": [
-    "priced far below what this artist sells for",
-    "Robert Crumb is heavily forged on eBay and this is priced like a fake"
-   ],
-   "details": {
-    "aspects": {
-     "Country of Origin": "United States",
-     "Type": "Heat Press",
-     "Transfer Style": "Decorative",
-     "Personalize": "No"
-    },
-    "descriptionSnippet": "Free shipping & volume discounts apply across all heat transfer listings, even in different categories! Add items to one cart before checkout for the maximum discount. Vintage 1970/80s Heat Transfer New Old Stock (NOS) PLEASE NOTE: Prices reflect condition and design appeal, chec",
-    "fetchedAt": "2026-09-25T03:17:44.787Z"
-   },
-   "priceHistory": [
-    {
-     "at": "2026-09-25T03:20:24.636Z",
-     "price": 22.1,
-     "allIn": 22.1
-    }
-   ],
-   "priceChange": null,
-   "relisted": null,
-   "photoReused": null,
-   "dismissible": true
-  },
-  {
-   "key": "art-crumb-drawing:v1|267553930629|0",
-   "group": "under",
-   "huntId": "art-crumb-drawing",
-   "huntLabel": "Robert Crumb — drawing",
-   "classification": "under",
-   "listingId": "v1|267553930629|0",
-   "title": "American Splendor original film soundtrack CD movie excllnt jazz Dizzy   R Crumb",
-   "url": "https://www.ebay.com/itm/267553930629?_skw=r+crumb+original&hash=item3e4b74fd85:g:KCIAAOSwzDZlt8yy",
-   "imageUrl": "https://i.ebayimg.com/images/g/KCIAAOSwzDZlt8yy/s-l225.jpg",
-   "buyingMode": "FIXED_PRICE",
-   "endsAt": null,
-   "bidCount": null,
-   "price": 6,
-   "shipping": 4.5,
-   "allIn": 10.5,
-   "maxAllIn": 2000,
-   "underBy": 1989.5,
-   "underPct": 0.99,
-   "capWording": "under cap",
-   "seller": {
-    "username": "maxxmanor",
-    "feedbackPercentage": 100,
-    "feedbackScore": 6665
-   },
-   "condition": null,
-   "location": "US",
-   "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "reasons": [
-    "must:crumb",
-    "medium:original",
-    "claims-original",
-    "aspect:original",
-    "at-or-under-cap"
-   ],
-   "flags": [
-    "price-far-below-market"
-   ],
-   "confidence": 0.6,
-   "review": "review",
-   "carried": false,
-   "alertKey": "ebay:v1|267553930629|0:art-crumb-drawing:v1",
-   "similarCount": 0,
-   "risk": "high",
-   "riskReasons": [
-    "priced far below what this artist sells for",
-    "Robert Crumb is heavily forged on eBay and this is priced like a fake"
-   ],
-   "details": {
-    "aspects": {
-     "Original/Reproduction": "Original"
-    },
-    "descriptionSnippet": "American Splendor film soundtrack featuring Dizzy Gillespie, R. Crumb And His Cheap Suit Serenaders, Lester Young, and many more Original digipack case with movie pics included - in excellent condition, as in pic - Disc is free of scratches and plays great Please email with any q",
-    "fetchedAt": "2026-09-25T03:17:44.787Z"
-   },
-   "priceHistory": [
-    {
-     "at": "2026-09-25T03:20:24.636Z",
-     "price": 6,
-     "allIn": 10.5
-    }
-   ],
-   "priceChange": null,
-   "relisted": null,
-   "photoReused": null,
-   "dismissible": true
-  },
-  {
-   "key": "art-crumb-drawing:v1|267693416876|0",
-   "group": "under",
-   "huntId": "art-crumb-drawing",
-   "huntLabel": "Robert Crumb — drawing",
-   "classification": "under",
-   "listingId": "v1|267693416876|0",
-   "title": "Original VINTAGE 1970s Heat Transfer | Diddy Wah Diddy R Crumb '67",
-   "url": "https://www.ebay.com/itm/267693416876?_skw=r+crumb+original&hash=item3e53c561ac:g:BK4AAeSw~c9pPG02",
-   "imageUrl": "https://i.ebayimg.com/images/g/BK4AAeSw~c9pPG02/s-l225.jpg",
-   "buyingMode": "FIXED_PRICE",
-   "endsAt": null,
-   "bidCount": null,
-   "price": 22.1,
-   "shipping": 0,
-   "allIn": 22.1,
-   "maxAllIn": 2000,
-   "underBy": 1977.9,
-   "underPct": 0.99,
-   "capWording": "under cap",
-   "seller": {
-    "username": "briapowel44",
-    "feedbackPercentage": 100,
-    "feedbackScore": 2309
-   },
-   "condition": "New – Open box",
-   "location": "US",
-   "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "reasons": [
-    "must:crumb",
-    "medium:original",
-    "claims-original",
-    "at-or-under-cap"
-   ],
-   "flags": [
-    "price-far-below-market"
-   ],
-   "confidence": 0.6,
-   "review": "review",
-   "carried": false,
-   "alertKey": "ebay:v1|267693416876|0:art-crumb-drawing:v1",
-   "similarCount": 0,
-   "risk": "high",
-   "riskReasons": [
-    "priced far below what this artist sells for",
-    "Robert Crumb is heavily forged on eBay and this is priced like a fake"
-   ],
-   "details": {
-    "aspects": {
-     "Country of Origin": "United States",
-     "Type": "Heat Press",
-     "Transfer Style": "Decorative",
-     "Personalize": "No"
-    },
-    "descriptionSnippet": "Free shipping & volume discounts apply across all heat transfer listings, even in different categories! Add items to one cart before checkout for the maximum discount. Vintage 1970/80s Heat Transfer New Old Stock (NOS) PLEASE NOTE: Prices reflect condition and design appeal, chec",
-    "fetchedAt": "2026-09-25T03:17:44.787Z"
-   },
-   "priceHistory": [
-    {
-     "at": "2026-09-25T03:20:24.636Z",
-     "price": 22.1,
-     "allIn": 22.1
-    }
-   ],
-   "priceChange": null,
-   "relisted": null,
-   "photoReused": null,
-   "dismissible": true
-  },
-  {
-   "key": "art-crumb-drawing:v1|287376439884|0",
-   "group": "under",
-   "huntId": "art-crumb-drawing",
-   "huntLabel": "Robert Crumb — drawing",
-   "classification": "under",
-   "listingId": "v1|287376439884|0",
-   "title": "Original Vintage Just Passin Thru... R.Crumb 1967 Iron-On Transfer",
-   "url": "https://www.ebay.com/itm/287376439884?_skw=r+crumb+original&hash=item42e8f87a4c:g:yv4AAeSwmcNqIjks",
-   "imageUrl": "https://i.ebayimg.com/images/g/yv4AAeSwmcNqIjks/s-l225.jpg",
-   "buyingMode": "FIXED_PRICE",
-   "endsAt": null,
-   "bidCount": null,
-   "price": 24.95,
-   "shipping": 0,
-   "allIn": 24.95,
-   "maxAllIn": 2000,
-   "underBy": 1975.05,
-   "underPct": 0.99,
-   "capWording": "under cap",
-   "seller": {
-    "username": "farmfindsnvintagegoods",
-    "feedbackPercentage": 100,
-    "feedbackScore": 378
-   },
-   "condition": "New without tags",
-   "location": "US",
-   "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "reasons": [
-    "must:crumb",
-    "medium:original",
-    "claims-original",
-    "at-or-under-cap"
-   ],
-   "flags": [
-    "price-far-below-market"
-   ],
-   "confidence": 0.6,
-   "review": "review",
-   "carried": false,
-   "alertKey": "ebay:v1|287376439884|0:art-crumb-drawing:v1",
-   "similarCount": 0,
-   "risk": "high",
-   "riskReasons": [
-    "priced far below what this artist sells for",
-    "Robert Crumb is heavily forged on eBay and this is priced like a fake"
-   ],
-   "details": {
-    "aspects": {
-     "Decade": "1960s"
-    },
-    "descriptionSnippet": "Just Passin' Thru... Original 1967 R. Crumb Iron On Transfer Size of image is approx. 10\"x10\"",
-    "fetchedAt": "2026-09-25T03:17:44.787Z"
-   },
-   "priceHistory": [
-    {
-     "at": "2026-09-25T03:20:24.636Z",
-     "price": 24.95,
-     "allIn": 24.95
-    }
-   ],
-   "priceChange": null,
-   "relisted": null,
-   "photoReused": null,
-   "dismissible": true
-  },
-  {
-   "key": "art-crumb-drawing:v1|327367357610|0",
-   "group": "under",
-   "huntId": "art-crumb-drawing",
-   "huntLabel": "Robert Crumb — drawing",
-   "classification": "under",
-   "listingId": "v1|327367357610|0",
-   "title": "Vintage 1982 Original Early Jazz Greats Trading Card Set R Crumb Yazoo Records",
-   "url": "https://www.ebay.com/itm/327367357610?_skw=r+crumb+original&hash=item4c389d74aa:g:tXsAAeSw0~1qnv7C",
-   "imageUrl": "https://i.ebayimg.com/images/g/tXsAAeSw0~1qnv7C/s-l225.jpg",
-   "buyingMode": "AUCTION",
-   "endsAt": "2026-09-28T03:20:28.000Z",
-   "bidCount": 0,
-   "price": 17.99,
-   "shipping": 6.07,
-   "allIn": 24.06,
-   "maxAllIn": 2000,
-   "underBy": 1975.94,
-   "underPct": 0.99,
-   "capWording": "under cap now",
-   "seller": {
-    "username": "magicdo",
-    "feedbackPercentage": 100,
-    "feedbackScore": 553
-   },
-   "condition": "Used",
-   "location": "US",
-   "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "reasons": [
-    "must:crumb",
-    "medium:original",
-    "claims-original",
-    "aspect:original",
-    "at-or-under-cap"
-   ],
-   "flags": [
-    "auction-price-moves",
-    "price-far-below-market"
-   ],
-   "confidence": 0.55,
-   "review": "review",
-   "carried": false,
-   "alertKey": "ebay:v1|327367357610|0:art-crumb-drawing:v1",
-   "similarCount": 0,
-   "risk": "high",
-   "riskReasons": [
-    "priced far below what this artist sells for",
-    "Robert Crumb is heavily forged on eBay and this is priced like a fake"
-   ],
-   "details": {
-    "aspects": {
-     "Subject Type": "Music",
-     "Autographed": "No",
-     "Set": "1982 Early Jazz Greats 36 Cards",
-     "Character": "Art",
-     "Custom Bundle": "No",
-     "Number of Cards": "36",
-     "Material": "Card Stock",
-     "Year Manufactured": "1982",
-     "Franchise": "Yazoo Records",
-     "Original/Licensed Reprint": "Original",
-     "Vintage": "Yes",
-     "Type": "Non-Sport Trading Card",
-     "Language": "English",
-     "Illustrator": "Robert Crumb",
-     "Music": "Jazz",
-     "Manufacturer": "Yazoo records",
-     "Features": "1st Edition",
-     "Genre": "Jazz, Music",
-     "Country of Origin": "United States"
-    },
-    "descriptionSnippet": "VINTAGE 1982 R. CRUMB \"EARLY JAZZ GREATS\" CARD SET (100% COMPLETE) Original 1st Printing by Yazoo Records (New York address on box) The Cards: NEAR MINT. All 36 cards are crisp and flawless with sharp corners. The Box: Complete and structurally intact, but has moderate shelf wear",
-    "fetchedAt": "2026-09-25T03:17:44.787Z"
-   },
-   "priceHistory": [
-    {
-     "at": "2026-09-25T03:20:24.636Z",
-     "price": 17.99,
-     "allIn": 24.06
-    }
-   ],
-   "priceChange": null,
-   "relisted": null,
-   "photoReused": null,
-   "dismissible": true
-  },
-  {
-   "key": "art-crumb-drawing:v1|336613394777|0",
-   "group": "under",
-   "huntId": "art-crumb-drawing",
-   "huntLabel": "Robert Crumb — drawing",
-   "classification": "under",
-   "listingId": "v1|336613394777|0",
-   "title": "Original Art ACEO ATC Miniature Keep on Trucking Mr Natural R Robert Crumb ",
-   "url": "https://www.ebay.com/itm/336613394777?_skw=r+crumb+original&hash=item4e5fb8c959:g:WtEAAeSwuBRpXT5D",
-   "imageUrl": "https://i.ebayimg.com/images/g/WtEAAeSwuBRpXT5D/s-l225.jpg",
-   "buyingMode": "FIXED_PRICE",
-   "endsAt": null,
-   "bidCount": null,
-   "price": 20,
-   "shipping": 0,
-   "allIn": 20,
-   "maxAllIn": 2000,
-   "underBy": 1980,
-   "underPct": 0.99,
-   "capWording": "under cap",
-   "seller": {
-    "username": "anarchy.minx",
-    "feedbackPercentage": 98.8,
-    "feedbackScore": 10259
-   },
-   "condition": "New",
-   "location": "US",
-   "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "reasons": [
-    "must:crumb",
-    "medium:original",
-    "claims-original",
-    "aspect:signed",
-    "aspect:original",
-    "at-or-under-cap"
-   ],
-   "flags": [
-    "price-far-below-market"
-   ],
-   "confidence": 0.6,
-   "review": "review",
-   "carried": false,
-   "alertKey": "ebay:v1|336613394777|0:art-crumb-drawing:v1",
-   "similarCount": 0,
-   "risk": "high",
-   "riskReasons": [
-    "priced far below what this artist sells for",
-    "Robert Crumb is heavily forged on eBay and this is priced like a fake"
-   ],
-   "details": {
-    "aspects": {
-     "Unit of Sale": "Single Piece",
-     "Artist": "Nik Lamb",
-     "Signed": "Yes",
-     "Size": "Small",
-     "Period": "Ultra Contemporary (2020 - Now)",
-     "Material": "Paper",
-     "Certificate of Authenticity (COA)": "No",
-     "Framing": "Unframed",
-     "Subject": "Cartoons & Caricatures",
-     "Personalize": "No",
-     "Type": "Painting",
-     "Year of Production": "2025",
-     "Unit Type": "Unit",
-     "Original/Licensed Reproduction": "Original",
-     "Theme": "Art",
-     "Style": "Miniature",
-     "Features": "ACEO",
-     "Production Technique": "Watercolor Painting",
-     "Handmade": "Yes",
-     "Country of Origin": "United States",
-     "Time Period Produced": "2020-Now"
-    },
-    "descriptionSnippet": "Custom Miniatures are only $25 - Send me a message! ******** Size is 4.5 inches by 6 inches ****** ACEO Original Artworks - helps support, encourage and MOTIVATE a single woman living in an RV - currently in Atlanta, GA ***** My goal is to sell 200 paintings to pay for roof repai",
-    "fetchedAt": "2026-09-25T03:17:44.787Z"
-   },
-   "priceHistory": [
-    {
-     "at": "2026-09-25T03:20:24.636Z",
-     "price": 20,
-     "allIn": 20
-    }
-   ],
-   "priceChange": null,
-   "relisted": null,
-   "photoReused": null,
-   "dismissible": true
-  },
-  {
-   "key": "art-crumb-drawing:v1|366541199453|0",
-   "group": "under",
-   "huntId": "art-crumb-drawing",
-   "huntLabel": "Robert Crumb — drawing",
-   "classification": "under",
-   "listingId": "v1|366541199453|0",
-   "title": "VTG ORIGINAL 1960s SOUVENIR \"KEEP ON TRUCKIN\" ROBERT CRUMB WATER DECAL ART NOS",
-   "url": "https://www.ebay.com/itm/366541199453?_skw=crumb+original+art&hash=item55578ed85d:g:HhMAAeSwAZtqQvSo",
-   "imageUrl": "https://i.ebayimg.com/images/g/HhMAAeSwAZtqQvSo/s-l225.jpg",
-   "buyingMode": "FIXED_PRICE",
-   "endsAt": null,
-   "bidCount": null,
-   "price": 15,
-   "shipping": 5.15,
-   "allIn": 20.15,
-   "maxAllIn": 2000,
-   "underBy": 1979.85,
-   "underPct": 0.99,
-   "capWording": "under cap",
-   "seller": {
-    "username": "jackson92142",
-    "feedbackPercentage": 100,
-    "feedbackScore": 2099
-   },
-   "condition": "New",
-   "location": "US",
-   "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "reasons": [
-    "must:crumb",
-    "medium:original",
-    "claims-original",
-    "at-or-under-cap"
-   ],
-   "flags": [
-    "price-far-below-market"
-   ],
-   "confidence": 0.6,
-   "review": "review",
-   "carried": false,
-   "alertKey": "ebay:v1|366541199453|0:art-crumb-drawing:v1",
-   "similarCount": 0,
-   "risk": "high",
-   "riskReasons": [
-    "priced far below what this artist sells for",
-    "Robert Crumb is heavily forged on eBay and this is priced like a fake"
-   ],
-   "details": {
-    "aspects": {
-     "Color": "Multi-Color"
-    },
-    "descriptionSnippet": "UNPEELED, UNUSED vintage decal sticker. In great vintage condition with age-related signs of wear and yellowing. Due to long-term storage, adhesive may have weakened. Please review all photos carefully, as they are an integral part of the description and condition. You are receiv",
-    "fetchedAt": "2026-09-25T09:38:53.047Z"
-   },
-   "priceHistory": [
-    {
-     "at": "2026-09-25T03:20:24.636Z",
-     "price": 15,
-     "allIn": 20.15
-    }
-   ],
-   "priceChange": null,
-   "relisted": null,
-   "photoReused": null,
-   "dismissible": true
-  },
-  {
-   "key": "art-crumb-drawing:v1|377484751339|0",
-   "group": "under",
-   "huntId": "art-crumb-drawing",
-   "huntLabel": "Robert Crumb — drawing",
-   "classification": "under",
-   "listingId": "v1|377484751339|0",
-   "title": "1980 Yazoo Heroes of the Blues Complete 36 Card Set R. Crumb w/ Original Box",
-   "url": "https://www.ebay.com/itm/377484751339?_skw=r+crumb+original&hash=item57e3d831eb:g:ROoAAeSwRAVqiloz",
-   "imageUrl": "https://i.ebayimg.com/images/g/ROoAAeSwRAVqiloz/s-l225.jpg",
-   "buyingMode": "FIXED_PRICE",
-   "endsAt": null,
-   "bidCount": null,
-   "price": 23,
-   "shipping": 6.07,
-   "allIn": 29.07,
-   "maxAllIn": 2000,
-   "underBy": 1970.93,
-   "underPct": 0.99,
-   "capWording": "under cap",
-   "seller": {
-    "username": "rusish4153",
-    "feedbackPercentage": 100,
-    "feedbackScore": 67
-   },
-   "condition": "Used",
-   "location": "US",
-   "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "reasons": [
-    "must:crumb",
-    "medium:original",
-    "claims-original",
-    "aspect:original",
-    "at-or-under-cap"
-   ],
-   "flags": [
-    "price-far-below-market"
-   ],
-   "confidence": 0.6,
-   "review": "review",
-   "carried": false,
-   "alertKey": "ebay:v1|377484751339|0:art-crumb-drawing:v1",
-   "similarCount": 0,
-   "risk": "high",
-   "riskReasons": [
-    "priced far below what this artist sells for",
-    "Robert Crumb is heavily forged on eBay and this is priced like a fake"
-   ],
-   "details": {
-    "aspects": {
-     "Type": "Non-Sport Trading Card",
-     "Character": "Box",
-     "Year Manufactured": "1980",
-     "Franchise": "Heroes",
-     "Original/Licensed Reprint": "Original",
-     "Country of Origin": "United States"
-    },
-    "descriptionSnippet": "1980 Yazoo Heroes of the Blues Complete 36 Card Set R. Crumb w/ Original Box. Condition is Used. Shipped with USPS Ground Advantage.",
-    "fetchedAt": "2026-09-25T03:17:44.787Z"
-   },
-   "priceHistory": [
-    {
-     "at": "2026-09-25T03:20:24.636Z",
-     "price": 23,
-     "allIn": 29.07
     }
    ],
    "priceChange": null,
@@ -4956,222 +2917,6 @@
    "dismissible": true
   },
   {
-   "key": "art-crumb-drawing:v1|144777085758|0",
-   "group": "under",
-   "huntId": "art-crumb-drawing",
-   "huntLabel": "Robert Crumb — drawing",
-   "classification": "under",
-   "listingId": "v1|144777085758|0",
-   "title": "Original Vintage 1967 Truckin' On Down The Line Iron On Transfer R.Crumb DAYGLO",
-   "url": "https://www.ebay.com/itm/144777085758?_skw=r+crumb+original&hash=item21b563033e:g:lHQAAOSwwe5jUtwo",
-   "imageUrl": "https://i.ebayimg.com/images/g/lHQAAOSwwe5jUtwo/s-l225.jpg",
-   "buyingMode": "FIXED_PRICE",
-   "endsAt": null,
-   "bidCount": null,
-   "price": 32,
-   "shipping": 5.99,
-   "allIn": 37.99,
-   "maxAllIn": 2000,
-   "underBy": 1962.01,
-   "underPct": 0.98,
-   "capWording": "under cap",
-   "seller": {
-    "username": "irononqueen",
-    "feedbackPercentage": 99.8,
-    "feedbackScore": 11362
-   },
-   "condition": "New without tags",
-   "location": "US",
-   "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "reasons": [
-    "must:crumb",
-    "medium:original",
-    "claims-original",
-    "aspect:original",
-    "at-or-under-cap"
-   ],
-   "flags": [
-    "description:reproduction-language",
-    "price-far-below-market"
-   ],
-   "confidence": 0.6,
-   "review": "review",
-   "carried": false,
-   "alertKey": "ebay:v1|144777085758|0:art-crumb-drawing:v1",
-   "similarCount": 0,
-   "risk": "high",
-   "riskReasons": [
-    "priced far below what this artist sells for",
-    "the description uses reproduction / print language",
-    "Robert Crumb is heavily forged on eBay and this is priced like a fake"
-   ],
-   "details": {
-    "aspects": {
-     "Material": "Down",
-     "Original/Reproduction": "Original",
-     "Country of Origin": "United States"
-    },
-    "descriptionSnippet": "Approx 11 x 10 inches NOS New Old Stock Made in USA Collector's Item----THIS IS NOT A REPRODUCTION! I found this RARE Iron-on T-shirt heat transfer amongst a treasure trove of vintage tees and iron-ons in a dilapidated warehouse in New Jersey back in the early nineties. I recomme",
-    "fetchedAt": "2026-09-25T09:38:53.047Z"
-   },
-   "priceHistory": [
-    {
-     "at": "2026-09-25T03:20:24.636Z",
-     "price": 32,
-     "allIn": 37.99
-    }
-   ],
-   "priceChange": null,
-   "relisted": null,
-   "photoReused": null,
-   "dismissible": true
-  },
-  {
-   "key": "art-crumb-drawing:v1|145606603622|0",
-   "group": "under",
-   "huntId": "art-crumb-drawing",
-   "huntLabel": "Robert Crumb — drawing",
-   "classification": "under",
-   "listingId": "v1|145606603622|0",
-   "title": "Original Vintage Mr. Natural R. Crumb Iron On Transfer DAYGLO",
-   "url": "https://www.ebay.com/itm/145606603622?_skw=r+crumb+original&hash=item21e6d47366:g:BTgAAOSwagNicSal",
-   "imageUrl": "https://i.ebayimg.com/images/g/BTgAAOSwagNicSal/s-l225.jpg",
-   "buyingMode": "FIXED_PRICE",
-   "endsAt": null,
-   "bidCount": null,
-   "price": 25,
-   "shipping": 5.99,
-   "allIn": 30.99,
-   "maxAllIn": 2000,
-   "underBy": 1969.01,
-   "underPct": 0.98,
-   "capWording": "under cap",
-   "seller": {
-    "username": "irononqueen",
-    "feedbackPercentage": 99.8,
-    "feedbackScore": 11362
-   },
-   "condition": "New without tags",
-   "location": "US",
-   "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "reasons": [
-    "must:crumb",
-    "medium:original",
-    "claims-original",
-    "aspect:original",
-    "at-or-under-cap"
-   ],
-   "flags": [
-    "description:reproduction-language",
-    "price-far-below-market"
-   ],
-   "confidence": 0.6,
-   "review": "review",
-   "carried": false,
-   "alertKey": "ebay:v1|145606603622|0:art-crumb-drawing:v1",
-   "similarCount": 0,
-   "risk": "high",
-   "riskReasons": [
-    "priced far below what this artist sells for",
-    "the description uses reproduction / print language",
-    "Robert Crumb is heavily forged on eBay and this is priced like a fake"
-   ],
-   "details": {
-    "aspects": {
-     "Color": "Multi-Color",
-     "Original/Reproduction": "Original",
-     "Gender": "Adult Unisex",
-     "Country of Origin": "United States"
-    },
-    "descriptionSnippet": "Approx 5 x 4 inches Very Good Condition NOS New Old Stock Collector's Item----THIS IS NOT A REPRODUCTION! I found this RARE Iron-on T-shirt heat transfer amongst a treasure trove of vintage tees and iron-ons in a dilapidated warehouse in New Jersey back in the early nineties. I r",
-    "fetchedAt": "2026-09-25T09:38:53.047Z"
-   },
-   "priceHistory": [
-    {
-     "at": "2026-09-25T03:20:24.636Z",
-     "price": 25,
-     "allIn": 30.99
-    }
-   ],
-   "priceChange": null,
-   "relisted": null,
-   "photoReused": null,
-   "dismissible": true
-  },
-  {
-   "key": "art-crumb-drawing:v1|206395744619|0",
-   "group": "under",
-   "huntId": "art-crumb-drawing",
-   "huntLabel": "Robert Crumb — drawing",
-   "classification": "under",
-   "listingId": "v1|206395744619|0",
-   "title": "Janis Joplin Big Brother CHEAP THRILLS original release LP; R. Crumb artwork cov",
-   "url": "https://www.ebay.com/itm/206395744619?_skw=r+crumb+original&hash=item300e25216b:g:xPQAAeSw~DhqRyau",
-   "imageUrl": "https://i.ebayimg.com/images/g/xPQAAeSw~DhqRyau/s-l225.jpg",
-   "buyingMode": "FIXED_PRICE",
-   "endsAt": null,
-   "bidCount": null,
-   "price": 24.99,
-   "shipping": 7.99,
-   "allIn": 32.98,
-   "maxAllIn": 2000,
-   "underBy": 1967.02,
-   "underPct": 0.98,
-   "capWording": "under cap",
-   "seller": {
-    "username": "glennh3nu0",
-    "feedbackPercentage": 99.8,
-    "feedbackScore": 9359
-   },
-   "condition": null,
-   "location": "US",
-   "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "reasons": [
-    "must:crumb",
-    "medium:original",
-    "claims-original",
-    "aspect:original",
-    "at-or-under-cap"
-   ],
-   "flags": [
-    "price-far-below-market"
-   ],
-   "confidence": 0.6,
-   "review": "review",
-   "carried": false,
-   "alertKey": "ebay:v1|206395744619|0:art-crumb-drawing:v1",
-   "similarCount": 0,
-   "risk": "high",
-   "riskReasons": [
-    "priced far below what this artist sells for",
-    "Robert Crumb is heavily forged on eBay and this is priced like a fake"
-   ],
-   "details": {
-    "aspects": {
-     "Industry": "Music",
-     "Artist/Band": "Janis Joplin",
-     "Original/Reproduction": "Original",
-     "Genre": "Rock & Pop"
-    },
-    "descriptionSnippet": "Average cond.",
-    "fetchedAt": "2026-09-25T09:38:53.047Z"
-   },
-   "priceHistory": [
-    {
-     "at": "2026-09-25T03:20:24.636Z",
-     "price": 24.99,
-     "allIn": 32.98
-    }
-   ],
-   "priceChange": null,
-   "relisted": null,
-   "photoReused": null,
-   "dismissible": true
-  },
-  {
    "key": "art-crumb-drawing:v1|206487015239|0",
    "group": "under",
    "huntId": "art-crumb-drawing",
@@ -5258,517 +3003,6 @@
    "dismissible": true
   },
   {
-   "key": "art-crumb-drawing:v1|278374914262|0",
-   "group": "under",
-   "huntId": "art-crumb-drawing",
-   "huntLabel": "Robert Crumb — drawing",
-   "classification": "under",
-   "listingId": "v1|278374914262|0",
-   "title": "Keep On Truckin Robert Crumb 1967 R Crumb Vintage Heat Transfer Original RARE OG",
-   "url": "https://www.ebay.com/itm/278374914262?_skw=r+crumb+original&hash=item40d07018d6:g:lggAAeSwrilpk702",
-   "imageUrl": "https://i.ebayimg.com/images/g/lggAAeSwrilpk702/s-l225.jpg",
-   "buyingMode": "FIXED_PRICE",
-   "endsAt": null,
-   "bidCount": null,
-   "price": 40,
-   "shipping": 0,
-   "allIn": 40,
-   "maxAllIn": 2000,
-   "underBy": 1960,
-   "underPct": 0.98,
-   "capWording": "under cap",
-   "seller": {
-    "username": "roxyanddeez",
-    "feedbackPercentage": 100,
-    "feedbackScore": 8688
-   },
-   "condition": "New with tags",
-   "location": "US",
-   "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "reasons": [
-    "must:crumb",
-    "medium:original",
-    "claims-original",
-    "aspect:original",
-    "at-or-under-cap"
-   ],
-   "flags": [
-    "price-far-below-market"
-   ],
-   "confidence": 0.6,
-   "review": "review",
-   "carried": false,
-   "alertKey": "ebay:v1|278374914262|0:art-crumb-drawing:v1",
-   "similarCount": 0,
-   "risk": "high",
-   "riskReasons": [
-    "priced far below what this artist sells for",
-    "Robert Crumb is heavily forged on eBay and this is priced like a fake"
-   ],
-   "details": {
-    "aspects": {
-     "Type": "Heat Press",
-     "Transfer Style": "Countries",
-     "Country of Origin": "United States",
-     "Brand": "Rare",
-     "Original/Reproduction": "Original"
-    },
-    "descriptionSnippet": "Vintage Heat Transfer Iron On Rare vintage original heat transfer iron on for a shirt A heat press will be needed for application as this is the old school heat press version!!",
-    "fetchedAt": "2026-09-25T09:38:53.047Z"
-   },
-   "priceHistory": [
-    {
-     "at": "2026-09-25T03:20:24.636Z",
-     "price": 40,
-     "allIn": 40
-    }
-   ],
-   "priceChange": null,
-   "relisted": null,
-   "photoReused": null,
-   "dismissible": true
-  },
-  {
-   "key": "art-crumb-drawing:v1|287074885097|0",
-   "group": "under",
-   "huntId": "art-crumb-drawing",
-   "huntLabel": "Robert Crumb — drawing",
-   "classification": "under",
-   "listingId": "v1|287074885097|0",
-   "title": "R. Crumb Keep on trucking Patch March of Dimes Super Walk Original ",
-   "url": "https://www.ebay.com/itm/287074885097?_skw=r+crumb+original&hash=item42d6ff1de9:g:kvQAAeSwPiNpQaff",
-   "imageUrl": "https://i.ebayimg.com/images/g/kvQAAeSwPiNpQaff/s-l225.jpg",
-   "buyingMode": "FIXED_PRICE",
-   "endsAt": null,
-   "bidCount": null,
-   "price": 37.99,
-   "shipping": 4.39,
-   "allIn": 42.38,
-   "maxAllIn": 2000,
-   "underBy": 1957.62,
-   "underPct": 0.98,
-   "capWording": "under cap",
-   "seller": {
-    "username": "sk2ski",
-    "feedbackPercentage": 100,
-    "feedbackScore": 2445
-   },
-   "condition": "Used",
-   "location": "US",
-   "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "reasons": [
-    "must:crumb",
-    "medium:original",
-    "claims-original",
-    "at-or-under-cap"
-   ],
-   "flags": [
-    "price-far-below-market"
-   ],
-   "confidence": 0.6,
-   "review": "review",
-   "carried": false,
-   "alertKey": "ebay:v1|287074885097|0:art-crumb-drawing:v1",
-   "similarCount": 0,
-   "risk": "high",
-   "riskReasons": [
-    "priced far below what this artist sells for",
-    "Robert Crumb is heavily forged on eBay and this is priced like a fake"
-   ],
-   "details": {
-    "aspects": {
-     "Unit of Sale": "Single",
-     "Brand": "Black Ball Corp.",
-     "Type": "Iron-On",
-     "Composition": "Cloth",
-     "Theme": "Cartoons, TV & Movie Characters",
-     "Suitable For": "Apparel - Coat/Jacket",
-     "UPC": "840471710936"
-    },
-    "descriptionSnippet": "R. Crumb Keep on trucking Patch March of Dimes Super Walk This is a vintage original embroidered patch for the March of Dimes Superwalk. \"March of Dimes, Super walk, I walked\" Orange blue and white colors, figure show the 1960's \"Keep on trucking.\" Icon of Robert Crumb. Not sure ",
-    "fetchedAt": "2026-09-25T09:38:53.047Z"
-   },
-   "priceHistory": [
-    {
-     "at": "2026-09-25T03:20:24.636Z",
-     "price": 37.99,
-     "allIn": 42.38
-    }
-   ],
-   "priceChange": null,
-   "relisted": null,
-   "photoReused": null,
-   "dismissible": true
-  },
-  {
-   "key": "art-crumb-drawing:v1|365727107966|0",
-   "group": "under",
-   "huntId": "art-crumb-drawing",
-   "huntLabel": "Robert Crumb — drawing",
-   "classification": "under",
-   "listingId": "v1|365727107966|0",
-   "title": "VINTAGE ORIGINAL 1968 SOUVENIR \"KEEP ON TRUCKIN\" ROBERT CRUMB WATER DECAL ART ",
-   "url": "https://www.ebay.com/itm/365727107966?_skw=crumb+original+art&hash=item552708cb7e:g:qt4AAOSwfkpd431E",
-   "imageUrl": "https://i.ebayimg.com/images/g/qt4AAOSwfkpd431E/s-l225.jpg",
-   "buyingMode": "FIXED_PRICE",
-   "endsAt": null,
-   "bidCount": null,
-   "price": 25.99,
-   "shipping": 4.95,
-   "allIn": 30.94,
-   "maxAllIn": 2000,
-   "underBy": 1969.06,
-   "underPct": 0.98,
-   "capWording": "under cap",
-   "seller": {
-    "username": "scarcezhenzteeth",
-    "feedbackPercentage": 100,
-    "feedbackScore": 9476
-   },
-   "condition": "Unspecified",
-   "location": "US",
-   "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "reasons": [
-    "must:crumb",
-    "medium:original",
-    "claims-original",
-    "at-or-under-cap"
-   ],
-   "flags": [
-    "price-far-below-market"
-   ],
-   "confidence": 0.6,
-   "review": "review",
-   "carried": false,
-   "alertKey": "ebay:v1|365727107966|0:art-crumb-drawing:v1",
-   "similarCount": 0,
-   "risk": "high",
-   "riskReasons": [
-    "priced far below what this artist sells for",
-    "Robert Crumb is heavily forged on eBay and this is priced like a fake"
-   ],
-   "details": {
-    "aspects": {},
-    "descriptionSnippet": "--> Image not available Photos not available for this variation &amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;lt;style type=\"text/css\"&amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;gt;.vi-hide-mImgThr {display: none;}&a",
-    "fetchedAt": "2026-09-25T09:38:53.047Z"
-   },
-   "priceHistory": [
-    {
-     "at": "2026-09-25T03:20:24.636Z",
-     "price": 25.99,
-     "allIn": 30.94
-    }
-   ],
-   "priceChange": null,
-   "relisted": null,
-   "photoReused": null,
-   "dismissible": true
-  },
-  {
-   "key": "art-crumb-drawing:v1|397532364428|0",
-   "group": "under",
-   "huntId": "art-crumb-drawing",
-   "huntLabel": "Robert Crumb — drawing",
-   "classification": "under",
-   "listingId": "v1|397532364428|0",
-   "title": "MR. NATURAL R. CRUMB CARTOON ANIMATION ORIGINAL 35mm Color Slide A208",
-   "url": "https://www.ebay.com/itm/397532364428?_skw=r+crumb+original&hash=item5c8ec67e8c:g:b54AAeSwYippdUT5",
-   "imageUrl": "https://i.ebayimg.com/images/g/b54AAeSwYippdUT5/s-l225.jpg",
-   "buyingMode": "FIXED_PRICE",
-   "endsAt": null,
-   "bidCount": null,
-   "price": 25,
-   "shipping": 8,
-   "allIn": 33,
-   "maxAllIn": 2000,
-   "underBy": 1967,
-   "underPct": 0.98,
-   "capWording": "under cap",
-   "seller": {
-    "username": "amd6777",
-    "feedbackPercentage": 100,
-    "feedbackScore": 504
-   },
-   "condition": "Used",
-   "location": "US",
-   "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "reasons": [
-    "must:crumb",
-    "medium:original",
-    "claims-original",
-    "aspect:original",
-    "at-or-under-cap"
-   ],
-   "flags": [
-    "price-far-below-market"
-   ],
-   "confidence": 0.6,
-   "review": "review",
-   "carried": false,
-   "alertKey": "ebay:v1|397532364428|0:art-crumb-drawing:v1",
-   "similarCount": 0,
-   "risk": "high",
-   "riskReasons": [
-    "priced far below what this artist sells for",
-    "Robert Crumb is heavily forged on eBay and this is priced like a fake"
-   ],
-   "details": {
-    "aspects": {
-     "Unit of Sale": "Single Piece",
-     "Type": "Film Slide",
-     "Format": "35mm",
-     "Theme": "Animation",
-     "Image Color": "Color",
-     "Material": "Celluloid",
-     "Original/Licensed Reprint": "Original",
-     "Brand/Publisher": "Agfachrome",
-     "Subject": "Anime, Cartoons & Caricatures",
-     "Vintage": "Yes"
-    },
-    "descriptionSnippet": "The product is an original 35mm color slide featuring a Mr. Natural R. Crumb cartoon animation. Created with celluloid material and Agfachrome brand, this vintage film slide showcases a unique and collectible piece of anime and cartoon history. Perfect for collectors and enthusia",
-    "fetchedAt": "2026-09-25T09:38:53.047Z"
-   },
-   "priceHistory": [
-    {
-     "at": "2026-09-25T03:20:24.636Z",
-     "price": 25,
-     "allIn": 33
-    }
-   ],
-   "priceChange": null,
-   "relisted": null,
-   "photoReused": null,
-   "dismissible": true
-  },
-  {
-   "key": "art-crumb-drawing:v1|136534089649|0",
-   "group": "under",
-   "huntId": "art-crumb-drawing",
-   "huntLabel": "Robert Crumb — drawing",
-   "classification": "under",
-   "listingId": "v1|136534089649|0",
-   "title": "Original Vintage 1967 R. Crumb Keep On Truckin' Iron On Transfer DAYGLO",
-   "url": "https://www.ebay.com/itm/136534089649?_skw=r+crumb+original&hash=item1fca10dfb1:g:UC0AAOSwX1FjUtqV",
-   "imageUrl": "https://i.ebayimg.com/images/g/UC0AAOSwX1FjUtqV/s-l225.jpg",
-   "buyingMode": "FIXED_PRICE",
-   "endsAt": null,
-   "bidCount": null,
-   "price": 49.5,
-   "shipping": 5.99,
-   "allIn": 55.49,
-   "maxAllIn": 2000,
-   "underBy": 1944.51,
-   "underPct": 0.97,
-   "capWording": "under cap",
-   "seller": {
-    "username": "irononqueen",
-    "feedbackPercentage": 99.8,
-    "feedbackScore": 11362
-   },
-   "condition": "New without tags",
-   "location": "US",
-   "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "reasons": [
-    "must:crumb",
-    "medium:original",
-    "claims-original",
-    "aspect:original",
-    "at-or-under-cap"
-   ],
-   "flags": [
-    "description:reproduction-language",
-    "price-far-below-market"
-   ],
-   "confidence": 0.6,
-   "review": "review",
-   "carried": false,
-   "alertKey": "ebay:v1|136534089649|0:art-crumb-drawing:v1",
-   "similarCount": 0,
-   "risk": "high",
-   "riskReasons": [
-    "priced far below what this artist sells for",
-    "the description uses reproduction / print language",
-    "Robert Crumb is heavily forged on eBay and this is priced like a fake"
-   ],
-   "details": {
-    "aspects": {
-     "Brand": "R Crumb",
-     "Color": "Multi-Color",
-     "Decade": "1960s",
-     "Original/Reproduction": "Original",
-     "Gender": "Adult Unisex",
-     "Country of Origin": "United States"
-    },
-    "descriptionSnippet": "NOS New Old Stock Good Condition Approx 11 x 9.5 inches Combined shipping *Please use the eBay desktop site ... not the app *Add items to cart *Your shipping should automatically combine *If you do not receive combined shipping..request total from seller or message me! Collector'",
-    "fetchedAt": "2026-09-25T09:38:53.047Z"
-   },
-   "priceHistory": [
-    {
-     "at": "2026-09-25T03:20:24.636Z",
-     "price": 49.5,
-     "allIn": 55.49
-    }
-   ],
-   "priceChange": null,
-   "relisted": null,
-   "photoReused": null,
-   "dismissible": true
-  },
-  {
-   "key": "art-crumb-drawing:v1|176494690907|0",
-   "group": "under",
-   "huntId": "art-crumb-drawing",
-   "huntLabel": "Robert Crumb — drawing",
-   "classification": "under",
-   "listingId": "v1|176494690907|0",
-   "title": "Original Vintage 1967 R.Crumb Style Keep On Truckin' Iron On Transfer DAYGLO",
-   "url": "https://www.ebay.com/itm/176494690907?_skw=r+crumb+original&hash=item2917e7425b:g:ldoAAOSwiiFmpqRC",
-   "imageUrl": "https://i.ebayimg.com/images/g/ldoAAOSwiiFmpqRC/s-l225.jpg",
-   "buyingMode": "FIXED_PRICE",
-   "endsAt": null,
-   "bidCount": null,
-   "price": 49.95,
-   "shipping": 6.5,
-   "allIn": 56.45,
-   "maxAllIn": 2000,
-   "underBy": 1943.55,
-   "underPct": 0.97,
-   "capWording": "under cap",
-   "seller": {
-    "username": "checkvw",
-    "feedbackPercentage": 100,
-    "feedbackScore": 1060
-   },
-   "condition": "Unspecified",
-   "location": "US",
-   "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "reasons": [
-    "must:crumb",
-    "medium:original",
-    "claims-original",
-    "aspect:original",
-    "at-or-under-cap"
-   ],
-   "flags": [
-    "description:reproduction-language",
-    "price-far-below-market"
-   ],
-   "confidence": 0.6,
-   "review": "review",
-   "carried": false,
-   "alertKey": "ebay:v1|176494690907|0:art-crumb-drawing:v1",
-   "similarCount": 0,
-   "risk": "high",
-   "riskReasons": [
-    "priced far below what this artist sells for",
-    "the description uses reproduction / print language",
-    "Robert Crumb is heavily forged on eBay and this is priced like a fake"
-   ],
-   "details": {
-    "aspects": {
-     "Country of Origin": "United States",
-     "Vintage Type": "True Vintage",
-     "Decade": "1960s",
-     "Color": "Multi-Color",
-     "Original/Reproduction": "Original",
-     "Look": "Psychedelic",
-     "Gender": "Unisex"
-    },
-    "descriptionSnippet": "Collector's Item----THIS IS NOT A REPRODUCTION! RARE Iron-on T-shirt heat transfer I recommend going to your local t-shirt shop and having this put on a tee by a professional using a t-shirt heat press machine. The transfer will appear much brighter than the photos after it is he",
-    "fetchedAt": "2026-09-25T09:38:53.047Z"
-   },
-   "priceHistory": [
-    {
-     "at": "2026-09-25T03:20:24.636Z",
-     "price": 49.95,
-     "allIn": 56.45
-    }
-   ],
-   "priceChange": null,
-   "relisted": null,
-   "photoReused": null,
-   "dismissible": true
-  },
-  {
-   "key": "art-crumb-drawing:v1|188902118723|0",
-   "group": "under",
-   "huntId": "art-crumb-drawing",
-   "huntLabel": "Robert Crumb — drawing",
-   "classification": "under",
-   "listingId": "v1|188902118723|0",
-   "title": "ORIGINAL CAST RECORDING - R Crumb The Musical - CD - Cast Recording - SEALED/NEW",
-   "url": "https://www.ebay.com/itm/188902118723?_skw=r+crumb+original&hash=item2bfb719543:g:uxAAAeSwTMBqn58P",
-   "imageUrl": "https://i.ebayimg.com/images/g/uxAAAeSwTMBqn58P/s-l225.jpg",
-   "buyingMode": "FIXED_PRICE",
-   "endsAt": null,
-   "bidCount": null,
-   "price": 63.95,
-   "shipping": 0,
-   "allIn": 63.95,
-   "maxAllIn": 2000,
-   "underBy": 1936.05,
-   "underPct": 0.97,
-   "capWording": "under cap",
-   "seller": {
-    "username": "zuber",
-    "feedbackPercentage": 99,
-    "feedbackScore": 349520
-   },
-   "condition": "Brand New",
-   "location": "US",
-   "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "reasons": [
-    "must:crumb",
-    "medium:original",
-    "claims-original",
-    "at-or-under-cap"
-   ],
-   "flags": [
-    "price-far-below-market"
-   ],
-   "confidence": 0.6,
-   "review": "review",
-   "carried": false,
-   "alertKey": "ebay:v1|188902118723|0:art-crumb-drawing:v1",
-   "similarCount": 0,
-   "risk": "high",
-   "riskReasons": [
-    "priced far below what this artist sells for",
-    "Robert Crumb is heavily forged on eBay and this is priced like a fake"
-   ],
-   "details": {
-    "aspects": {
-     "UPC": "714798900120",
-     "Release Title": "R Crumb the Musical",
-     "Format": "Cast Recording",
-     "Artist": "Original Cast Recording",
-     "Type": "Audio CD",
-     "Record Label": "Shel-Tone Records",
-     "Release Year": "1996"
-    },
-    "descriptionSnippet": "Free Shipping On All Domestic Orders Home About View All Products Contact ORIGINAL CAST RECORDING - R Crumb The Musical - CD - Cast Recording - SEALED/NEW ORIGINAL CAST RECORDING - R Crumb The Musical - CD - Cast Recording - **BRAND NEW/STILL SEALED** - RARE Item specifics UPC: 7",
-    "fetchedAt": "2026-09-25T09:38:53.047Z"
-   },
-   "priceHistory": [
-    {
-     "at": "2026-09-25T03:20:24.636Z",
-     "price": 63.95,
-     "allIn": 63.95
-    }
-   ],
-   "priceChange": null,
-   "relisted": null,
-   "photoReused": null,
-   "dismissible": true
-  },
-  {
    "key": "art-crumb-drawing:v1|227436862655|0",
    "group": "under",
    "huntId": "art-crumb-drawing",
@@ -5833,298 +3067,6 @@
      "at": "2026-09-25T03:20:24.636Z",
      "price": 50.99,
      "allIn": 60.99
-    }
-   ],
-   "priceChange": null,
-   "relisted": null,
-   "photoReused": null,
-   "dismissible": true
-  },
-  {
-   "key": "art-crumb-drawing:v1|267763074442|0",
-   "group": "under",
-   "huntId": "art-crumb-drawing",
-   "huntLabel": "Robert Crumb — drawing",
-   "classification": "under",
-   "listingId": "v1|267763074442|0",
-   "title": "R Crumb Pioneers L Country Music Card Set Original Box vintage Excellent Cond.",
-   "url": "https://www.ebay.com/itm/267763074442?_skw=r+crumb+original&hash=item3e57ec458a:g:Og0AAeSw2HNqh4Qu",
-   "imageUrl": "https://i.ebayimg.com/images/g/Og0AAeSw2HNqh4Qu/s-l225.jpg",
-   "buyingMode": "FIXED_PRICE",
-   "endsAt": null,
-   "bidCount": null,
-   "price": 50,
-   "shipping": 10,
-   "allIn": 60,
-   "maxAllIn": 2000,
-   "underBy": 1940,
-   "underPct": 0.97,
-   "capWording": "under cap",
-   "seller": {
-    "username": "coolstones4u",
-    "feedbackPercentage": 100,
-    "feedbackScore": 513
-   },
-   "condition": null,
-   "location": "US",
-   "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "reasons": [
-    "must:crumb",
-    "medium:original",
-    "claims-original",
-    "aspect:original",
-    "at-or-under-cap"
-   ],
-   "flags": [
-    "description:reproduction-language",
-    "price-far-below-market"
-   ],
-   "confidence": 0.6,
-   "review": "review",
-   "carried": false,
-   "alertKey": "ebay:v1|267763074442|0:art-crumb-drawing:v1",
-   "similarCount": 0,
-   "risk": "high",
-   "riskReasons": [
-    "priced far below what this artist sells for",
-    "the description uses reproduction / print language",
-    "Robert Crumb is heavily forged on eBay and this is priced like a fake"
-   ],
-   "details": {
-    "aspects": {
-     "Artist": "Robert Crumb",
-     "Industry": "Music",
-     "Original/Reproduction": "Original",
-     "Genre": "Country",
-     "Country of Origin": "United States"
-    },
-    "descriptionSnippet": "The R Crumb Pioneers of Country Music Card Set. This collectible set pays homage to the music industry, specifically focusing on country music. With a United States origin, this unique item offers fans and collectors a glimpse into the legacy of country music through the lens of ",
-    "fetchedAt": "2026-09-25T09:38:53.047Z"
-   },
-   "priceHistory": [
-    {
-     "at": "2026-09-25T03:20:24.636Z",
-     "price": 50,
-     "allIn": 60
-    }
-   ],
-   "priceChange": null,
-   "relisted": null,
-   "photoReused": null,
-   "dismissible": true
-  },
-  {
-   "key": "art-crumb-drawing:v1|394800295994|0",
-   "group": "under",
-   "huntId": "art-crumb-drawing",
-   "huntLabel": "Robert Crumb — drawing",
-   "classification": "under",
-   "listingId": "v1|394800295994|0",
-   "title": "R Crumb Pioneers of Country Music Card Set Original Uncut Proof Sheet & Card Set",
-   "url": "https://www.ebay.com/itm/394800295994?_skw=r+crumb+original&hash=item5bebee703a:g:DTkAAOSwV9Vk0r6x",
-   "imageUrl": "https://i.ebayimg.com/images/g/DTkAAOSwV9Vk0r6x/s-l225.jpg",
-   "buyingMode": "FIXED_PRICE",
-   "endsAt": null,
-   "bidCount": null,
-   "price": 74.99,
-   "shipping": 0,
-   "allIn": 74.99,
-   "maxAllIn": 2000,
-   "underBy": 1925.01,
-   "underPct": 0.96,
-   "capWording": "under cap",
-   "seller": {
-    "username": "optikrock",
-    "feedbackPercentage": 99.5,
-    "feedbackScore": 10048
-   },
-   "condition": null,
-   "location": "US",
-   "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "reasons": [
-    "must:crumb",
-    "medium:original",
-    "claims-original",
-    "aspect:original",
-    "at-or-under-cap"
-   ],
-   "flags": [
-    "price-far-below-market"
-   ],
-   "confidence": 0.6,
-   "review": "review",
-   "carried": false,
-   "alertKey": "ebay:v1|394800295994|0:art-crumb-drawing:v1",
-   "similarCount": 0,
-   "risk": "high",
-   "riskReasons": [
-    "priced far below what this artist sells for",
-    "Robert Crumb is heavily forged on eBay and this is priced like a fake"
-   ],
-   "details": {
-    "aspects": {
-     "Country of Origin": "United States",
-     "Artist": "Robert Crumb",
-     "Genre": "Country",
-     "Industry": "Music",
-     "Original/Reproduction": "Original"
-    },
-    "descriptionSnippet": "This is an uncut press proof from the 2004 R. Crumb Pioneers of Country Music card set press run. It's endlessly fascinating to look at, colorful and rich with detail as 40 of the country music's most influential and enduring performers are depicted with style and grace. The card",
-    "fetchedAt": "2026-09-25T09:38:53.047Z"
-   },
-   "priceHistory": [
-    {
-     "at": "2026-09-25T03:20:24.636Z",
-     "price": 74.99,
-     "allIn": 74.99
-    }
-   ],
-   "priceChange": null,
-   "relisted": null,
-   "photoReused": null,
-   "dismissible": true
-  },
-  {
-   "key": "art-crumb-drawing:v1|257605541463|0",
-   "group": "under",
-   "huntId": "art-crumb-drawing",
-   "huntLabel": "Robert Crumb — drawing",
-   "classification": "under",
-   "listingId": "v1|257605541463|0",
-   "title": "Charles Bukowski Bring Me Your Love R. Crumb Illustrations Plus Ad Broadsheets",
-   "url": "https://www.ebay.com/itm/257605541463?_skw=r+crumb+original&hash=item3bfa7c9e57:g:7LsAAeSwgQtqSafd",
-   "imageUrl": "https://i.ebayimg.com/images/g/7LsAAeSwgQtqSafd/s-l225.jpg",
-   "buyingMode": "FIXED_PRICE",
-   "endsAt": null,
-   "bidCount": null,
-   "price": 95,
-   "shipping": 4.39,
-   "allIn": 99.39,
-   "maxAllIn": 2000,
-   "underBy": 1900.61,
-   "underPct": 0.95,
-   "capWording": "under cap",
-   "seller": {
-    "username": "busterbooks8",
-    "feedbackPercentage": 100,
-    "feedbackScore": 123
-   },
-   "condition": null,
-   "location": "US",
-   "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "reasons": [
-    "must:crumb",
-    "medium:illustration",
-    "aspect:original",
-    "at-or-under-cap"
-   ],
-   "flags": [
-    "price-far-below-market"
-   ],
-   "confidence": 0.6,
-   "review": "review",
-   "carried": false,
-   "alertKey": "ebay:v1|257605541463|0:art-crumb-drawing:v1",
-   "similarCount": 0,
-   "risk": "high",
-   "riskReasons": [
-    "priced far below what this artist sells for",
-    "Robert Crumb is heavily forged on eBay and this is priced like a fake"
-   ],
-   "details": {
-    "aspects": {
-     "Language": "English",
-     "Signed": "No",
-     "Special Attributes": "1st Edition",
-     "Author": "Charles Bukowski",
-     "Personalized": "No",
-     "Region": "North America",
-     "Publisher": "Black Sparrow Press",
-     "Original/Facsimile": "Original",
-     "Year Printed": "1983"
-    },
-    "descriptionSnippet": "The is a first edition of the paperbound story \"Bring Me Your Love\" by Charles Bukowski, with illustrations by R. Crumb. It was printed in 1983 by Black Sparrow Press of Santa Barbara, California. I'm including in this sale Broadsheet/Flyers number 10 and 11, making it a unique c",
-    "fetchedAt": "2026-09-25T09:38:53.047Z"
-   },
-   "priceHistory": [
-    {
-     "at": "2026-09-25T03:20:24.636Z",
-     "price": 95,
-     "allIn": 99.39
-    }
-   ],
-   "priceChange": null,
-   "relisted": null,
-   "photoReused": null,
-   "dismissible": true
-  },
-  {
-   "key": "art-crumb-drawing:v1|372632650523|0",
-   "group": "under",
-   "huntId": "art-crumb-drawing",
-   "huntLabel": "Robert Crumb — drawing",
-   "classification": "under",
-   "listingId": "v1|372632650523|0",
-   "title": "Charles Bukowski/R Crumb BRING ME YOUR LOVE - Original Broadside Flyer",
-   "url": "https://www.ebay.com/itm/372632650523?_skw=r+crumb+original&hash=item56c2a3031b:g:UiUAAOSwtwVckqpT",
-   "imageUrl": "https://i.ebayimg.com/images/g/UiUAAOSwtwVckqpT/s-l225.jpg",
-   "buyingMode": "FIXED_PRICE",
-   "endsAt": null,
-   "bidCount": null,
-   "price": 89,
-   "shipping": 6,
-   "allIn": 95,
-   "maxAllIn": 2000,
-   "underBy": 1905,
-   "underPct": 0.95,
-   "capWording": "under cap",
-   "seller": {
-    "username": "pulpster",
-    "feedbackPercentage": 100,
-    "feedbackScore": 9834
-   },
-   "condition": null,
-   "location": "US",
-   "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "reasons": [
-    "must:crumb",
-    "medium:original",
-    "claims-original",
-    "aspect:original",
-    "at-or-under-cap"
-   ],
-   "flags": [
-    "price-far-below-market"
-   ],
-   "confidence": 0.6,
-   "review": "review",
-   "carried": false,
-   "alertKey": "ebay:v1|372632650523|0:art-crumb-drawing:v1",
-   "similarCount": 0,
-   "risk": "high",
-   "riskReasons": [
-    "priced far below what this artist sells for",
-    "Robert Crumb is heavily forged on eBay and this is priced like a fake"
-   ],
-   "details": {
-    "aspects": {
-     "Illustrator": "R Crumb",
-     "Author": "Charles Bukowski",
-     "Subject": "Literature & Fiction",
-     "Original/Facsimile": "Original"
-    },
-    "descriptionSnippet": "Original Broadside/Flyer no 11 for the Bukowski/Crumb collaborative volume BRING ME YOUR LOVE. This was issued by Black Sparrow Press's exclusive Canadian distributor BROWN & COMPANY before the book's release. Printed on quite fragile (and thin!) stock this has held up remarkably",
-    "fetchedAt": "2026-09-25T09:38:53.047Z"
-   },
-   "priceHistory": [
-    {
-     "at": "2026-09-25T03:20:24.636Z",
-     "price": 89,
-     "allIn": 95
     }
    ],
    "priceChange": null,
@@ -6409,81 +3351,6 @@
    "dismissible": true
   },
   {
-   "key": "art-crumb-drawing:v1|236956485890|0",
-   "group": "under",
-   "huntId": "art-crumb-drawing",
-   "huntLabel": "Robert Crumb — drawing",
-   "classification": "under",
-   "listingId": "v1|236956485890|0",
-   "title": "Vtg 1970s R. Crumb Keep On Truckin' Wood Plaque. Batch 172 - Original. 9 X 6.5",
-   "url": "https://www.ebay.com/itm/236956485890?_skw=r+crumb+original&hash=item372bb50902:g:dMwAAeSw459qYT3q",
-   "imageUrl": "https://i.ebayimg.com/images/g/dMwAAeSw459qYT3q/s-l225.jpg",
-   "buyingMode": "FIXED_PRICE",
-   "endsAt": null,
-   "bidCount": null,
-   "price": 160,
-   "shipping": 9.24,
-   "allIn": 169.24,
-   "maxAllIn": 2000,
-   "underBy": 1830.76,
-   "underPct": 0.92,
-   "capWording": "under cap",
-   "seller": {
-    "username": "dolph28",
-    "feedbackPercentage": 100,
-    "feedbackScore": 214
-   },
-   "condition": "Used",
-   "location": "US",
-   "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "reasons": [
-    "must:crumb",
-    "medium:original",
-    "claims-original",
-    "aspect:original",
-    "at-or-under-cap"
-   ],
-   "flags": [
-    "description:reproduction-language"
-   ],
-   "confidence": 0.95,
-   "review": "review",
-   "carried": false,
-   "alertKey": "ebay:v1|236956485890|0:art-crumb-drawing:v1",
-   "similarCount": 0,
-   "risk": "high",
-   "riskReasons": [
-    "the description uses reproduction / print language",
-    "Robert Crumb is heavily forged on eBay and this is priced like a fake"
-   ],
-   "details": {
-    "aspects": {
-     "Style": "1970s",
-     "Original/Reproduction": "Original",
-     "Brand": "R. Crumb",
-     "Type": "Plaque",
-     "Size": "Medium",
-     "Color": "Brown",
-     "Material": "Wood",
-     "Subject": "Trucks"
-    },
-    "descriptionSnippet": "Authentic 1970s \"Keep on Truckin'\" Vintage Wood PlaqueUp for sale is a genuine piece of 1970s counterculture history. This original wood novelty wall plaque features the iconic \"Keep on Truckin'\" characters popularized by legendary underground cartoonist Robert Crumb (R. Crumb).C",
-    "fetchedAt": "2026-09-25T09:38:53.047Z"
-   },
-   "priceHistory": [
-    {
-     "at": "2026-09-25T03:20:24.636Z",
-     "price": 160,
-     "allIn": 169.24
-    }
-   ],
-   "priceChange": null,
-   "relisted": null,
-   "photoReused": null,
-   "dismissible": true
-  },
-  {
    "key": "art-crumb-drawing:v1|407120003462|0",
    "group": "under",
    "huntId": "art-crumb-drawing",
@@ -6681,73 +3548,6 @@
      "at": "2026-09-25T02:43:43.147Z",
      "price": 230,
      "allIn": 250
-    }
-   ],
-   "priceChange": null,
-   "relisted": null,
-   "photoReused": null,
-   "dismissible": true
-  },
-  {
-   "key": "art-crumb-drawing:v1|167709484062|0",
-   "group": "under",
-   "huntId": "art-crumb-drawing",
-   "huntLabel": "Robert Crumb — drawing",
-   "classification": "under",
-   "listingId": "v1|167709484062|0",
-   "title": "Fritz the Cat 1972 Original Production Animation Cel Bakshi R Crumb Pigs Police",
-   "url": "https://www.ebay.com/itm/167709484062?_skw=r+crumb+original&hash=item270c43a41e:g:bhwAAeSwYcpomkq5",
-   "imageUrl": "https://i.ebayimg.com/images/g/bhwAAeSwYcpomkq5/s-l225.jpg",
-   "buyingMode": "FIXED_PRICE",
-   "endsAt": null,
-   "bidCount": null,
-   "price": 499.99,
-   "shipping": 19.95,
-   "allIn": 519.94,
-   "maxAllIn": 2000,
-   "underBy": 1480.06,
-   "underPct": 0.74,
-   "capWording": "under cap",
-   "seller": {
-    "username": "almostanythingopelika",
-    "feedbackPercentage": 99.8,
-    "feedbackScore": 24725
-   },
-   "condition": "Used",
-   "location": "US",
-   "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "reasons": [
-    "must:crumb",
-    "medium:original",
-    "claims-original",
-    "aspect:original",
-    "at-or-under-cap"
-   ],
-   "flags": [],
-   "confidence": 0.95,
-   "review": "review",
-   "carried": false,
-   "alertKey": "ebay:v1|167709484062|0:art-crumb-drawing:v1",
-   "similarCount": 0,
-   "risk": "high",
-   "riskReasons": [
-    "Robert Crumb is heavily forged on eBay and this is priced like a fake"
-   ],
-   "details": {
-    "aspects": {
-     "Type": "Production Cel",
-     "Year of Production": "1972",
-     "Original/Licensed Reproduction": "Original Production Art"
-    },
-    "descriptionSnippet": "ORIGINAL FRITZ THE CAT 1970s MOVIE ANIMATION CEL WITH A SCENE OF THE PIGS/POLICE. PICTURES ARE OF THE ACTUAL ITEM YOU WILL RECEIVE. WE COMBINE SHIPPING ON MULTIPLE ITEMS. PLEASE ASK US IF YOU ARE LOOKING FOR SOMETHING YOU DON'T SEE. ------------ Almost Anything LLC is located in ",
-    "fetchedAt": "2026-09-25T09:38:53.047Z"
-   },
-   "priceHistory": [
-    {
-     "at": "2026-09-25T03:20:24.636Z",
-     "price": 499.99,
-     "allIn": 519.94
     }
    ],
    "priceChange": null,
@@ -7128,62 +3928,6 @@
     {
      "at": "2026-09-25T02:43:43.147Z",
      "price": 7000,
-     "allIn": null
-    }
-   ],
-   "priceChange": null,
-   "relisted": null,
-   "photoReused": null,
-   "dismissible": true
-  },
-  {
-   "key": "design-nakashima-seating:v1|233313459630|0",
-   "group": "watch",
-   "huntId": "design-nakashima-seating",
-   "huntLabel": "George Nakashima — chairs & seating (all)",
-   "classification": "watch",
-   "listingId": "v1|233313459630|0",
-   "title": "Pair NWT Modern Nakashima St ACACIA wood Iron table/bench/etajere/nightstands",
-   "url": "https://www.ebay.com/itm/233313459630?_skw=nakashima+bench&hash=item365290ddae:g:pLIAAOSwdGFYpe--",
-   "imageUrl": "https://i.ebayimg.com/images/g/pLIAAOSwdGFYpe--/s-l225.jpg",
-   "buyingMode": "FIXED_PRICE",
-   "endsAt": null,
-   "bidCount": null,
-   "price": 230,
-   "shipping": null,
-   "allIn": null,
-   "maxAllIn": 3000,
-   "underBy": null,
-   "underPct": null,
-   "capWording": "all-in unknown — shipping not listed",
-   "seller": {
-    "username": "sanysa",
-    "feedbackPercentage": 100,
-    "feedbackScore": 1501
-   },
-   "condition": "New",
-   "location": "US",
-   "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "reasons": [
-    "must:nakashima",
-    "all-in-unknown"
-   ],
-   "flags": [
-    "shipping-unknown"
-   ],
-   "confidence": 0.95,
-   "review": "ok",
-   "carried": false,
-   "alertKey": null,
-   "similarCount": 0,
-   "risk": "low",
-   "riskReasons": [],
-   "details": null,
-   "priceHistory": [
-    {
-     "at": "2026-09-25T03:20:24.636Z",
-     "price": 230,
      "allIn": null
     }
    ],
@@ -9507,69 +6251,6 @@
    "dismissible": true
   },
   {
-   "key": "art-crumb-drawing:v1|267789536134|0",
-   "group": "watch",
-   "huntId": "art-crumb-drawing",
-   "huntLabel": "Robert Crumb — drawing",
-   "classification": "watch",
-   "listingId": "v1|267789536134|0",
-   "title": "R. Crumb Heroes of the Blues - Original Uncut Proof Sheet Music Card Set",
-   "url": "https://www.ebay.com/itm/267789536134?_skw=r+crumb+original&hash=item3e59800b86:g:n8EAAeSwShxqreqx",
-   "imageUrl": "https://i.ebayimg.com/images/g/n8EAAeSwShxqreqx/s-l225.jpg",
-   "buyingMode": "AUCTION",
-   "endsAt": "2026-09-27T04:02:02.000Z",
-   "bidCount": 1,
-   "price": 65,
-   "shipping": null,
-   "allIn": null,
-   "maxAllIn": 2000,
-   "underBy": null,
-   "underPct": null,
-   "capWording": "all-in unknown — shipping not listed",
-   "seller": {
-    "username": "foudus",
-    "feedbackPercentage": 100,
-    "feedbackScore": 814
-   },
-   "condition": null,
-   "location": "US",
-   "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "reasons": [
-    "must:crumb",
-    "medium:original",
-    "claims-original",
-    "all-in-unknown"
-   ],
-   "flags": [
-    "auction-price-moves",
-    "shipping-unknown",
-    "price-far-below-market"
-   ],
-   "confidence": 0.55,
-   "review": "review",
-   "carried": false,
-   "alertKey": null,
-   "similarCount": 0,
-   "risk": "high",
-   "riskReasons": [
-    "priced far below what this artist sells for",
-    "Robert Crumb is heavily forged on eBay and this is priced like a fake"
-   ],
-   "details": null,
-   "priceHistory": [
-    {
-     "at": "2026-09-25T03:20:24.636Z",
-     "price": 65,
-     "allIn": null
-    }
-   ],
-   "priceChange": null,
-   "relisted": null,
-   "photoReused": null,
-   "dismissible": true
-  },
-  {
    "key": "design-nakashima-seating:v1|316006508991|0",
    "group": "over",
    "huntId": "design-nakashima-seating",
@@ -9619,106 +6300,6 @@
     }
    ],
    "priceChange": null,
-   "relisted": null,
-   "photoReused": null,
-   "dismissible": true
-  },
-  {
-   "key": "art-haze-painting:v1|227489171717|0",
-   "group": "over",
-   "huntId": "art-haze-painting",
-   "huntLabel": "Eric Haze — painting",
-   "classification": "over",
-   "listingId": "v1|227489171717|0",
-   "title": "Men 8.0US  Dunk High ''Eric Haze'' F F/Sp Box LTD Collection Original Sports Sho",
-   "url": "https://www.ebay.com/itm/227489171717?_skw=eric+haze+original&hash=item34f7694905:g:ov4AAeSwg4BqGKul",
-   "imageUrl": "https://i.ebayimg.com/images/g/ov4AAeSwg4BqGKul/s-l225.jpg",
-   "buyingMode": "FIXED_PRICE",
-   "endsAt": null,
-   "bidCount": null,
-   "price": 5179.99,
-   "shipping": 31.9,
-   "allIn": 5211.89,
-   "maxAllIn": 5000,
-   "underBy": -211.89,
-   "underPct": -0.04,
-   "capWording": "over cap",
-   "seller": {
-    "username": "japan-hobby-clubs",
-    "feedbackPercentage": 98.9,
-    "feedbackScore": 2165
-   },
-   "condition": "Pre-owned - Good",
-   "location": "JP",
-   "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-25T09:41:39.186Z",
-   "reasons": [
-    "must:haze",
-    "medium:original",
-    "claims-original",
-    "over-cap"
-   ],
-   "flags": [],
-   "confidence": 0.95,
-   "review": "ok",
-   "carried": false,
-   "alertKey": "ebay:v1|227489171717|0:art-haze-painting:v1",
-   "similarCount": 0,
-   "risk": "low",
-   "riskReasons": [],
-   "details": {
-    "aspects": {
-     "Brand": "Nike",
-     "Country": "Japan",
-     "US Shoe Size": "8",
-     "Color": "Multicolor",
-     "Department": "Men",
-     "Customized": "NA",
-     "Style Code": "NA",
-     "UK Shoe Size": "7.5",
-     "Product Line": "Nike Dunk",
-     "Model": "NA",
-     "Country of Origin": "NA",
-     "Style": "Sneaker",
-     "Shoe Width": "Standard",
-     "Shoe Shaft Style": "NA",
-     "Release Year": "NA",
-     "Upper Material": "Various",
-     "EU Shoe Size": "42",
-     "Type": "Athletic",
-     "Vintage": "NA",
-     "Character": "Nike Dunk",
-     "Theme": "Sports",
-     "Features": "Limited Edition",
-     "Performance/Activity": "Any",
-     "Closure": "Lace Up",
-     "Season": "Fall, Spring, Summer, Winter",
-     "Occasion": "Activewear, Casual",
-     "California Prop 65 Warning": "No",
-     "JP Shoe Size": "26",
-     "Number": "335",
-     "UPC": "NA"
-    },
-    "descriptionSnippet": "Item Title Men 8.0US Dunk High ''Eric Haze'' F F/Sp Box LTD Collection Original Sports Sho Payment Supports managed payments Please pay within 5 days after auction is finished. About Us We are located in Japan. It's our pleasure to make you happy by proposing our recommend item. ",
-    "fetchedAt": "2026-09-25T09:38:53.047Z"
-   },
-   "priceHistory": [
-    {
-     "at": "2026-09-25T03:20:24.636Z",
-     "price": 4817.39,
-     "allIn": 4849.29
-    },
-    {
-     "at": "2026-09-25T09:41:39.186Z",
-     "price": 5179.99,
-     "allIn": 5211.89
-    }
-   ],
-   "priceChange": {
-    "from": 4849.29,
-    "to": 5211.89,
-    "since": "2026-09-25T03:20:24.636Z"
-   },
    "relisted": null,
    "photoReused": null,
    "dismissible": true
@@ -27603,12 +24184,12 @@
   }
  ],
  "counts": {
-  "cards": 162,
-  "under": 79,
+  "cards": 116,
+  "under": 36,
   "newUnder": 0,
-  "watch": 45,
-  "over": 38,
+  "watch": 43,
+  "over": 37,
   "pendingAlerts": 77,
-  "highRisk": 59
+  "highRisk": 23
  }
 }
