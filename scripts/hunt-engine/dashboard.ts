@@ -274,7 +274,11 @@ export function alertsResponse(
 ) {
   const state = opts.state && ['pending', 'delivered', 'expired', 'all'].includes(opts.state) ? opts.state : 'pending';
   const limit = Math.min(Math.max(Number(opts.limit) || ALERT_PAGE_SIZE, 1), 200);
-  const all = d.alerts.filter((a) => state === 'all' || a.state === state);
+  // most trustworthy first: confidence, then how far under, then a stable key
+  const all = d.alerts
+    .filter((a) => state === 'all' || a.state === state)
+    .slice()
+    .sort((a, b) => b.confidence - a.confidence || (b.underPct ?? -1) - (a.underPct ?? -1) || a.alertKey.localeCompare(b.alertKey));
   let start = 0;
   if (opts.cursor) {
     const idx = all.findIndex((a) => a.alertKey === decodeCursor(opts.cursor!));
