@@ -1,18 +1,18 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-09-26T12:15:59.646Z",
+ "generatedAt": "2026-09-26T16:21:58.582Z",
  "run": {
-  "id": "20260926T121508Z-buxk",
+  "id": "20260926T161848Z-25zr",
   "state": "success",
   "mode": "live",
-  "startedAt": "2026-09-26T12:15:08.662Z",
-  "finishedAt": "2026-09-26T12:15:59.646Z",
-  "succeededAt": "2026-09-26T12:15:59.646Z",
+  "startedAt": "2026-09-26T16:18:48.845Z",
+  "finishedAt": "2026-09-26T16:21:58.582Z",
+  "succeededAt": "2026-09-26T16:21:58.582Z",
   "huntsTotal": 35,
   "huntsComplete": 35,
   "providerHealth": {
    "status": "ok",
-   "calls": 62,
+   "calls": 95,
    "rateLimit": null,
    "message": null
   },
@@ -20,11 +20,11 @@
   "staleAfterMinutes": 240,
   "discovery": {
    "searches": 62,
-   "fullSweeps": 0,
-   "deltaScans": 35,
-   "newThisRun": 3,
-   "newToday": 130,
-   "secondLooks": 0
+   "fullSweeps": 35,
+   "deltaScans": 0,
+   "newThisRun": 43,
+   "newToday": 147,
+   "secondLooks": 10
   }
  },
  "meta": {
@@ -138,16 +138,16 @@
    "maxAllIn": 5000,
    "priority": 1,
    "state": "complete",
-   "lastSearchedAt": "2026-09-26T12:15:09.722Z",
-   "lastSuccessfulAt": "2026-09-26T12:15:09.722Z",
+   "lastSearchedAt": "2026-09-26T16:18:50.326Z",
+   "lastSuccessfulAt": "2026-09-26T16:18:50.326Z",
    "carried": false,
    "error": null,
    "matchCount": 1,
    "underCount": 0,
    "overCount": 0,
    "watchCount": 1,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-09-26T11:18:26.824Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-09-26T16:18:50.326Z",
    "searches": 3,
    "newThisRun": 0,
    "newToday": 3
@@ -162,16 +162,16 @@
    "maxAllIn": 5000,
    "priority": 2,
    "state": "complete",
-   "lastSearchedAt": "2026-09-26T12:15:11.116Z",
-   "lastSuccessfulAt": "2026-09-26T12:15:11.116Z",
+   "lastSearchedAt": "2026-09-26T16:18:51.773Z",
+   "lastSuccessfulAt": "2026-09-26T16:18:51.773Z",
    "carried": false,
    "error": null,
    "matchCount": 0,
    "underCount": 0,
    "overCount": 0,
    "watchCount": 0,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-09-26T11:18:28.378Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-09-26T16:18:51.773Z",
    "searches": 1,
    "newThisRun": 0,
    "newToday": 0
@@ -186,19 +186,19 @@
    "maxAllIn": 15000,
    "priority": 3,
    "state": "complete",
-   "lastSearchedAt": "2026-09-26T12:15:11.444Z",
-   "lastSuccessfulAt": "2026-09-26T12:15:11.444Z",
+   "lastSearchedAt": "2026-09-26T16:18:52.060Z",
+   "lastSuccessfulAt": "2026-09-26T16:18:52.060Z",
    "carried": false,
    "error": null,
    "matchCount": 2,
    "underCount": 2,
    "overCount": 0,
    "watchCount": 0,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-09-26T11:18:28.739Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-09-26T16:18:52.060Z",
    "searches": 4,
-   "newThisRun": 0,
-   "newToday": 7
+   "newThisRun": 4,
+   "newToday": 9
   },
   {
    "id": "art-futura-atoms",
@@ -210,16 +210,16 @@
    "maxAllIn": 15000,
    "priority": 4,
    "state": "complete",
-   "lastSearchedAt": "2026-09-26T12:15:12.878Z",
-   "lastSuccessfulAt": "2026-09-26T12:15:12.878Z",
+   "lastSearchedAt": "2026-09-26T16:18:56.441Z",
+   "lastSuccessfulAt": "2026-09-26T16:18:56.441Z",
    "carried": false,
    "error": null,
    "matchCount": 0,
    "underCount": 0,
    "overCount": 0,
    "watchCount": 0,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-09-26T11:18:33.560Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-09-26T16:18:56.441Z",
    "searches": 1,
    "newThisRun": 0,
    "newToday": 0
@@ -234,19 +234,19 @@
    "maxAllIn": 8000,
    "priority": 5,
    "state": "complete",
-   "lastSearchedAt": "2026-09-26T12:15:13.184Z",
-   "lastSuccessfulAt": "2026-09-26T12:15:13.184Z",
+   "lastSearchedAt": "2026-09-26T16:18:56.776Z",
+   "lastSuccessfulAt": "2026-09-26T16:18:56.776Z",
    "carried": false,
    "error": null,
    "matchCount": 0,
    "underCount": 0,
    "overCount": 0,
    "watchCount": 0,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-09-26T11:18:33.958Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-09-26T16:18:56.776Z",
    "searches": 3,
-   "newThisRun": 1,
-   "newToday": 64
+   "newThisRun": 25,
+   "newToday": 72
   },
   {
    "id": "art-haze-drawing",
@@ -258,16 +258,16 @@
    "maxAllIn": 8000,
    "priority": 6,
    "state": "complete",
-   "lastSearchedAt": "2026-09-26T12:15:14.218Z",
-   "lastSuccessfulAt": "2026-09-26T12:15:14.218Z",
+   "lastSearchedAt": "2026-09-26T16:19:05.464Z",
+   "lastSuccessfulAt": "2026-09-26T16:19:05.464Z",
    "carried": false,
    "error": null,
    "matchCount": 0,
    "underCount": 0,
    "overCount": 0,
    "watchCount": 0,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-09-26T11:18:43.481Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-09-26T16:19:05.464Z",
    "searches": 3,
    "newThisRun": 0,
    "newToday": 3
@@ -282,19 +282,19 @@
    "maxAllIn": 10000,
    "priority": 7,
    "state": "complete",
-   "lastSearchedAt": "2026-09-26T12:15:14.787Z",
-   "lastSuccessfulAt": "2026-09-26T12:15:14.787Z",
+   "lastSearchedAt": "2026-09-26T16:19:06.059Z",
+   "lastSuccessfulAt": "2026-09-26T16:19:06.059Z",
    "carried": false,
    "error": null,
-   "matchCount": 5,
-   "underCount": 2,
+   "matchCount": 3,
+   "underCount": 0,
    "overCount": 3,
    "watchCount": 0,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-09-26T11:18:44.180Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-09-26T16:19:06.059Z",
    "searches": 3,
    "newThisRun": 0,
-   "newToday": 1
+   "newToday": 0
   },
   {
    "id": "art-saul-drawing",
@@ -306,19 +306,19 @@
    "maxAllIn": 2000,
    "priority": 8,
    "state": "complete",
-   "lastSearchedAt": "2026-09-26T12:15:16.040Z",
-   "lastSuccessfulAt": "2026-09-26T12:15:16.040Z",
+   "lastSearchedAt": "2026-09-26T16:19:07.611Z",
+   "lastSuccessfulAt": "2026-09-26T16:19:07.611Z",
    "carried": false,
    "error": null,
    "matchCount": 2,
    "underCount": 2,
    "overCount": 0,
    "watchCount": 0,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-09-26T11:18:45.884Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-09-26T16:19:07.611Z",
    "searches": 3,
-   "newThisRun": 2,
-   "newToday": 40
+   "newThisRun": 10,
+   "newToday": 45
   },
   {
    "id": "art-crumb-drawing",
@@ -330,19 +330,19 @@
    "maxAllIn": 2000,
    "priority": 9,
    "state": "complete",
-   "lastSearchedAt": "2026-09-26T12:15:16.683Z",
-   "lastSuccessfulAt": "2026-09-26T12:15:16.683Z",
+   "lastSearchedAt": "2026-09-26T16:19:08.701Z",
+   "lastSuccessfulAt": "2026-09-26T16:19:08.701Z",
    "carried": false,
    "error": null,
-   "matchCount": 6,
-   "underCount": 3,
+   "matchCount": 4,
+   "underCount": 1,
    "overCount": 3,
    "watchCount": 0,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-09-26T11:18:47.184Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-09-26T16:19:08.701Z",
    "searches": 4,
-   "newThisRun": 0,
-   "newToday": 9
+   "newThisRun": 2,
+   "newToday": 11
   },
   {
    "id": "sports-ertz-jersey",
@@ -354,16 +354,16 @@
    "maxAllIn": 3000,
    "priority": 10,
    "state": "complete",
-   "lastSearchedAt": "2026-09-26T12:15:18.338Z",
-   "lastSuccessfulAt": "2026-09-26T12:15:18.338Z",
+   "lastSearchedAt": "2026-09-26T16:19:12.205Z",
+   "lastSuccessfulAt": "2026-09-26T16:19:12.205Z",
    "carried": false,
    "error": null,
    "matchCount": 1,
    "underCount": 0,
    "overCount": 1,
    "watchCount": 0,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-09-26T11:18:51.100Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-09-26T16:19:12.205Z",
    "searches": 2,
    "newThisRun": 0,
    "newToday": 1
@@ -378,16 +378,16 @@
    "maxAllIn": 8000,
    "priority": 11,
    "state": "complete",
-   "lastSearchedAt": "2026-09-26T12:15:19.007Z",
-   "lastSuccessfulAt": "2026-09-26T12:15:19.007Z",
+   "lastSearchedAt": "2026-09-26T16:19:12.940Z",
+   "lastSuccessfulAt": "2026-09-26T16:19:12.940Z",
    "carried": false,
    "error": null,
    "matchCount": 0,
    "underCount": 0,
    "overCount": 0,
    "watchCount": 0,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-09-26T11:18:52.101Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-09-26T16:19:12.940Z",
    "searches": 2,
    "newThisRun": 0,
    "newToday": 1
@@ -402,16 +402,16 @@
    "maxAllIn": 4000,
    "priority": 12,
    "state": "complete",
-   "lastSearchedAt": "2026-09-26T12:15:19.737Z",
-   "lastSuccessfulAt": "2026-09-26T12:15:19.737Z",
+   "lastSearchedAt": "2026-09-26T16:19:13.703Z",
+   "lastSuccessfulAt": "2026-09-26T16:19:13.703Z",
    "carried": false,
    "error": null,
    "matchCount": 0,
    "underCount": 0,
    "overCount": 0,
    "watchCount": 0,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-09-26T11:18:52.925Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-09-26T16:19:13.703Z",
    "searches": 2,
    "newThisRun": 0,
    "newToday": 0
@@ -426,19 +426,19 @@
    "maxAllIn": 4000,
    "priority": 13,
    "state": "complete",
-   "lastSearchedAt": "2026-09-26T12:15:20.574Z",
-   "lastSuccessfulAt": "2026-09-26T12:15:20.574Z",
+   "lastSearchedAt": "2026-09-26T16:19:14.427Z",
+   "lastSuccessfulAt": "2026-09-26T16:19:14.427Z",
    "carried": false,
    "error": null,
    "matchCount": 1,
    "underCount": 0,
    "overCount": 1,
    "watchCount": 0,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-09-26T11:18:53.705Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-09-26T16:19:14.427Z",
    "searches": 2,
-   "newThisRun": 0,
-   "newToday": 0
+   "newThisRun": 2,
+   "newToday": 2
   },
   {
    "id": "sports-djackson-jersey",
@@ -450,16 +450,16 @@
    "maxAllIn": 4000,
    "priority": 14,
    "state": "complete",
-   "lastSearchedAt": "2026-09-26T12:15:21.128Z",
-   "lastSuccessfulAt": "2026-09-26T12:15:21.128Z",
+   "lastSearchedAt": "2026-09-26T16:19:15.091Z",
+   "lastSuccessfulAt": "2026-09-26T16:19:15.091Z",
    "carried": false,
    "error": null,
    "matchCount": 0,
    "underCount": 0,
    "overCount": 0,
    "watchCount": 0,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-09-26T11:18:54.387Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-09-26T16:19:15.091Z",
    "searches": 2,
    "newThisRun": 0,
    "newToday": 0
@@ -474,16 +474,16 @@
    "maxAllIn": 4000,
    "priority": 15,
    "state": "complete",
-   "lastSearchedAt": "2026-09-26T12:15:21.873Z",
-   "lastSuccessfulAt": "2026-09-26T12:15:21.873Z",
+   "lastSearchedAt": "2026-09-26T16:19:15.900Z",
+   "lastSuccessfulAt": "2026-09-26T16:19:15.900Z",
    "carried": false,
    "error": null,
    "matchCount": 0,
    "underCount": 0,
    "overCount": 0,
    "watchCount": 0,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-09-26T11:18:55.125Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-09-26T16:19:15.900Z",
    "searches": 2,
    "newThisRun": 0,
    "newToday": 0
@@ -498,16 +498,16 @@
    "maxAllIn": 1500,
    "priority": 16,
    "state": "complete",
-   "lastSearchedAt": "2026-09-26T12:15:22.436Z",
-   "lastSuccessfulAt": "2026-09-26T12:15:22.436Z",
+   "lastSearchedAt": "2026-09-26T16:19:16.532Z",
+   "lastSuccessfulAt": "2026-09-26T16:19:16.532Z",
    "carried": false,
    "error": null,
    "matchCount": 1,
    "underCount": 1,
    "overCount": 0,
    "watchCount": 0,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-09-26T11:18:55.798Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-09-26T16:19:16.532Z",
    "searches": 2,
    "newThisRun": 0,
    "newToday": 0
@@ -522,16 +522,16 @@
    "maxAllIn": 1500,
    "priority": 17,
    "state": "complete",
-   "lastSearchedAt": "2026-09-26T12:15:22.761Z",
-   "lastSuccessfulAt": "2026-09-26T12:15:22.761Z",
+   "lastSearchedAt": "2026-09-26T16:19:16.980Z",
+   "lastSuccessfulAt": "2026-09-26T16:19:16.980Z",
    "carried": false,
    "error": null,
    "matchCount": 0,
    "underCount": 0,
    "overCount": 0,
    "watchCount": 0,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-09-26T11:18:56.119Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-09-26T16:19:16.980Z",
    "searches": 2,
    "newThisRun": 0,
    "newToday": 0
@@ -546,16 +546,16 @@
    "maxAllIn": 6000,
    "priority": 18,
    "state": "complete",
-   "lastSearchedAt": "2026-09-26T12:15:23.057Z",
-   "lastSuccessfulAt": "2026-09-26T12:15:23.057Z",
+   "lastSearchedAt": "2026-09-26T16:19:17.275Z",
+   "lastSuccessfulAt": "2026-09-26T16:19:17.275Z",
    "carried": false,
    "error": null,
    "matchCount": 2,
    "underCount": 0,
    "overCount": 2,
    "watchCount": 0,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-09-26T11:18:56.415Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-09-26T16:19:17.275Z",
    "searches": 2,
    "newThisRun": 0,
    "newToday": 0
@@ -570,16 +570,16 @@
    "maxAllIn": 300,
    "priority": 19,
    "state": "complete",
-   "lastSearchedAt": "2026-09-26T12:15:23.818Z",
-   "lastSuccessfulAt": "2026-09-26T12:15:23.818Z",
+   "lastSearchedAt": "2026-09-26T16:19:18.251Z",
+   "lastSuccessfulAt": "2026-09-26T16:19:18.251Z",
    "carried": false,
    "error": null,
    "matchCount": 1,
    "underCount": 0,
    "overCount": 1,
    "watchCount": 0,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-09-26T11:18:57.290Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-09-26T16:19:18.251Z",
    "searches": 2,
    "newThisRun": 0,
    "newToday": 0
@@ -594,16 +594,16 @@
    "maxAllIn": 200,
    "priority": 20,
    "state": "complete",
-   "lastSearchedAt": "2026-09-26T12:15:24.521Z",
-   "lastSuccessfulAt": "2026-09-26T12:15:24.521Z",
+   "lastSearchedAt": "2026-09-26T16:19:19.011Z",
+   "lastSuccessfulAt": "2026-09-26T16:19:19.011Z",
    "carried": false,
    "error": null,
    "matchCount": 12,
    "underCount": 0,
    "overCount": 11,
    "watchCount": 1,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-09-26T11:18:57.976Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-09-26T16:19:19.011Z",
    "searches": 2,
    "newThisRun": 0,
    "newToday": 0
@@ -618,16 +618,16 @@
    "maxAllIn": 500,
    "priority": 21,
    "state": "complete",
-   "lastSearchedAt": "2026-09-26T12:15:25.208Z",
-   "lastSuccessfulAt": "2026-09-26T12:15:25.208Z",
+   "lastSearchedAt": "2026-09-26T16:19:19.715Z",
+   "lastSuccessfulAt": "2026-09-26T16:19:19.715Z",
    "carried": false,
    "error": null,
    "matchCount": 1,
    "underCount": 0,
    "overCount": 0,
    "watchCount": 1,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-09-26T11:18:58.711Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-09-26T16:19:19.715Z",
    "searches": 2,
    "newThisRun": 0,
    "newToday": 0
@@ -642,16 +642,16 @@
    "maxAllIn": 3000,
    "priority": 22,
    "state": "complete",
-   "lastSearchedAt": "2026-09-26T12:15:25.811Z",
-   "lastSuccessfulAt": "2026-09-26T12:15:25.811Z",
+   "lastSearchedAt": "2026-09-26T16:19:20.354Z",
+   "lastSuccessfulAt": "2026-09-26T16:19:20.354Z",
    "carried": false,
    "error": null,
-   "matchCount": 23,
-   "underCount": 3,
-   "overCount": 14,
-   "watchCount": 6,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-09-26T11:18:59.325Z",
+   "matchCount": 13,
+   "underCount": 0,
+   "overCount": 10,
+   "watchCount": 3,
+   "sweep": "full",
+   "lastFullSweepAt": "2026-09-26T16:19:20.354Z",
    "searches": 4,
    "newThisRun": 0,
    "newToday": 0
@@ -666,16 +666,16 @@
    "maxAllIn": null,
    "priority": 23,
    "state": "complete",
-   "lastSearchedAt": "2026-09-26T12:15:27.203Z",
-   "lastSuccessfulAt": "2026-09-26T12:15:27.203Z",
+   "lastSearchedAt": "2026-09-26T16:19:21.848Z",
+   "lastSuccessfulAt": "2026-09-26T16:19:21.848Z",
    "carried": false,
    "error": null,
    "matchCount": 0,
    "underCount": 0,
    "overCount": 0,
    "watchCount": 0,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-09-26T11:19:00.849Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-09-26T16:19:21.848Z",
    "searches": 1,
    "newThisRun": 0,
    "newToday": 0
@@ -690,16 +690,16 @@
    "maxAllIn": null,
    "priority": 24,
    "state": "complete",
-   "lastSearchedAt": "2026-09-26T12:15:27.445Z",
-   "lastSuccessfulAt": "2026-09-26T12:15:27.445Z",
+   "lastSearchedAt": "2026-09-26T16:19:22.132Z",
+   "lastSuccessfulAt": "2026-09-26T16:19:22.132Z",
    "carried": false,
    "error": null,
    "matchCount": 2,
    "underCount": 0,
    "overCount": 0,
    "watchCount": 2,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-09-26T11:19:01.114Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-09-26T16:19:22.132Z",
    "searches": 1,
    "newThisRun": 0,
    "newToday": 0
@@ -714,16 +714,16 @@
    "maxAllIn": null,
    "priority": 25,
    "state": "complete",
-   "lastSearchedAt": "2026-09-26T12:15:27.743Z",
-   "lastSuccessfulAt": "2026-09-26T12:15:27.743Z",
+   "lastSearchedAt": "2026-09-26T16:19:22.492Z",
+   "lastSuccessfulAt": "2026-09-26T16:19:22.492Z",
    "carried": false,
    "error": null,
    "matchCount": 0,
    "underCount": 0,
    "overCount": 0,
    "watchCount": 0,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-09-26T11:19:01.442Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-09-26T16:19:22.492Z",
    "searches": 1,
    "newThisRun": 0,
    "newToday": 0
@@ -738,16 +738,16 @@
    "maxAllIn": null,
    "priority": 26,
    "state": "complete",
-   "lastSearchedAt": "2026-09-26T12:15:28.019Z",
-   "lastSuccessfulAt": "2026-09-26T12:15:28.019Z",
+   "lastSearchedAt": "2026-09-26T16:19:22.844Z",
+   "lastSuccessfulAt": "2026-09-26T16:19:22.844Z",
    "carried": false,
    "error": null,
    "matchCount": 0,
    "underCount": 0,
    "overCount": 0,
    "watchCount": 0,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-09-26T11:19:01.761Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-09-26T16:19:22.844Z",
    "searches": 1,
    "newThisRun": 0,
    "newToday": 0
@@ -762,16 +762,16 @@
    "maxAllIn": null,
    "priority": 27,
    "state": "complete",
-   "lastSearchedAt": "2026-09-26T12:15:28.334Z",
-   "lastSuccessfulAt": "2026-09-26T12:15:28.334Z",
+   "lastSearchedAt": "2026-09-26T16:19:23.233Z",
+   "lastSuccessfulAt": "2026-09-26T16:19:23.233Z",
    "carried": false,
    "error": null,
    "matchCount": 2,
    "underCount": 0,
    "overCount": 0,
    "watchCount": 2,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-09-26T11:19:02.132Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-09-26T16:19:23.233Z",
    "searches": 1,
    "newThisRun": 0,
    "newToday": 0
@@ -786,16 +786,16 @@
    "maxAllIn": null,
    "priority": 28,
    "state": "complete",
-   "lastSearchedAt": "2026-09-26T12:15:28.668Z",
-   "lastSuccessfulAt": "2026-09-26T12:15:28.668Z",
+   "lastSearchedAt": "2026-09-26T16:19:23.499Z",
+   "lastSuccessfulAt": "2026-09-26T16:19:23.499Z",
    "carried": false,
    "error": null,
    "matchCount": 3,
    "underCount": 0,
    "overCount": 0,
    "watchCount": 3,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-09-26T11:19:02.461Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-09-26T16:19:23.499Z",
    "searches": 1,
    "newThisRun": 0,
    "newToday": 0
@@ -810,16 +810,16 @@
    "maxAllIn": null,
    "priority": 29,
    "state": "complete",
-   "lastSearchedAt": "2026-09-26T12:15:29.006Z",
-   "lastSuccessfulAt": "2026-09-26T12:15:29.006Z",
+   "lastSearchedAt": "2026-09-26T16:19:23.849Z",
+   "lastSuccessfulAt": "2026-09-26T16:19:23.849Z",
    "carried": false,
    "error": null,
    "matchCount": 11,
    "underCount": 0,
    "overCount": 0,
    "watchCount": 11,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-09-26T11:19:02.776Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-09-26T16:19:23.849Z",
    "searches": 1,
    "newThisRun": 0,
    "newToday": 0
@@ -834,16 +834,16 @@
    "maxAllIn": null,
    "priority": 30,
    "state": "complete",
-   "lastSearchedAt": "2026-09-26T12:15:29.354Z",
-   "lastSuccessfulAt": "2026-09-26T12:15:29.354Z",
+   "lastSearchedAt": "2026-09-26T16:19:24.213Z",
+   "lastSuccessfulAt": "2026-09-26T16:19:24.213Z",
    "carried": false,
    "error": null,
    "matchCount": 10,
    "underCount": 0,
    "overCount": 0,
    "watchCount": 10,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-09-26T11:19:03.129Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-09-26T16:19:24.213Z",
    "searches": 1,
    "newThisRun": 0,
    "newToday": 0
@@ -858,16 +858,16 @@
    "maxAllIn": null,
    "priority": 31,
    "state": "complete",
-   "lastSearchedAt": "2026-09-26T12:15:29.661Z",
-   "lastSuccessfulAt": "2026-09-26T12:15:29.661Z",
+   "lastSearchedAt": "2026-09-26T16:19:24.576Z",
+   "lastSuccessfulAt": "2026-09-26T16:19:24.576Z",
    "carried": false,
    "error": null,
    "matchCount": 2,
    "underCount": 0,
    "overCount": 0,
    "watchCount": 2,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-09-26T11:19:03.497Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-09-26T16:19:24.576Z",
    "searches": 1,
    "newThisRun": 0,
    "newToday": 0
@@ -882,16 +882,16 @@
    "maxAllIn": null,
    "priority": 32,
    "state": "complete",
-   "lastSearchedAt": "2026-09-26T12:15:30.000Z",
-   "lastSuccessfulAt": "2026-09-26T12:15:30.000Z",
+   "lastSearchedAt": "2026-09-26T16:19:24.878Z",
+   "lastSuccessfulAt": "2026-09-26T16:19:24.878Z",
    "carried": false,
    "error": null,
    "matchCount": 1,
    "underCount": 0,
    "overCount": 0,
    "watchCount": 1,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-09-26T11:19:03.842Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-09-26T16:19:24.878Z",
    "searches": 1,
    "newThisRun": 0,
    "newToday": 0
@@ -906,16 +906,16 @@
    "maxAllIn": null,
    "priority": 33,
    "state": "complete",
-   "lastSearchedAt": "2026-09-26T12:15:30.476Z",
-   "lastSuccessfulAt": "2026-09-26T12:15:30.476Z",
+   "lastSearchedAt": "2026-09-26T16:19:25.199Z",
+   "lastSuccessfulAt": "2026-09-26T16:19:25.199Z",
    "carried": false,
    "error": null,
    "matchCount": 1,
    "underCount": 0,
    "overCount": 0,
    "watchCount": 1,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-09-26T11:19:04.189Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-09-26T16:19:25.199Z",
    "searches": 1,
    "newThisRun": 0,
    "newToday": 0
@@ -930,19 +930,19 @@
    "maxAllIn": null,
    "priority": 34,
    "state": "complete",
-   "lastSearchedAt": "2026-09-26T12:15:30.758Z",
-   "lastSuccessfulAt": "2026-09-26T12:15:30.758Z",
+   "lastSearchedAt": "2026-09-26T16:19:25.515Z",
+   "lastSuccessfulAt": "2026-09-26T16:19:25.515Z",
    "carried": false,
    "error": null,
    "matchCount": 1,
    "underCount": 0,
    "overCount": 0,
    "watchCount": 1,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-09-26T11:19:04.492Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-09-26T16:19:25.515Z",
    "searches": 1,
    "newThisRun": 0,
-   "newToday": 1
+   "newToday": 0
   },
   {
    "id": "bstj-abbrev",
@@ -954,16 +954,16 @@
    "maxAllIn": null,
    "priority": 35,
    "state": "complete",
-   "lastSearchedAt": "2026-09-26T12:15:31.238Z",
-   "lastSuccessfulAt": "2026-09-26T12:15:31.238Z",
+   "lastSearchedAt": "2026-09-26T16:19:26.189Z",
+   "lastSuccessfulAt": "2026-09-26T16:19:26.189Z",
    "carried": false,
    "error": null,
    "matchCount": 1,
    "underCount": 0,
    "overCount": 0,
    "watchCount": 1,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-09-26T11:19:05.171Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-09-26T16:19:26.189Z",
    "searches": 1,
    "newThisRun": 0,
    "newToday": 0
@@ -998,7 +998,7 @@
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-26T11:21:29.560Z",
+   "lastSeenAt": "2026-09-26T16:21:58.582Z",
    "reasons": [
     "must:futura",
     "claims-original",
@@ -1080,7 +1080,7 @@
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-26T11:21:29.560Z",
+   "lastSeenAt": "2026-09-26T16:21:58.582Z",
    "reasons": [
     "must:futura",
     "claims-original",
@@ -1157,12 +1157,12 @@
    "seller": {
     "username": "alltimegreatauthentics",
     "feedbackPercentage": 100,
-    "feedbackScore": 17717
+    "feedbackScore": 17718
    },
    "condition": "Unspecified",
    "location": "US",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-26T11:21:29.560Z",
+   "lastSeenAt": "2026-09-26T16:21:58.582Z",
    "reasons": [
     "must:saul",
     "medium:drawn",
@@ -1217,12 +1217,12 @@
    "seller": {
     "username": "alltimegreatauthentics",
     "feedbackPercentage": 100,
-    "feedbackScore": 17717
+    "feedbackScore": 17718
    },
    "condition": "Unspecified",
    "location": "US",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-26T11:21:29.560Z",
+   "lastSeenAt": "2026-09-26T16:21:58.582Z",
    "reasons": [
     "must:saul",
     "medium:drawn",
@@ -1249,246 +1249,6 @@
      "at": "2026-09-25T03:20:24.636Z",
      "price": 719.99,
      "allIn": 729.99
-    }
-   ],
-   "priceChange": null,
-   "relisted": null,
-   "photoReused": null,
-   "dismissible": true
-  },
-  {
-   "key": "design-nakashima-seating:v1|167832026039|0",
-   "group": "under",
-   "huntId": "design-nakashima-seating",
-   "huntLabel": "George Nakashima — chairs & seating (all)",
-   "classification": "under",
-   "listingId": "v1|167832026039|0",
-   "title": "1949 George Nakashima for Knoll N19 Straight Chair in Solid Birch Early Example",
-   "url": "https://www.ebay.com/itm/167832026039?_skw=nakashima+chair&hash=item2713917bb7:g:np8AAeSwV-xo3rr-",
-   "imageUrl": "https://i.ebayimg.com/images/g/np8AAeSwV-xo3rr-/s-l225.jpg",
-   "buyingMode": "FIXED_PRICE",
-   "endsAt": null,
-   "bidCount": null,
-   "price": 2000,
-   "shipping": 195,
-   "allIn": 2195,
-   "maxAllIn": 3000,
-   "underBy": 805,
-   "underPct": 0.27,
-   "capWording": "under cap",
-   "seller": {
-    "username": "d-rose-mod",
-    "feedbackPercentage": 100,
-    "feedbackScore": 1703
-   },
-   "condition": "Used",
-   "location": "US",
-   "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-26T11:21:29.560Z",
-   "reasons": [
-    "must:nakashima",
-    "aspect:original",
-    "at-or-under-cap"
-   ],
-   "flags": [],
-   "confidence": 0.95,
-   "review": "ok",
-   "carried": false,
-   "alertKey": "ebay:v1|167832026039|0:design-nakashima-seating:v1",
-   "similarCount": 0,
-   "risk": "low",
-   "riskReasons": [],
-   "details": {
-    "aspects": {
-     "Type": "Side Chair",
-     "Color": "Tan",
-     "Set Includes": "Side Chair",
-     "Style": "Mid-Century Modern",
-     "Room": "Dining Room",
-     "Frame Material": "Birch",
-     "Indoor/Outdoor": "Indoor",
-     "Department": "Adults",
-     "Assembly Required": "No",
-     "Model": "N19 Straight Chair",
-     "Additional Parts Required": "No",
-     "Assembly Status": "Fully Assembled",
-     "Item Weight": "40 lb",
-     "Year Manufactured": "1949",
-     "Item Height": "30 in",
-     "Item Length": "17.75 in",
-     "Item Width": "28.5 in",
-     "Brand": "Knoll",
-     "Country/Region of Manufacture": "United States",
-     "Original/Reproduction": "Original"
-    },
-    "descriptionSnippet": "This is an N19 Straight Chair, originally designed by George Nakashima in 1946. This particular example was produced by Knoll in the United States and dates to the year 1949. The chair is comprised entirely of birch. This early straight chair for Knoll represents some of Nakashim",
-    "fetchedAt": "2026-09-26T04:52:03.139Z"
-   },
-   "priceHistory": [
-    {
-     "at": "2026-09-25T02:43:43.147Z",
-     "price": 2000,
-     "allIn": 2195
-    }
-   ],
-   "priceChange": null,
-   "relisted": null,
-   "photoReused": null,
-   "dismissible": true
-  },
-  {
-   "key": "design-nakashima-seating:v1|168132723159|0",
-   "group": "under",
-   "huntId": "design-nakashima-seating",
-   "huntLabel": "George Nakashima — chairs & seating (all)",
-   "classification": "under",
-   "listingId": "v1|168132723159|0",
-   "title": "C. 1947 George Nakashima for Knoll N19 Straight Dining Chair in Light Wood",
-   "url": "https://www.ebay.com/itm/168132723159?_skw=nakashima+chair&hash=item27257dc1d7:g:w3cAAeSwOnFpgjUv",
-   "imageUrl": "https://i.ebayimg.com/images/g/w3cAAeSwOnFpgjUv/s-l225.jpg",
-   "buyingMode": "FIXED_PRICE",
-   "endsAt": null,
-   "bidCount": null,
-   "price": 2000,
-   "shipping": 195,
-   "allIn": 2195,
-   "maxAllIn": 3000,
-   "underBy": 805,
-   "underPct": 0.27,
-   "capWording": "under cap",
-   "seller": {
-    "username": "d-rose-mod",
-    "feedbackPercentage": 100,
-    "feedbackScore": 1703
-   },
-   "condition": "Used",
-   "location": "US",
-   "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-26T11:21:29.560Z",
-   "reasons": [
-    "must:nakashima",
-    "aspect:original",
-    "at-or-under-cap"
-   ],
-   "flags": [],
-   "confidence": 0.95,
-   "review": "ok",
-   "carried": false,
-   "alertKey": "ebay:v1|168132723159|0:design-nakashima-seating:v1",
-   "similarCount": 0,
-   "risk": "low",
-   "riskReasons": [],
-   "details": {
-    "aspects": {
-     "Type": "Side Chair",
-     "Color": "Tan",
-     "Set Includes": "Side Chair",
-     "Style": "Mid-Century Modern",
-     "Room": "Dining Room",
-     "Frame Material": "Wood",
-     "Indoor/Outdoor": "Indoor",
-     "Department": "Adults",
-     "Assembly Required": "No",
-     "Model": "N19 Straight Chair",
-     "Additional Parts Required": "No",
-     "Assembly Status": "Fully Assembled",
-     "Item Weight": "40 lb",
-     "Year Manufactured": "1947",
-     "Item Height": "30 in",
-     "Item Length": "17.75 in",
-     "Item Width": "22.5 in",
-     "Brand": "Knoll",
-     "Country of Origin": "United States",
-     "Original/Reproduction": "Original"
-    },
-    "descriptionSnippet": "This is an N19 Straight Chair, originally designed by George Nakashima for Knoll in 1946. This particular example was produced in the United States circa 1947. This early straight chair for Knoll represents some of Nakashima's earliest work and is quite special due to the piece p",
-    "fetchedAt": "2026-09-26T04:52:03.139Z"
-   },
-   "priceHistory": [
-    {
-     "at": "2026-09-25T02:43:43.147Z",
-     "price": 2000,
-     "allIn": 2195
-    }
-   ],
-   "priceChange": null,
-   "relisted": null,
-   "photoReused": null,
-   "dismissible": true
-  },
-  {
-   "key": "design-nakashima-seating:v1|167558700165|0",
-   "group": "under",
-   "huntId": "design-nakashima-seating",
-   "huntLabel": "George Nakashima — chairs & seating (all)",
-   "classification": "under",
-   "listingId": "v1|167558700165|0",
-   "title": "C. 1949 George Nakashima for Knoll N19 Straight Dining / Side Chair Birch Wood",
-   "url": "https://www.ebay.com/itm/167558700165?_skw=nakashima+chair&hash=item270346dc85:g:flYAAeSwFWhoPlWb",
-   "imageUrl": "https://i.ebayimg.com/images/g/flYAAeSwFWhoPlWb/s-l225.jpg",
-   "buyingMode": "FIXED_PRICE",
-   "endsAt": null,
-   "bidCount": null,
-   "price": 2000,
-   "shipping": 245,
-   "allIn": 2245,
-   "maxAllIn": 3000,
-   "underBy": 755,
-   "underPct": 0.25,
-   "capWording": "under cap",
-   "seller": {
-    "username": "d-rose-mod",
-    "feedbackPercentage": 100,
-    "feedbackScore": 1703
-   },
-   "condition": "Used",
-   "location": "US",
-   "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-26T11:21:29.560Z",
-   "reasons": [
-    "must:nakashima",
-    "aspect:original",
-    "at-or-under-cap"
-   ],
-   "flags": [],
-   "confidence": 0.95,
-   "review": "ok",
-   "carried": false,
-   "alertKey": "ebay:v1|167558700165|0:design-nakashima-seating:v1",
-   "similarCount": 0,
-   "risk": "low",
-   "riskReasons": [],
-   "details": {
-    "aspects": {
-     "Type": "Side Chair",
-     "Color": "Brown",
-     "Set Includes": "Side Chair",
-     "Style": "Mid-Century Modern",
-     "Room": "Dining Room",
-     "Frame Material": "Birch",
-     "Indoor/Outdoor": "Indoor",
-     "Department": "Adults",
-     "Assembly Required": "No",
-     "Model": "N19 Straight-Back Chair",
-     "Additional Parts Required": "No",
-     "Assembly Status": "Fully Assembled",
-     "Item Weight": "30 lb",
-     "Year Manufactured": "1949",
-     "Item Height": "30.25 in",
-     "Item Length": "17.75 in",
-     "Item Width": "26 in",
-     "Brand": "Knoll",
-     "Country/Region of Manufacture": "United States",
-     "Original/Reproduction": "Original"
-    },
-    "descriptionSnippet": "This is a N19 Straight-Back Chair, originally designed by George Nakashima for Knoll in 1946. This particular example dates to 1949. The Straight-Back Chair was Nakashima’s modern, minimalist take on the Windsor chair. The chair measures 17.75 inches deep, 26 inches wide, and 30.",
-    "fetchedAt": "2026-09-26T04:52:03.139Z"
-   },
-   "priceHistory": [
-    {
-     "at": "2026-09-25T02:43:43.147Z",
-     "price": 2000,
-     "allIn": 2245
     }
    ],
    "priceChange": null,
@@ -1524,7 +1284,7 @@
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-26T11:21:29.560Z",
+   "lastSeenAt": "2026-09-26T16:21:58.582Z",
    "reasons": [
     "must:foles",
     "game-used:game used",
@@ -1552,7 +1312,7 @@
      "Event/Tournament": "Week 18 (1/9/2022)"
     },
     "descriptionSnippet": "Nick Foles #9 Chicago Bears Game Used Jersey Week 18 1/9/2022",
-    "fetchedAt": "2026-09-25T15:18:51.078Z"
+    "fetchedAt": "2026-09-26T16:19:51.959Z"
    },
    "priceHistory": [
     {
@@ -1571,145 +1331,6 @@
     "to": 814.46,
     "since": "2026-09-25T02:43:43.147Z"
    },
-   "relisted": null,
-   "photoReused": null,
-   "dismissible": true
-  },
-  {
-   "key": "art-condo-drawing:v1|128086152763|0",
-   "group": "under",
-   "huntId": "art-condo-drawing",
-   "huntLabel": "George Condo — drawing",
-   "classification": "under",
-   "listingId": "v1|128086152763|0",
-   "title": "George Condo (Handmade) Drawing On old Paper Signed & Stamped, Vtg Art",
-   "url": "https://www.ebay.com/itm/128086152763?_skw=george+condo+drawing&hash=item1dd287963b:g:VCUAAeSw3FNps3UE",
-   "imageUrl": "https://i.ebayimg.com/images/g/VCUAAeSw3FNps3UE/s-l225.jpg",
-   "buyingMode": "FIXED_PRICE",
-   "endsAt": null,
-   "bidCount": null,
-   "price": 119.5,
-   "shipping": 0,
-   "allIn": 119.5,
-   "maxAllIn": 10000,
-   "underBy": 9880.5,
-   "underPct": 0.99,
-   "capWording": "under cap",
-   "seller": {
-    "username": "golden_art_gallery",
-    "feedbackPercentage": 99.2,
-    "feedbackScore": 131
-   },
-   "condition": "Used",
-   "location": "PE",
-   "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-26T11:21:29.560Z",
-   "reasons": [
-    "must:condo",
-    "medium:drawing",
-    "claims-original",
-    "at-or-under-cap"
-   ],
-   "flags": [
-    "photo-reused:1",
-    "price-far-below-market",
-    "fake-art-template",
-    "same-seller-repeats:2"
-   ],
-   "confidence": 0.2,
-   "review": "review",
-   "carried": false,
-   "alertKey": "ebay:v1|128086152763|0:art-condo-drawing:v1",
-   "similarCount": 2,
-   "risk": "high",
-   "riskReasons": [
-    "matches a common fake-art listing template (“on old paper, signed & stamped”)",
-    "priced far below what this artist sells for",
-    "seller has 3 copies of a “unique” work",
-    "the same photo appears on 1 other listing(s)",
-    "George Condo is heavily forged on eBay and this is priced like a fake",
-    "ships from PE"
-   ],
-   "details": null,
-   "priceHistory": [
-    {
-     "at": "2026-09-25T15:21:15.019Z",
-     "price": 119.5,
-     "allIn": 119.5
-    }
-   ],
-   "priceChange": null,
-   "relisted": null,
-   "photoReused": {
-    "count": 1,
-    "otherListingIds": [
-     "v1|298650892470|0"
-    ]
-   },
-   "dismissible": true
-  },
-  {
-   "key": "art-condo-drawing:v1|298658905051|0",
-   "group": "under",
-   "huntId": "art-condo-drawing",
-   "huntLabel": "George Condo — drawing",
-   "classification": "under",
-   "listingId": "v1|298658905051|0",
-   "title": "George Condo (Handmade) Drawing On old Paper Signed & Stamped, Vtg Art",
-   "url": "https://www.ebay.com/itm/298658905051?_skw=george+condo+drawing&hash=item4589753bdb:g:kLIAAOSw9FloIqAt",
-   "imageUrl": "https://i.ebayimg.com/images/g/kLIAAOSw9FloIqAt/s-l225.jpg",
-   "buyingMode": "FIXED_PRICE",
-   "endsAt": null,
-   "bidCount": null,
-   "price": 116.32,
-   "shipping": 0,
-   "allIn": 116.32,
-   "maxAllIn": 10000,
-   "underBy": 9883.68,
-   "underPct": 0.99,
-   "capWording": "under cap",
-   "seller": {
-    "username": "polished.iron86",
-    "feedbackPercentage": 99.1,
-    "feedbackScore": 875
-   },
-   "condition": "Used",
-   "location": "PE",
-   "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-26T11:21:29.560Z",
-   "reasons": [
-    "must:condo",
-    "medium:drawing",
-    "claims-original",
-    "at-or-under-cap"
-   ],
-   "flags": [
-    "price-far-below-market",
-    "fake-art-template",
-    "same-seller-repeats:46"
-   ],
-   "confidence": 0.2,
-   "review": "review",
-   "carried": false,
-   "alertKey": "ebay:v1|298658905051|0:art-condo-drawing:v1",
-   "similarCount": 46,
-   "risk": "high",
-   "riskReasons": [
-    "matches a common fake-art listing template (“on old paper, signed & stamped”)",
-    "priced far below what this artist sells for",
-    "seller has 47 copies of a “unique” work",
-    "George Condo is heavily forged on eBay and this is priced like a fake",
-    "ships from PE"
-   ],
-   "details": null,
-   "priceHistory": [
-    {
-     "at": "2026-09-25T02:43:43.147Z",
-     "price": 116.32,
-     "allIn": 116.32
-    }
-   ],
-   "priceChange": null,
    "relisted": null,
    "photoReused": null,
    "dismissible": true
@@ -1742,7 +1363,7 @@
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-26T11:21:29.560Z",
+   "lastSeenAt": "2026-09-26T16:21:58.582Z",
    "reasons": [
     "must:crumb",
     "medium:sketch",
@@ -1801,149 +1422,6 @@
    "dismissible": true
   },
   {
-   "key": "art-crumb-drawing:v1|405774286555|0",
-   "group": "under",
-   "huntId": "art-crumb-drawing",
-   "huntLabel": "Robert Crumb — drawing",
-   "classification": "under",
-   "listingId": "v1|405774286555|0",
-   "title": "R. Crumb “Vues de Sauve”  1991 ",
-   "url": "https://www.ebay.com/itm/405774286555?_skw=robert+crumb+drawing&hash=item5e7a083edb:g:50MAAeSwYGloAD3H",
-   "imageUrl": "https://i.ebayimg.com/images/g/50MAAeSwYGloAD3H/s-l225.jpg",
-   "buyingMode": "FIXED_PRICE",
-   "endsAt": null,
-   "bidCount": null,
-   "price": 160,
-   "shipping": 10,
-   "allIn": 170,
-   "maxAllIn": 2000,
-   "underBy": 1830,
-   "underPct": 0.92,
-   "capWording": "under cap",
-   "seller": {
-    "username": "adrrom7399",
-    "feedbackPercentage": 99.8,
-    "feedbackScore": 2005
-   },
-   "condition": "Used",
-   "location": "US",
-   "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-26T11:21:29.560Z",
-   "reasons": [
-    "must:crumb",
-    "aspect:signed",
-    "aspect:original",
-    "aspect:medium:paper",
-    "at-or-under-cap"
-   ],
-   "flags": [
-    "medium-from-item-specifics"
-   ],
-   "confidence": 0.9,
-   "review": "review",
-   "carried": false,
-   "alertKey": "ebay:v1|405774286555|0:art-crumb-drawing:v1",
-   "similarCount": 0,
-   "risk": "high",
-   "riskReasons": [
-    "Robert Crumb is heavily forged on eBay and this is priced like a fake"
-   ],
-   "details": {
-    "aspects": {
-     "Artist": "Robert Crumb",
-     "Signed By": "R. Crumb",
-     "Signed": "Yes",
-     "Title": "Vues de Sauve",
-     "Material": "Matte Paper",
-     "Subject": "France",
-     "Type": "Drawing",
-     "Year of Production": "1991",
-     "Original/Licensed Reproduction": "Original",
-     "Item Height": "12 in",
-     "Style": "Cartoon",
-     "Theme": "Cities & Towns",
-     "Item Width": "8 in",
-     "Time Period Produced": "1990-1999"
-    },
-    "descriptionSnippet": "Very good condition 8 prints",
-    "fetchedAt": "2026-09-26T11:19:24.170Z"
-   },
-   "priceHistory": [
-    {
-     "at": "2026-09-26T11:21:29.560Z",
-     "price": 160,
-     "allIn": 170
-    }
-   ],
-   "priceChange": null,
-   "relisted": null,
-   "photoReused": null,
-   "dismissible": true
-  },
-  {
-   "key": "art-crumb-drawing:v1|407120003462|0",
-   "group": "under",
-   "huntId": "art-crumb-drawing",
-   "huntLabel": "Robert Crumb — drawing",
-   "classification": "under",
-   "listingId": "v1|407120003462|0",
-   "title": "ROBERT CRUMB drawing and painting on old paper signed stamped vintage",
-   "url": "https://www.ebay.com/itm/407120003462?_skw=robert+crumb+drawing&hash=item5eca3e4186:g:o9UAAeSwhQNqcgri",
-   "imageUrl": "https://i.ebayimg.com/images/g/o9UAAeSwhQNqcgri/s-l225.jpg",
-   "buyingMode": "FIXED_PRICE",
-   "endsAt": null,
-   "bidCount": null,
-   "price": 135,
-   "shipping": 30,
-   "allIn": 165,
-   "maxAllIn": 2000,
-   "underBy": 1835,
-   "underPct": 0.92,
-   "capWording": "under cap",
-   "seller": {
-    "username": "nimiart",
-    "feedbackPercentage": 100,
-    "feedbackScore": 246
-   },
-   "condition": "Used",
-   "location": "PE",
-   "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-26T11:21:29.560Z",
-   "reasons": [
-    "must:crumb",
-    "medium:drawing",
-    "at-or-under-cap"
-   ],
-   "flags": [
-    "fake-art-template",
-    "same-seller-repeats:24"
-   ],
-   "confidence": 0.5,
-   "review": "review",
-   "carried": false,
-   "alertKey": "ebay:v1|407120003462|0:art-crumb-drawing:v1",
-   "similarCount": 24,
-   "risk": "high",
-   "riskReasons": [
-    "matches a common fake-art listing template (“on old paper, signed & stamped”)",
-    "seller has 25 copies of a “unique” work",
-    "Robert Crumb is heavily forged on eBay and this is priced like a fake",
-    "ships from PE"
-   ],
-   "details": null,
-   "priceHistory": [
-    {
-     "at": "2026-09-25T02:43:43.147Z",
-     "price": 135,
-     "allIn": 165
-    }
-   ],
-   "priceChange": null,
-   "relisted": null,
-   "photoReused": null,
-   "dismissible": true
-  },
-  {
    "key": "design-nakashima-seating:v1|155369305086|0",
    "group": "watch",
    "huntId": "design-nakashima-seating",
@@ -1971,7 +1449,7 @@
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-26T11:21:29.560Z",
+   "lastSeenAt": "2026-09-26T16:21:58.582Z",
    "reasons": [
     "must:nakashima",
     "aspect:original",
@@ -2023,160 +1501,6 @@
    "dismissible": true
   },
   {
-   "key": "design-nakashima-seating:v1|166841169372|0",
-   "group": "watch",
-   "huntId": "design-nakashima-seating",
-   "huntLabel": "George Nakashima — chairs & seating (all)",
-   "classification": "watch",
-   "listingId": "v1|166841169372|0",
-   "title": "Knoll Nakashima Straight-Back Walnut Wood Chair",
-   "url": "https://www.ebay.com/itm/166841169372?_skw=nakashima+chair&hash=item26d88235dc:g:TssAAOSwKy5me2hP",
-   "imageUrl": "https://i.ebayimg.com/images/g/TssAAOSwKy5me2hP/s-l225.jpg",
-   "buyingMode": "FIXED_PRICE",
-   "endsAt": null,
-   "bidCount": null,
-   "price": 1100,
-   "shipping": null,
-   "allIn": null,
-   "maxAllIn": 3000,
-   "underBy": null,
-   "underPct": null,
-   "capWording": "all-in unknown — shipping not listed",
-   "seller": {
-    "username": "karenlvp200",
-    "feedbackPercentage": 100,
-    "feedbackScore": 118
-   },
-   "condition": "Used",
-   "location": "US",
-   "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-26T11:21:29.560Z",
-   "reasons": [
-    "must:nakashima",
-    "all-in-unknown"
-   ],
-   "flags": [
-    "shipping-unknown"
-   ],
-   "confidence": 0.95,
-   "review": "ok",
-   "carried": false,
-   "alertKey": null,
-   "similarCount": 0,
-   "risk": "low",
-   "riskReasons": [],
-   "details": {
-    "aspects": {
-     "Country of Origin": "United States",
-     "Number of Items in Set": "1",
-     "Wood Tone": "Medium Wood",
-     "Assembly Status": "Fully Assembled",
-     "Color": "Brown",
-     "Indoor/Outdoor": "Indoor",
-     "Set Includes": "Chair",
-     "Item Length": "22.5 in",
-     "Additional Parts Required": "Yes",
-     "Brand": "Knoll",
-     "Type": "Dining Chair",
-     "Seat Depth": "15.75 in",
-     "Assembly Required": "No",
-     "Item Height": "30 in",
-     "Model": "Nakashima Straight-Back Chair",
-     "Seat Height": "17 in",
-     "Frame Material": "Walnut, Wood",
-     "Style": "Mid-Century Modern",
-     "Room": "Dining Room, Living Room, Bedroom, Entryway, Home Office/Study",
-     "Finish": "Low-Sheen",
-     "Item Width": "17.38 in",
-     "Item Weight": "17 lb"
-    },
-    "descriptionSnippet": "Excellent condition with no major signs of wear (small marks on some legs and seat) for this designer Knoll Nakashima Straight-Back Chair. The only “issue” is that one nylon glide at the leg end (see picture) is missing. Originally over $1,600.00! FINAL SALE, NO REFUND.",
-    "fetchedAt": "2026-09-26T04:52:03.139Z"
-   },
-   "priceHistory": [
-    {
-     "at": "2026-09-25T02:43:43.147Z",
-     "price": 1100,
-     "allIn": null
-    }
-   ],
-   "priceChange": null,
-   "relisted": null,
-   "photoReused": null,
-   "dismissible": true
-  },
-  {
-   "key": "design-nakashima-seating:v1|188582167513|0",
-   "group": "watch",
-   "huntId": "design-nakashima-seating",
-   "huntLabel": "George Nakashima — chairs & seating (all)",
-   "classification": "watch",
-   "listingId": "v1|188582167513|0",
-   "title": "Vintage George Nakashima Spindle Back Black Walnut \"Cushion\" Lounge Arm Chair",
-   "url": "https://www.ebay.com/itm/188582167513?_skw=nakashima+chair&hash=item2be85f83d9:g:GP4AAeSwh8lqP~4m",
-   "imageUrl": "https://i.ebayimg.com/images/g/GP4AAeSwh8lqP~4m/s-l225.jpg",
-   "buyingMode": "FIXED_PRICE",
-   "endsAt": null,
-   "bidCount": null,
-   "price": 28000,
-   "shipping": null,
-   "allIn": null,
-   "maxAllIn": 3000,
-   "underBy": null,
-   "underPct": null,
-   "capWording": "all-in unknown — shipping not listed",
-   "seller": {
-    "username": "quality-is-key",
-    "feedbackPercentage": 100,
-    "feedbackScore": 2825
-   },
-   "condition": "Used",
-   "location": "US",
-   "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-26T11:21:29.560Z",
-   "reasons": [
-    "must:nakashima",
-    "all-in-unknown"
-   ],
-   "flags": [
-    "shipping-unknown"
-   ],
-   "confidence": 0.95,
-   "review": "ok",
-   "carried": false,
-   "alertKey": null,
-   "similarCount": 0,
-   "risk": "low",
-   "riskReasons": [],
-   "details": {
-    "aspects": {
-     "Brand": "George Nakashima",
-     "Antique": "Yes",
-     "Type": "Lounge Chair",
-     "Color": "Blue",
-     "Item Height": "30.5 in",
-     "Style": "Mid-Century Modern",
-     "Material": "Walnut",
-     "Item Length": "29.5 in",
-     "Item Width": "35.25 in",
-     "Country of Origin": "United States"
-    },
-    "descriptionSnippet": "Vintage George Nakashima Spindle Back Sculpted American Black Walnut 1950s \"Cushion\" Lounge Arm Chair with Blue Upholstered Cushions. Circa Mid 20th Century. Measurements: 30.5\" H x 29.5\" W x 35.25\" D x 15\" Seat height x 21\" Arm height. Condition : Very good vintage condition bei",
-    "fetchedAt": "2026-09-26T04:52:03.139Z"
-   },
-   "priceHistory": [
-    {
-     "at": "2026-09-25T02:43:43.147Z",
-     "price": 28000,
-     "allIn": null
-    }
-   ],
-   "priceChange": null,
-   "relisted": null,
-   "photoReused": null,
-   "dismissible": true
-  },
-  {
    "key": "design-nakashima-seating:v1|188585962891|0",
    "group": "watch",
    "huntId": "design-nakashima-seating",
@@ -2204,7 +1528,7 @@
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-26T11:21:29.560Z",
+   "lastSeenAt": "2026-09-26T16:21:58.582Z",
    "reasons": [
     "must:nakashima",
     "all-in-unknown"
@@ -2280,7 +1604,7 @@
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-26T11:21:29.560Z",
+   "lastSeenAt": "2026-09-26T16:21:58.582Z",
    "reasons": [
     "must:nakashima",
     "all-in-unknown"
@@ -2325,74 +1649,6 @@
    "dismissible": true
   },
   {
-   "key": "design-nakashima-seating:v1|306214951196|0",
-   "group": "watch",
-   "huntId": "design-nakashima-seating",
-   "huntLabel": "George Nakashima — chairs & seating (all)",
-   "classification": "watch",
-   "listingId": "v1|306214951196|0",
-   "title": "Vintage Mid Century \"Straight Chair\" by George Nakashima",
-   "url": "https://www.ebay.com/itm/306214951196?_skw=nakashima+chair&hash=item474bd5591c:g:ZUUAAOSw-ghn7HbQ",
-   "imageUrl": "https://i.ebayimg.com/images/g/ZUUAAOSw-ghn7HbQ/s-l225.jpg",
-   "buyingMode": "FIXED_PRICE",
-   "endsAt": null,
-   "bidCount": null,
-   "price": 2499,
-   "shipping": null,
-   "allIn": null,
-   "maxAllIn": 3000,
-   "underBy": null,
-   "underPct": null,
-   "capWording": "all-in unknown — shipping not listed",
-   "seller": {
-    "username": "paragongoods",
-    "feedbackPercentage": 100,
-    "feedbackScore": 224
-   },
-   "condition": "Used",
-   "location": "US",
-   "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-26T11:21:29.560Z",
-   "reasons": [
-    "must:nakashima",
-    "all-in-unknown"
-   ],
-   "flags": [
-    "shipping-unknown"
-   ],
-   "confidence": 0.95,
-   "review": "ok",
-   "carried": false,
-   "alertKey": null,
-   "similarCount": 0,
-   "risk": "low",
-   "riskReasons": [],
-   "details": {
-    "aspects": {
-     "Antique": "Yes",
-     "Type": "Side chair",
-     "Color": "Black",
-     "Item Height": "30 in",
-     "Style": "Mid-Century Modern",
-     "Item Length": "18 in",
-     "Item Width": "23 in"
-    },
-    "descriptionSnippet": "Here is a beautiful, early \"Straight Chair\" by George Nakashima. \"Introduced in 1946, the Straight Chair is George Nakashima’s modernist interpretation of the traditional Windsor chair.\" The now iconic design features a spindle back, carved seat and Nakashima's signature splayed ",
-    "fetchedAt": "2026-09-26T04:52:03.139Z"
-   },
-   "priceHistory": [
-    {
-     "at": "2026-09-25T02:43:43.147Z",
-     "price": 2499,
-     "allIn": null
-    }
-   ],
-   "priceChange": null,
-   "relisted": null,
-   "photoReused": null,
-   "dismissible": true
-  },
-  {
    "key": "bstj-1928-v7:v1|236641098892|0",
    "group": "watch",
    "huntId": "bstj-1928-v7",
@@ -2420,7 +1676,7 @@
    "condition": "Like New",
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-09-26T11:21:29.560Z",
+   "lastSeenAt": "2026-09-26T16:21:58.582Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -2495,7 +1751,7 @@
    "condition": "Very Good",
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-09-26T11:21:29.560Z",
+   "lastSeenAt": "2026-09-26T16:21:58.582Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -2570,7 +1826,7 @@
    "condition": "Very Good",
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-09-26T11:21:29.560Z",
+   "lastSeenAt": "2026-09-26T16:21:58.582Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -2641,12 +1897,12 @@
    "seller": {
     "username": "cardsguycom",
     "feedbackPercentage": 100,
-    "feedbackScore": 1433
+    "feedbackScore": 1434
    },
    "condition": "Very Good",
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-09-26T11:21:29.560Z",
+   "lastSeenAt": "2026-09-26T16:21:58.582Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -2717,12 +1973,12 @@
    "seller": {
     "username": "l.sorrell2012",
     "feedbackPercentage": 99.7,
-    "feedbackScore": 4912
+    "feedbackScore": 4914
    },
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-09-26T11:21:29.560Z",
+   "lastSeenAt": "2026-09-26T16:21:58.582Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -2793,12 +2049,12 @@
    "seller": {
     "username": "l.sorrell2012",
     "feedbackPercentage": 99.7,
-    "feedbackScore": 4912
+    "feedbackScore": 4914
    },
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-09-26T11:21:29.560Z",
+   "lastSeenAt": "2026-09-26T16:21:58.582Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -2869,12 +2125,12 @@
    "seller": {
     "username": "rfenterprise",
     "feedbackPercentage": 99.1,
-    "feedbackScore": 3524
+    "feedbackScore": 3527
    },
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-09-26T11:21:29.560Z",
+   "lastSeenAt": "2026-09-26T16:21:58.582Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -2937,7 +2193,7 @@
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-09-26T11:21:29.560Z",
+   "lastSeenAt": "2026-09-26T16:21:58.582Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -2969,7 +2225,7 @@
      "Country of Origin": "United States"
     },
     "descriptionSnippet": "The Bell System Technical Journal 1963 Vol. 42 Number 4 The Telstar Experiment See photos for details. Pages are clean and crisp, bindings are intact. The spines have the remark \"TELSTAR\" in hand writing. A little over 9 x 6 inches height/width. The Bell System Technical Journal:",
-    "fetchedAt": "2026-09-25T15:18:51.078Z"
+    "fetchedAt": "2026-09-26T16:19:51.959Z"
    },
    "priceHistory": [
     {
@@ -3011,7 +2267,7 @@
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-09-26T11:21:29.560Z",
+   "lastSeenAt": "2026-09-26T16:21:58.582Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -3043,7 +2299,7 @@
      "Original/Facsimile": "Original"
     },
     "descriptionSnippet": "The Bell System Technical Journal 1963 Vol. 42 Number 5 See photos for details. Pages are clean and crisp, bindings are intact. A little over 9 x 6 inches height/width. <br> Among the eight topics, \"Phase-Lock Loop Design for Coherent Angle-Error Detection in the Telstar Satellit",
-    "fetchedAt": "2026-09-25T15:18:51.078Z"
+    "fetchedAt": "2026-09-26T16:19:51.959Z"
    },
    "priceHistory": [
     {
@@ -3080,12 +2336,12 @@
    "seller": {
     "username": "l.sorrell2012",
     "feedbackPercentage": 99.7,
-    "feedbackScore": 4912
+    "feedbackScore": 4914
    },
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-09-26T11:21:29.560Z",
+   "lastSeenAt": "2026-09-26T16:21:58.582Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -3119,7 +2375,7 @@
      "Country of Origin": "United States"
     },
     "descriptionSnippet": "The Bell System Technical Journal from September 1963 is a sought-after collectible for history enthusiasts and those interested in the early days of radio technology. Published by American Telephone and Telegraph Company, this original softcover journal features articles by Bell",
-    "fetchedAt": "2026-09-25T15:18:51.078Z"
+    "fetchedAt": "2026-09-26T16:19:51.959Z"
    },
    "priceHistory": [
     {
@@ -3156,12 +2412,12 @@
    "seller": {
     "username": "l.sorrell2012",
     "feedbackPercentage": 99.7,
-    "feedbackScore": 4912
+    "feedbackScore": 4914
    },
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-09-26T11:21:29.560Z",
+   "lastSeenAt": "2026-09-26T16:21:58.582Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -3195,7 +2451,7 @@
      "Country of Origin": "United States"
     },
     "descriptionSnippet": "The Bell System Technical Journal - May 1963 Volume XLII Number 3 is a softcover publication by the American Telephone and Telegraph Company. This edition, printed in 1963 in New York, focuses on the history of radio technology. Authored by Bell Systems, the journal is in its ori",
-    "fetchedAt": "2026-09-25T15:18:51.078Z"
+    "fetchedAt": "2026-09-26T16:19:51.959Z"
    },
    "priceHistory": [
     {
@@ -3232,12 +2488,12 @@
    "seller": {
     "username": "l.sorrell2012",
     "feedbackPercentage": 99.7,
-    "feedbackScore": 4912
+    "feedbackScore": 4914
    },
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-09-26T11:21:29.560Z",
+   "lastSeenAt": "2026-09-26T16:21:58.582Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -3271,7 +2527,7 @@
      "Country of Origin": "United States"
     },
     "descriptionSnippet": "The Bell System Technical Journal - November 1963 Volume XLII Number 6 is a softcover book published by American Telephone and Telegraph Company in New York. This collectible item is an original edition printed in English, focusing on the history of radio technology. The journal ",
-    "fetchedAt": "2026-09-25T15:18:51.078Z"
+    "fetchedAt": "2026-09-26T16:19:51.959Z"
    },
    "priceHistory": [
     {
@@ -3308,12 +2564,12 @@
    "seller": {
     "username": "l.sorrell2012",
     "feedbackPercentage": 99.7,
-    "feedbackScore": 4912
+    "feedbackScore": 4914
    },
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-09-26T11:21:29.560Z",
+   "lastSeenAt": "2026-09-26T16:21:58.582Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -3347,7 +2603,7 @@
      "Country of Origin": "United States"
     },
     "descriptionSnippet": "The Bell System Technical Journal - January 1963 Volume XLII Number 1 is a softcover book published by American Telephone and Telegraph Company in New York. This collectible item is an original edition printed in English, focusing on the history of radio technology. The journal i",
-    "fetchedAt": "2026-09-25T15:18:51.078Z"
+    "fetchedAt": "2026-09-26T16:19:51.959Z"
    },
    "priceHistory": [
     {
@@ -3384,12 +2640,12 @@
    "seller": {
     "username": "l.sorrell2012",
     "feedbackPercentage": 99.7,
-    "feedbackScore": 4912
+    "feedbackScore": 4914
    },
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-09-26T11:21:29.560Z",
+   "lastSeenAt": "2026-09-26T16:21:58.582Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -3423,7 +2679,7 @@
      "Country of Origin": "United States"
     },
     "descriptionSnippet": "The Bell System Technical Journal - March 1963 Volume XLII Number 2 is a vintage softcover book published by American Telephone and Telegraph Company. This original English-language journal from 1963 focuses on the history of radio technology, with special attributes including be",
-    "fetchedAt": "2026-09-25T15:18:51.078Z"
+    "fetchedAt": "2026-09-26T16:19:51.959Z"
    },
    "priceHistory": [
     {
@@ -3460,12 +2716,12 @@
    "seller": {
     "username": "l.sorrell2012",
     "feedbackPercentage": 99.7,
-    "feedbackScore": 4912
+    "feedbackScore": 4914
    },
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-09-26T11:21:29.560Z",
+   "lastSeenAt": "2026-09-26T16:21:58.582Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -3536,12 +2792,12 @@
    "seller": {
     "username": "l.sorrell2012",
     "feedbackPercentage": 99.7,
-    "feedbackScore": 4912
+    "feedbackScore": 4914
    },
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-09-26T11:21:29.560Z",
+   "lastSeenAt": "2026-09-26T16:21:58.582Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -3575,7 +2831,7 @@
      "Country of Origin": "United States"
     },
     "descriptionSnippet": "The Bell System Technical Journal - July 1963 Volume XLII Number 4 Part 2 is a vintage softcover book published by the American Telephone and Telegraph Company in 1963. This edition focuses on the history of the Bell System, with a specific emphasis on radio technology. The journ",
-    "fetchedAt": "2026-09-25T15:18:51.078Z"
+    "fetchedAt": "2026-09-26T16:19:51.959Z"
    },
    "priceHistory": [
     {
@@ -3612,12 +2868,12 @@
    "seller": {
     "username": "l.sorrell2012",
     "feedbackPercentage": 99.7,
-    "feedbackScore": 4912
+    "feedbackScore": 4914
    },
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-09-26T11:21:29.560Z",
+   "lastSeenAt": "2026-09-26T16:21:58.582Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -3651,7 +2907,7 @@
      "Country of Origin": "United States"
     },
     "descriptionSnippet": "The Bell System Technical Journal - July 1963 Volume XLII Number 4 Part 3 is a vintage softcover book published by the American Telephone and Telegraph Company in 1963. This edition focuses on the history of the Bell System, with a specific emphasis on radio technology. The journ",
-    "fetchedAt": "2026-09-25T15:18:51.078Z"
+    "fetchedAt": "2026-09-26T16:19:51.959Z"
    },
    "priceHistory": [
     {
@@ -3688,12 +2944,12 @@
    "seller": {
     "username": "ce_buch",
     "feedbackPercentage": 100,
-    "feedbackScore": 23246
+    "feedbackScore": 23248
    },
    "condition": "Gut",
    "location": "DE",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-09-26T11:21:29.560Z",
+   "lastSeenAt": "2026-09-26T16:21:58.582Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -3762,12 +3018,12 @@
    "seller": {
     "username": "terrysbooksandthings",
     "feedbackPercentage": 100,
-    "feedbackScore": 3487
+    "feedbackScore": 3488
    },
    "condition": "Acceptable",
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-09-26T11:21:29.560Z",
+   "lastSeenAt": "2026-09-26T16:21:58.582Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -3798,7 +3054,7 @@
      "Vintage": "Yes"
     },
     "descriptionSnippet": "The Bell System Technical Journal - Volume 43 - July 1964 - Number 4, Part 1 SD Submarine Cable System Book will be carefully packed for safe shipping",
-    "fetchedAt": "2026-09-25T15:18:51.078Z"
+    "fetchedAt": "2026-09-26T16:19:51.959Z"
    },
    "priceHistory": [
     {
@@ -3840,7 +3096,7 @@
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-09-26T11:21:29.560Z",
+   "lastSeenAt": "2026-09-26T16:21:58.582Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -3872,7 +3128,7 @@
      "Original/Facsimile": "Original"
     },
     "descriptionSnippet": "The Bell System Technical Journal 1964 Vol. 43 Number 5, part 1 and part 2, NO. 1 ELECTRONIC SWITCHING SYSTEM See photos for details. Pages are clean and crisp, bindings are intact. The spines have the remark \"ESS\" in hand writing. A little over 9 x 6 inches height/width. No. 1 E",
-    "fetchedAt": "2026-09-25T15:18:51.078Z"
+    "fetchedAt": "2026-09-26T16:19:51.959Z"
    },
    "priceHistory": [
     {
@@ -3909,12 +3165,12 @@
    "seller": {
     "username": "l.sorrell2012",
     "feedbackPercentage": 99.7,
-    "feedbackScore": 4912
+    "feedbackScore": 4914
    },
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-09-26T11:21:29.560Z",
+   "lastSeenAt": "2026-09-26T16:21:58.582Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -3967,12 +3223,12 @@
    "seller": {
     "username": "l.sorrell2012",
     "feedbackPercentage": 99.7,
-    "feedbackScore": 4912
+    "feedbackScore": 4914
    },
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-09-26T11:21:29.560Z",
+   "lastSeenAt": "2026-09-26T16:21:58.582Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -4006,7 +3262,7 @@
      "Country of Origin": "United States"
     },
     "descriptionSnippet": "The Bell System Technical Journal from January 1964, Volume XLIII, No 1 Part 1 is a softcover publication by American Telephone and Telegraph Company. This original English-language journal covers a range of topics related to radio history, with a focus on Bell Systems. This coll",
-    "fetchedAt": "2026-09-25T15:18:51.078Z"
+    "fetchedAt": "2026-09-26T16:19:51.959Z"
    },
    "priceHistory": [
     {
@@ -4043,12 +3299,12 @@
    "seller": {
     "username": "l.sorrell2012",
     "feedbackPercentage": 99.7,
-    "feedbackScore": 4912
+    "feedbackScore": 4914
    },
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-09-26T11:21:29.560Z",
+   "lastSeenAt": "2026-09-26T16:21:58.582Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -4082,7 +3338,7 @@
      "Country of Origin": "United States"
     },
     "descriptionSnippet": "The Bell System Technical Journal September 1964 Volume XLIII - No 5 Part 2 is a vintage softcover book published by American Telephone and Telegraph Company in New York. This original edition features articles on radio history authored by Bell Systems. Printed in English, this c",
-    "fetchedAt": "2026-09-25T15:18:51.078Z"
+    "fetchedAt": "2026-09-26T16:19:51.959Z"
    },
    "priceHistory": [
     {
@@ -4119,12 +3375,12 @@
    "seller": {
     "username": "l.sorrell2012",
     "feedbackPercentage": 99.7,
-    "feedbackScore": 4912
+    "feedbackScore": 4914
    },
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-09-26T11:21:29.560Z",
+   "lastSeenAt": "2026-09-26T16:21:58.582Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -4158,7 +3414,7 @@
      "Country of Origin": "United States"
     },
     "descriptionSnippet": "The Bell System Technical Journal for September 1964 is a vintage collection of articles and technical papers related to radio and telecommunications history. Published by the American Telephone and Telegraph Company, this softcover volume features content from Bell Systems autho",
-    "fetchedAt": "2026-09-25T15:18:51.078Z"
+    "fetchedAt": "2026-09-26T16:19:51.959Z"
    },
    "priceHistory": [
     {
@@ -4195,12 +3451,12 @@
    "seller": {
     "username": "l.sorrell2012",
     "feedbackPercentage": 99.7,
-    "feedbackScore": 4912
+    "feedbackScore": 4914
    },
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-09-26T11:21:29.560Z",
+   "lastSeenAt": "2026-09-26T16:21:58.582Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -4234,7 +3490,7 @@
      "Country of Origin": "United States"
     },
     "descriptionSnippet": "The Bell System Technical Journal for March 1964 is a vintage softcover publication by the American Telephone and Telegraph Company. Focused on history and radio subjects, this original edition features articles by Bell System authors. Printed in English in the United States, thi",
-    "fetchedAt": "2026-09-25T15:18:51.078Z"
+    "fetchedAt": "2026-09-26T16:19:51.959Z"
    },
    "priceHistory": [
     {
@@ -4271,12 +3527,12 @@
    "seller": {
     "username": "l.sorrell2012",
     "feedbackPercentage": 99.7,
-    "feedbackScore": 4912
+    "feedbackScore": 4914
    },
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-09-26T11:21:29.560Z",
+   "lastSeenAt": "2026-09-26T16:21:58.582Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -4310,7 +3566,7 @@
      "Country of Origin": "United States"
     },
     "descriptionSnippet": "The Bell System Technical Journal for May 1964, Volume XLIII NO 3, is a valuable collectible for history enthusiasts interested in the telecommunications industry. Published by the American Telephone and Telegraph Company, this softcover book delves into the subject of radio tech",
-    "fetchedAt": "2026-09-25T15:18:51.078Z"
+    "fetchedAt": "2026-09-26T16:19:51.959Z"
    },
    "priceHistory": [
     {
@@ -4347,12 +3603,12 @@
    "seller": {
     "username": "l.sorrell2012",
     "feedbackPercentage": 99.7,
-    "feedbackScore": 4912
+    "feedbackScore": 4914
    },
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-09-26T11:21:29.560Z",
+   "lastSeenAt": "2026-09-26T16:21:58.582Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -4386,7 +3642,7 @@
      "Country of Origin": "United States"
     },
     "descriptionSnippet": "The Bell System Technical Journal July 1964 Volume XLIII No 4 Part 1 is a vintage softcover publication by the American Telephone and Telegraph Company. Focused on the history and development of radio technology, this original edition features articles by Bell Systems authors and",
-    "fetchedAt": "2026-09-25T15:18:51.078Z"
+    "fetchedAt": "2026-09-26T16:19:51.959Z"
    },
    "priceHistory": [
     {
@@ -4423,12 +3679,12 @@
    "seller": {
     "username": "skygr-455",
     "feedbackPercentage": 100,
-    "feedbackScore": 1154
+    "feedbackScore": 1155
    },
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-09-26T11:21:29.560Z",
+   "lastSeenAt": "2026-09-26T16:21:58.582Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -4461,7 +3717,7 @@
      "Country of Origin": "United States"
     },
     "descriptionSnippet": "The Bell System Technical Journal - September 1964 Volume XLIII No 5 is a vintage softcover book published by American Telephone and Telegraph Company in New York. This original edition covers topics related to radio history and is written in English. It features special attribut",
-    "fetchedAt": "2026-09-25T15:18:51.078Z"
+    "fetchedAt": "2026-09-26T16:19:51.959Z"
    },
    "priceHistory": [
     {
@@ -4498,12 +3754,12 @@
    "seller": {
     "username": "paperattic",
     "feedbackPercentage": 100,
-    "feedbackScore": 7096
+    "feedbackScore": 7097
    },
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-09-26T11:21:29.560Z",
+   "lastSeenAt": "2026-09-26T16:21:58.582Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -4535,7 +3791,7 @@
      "Year Printed": "1970"
     },
     "descriptionSnippet": "ITEM: Up for sale is this vintage Bell System Technical Journal, Volume 49, October 1970, Number 8. Good shape, all original. Includes the following articles: R. W. Hamming On the Distribution of Numbers . . . . . 1609--1625 R. L. Graham A Mathematical Study of a Model of Magneti",
-    "fetchedAt": "2026-09-25T15:18:51.078Z"
+    "fetchedAt": "2026-09-26T16:19:51.959Z"
    },
    "priceHistory": [
     {
@@ -4572,12 +3828,12 @@
    "seller": {
     "username": "paperattic",
     "feedbackPercentage": 100,
-    "feedbackScore": 7096
+    "feedbackScore": 7097
    },
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-09-26T11:21:29.560Z",
+   "lastSeenAt": "2026-09-26T16:21:58.582Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -4609,7 +3865,7 @@
      "Year Printed": "1970"
     },
     "descriptionSnippet": "ITEM: Up for sale is this vintage Bell System Technical Journal, Volume 51, September 1972, Number 7. Good shape, all original. Includes the following articles: W. E. Beadle and A. J. Schorr Picturephone Silicon Target Signal Analysis . . . . . . . . . . . . . . . . 921--952 A. H",
-    "fetchedAt": "2026-09-25T15:18:51.078Z"
+    "fetchedAt": "2026-09-26T16:19:51.959Z"
    },
    "priceHistory": [
     {
@@ -4651,7 +3907,7 @@
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-09-26T11:21:29.560Z",
+   "lastSeenAt": "2026-09-26T16:21:58.582Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -4685,7 +3941,7 @@
      "Country of Origin": "United States"
     },
     "descriptionSnippet": "The Bell System Technical Journal Vol 57 No 6 Part 2 July - August 1978 is a softcover publication by American Telephone & Telegraph, Inc. It is an original edition with no modifications, providing valuable insights in the history and development of engineering systems in North A",
-    "fetchedAt": "2026-09-25T15:18:51.078Z"
+    "fetchedAt": "2026-09-26T16:19:51.959Z"
    },
    "priceHistory": [
     {
@@ -4722,12 +3978,12 @@
    "seller": {
     "username": "ce_buch",
     "feedbackPercentage": 100,
-    "feedbackScore": 23246
+    "feedbackScore": 23248
    },
    "condition": "Gut",
    "location": "DE",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-09-26T11:21:29.560Z",
+   "lastSeenAt": "2026-09-26T16:21:58.582Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -4796,12 +4052,12 @@
    "seller": {
     "username": "bargainbookstores",
     "feedbackPercentage": 99.7,
-    "feedbackScore": 1210039
+    "feedbackScore": 1210097
    },
    "condition": "Brand New",
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-09-26T11:21:29.560Z",
+   "lastSeenAt": "2026-09-26T16:21:58.582Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -4834,7 +4090,7 @@
      "Manufacturer": "Literary Licensing, LLC"
     },
     "descriptionSnippet": "Bargainbookstores The Telstar Experiment: Papers from the Bell System Technical Journal, V42, Part 3, July, 1963 (Paperback or Softback) By Bell System Technical Journal Condition: Format: Paperback or Softback Publisher: Literary Licensing, LLC Publication Date: 4/14/2012 ISBN: ",
-    "fetchedAt": "2026-09-25T15:18:51.078Z"
+    "fetchedAt": "2026-09-26T16:19:51.959Z"
    },
    "priceHistory": [
     {
@@ -4871,12 +4127,12 @@
    "seller": {
     "username": "rfenterprise",
     "feedbackPercentage": 99.1,
-    "feedbackScore": 3524
+    "feedbackScore": 3527
    },
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-09-26T11:21:29.560Z",
+   "lastSeenAt": "2026-09-26T16:21:58.582Z",
    "reasons": [
     "must:bstj",
     "must:technical",
@@ -4896,7 +4152,7 @@
      "Vintage": "Yes"
     },
     "descriptionSnippet": "Vintage 1960s Bell Telephone System Technical Publications Monographs 5021-5050 | Solid-State & Telecomm Research Bound Book. Features a comprehensive block of 30 sequential technical monographs covering advanced electronics, wave propagation, and communication systems from the e",
-    "fetchedAt": "2026-09-25T15:18:51.078Z"
+    "fetchedAt": "2026-09-26T16:19:51.959Z"
    },
    "priceHistory": [
     {
@@ -4938,7 +4194,7 @@
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-26T11:21:29.560Z",
+   "lastSeenAt": "2026-09-26T16:21:58.582Z",
    "reasons": [
     "must:haze",
     "medium:painting",
@@ -4974,7 +4230,7 @@
      "Time Period Produced": "2010-2019"
     },
     "descriptionSnippet": "This stunning canvas painting by Eric Haze is a true masterpiece of urban art. The piece features his infamous crown design that showcases the artist's unique style and talent. Measuring 40 inches in both height and length, this large painting is an original piece that is sure to",
-    "fetchedAt": "2026-09-25T15:18:51.078Z"
+    "fetchedAt": "2026-09-26T16:19:51.959Z"
    },
    "priceHistory": [
     {
@@ -5016,7 +4272,7 @@
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-26T11:21:29.560Z",
+   "lastSeenAt": "2026-09-26T16:21:58.582Z",
    "reasons": [
     "must:sintesi",
     "aspect:original",
@@ -5058,7 +4314,7 @@
      "Finish": "Matte"
     },
     "descriptionSnippet": "The Sintesi Adjustable Desk Lamp by Ernesto Gismondi for Artemide is a stylish and functional addition to any workspace. With a sleek black metal design and adjustable features, this Italian-designed lamp offers a modern twist on a vintage look. Designed in the 1970s, this origin",
-    "fetchedAt": "2026-09-25T15:18:51.078Z"
+    "fetchedAt": "2026-09-26T16:19:51.959Z"
    },
    "priceHistory": [
     {
@@ -5100,7 +4356,7 @@
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-26T11:21:29.560Z",
+   "lastSeenAt": "2026-09-26T16:21:58.582Z",
    "reasons": [
     "must:beaubourg",
     "aspect:original",
@@ -5143,7 +4399,7 @@
      "Upholstery Fabric": "Leather"
     },
     "descriptionSnippet": "Pompidou Beaubourg Chairs . 1976 Michel Cadestin & Georges Laurent . SET OF 2. 3 SETS AVAILABLE",
-    "fetchedAt": "2026-09-25T15:18:51.078Z"
+    "fetchedAt": "2026-09-26T16:19:51.959Z"
    },
    "priceHistory": [
     {
@@ -5185,7 +4441,7 @@
    "condition": "Open box",
    "location": "JP",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-26T11:21:29.560Z",
+   "lastSeenAt": "2026-09-26T16:21:58.582Z",
    "reasons": [
     "must:nakashima",
     "over-cap"
@@ -5204,60 +4460,6 @@
      "at": "2026-09-25T02:43:43.147Z",
      "price": 3100,
      "allIn": 3100
-    }
-   ],
-   "priceChange": null,
-   "relisted": null,
-   "photoReused": null,
-   "dismissible": true
-  },
-  {
-   "key": "design-nakashima-seating:v1|127308842782|0",
-   "group": "over",
-   "huntId": "design-nakashima-seating",
-   "huntLabel": "George Nakashima — chairs & seating (all)",
-   "classification": "over",
-   "listingId": "v1|127308842782|0",
-   "title": "1940's midcentury knoll n19 nakashima chair *****",
-   "url": "https://www.ebay.com/itm/127308842782?_skw=nakashima+chair&hash=item1da432c71e:g:L-oAAeSwr6ZonioJ",
-   "imageUrl": "https://i.ebayimg.com/images/g/L-oAAeSwr6ZonioJ/s-l225.jpg",
-   "buyingMode": "FIXED_PRICE",
-   "endsAt": null,
-   "bidCount": null,
-   "price": 3600,
-   "shipping": 33.75,
-   "allIn": 3633.75,
-   "maxAllIn": 3000,
-   "underBy": -633.75,
-   "underPct": -0.21,
-   "capWording": "over cap",
-   "seller": {
-    "username": "midcentury*madman",
-    "feedbackPercentage": 100,
-    "feedbackScore": 38
-   },
-   "condition": "Used",
-   "location": "US",
-   "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-26T11:21:29.560Z",
-   "reasons": [
-    "must:nakashima",
-    "over-cap"
-   ],
-   "flags": [],
-   "confidence": 0.95,
-   "review": "ok",
-   "carried": false,
-   "alertKey": null,
-   "similarCount": 0,
-   "risk": "low",
-   "riskReasons": [],
-   "details": null,
-   "priceHistory": [
-    {
-     "at": "2026-09-25T02:43:43.147Z",
-     "price": 3600,
-     "allIn": 3633.75
     }
    ],
    "priceChange": null,
@@ -5293,7 +4495,7 @@
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-26T11:21:29.560Z",
+   "lastSeenAt": "2026-09-26T16:21:58.582Z",
    "reasons": [
     "must:graham",
     "game-used:game used",
@@ -5343,12 +4545,12 @@
    "seller": {
     "username": "d-rose-mod",
     "feedbackPercentage": 100,
-    "feedbackScore": 1703
+    "feedbackScore": 1705
    },
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-26T11:21:29.560Z",
+   "lastSeenAt": "2026-09-26T16:21:58.582Z",
    "reasons": [
     "must:nakashima",
     "over-cap"
@@ -5370,128 +4572,6 @@
     }
    ],
    "priceChange": null,
-   "relisted": null,
-   "photoReused": null,
-   "dismissible": true
-  },
-  {
-   "key": "design-nakashima-seating:v1|166537022637|0",
-   "group": "over",
-   "huntId": "design-nakashima-seating",
-   "huntLabel": "George Nakashima — chairs & seating (all)",
-   "classification": "over",
-   "listingId": "v1|166537022637|0",
-   "title": "1947 George Nakashima Knoll N19 Straight Chairs in Natural Birch Early Example",
-   "url": "https://www.ebay.com/itm/166537022637?_skw=nakashima+chair&hash=item26c6614cad:g:MUwAAOSwrt1fkHX~",
-   "imageUrl": "https://i.ebayimg.com/images/g/MUwAAOSwrt1fkHX~/s-l225.jpg",
-   "buyingMode": "FIXED_PRICE",
-   "endsAt": null,
-   "bidCount": null,
-   "price": 4000,
-   "shipping": 295,
-   "allIn": 4295,
-   "maxAllIn": 3000,
-   "underBy": -1295,
-   "underPct": -0.43,
-   "capWording": "over cap",
-   "seller": {
-    "username": "d-rose-mod",
-    "feedbackPercentage": 100,
-    "feedbackScore": 1703
-   },
-   "condition": "Used",
-   "location": "US",
-   "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-26T11:21:29.560Z",
-   "reasons": [
-    "must:nakashima",
-    "over-cap"
-   ],
-   "flags": [],
-   "confidence": 0.95,
-   "review": "ok",
-   "carried": false,
-   "alertKey": null,
-   "similarCount": 0,
-   "risk": "low",
-   "riskReasons": [],
-   "details": null,
-   "priceHistory": [
-    {
-     "at": "2026-09-25T02:43:43.147Z",
-     "price": 4000,
-     "allIn": 4295
-    }
-   ],
-   "priceChange": null,
-   "relisted": null,
-   "photoReused": null,
-   "dismissible": true
-  },
-  {
-   "key": "design-nakashima-seating:v1|133792545264|0",
-   "group": "over",
-   "huntId": "design-nakashima-seating",
-   "huntLabel": "George Nakashima — chairs & seating (all)",
-   "classification": "over",
-   "listingId": "v1|133792545264|0",
-   "title": "1950 DE STER GELDERLAND ROCKING CHAIR MODERNIST NAKASHIMA SCANDINAVIAN ARMCHAIR",
-   "url": "https://www.ebay.com/itm/133792545264?_skw=nakashima+chair&hash=item1f26a839f0:g:ODgAAOSwMZBgzO9K",
-   "imageUrl": "https://i.ebayimg.com/images/g/ODgAAOSwMZBgzO9K/s-l225.jpg",
-   "buyingMode": "FIXED_PRICE",
-   "endsAt": null,
-   "bidCount": null,
-   "price": 2733.84,
-   "shipping": 2050.38,
-   "allIn": 4784.22,
-   "maxAllIn": 3000,
-   "underBy": -1784.22,
-   "underPct": -0.59,
-   "capWording": "over cap",
-   "seller": {
-    "username": "fille.du.calvaire",
-    "feedbackPercentage": 100,
-    "feedbackScore": 1550
-   },
-   "condition": null,
-   "location": "FR",
-   "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-26T11:21:29.560Z",
-   "reasons": [
-    "must:nakashima",
-    "over-cap"
-   ],
-   "flags": [],
-   "confidence": 0.95,
-   "review": "ok",
-   "carried": false,
-   "alertKey": null,
-   "similarCount": 0,
-   "risk": "low",
-   "riskReasons": [],
-   "details": null,
-   "priceHistory": [
-    {
-     "at": "2026-09-25T03:20:24.636Z",
-     "price": 2731.68,
-     "allIn": 4780.44
-    },
-    {
-     "at": "2026-09-25T09:41:39.186Z",
-     "price": 2731.2,
-     "allIn": 4779.6
-    },
-    {
-     "at": "2026-09-26T11:21:29.560Z",
-     "price": 2733.84,
-     "allIn": 4784.22
-    }
-   ],
-   "priceChange": {
-    "from": 4780.44,
-    "to": 4784.22,
-    "since": "2026-09-25T03:20:24.636Z"
-   },
    "relisted": null,
    "photoReused": null,
    "dismissible": true
@@ -5524,7 +4604,7 @@
    "condition": "Used",
    "location": "GB",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-26T11:21:29.560Z",
+   "lastSeenAt": "2026-09-26T16:21:58.582Z",
    "reasons": [
     "must:sintesi",
     "over-cap"
@@ -5592,7 +4672,7 @@
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-26T11:21:29.560Z",
+   "lastSeenAt": "2026-09-26T16:21:58.582Z",
    "reasons": [
     "must:sintesi",
     "over-cap"
@@ -5646,7 +4726,7 @@
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-26T11:21:29.560Z",
+   "lastSeenAt": "2026-09-26T16:21:58.582Z",
    "reasons": [
     "must:nakashima",
     "over-cap"
@@ -5700,7 +4780,7 @@
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-26T11:21:29.560Z",
+   "lastSeenAt": "2026-09-26T16:21:58.582Z",
    "reasons": [
     "must:sintesi",
     "over-cap"
@@ -5749,12 +4829,12 @@
    "seller": {
     "username": "d-rose-mod",
     "feedbackPercentage": 100,
-    "feedbackScore": 1703
+    "feedbackScore": 1705
    },
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-26T11:21:29.560Z",
+   "lastSeenAt": "2026-09-26T16:21:58.582Z",
    "reasons": [
     "must:nakashima",
     "over-cap"
@@ -5808,7 +4888,7 @@
    "condition": "Used",
    "location": "GB",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-26T11:21:29.560Z",
+   "lastSeenAt": "2026-09-26T16:21:58.582Z",
    "reasons": [
     "must:sintesi",
     "over-cap"
@@ -5870,13 +4950,13 @@
    "capWording": "over cap",
    "seller": {
     "username": "dimanoinmanocoop",
-    "feedbackPercentage": 99.7,
-    "feedbackScore": 22526
+    "feedbackPercentage": 99.6,
+    "feedbackScore": 22525
    },
    "condition": "Used",
    "location": "IT",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-26T11:21:29.560Z",
+   "lastSeenAt": "2026-09-26T16:21:58.582Z",
    "reasons": [
     "must:sintesi",
     "over-cap"
@@ -5930,7 +5010,7 @@
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-26T11:21:29.560Z",
+   "lastSeenAt": "2026-09-26T16:21:58.582Z",
    "reasons": [
     "must:sintesi",
     "over-cap"
@@ -5979,12 +5059,12 @@
    "seller": {
     "username": "d-rose-mod",
     "feedbackPercentage": 100,
-    "feedbackScore": 1703
+    "feedbackScore": 1705
    },
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-26T11:21:29.560Z",
+   "lastSeenAt": "2026-09-26T16:21:58.582Z",
    "reasons": [
     "must:nakashima",
     "over-cap"
@@ -6033,12 +5113,12 @@
    "seller": {
     "username": "d-rose-mod",
     "feedbackPercentage": 100,
-    "feedbackScore": 1703
+    "feedbackScore": 1705
    },
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-26T11:21:29.560Z",
+   "lastSeenAt": "2026-09-26T16:21:58.582Z",
    "reasons": [
     "must:sintesi",
     "over-cap"
@@ -6092,7 +5172,7 @@
    "condition": "Used",
    "location": "IT",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-26T11:21:29.560Z",
+   "lastSeenAt": "2026-09-26T16:21:58.582Z",
    "reasons": [
     "must:sintesi",
     "over-cap"
@@ -6141,12 +5221,12 @@
    "seller": {
     "username": "d-rose-mod",
     "feedbackPercentage": 100,
-    "feedbackScore": 1703
+    "feedbackScore": 1705
    },
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-26T11:21:29.560Z",
+   "lastSeenAt": "2026-09-26T16:21:58.582Z",
    "reasons": [
     "must:nakashima",
     "over-cap"
@@ -6195,12 +5275,12 @@
    "seller": {
     "username": "d-rose-mod",
     "feedbackPercentage": 100,
-    "feedbackScore": 1703
+    "feedbackScore": 1705
    },
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-26T11:21:29.560Z",
+   "lastSeenAt": "2026-09-26T16:21:58.582Z",
    "reasons": [
     "must:nakashima",
     "over-cap"
@@ -6249,12 +5329,12 @@
    "seller": {
     "username": "d-rose-mod",
     "feedbackPercentage": 100,
-    "feedbackScore": 1703
+    "feedbackScore": 1705
    },
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-26T11:21:29.560Z",
+   "lastSeenAt": "2026-09-26T16:21:58.582Z",
    "reasons": [
     "must:nakashima",
     "over-cap"
@@ -6308,7 +5388,7 @@
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-26T11:21:29.560Z",
+   "lastSeenAt": "2026-09-26T16:21:58.582Z",
    "reasons": [
     "must:nakashima",
     "over-cap"
@@ -6362,7 +5442,7 @@
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-26T11:21:29.560Z",
+   "lastSeenAt": "2026-09-26T16:21:58.582Z",
    "reasons": [
     "must:nakashima",
     "over-cap"
@@ -6416,7 +5496,7 @@
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-26T11:21:29.560Z",
+   "lastSeenAt": "2026-09-26T16:21:58.582Z",
    "reasons": [
     "must:pileo",
     "over-cap"
@@ -6470,7 +5550,7 @@
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-26T11:21:29.560Z",
+   "lastSeenAt": "2026-09-26T16:21:58.582Z",
    "reasons": [
     "must:ertz",
     "game-used:game worn",
@@ -6529,7 +5609,7 @@
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-26T11:21:29.560Z",
+   "lastSeenAt": "2026-09-26T16:21:58.582Z",
    "reasons": [
     "must:super bowl",
     "game-used:game used",
@@ -6588,7 +5668,7 @@
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-26T11:21:29.560Z",
+   "lastSeenAt": "2026-09-26T16:21:58.582Z",
    "reasons": [
     "must:sintesi",
     "over-cap"
@@ -6647,7 +5727,7 @@
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-26T11:21:29.560Z",
+   "lastSeenAt": "2026-09-26T16:21:58.582Z",
    "reasons": [
     "must:super bowl",
     "game-used:game used",
@@ -6672,64 +5752,6 @@
      "at": "2026-09-25T03:20:24.636Z",
      "price": 10000,
      "allIn": 10300
-    }
-   ],
-   "priceChange": null,
-   "relisted": null,
-   "photoReused": null,
-   "dismissible": true
-  },
-  {
-   "key": "design-nakashima-seating:v1|111939650741|0",
-   "group": "over",
-   "huntId": "design-nakashima-seating",
-   "huntLabel": "George Nakashima — chairs & seating (all)",
-   "classification": "over",
-   "listingId": "v1|111939650741|0",
-   "title": "George Nakashima Widdicomb Origins Collection Chair 50's Mid Century Modern",
-   "url": "https://www.ebay.com/itm/111939650741?_skw=nakashima+chair&hash=item1a101f84b5:g:wDsAAMXQW7VRE5SR",
-   "imageUrl": "https://i.ebayimg.com/images/g/wDsAAMXQW7VRE5SR/s-l225.jpg",
-   "buyingMode": "FIXED_PRICE",
-   "endsAt": null,
-   "bidCount": null,
-   "price": 5000,
-   "shipping": 389,
-   "allIn": 5389,
-   "maxAllIn": 3000,
-   "underBy": -2389,
-   "underPct": -0.8,
-   "capWording": "over cap",
-   "seller": {
-    "username": "coolassschool",
-    "feedbackPercentage": 0,
-    "feedbackScore": 587
-   },
-   "condition": "Unspecified",
-   "location": "US",
-   "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-26T11:21:29.560Z",
-   "reasons": [
-    "must:nakashima",
-    "over-cap"
-   ],
-   "flags": [
-    "seller-low-feedback"
-   ],
-   "confidence": 0.85,
-   "review": "ok",
-   "carried": false,
-   "alertKey": null,
-   "similarCount": 0,
-   "risk": "medium",
-   "riskReasons": [
-    "seller feedback is low"
-   ],
-   "details": null,
-   "priceHistory": [
-    {
-     "at": "2026-09-25T02:43:43.147Z",
-     "price": 5000,
-     "allIn": 5389
     }
    ],
    "priceChange": null,
@@ -6765,7 +5787,7 @@
    "condition": "Unspecified",
    "location": "US",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-26T11:21:29.560Z",
+   "lastSeenAt": "2026-09-26T16:21:58.582Z",
    "reasons": [
     "must:condo",
     "medium:crayon",
@@ -6823,7 +5845,7 @@
    "condition": null,
    "location": "IT",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-26T11:21:29.560Z",
+   "lastSeenAt": "2026-09-26T16:21:58.582Z",
    "reasons": [
     "must:sintesi",
     "over-cap"
@@ -6895,7 +5917,7 @@
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-26T11:21:29.560Z",
+   "lastSeenAt": "2026-09-26T16:21:58.582Z",
    "reasons": [
     "must:sintesi",
     "over-cap"
@@ -6953,7 +5975,7 @@
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-26T11:21:29.560Z",
+   "lastSeenAt": "2026-09-26T16:21:58.582Z",
    "reasons": [
     "must:crumb",
     "medium:original art",
@@ -7011,7 +6033,7 @@
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-26T11:21:29.560Z",
+   "lastSeenAt": "2026-09-26T16:21:58.582Z",
    "reasons": [
     "must:condo",
     "medium:drawing",
@@ -7069,7 +6091,7 @@
    "condition": "Unspecified",
    "location": "US",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-26T11:21:29.560Z",
+   "lastSeenAt": "2026-09-26T16:21:58.582Z",
    "reasons": [
     "must:condo",
     "medium:drawing",
@@ -7127,7 +6149,7 @@
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-26T11:21:29.560Z",
+   "lastSeenAt": "2026-09-26T16:21:58.582Z",
    "reasons": [
     "must:crumb",
     "medium:drawing",
@@ -7185,7 +6207,7 @@
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-26T11:21:29.560Z",
+   "lastSeenAt": "2026-09-26T16:21:58.582Z",
    "reasons": [
     "must:crumb",
     "medium:illustration",
@@ -7878,7 +6900,7 @@
     "price-far-below-market"
    ],
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-09-26T11:21:29.560Z",
+   "lastSeenAt": "2026-09-26T16:21:58.582Z",
    "state": "pending",
    "trigger": "first-under",
    "version": 1
@@ -11283,7 +10305,7 @@
    "flags": [],
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
    "lastSeenAt": "2026-09-26T11:21:29.560Z",
-   "state": "pending",
+   "state": "expired",
    "trigger": "first-under",
    "version": 1
   },
@@ -11314,7 +10336,7 @@
    "flags": [],
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
    "lastSeenAt": "2026-09-26T11:21:29.560Z",
-   "state": "pending",
+   "state": "expired",
    "trigger": "first-under",
    "version": 1
   },
@@ -11377,7 +10399,7 @@
    "flags": [],
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
    "lastSeenAt": "2026-09-26T11:21:29.560Z",
-   "state": "pending",
+   "state": "expired",
    "trigger": "first-under",
    "version": 1
   },
@@ -13213,7 +12235,7 @@
     "medium-from-item-specifics"
    ],
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-26T11:21:29.560Z",
+   "lastSeenAt": "2026-09-26T16:21:58.582Z",
    "state": "pending",
    "trigger": "first-under",
    "version": 1
@@ -14932,7 +13954,7 @@
    ],
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
    "lastSeenAt": "2026-09-26T11:21:29.560Z",
-   "state": "pending",
+   "state": "expired",
    "trigger": "first-under",
    "version": 1
   },
@@ -17163,7 +16185,7 @@
     "no-authentication-in-title"
    ],
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-26T11:21:29.560Z",
+   "lastSeenAt": "2026-09-26T16:21:58.582Z",
    "state": "pending",
    "trigger": "price-drop",
    "version": 2
@@ -17965,7 +16987,7 @@
     "medium-from-item-specifics"
    ],
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-09-26T11:21:29.560Z",
+   "lastSeenAt": "2026-09-26T16:21:58.582Z",
    "state": "pending",
    "trigger": "first-under",
    "version": 1
@@ -22286,7 +21308,7 @@
    ],
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
    "lastSeenAt": "2026-09-26T11:21:29.560Z",
-   "state": "pending",
+   "state": "expired",
    "trigger": "first-under",
    "version": 1
   },
@@ -23092,12 +22114,12 @@
   }
  ],
  "counts": {
-  "cards": 92,
-  "under": 13,
+  "cards": 78,
+  "under": 6,
   "newUnder": 0,
-  "watch": 43,
-  "over": 36,
-  "pendingAlerts": 9,
-  "highRisk": 5
+  "watch": 40,
+  "over": 32,
+  "pendingAlerts": 4,
+  "highRisk": 1
  }
 }
