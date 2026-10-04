@@ -1,13 +1,13 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-10-04T00:42:18.479Z",
+ "generatedAt": "2026-10-04T05:48:40.386Z",
  "run": {
-  "id": "20261004T004011Z-g9ny",
+  "id": "20261004T054539Z-ftc2",
   "state": "success",
   "mode": "live",
-  "startedAt": "2026-10-04T00:40:11.739Z",
-  "finishedAt": "2026-10-04T00:42:18.479Z",
-  "succeededAt": "2026-10-04T00:42:18.479Z",
+  "startedAt": "2026-10-04T05:45:39.528Z",
+  "finishedAt": "2026-10-04T05:48:40.386Z",
+  "succeededAt": "2026-10-04T05:48:40.386Z",
   "huntsTotal": 35,
   "huntsComplete": 35,
   "providerHealth": {
@@ -22,9 +22,9 @@
    "searches": 62,
    "fullSweeps": 35,
    "deltaScans": 0,
-   "newThisRun": 6,
-   "newToday": 106,
-   "secondLooks": 0
+   "newThisRun": 34,
+   "newToday": 118,
+   "secondLooks": 3
   }
  },
  "meta": {
@@ -138,8 +138,8 @@
    "maxAllIn": 5000,
    "priority": 1,
    "state": "complete",
-   "lastSearchedAt": "2026-10-04T00:40:12.883Z",
-   "lastSuccessfulAt": "2026-10-04T00:40:12.883Z",
+   "lastSearchedAt": "2026-10-04T05:45:40.888Z",
+   "lastSuccessfulAt": "2026-10-04T05:45:40.888Z",
    "carried": false,
    "error": null,
    "matchCount": 1,
@@ -147,7 +147,7 @@
    "overCount": 0,
    "watchCount": 1,
    "sweep": "full",
-   "lastFullSweepAt": "2026-10-04T00:40:12.883Z",
+   "lastFullSweepAt": "2026-10-04T05:45:40.888Z",
    "searches": 3,
    "newThisRun": 0,
    "newToday": 0
@@ -162,8 +162,8 @@
    "maxAllIn": 5000,
    "priority": 2,
    "state": "complete",
-   "lastSearchedAt": "2026-10-04T00:40:13.954Z",
-   "lastSuccessfulAt": "2026-10-04T00:40:13.954Z",
+   "lastSearchedAt": "2026-10-04T05:45:42.711Z",
+   "lastSuccessfulAt": "2026-10-04T05:45:42.711Z",
    "carried": false,
    "error": null,
    "matchCount": 0,
@@ -171,7 +171,7 @@
    "overCount": 0,
    "watchCount": 0,
    "sweep": "full",
-   "lastFullSweepAt": "2026-10-04T00:40:13.954Z",
+   "lastFullSweepAt": "2026-10-04T05:45:42.711Z",
    "searches": 1,
    "newThisRun": 0,
    "newToday": 0
@@ -186,19 +186,19 @@
    "maxAllIn": 15000,
    "priority": 3,
    "state": "complete",
-   "lastSearchedAt": "2026-10-04T00:40:14.191Z",
-   "lastSuccessfulAt": "2026-10-04T00:40:14.191Z",
+   "lastSearchedAt": "2026-10-04T05:45:43.067Z",
+   "lastSuccessfulAt": "2026-10-04T05:45:43.067Z",
    "carried": false,
    "error": null,
-   "matchCount": 1,
-   "underCount": 1,
+   "matchCount": 2,
+   "underCount": 2,
    "overCount": 0,
    "watchCount": 0,
    "sweep": "full",
-   "lastFullSweepAt": "2026-10-04T00:40:14.191Z",
+   "lastFullSweepAt": "2026-10-04T05:45:43.067Z",
    "searches": 4,
-   "newThisRun": 0,
-   "newToday": 8
+   "newThisRun": 3,
+   "newToday": 10
   },
   {
    "id": "art-futura-atoms",
@@ -210,8 +210,8 @@
    "maxAllIn": 15000,
    "priority": 4,
    "state": "complete",
-   "lastSearchedAt": "2026-10-04T00:40:17.805Z",
-   "lastSuccessfulAt": "2026-10-04T00:40:17.805Z",
+   "lastSearchedAt": "2026-10-04T05:45:47.683Z",
+   "lastSuccessfulAt": "2026-10-04T05:45:47.683Z",
    "carried": false,
    "error": null,
    "matchCount": 0,
@@ -219,7 +219,7 @@
    "overCount": 0,
    "watchCount": 0,
    "sweep": "full",
-   "lastFullSweepAt": "2026-10-04T00:40:17.805Z",
+   "lastFullSweepAt": "2026-10-04T05:45:47.683Z",
    "searches": 1,
    "newThisRun": 0,
    "newToday": 0
@@ -234,8 +234,8 @@
    "maxAllIn": 8000,
    "priority": 5,
    "state": "complete",
-   "lastSearchedAt": "2026-10-04T00:40:18.063Z",
-   "lastSuccessfulAt": "2026-10-04T00:40:18.063Z",
+   "lastSearchedAt": "2026-10-04T05:45:47.979Z",
+   "lastSuccessfulAt": "2026-10-04T05:45:47.979Z",
    "carried": false,
    "error": null,
    "matchCount": 0,
@@ -243,10 +243,10 @@
    "overCount": 0,
    "watchCount": 0,
    "sweep": "full",
-   "lastFullSweepAt": "2026-10-04T00:40:18.063Z",
+   "lastFullSweepAt": "2026-10-04T05:45:47.979Z",
    "searches": 3,
-   "newThisRun": 3,
-   "newToday": 53
+   "newThisRun": 16,
+   "newToday": 58
   },
   {
    "id": "art-haze-drawing",
@@ -258,8 +258,8 @@
    "maxAllIn": 8000,
    "priority": 6,
    "state": "complete",
-   "lastSearchedAt": "2026-10-04T00:40:25.797Z",
-   "lastSuccessfulAt": "2026-10-04T00:40:25.797Z",
+   "lastSearchedAt": "2026-10-04T05:45:57.137Z",
+   "lastSuccessfulAt": "2026-10-04T05:45:57.137Z",
    "carried": false,
    "error": null,
    "matchCount": 0,
@@ -267,7 +267,7 @@
    "overCount": 0,
    "watchCount": 0,
    "sweep": "full",
-   "lastFullSweepAt": "2026-10-04T00:40:25.797Z",
+   "lastFullSweepAt": "2026-10-04T05:45:57.137Z",
    "searches": 3,
    "newThisRun": 0,
    "newToday": 0
@@ -282,8 +282,8 @@
    "maxAllIn": 10000,
    "priority": 7,
    "state": "complete",
-   "lastSearchedAt": "2026-10-04T00:40:26.319Z",
-   "lastSuccessfulAt": "2026-10-04T00:40:26.319Z",
+   "lastSearchedAt": "2026-10-04T05:45:57.693Z",
+   "lastSuccessfulAt": "2026-10-04T05:45:57.693Z",
    "carried": false,
    "error": null,
    "matchCount": 3,
@@ -291,7 +291,7 @@
    "overCount": 3,
    "watchCount": 0,
    "sweep": "full",
-   "lastFullSweepAt": "2026-10-04T00:40:26.319Z",
+   "lastFullSweepAt": "2026-10-04T05:45:57.693Z",
    "searches": 3,
    "newThisRun": 0,
    "newToday": 2
@@ -306,8 +306,8 @@
    "maxAllIn": 2000,
    "priority": 8,
    "state": "complete",
-   "lastSearchedAt": "2026-10-04T00:40:27.647Z",
-   "lastSuccessfulAt": "2026-10-04T00:40:27.647Z",
+   "lastSearchedAt": "2026-10-04T05:45:59.531Z",
+   "lastSuccessfulAt": "2026-10-04T05:45:59.531Z",
    "carried": false,
    "error": null,
    "matchCount": 0,
@@ -315,10 +315,10 @@
    "overCount": 0,
    "watchCount": 0,
    "sweep": "full",
-   "lastFullSweepAt": "2026-10-04T00:40:27.647Z",
+   "lastFullSweepAt": "2026-10-04T05:45:59.531Z",
    "searches": 3,
-   "newThisRun": 3,
-   "newToday": 34
+   "newThisRun": 13,
+   "newToday": 40
   },
   {
    "id": "art-crumb-drawing",
@@ -330,18 +330,18 @@
    "maxAllIn": 2000,
    "priority": 9,
    "state": "complete",
-   "lastSearchedAt": "2026-10-04T00:40:28.644Z",
-   "lastSuccessfulAt": "2026-10-04T00:40:28.644Z",
+   "lastSearchedAt": "2026-10-04T05:46:00.739Z",
+   "lastSuccessfulAt": "2026-10-04T05:46:00.739Z",
    "carried": false,
    "error": null,
-   "matchCount": 2,
+   "matchCount": 3,
    "underCount": 0,
-   "overCount": 2,
+   "overCount": 3,
    "watchCount": 0,
    "sweep": "full",
-   "lastFullSweepAt": "2026-10-04T00:40:28.644Z",
+   "lastFullSweepAt": "2026-10-04T05:46:00.739Z",
    "searches": 4,
-   "newThisRun": 0,
+   "newThisRun": 1,
    "newToday": 6
   },
   {
@@ -354,8 +354,8 @@
    "maxAllIn": 3000,
    "priority": 10,
    "state": "complete",
-   "lastSearchedAt": "2026-10-04T00:40:31.525Z",
-   "lastSuccessfulAt": "2026-10-04T00:40:31.525Z",
+   "lastSearchedAt": "2026-10-04T05:46:04.427Z",
+   "lastSuccessfulAt": "2026-10-04T05:46:04.427Z",
    "carried": false,
    "error": null,
    "matchCount": 1,
@@ -363,7 +363,7 @@
    "overCount": 0,
    "watchCount": 0,
    "sweep": "full",
-   "lastFullSweepAt": "2026-10-04T00:40:31.525Z",
+   "lastFullSweepAt": "2026-10-04T05:46:04.427Z",
    "searches": 2,
    "newThisRun": 0,
    "newToday": 0
@@ -378,8 +378,8 @@
    "maxAllIn": 8000,
    "priority": 11,
    "state": "complete",
-   "lastSearchedAt": "2026-10-04T00:40:32.029Z",
-   "lastSuccessfulAt": "2026-10-04T00:40:32.029Z",
+   "lastSearchedAt": "2026-10-04T05:46:05.157Z",
+   "lastSuccessfulAt": "2026-10-04T05:46:05.157Z",
    "carried": false,
    "error": null,
    "matchCount": 0,
@@ -387,7 +387,7 @@
    "overCount": 0,
    "watchCount": 0,
    "sweep": "full",
-   "lastFullSweepAt": "2026-10-04T00:40:32.029Z",
+   "lastFullSweepAt": "2026-10-04T05:46:05.157Z",
    "searches": 2,
    "newThisRun": 0,
    "newToday": 1
@@ -402,8 +402,8 @@
    "maxAllIn": 4000,
    "priority": 12,
    "state": "complete",
-   "lastSearchedAt": "2026-10-04T00:40:32.763Z",
-   "lastSuccessfulAt": "2026-10-04T00:40:32.763Z",
+   "lastSearchedAt": "2026-10-04T05:46:05.999Z",
+   "lastSuccessfulAt": "2026-10-04T05:46:05.999Z",
    "carried": false,
    "error": null,
    "matchCount": 0,
@@ -411,7 +411,7 @@
    "overCount": 0,
    "watchCount": 0,
    "sweep": "full",
-   "lastFullSweepAt": "2026-10-04T00:40:32.763Z",
+   "lastFullSweepAt": "2026-10-04T05:46:05.999Z",
    "searches": 2,
    "newThisRun": 0,
    "newToday": 0
@@ -426,8 +426,8 @@
    "maxAllIn": 4000,
    "priority": 13,
    "state": "complete",
-   "lastSearchedAt": "2026-10-04T00:40:33.359Z",
-   "lastSuccessfulAt": "2026-10-04T00:40:33.359Z",
+   "lastSearchedAt": "2026-10-04T05:46:06.822Z",
+   "lastSuccessfulAt": "2026-10-04T05:46:06.822Z",
    "carried": false,
    "error": null,
    "matchCount": 1,
@@ -435,7 +435,7 @@
    "overCount": 1,
    "watchCount": 0,
    "sweep": "full",
-   "lastFullSweepAt": "2026-10-04T00:40:33.359Z",
+   "lastFullSweepAt": "2026-10-04T05:46:06.822Z",
    "searches": 2,
    "newThisRun": 0,
    "newToday": 0
@@ -450,8 +450,8 @@
    "maxAllIn": 4000,
    "priority": 14,
    "state": "complete",
-   "lastSearchedAt": "2026-10-04T00:40:33.870Z",
-   "lastSuccessfulAt": "2026-10-04T00:40:33.870Z",
+   "lastSearchedAt": "2026-10-04T05:46:07.551Z",
+   "lastSuccessfulAt": "2026-10-04T05:46:07.551Z",
    "carried": false,
    "error": null,
    "matchCount": 0,
@@ -459,10 +459,10 @@
    "overCount": 0,
    "watchCount": 0,
    "sweep": "full",
-   "lastFullSweepAt": "2026-10-04T00:40:33.870Z",
+   "lastFullSweepAt": "2026-10-04T05:46:07.551Z",
    "searches": 2,
    "newThisRun": 0,
-   "newToday": 1
+   "newToday": 0
   },
   {
    "id": "sports-foles-eagles-jersey",
@@ -474,8 +474,8 @@
    "maxAllIn": 4000,
    "priority": 15,
    "state": "complete",
-   "lastSearchedAt": "2026-10-04T00:40:34.477Z",
-   "lastSuccessfulAt": "2026-10-04T00:40:34.477Z",
+   "lastSearchedAt": "2026-10-04T05:46:08.369Z",
+   "lastSuccessfulAt": "2026-10-04T05:46:08.369Z",
    "carried": false,
    "error": null,
    "matchCount": 0,
@@ -483,7 +483,7 @@
    "overCount": 0,
    "watchCount": 0,
    "sweep": "full",
-   "lastFullSweepAt": "2026-10-04T00:40:34.477Z",
+   "lastFullSweepAt": "2026-10-04T05:46:08.369Z",
    "searches": 2,
    "newThisRun": 0,
    "newToday": 0
@@ -498,8 +498,8 @@
    "maxAllIn": 1500,
    "priority": 16,
    "state": "complete",
-   "lastSearchedAt": "2026-10-04T00:40:35.013Z",
-   "lastSuccessfulAt": "2026-10-04T00:40:35.013Z",
+   "lastSearchedAt": "2026-10-04T05:46:09.054Z",
+   "lastSuccessfulAt": "2026-10-04T05:46:09.054Z",
    "carried": false,
    "error": null,
    "matchCount": 1,
@@ -507,7 +507,7 @@
    "overCount": 0,
    "watchCount": 0,
    "sweep": "full",
-   "lastFullSweepAt": "2026-10-04T00:40:35.013Z",
+   "lastFullSweepAt": "2026-10-04T05:46:09.054Z",
    "searches": 2,
    "newThisRun": 0,
    "newToday": 0
@@ -522,8 +522,8 @@
    "maxAllIn": 1500,
    "priority": 17,
    "state": "complete",
-   "lastSearchedAt": "2026-10-04T00:40:35.256Z",
-   "lastSuccessfulAt": "2026-10-04T00:40:35.256Z",
+   "lastSearchedAt": "2026-10-04T05:46:09.377Z",
+   "lastSuccessfulAt": "2026-10-04T05:46:09.377Z",
    "carried": false,
    "error": null,
    "matchCount": 0,
@@ -531,7 +531,7 @@
    "overCount": 0,
    "watchCount": 0,
    "sweep": "full",
-   "lastFullSweepAt": "2026-10-04T00:40:35.256Z",
+   "lastFullSweepAt": "2026-10-04T05:46:09.377Z",
    "searches": 2,
    "newThisRun": 0,
    "newToday": 0
@@ -546,8 +546,8 @@
    "maxAllIn": 6000,
    "priority": 18,
    "state": "complete",
-   "lastSearchedAt": "2026-10-04T00:40:35.514Z",
-   "lastSuccessfulAt": "2026-10-04T00:40:35.514Z",
+   "lastSearchedAt": "2026-10-04T05:46:09.694Z",
+   "lastSuccessfulAt": "2026-10-04T05:46:09.694Z",
    "carried": false,
    "error": null,
    "matchCount": 2,
@@ -555,10 +555,10 @@
    "overCount": 2,
    "watchCount": 0,
    "sweep": "full",
-   "lastFullSweepAt": "2026-10-04T00:40:35.514Z",
+   "lastFullSweepAt": "2026-10-04T05:46:09.694Z",
    "searches": 2,
    "newThisRun": 0,
-   "newToday": 1
+   "newToday": 0
   },
   {
    "id": "design-pileo-lamp",
@@ -570,8 +570,8 @@
    "maxAllIn": 300,
    "priority": 19,
    "state": "complete",
-   "lastSearchedAt": "2026-10-04T00:40:36.255Z",
-   "lastSuccessfulAt": "2026-10-04T00:40:36.255Z",
+   "lastSearchedAt": "2026-10-04T05:46:10.729Z",
+   "lastSuccessfulAt": "2026-10-04T05:46:10.729Z",
    "carried": false,
    "error": null,
    "matchCount": 0,
@@ -579,7 +579,7 @@
    "overCount": 0,
    "watchCount": 0,
    "sweep": "full",
-   "lastFullSweepAt": "2026-10-04T00:40:36.255Z",
+   "lastFullSweepAt": "2026-10-04T05:46:10.729Z",
    "searches": 2,
    "newThisRun": 0,
    "newToday": 0
@@ -594,8 +594,8 @@
    "maxAllIn": 200,
    "priority": 20,
    "state": "complete",
-   "lastSearchedAt": "2026-10-04T00:40:36.801Z",
-   "lastSuccessfulAt": "2026-10-04T00:40:36.801Z",
+   "lastSearchedAt": "2026-10-04T05:46:11.413Z",
+   "lastSuccessfulAt": "2026-10-04T05:46:11.413Z",
    "carried": false,
    "error": null,
    "matchCount": 10,
@@ -603,7 +603,7 @@
    "overCount": 9,
    "watchCount": 1,
    "sweep": "full",
-   "lastFullSweepAt": "2026-10-04T00:40:36.801Z",
+   "lastFullSweepAt": "2026-10-04T05:46:11.413Z",
    "searches": 2,
    "newThisRun": 0,
    "newToday": 0
@@ -618,8 +618,8 @@
    "maxAllIn": 500,
    "priority": 21,
    "state": "complete",
-   "lastSearchedAt": "2026-10-04T00:40:37.408Z",
-   "lastSuccessfulAt": "2026-10-04T00:40:37.408Z",
+   "lastSearchedAt": "2026-10-04T05:46:12.201Z",
+   "lastSuccessfulAt": "2026-10-04T05:46:12.201Z",
    "carried": false,
    "error": null,
    "matchCount": 1,
@@ -627,7 +627,7 @@
    "overCount": 0,
    "watchCount": 1,
    "sweep": "full",
-   "lastFullSweepAt": "2026-10-04T00:40:37.408Z",
+   "lastFullSweepAt": "2026-10-04T05:46:12.201Z",
    "searches": 2,
    "newThisRun": 0,
    "newToday": 0
@@ -642,8 +642,8 @@
    "maxAllIn": 3000,
    "priority": 22,
    "state": "complete",
-   "lastSearchedAt": "2026-10-04T00:40:37.855Z",
-   "lastSuccessfulAt": "2026-10-04T00:40:37.855Z",
+   "lastSearchedAt": "2026-10-04T05:46:12.904Z",
+   "lastSuccessfulAt": "2026-10-04T05:46:12.904Z",
    "carried": false,
    "error": null,
    "matchCount": 2,
@@ -651,7 +651,7 @@
    "overCount": 2,
    "watchCount": 0,
    "sweep": "full",
-   "lastFullSweepAt": "2026-10-04T00:40:37.855Z",
+   "lastFullSweepAt": "2026-10-04T05:46:12.904Z",
    "searches": 4,
    "newThisRun": 0,
    "newToday": 0
@@ -666,8 +666,8 @@
    "maxAllIn": null,
    "priority": 23,
    "state": "complete",
-   "lastSearchedAt": "2026-10-04T00:40:39.052Z",
-   "lastSuccessfulAt": "2026-10-04T00:40:39.052Z",
+   "lastSearchedAt": "2026-10-04T05:46:14.420Z",
+   "lastSuccessfulAt": "2026-10-04T05:46:14.420Z",
    "carried": false,
    "error": null,
    "matchCount": 0,
@@ -675,7 +675,7 @@
    "overCount": 0,
    "watchCount": 0,
    "sweep": "full",
-   "lastFullSweepAt": "2026-10-04T00:40:39.052Z",
+   "lastFullSweepAt": "2026-10-04T05:46:14.420Z",
    "searches": 1,
    "newThisRun": 0,
    "newToday": 0
@@ -690,8 +690,8 @@
    "maxAllIn": null,
    "priority": 24,
    "state": "complete",
-   "lastSearchedAt": "2026-10-04T00:40:39.286Z",
-   "lastSuccessfulAt": "2026-10-04T00:40:39.286Z",
+   "lastSearchedAt": "2026-10-04T05:46:14.707Z",
+   "lastSuccessfulAt": "2026-10-04T05:46:14.707Z",
    "carried": false,
    "error": null,
    "matchCount": 2,
@@ -699,7 +699,7 @@
    "overCount": 0,
    "watchCount": 2,
    "sweep": "full",
-   "lastFullSweepAt": "2026-10-04T00:40:39.286Z",
+   "lastFullSweepAt": "2026-10-04T05:46:14.707Z",
    "searches": 1,
    "newThisRun": 0,
    "newToday": 0
@@ -714,8 +714,8 @@
    "maxAllIn": null,
    "priority": 25,
    "state": "complete",
-   "lastSearchedAt": "2026-10-04T00:40:39.572Z",
-   "lastSuccessfulAt": "2026-10-04T00:40:39.572Z",
+   "lastSearchedAt": "2026-10-04T05:46:15.116Z",
+   "lastSuccessfulAt": "2026-10-04T05:46:15.116Z",
    "carried": false,
    "error": null,
    "matchCount": 0,
@@ -723,7 +723,7 @@
    "overCount": 0,
    "watchCount": 0,
    "sweep": "full",
-   "lastFullSweepAt": "2026-10-04T00:40:39.572Z",
+   "lastFullSweepAt": "2026-10-04T05:46:15.116Z",
    "searches": 1,
    "newThisRun": 0,
    "newToday": 0
@@ -738,8 +738,8 @@
    "maxAllIn": null,
    "priority": 26,
    "state": "complete",
-   "lastSearchedAt": "2026-10-04T00:40:39.833Z",
-   "lastSuccessfulAt": "2026-10-04T00:40:39.833Z",
+   "lastSearchedAt": "2026-10-04T05:46:15.459Z",
+   "lastSuccessfulAt": "2026-10-04T05:46:15.459Z",
    "carried": false,
    "error": null,
    "matchCount": 0,
@@ -747,7 +747,7 @@
    "overCount": 0,
    "watchCount": 0,
    "sweep": "full",
-   "lastFullSweepAt": "2026-10-04T00:40:39.833Z",
+   "lastFullSweepAt": "2026-10-04T05:46:15.459Z",
    "searches": 1,
    "newThisRun": 0,
    "newToday": 0
@@ -762,8 +762,8 @@
    "maxAllIn": null,
    "priority": 27,
    "state": "complete",
-   "lastSearchedAt": "2026-10-04T00:40:40.128Z",
-   "lastSuccessfulAt": "2026-10-04T00:40:40.128Z",
+   "lastSearchedAt": "2026-10-04T05:46:15.927Z",
+   "lastSuccessfulAt": "2026-10-04T05:46:15.927Z",
    "carried": false,
    "error": null,
    "matchCount": 2,
@@ -771,7 +771,7 @@
    "overCount": 0,
    "watchCount": 2,
    "sweep": "full",
-   "lastFullSweepAt": "2026-10-04T00:40:40.128Z",
+   "lastFullSweepAt": "2026-10-04T05:46:15.927Z",
    "searches": 1,
    "newThisRun": 0,
    "newToday": 0
@@ -786,8 +786,8 @@
    "maxAllIn": null,
    "priority": 28,
    "state": "complete",
-   "lastSearchedAt": "2026-10-04T00:40:40.374Z",
-   "lastSuccessfulAt": "2026-10-04T00:40:40.374Z",
+   "lastSearchedAt": "2026-10-04T05:46:16.278Z",
+   "lastSuccessfulAt": "2026-10-04T05:46:16.278Z",
    "carried": false,
    "error": null,
    "matchCount": 3,
@@ -795,7 +795,7 @@
    "overCount": 0,
    "watchCount": 3,
    "sweep": "full",
-   "lastFullSweepAt": "2026-10-04T00:40:40.374Z",
+   "lastFullSweepAt": "2026-10-04T05:46:16.278Z",
    "searches": 1,
    "newThisRun": 0,
    "newToday": 0
@@ -810,8 +810,8 @@
    "maxAllIn": null,
    "priority": 29,
    "state": "complete",
-   "lastSearchedAt": "2026-10-04T00:40:40.692Z",
-   "lastSuccessfulAt": "2026-10-04T00:40:40.692Z",
+   "lastSearchedAt": "2026-10-04T05:46:16.661Z",
+   "lastSuccessfulAt": "2026-10-04T05:46:16.661Z",
    "carried": false,
    "error": null,
    "matchCount": 7,
@@ -819,7 +819,7 @@
    "overCount": 0,
    "watchCount": 7,
    "sweep": "full",
-   "lastFullSweepAt": "2026-10-04T00:40:40.692Z",
+   "lastFullSweepAt": "2026-10-04T05:46:16.661Z",
    "searches": 1,
    "newThisRun": 0,
    "newToday": 0
@@ -834,8 +834,8 @@
    "maxAllIn": null,
    "priority": 30,
    "state": "complete",
-   "lastSearchedAt": "2026-10-04T00:40:41.022Z",
-   "lastSuccessfulAt": "2026-10-04T00:40:41.022Z",
+   "lastSearchedAt": "2026-10-04T05:46:17.088Z",
+   "lastSuccessfulAt": "2026-10-04T05:46:17.088Z",
    "carried": false,
    "error": null,
    "matchCount": 3,
@@ -843,7 +843,7 @@
    "overCount": 0,
    "watchCount": 3,
    "sweep": "full",
-   "lastFullSweepAt": "2026-10-04T00:40:41.022Z",
+   "lastFullSweepAt": "2026-10-04T05:46:17.088Z",
    "searches": 1,
    "newThisRun": 0,
    "newToday": 0
@@ -858,8 +858,8 @@
    "maxAllIn": null,
    "priority": 31,
    "state": "complete",
-   "lastSearchedAt": "2026-10-04T00:40:41.321Z",
-   "lastSuccessfulAt": "2026-10-04T00:40:41.321Z",
+   "lastSearchedAt": "2026-10-04T05:46:17.503Z",
+   "lastSuccessfulAt": "2026-10-04T05:46:17.503Z",
    "carried": false,
    "error": null,
    "matchCount": 0,
@@ -867,7 +867,7 @@
    "overCount": 0,
    "watchCount": 0,
    "sweep": "full",
-   "lastFullSweepAt": "2026-10-04T00:40:41.321Z",
+   "lastFullSweepAt": "2026-10-04T05:46:17.503Z",
    "searches": 1,
    "newThisRun": 0,
    "newToday": 0
@@ -882,8 +882,8 @@
    "maxAllIn": null,
    "priority": 32,
    "state": "complete",
-   "lastSearchedAt": "2026-10-04T00:40:41.606Z",
-   "lastSuccessfulAt": "2026-10-04T00:40:41.606Z",
+   "lastSearchedAt": "2026-10-04T05:46:17.865Z",
+   "lastSuccessfulAt": "2026-10-04T05:46:17.865Z",
    "carried": false,
    "error": null,
    "matchCount": 1,
@@ -891,7 +891,7 @@
    "overCount": 0,
    "watchCount": 1,
    "sweep": "full",
-   "lastFullSweepAt": "2026-10-04T00:40:41.606Z",
+   "lastFullSweepAt": "2026-10-04T05:46:17.865Z",
    "searches": 1,
    "newThisRun": 0,
    "newToday": 0
@@ -906,8 +906,8 @@
    "maxAllIn": null,
    "priority": 33,
    "state": "complete",
-   "lastSearchedAt": "2026-10-04T00:40:41.879Z",
-   "lastSuccessfulAt": "2026-10-04T00:40:41.879Z",
+   "lastSearchedAt": "2026-10-04T05:46:18.221Z",
+   "lastSuccessfulAt": "2026-10-04T05:46:18.221Z",
    "carried": false,
    "error": null,
    "matchCount": 0,
@@ -915,7 +915,7 @@
    "overCount": 0,
    "watchCount": 0,
    "sweep": "full",
-   "lastFullSweepAt": "2026-10-04T00:40:41.879Z",
+   "lastFullSweepAt": "2026-10-04T05:46:18.221Z",
    "searches": 1,
    "newThisRun": 0,
    "newToday": 0
@@ -930,8 +930,8 @@
    "maxAllIn": null,
    "priority": 34,
    "state": "complete",
-   "lastSearchedAt": "2026-10-04T00:40:42.092Z",
-   "lastSuccessfulAt": "2026-10-04T00:40:42.092Z",
+   "lastSearchedAt": "2026-10-04T05:46:18.577Z",
+   "lastSuccessfulAt": "2026-10-04T05:46:18.577Z",
    "carried": false,
    "error": null,
    "matchCount": 11,
@@ -939,10 +939,10 @@
    "overCount": 0,
    "watchCount": 11,
    "sweep": "full",
-   "lastFullSweepAt": "2026-10-04T00:40:42.092Z",
+   "lastFullSweepAt": "2026-10-04T05:46:18.577Z",
    "searches": 1,
-   "newThisRun": 0,
-   "newToday": 0
+   "newThisRun": 1,
+   "newToday": 1
   },
   {
    "id": "bstj-abbrev",
@@ -954,8 +954,8 @@
    "maxAllIn": null,
    "priority": 35,
    "state": "complete",
-   "lastSearchedAt": "2026-10-04T00:40:42.579Z",
-   "lastSuccessfulAt": "2026-10-04T00:40:42.579Z",
+   "lastSearchedAt": "2026-10-04T05:46:19.333Z",
+   "lastSuccessfulAt": "2026-10-04T05:46:19.333Z",
    "carried": false,
    "error": null,
    "matchCount": 1,
@@ -963,13 +963,96 @@
    "overCount": 0,
    "watchCount": 1,
    "sweep": "full",
-   "lastFullSweepAt": "2026-10-04T00:40:42.579Z",
+   "lastFullSweepAt": "2026-10-04T05:46:19.333Z",
    "searches": 1,
    "newThisRun": 0,
    "newToday": 0
   }
  ],
  "cards": [
+  {
+   "key": "art-futura-painting:v1|860005716998|0",
+   "group": "new-under",
+   "huntId": "art-futura-painting",
+   "huntLabel": "Futura 2000 — painting",
+   "classification": "under",
+   "listingId": "v1|860005716998|0",
+   "title": "Medicom Be@rbrick Futura 2000 Series 5 Stroller patroller 100% Black Sealed",
+   "url": "https://www.ebay.com/itm/860005716998?_skw=futura2000&hash=itemc83c55d406:g:esYAAeSwPspqwauz",
+   "imageUrl": "https://i.ebayimg.com/images/g/esYAAeSwPspqwauz/s-l225.jpg",
+   "buyingMode": "FIXED_PRICE",
+   "endsAt": null,
+   "bidCount": null,
+   "price": 45,
+   "shipping": 5.34,
+   "allIn": 50.34,
+   "maxAllIn": 15000,
+   "underBy": 14949.66,
+   "underPct": 1,
+   "capWording": "under cap",
+   "seller": {
+    "username": "mr.collectable_chaser",
+    "feedbackPercentage": 96.8,
+    "feedbackScore": 29
+   },
+   "condition": "New",
+   "location": "US",
+   "firstSeenAt": "2026-10-04T05:48:40.386Z",
+   "lastSeenAt": "2026-10-04T05:48:40.386Z",
+   "reasons": [
+    "must:futura",
+    "aspect:original",
+    "aspect:medium:acrylic",
+    "at-or-under-cap"
+   ],
+   "flags": [
+    "medium-from-item-specifics",
+    "seller-low-feedback",
+    "price-far-below-market"
+   ],
+   "confidence": 0.45,
+   "review": "review",
+   "carried": false,
+   "alertKey": "ebay:v1|860005716998|0:art-futura-painting:v1",
+   "similarCount": 0,
+   "risk": "high",
+   "riskReasons": [
+    "priced far below what this artist sells for",
+    "seller feedback is low"
+   ],
+   "details": {
+    "aspects": {
+     "Character": "futura",
+     "Color": "Black",
+     "Year Manufactured": "2000",
+     "Material": "ABS Plastic, Acrylic",
+     "Franchise": "Bearbrick",
+     "Colour": "Black",
+     "Vintage": "Yes",
+     "Brand": "BE@RBRICK",
+     "Type": "Action Figure Collection",
+     "Original/Licensed Reproduction": "Original",
+     "Theme": "Stroller Patroller",
+     "Featured Person/Artist": "futura 2000",
+     "Time Period Manufactured": "2000-2009",
+     "Country of Origin": "Japan",
+     "Character Family": "Bearbrick"
+    },
+    "descriptionSnippet": "The product is a limited edition Be@rbrick Futura 2000 Series 11 Stroller Patroller 100% Black sealed in original packaging, no box.",
+    "fetchedAt": "2026-10-04T05:46:49.082Z"
+   },
+   "priceHistory": [
+    {
+     "at": "2026-10-04T05:48:40.386Z",
+     "price": 45,
+     "allIn": 50.34
+    }
+   ],
+   "priceChange": null,
+   "relisted": null,
+   "photoReused": null,
+   "dismissible": true
+  },
   {
    "key": "art-futura-painting:v1|257603158065|0",
    "group": "under",
@@ -998,7 +1081,7 @@
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-10-04T00:42:18.479Z",
+   "lastSeenAt": "2026-10-04T05:48:40.386Z",
    "reasons": [
     "must:futura",
     "claims-original",
@@ -1080,7 +1163,7 @@
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-28T22:04:47.265Z",
-   "lastSeenAt": "2026-10-04T00:42:18.479Z",
+   "lastSeenAt": "2026-10-04T05:48:40.386Z",
    "reasons": [
     "must:foles",
     "game-used:game used",
@@ -1150,7 +1233,7 @@
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-10-04T00:42:18.479Z",
+   "lastSeenAt": "2026-10-04T05:48:40.386Z",
    "reasons": [
     "must:ertz",
     "game-used:game worn",
@@ -1230,7 +1313,7 @@
    "condition": "Like New",
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-10-04T00:42:18.479Z",
+   "lastSeenAt": "2026-10-04T05:48:40.386Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -1305,7 +1388,7 @@
    "condition": "Very Good",
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-10-04T00:42:18.479Z",
+   "lastSeenAt": "2026-10-04T05:48:40.386Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -1380,7 +1463,7 @@
    "condition": "Very Good",
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-10-04T00:42:18.479Z",
+   "lastSeenAt": "2026-10-04T05:48:40.386Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -1451,12 +1534,12 @@
    "seller": {
     "username": "cardsguycom",
     "feedbackPercentage": 100,
-    "feedbackScore": 1447
+    "feedbackScore": 1449
    },
    "condition": "Very Good",
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-10-04T00:42:18.479Z",
+   "lastSeenAt": "2026-10-04T05:48:40.386Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -1532,7 +1615,7 @@
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-10-04T00:42:18.479Z",
+   "lastSeenAt": "2026-10-04T05:48:40.386Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -1566,7 +1649,7 @@
      "Country of Origin": "United States"
     },
     "descriptionSnippet": "The Bell System Technical Journal - January 1950 Volume XXIX No 1 is a valuable collectible for history enthusiasts and those interested in the early days of radio technology. Published by American Telephone and Telegraph Company, this original softcover edition features articles",
-    "fetchedAt": "2026-10-03T01:14:16.242Z"
+    "fetchedAt": "2026-10-04T05:46:49.082Z"
    },
    "priceHistory": [
     {
@@ -1608,7 +1691,7 @@
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-10-04T00:42:18.479Z",
+   "lastSeenAt": "2026-10-04T05:48:40.386Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -1670,8 +1753,8 @@
    "endsAt": null,
    "bidCount": null,
    "price": 495,
-   "shipping": 12.75,
-   "allIn": 507.75,
+   "shipping": 13.55,
+   "allIn": 508.55,
    "maxAllIn": null,
    "underBy": null,
    "underPct": null,
@@ -1684,7 +1767,7 @@
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-10-04T00:42:18.479Z",
+   "lastSeenAt": "2026-10-04T05:48:40.386Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -1712,9 +1795,18 @@
      "at": "2026-09-25T02:43:43.147Z",
      "price": 495,
      "allIn": 507.75
+    },
+    {
+     "at": "2026-10-04T05:48:40.386Z",
+     "price": 495,
+     "allIn": 508.55
     }
    ],
-   "priceChange": null,
+   "priceChange": {
+    "from": 507.75,
+    "to": 508.55,
+    "since": "2026-09-25T02:43:43.147Z"
+   },
    "relisted": null,
    "photoReused": null,
    "dismissible": true
@@ -1747,7 +1839,7 @@
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-10-04T00:42:18.479Z",
+   "lastSeenAt": "2026-10-04T05:48:40.386Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -1779,7 +1871,7 @@
      "Country of Origin": "United States"
     },
     "descriptionSnippet": "The Bell System Technical Journal 1963 Vol. 42 Number 4 The Telstar Experiment See photos for details. Pages are clean and crisp, bindings are intact. The spines have the remark \"TELSTAR\" in hand writing. A little over 9 x 6 inches height/width. The Bell System Technical Journal:",
-    "fetchedAt": "2026-10-03T01:14:16.242Z"
+    "fetchedAt": "2026-10-04T05:46:49.082Z"
    },
    "priceHistory": [
     {
@@ -1821,7 +1913,7 @@
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-10-04T00:42:18.479Z",
+   "lastSeenAt": "2026-10-04T05:48:40.386Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -1853,7 +1945,7 @@
      "Original/Facsimile": "Original"
     },
     "descriptionSnippet": "The Bell System Technical Journal 1963 Vol. 42 Number 5 See photos for details. Pages are clean and crisp, bindings are intact. A little over 9 x 6 inches height/width. <br> Among the eight topics, \"Phase-Lock Loop Design for Coherent Angle-Error Detection in the Telstar Satellit",
-    "fetchedAt": "2026-10-03T01:14:16.242Z"
+    "fetchedAt": "2026-10-04T05:46:49.082Z"
    },
    "priceHistory": [
     {
@@ -1895,7 +1987,7 @@
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-10-04T00:42:18.479Z",
+   "lastSeenAt": "2026-10-04T05:48:40.386Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -1929,7 +2021,7 @@
      "Country of Origin": "United States"
     },
     "descriptionSnippet": "The Bell System Technical Journal from September 1963 is a sought-after collectible for history enthusiasts and those interested in the early days of radio technology. Published by American Telephone and Telegraph Company, this original softcover journal features articles by Bell",
-    "fetchedAt": "2026-10-03T01:14:16.242Z"
+    "fetchedAt": "2026-10-04T05:46:49.082Z"
    },
    "priceHistory": [
     {
@@ -1971,7 +2063,7 @@
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-10-04T00:42:18.479Z",
+   "lastSeenAt": "2026-10-04T05:48:40.386Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -2005,7 +2097,7 @@
      "Country of Origin": "United States"
     },
     "descriptionSnippet": "The Bell System Technical Journal - November 1963 Volume XLII Number 6 is a softcover book published by American Telephone and Telegraph Company in New York. This collectible item is an original edition printed in English, focusing on the history of radio technology. The journal ",
-    "fetchedAt": "2026-10-03T01:14:16.242Z"
+    "fetchedAt": "2026-10-04T05:46:49.082Z"
    },
    "priceHistory": [
     {
@@ -2047,7 +2139,7 @@
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-10-04T00:42:18.479Z",
+   "lastSeenAt": "2026-10-04T05:48:40.386Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -2081,7 +2173,7 @@
      "Country of Origin": "United States"
     },
     "descriptionSnippet": "The Bell System Technical Journal - July 1963 Volume XLII Number 4 Part 1 is a vintage softcover book published by the American Telephone and Telegraph Company in 1963. This edition focuses on the history of the Bell System, with a specific emphasis on radio technology. The journ",
-    "fetchedAt": "2026-10-03T01:14:16.242Z"
+    "fetchedAt": "2026-10-04T05:46:49.082Z"
    },
    "priceHistory": [
     {
@@ -2123,7 +2215,7 @@
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-10-04T00:42:18.479Z",
+   "lastSeenAt": "2026-10-04T05:48:40.386Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -2157,7 +2249,7 @@
      "Country of Origin": "United States"
     },
     "descriptionSnippet": "The Bell System Technical Journal - July 1963 Volume XLII Number 4 Part 3 is a vintage softcover book published by the American Telephone and Telegraph Company in 1963. This edition focuses on the history of the Bell System, with a specific emphasis on radio technology. The journ",
-    "fetchedAt": "2026-10-03T01:14:16.242Z"
+    "fetchedAt": "2026-10-04T05:46:49.082Z"
    },
    "priceHistory": [
     {
@@ -2199,7 +2291,7 @@
    "condition": "Gut",
    "location": "DE",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-10-04T00:42:18.479Z",
+   "lastSeenAt": "2026-10-04T05:48:40.386Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -2217,7 +2309,7 @@
    "details": {
     "aspects": {},
     "descriptionSnippet": "Volume XLII. Year 1963 Part I Autor The Bell System. Technical Journal Buchdaten & Bucherhaltung American Telephone and Telegraph Company, New York,1963. 1657 pages with some graphics and 16 pages of index, cloth cover with embossed title, (stamp on flyleaf) Gewicht ca. 2600g Bem",
-    "fetchedAt": "2026-10-03T05:13:08.272Z"
+    "fetchedAt": "2026-10-04T05:46:49.082Z"
    },
    "priceHistory": [
     {
@@ -2298,7 +2390,7 @@
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-10-04T00:42:18.479Z",
+   "lastSeenAt": "2026-10-04T05:48:40.386Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -2372,7 +2464,7 @@
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-10-04T00:42:18.479Z",
+   "lastSeenAt": "2026-10-04T05:48:40.386Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -2406,7 +2498,7 @@
      "Country of Origin": "United States"
     },
     "descriptionSnippet": "The Bell System Technical Journal for March 1964 is a vintage softcover publication by the American Telephone and Telegraph Company. Focused on history and radio subjects, this original edition features articles by Bell System authors. Printed in English in the United States, thi",
-    "fetchedAt": "2026-10-03T01:14:16.242Z"
+    "fetchedAt": "2026-10-04T05:46:49.082Z"
    },
    "priceHistory": [
     {
@@ -2448,7 +2540,7 @@
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-28T05:19:43.449Z",
-   "lastSeenAt": "2026-10-04T00:42:18.479Z",
+   "lastSeenAt": "2026-10-04T05:48:40.386Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -2482,7 +2574,7 @@
      "Country of Origin": "United States"
     },
     "descriptionSnippet": "The Bell System Technical Journal July 1964 Volume XLIII Number 4 Part 1 is a vintage softcover publication by American Telephone and Telegraph Company. This original edition focuses on the history of radio communications, written in English by Bell Systems authors. It includes n",
-    "fetchedAt": "2026-10-03T01:14:16.242Z"
+    "fetchedAt": "2026-10-04T05:46:49.082Z"
    },
    "priceHistory": [
     {
@@ -2524,7 +2616,7 @@
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-10-04T00:42:18.479Z",
+   "lastSeenAt": "2026-10-04T05:48:40.386Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -2600,7 +2692,7 @@
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-28T05:19:43.449Z",
-   "lastSeenAt": "2026-10-04T00:42:18.479Z",
+   "lastSeenAt": "2026-10-04T05:48:40.386Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -2656,7 +2748,7 @@
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-28T05:19:43.449Z",
-   "lastSeenAt": "2026-10-04T00:42:18.479Z",
+   "lastSeenAt": "2026-10-04T05:48:40.386Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -2732,7 +2824,7 @@
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-28T05:19:43.449Z",
-   "lastSeenAt": "2026-10-04T00:42:18.479Z",
+   "lastSeenAt": "2026-10-04T05:48:40.386Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -2766,7 +2858,7 @@
      "Country of Origin": "United States"
     },
     "descriptionSnippet": "The Bell System Technical Journal September 1964 Volume XLIII - No 5 Part 2 is a vintage softcover book published by American Telephone and Telegraph Company in New York. This original edition features articles on radio history authored by Bell Systems. Printed in English, this c",
-    "fetchedAt": "2026-10-03T01:14:16.242Z"
+    "fetchedAt": "2026-10-04T05:46:49.082Z"
    },
    "priceHistory": [
     {
@@ -2808,7 +2900,7 @@
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-28T05:19:43.449Z",
-   "lastSeenAt": "2026-10-04T00:42:18.479Z",
+   "lastSeenAt": "2026-10-04T05:48:40.386Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -2842,7 +2934,7 @@
      "Country of Origin": "United States"
     },
     "descriptionSnippet": "The Bell System Technical Journal for September 1964 is a vintage collection of articles and technical papers related to radio and telecommunications history. Published by the American Telephone and Telegraph Company, this softcover volume features content from Bell Systems autho",
-    "fetchedAt": "2026-10-03T01:14:16.242Z"
+    "fetchedAt": "2026-10-04T05:46:49.082Z"
    },
    "priceHistory": [
     {
@@ -2884,7 +2976,7 @@
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-28T05:19:43.449Z",
-   "lastSeenAt": "2026-10-04T00:42:18.479Z",
+   "lastSeenAt": "2026-10-04T05:48:40.386Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -2918,7 +3010,7 @@
      "Country of Origin": "United States"
     },
     "descriptionSnippet": "The Bell System Technical Journal for May 1964, Volume XLIII NO 3, is a valuable collectible for history enthusiasts interested in the telecommunications industry. Published by the American Telephone and Telegraph Company, this softcover book delves into the subject of radio tech",
-    "fetchedAt": "2026-10-03T01:14:16.242Z"
+    "fetchedAt": "2026-10-04T05:46:49.082Z"
    },
    "priceHistory": [
     {
@@ -2960,7 +3052,7 @@
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-28T05:19:43.449Z",
-   "lastSeenAt": "2026-10-04T00:42:18.479Z",
+   "lastSeenAt": "2026-10-04T05:48:40.386Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -2994,7 +3086,7 @@
      "Country of Origin": "United States"
     },
     "descriptionSnippet": "The Bell System Technical Journal July 1964 Volume XLIII No 4 Part 1 is a vintage softcover publication by the American Telephone and Telegraph Company. Focused on the history and development of radio technology, this original edition features articles by Bell Systems authors and",
-    "fetchedAt": "2026-10-03T01:14:16.242Z"
+    "fetchedAt": "2026-10-04T05:46:49.082Z"
    },
    "priceHistory": [
     {
@@ -3036,7 +3128,7 @@
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-28T05:19:43.449Z",
-   "lastSeenAt": "2026-10-04T00:42:18.479Z",
+   "lastSeenAt": "2026-10-04T05:48:40.386Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -3070,7 +3162,7 @@
      "Country of Origin": "United States"
     },
     "descriptionSnippet": "The Bell System Technical Journal - May 1963 Volume XLII Number 3 is a softcover publication by the American Telephone and Telegraph Company. This edition, printed in 1963 in New York, focuses on the history of radio technology. Authored by Bell Systems, the journal is in its ori",
-    "fetchedAt": "2026-10-03T01:14:16.242Z"
+    "fetchedAt": "2026-10-04T05:46:49.082Z"
    },
    "priceHistory": [
     {
@@ -3112,7 +3204,7 @@
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-28T05:19:43.449Z",
-   "lastSeenAt": "2026-10-04T00:42:18.479Z",
+   "lastSeenAt": "2026-10-04T05:48:40.386Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -3146,7 +3238,7 @@
      "Country of Origin": "United States"
     },
     "descriptionSnippet": "The Bell System Technical Journal - January 1963 Volume XLII Number 1 is a softcover book published by American Telephone and Telegraph Company in New York. This collectible item is an original edition printed in English, focusing on the history of radio technology. The journal i",
-    "fetchedAt": "2026-10-03T01:14:16.242Z"
+    "fetchedAt": "2026-10-04T05:46:49.082Z"
    },
    "priceHistory": [
     {
@@ -3188,7 +3280,7 @@
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-28T05:19:43.449Z",
-   "lastSeenAt": "2026-10-04T00:42:18.479Z",
+   "lastSeenAt": "2026-10-04T05:48:40.386Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -3222,7 +3314,7 @@
      "Country of Origin": "United States"
     },
     "descriptionSnippet": "The Bell System Technical Journal - March 1963 Volume XLII Number 2 is a vintage softcover book published by American Telephone and Telegraph Company. This original English-language journal from 1963 focuses on the history of radio technology, with special attributes including be",
-    "fetchedAt": "2026-10-03T01:14:16.242Z"
+    "fetchedAt": "2026-10-04T05:46:49.082Z"
    },
    "priceHistory": [
     {
@@ -3264,7 +3356,7 @@
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-28T05:19:43.449Z",
-   "lastSeenAt": "2026-10-04T00:42:18.479Z",
+   "lastSeenAt": "2026-10-04T05:48:40.386Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -3298,7 +3390,7 @@
      "Country of Origin": "United States"
     },
     "descriptionSnippet": "The Bell System Technical Journal - July 1963 Volume XLII Number 4 Part 2 is a vintage softcover book published by the American Telephone and Telegraph Company in 1963. This edition focuses on the history of the Bell System, with a specific emphasis on radio technology. The journ",
-    "fetchedAt": "2026-10-03T01:14:16.242Z"
+    "fetchedAt": "2026-10-04T05:46:49.082Z"
    },
    "priceHistory": [
     {
@@ -3340,7 +3432,7 @@
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-28T05:19:43.449Z",
-   "lastSeenAt": "2026-10-04T00:42:18.479Z",
+   "lastSeenAt": "2026-10-04T05:48:40.386Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -3373,7 +3465,7 @@
      "Country of Origin": "United States"
     },
     "descriptionSnippet": "The Bell System Technical Journal - September 1964 Volume XLIII No 5 is a vintage softcover book published by American Telephone and Telegraph Company in New York. This original edition covers topics related to radio history and is written in English. It features special attribut",
-    "fetchedAt": "2026-10-03T01:14:16.242Z"
+    "fetchedAt": "2026-10-04T05:46:49.082Z"
    },
    "priceHistory": [
     {
@@ -3415,7 +3507,7 @@
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-10-04T00:42:18.479Z",
+   "lastSeenAt": "2026-10-04T05:48:40.386Z",
    "reasons": [
     "must:bstj",
     "must:technical",
@@ -3477,7 +3569,7 @@
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-10-04T00:42:18.479Z",
+   "lastSeenAt": "2026-10-04T05:48:40.386Z",
    "reasons": [
     "must:haze",
     "medium:painting",
@@ -3555,7 +3647,7 @@
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-10-04T00:42:18.479Z",
+   "lastSeenAt": "2026-10-04T05:48:40.386Z",
    "reasons": [
     "must:sintesi",
     "aspect:original",
@@ -3639,7 +3731,7 @@
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-10-04T00:42:18.479Z",
+   "lastSeenAt": "2026-10-04T05:48:40.386Z",
    "reasons": [
     "must:beaubourg",
     "aspect:original",
@@ -3724,7 +3816,7 @@
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-10-04T00:42:18.479Z",
+   "lastSeenAt": "2026-10-04T05:48:40.386Z",
    "reasons": [
     "must:graham",
     "game-used:game used",
@@ -3779,7 +3871,7 @@
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-10-04T00:42:18.479Z",
+   "lastSeenAt": "2026-10-04T05:48:40.386Z",
    "reasons": [
     "must:nakashima",
     "over-cap"
@@ -3833,7 +3925,7 @@
    "condition": "Used",
    "location": "GB",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-10-04T00:42:18.479Z",
+   "lastSeenAt": "2026-10-04T05:48:40.386Z",
    "reasons": [
     "must:sintesi",
     "over-cap"
@@ -3926,12 +4018,12 @@
    "seller": {
     "username": "silviaflores81",
     "feedbackPercentage": 98.2,
-    "feedbackScore": 58
+    "feedbackScore": 59
    },
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-10-04T00:42:18.479Z",
+   "lastSeenAt": "2026-10-04T05:48:40.386Z",
    "reasons": [
     "must:sintesi",
     "over-cap"
@@ -3985,7 +4077,7 @@
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-10-04T00:42:18.479Z",
+   "lastSeenAt": "2026-10-04T05:48:40.386Z",
    "reasons": [
     "must:sintesi",
     "over-cap"
@@ -4039,7 +4131,7 @@
    "condition": "Used",
    "location": "GB",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-10-04T00:42:18.479Z",
+   "lastSeenAt": "2026-10-04T05:48:40.386Z",
    "reasons": [
     "must:sintesi",
     "over-cap"
@@ -4132,12 +4224,12 @@
    "seller": {
     "username": "dimanoinmanocoop",
     "feedbackPercentage": 99.6,
-    "feedbackScore": 22608
+    "feedbackScore": 22609
    },
    "condition": "Used",
    "location": "IT",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-10-04T00:42:18.479Z",
+   "lastSeenAt": "2026-10-04T05:48:40.386Z",
    "reasons": [
     "must:sintesi",
     "over-cap"
@@ -4191,7 +4283,7 @@
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-10-04T00:42:18.479Z",
+   "lastSeenAt": "2026-10-04T05:48:40.386Z",
    "reasons": [
     "must:sintesi",
     "over-cap"
@@ -4254,7 +4346,7 @@
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-10-04T00:42:18.479Z",
+   "lastSeenAt": "2026-10-04T05:48:40.386Z",
    "reasons": [
     "must:sintesi",
     "over-cap"
@@ -4308,7 +4400,7 @@
    "condition": "Open box",
    "location": "JP",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-10-04T00:42:18.479Z",
+   "lastSeenAt": "2026-10-04T05:48:40.386Z",
    "reasons": [
     "must:nakashima",
     "over-cap"
@@ -4366,7 +4458,7 @@
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-10-04T00:42:18.479Z",
+   "lastSeenAt": "2026-10-04T05:48:40.386Z",
    "reasons": [
     "must:super bowl",
     "game-used:game used",
@@ -4425,7 +4517,7 @@
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-10-04T00:42:18.479Z",
+   "lastSeenAt": "2026-10-04T05:48:40.386Z",
    "reasons": [
     "must:super bowl",
     "game-used:game used",
@@ -4485,7 +4577,7 @@
    "condition": "Unspecified",
    "location": "US",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-10-04T00:42:18.479Z",
+   "lastSeenAt": "2026-10-04T05:48:40.386Z",
    "reasons": [
     "must:condo",
     "medium:crayon",
@@ -4543,7 +4635,7 @@
    "condition": null,
    "location": "IT",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-10-04T00:42:18.479Z",
+   "lastSeenAt": "2026-10-04T05:48:40.386Z",
    "reasons": [
     "must:sintesi",
     "over-cap"
@@ -4640,7 +4732,7 @@
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-10-04T00:42:18.479Z",
+   "lastSeenAt": "2026-10-04T05:48:40.386Z",
    "reasons": [
     "must:sintesi",
     "over-cap"
@@ -4698,7 +4790,7 @@
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-10-04T00:42:18.479Z",
+   "lastSeenAt": "2026-10-04T05:48:40.386Z",
    "reasons": [
     "must:crumb",
     "medium:original art",
@@ -4756,7 +4848,7 @@
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-10-04T00:42:18.479Z",
+   "lastSeenAt": "2026-10-04T05:48:40.386Z",
    "reasons": [
     "must:condo",
     "medium:drawing",
@@ -4814,7 +4906,7 @@
    "condition": "Unspecified",
    "location": "US",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-10-04T00:42:18.479Z",
+   "lastSeenAt": "2026-10-04T05:48:40.386Z",
    "reasons": [
     "must:condo",
     "medium:drawing",
@@ -4872,7 +4964,7 @@
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-10-04T00:42:18.479Z",
+   "lastSeenAt": "2026-10-04T05:48:40.386Z",
    "reasons": [
     "must:crumb",
     "medium:drawing",
@@ -4901,9 +4993,106 @@
    "relisted": null,
    "photoReused": null,
    "dismissible": true
+  },
+  {
+   "key": "art-crumb-drawing:v1|166424517259|0",
+   "group": "over",
+   "huntId": "art-crumb-drawing",
+   "huntLabel": "Robert Crumb — drawing",
+   "classification": "over",
+   "listingId": "v1|166424517259|0",
+   "title": "Robert Crumb Eat It Spot Illustration Page Original Art 1974",
+   "url": "https://www.ebay.com/itm/166424517259?_skw=robert+crumb+drawing&hash=item26bfac9a8b:g:7XAAAOSw-wxlSwNp",
+   "imageUrl": "https://i.ebayimg.com/images/g/7XAAAOSw-wxlSwNp/s-l225.jpg",
+   "buyingMode": "FIXED_PRICE",
+   "endsAt": null,
+   "bidCount": null,
+   "price": 19000,
+   "shipping": 0,
+   "allIn": 19000,
+   "maxAllIn": 2000,
+   "underBy": -17000,
+   "underPct": -8.5,
+   "capWording": "over cap",
+   "seller": {
+    "username": "itsonlytym",
+    "feedbackPercentage": 99.5,
+    "feedbackScore": 11419
+   },
+   "condition": "Used",
+   "location": "US",
+   "firstSeenAt": "2026-09-25T01:26:41.021Z",
+   "lastSeenAt": "2026-10-04T05:48:40.386Z",
+   "reasons": [
+    "must:crumb",
+    "medium:illustration",
+    "claims-original",
+    "over-cap"
+   ],
+   "flags": [],
+   "confidence": 0.95,
+   "review": "ok",
+   "carried": false,
+   "alertKey": null,
+   "similarCount": 0,
+   "risk": "medium",
+   "riskReasons": [
+    "Robert Crumb is heavily forged on eBay — no provenance in the listing"
+   ],
+   "details": null,
+   "priceHistory": [
+    {
+     "at": "2026-09-25T02:43:43.147Z",
+     "price": 19000,
+     "allIn": 19000
+    }
+   ],
+   "priceChange": null,
+   "relisted": null,
+   "photoReused": null,
+   "dismissible": true
   }
  ],
  "alerts": [
+  {
+   "alertKey": "ebay:v1|860005716998|0:art-futura-painting:v1",
+   "huntId": "art-futura-painting",
+   "listingId": "v1|860005716998|0",
+   "title": "Medicom Be@rbrick Futura 2000 Series 5 Stroller patroller 100% Black Sealed",
+   "url": "https://www.ebay.com/itm/860005716998?_skw=futura2000&hash=itemc83c55d406:g:esYAAeSwPspqwauz",
+   "imageUrl": "https://i.ebayimg.com/images/g/esYAAeSwPspqwauz/s-l225.jpg",
+   "buyingMode": "FIXED_PRICE",
+   "endsAt": null,
+   "price": 45,
+   "shipping": 5.34,
+   "allIn": 50.34,
+   "maxAllIn": 15000,
+   "underBy": 14949.66,
+   "underPct": 1,
+   "currency": "USD",
+   "confidence": 0.45,
+   "risk": "high",
+   "riskReasons": [
+    "priced far below what this artist sells for",
+    "seller feedback is low"
+   ],
+   "reasons": [
+    "must:futura",
+    "aspect:original",
+    "aspect:medium:acrylic",
+    "at-or-under-cap"
+   ],
+   "flags": [
+    "medium-from-item-specifics",
+    "seller-low-feedback",
+    "price-far-below-market"
+   ],
+   "firstSeenAt": "2026-10-04T05:48:40.386Z",
+   "lastSeenAt": "2026-10-04T05:48:40.386Z",
+   "state": "pending",
+   "trigger": "first-under",
+   "version": 1
+  },
   {
    "alertKey": "ebay:v1|318930930833|0:sports-foles-bears-jersey:v1",
    "huntId": "sports-foles-bears-jersey",
@@ -4934,7 +5123,7 @@
     "no-authentication-in-title"
    ],
    "firstSeenAt": "2026-09-28T22:04:47.265Z",
-   "lastSeenAt": "2026-10-04T00:42:18.479Z",
+   "lastSeenAt": "2026-10-04T05:48:40.386Z",
    "state": "pending",
    "trigger": "first-under",
    "version": 1
@@ -10701,7 +10890,7 @@
     "no-authentication-in-title"
    ],
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-10-04T00:42:18.479Z",
+   "lastSeenAt": "2026-10-04T05:48:40.386Z",
    "state": "pending",
    "trigger": "first-under",
    "version": 1
@@ -11006,7 +11195,7 @@
     "medium-from-item-specifics"
    ],
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-10-04T00:42:18.479Z",
+   "lastSeenAt": "2026-10-04T05:48:40.386Z",
    "state": "pending",
    "trigger": "first-under",
    "version": 1
@@ -20885,12 +21074,12 @@
   }
  ],
  "counts": {
-  "cards": 55,
-  "under": 3,
-  "newUnder": 0,
+  "cards": 57,
+  "under": 4,
+  "newUnder": 1,
   "watch": 33,
-  "over": 19,
-  "pendingAlerts": 3,
-  "highRisk": 0
+  "over": 20,
+  "pendingAlerts": 4,
+  "highRisk": 1
  }
 }
