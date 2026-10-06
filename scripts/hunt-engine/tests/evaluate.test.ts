@@ -21,6 +21,8 @@ test('art rejects prints, editions and merch', () => {
   assert.equal(ev('art-futura-painting', 'Futura Limited Edition canvas').classification, 'reject');
   assert.equal(ev('art-haze-painting', 'Eric Haze T-Shirt vintage').classification, 'reject');
   assert.equal(ev('art-haze-painting', 'Eric Haze merch bundle').classification, 'reject');
+  // live false positive, Oct 2026 — designer vinyl under a painting hunt
+  assert.equal(ev('art-futura-painting', 'Medicom Be@rbrick Futura 2000 Series 5 Stroller patroller 100%').classification, 'reject');
   const ok = ev('art-haze-painting', 'Eric Haze Original Acrylic on Canvas Painting');
   assert.notEqual(ok.classification, 'reject');
   assert.ok(ok.reasons.includes('must:haze'));

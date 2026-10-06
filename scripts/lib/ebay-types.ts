@@ -68,7 +68,18 @@ export interface EbayRawTypedNameValue {
 export interface EbayRawItem extends EbayRawSummary {
   localizedAspects?: EbayRawTypedNameValue[];
   shortDescription?: string;
-  estimatedAvailabilities?: unknown[];
+  /** Browse getItem availability (OpenAPI: EstimatedAvailability). A sold-out
+   *  or ended listing can still come back 200 from getItem — this, plus a past
+   *  itemEndDate, is how absence is read off a 200 (normalize.ts). */
+  estimatedAvailabilities?: EbayRawAvailability[];
+}
+
+export interface EbayRawAvailability {
+  /** AVAILABLE | LIMITED_STOCK | OUT_OF_STOCK | TEMPORARILY_UNAVAILABLE */
+  estimatedAvailabilityStatus?: string;
+  estimatedAvailableQuantity?: number;
+  estimatedRemainingQuantity?: number;
+  estimatedSoldQuantity?: number;
 }
 
 export interface EbaySearchResponse {

@@ -51,6 +51,69 @@ const WATCH_BRANDS: [RegExp, string][] = [
  *  comp is ever drawn, same posture as the autographs reproduction guard.) */
 const REPLICA_RE = /\b(replica|homage|fake|counterfeit|style of|inspired by)\b/i;
 
+// ─────────────────────────────────────────────────────────────────────────────
+// Parts / accessories / modified-watch guard (Oct 2026 audit)
+//
+// The book prices a REFERENCE — a whole, original watch. The live board was
+// 196/200 watches and a large share were not watches at all: dials ("16518
+// 16523 16528 DIAL DIAL"), bezels "for Rolex Daytona 6263", end links, hands
+// ("Org. Zeiger"), cal. 3055 MOVEMENTS keyed as ref 3055, warranty booklets,
+// empty boxes, Sant Blanc / "custom" modded pieces. Each pinned the ref's row
+// and read 60–90% "under book". A part is never the reference: ABSTAIN.
+// Bias is deliberate — a false abstain costs one listing, a false call costs
+// the board's credibility.
+// ─────────────────────────────────────────────────────────────────────────────
+
+/** Explicit part / accessory / modification phrasing — fires on any title. */
+const WATCH_PART_RES: [RegExp, string][] = [
+  [/\b(?:for|fits?|compatible\s+with)\s+(?:a\s+)?(?:rolex|patek|omega|cartier|audemars|ap\b|daytona|gmt|submariner|sub\b|day-?date|datejust|explorer|sea-?dweller|milgauss|speedmaster|nautilus|royal\s+oak|president|\d{4,6})/i, 'part for another watch'],
+  [/\b(?:fits|compatible)\b/i, 'compatibility listing'],
+  [/\b(?:dial\s+only|service\s+dial|nos\s+dial|dial\s*(?:\+|&|and)\s*hands)\b/i, 'dial'],
+  [/\bhands\b|\bhands?\s*set\b|\bzeiger\b/i, 'hands'],
+  [/\bend\s*-?\s*links?\b|\bendlinks?\b/i, 'end links'],
+  [/\b(?:bezel\s+)?insert\b/i, 'bezel insert'],
+  [/\bmovement\b/i, 'movement'],
+  [/\bcase\s*-?\s*back\b|\bcase\s+only\b|\bwatch\s+case\b|\bcase\s+no\s+bezel\b|\bcase$/i, 'case'],
+  [/\bbooklet\b|\bwarranty\s+(?:paper|booklet|blank|card\s+only)\b|\bguarantee\b|\bpapers?\s+only\b/i, 'papers'],
+  [/\bbox\s+only\b|\bempty\s+box\b|\bbox\s+with\s+kit\b|\bbox\s+(?:full\s+set\s+)?with\s+warranty\s+blank\b/i, 'box'],
+  [/\b(?:for\s+)?parts\b|\bspare\b|\breplacement\b|\baftermarket\b|\bredial(?:ed)?\b|\bfranken\b|\bconversion\b|\bcustom(?:i[sz]ed)?\b|\bsant\s+blanc\b/i, 'modified / parts'],
+  [/(?<!(?:extra|spare|additional|\d)\s*)\blinks?\b/i, 'link'],
+  [/\bunauthenticated\b|\bnot\s+authentic\b/i, 'unauthenticated'],
+];
+
+/** Whole-watch evidence: a part title rarely carries any of these. */
+const WHOLE_WATCH_RE =
+  /\b(?:watch|wristwatch|timepiece|\d{2}(?:\.\d)?\s?mm|automatic|auto|self[- ]?winding|manual|hand[- ]?wind(?:ing)?|men'?s|mens|ladies|women'?s|unisex|serviced|overhauled|full\s+set|head\s+only|no\s+papers?|papers|b\s?&\s?p|jubilee|oyster|president)\b/i;
+
+/** A component noun with NO whole-watch evidence anywhere in the title reads
+ *  as the component itself ("Patek Philippe 5396G RARE Mint Blue Dial"). */
+const COMPONENT_RE = /\b(?:dial|bezel|bracelet|crystal|crown|clasp|buckle|strap)\b/i;
+
+/** Three+ distinct reference-shaped numbers = a compatibility list, the
+ *  signature of a part ("116503 116528 116518 116508 BLUE DIAL"). */
+function distinctRefs(title: string): number {
+  const re = new RegExp(TITLE_REF_RE_SRC, 'gi');
+  const seen = new Set<string>();
+  let m: RegExpExecArray | null;
+  while ((m = re.exec(title)) !== null) {
+    const c = m[1].toLowerCase();
+    if (/^(19|20)\d{2}$/.test(c)) continue;
+    seen.add(c.replace(/[a-z]+$/, ''));
+  }
+  return seen.size;
+}
+
+/** Why this title is a part / accessory / modified watch, or null for a whole
+ *  watch. Exported for tests and the carry re-check. */
+export function watchPartReason(title: string): string | null {
+  for (const [re, why] of WATCH_PART_RES) if (re.test(title)) return why;
+  if (distinctRefs(title) >= 3) return 'compatibility list';
+  // a caliber number with no whole-watch evidence is the movement for sale
+  if (/\bcal(?:iber|ibre)?\.?\s*\d{3,4}\b/i.test(title) && !WHOLE_WATCH_RE.test(title)) return 'movement';
+  if (COMPONENT_RE.test(title) && !WHOLE_WATCH_RE.test(title)) return 'component without whole-watch evidence';
+  return null;
+}
+
 /** Brand from the "Brand" item-specific first, else the title. Exported for the
  *  sweep engine's enrichment shortlist (brand-hit-no-ref listings are worth a
  *  getItems call: the Reference Number aspect often pins what the title can't). */
@@ -76,6 +139,7 @@ function normRef(raw: string): string | null {
  * calibers/bracelet numbers trail it.
  */
 const TITLE_REF_RE = /\b(\d{4,6}(?:[a-z]{1,4})?(?:\/\d{1,4}[a-z]?)?)\b/gi;
+const TITLE_REF_RE_SRC = TITLE_REF_RE.source;
 
 function refFromTitle(title: string): string | null {
   const re = new RegExp(TITLE_REF_RE.source, 'gi');
@@ -127,8 +191,14 @@ export const watchesMatcher: VerticalMatcher = {
     return [];
   },
 
+  rejectTitle(title: string): string | null {
+    if (REPLICA_RE.test(title)) return 'replica';
+    return watchPartReason(title);
+  },
+
   identify(listing: EbayListing): IdentityKey | null {
     if (REPLICA_RE.test(listing.title)) return null;
+    if (watchPartReason(listing.title)) return null; // a part is never the reference
     const brand = watchBrandOf(listing);
     if (!brand) return null;
     const ref = resolveRef(listing);

@@ -188,8 +188,41 @@ function extractCardNo(l: EbayListing): string | undefined {
   return t ? t[1] : undefined;
 }
 
-/** "PSA6"-style token, or "raw" when no grader can be identified. */
-function extractGrade(l: EbayListing): string {
+// ─────────────────────────────────────────────────────────────────────────────
+// Grade-identity guards (Oct 2026 audit)
+//
+// The board's #1 card was "1968 Topps Nolan Ryan #177 … PSA 9 (OC)" keyed PSA9
+// and read 70% under the clean PSA 9 median — an (OC) qualifier is a different,
+// far cheaper item (lectr's own extractor says so: extract/prompt.ts). And
+// "Bill Russell … SGC 50 VG/EX" / "… TGA 2.5" keyed as RAW because the grader
+// or the old SGC 100-point number didn't parse — a slab is never "raw".
+// A grade we can't read exactly is an identity we can't pin: ABSTAIN.
+// ─────────────────────────────────────────────────────────────────────────────
+
+/** PSA/BGS/SGC qualifiers (lectr extract/schema.ts QUALIFIERS), written next
+ *  to the grade: "PSA 9 (OC)", "PSA 8 OC", "PSA 7 MK", "PSA 8 Off-Center". */
+const QUALIFIER_RE =
+  /\b(?:PSA|BGS|BVG|SGC|CGC)\s*(?:GEM\s*MT|GEM\s*MINT|MINT|NM-?MT\+?|NM|EX-?MT|EX|VG-?EX|VG|GOOD|FR|PR)?\s*(?:10|[1-9](?:\.5)?)\s*\(?\s*(?:OC|MK|ST|PD|MC|OF)\b(?!\.)\)?|\boff[- ]?cent(?:er|re)d?\b|\(\s*(?:OC|MK|ST|PD|MC|OF)\s*\)/i;
+
+/** Slab graders this matcher can't key (lectr's book keys PSA/BGS/SGC/CGC and
+ *  rarely CSG/HGA) plus authentic-only / altered slabs. */
+const UNKEYED_SLAB_RE =
+  /\b(?:TGA|GMA|KSA|ISA|MNT|AGS|PGI|PGS|HGA|CSG|TAG|RCG|SCG|GAI|BCCG|FCG|PRO\s*GRADE)\b|\b(?:PSA|BGS|SGC|CGC)\s*(?:AUTH(?:ENTIC)?|A\b|ALTERED|N\d)|\bSGC\s*(?:[2-9]\d|100)\b/i;
+
+export function hasGradeQualifier(title: string): boolean {
+  return QUALIFIER_RE.test(title);
+}
+
+/** Why this card listing's grade identity can't be pinned, or null. */
+export function cardGradeAbstainReason(title: string): string | null {
+  if (QUALIFIER_RE.test(title)) return 'grade qualifier';
+  if (UNKEYED_SLAB_RE.test(title)) return 'unkeyable slab';
+  return null;
+}
+
+/** "PSA6"-style token, "raw" when nothing suggests a slab, or null when a
+ *  grader is named but no exact number parses (abstain — never call it raw). */
+function extractGrade(l: EbayListing): string | null {
   const graderField = firstAspect(l, GRADER_ASPECTS);
   const gradeField = firstAspect(l, GRADE_ASPECTS);
   // The grade aspect itself sometimes carries the grader ("Grade: PSA 10").
@@ -197,7 +230,9 @@ function extractGrade(l: EbayListing): string {
   if (!co) return 'raw';
   const num =
     parseGradeNum(gradeField) ?? parseGradeNum(graderField) ?? titleGrade(l.title)?.num;
-  if (!num) return 'raw'; // grader named but no parsable number → do not fabricate one
+  // grader named but no parsable number: it's a slab of SOME grade — keying it
+  // "raw" would price it against the raw pool. Abstain.
+  if (!num) return null;
   return `${co}${num}`;
 }
 
@@ -230,6 +265,10 @@ export const sportsCardsMatcher: VerticalMatcher = {
       });
   },
 
+  rejectTitle(title: string): string | null {
+    return cardGradeAbstainReason(title);
+  },
+
   identify(listing: EbayListing): IdentityKey | null {
     const player = extractPlayer(listing);
     const year = extractYear(listing);
@@ -237,7 +276,11 @@ export const sportsCardsMatcher: VerticalMatcher = {
     const cardNo = extractCardNo(listing);
     // ABSTAIN when any identity axis is missing — a wrong match is the failure mode.
     if (!player || !year || !set || !cardNo) return null;
+    if (cardGradeAbstainReason(listing.title)) return null;
+    const qual = firstAspect(listing, ['Grade Qualifier', 'Qualifier']);
+    if (qual && !/^(none|n\/a|no)$/i.test(qual.trim())) return null;
     const grade = extractGrade(listing);
+    if (!grade) return null;
     return `${player}|${year}|${set}|${cardNo}|${grade}`;
   },
 

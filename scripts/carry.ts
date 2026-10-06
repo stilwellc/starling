@@ -189,9 +189,57 @@ export interface CarryResult {
  * agrees). Returns the survivors to merge; run-board pushes them into the
  * fresh arrays and publish.ts re-ranks/caps the union.
  */
+/**
+ * The CURRENT-rules re-check for a carried board deal (Oct 2026 audit). Before
+ * this, a carried deal was frozen at its first call forever: identity, book
+ * row, and gate floor all from the tick that surfaced it — so matcher fixes
+ * and every lectr book rebuild never reached the 200 deals already on the
+ * board (192–199 of 200 identical across 65 runs). Returns the row the deal
+ * must re-clear today (+ its raised floor for derived pricing), or a drop
+ * reason when today's rules no longer pin it to a book row.
+ */
+export type CarryRecheck = (
+  d: Deal,
+  title: string,
+) => { row: ValueBookRow; minDepth?: number } | { drop: string };
+
+/** A carried deal re-priced against the current book row (receipts stay
+ *  frozen — they are their own ledger; the BOARD shows today's call). */
+function repriceDeal(d: Deal, row: ValueBookRow): Deal {
+  return {
+    ...d,
+    med: row.med,
+    lo: row.lo,
+    hi: row.hi,
+    n: row.n,
+    ...(row.n12 !== undefined ? { n12: row.n12 } : {}),
+    lastSale: row.lastSale,
+    trend: row.trend,
+    conf: row.conf,
+    ...(row.conf === 'thin' ? { thin: true as const } : { thin: undefined }),
+  };
+}
+
+/** The stored deal as a listing, for gating an UNVERIFIED carry (no live read
+ *  this tick) against today's row — same price/title it was carried with. */
+function listingOfDeal(d: Deal): EbayListing {
+  return {
+    itemId: d.itemId,
+    legacyItemId: d.legacyItemId,
+    title: d.title,
+    price: d.itemPrice,
+    currency: 'USD',
+    shippingCost: d.shipping,
+    seller: {},
+    aspects: [],
+    enriched: false,
+    marketplaceId: d.marketplace ?? 'EBAY_US',
+  };
+}
+
 export async function carryForward(
   prev: BoardCarryState,
-  fresh: { deals: Deal[]; huntDeals: HuntDeal[]; huntClaimed: Set<string>; liveHuntIds?: Set<string>; huntEntryById?: Map<string, HuntEntry>; closing?: AuctionCall[] },
+  fresh: { deals: Deal[]; huntDeals: HuntDeal[]; huntClaimed: Set<string>; liveHuntIds?: Set<string>; huntEntryById?: Map<string, HuntEntry>; closing?: AuctionCall[]; recheck?: CarryRecheck },
   opts: { mode: 'fixture' | 'live'; client?: EbayClient; now: number },
 ): Promise<CarryResult> {
   const out: CarryResult = { deals: [], huntNoBook: [], closing: [], endedItemIds: new Set() };
@@ -260,12 +308,40 @@ export async function carryForward(
   let refreshed = 0;
   let regated = 0;
   let regateFail = 0;
+  let recheckDrop = 0;
+  const recheckReasons = new Map<string, number>();
   for (const d of dealCands) {
     if (v.absent.has(d.itemId)) {
       out.endedItemIds.add(d.itemId); // gone from eBay → off the board, onto the tape
       continue;
     }
     const l = v.alive.get(d.itemId);
+    if (fresh.recheck) {
+      // today's identity rules + today's book row + today's gate — on the live
+      // read when we have one, else on the price the deal was carried at
+      const rc = fresh.recheck(d, l?.title ?? d.title);
+      if ('drop' in rc) {
+        recheckDrop++;
+        recheckReasons.set(rc.drop, (recheckReasons.get(rc.drop) ?? 0) + 1);
+        continue;
+      }
+      const listing = l ?? listingOfDeal(d);
+      const g = gate(listing, rc.row, { now: opts.now, ...(rc.minDepth != null ? { minDepth: rc.minDepth } : {}) });
+      if (!g.pass) {
+        recheckDrop++;
+        const why = `gate:${g.reason ?? 'fail'}`;
+        recheckReasons.set(why, (recheckReasons.get(why) ?? 0) + 1);
+        continue;
+      }
+      const base = repriceDeal(d, rc.row);
+      if (l) {
+        if (g.allIn !== d.allIn) refreshed++;
+        out.deals.push(refreshDeal(base, l, g.allIn, g.depth, opts.now));
+      } else {
+        out.deals.push(refreshDeal(base, listing, g.allIn, g.depth, opts.now));
+      }
+      continue;
+    }
     if (!l) {
       out.deals.push(d); // unverified — carried as-was, re-checked next tick
       continue;
@@ -351,11 +427,12 @@ export async function carryForward(
     out.huntNoBook.push({ ...h, itemPrice: l.price, shipping: l.shippingCost, allIn: g.allIn });
   }
 
-  const droppedDeals = out.endedItemIds.size + regateFail;
+  const droppedDeals = out.endedItemIds.size + regateFail + recheckDrop;
   console.log(
     `[carry] board: ${dealCands.length} prior not re-swept → carried ${out.deals.length} ` +
       `(${refreshed} refreshed lower, ${regated} re-gated on a raise) · ` +
-      `dropped ${droppedDeals} (${out.endedItemIds.size} ended, ${regateFail} re-gate fail)` +
+      `dropped ${droppedDeals} (${out.endedItemIds.size} ended, ${regateFail} re-gate fail, ` +
+      `${recheckDrop} failed today's rules${recheckReasons.size ? ` ${JSON.stringify(Object.fromEntries(recheckReasons))}` : ''})` +
       (v.unverified ? ` · ${v.unverified} unverified (kept as-was, retried next tick)` : ''),
   );
   if (huntCands.length) {
