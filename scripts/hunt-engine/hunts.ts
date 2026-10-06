@@ -244,6 +244,8 @@ export const ART_NOT_UNIQUE = [
   'iron on', 'transfer', 'decal', 'patch', 'vhs', 'dvd', 'cd', 'lp', 'record', 'soundtrack', 'cast recording', 'card set',
   'trading card', 'slide', '35mm', 'cel', 'shorts', 'shoe', 'dunk', 'plaque', 'flyer', 'broadside', 'die cast', 'diecast',
   'bobbin', 'inflatable', 'promo', 'spray can', 'illustrations', 'illustrated', 'aceo', 'atc', 'button', 'corgi', 'cactus jack', 'travis scott',
+  // designer vinyl (Oct 2026: a $50 Medicom Be@rbrick alerted under the Futura painting hunt)
+  'medicom', 'bearbrick', 'be rbrick',
 ];
 
 /** Found only by a recall search, a listing must name a real medium — "original" alone is how merch is titled. */
