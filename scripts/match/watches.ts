@@ -28,6 +28,7 @@ import type {
   EbayQuery,
   IdentityKey,
   RiskSignals,
+  RowConflictReason,
   ValueBookRow,
   Vertical,
   VerticalMatcher,
@@ -177,6 +178,47 @@ export function watchMaterialCoarse(l: EbayListing): string | null {
   return null;
 }
 
+// ─────────────────────────────────────────────────────────────────────────────
+// Paired references + material purity (book v2, Oct 2026)
+// ─────────────────────────────────────────────────────────────────────────────
+
+/** A slash-joined PAIR of full references ("5513/5517", "5512/5513") is a
+ *  dual-stamped case — not one tradable reference — and on eBay the same pair
+ *  is homage / parts / "fits 5513/5517" text. lectr's book no longer keys them
+ *  (emit-value-book isDualWatchRef); Starling abstains on any listing that
+ *  names one. A slash SUFFIX ("5711/1a", "3700/031", "5723/112r") is part of
+ *  the reference and stays. */
+const PAIRED_REF_RE = /(?<![\d.\/])\d{4,6}[a-z]{0,3}\s?\/\s?\d{4,6}[a-z]{0,3}(?![\d\/])/i;
+
+export function hasPairedReference(text: string | null | undefined): boolean {
+  return !!text && PAIRED_REF_RE.test(text);
+}
+
+/** Case material the way lectr reads a SALE (Ray app/lib/comps.ts
+ *  coarseWatchMaterial — the lens the row's `mat` was computed with): title
+ *  plus the Case Material item-specific (eBay's analogue of the sale medium).
+ *  Gold + steel together reads two-tone. null = not stated. */
+export function watchBookMaterial(l: EbayListing): string | null {
+  const t = `${l.title || ''} ${aspect(l, 'Case Material') || ''}`.toLowerCase();
+  const gold = /\b(gold|or jaune|or gris|or rose|or blanc)\b|\b18k\b|\b14k\b|\b18ct\b|\b9ct\b/.test(t);
+  const steel = /\b(steel|stainless|acier)\b/.test(t);
+  if ((gold && steel) || /two[- ]tone/.test(t)) return 'two-tone';
+  if (/platinum|platine/.test(t)) return 'platinum';
+  if (gold) return 'gold';
+  if (steel) return 'steel';
+  if (/titanium/.test(t)) return 'titanium';
+  return null;
+}
+
+/** A listing in a different stated material than the one the row is priced
+ *  on is not the row's watch. Unknown material on either side → no check (the
+ *  riskInputs note still surfaces it). */
+export function watchMaterialConflict(l: EbayListing, row: ValueBookRow): RowConflictReason | null {
+  if (!row.mat) return null;
+  const mat = watchBookMaterial(l);
+  return mat && mat !== row.mat ? 'material-mismatch' : null;
+}
+
 /** Box/papers language — the watch world's authentication anchor ('papers'). */
 const PAPERS_RE =
   /box\s*(?:and|&|\+|,)?\s*papers|full\s+set|\bpapers\b|warranty\s+card|archive\s+extract|certificate\s+of\s+origin/i;
@@ -193,18 +235,25 @@ export const watchesMatcher: VerticalMatcher = {
 
   rejectTitle(title: string): string | null {
     if (REPLICA_RE.test(title)) return 'replica';
+    if (hasPairedReference(title)) return 'paired reference';
     return watchPartReason(title);
   },
 
   identify(listing: EbayListing): IdentityKey | null {
     if (REPLICA_RE.test(listing.title)) return null;
+    if (hasPairedReference(listing.title)) return null; // a dual-stamped pair is not one reference
     if (watchPartReason(listing.title)) return null; // a part is never the reference
     const brand = watchBrandOf(listing);
     if (!brand) return null;
+    const refAspect = aspect(listing, 'Reference Number');
+    if (hasPairedReference(refAspect)) return null;
     const ref = resolveRef(listing);
     if (!ref) return null; // brand without a reference is a model-line pool, not an identity
+    if (hasPairedReference(ref)) return null;
     return `${brand}|${ref}`;
   },
+
+  rowConflict: watchMaterialConflict,
 
   riskInputs(listing: EbayListing): RiskSignals {
     const hay = [listing.title, listing.condition, ...listing.aspects.map((a) => a.value)]
