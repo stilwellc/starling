@@ -735,6 +735,19 @@ async function main() {
       liveHuntIds: new Set(huntEntries.map((e) => e.id)),
       huntEntryById: new Map(huntEntries.map((e) => [e.id, e])),
       closing,
+      // carried deals re-earn their slot under TODAY's matcher rules and
+      // TODAY's book row (Oct 2026 frozen-board fix)
+      recheck: (d, title) => {
+        const why = matcherFor[d.vertical]?.rejectTitle?.(title);
+        if (why) return { drop: `identity:${why}` };
+        const exact = synced.byKey.get(d.key);
+        if (exact) return { row: exact };
+        if (d.basis === 'ladder') {
+          const lh = ladderRow(d.key, d.vertical, synced.book, ladderIndex);
+          if (lh) return { row: lh.row, minDepth: LADDER_MIN_DEPTH };
+        }
+        return { drop: 'book:row-gone' };
+      },
     },
     { mode, client, now },
   );

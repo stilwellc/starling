@@ -20,7 +20,8 @@
     "hunt:scan:fixture": "STARLING_DATA_MODE=fixture tsx scripts/hunt-engine/cli.ts",
     "hunt:validate": "tsx scripts/hunt-engine/cli.ts --validate",
     "hunt:test": "node --import tsx --test scripts/hunt-engine/tests/*.test.ts",
-    "test": "npm run test:matchers && npm run hunt:test"
+    "board:test": "node --import tsx --test scripts/tests/*.test.ts",
+    "test": "npm run test:matchers && npm run hunt:test && npm run board:test"
   },
   "dependencies": {
     "jpeg-js": "^0.4.4",

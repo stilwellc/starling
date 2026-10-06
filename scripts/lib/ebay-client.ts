@@ -152,7 +152,7 @@ export class EbayClient {
     const res = await fetch(`${BASE}/item/${encodeURIComponent(itemId)}`, { headers: this.headers() });
     if (!res.ok) throw new Error(`getItem ${res.status}: ${await res.text()}`);
     const j = (await res.json()) as EbayRawItem;
-    return normalizeItem(j, this.opts.marketplaceId);
+    return normalizeItem(j, this.opts.marketplaceId, now);
   }
 
   /**
@@ -183,7 +183,10 @@ export class EbayClient {
       if (res.status === 204) return [];
       if (res.ok) {
         const j = (await res.json()) as { items?: EbayRawItem[] };
-        return (j.items ?? []).map((it) => normalizeItem(it, this.opts.marketplaceId));
+        // a sold/ended item answered in the batch is ABSENT, same as omitted
+        return (j.items ?? [])
+          .map((it) => normalizeItem(it, this.opts.marketplaceId, now))
+          .filter((l) => !l.unavailable);
       }
       const body = await res.text();
       if (res.status === 403 && o?.singularFallback) {
@@ -209,7 +212,10 @@ export class EbayClient {
       }
       this.singularBudget--;
       try {
-        out.push(await this.getItem(id, now));
+        const l = await this.getItem(id, now);
+        // getItem answers 200 for SOLD / seller-ended listings — that is the
+        // take-down signal too, not a live listing (Oct 2026 frozen-board fix)
+        if (!l.unavailable) out.push(l);
       } catch (e) {
         const msg = (e as Error).message;
         if (/^getItem (404|410)/.test(msg)) continue; // genuinely gone → absent

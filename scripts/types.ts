@@ -175,6 +175,9 @@ export interface EbayListing {
   /** true once enrich.ts has run getItem and populated `aspects` */
   enriched: boolean;
   marketplaceId: string; // EBAY_US | EBAY_GB | EBAY_DE
+  /** getItem said the listing can no longer be bought (sold out / ended) even
+   *  though it answered 200 — callers treat it exactly like absence. */
+  unavailable?: true;
 }
 
 /** Convenience: case-insensitive aspect lookup. Matchers use this heavily. */
@@ -226,6 +229,11 @@ export interface VerticalMatcher {
   identify(listing: EbayListing): IdentityKey | null;
   /** slab/cert/ref/papers evidence for the risk model */
   riskInputs(listing: EbayListing): RiskSignals;
+  /** Title-level abstain rules (parts, grade qualifiers, unkeyable slabs) —
+   *  the subset of identify() that needs no aspects, so carried deals (which
+   *  keep only their title) can be re-checked against the CURRENT rules.
+   *  Returns the reason, or null when the title is fine. Optional. */
+  rejectTitle?(title: string): string | null;
 }
 
 // ─────────────────────────────────────────────────────────────────────────────

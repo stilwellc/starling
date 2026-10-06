@@ -28,6 +28,7 @@ import type {
 } from '../types';
 import { aspect } from '../types';
 import { conditionFlags } from '../lib/condition';
+import { hasGradeQualifier } from './sports-cards';
 
 // ── The identity regex — ported verbatim from lectr (sub-markets.ts:315).
 const PKMN_GRADE =
@@ -175,11 +176,17 @@ export const pokemonMatcher: VerticalMatcher = {
       });
   },
 
+  rejectTitle(title: string): string | null {
+    return hasGradeQualifier(title) ? 'grade qualifier' : null;
+  },
+
   identify(listing: EbayListing): IdentityKey | null {
     const { yr, setPart, no, ed, grade } = probe(listing);
     // Hard requirement (faithful to lectr): year, cardNo, grade, and a non-empty
     // set slug must ALL resolve. Anything less → abstain rather than mis-pin.
     if (!yr || !no || !grade || !setPart) return null;
+    // "PSA 9 (OC)" is a different, cheaper item than the clean PSA 9 the key prices
+    if (hasGradeQualifier(listing.title)) return null;
     return `${yr}|${setPart}|${no}|${ed}|${grade}`;
   },
 
