@@ -11,8 +11,18 @@
  * floor: shallower isn't a deal after fees and risk. Everything else is shown
  * and ranked — never silently dropped.
  */
-import type { EbayListing, ValueBookRow } from './types';
+import type { EbayListing, RowConflictReason, ValueBookRow } from './types';
 import { hasConditionFlag, conditionFlags } from './lib/condition';
+import { matcherFor } from './match/registry';
+
+/** Book v2 identity purity: the row's vertical matcher says whether this
+ *  listing is the row's OBJECT, not just its key (a signed card against a
+ *  base-card row, a gold watch against a steel-priced row). Runs in every
+ *  gate so each lane — sweep, per-key, hunt, closing, carry re-check — holds
+ *  the same line. Rows from an old book carry no variant/mat → never fires. */
+export function rowConflictOf(listing: EbayListing, row: ValueBookRow): RowConflictReason | null {
+  return matcherFor[row.v]?.rowConflict?.(listing, row) ?? null;
+}
 
 export const MIN_DEPTH = 0.25;
 
@@ -50,7 +60,8 @@ export interface GateResult {
     | 'ladder-shallow'
     | 'scam-cap'
     | 'condition-flag'
-    | 'no-price';
+    | 'no-price'
+    | RowConflictReason;
   conditionFlags: string[];
 }
 
@@ -69,6 +80,10 @@ export const REASON_KEY: Record<string, string> = {
   'condition-flag': 'condition',
   'no-price': 'noPrice',
   'over-ceiling': 'maxAllIn',
+  // book v2 row purity (rowConflictOf) — the listing is not the row's object
+  'auto-mismatch': 'autoMismatch',
+  'parallel-mismatch': 'parallelMismatch',
+  'material-mismatch': 'materialMismatch',
   // closing-lane reasons (closingGate)
   'no-bid': 'noBid',
   'end-window': 'endWindow',
@@ -97,6 +112,8 @@ export function gate(
     return { pass: false, allIn, depth: 0, reason: 'no-price', conditionFlags: flags };
   }
   const depth = 1 - allIn / row.med;
+  const conflict = rowConflictOf(listing, row);
+  if (conflict) return { pass: false, allIn, depth, reason: conflict, conditionFlags: flags };
   // Living evidence first: a med whose newest sale is 2+ years old prices a
   // market that may have moved out from under it — not a certifiable call.
   const lastMs = Date.parse(row.lastSale);
@@ -141,7 +158,7 @@ export interface HuntGateResult {
   /** present ONLY when a book row priced the hit; the noBook path carries no
    *  depth — no median, no manufactured number */
   depth?: number;
-  reason?: 'too-shallow' | 'scam-cap' | 'condition-flag' | 'no-price' | 'over-ceiling';
+  reason?: 'too-shallow' | 'scam-cap' | 'condition-flag' | 'no-price' | 'over-ceiling' | RowConflictReason;
   conditionFlags: string[];
 }
 
@@ -178,6 +195,8 @@ export function huntGate(
     return { pass: false, allIn, reason: 'no-price', conditionFlags: flags };
   }
   const depth = 1 - allIn / row.med;
+  const conflict = rowConflictOf(listing, row);
+  if (conflict) return { pass: false, allIn, depth, reason: conflict, conditionFlags: flags };
   if (depth > MAX_DEPTH) {
     return { pass: false, allIn, depth, reason: 'scam-cap', conditionFlags: flags };
   }
@@ -225,7 +244,8 @@ export interface ClosingGateResult {
     | 'edge-floor'
     | 'stale-book'
     | 'condition-flag'
-    | 'too-shallow';
+    | 'too-shallow'
+    | RowConflictReason;
   conditionFlags: string[];
 }
 
@@ -251,6 +271,8 @@ export function closingGate(
     return { pass: false, allInBid, bidVsBook: 0, reason: 'no-price', conditionFlags: flags };
   }
   const bidVsBook = 1 - allInBid / row.med;
+  const conflict = rowConflictOf(listing, row);
+  if (conflict) return { pass: false, allInBid, bidVsBook, reason: conflict, conditionFlags: flags };
   const endMs = listing.itemEndDate ? Date.parse(listing.itemEndDate) : NaN;
   if (!Number.isFinite(endMs) || endMs <= now || endMs > now + (opts?.windowMs ?? CLOSING_WINDOW_MS)) {
     return { pass: false, allInBid, bidVsBook, reason: 'end-window', conditionFlags: flags };

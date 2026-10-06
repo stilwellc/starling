@@ -13,6 +13,9 @@
  *
  *   live:    R2 GET  <bucket>/<key>  via the Cloudflare API (bearer token)
  *   fixture: fixtures/value-book.sample.json   (offline stand-in)
+ *   STARLING_BOOK_PATH=<file>  (either mode) a local book file — plain JSON, or
+ *            gzip when it ends .gz — so fixture/offline runs can price against
+ *            a REAL book (e.g. one lectr's emitter wrote locally) with no R2.
  *
  * NOTE (lectr-side dependency): value-book.json.gz does NOT exist in the Ray
  * repo yet — it is ~1 day of net-new work in scripts/build-market.ts, emitting
@@ -41,6 +44,9 @@ const R2_TOKEN = process.env.LECTR_R2_TOKEN || process.env.CLOUDFLARE_API_TOKEN;
 
 const FIXTURE_PATH = join(process.cwd(), 'fixtures', 'value-book.sample.json');
 
+/** Local book override (fixture/offline runs against a real book). */
+export const BOOK_PATH_ENV = 'STARLING_BOOK_PATH';
+
 /** Max age of the book before we refuse to trust it (2 lectr nightlies). */
 const STALE_MS = 48 * 60 * 60 * 1000;
 
@@ -48,11 +54,47 @@ export interface SyncedBook {
   book: ValueBook;
   byVertical: Map<Vertical, ValueBookRow[]>;
   byKey: Map<string, ValueBookRow>;
-  source: 'fixture' | 'live';
+  source: 'fixture' | 'live' | 'file';
   stale: boolean;
 }
 
+/** Book v2 (header carries bookVersion): lectr stamps `variant` on card rows
+ *  only when the pool is a parallel/auto — a base card row omits it. Make the
+ *  base explicit ('') so a matcher can tell "base card" from "old book with no
+ *  variant axis" (undefined → no check). Mutates the book's rows in place. */
+export function normalizeBookRows(book: ValueBook): void {
+  if (!book.bookVersion) return;
+  for (const row of book.rows) {
+    if (row.v === 'sports-cards' && row.variant === undefined) row.variant = '';
+  }
+}
+
+/** One line naming exactly which book this run priced against. */
+export function bookHeaderLine(book: ValueBook, source: SyncedBook['source']): string {
+  return (
+    `[sync-book] book (${source}): builtAt=${book.builtAt ?? '?'} ` +
+    `engineVersion=${book.engineVersion ?? 'n/a'} bookVersion=${book.bookVersion ?? 'n/a (pre-v2)'} ` +
+    `rows=${book.rows?.length ?? 0}`
+  );
+}
+
+/** Read a local book file: gunzip when the path ends .gz (or the bytes carry
+ *  the gzip magic), else plain JSON. */
+export function loadBookFile(path: string): ValueBook {
+  const buf = readFileSync(path);
+  const gz = path.endsWith('.gz') || (buf[0] === 0x1f && buf[1] === 0x8b);
+  const book = JSON.parse((gz ? gunzipSync(buf) : buf).toString('utf8')) as ValueBook;
+  if (!book || !Array.isArray(book.rows)) throw new Error(`${path} is not a value book (no rows[])`);
+  return book;
+}
+
+function isStale(book: ValueBook, now: number): boolean {
+  const age = now - Date.parse(book.builtAt);
+  return !Number.isFinite(age) || age > STALE_MS;
+}
+
 function index(book: ValueBook): Pick<SyncedBook, 'byVertical' | 'byKey'> {
+  normalizeBookRows(book);
   const byVertical = new Map<Vertical, ValueBookRow[]>();
   const byKey = new Map<string, ValueBookRow>();
   for (const row of book.rows) {
@@ -113,22 +155,34 @@ async function loadLiveBook(now: number): Promise<{ book: ValueBook; stale: bool
   const book = JSON.parse(json) as ValueBook;
 
   // Freshness from the book's own build stamp (no public meta dependency).
-  const age = now - Date.parse(book.builtAt);
-  const stale = !Number.isFinite(age) || age > STALE_MS;
-  return { book, stale };
+  return { book, stale: isStale(book, now) };
 }
 
 /**
  * Load and index the value book. `now` is injected (the run timestamp) so this
  * module never reads the wall clock at import. In fixture mode staleness is not
- * enforced (the sample stamp is fixed).
+ * enforced (the sample stamp is fixed). STARLING_BOOK_PATH overrides the
+ * source in either mode. Every run logs the header (builtAt / engineVersion /
+ * bookVersion) so a board is always traceable to the book that priced it.
  */
 export async function syncBook(mode: 'fixture' | 'live', now: number): Promise<SyncedBook> {
+  const override = process.env[BOOK_PATH_ENV];
+  if (override) {
+    // A real book from disk. Staleness is measured (and logged) but only
+    // enforced in live mode — an offline replay of an older book is the point.
+    const book = loadBookFile(override);
+    const stale = mode === 'live' && isStale(book, now);
+    console.log(`${bookHeaderLine(book, 'file')} path=${override}`);
+    if (stale) console.warn(`[sync-book] value book file is STALE (builtAt ${book.builtAt}).`);
+    return { book, ...index(book), source: 'file', stale };
+  }
   if (mode === 'fixture') {
     const book = loadFixtureBook();
+    console.log(bookHeaderLine(book, 'fixture'));
     return { book, ...index(book), source: 'fixture', stale: false };
   }
   const { book, stale } = await loadLiveBook(now);
+  console.log(bookHeaderLine(book, 'live'));
   if (stale) {
     console.warn(
       `[sync-book] value book is STALE (builtAt ${book.builtAt}). Proceeding but ` +

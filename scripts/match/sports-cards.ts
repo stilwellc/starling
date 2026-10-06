@@ -26,6 +26,7 @@ import {
   type EbayQuery,
   type IdentityKey,
   type RiskSignals,
+  type RowConflictReason,
   type ValueBookRow,
   type VerticalMatcher,
 } from '../types';
@@ -237,6 +238,122 @@ function extractGrade(l: EbayListing): string | null {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
+// Variant purity (book v2, Oct 2026)
+//
+// The book key carries no parallel/autograph axis, so lectr now holds each
+// card row to ONE variant signature and stamps it on the row (`variant`).
+// A signed or parallel listing pinned to a base-card key (or the reverse) is a
+// different card at different money: ABSTAIN. The signature below is ported
+// from lectr app/lib/cards.ts parseCard (VARIANT_TOKENS + TEAM_MASK + the
+// autograph-grade regexes) and the emitter's cardBookId: sorted tokens, 'sp'
+// dropped, `|ag:<grade>` appended when an autograph grade is read.
+// ─────────────────────────────────────────────────────────────────────────────
+
+const TEAM_MASK_RE =
+  /\b(red sox|white sox|blue jays|red wings|green bay|golden state|golden knights|blue devils|crimson tide|orange bowl|black knights|silver bullets|gold rush|browns|reds|blues|golden bears|redskins|green wave|royals)\b/gi;
+const VARIANT_TOKENS: [RegExp, string][] = [
+  [/\b(?:autograph(?:ed)?|signed|auto)\b/i, 'auto'],
+  [/\b(?:patch|jersey|relic|swatch|memorabilia)\b/i, 'relic'],
+  [/\b(?:super)fractor\b/i, 'superfractor'],
+  [/\b(?:x-?fractor|refractor)\b/i, 'refractor'],
+  [/\bprinting plate\b/i, 'plate'],
+  [/\b(?:1\/1|one of one)\b/i, '1of1'],
+  [/\b(?:variation|var\.|image variation|photo variation)\b/i, 'var'],
+  [/\berror\b/i, 'error'],
+  [/\bdie[- ]?cut\b/i, 'diecut'],
+  [/\bholo(?:foil|gram)?\b/i, 'holo'],
+  [/\b(?:shimmer|mojo|wave|cracked ice|atomic|camo|tie[- ]dye|neon|disco|hyper|pulsar|la[sz]er|snakeskin|zebra|tiger|scope|velocity|lucky envelopes?|fast break|choice|no huddle|sparkle|glitter)\b/i, 'pattern'],
+  [/\b(?:silver|gold|red|blue|green|orange|purple|pink|black|bronze|platinum|yellow|teal|aqua|emerald|ruby|sapphire)\b/i, 'color'],
+];
+// lectr's player read (cards.ts AFTER_NO_PLAYER + trimNameRun): the
+// capitalized run right after #CARDNO, cut at descriptor words — masked so a
+// surname like "Blue" / "Gold" never reads as a parallel.
+const NAME_TOKEN = String.raw`[A-Z][A-Za-z.'’À-ɏ-]*`;
+const AFTER_NO_PLAYER = new RegExp(
+  String.raw`#[A-Za-z0-9/.-]+\s+((?:${NAME_TOKEN}|de|van|von|der|jr\.?|sr\.?|II|III)(?:\s+(?:${NAME_TOKEN}|de|van|von|der|Jr\.?|Sr\.?|II|III)){1,3})`,
+);
+const NAME_STOP = /^(Rookie|Signed|Card|Patch|Autograph(?:ed)?|Auto|Jersey|Relic|Logo|Game|Match|Photo|Player|Team|Tour|Practice|Fight|Warm|Dual|Triple|On|RC|And|With|Refractor|Prizm|Insert|Parallel|Case|Hit|Exchange|Redemption|SP|SSP|Worn|Used|Issued|Debut|Career|Final|Championship|World|Series|Super|Season|Professional|Model|Style|Era|Circa|HR|RBI|Mini|Decal|Single|Full|Store|Salesman|Advertising|Presentational?)$/i;
+function playerRunAfterNo(title: string): string | null {
+  const m = title.replace(/\([^)]*\)/g, ' ').match(AFTER_NO_PLAYER);
+  if (!m) return null;
+  const kept: string[] = [];
+  for (const w of m[1].trim().split(/\s+/)) {
+    if (NAME_STOP.test(w) || NAME_STOP.test(w.split('-')[0])) break;
+    // stricter than lectr on purpose: past the first two (name) words a
+    // variant word ends the run — "Mike Trout Gold Refractor" keeps its Gold
+    // (lectr would mask it). Over-reading a variant only ever abstains.
+    if (kept.length >= 2 && VARIANT_TOKENS.some(([re]) => re.test(w))) break;
+    kept.push(w);
+  }
+  return kept.length >= 2 ? kept.join(' ') : null;
+}
+
+const AUTO_GRADE_RE = /\b(?:PSA\s*\/\s*DNA|auto(?:graph)?(?:\s+grade)?)\b[^0-9,;()]{0,20}?(\d{1,2}(?:\.5)?)(?![\d.])/i;
+const AUTO_AUTH_RE = /\b(?:PSA\s*\/\s*DNA|auto(?:graph)?)\s*[-:]?\s*(?:authentic|auth)\b/i;
+
+export interface CardVariant {
+  /** sorted parallel tokens, 'auto' and 'sp' excluded */
+  parallel: string[];
+  /** signed (an 'auto' token or an autograph grade) */
+  auto: boolean;
+  /** autograph grade ('10', 'A' = authentic) or null */
+  autoGrade: string | null;
+}
+
+function parseVariantSignature(sig: string): CardVariant {
+  const parts = sig.split('|');
+  const ag = parts.find((p) => p.startsWith('ag:'));
+  const toks = (parts.find((p) => p && !p.startsWith('ag:')) ?? '').split('+').filter(Boolean);
+  return {
+    parallel: toks.filter((t) => t !== 'auto' && t !== 'sp').sort(),
+    auto: toks.includes('auto') || !!ag,
+    autoGrade: ag ? ag.slice(3) : null,
+  };
+}
+
+/** The listing's variant read the way lectr reads a sale: the title (player
+ *  name + colour-word team names masked; note lectr's quirk, kept on purpose,
+ *  that "Auto PSA 9" reads autograph grade 9 — the book pooled it that way) plus eBay's own Parallel/Variety
+ *  and Autographed item-specifics when present. */
+export function cardVariantOf(l: EbayListing): CardVariant {
+  let t = l.title;
+  const autoGradeM = t.match(AUTO_GRADE_RE);
+  const autoGrade = autoGradeM ? autoGradeM[1] : AUTO_AUTH_RE.test(t) ? 'A' : null;
+  const par = firstAspect(l, ['Parallel/Variety', 'Parallel', 'Variety']);
+  if (par && !/^(none|n\/a|no|base|base set)$/i.test(par)) t += ` ${par}`;
+  let vt = t.replace(TEAM_MASK_RE, ' ');
+  const run = playerRunAfterNo(l.title);
+  if (run) vt = vt.split(run).join(' ');
+  const player = extractPlayer(l);
+  if (player) {
+    const parts = player.split('-').filter(Boolean).map((p) => p.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
+    if (parts.length) vt = vt.replace(new RegExp(`\\b${parts.join('[^a-z0-9]+')}\\b`, 'gi'), ' ');
+  }
+  const toks: string[] = [];
+  for (const [re, tok] of VARIANT_TOKENS) if (re.test(vt) && !toks.includes(tok)) toks.push(tok);
+  const signedAspect = aspect(l, 'Autographed');
+  const auto = toks.includes('auto') || autoGrade != null || /^yes\b/i.test(signedAspect ?? '');
+  return {
+    parallel: toks.filter((x) => x !== 'auto').sort(),
+    auto,
+    autoGrade,
+  };
+}
+
+/** A listing whose autograph / parallel status differs from the row's
+ *  variant signature is not the row's card. `row.variant === undefined` =
+ *  an old book (no axis) → no check. */
+export function cardVariantConflict(l: EbayListing, row: ValueBookRow): RowConflictReason | null {
+  if (row.variant === undefined) return null;
+  const want = parseVariantSignature(row.variant);
+  const got = cardVariantOf(l);
+  if (want.auto !== got.auto) return 'auto-mismatch';
+  if (want.auto && want.autoGrade !== got.autoGrade) return 'auto-mismatch';
+  if (want.parallel.join('+') !== got.parallel.join('+')) return 'parallel-mismatch';
+  return null;
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
 // The matcher
 // ─────────────────────────────────────────────────────────────────────────────
 
@@ -268,6 +385,8 @@ export const sportsCardsMatcher: VerticalMatcher = {
   rejectTitle(title: string): string | null {
     return cardGradeAbstainReason(title);
   },
+
+  rowConflict: cardVariantConflict,
 
   identify(listing: EbayListing): IdentityKey | null {
     const player = extractPlayer(listing);

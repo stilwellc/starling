@@ -68,6 +68,15 @@ export interface ValueBookRow {
   /** 1Y sub-index read where certified, else null */
   trend: number | null;
   conf: Confidence;
+  /** (book v2, Oct 2026) cards: the parallel/autograph signature every sale in
+   *  the row shares ('auto', 'color+refractor', 'auto|ag:10' …). lectr omits it
+   *  for the base card; sync-book.ts normalizes a v2 book's base card rows to
+   *  '' so `undefined` ALWAYS means "old book, no variant axis" (no check). */
+  variant?: string;
+  /** (book v2, Oct 2026) watches: the case material the row is priced on
+   *  ('steel' | 'gold' | 'two-tone' | 'platinum' | 'titanium'); absent = not
+   *  stated in the sales (or an old book) — no material check. */
+  mat?: string;
 }
 
 // ── the context tier (schema-ADDITIVE, Aug 2026) ────────────────────────────
@@ -120,6 +129,13 @@ export interface ValueBook {
    *  see ladder.ts. Optional and shape-checked before use: a book without it
    *  (or with a malformed one) simply never ladder-prices. */
   gradeLadder?: { base: number; rungs: Record<string, number> };
+  /** (ADDITIVE, Oct 2026 — book v2) the served engine version */
+  engineVersion?: string;
+  /** (ADDITIVE, Oct 2026 — book v2) the book's own admission/aggregation rule
+   *  version; its presence is what marks rows as carrying variant/mat */
+  bookVersion?: string;
+  /** (ADDITIVE, Oct 2026 — book v2) what the build kept out and why */
+  audit?: { skipped?: Record<string, number>; abstained?: Record<string, number>; watchSplit?: number };
 }
 
 /** lectr's build stamp sidecar — https://lectr.bid/data/ray/meta.json */
@@ -234,7 +250,16 @@ export interface VerticalMatcher {
    *  keep only their title) can be re-checked against the CURRENT rules.
    *  Returns the reason, or null when the title is fine. Optional. */
   rejectTitle?(title: string): string | null;
+  /** Row-level abstain (book v2): the listing pins this row's KEY but not its
+   *  object — a signed / parallel card against a base-card row, a gold watch
+   *  against a steel-priced row. Returns a reason code (a gate reason), or null
+   *  when compatible or the row carries no variant/material axis (old book).
+   *  Optional. */
+  rowConflict?(listing: EbayListing, row: ValueBookRow): RowConflictReason | null;
 }
+
+/** rowConflict() reason codes — gate reasons, counted in board.stats. */
+export type RowConflictReason = 'auto-mismatch' | 'parallel-mismatch' | 'material-mismatch';
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Scoring — risk grade + rank  (PROPOSAL §7, §8)
