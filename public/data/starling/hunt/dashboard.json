@@ -1,18 +1,18 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-10-26T21:03:12.791Z",
+ "generatedAt": "2026-10-27T00:26:41.846Z",
  "run": {
-  "id": "20261026T210159Z-xfg0",
+  "id": "20261027T002334Z-esfx",
   "state": "success",
   "mode": "live",
-  "startedAt": "2026-10-26T21:01:59.486Z",
-  "finishedAt": "2026-10-26T21:03:12.791Z",
-  "succeededAt": "2026-10-26T21:03:12.791Z",
+  "startedAt": "2026-10-27T00:23:34.510Z",
+  "finishedAt": "2026-10-27T00:26:41.846Z",
+  "succeededAt": "2026-10-27T00:26:41.846Z",
   "huntsTotal": 35,
   "huntsComplete": 35,
   "providerHealth": {
    "status": "ok",
-   "calls": 62,
+   "calls": 95,
    "rateLimit": null,
    "message": null
   },
@@ -20,10 +20,10 @@
   "staleAfterMinutes": 240,
   "discovery": {
    "searches": 62,
-   "fullSweeps": 0,
-   "deltaScans": 35,
-   "newThisRun": 3,
-   "newToday": 124,
+   "fullSweeps": 35,
+   "deltaScans": 0,
+   "newThisRun": 25,
+   "newToday": 137,
    "secondLooks": 0
   }
  },
@@ -138,16 +138,16 @@
    "maxAllIn": 5000,
    "priority": 1,
    "state": "complete",
-   "lastSearchedAt": "2026-10-26T21:02:00.728Z",
-   "lastSuccessfulAt": "2026-10-26T21:02:00.728Z",
+   "lastSearchedAt": "2026-10-27T00:23:35.839Z",
+   "lastSuccessfulAt": "2026-10-27T00:23:35.839Z",
    "carried": false,
    "error": null,
    "matchCount": 1,
    "underCount": 0,
    "overCount": 0,
    "watchCount": 1,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-10-26T20:26:52.692Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-10-27T00:23:35.839Z",
    "searches": 3,
    "newThisRun": 0,
    "newToday": 2
@@ -162,16 +162,16 @@
    "maxAllIn": 5000,
    "priority": 2,
    "state": "complete",
-   "lastSearchedAt": "2026-10-26T21:02:02.354Z",
-   "lastSuccessfulAt": "2026-10-26T21:02:02.354Z",
+   "lastSearchedAt": "2026-10-27T00:23:37.624Z",
+   "lastSuccessfulAt": "2026-10-27T00:23:37.624Z",
    "carried": false,
    "error": null,
    "matchCount": 0,
    "underCount": 0,
    "overCount": 0,
    "watchCount": 0,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-10-26T20:26:54.420Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-10-27T00:23:37.624Z",
    "searches": 1,
    "newThisRun": 0,
    "newToday": 0
@@ -186,19 +186,19 @@
    "maxAllIn": 15000,
    "priority": 3,
    "state": "complete",
-   "lastSearchedAt": "2026-10-26T21:02:02.763Z",
-   "lastSuccessfulAt": "2026-10-26T21:02:02.763Z",
+   "lastSearchedAt": "2026-10-27T00:23:37.915Z",
+   "lastSuccessfulAt": "2026-10-27T00:23:37.915Z",
    "carried": false,
    "error": null,
    "matchCount": 2,
    "underCount": 2,
    "overCount": 0,
    "watchCount": 0,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-10-26T20:26:54.782Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-10-27T00:23:37.915Z",
    "searches": 4,
-   "newThisRun": 0,
-   "newToday": 7
+   "newThisRun": 2,
+   "newToday": 8
   },
   {
    "id": "art-futura-atoms",
@@ -210,16 +210,16 @@
    "maxAllIn": 15000,
    "priority": 4,
    "state": "complete",
-   "lastSearchedAt": "2026-10-26T21:02:04.403Z",
-   "lastSuccessfulAt": "2026-10-26T21:02:04.403Z",
+   "lastSearchedAt": "2026-10-27T00:23:43.059Z",
+   "lastSuccessfulAt": "2026-10-27T00:23:43.059Z",
    "carried": false,
    "error": null,
    "matchCount": 0,
    "underCount": 0,
    "overCount": 0,
    "watchCount": 0,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-10-26T20:26:59.189Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-10-27T00:23:43.059Z",
    "searches": 1,
    "newThisRun": 0,
    "newToday": 0
@@ -234,19 +234,19 @@
    "maxAllIn": 8000,
    "priority": 5,
    "state": "complete",
-   "lastSearchedAt": "2026-10-26T21:02:04.823Z",
-   "lastSuccessfulAt": "2026-10-26T21:02:04.823Z",
+   "lastSearchedAt": "2026-10-27T00:23:43.462Z",
+   "lastSuccessfulAt": "2026-10-27T00:23:43.462Z",
    "carried": false,
    "error": null,
    "matchCount": 0,
    "underCount": 0,
    "overCount": 0,
    "watchCount": 0,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-10-26T20:26:59.505Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-10-27T00:23:43.462Z",
    "searches": 3,
-   "newThisRun": 1,
-   "newToday": 47
+   "newThisRun": 10,
+   "newToday": 50
   },
   {
    "id": "art-haze-drawing",
@@ -258,16 +258,16 @@
    "maxAllIn": 8000,
    "priority": 6,
    "state": "complete",
-   "lastSearchedAt": "2026-10-26T21:02:06.062Z",
-   "lastSuccessfulAt": "2026-10-26T21:02:06.062Z",
+   "lastSearchedAt": "2026-10-27T00:23:53.076Z",
+   "lastSuccessfulAt": "2026-10-27T00:23:53.076Z",
    "carried": false,
    "error": null,
    "matchCount": 0,
    "underCount": 0,
    "overCount": 0,
    "watchCount": 0,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-10-26T20:27:09.899Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-10-27T00:23:53.076Z",
    "searches": 3,
    "newThisRun": 0,
    "newToday": 1
@@ -282,16 +282,16 @@
    "maxAllIn": 10000,
    "priority": 7,
    "state": "complete",
-   "lastSearchedAt": "2026-10-26T21:02:06.814Z",
-   "lastSuccessfulAt": "2026-10-26T21:02:06.814Z",
+   "lastSearchedAt": "2026-10-27T00:23:53.761Z",
+   "lastSuccessfulAt": "2026-10-27T00:23:53.761Z",
    "carried": false,
    "error": null,
    "matchCount": 3,
    "underCount": 0,
    "overCount": 3,
    "watchCount": 0,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-10-26T20:27:10.611Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-10-27T00:23:53.761Z",
    "searches": 3,
    "newThisRun": 0,
    "newToday": 4
@@ -306,19 +306,19 @@
    "maxAllIn": 2000,
    "priority": 8,
    "state": "complete",
-   "lastSearchedAt": "2026-10-26T21:02:07.864Z",
-   "lastSuccessfulAt": "2026-10-26T21:02:07.864Z",
+   "lastSearchedAt": "2026-10-27T00:23:55.536Z",
+   "lastSuccessfulAt": "2026-10-27T00:23:55.536Z",
    "carried": false,
    "error": null,
    "matchCount": 2,
    "underCount": 0,
    "overCount": 2,
    "watchCount": 0,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-10-26T20:27:12.465Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-10-27T00:23:55.536Z",
    "searches": 3,
-   "newThisRun": 1,
-   "newToday": 40
+   "newThisRun": 10,
+   "newToday": 46
   },
   {
    "id": "art-crumb-drawing",
@@ -330,19 +330,19 @@
    "maxAllIn": 2000,
    "priority": 9,
    "state": "complete",
-   "lastSearchedAt": "2026-10-26T21:02:08.581Z",
-   "lastSuccessfulAt": "2026-10-26T21:02:08.581Z",
+   "lastSearchedAt": "2026-10-27T00:23:56.869Z",
+   "lastSuccessfulAt": "2026-10-27T00:23:56.869Z",
    "carried": false,
    "error": null,
    "matchCount": 3,
    "underCount": 0,
    "overCount": 3,
    "watchCount": 0,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-10-26T20:27:13.593Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-10-27T00:23:56.869Z",
    "searches": 4,
-   "newThisRun": 1,
-   "newToday": 18
+   "newThisRun": 2,
+   "newToday": 20
   },
   {
    "id": "sports-ertz-jersey",
@@ -354,16 +354,16 @@
    "maxAllIn": 3000,
    "priority": 10,
    "state": "complete",
-   "lastSearchedAt": "2026-10-26T21:02:09.881Z",
-   "lastSuccessfulAt": "2026-10-26T21:02:09.881Z",
+   "lastSearchedAt": "2026-10-27T00:24:01.828Z",
+   "lastSuccessfulAt": "2026-10-27T00:24:01.828Z",
    "carried": false,
    "error": null,
    "matchCount": 1,
    "underCount": 1,
    "overCount": 0,
    "watchCount": 0,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-10-26T20:27:18.072Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-10-27T00:24:01.828Z",
    "searches": 2,
    "newThisRun": 0,
    "newToday": 0
@@ -378,16 +378,16 @@
    "maxAllIn": 8000,
    "priority": 11,
    "state": "complete",
-   "lastSearchedAt": "2026-10-26T21:02:10.481Z",
-   "lastSuccessfulAt": "2026-10-26T21:02:10.481Z",
+   "lastSearchedAt": "2026-10-27T00:24:02.550Z",
+   "lastSuccessfulAt": "2026-10-27T00:24:02.550Z",
    "carried": false,
    "error": null,
    "matchCount": 0,
    "underCount": 0,
    "overCount": 0,
    "watchCount": 0,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-10-26T20:27:18.816Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-10-27T00:24:02.550Z",
    "searches": 2,
    "newThisRun": 0,
    "newToday": 3
@@ -402,16 +402,16 @@
    "maxAllIn": 4000,
    "priority": 12,
    "state": "complete",
-   "lastSearchedAt": "2026-10-26T21:02:11.146Z",
-   "lastSuccessfulAt": "2026-10-26T21:02:11.146Z",
+   "lastSearchedAt": "2026-10-27T00:24:03.542Z",
+   "lastSuccessfulAt": "2026-10-27T00:24:03.542Z",
    "carried": false,
    "error": null,
    "matchCount": 0,
    "underCount": 0,
    "overCount": 0,
    "watchCount": 0,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-10-26T20:27:19.675Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-10-27T00:24:03.542Z",
    "searches": 2,
    "newThisRun": 0,
    "newToday": 0
@@ -426,16 +426,16 @@
    "maxAllIn": 4000,
    "priority": 13,
    "state": "complete",
-   "lastSearchedAt": "2026-10-26T21:02:11.725Z",
-   "lastSuccessfulAt": "2026-10-26T21:02:11.725Z",
+   "lastSearchedAt": "2026-10-27T00:24:04.331Z",
+   "lastSuccessfulAt": "2026-10-27T00:24:04.331Z",
    "carried": false,
    "error": null,
    "matchCount": 1,
    "underCount": 0,
    "overCount": 1,
    "watchCount": 0,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-10-26T20:27:20.681Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-10-27T00:24:04.331Z",
    "searches": 2,
    "newThisRun": 0,
    "newToday": 0
@@ -450,16 +450,16 @@
    "maxAllIn": 4000,
    "priority": 14,
    "state": "complete",
-   "lastSearchedAt": "2026-10-26T21:02:12.430Z",
-   "lastSuccessfulAt": "2026-10-26T21:02:12.430Z",
+   "lastSearchedAt": "2026-10-27T00:24:05.099Z",
+   "lastSuccessfulAt": "2026-10-27T00:24:05.099Z",
    "carried": false,
    "error": null,
    "matchCount": 0,
    "underCount": 0,
    "overCount": 0,
    "watchCount": 0,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-10-26T20:27:21.425Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-10-27T00:24:05.099Z",
    "searches": 2,
    "newThisRun": 0,
    "newToday": 1
@@ -474,16 +474,16 @@
    "maxAllIn": 4000,
    "priority": 15,
    "state": "complete",
-   "lastSearchedAt": "2026-10-26T21:02:13.109Z",
-   "lastSuccessfulAt": "2026-10-26T21:02:13.109Z",
+   "lastSearchedAt": "2026-10-27T00:24:05.997Z",
+   "lastSuccessfulAt": "2026-10-27T00:24:05.997Z",
    "carried": false,
    "error": null,
    "matchCount": 0,
    "underCount": 0,
    "overCount": 0,
    "watchCount": 0,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-10-26T20:27:22.252Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-10-27T00:24:05.997Z",
    "searches": 2,
    "newThisRun": 0,
    "newToday": 0
@@ -498,16 +498,16 @@
    "maxAllIn": 1500,
    "priority": 16,
    "state": "complete",
-   "lastSearchedAt": "2026-10-26T21:02:13.751Z",
-   "lastSuccessfulAt": "2026-10-26T21:02:13.751Z",
+   "lastSearchedAt": "2026-10-27T00:24:06.677Z",
+   "lastSuccessfulAt": "2026-10-27T00:24:06.677Z",
    "carried": false,
    "error": null,
    "matchCount": 1,
-   "underCount": 1,
+   "underCount": 0,
    "overCount": 0,
-   "watchCount": 0,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-10-26T20:27:22.881Z",
+   "watchCount": 1,
+   "sweep": "full",
+   "lastFullSweepAt": "2026-10-27T00:24:06.677Z",
    "searches": 2,
    "newThisRun": 0,
    "newToday": 0
@@ -522,16 +522,16 @@
    "maxAllIn": 1500,
    "priority": 17,
    "state": "complete",
-   "lastSearchedAt": "2026-10-26T21:02:14.103Z",
-   "lastSuccessfulAt": "2026-10-26T21:02:14.103Z",
+   "lastSearchedAt": "2026-10-27T00:24:07.001Z",
+   "lastSuccessfulAt": "2026-10-27T00:24:07.001Z",
    "carried": false,
    "error": null,
    "matchCount": 0,
    "underCount": 0,
    "overCount": 0,
    "watchCount": 0,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-10-26T20:27:23.330Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-10-27T00:24:07.001Z",
    "searches": 2,
    "newThisRun": 0,
    "newToday": 0
@@ -546,16 +546,16 @@
    "maxAllIn": 6000,
    "priority": 18,
    "state": "complete",
-   "lastSearchedAt": "2026-10-26T21:02:14.425Z",
-   "lastSuccessfulAt": "2026-10-26T21:02:14.425Z",
+   "lastSearchedAt": "2026-10-27T00:24:07.306Z",
+   "lastSuccessfulAt": "2026-10-27T00:24:07.306Z",
    "carried": false,
    "error": null,
    "matchCount": 2,
    "underCount": 0,
    "overCount": 2,
    "watchCount": 0,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-10-26T20:27:23.714Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-10-27T00:24:07.306Z",
    "searches": 2,
    "newThisRun": 0,
    "newToday": 0
@@ -570,16 +570,16 @@
    "maxAllIn": 300,
    "priority": 19,
    "state": "complete",
-   "lastSearchedAt": "2026-10-26T21:02:15.357Z",
-   "lastSuccessfulAt": "2026-10-26T21:02:15.357Z",
+   "lastSearchedAt": "2026-10-27T00:24:08.250Z",
+   "lastSuccessfulAt": "2026-10-27T00:24:08.250Z",
    "carried": false,
    "error": null,
    "matchCount": 0,
    "underCount": 0,
    "overCount": 0,
    "watchCount": 0,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-10-26T20:27:24.693Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-10-27T00:24:08.250Z",
    "searches": 2,
    "newThisRun": 0,
    "newToday": 0
@@ -594,16 +594,16 @@
    "maxAllIn": 200,
    "priority": 20,
    "state": "complete",
-   "lastSearchedAt": "2026-10-26T21:02:15.975Z",
-   "lastSuccessfulAt": "2026-10-26T21:02:15.975Z",
+   "lastSearchedAt": "2026-10-27T00:24:08.947Z",
+   "lastSuccessfulAt": "2026-10-27T00:24:08.947Z",
    "carried": false,
    "error": null,
    "matchCount": 13,
    "underCount": 0,
    "overCount": 12,
    "watchCount": 1,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-10-26T20:27:25.490Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-10-27T00:24:08.947Z",
    "searches": 2,
    "newThisRun": 0,
    "newToday": 0
@@ -618,16 +618,16 @@
    "maxAllIn": 500,
    "priority": 21,
    "state": "complete",
-   "lastSearchedAt": "2026-10-26T21:02:16.774Z",
-   "lastSuccessfulAt": "2026-10-26T21:02:16.774Z",
+   "lastSearchedAt": "2026-10-27T00:24:09.797Z",
+   "lastSuccessfulAt": "2026-10-27T00:24:09.797Z",
    "carried": false,
    "error": null,
    "matchCount": 1,
    "underCount": 0,
    "overCount": 0,
    "watchCount": 1,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-10-26T20:27:26.375Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-10-27T00:24:09.797Z",
    "searches": 2,
    "newThisRun": 0,
    "newToday": 0
@@ -642,19 +642,19 @@
    "maxAllIn": 3000,
    "priority": 22,
    "state": "complete",
-   "lastSearchedAt": "2026-10-26T21:02:17.480Z",
-   "lastSuccessfulAt": "2026-10-26T21:02:17.480Z",
+   "lastSearchedAt": "2026-10-27T00:24:10.384Z",
+   "lastSuccessfulAt": "2026-10-27T00:24:10.384Z",
    "carried": false,
    "error": null,
    "matchCount": 2,
    "underCount": 0,
    "overCount": 2,
    "watchCount": 0,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-10-26T20:27:27.082Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-10-27T00:24:10.384Z",
    "searches": 4,
-   "newThisRun": 0,
-   "newToday": 0
+   "newThisRun": 1,
+   "newToday": 1
   },
   {
    "id": "bstj-1924-v3",
@@ -666,16 +666,16 @@
    "maxAllIn": null,
    "priority": 23,
    "state": "complete",
-   "lastSearchedAt": "2026-10-26T21:02:18.921Z",
-   "lastSuccessfulAt": "2026-10-26T21:02:18.921Z",
+   "lastSearchedAt": "2026-10-27T00:24:11.835Z",
+   "lastSuccessfulAt": "2026-10-27T00:24:11.835Z",
    "carried": false,
    "error": null,
    "matchCount": 0,
    "underCount": 0,
    "overCount": 0,
    "watchCount": 0,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-10-26T20:27:28.983Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-10-27T00:24:11.835Z",
    "searches": 1,
    "newThisRun": 0,
    "newToday": 0
@@ -690,16 +690,16 @@
    "maxAllIn": null,
    "priority": 24,
    "state": "complete",
-   "lastSearchedAt": "2026-10-26T21:02:19.186Z",
-   "lastSuccessfulAt": "2026-10-26T21:02:19.186Z",
+   "lastSearchedAt": "2026-10-27T00:24:12.142Z",
+   "lastSuccessfulAt": "2026-10-27T00:24:12.142Z",
    "carried": false,
    "error": null,
    "matchCount": 2,
    "underCount": 0,
    "overCount": 0,
    "watchCount": 2,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-10-26T20:27:29.306Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-10-27T00:24:12.142Z",
    "searches": 1,
    "newThisRun": 0,
    "newToday": 0
@@ -714,16 +714,16 @@
    "maxAllIn": null,
    "priority": 25,
    "state": "complete",
-   "lastSearchedAt": "2026-10-26T21:02:19.487Z",
-   "lastSuccessfulAt": "2026-10-26T21:02:19.487Z",
+   "lastSearchedAt": "2026-10-27T00:24:12.743Z",
+   "lastSuccessfulAt": "2026-10-27T00:24:12.743Z",
    "carried": false,
    "error": null,
    "matchCount": 1,
    "underCount": 0,
    "overCount": 0,
    "watchCount": 1,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-10-26T20:27:29.665Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-10-27T00:24:12.743Z",
    "searches": 1,
    "newThisRun": 0,
    "newToday": 0
@@ -738,16 +738,16 @@
    "maxAllIn": null,
    "priority": 26,
    "state": "complete",
-   "lastSearchedAt": "2026-10-26T21:02:19.823Z",
-   "lastSuccessfulAt": "2026-10-26T21:02:19.823Z",
+   "lastSearchedAt": "2026-10-27T00:24:13.126Z",
+   "lastSuccessfulAt": "2026-10-27T00:24:13.126Z",
    "carried": false,
    "error": null,
    "matchCount": 0,
    "underCount": 0,
    "overCount": 0,
    "watchCount": 0,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-10-26T20:27:29.999Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-10-27T00:24:13.126Z",
    "searches": 1,
    "newThisRun": 0,
    "newToday": 0
@@ -762,16 +762,16 @@
    "maxAllIn": null,
    "priority": 27,
    "state": "complete",
-   "lastSearchedAt": "2026-10-26T21:02:20.114Z",
-   "lastSuccessfulAt": "2026-10-26T21:02:20.114Z",
+   "lastSearchedAt": "2026-10-27T00:24:13.493Z",
+   "lastSuccessfulAt": "2026-10-27T00:24:13.493Z",
    "carried": false,
    "error": null,
    "matchCount": 3,
    "underCount": 0,
    "overCount": 0,
    "watchCount": 3,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-10-26T20:27:30.440Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-10-27T00:24:13.493Z",
    "searches": 1,
    "newThisRun": 0,
    "newToday": 0
@@ -786,16 +786,16 @@
    "maxAllIn": null,
    "priority": 28,
    "state": "complete",
-   "lastSearchedAt": "2026-10-26T21:02:20.483Z",
-   "lastSuccessfulAt": "2026-10-26T21:02:20.483Z",
+   "lastSearchedAt": "2026-10-27T00:24:13.875Z",
+   "lastSuccessfulAt": "2026-10-27T00:24:13.875Z",
    "carried": false,
    "error": null,
    "matchCount": 4,
    "underCount": 0,
    "overCount": 0,
    "watchCount": 4,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-10-26T20:27:30.849Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-10-27T00:24:13.875Z",
    "searches": 1,
    "newThisRun": 0,
    "newToday": 0
@@ -810,16 +810,16 @@
    "maxAllIn": null,
    "priority": 29,
    "state": "complete",
-   "lastSearchedAt": "2026-10-26T21:02:20.740Z",
-   "lastSuccessfulAt": "2026-10-26T21:02:20.740Z",
+   "lastSearchedAt": "2026-10-27T00:24:14.252Z",
+   "lastSuccessfulAt": "2026-10-27T00:24:14.252Z",
    "carried": false,
    "error": null,
    "matchCount": 7,
    "underCount": 0,
    "overCount": 0,
    "watchCount": 7,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-10-26T20:27:31.238Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-10-27T00:24:14.252Z",
    "searches": 1,
    "newThisRun": 0,
    "newToday": 0
@@ -834,16 +834,16 @@
    "maxAllIn": null,
    "priority": 30,
    "state": "complete",
-   "lastSearchedAt": "2026-10-26T21:02:21.054Z",
-   "lastSuccessfulAt": "2026-10-26T21:02:21.054Z",
+   "lastSearchedAt": "2026-10-27T00:24:14.720Z",
+   "lastSuccessfulAt": "2026-10-27T00:24:14.720Z",
    "carried": false,
    "error": null,
    "matchCount": 5,
    "underCount": 0,
    "overCount": 0,
    "watchCount": 5,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-10-26T20:27:31.786Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-10-27T00:24:14.720Z",
    "searches": 1,
    "newThisRun": 0,
    "newToday": 0
@@ -858,16 +858,16 @@
    "maxAllIn": null,
    "priority": 31,
    "state": "complete",
-   "lastSearchedAt": "2026-10-26T21:02:21.385Z",
-   "lastSuccessfulAt": "2026-10-26T21:02:21.385Z",
+   "lastSearchedAt": "2026-10-27T00:24:15.260Z",
+   "lastSuccessfulAt": "2026-10-27T00:24:15.260Z",
    "carried": false,
    "error": null,
    "matchCount": 0,
    "underCount": 0,
    "overCount": 0,
    "watchCount": 0,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-10-26T20:27:32.136Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-10-27T00:24:15.260Z",
    "searches": 1,
    "newThisRun": 0,
    "newToday": 0
@@ -882,16 +882,16 @@
    "maxAllIn": null,
    "priority": 32,
    "state": "complete",
-   "lastSearchedAt": "2026-10-26T21:02:21.694Z",
-   "lastSuccessfulAt": "2026-10-26T21:02:21.694Z",
+   "lastSearchedAt": "2026-10-27T00:24:15.697Z",
+   "lastSuccessfulAt": "2026-10-27T00:24:15.697Z",
    "carried": false,
    "error": null,
    "matchCount": 2,
    "underCount": 0,
    "overCount": 0,
    "watchCount": 2,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-10-26T20:27:32.516Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-10-27T00:24:15.697Z",
    "searches": 1,
    "newThisRun": 0,
    "newToday": 0
@@ -906,16 +906,16 @@
    "maxAllIn": null,
    "priority": 33,
    "state": "complete",
-   "lastSearchedAt": "2026-10-26T21:02:21.947Z",
-   "lastSuccessfulAt": "2026-10-26T21:02:21.947Z",
+   "lastSearchedAt": "2026-10-27T00:24:16.061Z",
+   "lastSuccessfulAt": "2026-10-27T00:24:16.061Z",
    "carried": false,
    "error": null,
    "matchCount": 0,
    "underCount": 0,
    "overCount": 0,
    "watchCount": 0,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-10-26T20:27:32.884Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-10-27T00:24:16.061Z",
    "searches": 1,
    "newThisRun": 0,
    "newToday": 0
@@ -930,16 +930,16 @@
    "maxAllIn": null,
    "priority": 34,
    "state": "complete",
-   "lastSearchedAt": "2026-10-26T21:02:22.229Z",
-   "lastSuccessfulAt": "2026-10-26T21:02:22.229Z",
+   "lastSearchedAt": "2026-10-27T00:24:16.363Z",
+   "lastSuccessfulAt": "2026-10-27T00:24:16.363Z",
    "carried": false,
    "error": null,
    "matchCount": 10,
    "underCount": 0,
    "overCount": 0,
    "watchCount": 10,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-10-26T20:27:33.188Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-10-27T00:24:16.363Z",
    "searches": 1,
    "newThisRun": 0,
    "newToday": 0
@@ -954,16 +954,16 @@
    "maxAllIn": null,
    "priority": 35,
    "state": "complete",
-   "lastSearchedAt": "2026-10-26T21:02:22.514Z",
-   "lastSuccessfulAt": "2026-10-26T21:02:22.514Z",
+   "lastSearchedAt": "2026-10-27T00:24:17.127Z",
+   "lastSuccessfulAt": "2026-10-27T00:24:17.127Z",
    "carried": false,
    "error": null,
    "matchCount": 1,
    "underCount": 0,
    "overCount": 0,
    "watchCount": 1,
-   "sweep": "delta",
-   "lastFullSweepAt": "2026-10-26T20:27:33.998Z",
+   "sweep": "full",
+   "lastFullSweepAt": "2026-10-27T00:24:17.127Z",
    "searches": 1,
    "newThisRun": 0,
    "newToday": 1
@@ -993,12 +993,12 @@
    "seller": {
     "username": "rnee1970",
     "feedbackPercentage": 99.7,
-    "feedbackScore": 1903
+    "feedbackScore": 1904
    },
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-10-26T20:30:48.066Z",
+   "lastSeenAt": "2026-10-27T00:26:41.846Z",
    "reasons": [
     "must:futura",
     "claims-original",
@@ -1080,7 +1080,7 @@
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-10-26T20:30:48.066Z",
+   "lastSeenAt": "2026-10-27T00:26:41.846Z",
    "reasons": [
     "must:ertz",
     "game-used:game worn",
@@ -1138,76 +1138,6 @@
    "dismissible": true
   },
   {
-   "key": "sports-foles-bears-jersey:v1|860011360247|0",
-   "group": "under",
-   "huntId": "sports-foles-bears-jersey",
-   "huntLabel": "Nick Foles — game-used Bears jersey",
-   "classification": "under",
-   "listingId": "v1|860011360247|0",
-   "title": "🔥Nick Foles #9 Chicago Bears Game Used Jersey Week 18 1/9/2022",
-   "url": "https://www.ebay.com/itm/860011360247?_skw=nick+foles+game+used+bears+jersey&hash=itemc83cabeff7:g:sRAAAeSwNG5qw7Aj",
-   "imageUrl": "https://i.ebayimg.com/images/g/sRAAAeSwNG5qw7Aj/s-l225.jpg",
-   "buyingMode": "FIXED_PRICE",
-   "endsAt": null,
-   "bidCount": null,
-   "price": 800,
-   "shipping": 14.46,
-   "allIn": 814.46,
-   "maxAllIn": 1500,
-   "underBy": 685.54,
-   "underPct": 0.46,
-   "capWording": "under cap",
-   "seller": {
-    "username": "westtexassports1600",
-    "feedbackPercentage": 100,
-    "feedbackScore": 25
-   },
-   "condition": null,
-   "location": "US",
-   "firstSeenAt": "2026-10-05T14:31:35.848Z",
-   "lastSeenAt": "2026-10-26T20:30:48.066Z",
-   "reasons": [
-    "must:foles",
-    "game-used:game used",
-    "at-or-under-cap"
-   ],
-   "flags": [
-    "no-authentication-in-title"
-   ],
-   "confidence": 0.85,
-   "review": "ok",
-   "carried": false,
-   "alertKey": "ebay:v1|860011360247|0:sports-foles-bears-jersey:v1",
-   "similarCount": 0,
-   "risk": "medium",
-   "riskReasons": [
-    "no photo-match, team or third-party authentication named"
-   ],
-   "details": {
-    "aspects": {
-     "League": "National Football League (NFL)",
-     "Sport": "Football",
-     "Officially Licensed": "Yes",
-     "Features": "Used in Game",
-     "Team": "Chicago Bears",
-     "Event/Tournament": "Week 18"
-    },
-    "descriptionSnippet": "The product is a game-used jersey worn by Nick Foles during a Week 18 game of the 2022 NFL season with the Chicago Bears. This officially licensed memorabilia item allows fans to own a piece of football history from one of the most iconic players in the league. Perfect for collec",
-    "fetchedAt": "2026-10-26T12:53:09.395Z"
-   },
-   "priceHistory": [
-    {
-     "at": "2026-10-05T14:31:35.848Z",
-     "price": 800,
-     "allIn": 814.46
-    }
-   ],
-   "priceChange": null,
-   "relisted": null,
-   "photoReused": null,
-   "dismissible": true
-  },
-  {
    "key": "art-futura-painting:v1|940033896049|0",
    "group": "under",
    "huntId": "art-futura-painting",
@@ -1235,7 +1165,7 @@
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-10-22T21:34:23.185Z",
-   "lastSeenAt": "2026-10-26T20:30:48.066Z",
+   "lastSeenAt": "2026-10-27T00:26:41.846Z",
    "reasons": [
     "must:futura",
     "aspect:medium:spray",
@@ -1311,7 +1241,7 @@
    "condition": "Like New",
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-10-26T20:30:48.066Z",
+   "lastSeenAt": "2026-10-27T00:26:41.846Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -1395,12 +1325,12 @@
    "seller": {
     "username": "lastexitbooks",
     "feedbackPercentage": 100,
-    "feedbackScore": 22925
+    "feedbackScore": 22926
    },
    "condition": "Very Good",
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-10-26T20:30:48.066Z",
+   "lastSeenAt": "2026-10-27T00:26:41.846Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -1470,12 +1400,12 @@
    "seller": {
     "username": "pbshop.store",
     "feedbackPercentage": 99.3,
-    "feedbackScore": 310135
+    "feedbackScore": 310139
    },
    "condition": "New",
    "location": "GB",
    "firstSeenAt": "2026-10-13T10:30:47.238Z",
-   "lastSeenAt": "2026-10-26T20:30:48.066Z",
+   "lastSeenAt": "2026-10-27T00:26:41.846Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -1584,12 +1514,12 @@
    "seller": {
     "username": "pbshop.store",
     "feedbackPercentage": 99.3,
-    "feedbackScore": 310135
+    "feedbackScore": 310139
    },
    "condition": "New",
    "location": "GB",
    "firstSeenAt": "2026-10-13T10:30:47.238Z",
-   "lastSeenAt": "2026-10-26T20:30:48.066Z",
+   "lastSeenAt": "2026-10-27T00:26:41.846Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -1698,12 +1628,12 @@
    "seller": {
     "username": "lastexitbooks",
     "feedbackPercentage": 100,
-    "feedbackScore": 22925
+    "feedbackScore": 22926
    },
    "condition": "Very Good",
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-10-26T20:30:48.066Z",
+   "lastSeenAt": "2026-10-27T00:26:41.846Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -1779,7 +1709,7 @@
    "condition": "Very Good",
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-10-26T20:30:48.066Z",
+   "lastSeenAt": "2026-10-27T00:26:41.846Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -1864,12 +1794,12 @@
    "seller": {
     "username": "l.sorrell2012",
     "feedbackPercentage": 99.8,
-    "feedbackScore": 5047
+    "feedbackScore": 5048
    },
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-10-26T20:30:48.066Z",
+   "lastSeenAt": "2026-10-27T00:26:41.846Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -1940,12 +1870,12 @@
    "seller": {
     "username": "l.sorrell2012",
     "feedbackPercentage": 99.8,
-    "feedbackScore": 5047
+    "feedbackScore": 5048
    },
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-10-26T20:30:48.066Z",
+   "lastSeenAt": "2026-10-27T00:26:41.846Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -2021,7 +1951,7 @@
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-10-16T01:26:35.423Z",
-   "lastSeenAt": "2026-10-26T20:30:48.066Z",
+   "lastSeenAt": "2026-10-27T00:26:41.846Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -2079,12 +2009,12 @@
    "seller": {
     "username": "pbshop.store",
     "feedbackPercentage": 99.3,
-    "feedbackScore": 310135
+    "feedbackScore": 310139
    },
    "condition": "New",
    "location": "GB",
    "firstSeenAt": "2026-10-13T10:30:47.238Z",
-   "lastSeenAt": "2026-10-26T20:30:48.066Z",
+   "lastSeenAt": "2026-10-27T00:26:41.846Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -2198,7 +2128,7 @@
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-10-26T20:30:48.066Z",
+   "lastSeenAt": "2026-10-27T00:26:41.846Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -2272,7 +2202,7 @@
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-10-26T20:30:48.066Z",
+   "lastSeenAt": "2026-10-27T00:26:41.846Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -2341,12 +2271,12 @@
    "seller": {
     "username": "l.sorrell2012",
     "feedbackPercentage": 99.8,
-    "feedbackScore": 5047
+    "feedbackScore": 5048
    },
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-10-26T20:30:48.066Z",
+   "lastSeenAt": "2026-10-27T00:26:41.846Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -2417,12 +2347,12 @@
    "seller": {
     "username": "l.sorrell2012",
     "feedbackPercentage": 99.8,
-    "feedbackScore": 5047
+    "feedbackScore": 5048
    },
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-10-26T20:30:48.066Z",
+   "lastSeenAt": "2026-10-27T00:26:41.846Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -2493,12 +2423,12 @@
    "seller": {
     "username": "l.sorrell2012",
     "feedbackPercentage": 99.8,
-    "feedbackScore": 5047
+    "feedbackScore": 5048
    },
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-10-26T20:30:48.066Z",
+   "lastSeenAt": "2026-10-27T00:26:41.846Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -2569,12 +2499,12 @@
    "seller": {
     "username": "l.sorrell2012",
     "feedbackPercentage": 99.8,
-    "feedbackScore": 5047
+    "feedbackScore": 5048
    },
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-10-26T20:30:48.066Z",
+   "lastSeenAt": "2026-10-27T00:26:41.846Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -2645,12 +2575,12 @@
    "seller": {
     "username": "ce_buch",
     "feedbackPercentage": 99.9,
-    "feedbackScore": 23506
+    "feedbackScore": 23507
    },
    "condition": "Gut",
    "location": "DE",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-10-26T20:30:48.066Z",
+   "lastSeenAt": "2026-10-27T00:26:41.846Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -2764,12 +2694,12 @@
    "seller": {
     "username": "terrysbooksandthings",
     "feedbackPercentage": 100,
-    "feedbackScore": 3566
+    "feedbackScore": 3567
    },
    "condition": "Acceptable",
    "location": "US",
    "firstSeenAt": "2026-10-07T17:30:30.811Z",
-   "lastSeenAt": "2026-10-26T20:30:48.066Z",
+   "lastSeenAt": "2026-10-27T00:26:41.846Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -2842,7 +2772,7 @@
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-10-26T20:30:48.066Z",
+   "lastSeenAt": "2026-10-27T00:26:41.846Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -2874,7 +2804,7 @@
      "Original/Facsimile": "Original"
     },
     "descriptionSnippet": "The Bell System Technical Journal 1964 Vol. 43 Number 5, part 1 and part 2, NO. 1 ELECTRONIC SWITCHING SYSTEM See photos for details. Pages are clean and crisp, bindings are intact. The spines have the remark \"ESS\" in hand writing. A little over 9 x 6 inches height/width. No. 1 E",
-    "fetchedAt": "2026-10-25T19:40:52.350Z"
+    "fetchedAt": "2026-10-27T00:24:51.936Z"
    },
    "priceHistory": [
     {
@@ -2911,12 +2841,12 @@
    "seller": {
     "username": "l.sorrell2012",
     "feedbackPercentage": 99.8,
-    "feedbackScore": 5047
+    "feedbackScore": 5048
    },
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-10-26T20:30:48.066Z",
+   "lastSeenAt": "2026-10-27T00:26:41.846Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -2987,12 +2917,12 @@
    "seller": {
     "username": "l.sorrell2012",
     "feedbackPercentage": 99.8,
-    "feedbackScore": 5047
+    "feedbackScore": 5048
    },
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-28T05:19:43.449Z",
-   "lastSeenAt": "2026-10-26T20:30:48.066Z",
+   "lastSeenAt": "2026-10-27T00:26:41.846Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -3068,7 +2998,7 @@
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-10-22T13:51:36.024Z",
-   "lastSeenAt": "2026-10-26T20:30:48.066Z",
+   "lastSeenAt": "2026-10-27T00:26:41.846Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -3143,7 +3073,7 @@
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T02:20:30.001Z",
-   "lastSeenAt": "2026-10-26T20:30:48.066Z",
+   "lastSeenAt": "2026-10-27T00:26:41.846Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -3219,7 +3149,7 @@
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-10-21T17:09:59.521Z",
-   "lastSeenAt": "2026-10-26T20:30:48.066Z",
+   "lastSeenAt": "2026-10-27T00:26:41.846Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -3282,12 +3212,12 @@
    "seller": {
     "username": "l.sorrell2012",
     "feedbackPercentage": 99.8,
-    "feedbackScore": 5047
+    "feedbackScore": 5048
    },
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-28T05:19:43.449Z",
-   "lastSeenAt": "2026-10-26T20:30:48.066Z",
+   "lastSeenAt": "2026-10-27T00:26:41.846Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -3358,12 +3288,12 @@
    "seller": {
     "username": "l.sorrell2012",
     "feedbackPercentage": 99.8,
-    "feedbackScore": 5047
+    "feedbackScore": 5048
    },
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-28T05:19:43.449Z",
-   "lastSeenAt": "2026-10-26T20:30:48.066Z",
+   "lastSeenAt": "2026-10-27T00:26:41.846Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -3434,12 +3364,12 @@
    "seller": {
     "username": "l.sorrell2012",
     "feedbackPercentage": 99.8,
-    "feedbackScore": 5047
+    "feedbackScore": 5048
    },
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-28T05:19:43.449Z",
-   "lastSeenAt": "2026-10-26T20:30:48.066Z",
+   "lastSeenAt": "2026-10-27T00:26:41.846Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -3510,12 +3440,12 @@
    "seller": {
     "username": "l.sorrell2012",
     "feedbackPercentage": 99.8,
-    "feedbackScore": 5047
+    "feedbackScore": 5048
    },
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-28T05:19:43.449Z",
-   "lastSeenAt": "2026-10-26T20:30:48.066Z",
+   "lastSeenAt": "2026-10-27T00:26:41.846Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -3586,12 +3516,12 @@
    "seller": {
     "username": "l.sorrell2012",
     "feedbackPercentage": 99.8,
-    "feedbackScore": 5047
+    "feedbackScore": 5048
    },
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-28T05:19:43.449Z",
-   "lastSeenAt": "2026-10-26T20:30:48.066Z",
+   "lastSeenAt": "2026-10-27T00:26:41.846Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -3662,12 +3592,12 @@
    "seller": {
     "username": "l.sorrell2012",
     "feedbackPercentage": 99.8,
-    "feedbackScore": 5047
+    "feedbackScore": 5048
    },
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-28T05:19:43.449Z",
-   "lastSeenAt": "2026-10-26T20:30:48.066Z",
+   "lastSeenAt": "2026-10-27T00:26:41.846Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -3738,12 +3668,12 @@
    "seller": {
     "username": "l.sorrell2012",
     "feedbackPercentage": 99.8,
-    "feedbackScore": 5047
+    "feedbackScore": 5048
    },
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-28T05:19:43.449Z",
-   "lastSeenAt": "2026-10-26T20:30:48.066Z",
+   "lastSeenAt": "2026-10-27T00:26:41.846Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -3814,12 +3744,12 @@
    "seller": {
     "username": "l.sorrell2012",
     "feedbackPercentage": 99.8,
-    "feedbackScore": 5047
+    "feedbackScore": 5048
    },
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-28T05:19:43.449Z",
-   "lastSeenAt": "2026-10-26T20:30:48.066Z",
+   "lastSeenAt": "2026-10-27T00:26:41.846Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -3890,12 +3820,12 @@
    "seller": {
     "username": "l.sorrell2012",
     "feedbackPercentage": 99.8,
-    "feedbackScore": 5047
+    "feedbackScore": 5048
    },
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-28T05:19:43.449Z",
-   "lastSeenAt": "2026-10-26T20:30:48.066Z",
+   "lastSeenAt": "2026-10-27T00:26:41.846Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -3966,12 +3896,12 @@
    "seller": {
     "username": "bargainbookstores",
     "feedbackPercentage": 99.7,
-    "feedbackScore": 1214297
+    "feedbackScore": 1214330
    },
    "condition": "Brand New",
    "location": "US",
    "firstSeenAt": "2026-10-21T07:44:54.245Z",
-   "lastSeenAt": "2026-10-26T20:30:48.066Z",
+   "lastSeenAt": "2026-10-27T00:26:41.846Z",
    "reasons": [
     "must:bell system",
     "must:technical journal",
@@ -4004,7 +3934,7 @@
      "Manufacturer": "Literary Licensing, LLC"
     },
     "descriptionSnippet": "Bargainbookstores The Telstar Experiment: Papers from the Bell System Technical Journal, V42, Part 3, July, 1963 (Paperback or Softback) By Bell System Technical Journal Condition: Format: Paperback or Softback Publisher: Literary Licensing, LLC Publication Date: 4/14/2012 ISBN: ",
-    "fetchedAt": "2026-10-25T19:40:52.350Z"
+    "fetchedAt": "2026-10-27T00:24:51.936Z"
    },
    "priceHistory": [
     {
@@ -4046,7 +3976,7 @@
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-10-16T01:26:35.423Z",
-   "lastSeenAt": "2026-10-26T20:30:48.066Z",
+   "lastSeenAt": "2026-10-27T00:26:41.846Z",
    "reasons": [
     "must:bstj",
     "must:technical",
@@ -4066,7 +3996,7 @@
      "Vintage": "Yes"
     },
     "descriptionSnippet": "Vintage 1960s Bell Telephone System Technical Publications Monographs 5021-5050 | Solid-State & Telecomm Research Bound Book. Features a comprehensive block of 30 sequential technical monographs covering advanced electronics, wave propagation, and communication systems from the e",
-    "fetchedAt": "2026-10-25T19:40:52.350Z"
+    "fetchedAt": "2026-10-27T00:24:51.936Z"
    },
    "priceHistory": [
     {
@@ -4108,7 +4038,7 @@
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-10-26T20:30:48.066Z",
+   "lastSeenAt": "2026-10-27T00:26:41.846Z",
    "reasons": [
     "must:haze",
     "medium:painting",
@@ -4159,6 +4089,86 @@
    "dismissible": true
   },
   {
+   "key": "sports-foles-bears-jersey:v1|860011360247|0",
+   "group": "watch",
+   "huntId": "sports-foles-bears-jersey",
+   "huntLabel": "Nick Foles — game-used Bears jersey",
+   "classification": "watch",
+   "listingId": "v1|860011360247|0",
+   "title": "🔥Nick Foles #9 Chicago Bears Game Used Jersey Week 18 1/9/2022",
+   "url": "https://www.ebay.com/itm/860011360247?_skw=nick+foles+game+used+bears+jersey&hash=itemc83cabeff7:g:sRAAAeSwNG5qw7Aj",
+   "imageUrl": "https://i.ebayimg.com/images/g/sRAAAeSwNG5qw7Aj/s-l225.jpg",
+   "buyingMode": "FIXED_PRICE",
+   "endsAt": null,
+   "bidCount": null,
+   "price": 800,
+   "shipping": null,
+   "allIn": null,
+   "maxAllIn": 1500,
+   "underBy": null,
+   "underPct": null,
+   "capWording": "all-in unknown — shipping not listed",
+   "seller": {
+    "username": "westtexassports1600",
+    "feedbackPercentage": 100,
+    "feedbackScore": 25
+   },
+   "condition": null,
+   "location": "US",
+   "firstSeenAt": "2026-10-05T14:31:35.848Z",
+   "lastSeenAt": "2026-10-27T00:26:41.846Z",
+   "reasons": [
+    "must:foles",
+    "game-used:game used",
+    "all-in-unknown"
+   ],
+   "flags": [
+    "no-authentication-in-title",
+    "shipping-unknown"
+   ],
+   "confidence": 0.85,
+   "review": "ok",
+   "carried": false,
+   "alertKey": "ebay:v1|860011360247|0:sports-foles-bears-jersey:v1",
+   "similarCount": 0,
+   "risk": "medium",
+   "riskReasons": [
+    "no photo-match, team or third-party authentication named"
+   ],
+   "details": {
+    "aspects": {
+     "League": "National Football League (NFL)",
+     "Sport": "Football",
+     "Officially Licensed": "Yes",
+     "Features": "Used in Game",
+     "Team": "Chicago Bears",
+     "Event/Tournament": "Week 18"
+    },
+    "descriptionSnippet": "The product is a game-used jersey worn by Nick Foles during a Week 18 game of the 2022 NFL season with the Chicago Bears. This officially licensed memorabilia item allows fans to own a piece of football history from one of the most iconic players in the league. Perfect for collec",
+    "fetchedAt": "2026-10-26T12:53:09.395Z"
+   },
+   "priceHistory": [
+    {
+     "at": "2026-10-05T14:31:35.848Z",
+     "price": 800,
+     "allIn": 814.46
+    },
+    {
+     "at": "2026-10-27T00:26:41.846Z",
+     "price": 800,
+     "allIn": null
+    }
+   ],
+   "priceChange": {
+    "from": 814.46,
+    "to": 800,
+    "since": "2026-10-05T14:31:35.848Z"
+   },
+   "relisted": null,
+   "photoReused": null,
+   "dismissible": true
+  },
+  {
    "key": "design-sintesi-lamp:v1|147100042530|0",
    "group": "watch",
    "huntId": "design-sintesi-lamp",
@@ -4186,7 +4196,7 @@
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-10-26T20:30:48.066Z",
+   "lastSeenAt": "2026-10-27T00:26:41.846Z",
    "reasons": [
     "must:sintesi",
     "aspect:original",
@@ -4270,7 +4280,7 @@
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-10-26T20:30:48.066Z",
+   "lastSeenAt": "2026-10-27T00:26:41.846Z",
    "reasons": [
     "must:beaubourg",
     "aspect:original",
@@ -4355,7 +4365,7 @@
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-10-26T20:30:48.066Z",
+   "lastSeenAt": "2026-10-27T00:26:41.846Z",
    "reasons": [
     "must:graham",
     "game-used:game used",
@@ -4424,7 +4434,7 @@
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-10-26T20:30:48.066Z",
+   "lastSeenAt": "2026-10-27T00:26:41.846Z",
    "reasons": [
     "must:nakashima",
     "over-cap"
@@ -4473,12 +4483,12 @@
    "seller": {
     "username": "alltimegreatauthentics",
     "feedbackPercentage": 100,
-    "feedbackScore": 17920
+    "feedbackScore": 17921
    },
    "condition": "Unspecified",
    "location": "US",
    "firstSeenAt": "2026-10-16T11:19:03.876Z",
-   "lastSeenAt": "2026-10-26T20:30:48.066Z",
+   "lastSeenAt": "2026-10-27T00:26:41.846Z",
    "reasons": [
     "must:saul",
     "medium:drawn",
@@ -4539,12 +4549,12 @@
    "seller": {
     "username": "alltimegreatauthentics",
     "feedbackPercentage": 100,
-    "feedbackScore": 17920
+    "feedbackScore": 17921
    },
    "condition": "Unspecified",
    "location": "US",
    "firstSeenAt": "2026-10-16T11:19:03.876Z",
-   "lastSeenAt": "2026-10-26T20:30:48.066Z",
+   "lastSeenAt": "2026-10-27T00:26:41.846Z",
    "reasons": [
     "must:saul",
     "medium:drawn",
@@ -4610,7 +4620,7 @@
    "condition": "Used",
    "location": "GB",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-10-26T20:30:48.066Z",
+   "lastSeenAt": "2026-10-27T00:26:41.846Z",
    "reasons": [
     "must:sintesi",
     "over-cap"
@@ -4723,7 +4733,7 @@
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-10-26T20:30:48.066Z",
+   "lastSeenAt": "2026-10-27T00:26:41.846Z",
    "reasons": [
     "must:sintesi",
     "over-cap"
@@ -4791,7 +4801,7 @@
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-10-26T20:30:48.066Z",
+   "lastSeenAt": "2026-10-27T00:26:41.846Z",
    "reasons": [
     "must:sintesi",
     "over-cap"
@@ -4845,7 +4855,7 @@
    "condition": "Gebraucht",
    "location": "DE",
    "firstSeenAt": "2026-10-14T12:57:28.704Z",
-   "lastSeenAt": "2026-10-26T20:30:48.066Z",
+   "lastSeenAt": "2026-10-27T00:26:41.846Z",
    "reasons": [
     "must:sintesi",
     "over-cap"
@@ -4943,7 +4953,7 @@
    "condition": null,
    "location": "IT",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-10-26T20:30:48.066Z",
+   "lastSeenAt": "2026-10-27T00:26:41.846Z",
    "reasons": [
     "must:sintesi",
     "over-cap"
@@ -5056,7 +5066,7 @@
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-10-18T16:34:48.794Z",
-   "lastSeenAt": "2026-10-26T20:30:48.066Z",
+   "lastSeenAt": "2026-10-27T00:26:41.846Z",
    "reasons": [
     "must:sintesi",
     "over-cap"
@@ -5110,7 +5120,7 @@
    "condition": "Used",
    "location": "GB",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-10-26T20:30:48.066Z",
+   "lastSeenAt": "2026-10-27T00:26:41.846Z",
    "reasons": [
     "must:sintesi",
     "over-cap"
@@ -5218,12 +5228,12 @@
    "seller": {
     "username": "dimanoinmanocoop",
     "feedbackPercentage": 99.7,
-    "feedbackScore": 22910
+    "feedbackScore": 22912
    },
    "condition": "Used",
    "location": "IT",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-10-26T20:30:48.066Z",
+   "lastSeenAt": "2026-10-27T00:26:41.846Z",
    "reasons": [
     "must:sintesi",
     "over-cap"
@@ -5306,7 +5316,7 @@
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-10-26T20:30:48.066Z",
+   "lastSeenAt": "2026-10-27T00:26:41.846Z",
    "reasons": [
     "must:sintesi",
     "over-cap"
@@ -5374,7 +5384,7 @@
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-10-26T20:30:48.066Z",
+   "lastSeenAt": "2026-10-27T00:26:41.846Z",
    "reasons": [
     "must:sintesi",
     "over-cap"
@@ -5428,7 +5438,7 @@
    "condition": "Open box",
    "location": "JP",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-10-26T20:30:48.066Z",
+   "lastSeenAt": "2026-10-27T00:26:41.846Z",
    "reasons": [
     "must:nakashima",
     "over-cap"
@@ -5486,7 +5496,7 @@
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-10-26T20:30:48.066Z",
+   "lastSeenAt": "2026-10-27T00:26:41.846Z",
    "reasons": [
     "must:super bowl",
     "game-used:game used",
@@ -5545,7 +5555,7 @@
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-10-26T20:30:48.066Z",
+   "lastSeenAt": "2026-10-27T00:26:41.846Z",
    "reasons": [
     "must:super bowl",
     "game-used:game used",
@@ -5605,7 +5615,7 @@
    "condition": "Unspecified",
    "location": "US",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-10-26T20:30:48.066Z",
+   "lastSeenAt": "2026-10-27T00:26:41.846Z",
    "reasons": [
     "must:condo",
     "medium:crayon",
@@ -5663,7 +5673,7 @@
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-10-26T20:30:48.066Z",
+   "lastSeenAt": "2026-10-27T00:26:41.846Z",
    "reasons": [
     "must:sintesi",
     "over-cap"
@@ -5721,7 +5731,7 @@
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T03:20:24.636Z",
-   "lastSeenAt": "2026-10-26T20:30:48.066Z",
+   "lastSeenAt": "2026-10-27T00:26:41.846Z",
    "reasons": [
     "must:crumb",
     "medium:original art",
@@ -5779,7 +5789,7 @@
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-10-26T20:30:48.066Z",
+   "lastSeenAt": "2026-10-27T00:26:41.846Z",
    "reasons": [
     "must:condo",
     "medium:drawing",
@@ -5837,7 +5847,7 @@
    "condition": "Unspecified",
    "location": "US",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-10-26T20:30:48.066Z",
+   "lastSeenAt": "2026-10-27T00:26:41.846Z",
    "reasons": [
     "must:condo",
     "medium:drawing",
@@ -5915,7 +5925,7 @@
    "condition": null,
    "location": "US",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-10-26T20:30:48.066Z",
+   "lastSeenAt": "2026-10-27T00:26:41.846Z",
    "reasons": [
     "must:crumb",
     "medium:drawing",
@@ -5973,7 +5983,7 @@
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-10-07T18:55:45.478Z",
-   "lastSeenAt": "2026-10-26T20:30:48.066Z",
+   "lastSeenAt": "2026-10-27T00:26:41.846Z",
    "reasons": [
     "must:sintesi",
     "over-cap"
@@ -6045,7 +6055,7 @@
    "condition": "Used",
    "location": "US",
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-10-26T20:30:48.066Z",
+   "lastSeenAt": "2026-10-27T00:26:41.846Z",
    "reasons": [
     "must:crumb",
     "medium:illustration",
@@ -6117,7 +6127,7 @@
     "price-far-below-market"
    ],
    "firstSeenAt": "2026-10-22T21:34:23.185Z",
-   "lastSeenAt": "2026-10-26T20:30:48.066Z",
+   "lastSeenAt": "2026-10-27T00:26:41.846Z",
    "state": "pending",
    "trigger": "first-under",
    "version": 1
@@ -6132,11 +6142,11 @@
    "buyingMode": "FIXED_PRICE",
    "endsAt": null,
    "price": 800,
-   "shipping": 14.46,
-   "allIn": 814.46,
+   "shipping": null,
+   "allIn": null,
    "maxAllIn": 1500,
-   "underBy": 685.54,
-   "underPct": 0.46,
+   "underBy": null,
+   "underPct": null,
    "currency": "USD",
    "confidence": 0.85,
    "risk": "medium",
@@ -6146,14 +6156,15 @@
    "reasons": [
     "must:foles",
     "game-used:game used",
-    "at-or-under-cap"
+    "all-in-unknown"
    ],
    "flags": [
-    "no-authentication-in-title"
+    "no-authentication-in-title",
+    "shipping-unknown"
    ],
    "firstSeenAt": "2026-10-05T14:31:35.848Z",
-   "lastSeenAt": "2026-10-26T20:30:48.066Z",
-   "state": "pending",
+   "lastSeenAt": "2026-10-27T00:26:41.846Z",
+   "state": "expired",
    "trigger": "first-under",
    "version": 1
   },
@@ -12029,7 +12040,7 @@
     "no-authentication-in-title"
    ],
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-10-26T20:30:48.066Z",
+   "lastSeenAt": "2026-10-27T00:26:41.846Z",
    "state": "pending",
    "trigger": "price-drop",
    "version": 2
@@ -12334,7 +12345,7 @@
     "medium-from-item-specifics"
    ],
    "firstSeenAt": "2026-09-25T01:26:41.021Z",
-   "lastSeenAt": "2026-10-26T20:30:48.066Z",
+   "lastSeenAt": "2026-10-27T00:26:41.846Z",
    "state": "pending",
    "trigger": "first-under",
    "version": 1
@@ -22214,11 +22225,11 @@
  ],
  "counts": {
   "cards": 67,
-  "under": 4,
+  "under": 3,
   "newUnder": 0,
-  "watch": 38,
+  "watch": 39,
   "over": 25,
-  "pendingAlerts": 4,
+  "pendingAlerts": 3,
   "highRisk": 1
  }
 }
